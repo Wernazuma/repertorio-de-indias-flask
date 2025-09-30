@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload File Processor - HGIS-Indias</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            text-align: center;
+            opacity: 0.9;
+        }
+
+        .nav-links {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .nav-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .step {
+            background: white;
+            margin-bottom: 20px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        .step h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .progress-bar {
+            background: #ecf0f1;
+            height: 6px;
+            border-radius: 3px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: #3498db;
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        input[type="file"],
+        select,
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="file"]:focus,
+        select:focus,
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .btn {
+            background: #3498db;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+        }
+
+        .btn.secondary {
+            background: #95a5a6;
+        }
+
+        .btn.secondary:hover {
+            background: #7f8c8d;
+        }
+
+        .btn.success {
+            background: #27ae60;
+        }
+
+        .btn.success:hover {
+            background: #229954;
+        }
+
+        .btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .alert.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .alert.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .file-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .column-classification {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+
+        .column-classification h4 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .column-samples {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .field-mapping {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .field-mapping-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            align-items: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+
+        .field-mapping-item.required {
+            border-left: 4px solid #e74c3c;
+        }
+
+        .field-mapping-item.optional {
+            border-left: 4px solid #f39c12;
+        }
+
+        .field-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .field-name {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .field-description {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .chronological-options {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .chronological-options.show {
+            display: block;
+        }
+
+        .radio-group {
+            margin-bottom: 15px;
+        }
+
+        .radio-group label {
+            font-weight: normal;
+            margin-bottom: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .radio-group input[type="radio"] {
+            width: auto;
+            margin-right: 8px;
+        }
+
+        .checkbox-group {
+            margin-bottom: 15px;
+        }
+
+        .checkbox-group label {
+            font-weight: normal;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-right: 8px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .loading::after {
+            content: "";
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .result-summary {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .result-summary h3 {
+            color: #27ae60;
+            margin-bottom: 15px;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        @media (max-width: 768px) {
+            .field-mapping-item {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>Upload File Processor</h1>
+            <p>Process your CSV files for integration with HGIS-Indias/ARCA</p>
+            <div class="nav-links">
+                <a href="/">← Back to Workflow</a>
+                <a href="/contact">Contact</a>
+                <a href="/guidebook/1">Guidebook</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <!-- Step 1: File Upload -->
+        <div class="step active" id="step1">
+            <h2>Step 1: Upload Your CSV File</h2>
+            <div class="form-group">
+                <label for="fileInput">Select CSV File:</label>
+                <input type="file" id="fileInput" accept=".csv" />
+                <small>Maximum file size: 16MB. Only CSV files are supported.</small>
+            </div>
+            <button class="btn" onclick="uploadFile()" id="uploadBtn">Upload File</button>
+            <div id="uploadResult"></div>
+        </div>
+
+        <!-- Step 2: Domain Selection -->
+        <div class="step" id="step2">
+            <h2>Step 2: Select Data Domain</h2>
+            <div id="fileInfo" class="file-info"></div>
+            <div class="form-group">
+                <label for="domainSelect">What type of data are you processing?</label>
+                <select id="domainSelect">
+                    <option value="">Choose domain...</option>
+                    <option value="places">Places (settlements, locations)</option>
+                    <option value="territories">Territories (administrative divisions)</option>
+                </select>
+            </div>
+            <button class="btn" onclick="processDomain()" id="domainBtn">Process Domain</button>
+            <div id="domainResult"></div>
+        </div>
+
+        <!-- Step 3: Column Classification -->
+        <div class="step" id="step3">
+            <h2>Step 3: Classify Data Types</h2>
+            <p>Please specify the data type for each column that needs classification:</p>
+            <div id="columnClassification"></div>
+            <button class="btn" onclick="saveColumnTypes()" id="classifyBtn" style="display:none;">Save Classifications</button>
+        </div>
+
+        <!-- Step 4: Field Mapping -->
+        <div class="step" id="step4">
+            <h2>Step 4: Map Fields</h2>
+            <p>Map your CSV columns to the required database fields:</p>
+            <div class="alert info">
+                <strong>Required fields</strong> are marked with a red border and must be mapped.<br>
+                <strong>Optional fields</strong> are marked with an orange border and can be left unmapped.
+            </div>
+            <div id="fieldMapping" class="field-mapping"></div>
+			<button class="btn success" id="toStep5Btn" onclick="processFinal()" style="display:none;">Continue</button>
+
+
+        </div>
+
+        <!-- Step 5: Chronological Information -->
+        <div class="step" id="step5">
+            <h2>Step 5: Chronological Information</h2>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" id="hasChronological" onchange="toggleChronological()">
+                    My data contains chronological information (dates/years)
+                </label>
+            </div>
+            
+            <div class="chronological-options" id="chronologicalOptions">
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="chronoType" value="single" id="singleField" onchange="toggleChronoFields()">
+                        Single year/date field
+                    </label>
+                    <label>
+                        <input type="radio" name="chronoType" value="range" id="rangeFields" onchange="toggleChronoFields()">
+                        Separate start and end year/date fields
+                    </label>
+                </div>
+
+                <div id="singleFieldOptions" class="hidden">
+                    <div class="form-group">
+                        <label for="yearColumn">Year/Date Column:</label>
+                        <select id="yearColumn"></select>
+                    </div>
+                </div>
+
+                <div id="rangeFieldOptions" class="hidden">
+                    <div class="form-group">
+                        <label for="startYearColumn">Start Year/Date Column:</label>
+                        <select id="startYearColumn"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="endYearColumn">End Year/Date Column:</label>
+                        <select id="endYearColumn"></select>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn success" onclick="processFinal()" id="finalBtn">Process & Download</button>
+        </div>
+
+        <!-- Step 6: Results -->
+        <div class="step" id="step6">
+            <h2>Processing Complete!</h2>
+            <div class="result-summary" id="resultSummary"></div>
+            <div id="downloadSection"></div>
+            <button class="btn secondary" onclick="startOver()">Process Another File</button>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        let totalSteps = 6;
+        let uploadedData = {};
+
+        function updateProgress() {
+            const progress = (currentStep / totalSteps) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        function showStep(step) {
+            document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+            document.getElementById('step' + step).classList.add('active');
+            currentStep = step;
+            updateProgress();
+        }
+
+        function showAlert(message, type = 'info', container = null) {
+            const alert = document.createElement('div');
+            alert.className = `alert ${type}`;
+            alert.innerHTML = message;
+            
+            if (container) {
+                container.innerHTML = '';
+                container.appendChild(alert);
+            }
+            
+            return alert;
+        }
+
+        async function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                showAlert('Please select a file first.', 'error', document.getElementById('uploadResult'));
+                return;
+            }
+
+            const uploadBtn = document.getElementById('uploadBtn');
+            uploadBtn.disabled = true;
+            uploadBtn.textContent = 'Uploading...';
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                const response = await fetch('/api/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    uploadedData.filename = result.filename;
+                    uploadedData.originalFilename = file.name;
+                    showAlert('File uploaded successfully!', 'success', document.getElementById('uploadResult'));
+                    
+                    document.getElementById('fileInfo').innerHTML = `
+                        <strong>Uploaded File:</strong> ${file.name}<br>
+                        <strong>Size:</strong> ${(file.size / 1024).toFixed(1)} KB
+                    `;
+                    
+                    setTimeout(() => showStep(2), 1000);
+                } else {
+                    showAlert(result.error, 'error', document.getElementById('uploadResult'));
+                }
+            } catch (error) {
+                showAlert('Upload failed: ' + error.message, 'error', document.getElementById('uploadResult'));
+            } finally {
+                uploadBtn.disabled = false;
+                uploadBtn.textContent = 'Upload File';
+            }
+        }
+
+        async function processDomain() {
+            const domainSelect = document.getElementById('domainSelect');
+            const domain = domainSelect.value;
+
+            if (!domain) {
+                showAlert('Please select a domain first.', 'error', document.getElementById('domainResult'));
+                return;
+            }
+
+            const domainBtn = document.getElementById('domainBtn');
+            domainBtn.disabled = true;
+            domainBtn.textContent = 'Processing...';
+
+            try {
+                const response = await fetch('/api/process_domain', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ domain: domain })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    uploadedData.domain = domain;
+                    uploadedData.rows = result.rows;
+                    uploadedData.columns = result.columns;
+                    uploadedData.needsClassification = result.needs_classification;
+
+                    showAlert(`File processed successfully! Found ${result.rows} rows and ${result.columns} columns.`, 'success', document.getElementById('domainResult'));
+                    
+                    if (Object.keys(result.needs_classification).length > 0) {
+                        setupColumnClassification(result.needs_classification);
+                        setTimeout(() => showStep(3), 1000);
+                    } else {
+                        await loadFieldMappingInfo();
+                        setTimeout(() => showStep(4), 1000);
+                    }
+                } else {
+                    showAlert(result.error, 'error', document.getElementById('domainResult'));
+                }
+            } catch (error) {
+                showAlert('Processing failed: ' + error.message, 'error', document.getElementById('domainResult'));
+            } finally {
+                domainBtn.disabled = false;
+                domainBtn.textContent = 'Process Domain';
+            }
+        }
+
+        function setupColumnClassification(needsClassification) {
+            const container = document.getElementById('columnClassification');
+            container.innerHTML = '';
+
+            if (Object.keys(needsClassification).length === 0) {
+                container.innerHTML = '<p>No columns need classification. All data types were automatically detected.</p>';
+                return;
+            }
+
+            for (const [column, samples] of Object.entries(needsClassification)) {
+                const div = document.createElement('div');
+                div.className = 'column-classification';
+                div.innerHTML = `
+                    <h4>${column}</h4>
+                    <select id="type_${column}" onchange="checkClassificationComplete()">
+                        <option value="">Choose type...</option>
+                        <option value="integer">Integer (whole numbers)</option>
+                        <option value="decimal">Decimal (numbers with decimals)</option>
+                        <option value="date">Date</option>
+                        <option value="text">Text</option>
+                        <option value="ignore">Ignore this column</option>
+                    </select>
+                    <div class="column-samples">Sample values: ${samples.join(', ')}</div>
+                `;
+                container.appendChild(div);
+            }
+
+            document.getElementById('classifyBtn').style.display = 'block';
+        }
+
+        function checkClassificationComplete() {
+            const selects = document.querySelectorAll('#columnClassification select');
+            const allSelected = Array.from(selects).every(select => select.value !== '');
+            
+            const classifyBtn = document.getElementById('classifyBtn');
+            classifyBtn.disabled = !allSelected;
+            classifyBtn.textContent = allSelected ? 'Save Classifications' : 'Please classify all columns';
+        }
+
+        async function saveColumnTypes() {
+            const selects = document.querySelectorAll('#columnClassification select');
+            const columnTypes = {};
+
+            selects.forEach(select => {
+                const column = select.id.replace('type_', '');
+                columnTypes[column] = select.value;
+            });
+
+            try {
+                const response = await fetch('/api/save_column_types', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ column_types: columnTypes })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    await loadFieldMappingInfo();
+                    showStep(4);
+                } else {
+                    showAlert(result.error, 'error');
+                }
+            } catch (error) {
+                showAlert('Failed to save column types: ' + error.message, 'error');
+            }
+        }
+
+        async function loadFieldMappingInfo() {
+            try {
+                const response = await fetch('/api/get_field_mapping_info');
+                const result = await response.json();
+
+                if (result.required_fields) {
+                    setupFieldMapping(result.required_fields, result.filtered_columns);
+                    setupChronologicalFields(result.integer_columns);
+                } else {
+                    showAlert(result.error, 'error');
+                }
+            } catch (error) {
+                showAlert('Failed to load field mapping info: ' + error.message, 'error');
+            }
+        }
+
+        function setupFieldMapping(requiredFields, filteredColumns) {
+            const container = document.getElementById('fieldMapping');
+            container.innerHTML = '';
+
+            requiredFields.forEach(field => {
+                const div = document.createElement('div');
+                div.className = `field-mapping-item ${field.optional ? 'optional' : 'required'}`;
+                
+                const availableColumns = filteredColumns[field.name] || [];
+                
+                let options = '<option value="none">-- Not mapped --</option>';
+                availableColumns.forEach(col => {
+                    options += `<option value="${col}">${col}</option>`;
+                });
+
+                div.innerHTML = `
+                    <div class="field-info">
+                        <div class="field-name">${field.name} ${field.optional ? '(Optional)' : '(Required)'}</div>
+                        <div class="field-description">${field.label}</div>
+                    </div>
+                    <div>
+                        <select id="mapping_${field.name}" onchange="checkMappingComplete()">
+                            ${options}
+                        </select>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+
+            checkMappingComplete();
+        }
+
+        function checkMappingComplete() {
+			const requiredMappings = document.querySelectorAll('.field-mapping-item.required select');
+			const allRequiredMapped = Array.from(requiredMappings).every(select => select.value !== 'none');
+
+			const continueBtn = document.getElementById('toStep5Btn');
+			continueBtn.style.display = allRequiredMapped ? 'block' : 'none';
+		}
+
+
+        function setupChronologicalFields(integerColumns) {
+            const yearSelect = document.getElementById('yearColumn');
+            const startYearSelect = document.getElementById('startYearColumn');
+            const endYearSelect = document.getElementById('endYearColumn');
+
+            [yearSelect, startYearSelect, endYearSelect].forEach(select => {
+                select.innerHTML = '<option value="">-- Select column --</option>';
+                integerColumns.forEach(col => {
+                    select.innerHTML += `<option value="${col}">${col}</option>`;
+                });
+            });
+        }
+
+        function toggleChronological() {
+            const hasChronological = document.getElementById('hasChronological').checked;
+            const options = document.getElementById('chronologicalOptions');
+            
+            if (hasChronological) {
+                options.classList.add('show');
+            } else {
+                options.classList.remove('show');
+                document.querySelectorAll('input[name="chronoType"]').forEach(radio => radio.checked = false);
+                document.getElementById('singleFieldOptions').classList.add('hidden');
+                document.getElementById('rangeFieldOptions').classList.add('hidden');
+            }
+        }
+
+        function toggleChronoFields() {
+            const singleField = document.getElementById('singleField').checked;
+            const rangeFields = document.getElementById('rangeFields').checked;
+
+            document.getElementById('singleFieldOptions').classList.toggle('hidden', !singleField);
+            document.getElementById('rangeFieldOptions').classList.toggle('hidden', !rangeFields);
+        }
+
+        async function processFinal() {
+            const finalBtn = document.getElementById('finalBtn');
+            finalBtn.disabled = true;
+            finalBtn.textContent = 'Processing...';
+
+            const fieldMapping = {};
+            document.querySelectorAll('[id^="mapping_"]').forEach(select => {
+                const fieldName = select.id.replace('mapping_', '');
+                fieldMapping[fieldName] = select.value;
+            });
+
+            const chronologicalInfo = {
+                has_chronological: document.getElementById('hasChronological').checked
+            };
+
+            if (chronologicalInfo.has_chronological) {
+                chronologicalInfo.single_field = document.getElementById('singleField').checked;
+                
+                if (chronologicalInfo.single_field) {
+                    chronologicalInfo.year_column = document.getElementById('yearColumn').value;
+                } else {
+                    chronologicalInfo.start_year_column = document.getElementById('startYearColumn').value;
+                    chronologicalInfo.end_year_column = document.getElementById('endYearColumn').value;
+                }
+            }
+
+            try {
+                const response = await fetch('/api/process_final', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        field_mapping: fieldMapping,
+                        chronological_info: chronologicalInfo
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    displayResults(result);
+                    showStep(6);
+                } else {
+                    showAlert(result.error, 'error');
+                }
+            } catch (error) {
+                showAlert('Final processing failed: ' + error.message, 'error');
+            } finally {
+                finalBtn.disabled = false;
+                finalBtn.textContent = 'Process & Download';
+            }
+        }
+
+        function displayResults(result) {
+            const summaryContainer = document.getElementById('resultSummary');
+            const downloadContainer = document.getElementById('downloadSection');
+
+            summaryContainer.innerHTML = `
+                <h3>Processing Summary</h3>
+                <div class="result-item">
+                    <span>Original File:</span>
+                    <span>${uploadedData.originalFilename}</span>
+                </div>
+                <div class="result-item">
+                    <span>Processed File:</span>
+                    <span>${result.output_filename}</span>
+                </div>
+                <div class="result-item">
+                    <span>Total Rows:</span>
+                    <span>${result.rows}</span>
+                </div>
+                <div class="result-item">
+                    <span>Total Columns:</span>
+                    <span>${result.columns}</span>
+                </div>
+                <div class="result-item">
+                    <span>Domain:</span>
+                    <span>${uploadedData.domain}</span>
+                </div>
+            `;
+
+            if (result.legacy_columns && Object.keys(result.legacy_columns).length > 0) {
+                summaryContainer.innerHTML += `
+                    <div class="alert info" style="margin-top: 15px;">
+                        <strong>Legacy Columns Created:</strong><br>
+                        Some data couldn't be converted and was preserved in legacy columns: 
+                        ${Object.keys(result.legacy_columns).join(', ')}
+                    </div>
+                `;
+            }
+
+            downloadContainer.innerHTML = `
+                <div class="alert success">
+                    <strong>Success!</strong> Your file has been processed and is ready for download.
+                </div>
+                <button class="btn success" onclick="downloadFile('${result.output_filename}')">
+                    📥 Download Processed File
+                </button>
+                <button class="btn" onclick="viewFilePreview('${result.output_filename}')">
+                    👁️ Preview File
+                </button>
+            `;
+        }
+
+        async function downloadFile(filename) {
+            try {
+                const response = await fetch(`/api/download/${filename}`);
+                
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = filename;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                } else {
+                    showAlert('Download failed. Please try again.', 'error');
+                }
+            } catch (error) {
+                showAlert('Download error: ' + error.message, 'error');
+            }
+        }
+
+        function viewFilePreview(filename) {
+            showAlert('File preview functionality would be implemented here.', 'info');
+        }
+
+        function startOver() {
+            currentStep = 1;
+            uploadedData = {};
+            
+            document.getElementById('fileInput').value = '';
+            document.getElementById('domainSelect').value = '';
+            document.getElementById('hasChronological').checked = false;
+            
+            document.getElementById('uploadResult').innerHTML = '';
+            document.getElementById('domainResult').innerHTML = '';
+            document.getElementById('columnClassification').innerHTML = '';
+            document.getElementById('fieldMapping').innerHTML = '';
+            document.getElementById('resultSummary').innerHTML = '';
+            document.getElementById('downloadSection').innerHTML = '';
+            
+            document.getElementById('chronologicalOptions').classList.remove('show');
+            
+            showStep(1);
+        }
+
+        function setupDragAndDrop() {
+            const fileInput = document.getElementById('fileInput');
+            const step1 = document.getElementById('step1');
+
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                step1.addEventListener(eventName, preventDefaults, false);
+            });
+
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            ['dragenter', 'dragover'].forEach(eventName => {
+                step1.addEventListener(eventName, highlight, false);
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                step1.addEventListener(eventName, unhighlight, false);
+            });
+
+            function highlight(e) {
+                step1.style.backgroundColor = '#f0f8ff';
+                step1.style.borderColor = '#3498db';
+            }
+
+            function unhighlight(e) {
+                step1.style.backgroundColor = '';
+                step1.style.borderColor = '';
+            }
+
+            step1.addEventListener('drop', handleDrop, false);
+
+            function handleDrop(e) {
+                const dt = e.dataTransfer;
+                const files = dt.files;
+
+                if (files.length > 0) {
+                    const file = files[0];
+                    if (file.type === 'text/csv' || file.name.endsWith('.csv')) {
+                        fileInput.files = files;
+                        showAlert(`File "${file.name}" ready for upload.`, 'success', document.getElementById('uploadResult'));
+                    } else {
+                        showAlert('Please drop a CSV file.', 'error', document.getElementById('uploadResult'));
+                    }
+                }
+            }
+        }
+
+        function setupKeyboardShortcuts() {
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && currentStep > 1) {
+                    showStep(currentStep - 1);
+                }
+                
+                if (e.key === 'Enter') {
+                    if (currentStep === 1 && document.getElementById('fileInput').files.length > 0) {
+                        uploadFile();
+                    } else if (currentStep === 2 && document.getElementById('domainSelect').value) {
+                        processDomain();
+                    }
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgress();
+            setupDragAndDrop();
+            setupKeyboardShortcuts();
+        });
+    </script>
+</body>
+</html>

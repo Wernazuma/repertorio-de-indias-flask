@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xml:lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Source Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .source-detail {
+            margin: 20px;
+        }
+        .source-detail h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="source-detail">
+        <h2>{{ source.Titulo }}</h2>
+        <p><strong>FuenteID:</strong> {{ source.FuenteID }}</p>
+		<p><strong>Tipo de Fuente:</strong> {{ source.tipo }}</p>
+        <p><strong>Autor:</strong> {{ source.Apellido }}, {{ source.Nombre }}</p>
+		<p><strong>Autores adicionales:</strong> {{ source.AutoresAdicionales }}</p>
+        <p><strong>Título:</strong> {{ source.Titulo }}</p>
+        <p><strong>en:</strong> {{ source.en_ }}</p>
+        <p><strong>Lugar:</strong> {{ source.Lugar }}</p>
+        <p><strong>Año:</strong> {{ source.Año }}</p>
+        <p><strong>Archivo/Signatura:</strong> {{ source.Archivo }}, {{ source.signatura }}</p>
+        <p><strong>Enlace:</strong> <a href="{{ source.URL }}" target="_new">{{ source.URL }}</a></p>
+        <p><strong>Cita completa:</strong> {{ source.CitaCompleta }}</p>
+		
+    </div>
+</body>
+</html>

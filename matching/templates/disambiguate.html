@@ -1,0 +1,79 @@
+<!-- templates/disambiguate.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Disambiguation Interface</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      line-height: 1.4;
+      margin: 2em;
+    }
+    .case {
+      border: 1px solid #ccc;
+      padding: 1em;
+      margin-bottom: 2em;
+      background: #f9f9f9;
+    }
+    .candidate {
+      margin: 1em 0;
+      padding: 0.5em;
+      border: 1px solid #ddd;
+      background: #fff;
+    }
+    label {
+      font-weight: bold;
+    }
+    .ref {
+      background: #eef;
+      padding: 0.5em;
+      margin-bottom: 1em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Manual Disambiguation</h1>
+  <form method="POST">
+    {% for rowID, group in grouped %}
+      {% set ref = group.iloc[0] %}
+      <div class="case">
+        <div class="ref">
+          <strong>rowID {{ rowID }}</strong><br>
+          <strong>ref_Label:</strong> {{ ref['ref_Label'] }}<br>
+          {% for col in ref.index %}
+            {% if col.startswith('ref_') and col != 'ref_Label' %}
+              {{ col }}: {{ ref[col] }}<br>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+        {% for _, candidate in group.iterrows() %}
+          <div class="candidate">
+            <label>
+              <input type="radio" name="{{ rowID }}" value="{{ candidate['gz_id'] }}">
+              Select this candidate (Score: {{ candidate['score'] }})
+            </label><br>
+            <ul>
+              <li><strong>Nombre:</strong> {{ candidate['lugar_nombre'] }}</li>
+              <li><strong>Variantes:</strong> {{ candidate['lugar_variantes'] }}</li>
+              <li><strong>Categoría:</strong> {{ candidate['lugar_categoria'] }} ({{ candidate['lugar_categoria_especial'] }})</li>
+              <li><strong>Iglesia cat.:</strong> {{ candidate['lugar_iglesia_cat'] }}</li>
+              <li><strong>Partido:</strong> {{ candidate['lugar_partido_generico'] }}</li>
+              <li><strong>Provincia:</strong> {{ candidate['lugar_provincia_generica'] }}</li>
+              <li><strong>Región:</strong> {{ candidate['lugar_region'] }}</li>
+              <li><strong>gz_id:</strong> {{ candidate['gz_id'] }}</li>
+            </ul>
+          </div>
+        {% endfor %}
+
+        <label>
+          <input type="radio" name="{{ rowID }}" value="reject">
+          Reject all candidates
+        </label>
+      </div>
+    {% endfor %}
+    <input type="submit" value="Submit decisions">
+  </form>
+</body>
+</html>

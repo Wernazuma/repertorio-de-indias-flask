@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+
+{% block title %}{{ territory.Nombre }}, {{ territory.tipo }} ({{ territory.Region }}){% endblock %}
+{% block header_h1 %}{{ territory.Nombre }}, {{ territory.tipo }} ({{ territory.Region }}){% endblock %}
+
+{% block extra_head %}
+<script>
+  // Include external HTML chunks (for history articles)
+  function includeHTML() {
+    var z = document.getElementsByTagName("*");
+    for (var i = 0; i < z.length; i++) {
+      var elmnt = z[i];
+      var file = elmnt.getAttribute("w3-include-html");
+      if (file) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+          if (this.readyState == 4) {
+            if (this.status == 200) { elmnt.innerHTML = this.responseText; }
+            if (this.status == 404) { elmnt.innerHTML = "Page not found."; }
+            elmnt.removeAttribute("w3-include-html");
+            includeHTML();
+          }
+        };
+        xhttp.open("GET", file, true);
+        xhttp.send();
+        return;
+      }
+    }
+  }
+
+  // Tabs
+  function openTab(evt, tabName) {
+    var i, tabcontent = document.getElementsByClassName("tabcontent"),
+        tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tabcontent.length; i++) tabcontent[i].style.display = "none";
+    for (i = 0; i < tablinks.length; i++)
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    var tgt = document.getElementById(tabName);
+    if (tgt) tgt.style.display = "block";
+    if (evt && evt.currentTarget) evt.currentTarget.className += " active";
+  }
+
+  // Date/URL for citation
+  function formatDate(date) {
+    const day = date.getDate();
+    const month = date.toLocaleString('en-GB', { month: 'long' });
+    const year = date.getFullYear();
+    return `${day} ${month} ${year}`;
+  }
+  function setDynamicContent() {
+    const currentDate = new Date();
+    const currentURL = window.location.href;
+    var dt = document.getElementById('datetime');
+    var u = document.getElementById('url');
+    if (dt) dt.innerText = formatDate(currentDate);
+    if (u) u.innerText = currentURL;
+  }
+
+  // Sources popup
+  function openSourceWindow(url) {
+    window.open(url, '_blank', 'width=320,height=600');
+  }
+
+  // Init
+  document.addEventListener("DOMContentLoaded", function() {
+    includeHTML();
+    setDynamicContent();
+    var def = document.getElementById("defaultOpen");
+    if (def) def.click();
+  });
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Informacion')" id="defaultOpen">Información básica</button>
+  <button class="tablinks" onclick="openTab(event, 'Historia')">Historia</button>
+  <button class="tablinks" onclick="openTab(event, 'Fuentes')">Recursos y Fuentes</button>
+</div>
+
+<div id="Informacion" class="tabcontent" style="display:none;">
+  <h1>Información básica</h1>
+
+  <div class="infobox-grid">
+    <div class="infobox" id="info-1-base">
+      <h2>Información básica</h2>
+      <p style="font-weight: bold;">Indias-ID: {{ territory.Entidad }}</p>
+      <p>Nombres variantes: {{ territory.Variantes }}</p>
+    </div>
+
+    <div class="infobox" id="info-2-maps">
+      <h3>Mapas</h3>
+      {% for year in [1701, 1725, 1750, 1775, 1800, 1808] %}
+        <div class="map-thumbnail">
+          <a href="../../images/phocagallery/basemaps/{{ territory.tipo }}s/{{ territory.tipo }}s {{ year }}/{{ territory.WikiID }}.png">
+            <img src="../../images/phocagallery/basemaps/{{ territory.tipo }}s/{{ territory.tipo }}s {{ year }}/thumbs/phoca_thumb_s_{{ territory.WikiID }}.png"
+                 alt="Mapa base, {{ year }}">
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="infobox" id="info-3-detalle">
+      <div id="info-2-1-infotable">
+        <h3>Instancias</h3>
+        {% for inf in infotable_data %}
+          <a href="../dokuwiki/doku.php?id={{ inf.Wikilink_tipo }}">{{ inf.tipo }}</a>
+          de {{ inf.Label }}, {{ inf.START }}-{{ inf.END }}
+          <a href="/infotable/{{ territory.Entidad }}" style="font-size: small;">Más</a><br/>
+        {% endfor %}
+      </div>
+
+      <div id="info-3-2-capital">
+        <h3>Lugar capital</h3>
+        {% for cp in capital_terr_data %}
+          <a href="../place/{{ cp.gz_id }}">{{ cp.Cabecera }}</a>,
+          {{ cp.start }}-{{ cp.end_ }}
+          <a href="/capital-tb/{{ cp.ID }}" style="font-size: small;">Más</a><br/>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="infobox-grid">
+    <div class="infobox" id="jerarquia-1-pertenencia">
+      <h3>Este territorio depende de los de:</h3>
+      {% for j in jerarquia_sup_data %}
+        <a href="../territory/{{ j.Ent_sup }}">{{ j.sup_tipo }} de {{ j.sup_Label }}</a>,
+        {{ j.START }}-{{ j.END }}
+        <a href="/superior/{{ territory.Entidad }}" style="font-size: small;">Más</a><br/>
+      {% endfor %}
+    </div>
+
+    <div class="infobox" id="jerarquia-3-dependencia">
+      <h3>A este territorio pertenecen los de:</h3>
+      {% for j in jerarquia_sub_data %}
+        <a href="../territory/{{ j.Entidad }}">{{ j.tipo }} de {{ j.Label }}</a>,
+        {{ j.START }}-{{ j.END }}
+        <a href="/inferior/{{ territory.Entidad }}" style="font-size: small;">Más</a><br/>
+      {% endfor %}
+    </div>
+
+    <div class="infobox" id="Oficiales">
+      <h3>Funcionarios</h3>
+      {% for o in oficiales_entity_data %}
+        <a href="../people/persIndias{{ o.OficialID }}">{{ o.oficial_nombre }}</a>,
+        {{ o.Primera_Fecha_y }}-{{ o.Ultima_Fecha_y }}<br/>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div id="Historia" class="tabcontent" style="display:none;">
+  <h1>Historia</h1>
+  {% if article_exists %}
+    <div w3-include-html="/data/historia_entidades/{{ territory.Entidad }}.html"></div>
+  {% else %}
+    <p style="font-weight:bold;">
+      Todavía no existe artículo enciclopédico dedicado a este territorio.
+      Póngase en contacto con nosotros [werner[dot]stangl[at]yale[dot]edu] para escribir uno.
+    </p>
+  {% endif %}
+</div>
+
+<div id="Fuentes" class="tabcontent" style="display:none;">
+  <h1>Recursos y Fuentes</h1>
+  {% for grupo, fuentes in fuentes_entidades_data.items() %}
+    <h3>{{ grupo }}</h3>
+    <ul>
+    {% for f in fuentes %}
+      {% if f.foco == 'si' %}
+        <li><a href="javascript:void(0);" onclick="openSourceWindow('../fuentes/{{ f.fuenteID }}');"><strong>{{ f.Citacion }}</strong></a>, {{ f.tipo }}</li>
+      {% elif f.foco == 'no' %}
+        <li><a href="javascript:void(0);" onclick="openSourceWindow('../fuentes/{{ f.fuenteID }}');">{{ f.Citacion }}</a>, {{ f.tipo }}</li>
+      {% elif f.foco == 'implicito' %}
+        <li style="font-size: smaller;"><a href="javascript:void(0);" onclick="openSourceWindow('../fuentes/{{ f.fuenteID }}');">{{ f.Citacion }}</a>, {{ f.tipo }}</li>
+      {% endif %}
+    {% endfor %}
+    </ul>
+  {% endfor %}
+  <hr/>
+</div>
+{% endblock %}
+
+{% block right_block %}
+<div class="block" id="right-block">
+  <div id="citeme">
+    <h3>¿Cómo citar este artículo?</h3>
+    <p>
+      "{{ territory.Nombre }}, {{ territory.tipo }} ({{ territory.Region }})",
+      Werner Stangl (ed.), Compendio digital de Indias.
+      <span id="url"></span> Retrieved <span id="datetime"></span>
+    </p>
+  </div>
+</div>
+{% endblock %}

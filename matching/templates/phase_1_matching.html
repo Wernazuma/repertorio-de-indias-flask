@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="refresh" content="2">
+  <title>Matching Status</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script>
+    // Auto-redirect once matching is complete
+    {% if matching_complete %}
+      setTimeout(function() {
+        window.location.href = "{{ url_for('disambiguate', prefix=prefix) }}";
+      }, 2000);
+    {% endif %}
+  </script>
+</head>
+<body>
+  <h2>Status for: {{ prefix }}</h2>
+  <pre>{{ content }}</pre>
+  {% if not matching_complete %}
+    <p><em>Matching in progress... refreshing every 2s</em></p>
+  {% else %}
+    <p><strong>Matching complete. Redirecting to disambiguation shortly...</strong></p>
+    <p><a href="{{ url_for('disambiguate', prefix=prefix) }}">Click here if not redirected</a></p>
+  {% endif %}
+  <p><a href="{{ url_for('upload_form') }}">Back to upload</a></p>
+</body>
+</html>

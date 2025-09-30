@@ -1,0 +1,2496 @@
+2025-08-07 22:13:42,183 DEBUG: [0] Filtering by lugar_region = Nueva España
+2025-08-07 22:13:42,231 DEBUG: [0] After generic territory filter: 50820 rows
+2025-08-07 22:13:42,232 DEBUG: [0] Time filter using year: 1802
+2025-08-07 22:13:42,247 DEBUG: [0] After time filter: 28115 rows
+2025-08-07 22:13:43,231 DEBUG: [0] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 16 rows (was 28115)
+2025-08-07 22:13:43,231 DEBUG: [0] Comparing with gazetteer row 1000096
+2025-08-07 22:13:43,232 INFO: [0] Match found: toponym_label (score: 1)
+2025-08-07 22:13:43,232 INFO: [0] High confidence match — stopping further checks.
+2025-08-07 22:13:43,249 DEBUG: [1] Filtering by lugar_region = Nueva España
+2025-08-07 22:13:43,279 DEBUG: [1] After generic territory filter: 50820 rows
+2025-08-07 22:13:43,280 DEBUG: [1] Time filter using year: 1721
+2025-08-07 22:13:43,291 DEBUG: [1] After time filter: 27925 rows
+2025-08-07 22:13:44,320 DEBUG: [1] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 16 rows (was 27925)
+2025-08-07 22:13:44,321 DEBUG: [1] Comparing with gazetteer row 1000096
+2025-08-07 22:13:44,322 DEBUG: [1] Comparing with gazetteer row 1001361
+2025-08-07 22:13:44,322 DEBUG: [1] Comparing with gazetteer row 1001362
+2025-08-07 22:13:44,323 DEBUG: [1] Comparing with gazetteer row 1001363
+2025-08-07 22:13:44,324 DEBUG: [1] Comparing with gazetteer row 1001364
+2025-08-07 22:13:44,324 DEBUG: [1] Comparing with gazetteer row 1001365
+2025-08-07 22:13:44,324 DEBUG: [1] Comparing with gazetteer row 1001366
+2025-08-07 22:13:44,325 DEBUG: [1] Comparing with gazetteer row 1001367
+2025-08-07 22:13:44,325 DEBUG: [1] Comparing with gazetteer row 1001368
+2025-08-07 22:13:44,325 DEBUG: [1] Comparing with gazetteer row 1001369
+2025-08-07 22:13:44,326 DEBUG: [1] Comparing with gazetteer row 1001370
+2025-08-07 22:13:44,326 DEBUG: [1] Comparing with gazetteer row 1001371
+2025-08-07 22:13:44,326 DEBUG: [1] Comparing with gazetteer row 1001372
+2025-08-07 22:13:44,327 DEBUG: [1] Comparing with gazetteer row 1001373
+2025-08-07 22:13:44,327 DEBUG: [1] Comparing with gazetteer row 1001374
+2025-08-07 22:13:44,327 DEBUG: [1] Comparing with gazetteer row 1004830
+2025-08-07 22:13:44,327 WARNING: [1] No match found.
+2025-08-07 22:13:44,345 DEBUG: [2] Filtering by lugar_region = Nueva España
+2025-08-07 22:13:44,376 DEBUG: [2] After generic territory filter: 50820 rows
+2025-08-07 22:13:44,376 DEBUG: [2] Time filter using year: 1800
+2025-08-07 22:13:44,388 DEBUG: [2] After time filter: 28115 rows
+2025-08-07 22:13:45,709 DEBUG: [2] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 16 rows (was 28115)
+2025-08-07 22:13:45,710 DEBUG: [2] Comparing with gazetteer row 1000096
+2025-08-07 22:13:45,711 DEBUG: [2] Comparing with gazetteer row 1001361
+2025-08-07 22:13:45,712 DEBUG: [2] Comparing with gazetteer row 1001362
+2025-08-07 22:13:45,712 DEBUG: [2] Comparing with gazetteer row 1001363
+2025-08-07 22:13:45,713 DEBUG: [2] Comparing with gazetteer row 1001364
+2025-08-07 22:13:45,714 DEBUG: [2] Comparing with gazetteer row 1001365
+2025-08-07 22:13:45,714 DEBUG: [2] Comparing with gazetteer row 1001366
+2025-08-07 22:13:45,715 DEBUG: [2] Comparing with gazetteer row 1001367
+2025-08-07 22:13:45,715 DEBUG: [2] Comparing with gazetteer row 1001368
+2025-08-07 22:13:45,716 DEBUG: [2] Comparing with gazetteer row 1001369
+2025-08-07 22:13:45,716 DEBUG: [2] Comparing with gazetteer row 1001370
+2025-08-07 22:13:45,717 DEBUG: [2] Comparing with gazetteer row 1001371
+2025-08-07 22:13:45,717 DEBUG: [2] Comparing with gazetteer row 1001372
+2025-08-07 22:13:45,718 DEBUG: [2] Comparing with gazetteer row 1001373
+2025-08-07 22:13:45,718 DEBUG: [2] Comparing with gazetteer row 1001374
+2025-08-07 22:13:45,719 DEBUG: [2] Comparing with gazetteer row 1004830
+2025-08-07 22:13:45,719 WARNING: [2] No match found.
+2025-08-07 22:13:45,743 DEBUG: [3] Filtering by lugar_region = Nueva España
+2025-08-07 22:13:45,781 DEBUG: [3] After generic territory filter: 50820 rows
+2025-08-07 22:13:45,781 DEBUG: [3] Time filter using year: 1760
+2025-08-07 22:13:45,795 DEBUG: [3] After time filter: 27976 rows
+2025-08-07 22:13:47,090 DEBUG: [3] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 46 rows (was 27976)
+2025-08-07 22:13:47,091 DEBUG: [3] Comparing with gazetteer row 1000099
+2025-08-07 22:13:47,092 DEBUG: [3] Comparing with gazetteer row 1001412
+2025-08-07 22:13:47,092 DEBUG: [3] Comparing with gazetteer row 1001413
+2025-08-07 22:13:47,093 DEBUG: [3] Comparing with gazetteer row 1001414
+2025-08-07 22:13:47,093 DEBUG: [3] Comparing with gazetteer row 1001415
+2025-08-07 22:13:47,094 DEBUG: [3] Comparing with gazetteer row 1001416
+2025-08-07 22:13:47,095 DEBUG: [3] Comparing with gazetteer row 1001417
+2025-08-07 22:13:47,095 DEBUG: [3] Comparing with gazetteer row 1001418
+2025-08-07 22:13:47,096 DEBUG: [3] Comparing with gazetteer row 1001419
+2025-08-07 22:13:47,096 DEBUG: [3] Comparing with gazetteer row 1001420
+2025-08-07 22:13:47,096 DEBUG: [3] Comparing with gazetteer row 1001421
+2025-08-07 22:13:47,096 DEBUG: [3] Comparing with gazetteer row 1001422
+2025-08-07 22:13:47,097 DEBUG: [3] Comparing with gazetteer row 1001423
+2025-08-07 22:13:47,097 DEBUG: [3] Comparing with gazetteer row 1001424
+2025-08-07 22:13:47,097 DEBUG: [3] Comparing with gazetteer row 1001425
+2025-08-07 22:13:47,097 DEBUG: [3] Comparing with gazetteer row 1001426
+2025-08-07 22:13:47,098 DEBUG: [3] Comparing with gazetteer row 1001427
+2025-08-07 22:13:47,099 DEBUG: [3] Comparing with gazetteer row 1001428
+2025-08-07 22:13:47,099 DEBUG: [3] Comparing with gazetteer row 1001429
+2025-08-07 22:13:47,099 DEBUG: [3] Comparing with gazetteer row 1001430
+2025-08-07 22:13:47,100 DEBUG: [3] Comparing with gazetteer row 1001431
+2025-08-07 22:13:47,100 DEBUG: [3] Comparing with gazetteer row 1001432
+2025-08-07 22:13:47,100 DEBUG: [3] Comparing with gazetteer row 1001433
+2025-08-07 22:13:47,101 DEBUG: [3] Comparing with gazetteer row 1001434
+2025-08-07 22:13:47,101 DEBUG: [3] Comparing with gazetteer row 1001435
+2025-08-07 22:13:47,102 DEBUG: [3] Comparing with gazetteer row 1001436
+2025-08-07 22:13:47,102 DEBUG: [3] Comparing with gazetteer row 1001437
+2025-08-07 22:13:47,102 DEBUG: [3] Comparing with gazetteer row 1001438
+2025-08-07 22:13:47,102 DEBUG: [3] Comparing with gazetteer row 1001439
+2025-08-07 22:13:47,103 DEBUG: [3] Comparing with gazetteer row 1001440
+2025-08-07 22:13:47,103 DEBUG: [3] Comparing with gazetteer row 1001441
+2025-08-07 22:13:47,103 DEBUG: [3] Comparing with gazetteer row 1001442
+2025-08-07 22:13:47,104 DEBUG: [3] Comparing with gazetteer row 1001443
+2025-08-07 22:13:47,104 DEBUG: [3] Comparing with gazetteer row 1001444
+2025-08-07 22:13:47,104 DEBUG: [3] Comparing with gazetteer row 1001445
+2025-08-07 22:13:47,105 DEBUG: [3] Comparing with gazetteer row 1001446
+2025-08-07 22:13:47,105 DEBUG: [3] Comparing with gazetteer row 1001447
+2025-08-07 22:13:47,105 DEBUG: [3] Comparing with gazetteer row 1001448
+2025-08-07 22:13:47,106 DEBUG: [3] Comparing with gazetteer row 1001449
+2025-08-07 22:13:47,106 DEBUG: [3] Comparing with gazetteer row 1001450
+2025-08-07 22:13:47,106 DEBUG: [3] Comparing with gazetteer row 1001451
+2025-08-07 22:13:47,107 DEBUG: [3] Comparing with gazetteer row 1001452
+2025-08-07 22:13:47,108 DEBUG: [3] Comparing with gazetteer row 1001453
+2025-08-07 22:13:47,108 DEBUG: [3] Comparing with gazetteer row 1001454
+2025-08-07 22:13:47,109 DEBUG: [3] Comparing with gazetteer row 9900721
+2025-08-07 22:13:47,109 DEBUG: [3] Comparing with gazetteer row 9900722
+2025-08-07 22:13:47,109 WARNING: [3] No match found.
+2025-08-07 22:13:47,126 DEBUG: [4] Filtering by lugar_region = Nueva España
+2025-08-07 22:13:47,154 DEBUG: [4] After generic territory filter: 50820 rows
+2025-08-07 22:13:47,154 DEBUG: [4] Time filter using year: 1769
+2025-08-07 22:13:47,165 DEBUG: [4] After time filter: 28004 rows
+2025-08-07 22:13:48,223 DEBUG: [4] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 46 rows (was 28004)
+2025-08-07 22:13:48,224 DEBUG: [4] Comparing with gazetteer row 1000099
+2025-08-07 22:13:48,224 DEBUG: [4] Comparing with gazetteer row 1001412
+2025-08-07 22:13:48,225 DEBUG: [4] Comparing with gazetteer row 1001413
+2025-08-07 22:13:48,225 DEBUG: [4] Comparing with gazetteer row 1001414
+2025-08-07 22:13:48,226 DEBUG: [4] Comparing with gazetteer row 1001415
+2025-08-07 22:13:48,226 DEBUG: [4] Comparing with gazetteer row 1001416
+2025-08-07 22:13:48,227 DEBUG: [4] Comparing with gazetteer row 1001417
+2025-08-07 22:13:48,227 DEBUG: [4] Comparing with gazetteer row 1001418
+2025-08-07 22:13:48,228 DEBUG: [4] Comparing with gazetteer row 1001419
+2025-08-07 22:13:48,228 DEBUG: [4] Comparing with gazetteer row 1001420
+2025-08-07 22:13:48,229 DEBUG: [4] Comparing with gazetteer row 1001421
+2025-08-07 22:13:48,229 DEBUG: [4] Comparing with gazetteer row 1001422
+2025-08-07 22:13:48,230 DEBUG: [4] Comparing with gazetteer row 1001423
+2025-08-07 22:13:48,230 DEBUG: [4] Comparing with gazetteer row 1001424
+2025-08-07 22:13:48,231 DEBUG: [4] Comparing with gazetteer row 1001425
+2025-08-07 22:13:48,231 DEBUG: [4] Comparing with gazetteer row 1001426
+2025-08-07 22:13:48,232 DEBUG: [4] Comparing with gazetteer row 1001427
+2025-08-07 22:13:48,232 DEBUG: [4] Comparing with gazetteer row 1001428
+2025-08-07 22:13:48,233 DEBUG: [4] Comparing with gazetteer row 1001429
+2025-08-07 22:13:48,233 INFO: [4] Match found: toponym_label (score: 1)
+2025-08-07 22:13:48,233 INFO: [4] High confidence match — stopping further checks.
+2025-08-07 22:13:48,248 DEBUG: [5] Filtering by lugar_region = Nueva España
+2025-08-07 22:13:48,279 DEBUG: [5] After generic territory filter: 50820 rows
+2025-08-07 22:13:48,280 DEBUG: [5] Time filter using year: 1743
+2025-08-07 22:13:48,291 DEBUG: [5] After time filter: 27922 rows
+2025-08-07 22:13:49,311 DEBUG: [5] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 46 rows (was 27922)
+2025-08-07 22:13:49,312 DEBUG: [5] Comparing with gazetteer row 1000099
+2025-08-07 22:13:49,313 DEBUG: [5] Comparing with gazetteer row 1001412
+2025-08-07 22:13:49,314 DEBUG: [5] Comparing with gazetteer row 1001413
+2025-08-07 22:13:49,314 DEBUG: [5] Comparing with gazetteer row 1001414
+2025-08-07 22:13:49,315 DEBUG: [5] Comparing with gazetteer row 1001415
+2025-08-07 22:13:49,316 DEBUG: [5] Comparing with gazetteer row 1001416
+2025-08-07 22:13:49,316 DEBUG: [5] Comparing with gazetteer row 1001417
+2025-08-07 22:13:49,317 DEBUG: [5] Comparing with gazetteer row 1001418
+2025-08-07 22:13:49,317 DEBUG: [5] Comparing with gazetteer row 1001419
+2025-08-07 22:13:49,318 DEBUG: [5] Comparing with gazetteer row 1001420
+2025-08-07 22:13:49,319 DEBUG: [5] Comparing with gazetteer row 1001421
+2025-08-07 22:13:49,319 DEBUG: [5] Comparing with gazetteer row 1001422
+2025-08-07 22:13:49,320 DEBUG: [5] Comparing with gazetteer row 1001423
+2025-08-07 22:13:49,320 DEBUG: [5] Comparing with gazetteer row 1001424
+2025-08-07 22:13:49,321 DEBUG: [5] Comparing with gazetteer row 1001425
+2025-08-07 22:13:49,321 DEBUG: [5] Comparing with gazetteer row 1001426
+2025-08-07 22:13:49,322 DEBUG: [5] Comparing with gazetteer row 1001427
+2025-08-07 22:13:49,322 DEBUG: [5] Comparing with gazetteer row 1001428
+2025-08-07 22:13:49,323 DEBUG: [5] Comparing with gazetteer row 1001429
+2025-08-07 22:13:49,323 DEBUG: [5] Comparing with gazetteer row 1001430
+2025-08-07 22:13:49,323 DEBUG: [5] Comparing with gazetteer row 1001431
+2025-08-07 22:13:49,324 DEBUG: [5] Comparing with gazetteer row 1001432
+2025-08-07 22:13:49,325 DEBUG: [5] Comparing with gazetteer row 1001433
+2025-08-07 22:13:49,328 DEBUG: [5] Comparing with gazetteer row 1001434
+2025-08-07 22:13:49,328 DEBUG: [5] Comparing with gazetteer row 1001435
+2025-08-07 22:13:49,329 DEBUG: [5] Comparing with gazetteer row 1001436
+2025-08-07 22:13:49,329 DEBUG: [5] Comparing with gazetteer row 1001437
+2025-08-07 22:13:49,330 DEBUG: [5] Comparing with gazetteer row 1001438
+2025-08-07 22:13:49,331 DEBUG: [5] Comparing with gazetteer row 1001439
+2025-08-07 22:13:49,331 DEBUG: [5] Comparing with gazetteer row 1001440
+2025-08-07 22:13:49,332 DEBUG: [5] Comparing with gazetteer row 1001441
+2025-08-07 22:13:49,332 DEBUG: [5] Comparing with gazetteer row 1001442
+2025-08-07 22:13:49,333 DEBUG: [5] Comparing with gazetteer row 1001443
+2025-08-07 22:13:49,333 DEBUG: [5] Comparing with gazetteer row 1001444
+2025-08-07 22:13:49,334 DEBUG: [5] Comparing with gazetteer row 1001445
+2025-08-07 22:13:49,334 DEBUG: [5] Comparing with gazetteer row 1001446
+2025-08-07 22:13:49,335 DEBUG: [5] Comparing with gazetteer row 1001447
+2025-08-07 22:13:49,335 DEBUG: [5] Comparing with gazetteer row 1001448
+2025-08-07 22:13:49,335 DEBUG: [5] Comparing with gazetteer row 1001449
+2025-08-07 22:13:49,336 DEBUG: [5] Comparing with gazetteer row 1001450
+2025-08-07 22:13:49,336 DEBUG: [5] Comparing with gazetteer row 1001451
+2025-08-07 22:13:49,336 DEBUG: [5] Comparing with gazetteer row 1001452
+2025-08-07 22:13:49,336 DEBUG: [5] Comparing with gazetteer row 1001453
+2025-08-07 22:13:49,337 DEBUG: [5] Comparing with gazetteer row 1001454
+2025-08-07 22:13:49,337 DEBUG: [5] Comparing with gazetteer row 9900721
+2025-08-07 22:13:49,337 DEBUG: [5] Comparing with gazetteer row 9900722
+2025-08-07 22:13:49,337 WARNING: [5] No match found.
+2025-08-07 22:13:49,365 DEBUG: [6] Filtering by lugar_region = Nueva España
+2025-08-07 22:13:49,395 DEBUG: [6] After generic territory filter: 50820 rows
+2025-08-07 22:13:49,395 DEBUG: [6] Time filter using year: 1720
+2025-08-07 22:13:49,404 DEBUG: [6] After time filter: 27925 rows
+2025-08-07 22:13:50,576 DEBUG: [6] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 38 rows (was 27925)
+2025-08-07 22:13:50,577 DEBUG: [6] Comparing with gazetteer row 1000112
+2025-08-07 22:13:50,578 DEBUG: [6] Comparing with gazetteer row 1000191
+2025-08-07 22:13:50,579 DEBUG: [6] Comparing with gazetteer row 1001802
+2025-08-07 22:13:50,579 DEBUG: [6] Comparing with gazetteer row 1001803
+2025-08-07 22:13:50,580 DEBUG: [6] Comparing with gazetteer row 1001804
+2025-08-07 22:13:50,580 DEBUG: [6] Comparing with gazetteer row 1001805
+2025-08-07 22:13:50,581 DEBUG: [6] Comparing with gazetteer row 1001806
+2025-08-07 22:13:50,581 DEBUG: [6] Comparing with gazetteer row 1001807
+2025-08-07 22:13:50,581 DEBUG: [6] Comparing with gazetteer row 1001808
+2025-08-07 22:13:50,582 DEBUG: [6] Comparing with gazetteer row 1001809
+2025-08-07 22:13:50,582 DEBUG: [6] Comparing with gazetteer row 1001810
+2025-08-07 22:13:50,582 INFO: [6] Match found: toponym_label (score: 1)
+2025-08-07 22:13:50,582 INFO: [6] High confidence match — stopping further checks.
+2025-08-07 22:13:50,605 DEBUG: [7] Filtering by lugar_region = Nueva España
+2025-08-07 22:13:50,645 DEBUG: [7] After generic territory filter: 50820 rows
+2025-08-07 22:13:50,645 DEBUG: [7] Time filter using year: 1796
+2025-08-07 22:13:50,664 DEBUG: [7] After time filter: 28171 rows
+2025-08-07 22:13:51,887 DEBUG: [7] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 38 rows (was 28171)
+2025-08-07 22:13:51,887 DEBUG: [7] Comparing with gazetteer row 1000112
+2025-08-07 22:13:51,888 DEBUG: [7] Comparing with gazetteer row 1000191
+2025-08-07 22:13:51,888 DEBUG: [7] Comparing with gazetteer row 1001802
+2025-08-07 22:13:51,888 DEBUG: [7] Comparing with gazetteer row 1001803
+2025-08-07 22:13:51,889 DEBUG: [7] Comparing with gazetteer row 1001804
+2025-08-07 22:13:51,889 DEBUG: [7] Comparing with gazetteer row 1001805
+2025-08-07 22:13:51,889 DEBUG: [7] Comparing with gazetteer row 1001806
+2025-08-07 22:13:51,889 DEBUG: [7] Comparing with gazetteer row 1001807
+2025-08-07 22:13:51,890 DEBUG: [7] Comparing with gazetteer row 1001808
+2025-08-07 22:13:51,890 DEBUG: [7] Comparing with gazetteer row 1001809
+2025-08-07 22:13:51,890 DEBUG: [7] Comparing with gazetteer row 1001810
+2025-08-07 22:13:51,891 DEBUG: [7] Comparing with gazetteer row 1001811
+2025-08-07 22:13:51,891 DEBUG: [7] Comparing with gazetteer row 1001812
+2025-08-07 22:13:51,891 DEBUG: [7] Comparing with gazetteer row 1001813
+2025-08-07 22:13:51,891 DEBUG: [7] Comparing with gazetteer row 1001814
+2025-08-07 22:13:51,892 DEBUG: [7] Comparing with gazetteer row 1001815
+2025-08-07 22:13:51,892 DEBUG: [7] Comparing with gazetteer row 1001816
+2025-08-07 22:13:51,893 DEBUG: [7] Comparing with gazetteer row 1001817
+2025-08-07 22:13:51,893 DEBUG: [7] Comparing with gazetteer row 1001818
+2025-08-07 22:13:51,893 DEBUG: [7] Comparing with gazetteer row 1001819
+2025-08-07 22:13:51,894 DEBUG: [7] Comparing with gazetteer row 1001820
+2025-08-07 22:13:51,894 DEBUG: [7] Comparing with gazetteer row 1001821
+2025-08-07 22:13:51,894 DEBUG: [7] Comparing with gazetteer row 1001822
+2025-08-07 22:13:51,894 DEBUG: [7] Comparing with gazetteer row 1001823
+2025-08-07 22:13:51,895 DEBUG: [7] Comparing with gazetteer row 1001824
+2025-08-07 22:13:51,895 DEBUG: [7] Comparing with gazetteer row 1001825
+2025-08-07 22:13:51,896 DEBUG: [7] Comparing with gazetteer row 1001826
+2025-08-07 22:13:51,897 DEBUG: [7] Comparing with gazetteer row 1001827
+2025-08-07 22:13:51,897 DEBUG: [7] Comparing with gazetteer row 1001828
+2025-08-07 22:13:51,898 INFO: [7] Match found: toponym_label (score: 1)
+2025-08-07 22:13:51,898 INFO: [7] High confidence match — stopping further checks.
+2025-08-07 22:13:51,914 DEBUG: [8] Filtering by lugar_region = Nueva España
+2025-08-07 22:13:51,943 DEBUG: [8] After generic territory filter: 50820 rows
+2025-08-07 22:13:51,944 DEBUG: [8] Time filter using year: 1780
+2025-08-07 22:13:51,955 DEBUG: [8] After time filter: 28025 rows
+2025-08-07 22:13:53,159 DEBUG: [8] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 24 rows (was 28025)
+2025-08-07 22:13:53,160 DEBUG: [8] Comparing with gazetteer row 1000082
+2025-08-07 22:13:53,161 DEBUG: [8] Comparing with gazetteer row 1000087
+2025-08-07 22:13:53,161 DEBUG: [8] Comparing with gazetteer row 1000846
+2025-08-07 22:13:53,161 DEBUG: [8] Comparing with gazetteer row 1000847
+2025-08-07 22:13:53,161 DEBUG: [8] Comparing with gazetteer row 1000848
+2025-08-07 22:13:53,162 DEBUG: [8] Comparing with gazetteer row 1000849
+2025-08-07 22:13:53,162 DEBUG: [8] Comparing with gazetteer row 1000977
+2025-08-07 22:13:53,162 DEBUG: [8] Comparing with gazetteer row 1000978
+2025-08-07 22:13:53,163 DEBUG: [8] Comparing with gazetteer row 1000979
+2025-08-07 22:13:53,163 DEBUG: [8] Comparing with gazetteer row 1000980
+2025-08-07 22:13:53,163 DEBUG: [8] Comparing with gazetteer row 1000981
+2025-08-07 22:13:53,164 DEBUG: [8] Comparing with gazetteer row 1000982
+2025-08-07 22:13:53,164 DEBUG: [8] Comparing with gazetteer row 1000983
+2025-08-07 22:13:53,164 DEBUG: [8] Comparing with gazetteer row 1000984
+2025-08-07 22:13:53,164 DEBUG: [8] Comparing with gazetteer row 1000985
+2025-08-07 22:13:53,165 DEBUG: [8] Comparing with gazetteer row 1000986
+2025-08-07 22:13:53,165 DEBUG: [8] Comparing with gazetteer row 1000987
+2025-08-07 22:13:53,165 DEBUG: [8] Comparing with gazetteer row 1000988
+2025-08-07 22:13:53,165 DEBUG: [8] Comparing with gazetteer row 1000989
+2025-08-07 22:13:53,166 DEBUG: [8] Comparing with gazetteer row 1000990
+2025-08-07 22:13:53,166 DEBUG: [8] Comparing with gazetteer row 1000991
+2025-08-07 22:13:53,167 INFO: [8] Match found: toponym_label (score: 1)
+2025-08-07 22:13:53,167 INFO: [8] High confidence match — stopping further checks.
+2025-08-07 22:13:53,188 DEBUG: [9] Filtering by lugar_region = Nueva España
+2025-08-07 22:13:53,217 DEBUG: [9] After generic territory filter: 50820 rows
+2025-08-07 22:13:53,217 DEBUG: [9] Time filter using year: 1782
+2025-08-07 22:13:53,227 DEBUG: [9] After time filter: 28025 rows
+2025-08-07 22:13:54,526 DEBUG: [9] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 24 rows (was 28025)
+2025-08-07 22:13:54,527 DEBUG: [9] Comparing with gazetteer row 1000082
+2025-08-07 22:13:54,528 DEBUG: [9] Comparing with gazetteer row 1000087
+2025-08-07 22:13:54,528 INFO: [9] Match found: toponym_label (score: 1)
+2025-08-07 22:13:54,529 INFO: [9] High confidence match — stopping further checks.
+2025-08-07 22:13:54,547 DEBUG: [10] Filtering by lugar_region = Nueva España
+2025-08-07 22:13:54,580 DEBUG: [10] After generic territory filter: 50820 rows
+2025-08-07 22:13:54,580 DEBUG: [10] Time filter using year: 1701
+2025-08-07 22:13:54,592 DEBUG: [10] After time filter: 27696 rows
+2025-08-07 22:13:56,344 DEBUG: [10] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 42 rows (was 27696)
+2025-08-07 22:13:56,345 DEBUG: [10] Comparing with gazetteer row 1000107
+2025-08-07 22:13:56,345 DEBUG: [10] Comparing with gazetteer row 1001635
+2025-08-07 22:13:56,346 DEBUG: [10] Comparing with gazetteer row 1001636
+2025-08-07 22:13:56,347 DEBUG: [10] Comparing with gazetteer row 1001637
+2025-08-07 22:13:56,347 DEBUG: [10] Comparing with gazetteer row 1001638
+2025-08-07 22:13:56,348 DEBUG: [10] Comparing with gazetteer row 1001639
+2025-08-07 22:13:56,348 DEBUG: [10] Comparing with gazetteer row 1001640
+2025-08-07 22:13:56,349 DEBUG: [10] Comparing with gazetteer row 1001641
+2025-08-07 22:13:56,349 DEBUG: [10] Comparing with gazetteer row 1001642
+2025-08-07 22:13:56,350 DEBUG: [10] Comparing with gazetteer row 1001643
+2025-08-07 22:13:56,351 DEBUG: [10] Comparing with gazetteer row 1001644
+2025-08-07 22:13:56,352 DEBUG: [10] Comparing with gazetteer row 1001645
+2025-08-07 22:13:56,353 DEBUG: [10] Comparing with gazetteer row 1001646
+2025-08-07 22:13:56,353 DEBUG: [10] Comparing with gazetteer row 1001647
+2025-08-07 22:13:56,354 DEBUG: [10] Comparing with gazetteer row 1001648
+2025-08-07 22:13:56,355 DEBUG: [10] Comparing with gazetteer row 1001649
+2025-08-07 22:13:56,355 DEBUG: [10] Comparing with gazetteer row 1001650
+2025-08-07 22:13:56,356 DEBUG: [10] Comparing with gazetteer row 1001651
+2025-08-07 22:13:56,356 DEBUG: [10] Comparing with gazetteer row 1001652
+2025-08-07 22:13:56,357 DEBUG: [10] Comparing with gazetteer row 1001653
+2025-08-07 22:13:56,357 DEBUG: [10] Comparing with gazetteer row 1001654
+2025-08-07 22:13:56,358 DEBUG: [10] Comparing with gazetteer row 1001655
+2025-08-07 22:13:56,358 DEBUG: [10] Comparing with gazetteer row 1001656
+2025-08-07 22:13:56,359 DEBUG: [10] Comparing with gazetteer row 1001657
+2025-08-07 22:13:56,359 DEBUG: [10] Comparing with gazetteer row 1001658
+2025-08-07 22:13:56,360 DEBUG: [10] Comparing with gazetteer row 1001659
+2025-08-07 22:13:56,360 DEBUG: [10] Comparing with gazetteer row 1001660
+2025-08-07 22:13:56,361 DEBUG: [10] Comparing with gazetteer row 1001661
+2025-08-07 22:13:56,361 DEBUG: [10] Comparing with gazetteer row 1001662
+2025-08-07 22:13:56,362 DEBUG: [10] Comparing with gazetteer row 1001663
+2025-08-07 22:13:56,362 DEBUG: [10] Comparing with gazetteer row 1001664
+2025-08-07 22:13:56,363 DEBUG: [10] Comparing with gazetteer row 1001665
+2025-08-07 22:13:56,363 DEBUG: [10] Comparing with gazetteer row 1001666
+2025-08-07 22:13:56,364 DEBUG: [10] Comparing with gazetteer row 1001667
+2025-08-07 22:13:56,364 DEBUG: [10] Comparing with gazetteer row 1001668
+2025-08-07 22:13:56,365 DEBUG: [10] Comparing with gazetteer row 1001669
+2025-08-07 22:13:56,365 DEBUG: [10] Comparing with gazetteer row 1001670
+2025-08-07 22:13:56,366 DEBUG: [10] Comparing with gazetteer row 1001671
+2025-08-07 22:13:56,366 DEBUG: [10] Comparing with gazetteer row 1001672
+2025-08-07 22:13:56,367 DEBUG: [10] Comparing with gazetteer row 1001673
+2025-08-07 22:13:56,368 DEBUG: [10] Comparing with gazetteer row 1001674
+2025-08-07 22:13:56,368 DEBUG: [10] Comparing with gazetteer row 1001675
+2025-08-07 22:13:56,369 WARNING: [10] No match found.
+2025-08-07 22:13:56,390 DEBUG: [11] Filtering by lugar_region = Nueva España
+2025-08-07 22:13:56,442 DEBUG: [11] After generic territory filter: 50820 rows
+2025-08-07 22:13:56,443 DEBUG: [11] Time filter using year: 1774
+2025-08-07 22:13:56,461 DEBUG: [11] After time filter: 28018 rows
+2025-08-07 22:13:57,890 DEBUG: [11] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 42 rows (was 28018)
+2025-08-07 22:13:57,891 DEBUG: [11] Comparing with gazetteer row 1000107
+2025-08-07 22:13:57,891 DEBUG: [11] Comparing with gazetteer row 1001635
+2025-08-07 22:13:57,892 INFO: [11] Match found: toponym_label (score: 1)
+2025-08-07 22:13:57,892 INFO: [11] High confidence match — stopping further checks.
+2025-08-07 22:13:57,913 DEBUG: [12] Filtering by lugar_region = Nueva España
+2025-08-07 22:13:57,964 DEBUG: [12] After generic territory filter: 50820 rows
+2025-08-07 22:13:57,965 DEBUG: [12] Time filter using year: 1749
+2025-08-07 22:13:57,983 DEBUG: [12] After time filter: 27917 rows
+2025-08-07 22:13:59,675 DEBUG: [12] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 6 rows (was 27917)
+2025-08-07 22:13:59,676 DEBUG: [12] Comparing with gazetteer row 1000097
+2025-08-07 22:13:59,676 DEBUG: [12] Comparing with gazetteer row 1001375
+2025-08-07 22:13:59,677 DEBUG: [12] Comparing with gazetteer row 1001376
+2025-08-07 22:13:59,677 DEBUG: [12] Comparing with gazetteer row 1001377
+2025-08-07 22:13:59,677 DEBUG: [12] Comparing with gazetteer row 1001378
+2025-08-07 22:13:59,678 DEBUG: [12] Comparing with gazetteer row 1001379
+2025-08-07 22:13:59,678 WARNING: [12] No match found.
+2025-08-07 22:13:59,698 DEBUG: [13] Filtering by lugar_region = Nueva España
+2025-08-07 22:13:59,735 DEBUG: [13] After generic territory filter: 50820 rows
+2025-08-07 22:13:59,735 DEBUG: [13] Time filter using year: 1783
+2025-08-07 22:13:59,748 DEBUG: [13] After time filter: 28025 rows
+2025-08-07 22:14:00,888 DEBUG: [13] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 6 rows (was 28025)
+2025-08-07 22:14:00,888 DEBUG: [13] Comparing with gazetteer row 1000097
+2025-08-07 22:14:00,888 DEBUG: [13] Comparing with gazetteer row 1001375
+2025-08-07 22:14:00,889 DEBUG: [13] Comparing with gazetteer row 1001376
+2025-08-07 22:14:00,889 DEBUG: [13] Comparing with gazetteer row 1001377
+2025-08-07 22:14:00,889 DEBUG: [13] Comparing with gazetteer row 1001378
+2025-08-07 22:14:00,890 DEBUG: [13] Comparing with gazetteer row 1001379
+2025-08-07 22:14:00,890 WARNING: [13] No match found.
+2025-08-07 22:14:00,911 DEBUG: [14] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:00,947 DEBUG: [14] After generic territory filter: 50820 rows
+2025-08-07 22:14:00,947 DEBUG: [14] Time filter using year: 1785
+2025-08-07 22:14:00,960 DEBUG: [14] After time filter: 28025 rows
+2025-08-07 22:14:02,433 DEBUG: [14] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 22 rows (was 28025)
+2025-08-07 22:14:02,433 DEBUG: [14] Comparing with gazetteer row 1000084
+2025-08-07 22:14:02,434 DEBUG: [14] Comparing with gazetteer row 1000863
+2025-08-07 22:14:02,434 DEBUG: [14] Comparing with gazetteer row 1000864
+2025-08-07 22:14:02,435 DEBUG: [14] Comparing with gazetteer row 1000865
+2025-08-07 22:14:02,435 DEBUG: [14] Comparing with gazetteer row 1000866
+2025-08-07 22:14:02,435 DEBUG: [14] Comparing with gazetteer row 1000867
+2025-08-07 22:14:02,436 DEBUG: [14] Comparing with gazetteer row 1000868
+2025-08-07 22:14:02,436 DEBUG: [14] Comparing with gazetteer row 1000869
+2025-08-07 22:14:02,437 DEBUG: [14] Comparing with gazetteer row 1000870
+2025-08-07 22:14:02,437 DEBUG: [14] Comparing with gazetteer row 1000871
+2025-08-07 22:14:02,438 DEBUG: [14] Comparing with gazetteer row 1000872
+2025-08-07 22:14:02,438 DEBUG: [14] Comparing with gazetteer row 1000873
+2025-08-07 22:14:02,438 DEBUG: [14] Comparing with gazetteer row 1000874
+2025-08-07 22:14:02,439 DEBUG: [14] Comparing with gazetteer row 1000875
+2025-08-07 22:14:02,439 DEBUG: [14] Comparing with gazetteer row 1000876
+2025-08-07 22:14:02,441 DEBUG: [14] Comparing with gazetteer row 1000877
+2025-08-07 22:14:02,441 DEBUG: [14] Comparing with gazetteer row 1000878
+2025-08-07 22:14:02,442 DEBUG: [14] Comparing with gazetteer row 1000879
+2025-08-07 22:14:02,442 DEBUG: [14] Comparing with gazetteer row 1000880
+2025-08-07 22:14:02,443 DEBUG: [14] Comparing with gazetteer row 1000881
+2025-08-07 22:14:02,443 DEBUG: [14] Comparing with gazetteer row 1000882
+2025-08-07 22:14:02,444 DEBUG: [14] Comparing with gazetteer row 1000883
+2025-08-07 22:14:02,444 WARNING: [14] No match found.
+2025-08-07 22:14:02,467 DEBUG: [15] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:02,505 DEBUG: [15] After generic territory filter: 50820 rows
+2025-08-07 22:14:02,505 DEBUG: [15] Time filter using year: 1701
+2025-08-07 22:14:02,525 DEBUG: [15] After time filter: 27696 rows
+2025-08-07 22:14:04,294 DEBUG: [15] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 0 rows (was 27696)
+2025-08-07 22:14:04,295 WARNING: [15] No candidates after territory filtering.
+2025-08-07 22:14:04,320 DEBUG: [16] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:04,373 DEBUG: [16] After generic territory filter: 50820 rows
+2025-08-07 22:14:04,373 DEBUG: [16] Time filter using year: 1701
+2025-08-07 22:14:04,388 DEBUG: [16] After time filter: 27696 rows
+2025-08-07 22:14:06,015 DEBUG: [16] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 0 rows (was 27696)
+2025-08-07 22:14:06,015 WARNING: [16] No candidates after territory filtering.
+2025-08-07 22:14:06,038 DEBUG: [17] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:06,090 DEBUG: [17] After generic territory filter: 50820 rows
+2025-08-07 22:14:06,091 DEBUG: [17] Time filter using year: 1715
+2025-08-07 22:14:06,107 DEBUG: [17] After time filter: 27918 rows
+2025-08-07 22:14:07,796 DEBUG: [17] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 0 rows (was 27918)
+2025-08-07 22:14:07,797 WARNING: [17] No candidates after territory filtering.
+2025-08-07 22:14:07,820 DEBUG: [18] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:07,870 DEBUG: [18] After generic territory filter: 50820 rows
+2025-08-07 22:14:07,871 DEBUG: [18] Time filter using year: 1720
+2025-08-07 22:14:07,887 DEBUG: [18] After time filter: 27925 rows
+2025-08-07 22:14:09,669 DEBUG: [18] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 0 rows (was 27925)
+2025-08-07 22:14:09,669 WARNING: [18] No candidates after territory filtering.
+2025-08-07 22:14:09,693 DEBUG: [19] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:09,732 DEBUG: [19] After generic territory filter: 50820 rows
+2025-08-07 22:14:09,733 DEBUG: [19] Time filter using year: 1730
+2025-08-07 22:14:09,744 DEBUG: [19] After time filter: 27935 rows
+2025-08-07 22:14:11,427 DEBUG: [19] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 0 rows (was 27935)
+2025-08-07 22:14:11,428 WARNING: [19] No candidates after territory filtering.
+2025-08-07 22:14:11,450 DEBUG: [20] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:11,503 DEBUG: [20] After generic territory filter: 50820 rows
+2025-08-07 22:14:11,504 DEBUG: [20] Time filter using year: 1733
+2025-08-07 22:14:11,522 DEBUG: [20] After time filter: 27939 rows
+2025-08-07 22:14:13,288 DEBUG: [20] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 0 rows (was 27939)
+2025-08-07 22:14:13,288 WARNING: [20] No candidates after territory filtering.
+2025-08-07 22:14:13,311 DEBUG: [21] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:13,353 DEBUG: [21] After generic territory filter: 50820 rows
+2025-08-07 22:14:13,353 DEBUG: [21] Time filter using year: 1730
+2025-08-07 22:14:13,368 DEBUG: [21] After time filter: 27935 rows
+2025-08-07 22:14:15,039 DEBUG: [21] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 0 rows (was 27935)
+2025-08-07 22:14:15,039 WARNING: [21] No candidates after territory filtering.
+2025-08-07 22:14:15,056 DEBUG: [22] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:15,088 DEBUG: [22] After generic territory filter: 50820 rows
+2025-08-07 22:14:15,088 DEBUG: [22] Time filter using year: 1792
+2025-08-07 22:14:15,098 DEBUG: [22] After time filter: 28349 rows
+2025-08-07 22:14:16,707 DEBUG: [22] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 43 rows (was 28349)
+2025-08-07 22:14:16,708 DEBUG: [22] Comparing with gazetteer row 1000094
+2025-08-07 22:14:16,709 DEBUG: [22] Comparing with gazetteer row 1001170
+2025-08-07 22:14:16,709 DEBUG: [22] Comparing with gazetteer row 1001171
+2025-08-07 22:14:16,710 INFO: [22] Match found: toponym_label (score: 1)
+2025-08-07 22:14:16,710 INFO: [22] High confidence match — stopping further checks.
+2025-08-07 22:14:16,732 DEBUG: [23] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:16,789 DEBUG: [23] After generic territory filter: 50820 rows
+2025-08-07 22:14:16,789 DEBUG: [23] Time filter using year: 1733
+2025-08-07 22:14:16,806 DEBUG: [23] After time filter: 27939 rows
+2025-08-07 22:14:18,429 DEBUG: [23] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 0 rows (was 27939)
+2025-08-07 22:14:18,429 WARNING: [23] No candidates after territory filtering.
+2025-08-07 22:14:18,454 DEBUG: [24] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:18,506 DEBUG: [24] After generic territory filter: 50820 rows
+2025-08-07 22:14:18,507 DEBUG: [24] Time filter using year: 1735
+2025-08-07 22:14:18,521 DEBUG: [24] After time filter: 27902 rows
+2025-08-07 22:14:20,331 DEBUG: [24] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 0 rows (was 27902)
+2025-08-07 22:14:20,332 WARNING: [24] No candidates after territory filtering.
+2025-08-07 22:14:20,349 DEBUG: [25] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:20,386 DEBUG: [25] After generic territory filter: 50820 rows
+2025-08-07 22:14:20,386 DEBUG: [25] Time filter using year: 1772
+2025-08-07 22:14:20,397 DEBUG: [25] After time filter: 28011 rows
+2025-08-07 22:14:22,220 DEBUG: [25] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 43 rows (was 28011)
+2025-08-07 22:14:22,225 DEBUG: [25] Comparing with gazetteer row 1000094
+2025-08-07 22:14:22,225 INFO: [25] Match found: toponym_label (score: 1)
+2025-08-07 22:14:22,225 INFO: [25] High confidence match — stopping further checks.
+2025-08-07 22:14:22,274 DEBUG: [26] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:22,315 DEBUG: [26] After generic territory filter: 50820 rows
+2025-08-07 22:14:22,316 DEBUG: [26] Time filter using year: 1801
+2025-08-07 22:14:22,332 DEBUG: [26] After time filter: 28115 rows
+2025-08-07 22:14:23,931 DEBUG: [26] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 43 rows (was 28115)
+2025-08-07 22:14:23,932 DEBUG: [26] Comparing with gazetteer row 1000094
+2025-08-07 22:14:23,933 INFO: [26] Match found: toponym_label (score: 1)
+2025-08-07 22:14:23,933 INFO: [26] High confidence match — stopping further checks.
+2025-08-07 22:14:23,956 DEBUG: [27] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:24,008 DEBUG: [27] After generic territory filter: 50820 rows
+2025-08-07 22:14:24,009 DEBUG: [27] Time filter using year: 1807
+2025-08-07 22:14:24,027 DEBUG: [27] After time filter: 28115 rows
+2025-08-07 22:14:25,701 DEBUG: [27] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 43 rows (was 28115)
+2025-08-07 22:14:25,703 DEBUG: [27] Comparing with gazetteer row 1000094
+2025-08-07 22:14:25,703 DEBUG: [27] Comparing with gazetteer row 1001170
+2025-08-07 22:14:25,704 DEBUG: [27] Comparing with gazetteer row 1001171
+2025-08-07 22:14:25,704 DEBUG: [27] Comparing with gazetteer row 1001172
+2025-08-07 22:14:25,705 DEBUG: [27] Comparing with gazetteer row 1001173
+2025-08-07 22:14:25,706 DEBUG: [27] Comparing with gazetteer row 1001174
+2025-08-07 22:14:25,706 DEBUG: [27] Comparing with gazetteer row 1001175
+2025-08-07 22:14:25,707 DEBUG: [27] Comparing with gazetteer row 1001176
+2025-08-07 22:14:25,707 DEBUG: [27] Comparing with gazetteer row 1001177
+2025-08-07 22:14:25,708 DEBUG: [27] Comparing with gazetteer row 1001178
+2025-08-07 22:14:25,709 DEBUG: [27] Comparing with gazetteer row 1001179
+2025-08-07 22:14:25,709 DEBUG: [27] Comparing with gazetteer row 1001180
+2025-08-07 22:14:25,710 DEBUG: [27] Comparing with gazetteer row 1001181
+2025-08-07 22:14:25,710 DEBUG: [27] Comparing with gazetteer row 1001182
+2025-08-07 22:14:25,711 DEBUG: [27] Comparing with gazetteer row 1001183
+2025-08-07 22:14:25,712 DEBUG: [27] Comparing with gazetteer row 1001184
+2025-08-07 22:14:25,712 DEBUG: [27] Comparing with gazetteer row 1001185
+2025-08-07 22:14:25,713 DEBUG: [27] Comparing with gazetteer row 1001186
+2025-08-07 22:14:25,714 DEBUG: [27] Comparing with gazetteer row 1001187
+2025-08-07 22:14:25,715 DEBUG: [27] Comparing with gazetteer row 1001188
+2025-08-07 22:14:25,715 DEBUG: [27] Comparing with gazetteer row 1001189
+2025-08-07 22:14:25,716 DEBUG: [27] Comparing with gazetteer row 1001190
+2025-08-07 22:14:25,717 DEBUG: [27] Comparing with gazetteer row 1001191
+2025-08-07 22:14:25,717 DEBUG: [27] Comparing with gazetteer row 1001192
+2025-08-07 22:14:25,718 DEBUG: [27] Comparing with gazetteer row 1001193
+2025-08-07 22:14:25,718 DEBUG: [27] Comparing with gazetteer row 1001194
+2025-08-07 22:14:25,719 DEBUG: [27] Comparing with gazetteer row 1001195
+2025-08-07 22:14:25,720 DEBUG: [27] Comparing with gazetteer row 1001196
+2025-08-07 22:14:25,721 DEBUG: [27] Comparing with gazetteer row 1001197
+2025-08-07 22:14:25,722 DEBUG: [27] Comparing with gazetteer row 1001198
+2025-08-07 22:14:25,723 DEBUG: [27] Comparing with gazetteer row 1001199
+2025-08-07 22:14:25,723 DEBUG: [27] Comparing with gazetteer row 1001200
+2025-08-07 22:14:25,724 DEBUG: [27] Comparing with gazetteer row 1001201
+2025-08-07 22:14:25,724 DEBUG: [27] Comparing with gazetteer row 1001202
+2025-08-07 22:14:25,725 DEBUG: [27] Comparing with gazetteer row 1001203
+2025-08-07 22:14:25,725 DEBUG: [27] Comparing with gazetteer row 1001204
+2025-08-07 22:14:25,726 DEBUG: [27] Comparing with gazetteer row 1001205
+2025-08-07 22:14:25,726 DEBUG: [27] Comparing with gazetteer row 1001206
+2025-08-07 22:14:25,727 DEBUG: [27] Comparing with gazetteer row 1001207
+2025-08-07 22:14:25,728 DEBUG: [27] Comparing with gazetteer row 1001208
+2025-08-07 22:14:25,728 DEBUG: [27] Comparing with gazetteer row 1001209
+2025-08-07 22:14:25,729 DEBUG: [27] Comparing with gazetteer row 1001210
+2025-08-07 22:14:25,729 DEBUG: [27] Comparing with gazetteer row 1001211
+2025-08-07 22:14:25,730 WARNING: [27] No match found.
+2025-08-07 22:14:25,752 DEBUG: [28] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:25,799 DEBUG: [28] After generic territory filter: 50820 rows
+2025-08-07 22:14:25,799 DEBUG: [28] Time filter using year: 1727
+2025-08-07 22:14:25,813 DEBUG: [28] After time filter: 27884 rows
+2025-08-07 22:14:27,522 DEBUG: [28] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 0 rows (was 27884)
+2025-08-07 22:14:27,523 WARNING: [28] No candidates after territory filtering.
+2025-08-07 22:14:27,552 DEBUG: [29] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:27,588 DEBUG: [29] After generic territory filter: 50820 rows
+2025-08-07 22:14:27,588 DEBUG: [29] Time filter using year: 1769
+2025-08-07 22:14:27,601 DEBUG: [29] After time filter: 28004 rows
+2025-08-07 22:14:29,149 DEBUG: [29] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 43 rows (was 28004)
+2025-08-07 22:14:29,151 DEBUG: [29] Comparing with gazetteer row 1000094
+2025-08-07 22:14:29,151 DEBUG: [29] Comparing with gazetteer row 1001170
+2025-08-07 22:14:29,152 DEBUG: [29] Comparing with gazetteer row 1001171
+2025-08-07 22:14:29,152 DEBUG: [29] Comparing with gazetteer row 1001172
+2025-08-07 22:14:29,153 DEBUG: [29] Comparing with gazetteer row 1001173
+2025-08-07 22:14:29,154 DEBUG: [29] Comparing with gazetteer row 1001174
+2025-08-07 22:14:29,154 DEBUG: [29] Comparing with gazetteer row 1001175
+2025-08-07 22:14:29,155 DEBUG: [29] Comparing with gazetteer row 1001176
+2025-08-07 22:14:29,155 DEBUG: [29] Comparing with gazetteer row 1001177
+2025-08-07 22:14:29,156 DEBUG: [29] Comparing with gazetteer row 1001178
+2025-08-07 22:14:29,157 DEBUG: [29] Comparing with gazetteer row 1001179
+2025-08-07 22:14:29,157 DEBUG: [29] Comparing with gazetteer row 1001180
+2025-08-07 22:14:29,158 DEBUG: [29] Comparing with gazetteer row 1001181
+2025-08-07 22:14:29,158 DEBUG: [29] Comparing with gazetteer row 1001182
+2025-08-07 22:14:29,159 DEBUG: [29] Comparing with gazetteer row 1001183
+2025-08-07 22:14:29,159 DEBUG: [29] Comparing with gazetteer row 1001184
+2025-08-07 22:14:29,160 DEBUG: [29] Comparing with gazetteer row 1001185
+2025-08-07 22:14:29,161 DEBUG: [29] Comparing with gazetteer row 1001186
+2025-08-07 22:14:29,161 DEBUG: [29] Comparing with gazetteer row 1001187
+2025-08-07 22:14:29,162 DEBUG: [29] Comparing with gazetteer row 1001188
+2025-08-07 22:14:29,163 DEBUG: [29] Comparing with gazetteer row 1001189
+2025-08-07 22:14:29,163 DEBUG: [29] Comparing with gazetteer row 1001190
+2025-08-07 22:14:29,164 DEBUG: [29] Comparing with gazetteer row 1001191
+2025-08-07 22:14:29,164 DEBUG: [29] Comparing with gazetteer row 1001192
+2025-08-07 22:14:29,165 DEBUG: [29] Comparing with gazetteer row 1001193
+2025-08-07 22:14:29,165 DEBUG: [29] Comparing with gazetteer row 1001194
+2025-08-07 22:14:29,166 DEBUG: [29] Comparing with gazetteer row 1001195
+2025-08-07 22:14:29,168 DEBUG: [29] Comparing with gazetteer row 1001196
+2025-08-07 22:14:29,168 DEBUG: [29] Comparing with gazetteer row 1001197
+2025-08-07 22:14:29,169 DEBUG: [29] Comparing with gazetteer row 1001198
+2025-08-07 22:14:29,170 DEBUG: [29] Comparing with gazetteer row 1001199
+2025-08-07 22:14:29,170 DEBUG: [29] Comparing with gazetteer row 1001200
+2025-08-07 22:14:29,171 DEBUG: [29] Comparing with gazetteer row 1001201
+2025-08-07 22:14:29,171 DEBUG: [29] Comparing with gazetteer row 1001202
+2025-08-07 22:14:29,172 DEBUG: [29] Comparing with gazetteer row 1001203
+2025-08-07 22:14:29,173 DEBUG: [29] Comparing with gazetteer row 1001204
+2025-08-07 22:14:29,173 DEBUG: [29] Comparing with gazetteer row 1001205
+2025-08-07 22:14:29,174 DEBUG: [29] Comparing with gazetteer row 1001206
+2025-08-07 22:14:29,174 DEBUG: [29] Comparing with gazetteer row 1001207
+2025-08-07 22:14:29,175 DEBUG: [29] Comparing with gazetteer row 1001208
+2025-08-07 22:14:29,175 DEBUG: [29] Comparing with gazetteer row 1001209
+2025-08-07 22:14:29,176 DEBUG: [29] Comparing with gazetteer row 1001210
+2025-08-07 22:14:29,176 DEBUG: [29] Comparing with gazetteer row 1001211
+2025-08-07 22:14:29,178 WARNING: [29] No match found.
+2025-08-07 22:14:29,198 DEBUG: [30] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:29,250 DEBUG: [30] After generic territory filter: 50820 rows
+2025-08-07 22:14:29,250 DEBUG: [30] Time filter using year: 1733
+2025-08-07 22:14:29,268 DEBUG: [30] After time filter: 27939 rows
+2025-08-07 22:14:30,861 DEBUG: [30] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 0 rows (was 27939)
+2025-08-07 22:14:30,862 WARNING: [30] No candidates after territory filtering.
+2025-08-07 22:14:30,885 DEBUG: [31] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:30,936 DEBUG: [31] After generic territory filter: 50820 rows
+2025-08-07 22:14:30,936 DEBUG: [31] Time filter using year: 1808
+2025-08-07 22:14:30,952 DEBUG: [31] After time filter: 28115 rows
+2025-08-07 22:14:32,701 DEBUG: [31] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 43 rows (was 28115)
+2025-08-07 22:14:32,701 DEBUG: [31] Comparing with gazetteer row 1000094
+2025-08-07 22:14:32,702 DEBUG: [31] Comparing with gazetteer row 1001170
+2025-08-07 22:14:32,702 DEBUG: [31] Comparing with gazetteer row 1001171
+2025-08-07 22:14:32,702 DEBUG: [31] Comparing with gazetteer row 1001172
+2025-08-07 22:14:32,703 DEBUG: [31] Comparing with gazetteer row 1001173
+2025-08-07 22:14:32,704 DEBUG: [31] Comparing with gazetteer row 1001174
+2025-08-07 22:14:32,705 DEBUG: [31] Comparing with gazetteer row 1001175
+2025-08-07 22:14:32,705 DEBUG: [31] Comparing with gazetteer row 1001176
+2025-08-07 22:14:32,706 DEBUG: [31] Comparing with gazetteer row 1001177
+2025-08-07 22:14:32,706 DEBUG: [31] Comparing with gazetteer row 1001178
+2025-08-07 22:14:32,707 DEBUG: [31] Comparing with gazetteer row 1001179
+2025-08-07 22:14:32,707 DEBUG: [31] Comparing with gazetteer row 1001180
+2025-08-07 22:14:32,707 DEBUG: [31] Comparing with gazetteer row 1001181
+2025-08-07 22:14:32,708 DEBUG: [31] Comparing with gazetteer row 1001182
+2025-08-07 22:14:32,708 DEBUG: [31] Comparing with gazetteer row 1001183
+2025-08-07 22:14:32,709 DEBUG: [31] Comparing with gazetteer row 1001184
+2025-08-07 22:14:32,709 DEBUG: [31] Comparing with gazetteer row 1001185
+2025-08-07 22:14:32,709 DEBUG: [31] Comparing with gazetteer row 1001186
+2025-08-07 22:14:32,710 DEBUG: [31] Comparing with gazetteer row 1001187
+2025-08-07 22:14:32,711 DEBUG: [31] Comparing with gazetteer row 1001188
+2025-08-07 22:14:32,711 DEBUG: [31] Comparing with gazetteer row 1001189
+2025-08-07 22:14:32,711 DEBUG: [31] Comparing with gazetteer row 1001190
+2025-08-07 22:14:32,711 DEBUG: [31] Comparing with gazetteer row 1001191
+2025-08-07 22:14:32,712 DEBUG: [31] Comparing with gazetteer row 1001192
+2025-08-07 22:14:32,712 DEBUG: [31] Comparing with gazetteer row 1001193
+2025-08-07 22:14:32,712 DEBUG: [31] Comparing with gazetteer row 1001194
+2025-08-07 22:14:32,713 DEBUG: [31] Comparing with gazetteer row 1001195
+2025-08-07 22:14:32,713 DEBUG: [31] Comparing with gazetteer row 1001196
+2025-08-07 22:14:32,714 DEBUG: [31] Comparing with gazetteer row 1001197
+2025-08-07 22:14:32,714 DEBUG: [31] Comparing with gazetteer row 1001198
+2025-08-07 22:14:32,714 DEBUG: [31] Comparing with gazetteer row 1001199
+2025-08-07 22:14:32,715 DEBUG: [31] Comparing with gazetteer row 1001200
+2025-08-07 22:14:32,715 DEBUG: [31] Comparing with gazetteer row 1001201
+2025-08-07 22:14:32,715 DEBUG: [31] Comparing with gazetteer row 1001202
+2025-08-07 22:14:32,716 DEBUG: [31] Comparing with gazetteer row 1001203
+2025-08-07 22:14:32,716 DEBUG: [31] Comparing with gazetteer row 1001204
+2025-08-07 22:14:32,716 DEBUG: [31] Comparing with gazetteer row 1001205
+2025-08-07 22:14:32,716 DEBUG: [31] Comparing with gazetteer row 1001206
+2025-08-07 22:14:32,717 DEBUG: [31] Comparing with gazetteer row 1001207
+2025-08-07 22:14:32,717 DEBUG: [31] Comparing with gazetteer row 1001208
+2025-08-07 22:14:32,717 DEBUG: [31] Comparing with gazetteer row 1001209
+2025-08-07 22:14:32,718 DEBUG: [31] Comparing with gazetteer row 1001210
+2025-08-07 22:14:32,718 DEBUG: [31] Comparing with gazetteer row 1001211
+2025-08-07 22:14:32,718 WARNING: [31] No match found.
+2025-08-07 22:14:32,739 DEBUG: [32] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:32,781 DEBUG: [32] After generic territory filter: 50820 rows
+2025-08-07 22:14:32,781 DEBUG: [32] Time filter using year: 1808
+2025-08-07 22:14:32,796 DEBUG: [32] After time filter: 28115 rows
+2025-08-07 22:14:34,304 DEBUG: [32] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 43 rows (was 28115)
+2025-08-07 22:14:34,305 DEBUG: [32] Comparing with gazetteer row 1000094
+2025-08-07 22:14:34,306 DEBUG: [32] Comparing with gazetteer row 1001170
+2025-08-07 22:14:34,307 DEBUG: [32] Comparing with gazetteer row 1001171
+2025-08-07 22:14:34,307 DEBUG: [32] Comparing with gazetteer row 1001172
+2025-08-07 22:14:34,308 DEBUG: [32] Comparing with gazetteer row 1001173
+2025-08-07 22:14:34,308 DEBUG: [32] Comparing with gazetteer row 1001174
+2025-08-07 22:14:34,309 DEBUG: [32] Comparing with gazetteer row 1001175
+2025-08-07 22:14:34,309 DEBUG: [32] Comparing with gazetteer row 1001176
+2025-08-07 22:14:34,310 DEBUG: [32] Comparing with gazetteer row 1001177
+2025-08-07 22:14:34,310 DEBUG: [32] Comparing with gazetteer row 1001178
+2025-08-07 22:14:34,311 DEBUG: [32] Comparing with gazetteer row 1001179
+2025-08-07 22:14:34,311 DEBUG: [32] Comparing with gazetteer row 1001180
+2025-08-07 22:14:34,312 DEBUG: [32] Comparing with gazetteer row 1001181
+2025-08-07 22:14:34,312 DEBUG: [32] Comparing with gazetteer row 1001182
+2025-08-07 22:14:34,313 DEBUG: [32] Comparing with gazetteer row 1001183
+2025-08-07 22:14:34,313 DEBUG: [32] Comparing with gazetteer row 1001184
+2025-08-07 22:14:34,314 DEBUG: [32] Comparing with gazetteer row 1001185
+2025-08-07 22:14:34,314 DEBUG: [32] Comparing with gazetteer row 1001186
+2025-08-07 22:14:34,315 DEBUG: [32] Comparing with gazetteer row 1001187
+2025-08-07 22:14:34,316 DEBUG: [32] Comparing with gazetteer row 1001188
+2025-08-07 22:14:34,316 DEBUG: [32] Comparing with gazetteer row 1001189
+2025-08-07 22:14:34,317 DEBUG: [32] Comparing with gazetteer row 1001190
+2025-08-07 22:14:34,317 DEBUG: [32] Comparing with gazetteer row 1001191
+2025-08-07 22:14:34,318 DEBUG: [32] Comparing with gazetteer row 1001192
+2025-08-07 22:14:34,318 DEBUG: [32] Comparing with gazetteer row 1001193
+2025-08-07 22:14:34,319 DEBUG: [32] Comparing with gazetteer row 1001194
+2025-08-07 22:14:34,319 DEBUG: [32] Comparing with gazetteer row 1001195
+2025-08-07 22:14:34,320 DEBUG: [32] Comparing with gazetteer row 1001196
+2025-08-07 22:14:34,321 DEBUG: [32] Comparing with gazetteer row 1001197
+2025-08-07 22:14:34,322 DEBUG: [32] Comparing with gazetteer row 1001198
+2025-08-07 22:14:34,323 DEBUG: [32] Comparing with gazetteer row 1001199
+2025-08-07 22:14:34,323 DEBUG: [32] Comparing with gazetteer row 1001200
+2025-08-07 22:14:34,323 DEBUG: [32] Comparing with gazetteer row 1001201
+2025-08-07 22:14:34,324 DEBUG: [32] Comparing with gazetteer row 1001202
+2025-08-07 22:14:34,324 DEBUG: [32] Comparing with gazetteer row 1001203
+2025-08-07 22:14:34,325 DEBUG: [32] Comparing with gazetteer row 1001204
+2025-08-07 22:14:34,325 DEBUG: [32] Comparing with gazetteer row 1001205
+2025-08-07 22:14:34,326 DEBUG: [32] Comparing with gazetteer row 1001206
+2025-08-07 22:14:34,326 DEBUG: [32] Comparing with gazetteer row 1001207
+2025-08-07 22:14:34,327 DEBUG: [32] Comparing with gazetteer row 1001208
+2025-08-07 22:14:34,327 DEBUG: [32] Comparing with gazetteer row 1001209
+2025-08-07 22:14:34,328 DEBUG: [32] Comparing with gazetteer row 1001210
+2025-08-07 22:14:34,328 DEBUG: [32] Comparing with gazetteer row 1001211
+2025-08-07 22:14:34,328 WARNING: [32] No match found.
+2025-08-07 22:14:34,347 DEBUG: [33] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:34,385 DEBUG: [33] After generic territory filter: 50820 rows
+2025-08-07 22:14:34,385 DEBUG: [33] Time filter using year: 1808
+2025-08-07 22:14:34,402 DEBUG: [33] After time filter: 28115 rows
+2025-08-07 22:14:35,935 DEBUG: [33] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 43 rows (was 28115)
+2025-08-07 22:14:35,936 DEBUG: [33] Comparing with gazetteer row 1000094
+2025-08-07 22:14:35,937 DEBUG: [33] Comparing with gazetteer row 1001170
+2025-08-07 22:14:35,937 DEBUG: [33] Comparing with gazetteer row 1001171
+2025-08-07 22:14:35,938 DEBUG: [33] Comparing with gazetteer row 1001172
+2025-08-07 22:14:35,938 DEBUG: [33] Comparing with gazetteer row 1001173
+2025-08-07 22:14:35,938 DEBUG: [33] Comparing with gazetteer row 1001174
+2025-08-07 22:14:35,939 DEBUG: [33] Comparing with gazetteer row 1001175
+2025-08-07 22:14:35,939 DEBUG: [33] Comparing with gazetteer row 1001176
+2025-08-07 22:14:35,940 DEBUG: [33] Comparing with gazetteer row 1001177
+2025-08-07 22:14:35,940 DEBUG: [33] Comparing with gazetteer row 1001178
+2025-08-07 22:14:35,941 DEBUG: [33] Comparing with gazetteer row 1001179
+2025-08-07 22:14:35,941 DEBUG: [33] Comparing with gazetteer row 1001180
+2025-08-07 22:14:35,942 DEBUG: [33] Comparing with gazetteer row 1001181
+2025-08-07 22:14:35,942 DEBUG: [33] Comparing with gazetteer row 1001182
+2025-08-07 22:14:35,942 DEBUG: [33] Comparing with gazetteer row 1001183
+2025-08-07 22:14:35,943 DEBUG: [33] Comparing with gazetteer row 1001184
+2025-08-07 22:14:35,943 DEBUG: [33] Comparing with gazetteer row 1001185
+2025-08-07 22:14:35,944 DEBUG: [33] Comparing with gazetteer row 1001186
+2025-08-07 22:14:35,944 DEBUG: [33] Comparing with gazetteer row 1001187
+2025-08-07 22:14:35,945 DEBUG: [33] Comparing with gazetteer row 1001188
+2025-08-07 22:14:35,945 DEBUG: [33] Comparing with gazetteer row 1001189
+2025-08-07 22:14:35,945 DEBUG: [33] Comparing with gazetteer row 1001190
+2025-08-07 22:14:35,946 DEBUG: [33] Comparing with gazetteer row 1001191
+2025-08-07 22:14:35,946 DEBUG: [33] Comparing with gazetteer row 1001192
+2025-08-07 22:14:35,947 DEBUG: [33] Comparing with gazetteer row 1001193
+2025-08-07 22:14:35,947 DEBUG: [33] Comparing with gazetteer row 1001194
+2025-08-07 22:14:35,947 DEBUG: [33] Comparing with gazetteer row 1001195
+2025-08-07 22:14:35,948 DEBUG: [33] Comparing with gazetteer row 1001196
+2025-08-07 22:14:35,948 DEBUG: [33] Comparing with gazetteer row 1001197
+2025-08-07 22:14:35,949 DEBUG: [33] Comparing with gazetteer row 1001198
+2025-08-07 22:14:35,950 DEBUG: [33] Comparing with gazetteer row 1001199
+2025-08-07 22:14:35,950 DEBUG: [33] Comparing with gazetteer row 1001200
+2025-08-07 22:14:35,951 DEBUG: [33] Comparing with gazetteer row 1001201
+2025-08-07 22:14:35,951 DEBUG: [33] Comparing with gazetteer row 1001202
+2025-08-07 22:14:35,951 DEBUG: [33] Comparing with gazetteer row 1001203
+2025-08-07 22:14:35,952 DEBUG: [33] Comparing with gazetteer row 1001204
+2025-08-07 22:14:35,952 DEBUG: [33] Comparing with gazetteer row 1001205
+2025-08-07 22:14:35,953 DEBUG: [33] Comparing with gazetteer row 1001206
+2025-08-07 22:14:35,953 DEBUG: [33] Comparing with gazetteer row 1001207
+2025-08-07 22:14:35,953 DEBUG: [33] Comparing with gazetteer row 1001208
+2025-08-07 22:14:35,954 DEBUG: [33] Comparing with gazetteer row 1001209
+2025-08-07 22:14:35,954 DEBUG: [33] Comparing with gazetteer row 1001210
+2025-08-07 22:14:35,954 DEBUG: [33] Comparing with gazetteer row 1001211
+2025-08-07 22:14:35,955 WARNING: [33] No match found.
+2025-08-07 22:14:35,979 DEBUG: [34] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:36,021 DEBUG: [34] After generic territory filter: 50820 rows
+2025-08-07 22:14:36,021 DEBUG: [34] Time filter using year: 1703
+2025-08-07 22:14:36,037 DEBUG: [34] After time filter: 27696 rows
+2025-08-07 22:14:37,751 DEBUG: [34] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 0 rows (was 27696)
+2025-08-07 22:14:37,751 WARNING: [34] No candidates after territory filtering.
+2025-08-07 22:14:37,770 DEBUG: [35] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:37,820 DEBUG: [35] After generic territory filter: 50820 rows
+2025-08-07 22:14:37,820 DEBUG: [35] Time filter using year: 1735
+2025-08-07 22:14:37,840 DEBUG: [35] After time filter: 27902 rows
+2025-08-07 22:14:39,651 DEBUG: [35] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 0 rows (was 27902)
+2025-08-07 22:14:39,652 WARNING: [35] No candidates after territory filtering.
+2025-08-07 22:14:39,675 DEBUG: [36] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:39,734 DEBUG: [36] After generic territory filter: 50820 rows
+2025-08-07 22:14:39,735 DEBUG: [36] Time filter using year: 1767
+2025-08-07 22:14:39,753 DEBUG: [36] After time filter: 28004 rows
+2025-08-07 22:14:41,167 DEBUG: [36] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 43 rows (was 28004)
+2025-08-07 22:14:41,168 DEBUG: [36] Comparing with gazetteer row 1000094
+2025-08-07 22:14:41,169 DEBUG: [36] Comparing with gazetteer row 1001170
+2025-08-07 22:14:41,170 DEBUG: [36] Comparing with gazetteer row 1001171
+2025-08-07 22:14:41,170 DEBUG: [36] Comparing with gazetteer row 1001172
+2025-08-07 22:14:41,171 DEBUG: [36] Comparing with gazetteer row 1001173
+2025-08-07 22:14:41,171 DEBUG: [36] Comparing with gazetteer row 1001174
+2025-08-07 22:14:41,172 DEBUG: [36] Comparing with gazetteer row 1001175
+2025-08-07 22:14:41,173 DEBUG: [36] Comparing with gazetteer row 1001176
+2025-08-07 22:14:41,174 DEBUG: [36] Comparing with gazetteer row 1001177
+2025-08-07 22:14:41,175 DEBUG: [36] Comparing with gazetteer row 1001178
+2025-08-07 22:14:41,176 DEBUG: [36] Comparing with gazetteer row 1001179
+2025-08-07 22:14:41,177 DEBUG: [36] Comparing with gazetteer row 1001180
+2025-08-07 22:14:41,177 DEBUG: [36] Comparing with gazetteer row 1001181
+2025-08-07 22:14:41,178 DEBUG: [36] Comparing with gazetteer row 1001182
+2025-08-07 22:14:41,179 DEBUG: [36] Comparing with gazetteer row 1001183
+2025-08-07 22:14:41,179 DEBUG: [36] Comparing with gazetteer row 1001184
+2025-08-07 22:14:41,180 DEBUG: [36] Comparing with gazetteer row 1001185
+2025-08-07 22:14:41,181 DEBUG: [36] Comparing with gazetteer row 1001186
+2025-08-07 22:14:41,181 DEBUG: [36] Comparing with gazetteer row 1001187
+2025-08-07 22:14:41,182 DEBUG: [36] Comparing with gazetteer row 1001188
+2025-08-07 22:14:41,183 DEBUG: [36] Comparing with gazetteer row 1001189
+2025-08-07 22:14:41,184 DEBUG: [36] Comparing with gazetteer row 1001190
+2025-08-07 22:14:41,184 DEBUG: [36] Comparing with gazetteer row 1001191
+2025-08-07 22:14:41,185 DEBUG: [36] Comparing with gazetteer row 1001192
+2025-08-07 22:14:41,185 DEBUG: [36] Comparing with gazetteer row 1001193
+2025-08-07 22:14:41,186 DEBUG: [36] Comparing with gazetteer row 1001194
+2025-08-07 22:14:41,187 DEBUG: [36] Comparing with gazetteer row 1001195
+2025-08-07 22:14:41,188 DEBUG: [36] Comparing with gazetteer row 1001196
+2025-08-07 22:14:41,189 DEBUG: [36] Comparing with gazetteer row 1001197
+2025-08-07 22:14:41,190 DEBUG: [36] Comparing with gazetteer row 1001198
+2025-08-07 22:14:41,191 DEBUG: [36] Comparing with gazetteer row 1001199
+2025-08-07 22:14:41,192 DEBUG: [36] Comparing with gazetteer row 1001200
+2025-08-07 22:14:41,192 DEBUG: [36] Comparing with gazetteer row 1001201
+2025-08-07 22:14:41,193 DEBUG: [36] Comparing with gazetteer row 1001202
+2025-08-07 22:14:41,193 DEBUG: [36] Comparing with gazetteer row 1001203
+2025-08-07 22:14:41,194 DEBUG: [36] Comparing with gazetteer row 1001204
+2025-08-07 22:14:41,195 DEBUG: [36] Comparing with gazetteer row 1001205
+2025-08-07 22:14:41,195 DEBUG: [36] Comparing with gazetteer row 1001206
+2025-08-07 22:14:41,196 DEBUG: [36] Comparing with gazetteer row 1001207
+2025-08-07 22:14:41,196 DEBUG: [36] Comparing with gazetteer row 1001208
+2025-08-07 22:14:41,197 DEBUG: [36] Comparing with gazetteer row 1001209
+2025-08-07 22:14:41,197 DEBUG: [36] Comparing with gazetteer row 1001210
+2025-08-07 22:14:41,198 DEBUG: [36] Comparing with gazetteer row 1001211
+2025-08-07 22:14:41,198 WARNING: [36] No match found.
+2025-08-07 22:14:41,221 DEBUG: [37] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:41,275 DEBUG: [37] After generic territory filter: 50820 rows
+2025-08-07 22:14:41,275 DEBUG: [37] Time filter using year: 1701
+2025-08-07 22:14:41,293 DEBUG: [37] After time filter: 27696 rows
+2025-08-07 22:14:42,975 DEBUG: [37] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 0 rows (was 27696)
+2025-08-07 22:14:42,975 WARNING: [37] No candidates after territory filtering.
+2025-08-07 22:14:42,994 DEBUG: [38] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:43,025 DEBUG: [38] After generic territory filter: 50820 rows
+2025-08-07 22:14:43,026 DEBUG: [38] Time filter using year: 1792
+2025-08-07 22:14:43,038 DEBUG: [38] After time filter: 28349 rows
+2025-08-07 22:14:44,552 DEBUG: [38] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 43 rows (was 28349)
+2025-08-07 22:14:44,554 DEBUG: [38] Comparing with gazetteer row 1000094
+2025-08-07 22:14:44,554 DEBUG: [38] Comparing with gazetteer row 1001170
+2025-08-07 22:14:44,555 DEBUG: [38] Comparing with gazetteer row 1001171
+2025-08-07 22:14:44,555 DEBUG: [38] Comparing with gazetteer row 1001172
+2025-08-07 22:14:44,556 DEBUG: [38] Comparing with gazetteer row 1001173
+2025-08-07 22:14:44,556 INFO: [38] Match found: toponym_label (score: 1)
+2025-08-07 22:14:44,557 INFO: [38] High confidence match — stopping further checks.
+2025-08-07 22:14:44,580 DEBUG: [39] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:44,633 DEBUG: [39] After generic territory filter: 50820 rows
+2025-08-07 22:14:44,633 DEBUG: [39] Time filter using year: 1710
+2025-08-07 22:14:44,651 DEBUG: [39] After time filter: 27884 rows
+2025-08-07 22:14:46,283 DEBUG: [39] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 0 rows (was 27884)
+2025-08-07 22:14:46,284 WARNING: [39] No candidates after territory filtering.
+2025-08-07 22:14:46,307 DEBUG: [40] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:46,357 DEBUG: [40] After generic territory filter: 50820 rows
+2025-08-07 22:14:46,357 DEBUG: [40] Time filter using year: 1808
+2025-08-07 22:14:46,374 DEBUG: [40] After time filter: 28115 rows
+2025-08-07 22:14:48,091 DEBUG: [40] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 38 rows (was 28115)
+2025-08-07 22:14:48,092 DEBUG: [40] Comparing with gazetteer row 1001867
+2025-08-07 22:14:48,093 DEBUG: [40] Comparing with gazetteer row 1001868
+2025-08-07 22:14:48,093 DEBUG: [40] Comparing with gazetteer row 1001871
+2025-08-07 22:14:48,094 DEBUG: [40] Comparing with gazetteer row 1001872
+2025-08-07 22:14:48,094 DEBUG: [40] Comparing with gazetteer row 1001873
+2025-08-07 22:14:48,095 DEBUG: [40] Comparing with gazetteer row 1001874
+2025-08-07 22:14:48,095 DEBUG: [40] Comparing with gazetteer row 1001875
+2025-08-07 22:14:48,096 DEBUG: [40] Comparing with gazetteer row 1001876
+2025-08-07 22:14:48,096 DEBUG: [40] Comparing with gazetteer row 1001877
+2025-08-07 22:14:48,097 DEBUG: [40] Comparing with gazetteer row 1001878
+2025-08-07 22:14:48,097 DEBUG: [40] Comparing with gazetteer row 1001879
+2025-08-07 22:14:48,097 DEBUG: [40] Comparing with gazetteer row 1001880
+2025-08-07 22:14:48,098 DEBUG: [40] Comparing with gazetteer row 1001881
+2025-08-07 22:14:48,098 DEBUG: [40] Comparing with gazetteer row 1001882
+2025-08-07 22:14:48,098 DEBUG: [40] Comparing with gazetteer row 1001883
+2025-08-07 22:14:48,099 DEBUG: [40] Comparing with gazetteer row 1001884
+2025-08-07 22:14:48,099 DEBUG: [40] Comparing with gazetteer row 1001885
+2025-08-07 22:14:48,100 DEBUG: [40] Comparing with gazetteer row 1001886
+2025-08-07 22:14:48,100 DEBUG: [40] Comparing with gazetteer row 1001887
+2025-08-07 22:14:48,101 DEBUG: [40] Comparing with gazetteer row 1001888
+2025-08-07 22:14:48,102 DEBUG: [40] Comparing with gazetteer row 1001889
+2025-08-07 22:14:48,103 DEBUG: [40] Comparing with gazetteer row 1001890
+2025-08-07 22:14:48,103 DEBUG: [40] Comparing with gazetteer row 1001891
+2025-08-07 22:14:48,104 DEBUG: [40] Comparing with gazetteer row 1001892
+2025-08-07 22:14:48,104 DEBUG: [40] Comparing with gazetteer row 1001893
+2025-08-07 22:14:48,105 DEBUG: [40] Comparing with gazetteer row 1001894
+2025-08-07 22:14:48,105 DEBUG: [40] Comparing with gazetteer row 1001895
+2025-08-07 22:14:48,106 DEBUG: [40] Comparing with gazetteer row 1001896
+2025-08-07 22:14:48,106 DEBUG: [40] Comparing with gazetteer row 1001897
+2025-08-07 22:14:48,107 DEBUG: [40] Comparing with gazetteer row 1001898
+2025-08-07 22:14:48,107 DEBUG: [40] Comparing with gazetteer row 1001899
+2025-08-07 22:14:48,107 DEBUG: [40] Comparing with gazetteer row 1001900
+2025-08-07 22:14:48,107 DEBUG: [40] Comparing with gazetteer row 1001901
+2025-08-07 22:14:48,108 DEBUG: [40] Comparing with gazetteer row 1001902
+2025-08-07 22:14:48,108 DEBUG: [40] Comparing with gazetteer row 1001903
+2025-08-07 22:14:48,109 DEBUG: [40] Comparing with gazetteer row 1001904
+2025-08-07 22:14:48,109 DEBUG: [40] Comparing with gazetteer row 1001905
+2025-08-07 22:14:48,109 DEBUG: [40] Comparing with gazetteer row 1004959
+2025-08-07 22:14:48,109 WARNING: [40] No match found.
+2025-08-07 22:14:48,124 DEBUG: [41] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:48,152 DEBUG: [41] After generic territory filter: 50820 rows
+2025-08-07 22:14:48,153 DEBUG: [41] Time filter using year: 1808
+2025-08-07 22:14:48,163 DEBUG: [41] After time filter: 28115 rows
+2025-08-07 22:14:49,847 DEBUG: [41] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 38 rows (was 28115)
+2025-08-07 22:14:49,848 DEBUG: [41] Comparing with gazetteer row 1001867
+2025-08-07 22:14:49,849 DEBUG: [41] Comparing with gazetteer row 1001868
+2025-08-07 22:14:49,850 DEBUG: [41] Comparing with gazetteer row 1001871
+2025-08-07 22:14:49,850 DEBUG: [41] Comparing with gazetteer row 1001872
+2025-08-07 22:14:49,851 DEBUG: [41] Comparing with gazetteer row 1001873
+2025-08-07 22:14:49,852 DEBUG: [41] Comparing with gazetteer row 1001874
+2025-08-07 22:14:49,853 DEBUG: [41] Comparing with gazetteer row 1001875
+2025-08-07 22:14:49,853 DEBUG: [41] Comparing with gazetteer row 1001876
+2025-08-07 22:14:49,854 DEBUG: [41] Comparing with gazetteer row 1001877
+2025-08-07 22:14:49,854 DEBUG: [41] Comparing with gazetteer row 1001878
+2025-08-07 22:14:49,855 DEBUG: [41] Comparing with gazetteer row 1001879
+2025-08-07 22:14:49,855 DEBUG: [41] Comparing with gazetteer row 1001880
+2025-08-07 22:14:49,856 DEBUG: [41] Comparing with gazetteer row 1001881
+2025-08-07 22:14:49,857 DEBUG: [41] Comparing with gazetteer row 1001882
+2025-08-07 22:14:49,857 DEBUG: [41] Comparing with gazetteer row 1001883
+2025-08-07 22:14:49,858 DEBUG: [41] Comparing with gazetteer row 1001884
+2025-08-07 22:14:49,858 DEBUG: [41] Comparing with gazetteer row 1001885
+2025-08-07 22:14:49,859 DEBUG: [41] Comparing with gazetteer row 1001886
+2025-08-07 22:14:49,860 DEBUG: [41] Comparing with gazetteer row 1001887
+2025-08-07 22:14:49,860 DEBUG: [41] Comparing with gazetteer row 1001888
+2025-08-07 22:14:49,862 DEBUG: [41] Comparing with gazetteer row 1001889
+2025-08-07 22:14:49,862 DEBUG: [41] Comparing with gazetteer row 1001890
+2025-08-07 22:14:49,863 DEBUG: [41] Comparing with gazetteer row 1001891
+2025-08-07 22:14:49,864 DEBUG: [41] Comparing with gazetteer row 1001892
+2025-08-07 22:14:49,864 DEBUG: [41] Comparing with gazetteer row 1001893
+2025-08-07 22:14:49,865 DEBUG: [41] Comparing with gazetteer row 1001894
+2025-08-07 22:14:49,866 DEBUG: [41] Comparing with gazetteer row 1001895
+2025-08-07 22:14:49,866 DEBUG: [41] Comparing with gazetteer row 1001896
+2025-08-07 22:14:49,867 DEBUG: [41] Comparing with gazetteer row 1001897
+2025-08-07 22:14:49,868 DEBUG: [41] Comparing with gazetteer row 1001898
+2025-08-07 22:14:49,869 DEBUG: [41] Comparing with gazetteer row 1001899
+2025-08-07 22:14:49,869 DEBUG: [41] Comparing with gazetteer row 1001900
+2025-08-07 22:14:49,870 DEBUG: [41] Comparing with gazetteer row 1001901
+2025-08-07 22:14:49,871 DEBUG: [41] Comparing with gazetteer row 1001902
+2025-08-07 22:14:49,871 DEBUG: [41] Comparing with gazetteer row 1001903
+2025-08-07 22:14:49,872 DEBUG: [41] Comparing with gazetteer row 1001904
+2025-08-07 22:14:49,872 DEBUG: [41] Comparing with gazetteer row 1001905
+2025-08-07 22:14:49,873 DEBUG: [41] Comparing with gazetteer row 1004959
+2025-08-07 22:14:49,874 WARNING: [41] No match found.
+2025-08-07 22:14:49,897 DEBUG: [42] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:49,956 DEBUG: [42] After generic territory filter: 50820 rows
+2025-08-07 22:14:49,957 DEBUG: [42] Time filter using year: 1795
+2025-08-07 22:14:49,975 DEBUG: [42] After time filter: 28157 rows
+2025-08-07 22:14:51,562 DEBUG: [42] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 38 rows (was 28157)
+2025-08-07 22:14:51,562 DEBUG: [42] Comparing with gazetteer row 1001867
+2025-08-07 22:14:51,563 DEBUG: [42] Comparing with gazetteer row 1001868
+2025-08-07 22:14:51,564 DEBUG: [42] Comparing with gazetteer row 1001871
+2025-08-07 22:14:51,564 DEBUG: [42] Comparing with gazetteer row 1001872
+2025-08-07 22:14:51,565 DEBUG: [42] Comparing with gazetteer row 1001873
+2025-08-07 22:14:51,565 DEBUG: [42] Comparing with gazetteer row 1001874
+2025-08-07 22:14:51,566 DEBUG: [42] Comparing with gazetteer row 1001875
+2025-08-07 22:14:51,566 DEBUG: [42] Comparing with gazetteer row 1001876
+2025-08-07 22:14:51,567 DEBUG: [42] Comparing with gazetteer row 1001877
+2025-08-07 22:14:51,567 DEBUG: [42] Comparing with gazetteer row 1001878
+2025-08-07 22:14:51,568 DEBUG: [42] Comparing with gazetteer row 1001879
+2025-08-07 22:14:51,568 DEBUG: [42] Comparing with gazetteer row 1001880
+2025-08-07 22:14:51,569 DEBUG: [42] Comparing with gazetteer row 1001881
+2025-08-07 22:14:51,570 DEBUG: [42] Comparing with gazetteer row 1001882
+2025-08-07 22:14:51,570 DEBUG: [42] Comparing with gazetteer row 1001883
+2025-08-07 22:14:51,571 DEBUG: [42] Comparing with gazetteer row 1001884
+2025-08-07 22:14:51,571 DEBUG: [42] Comparing with gazetteer row 1001885
+2025-08-07 22:14:51,572 DEBUG: [42] Comparing with gazetteer row 1001886
+2025-08-07 22:14:51,573 DEBUG: [42] Comparing with gazetteer row 1001887
+2025-08-07 22:14:51,573 DEBUG: [42] Comparing with gazetteer row 1001888
+2025-08-07 22:14:51,574 DEBUG: [42] Comparing with gazetteer row 1001889
+2025-08-07 22:14:51,575 DEBUG: [42] Comparing with gazetteer row 1001890
+2025-08-07 22:14:51,576 DEBUG: [42] Comparing with gazetteer row 1001891
+2025-08-07 22:14:51,576 DEBUG: [42] Comparing with gazetteer row 1001892
+2025-08-07 22:14:51,577 DEBUG: [42] Comparing with gazetteer row 1001893
+2025-08-07 22:14:51,577 DEBUG: [42] Comparing with gazetteer row 1001894
+2025-08-07 22:14:51,579 DEBUG: [42] Comparing with gazetteer row 1001895
+2025-08-07 22:14:51,579 DEBUG: [42] Comparing with gazetteer row 1001896
+2025-08-07 22:14:51,580 DEBUG: [42] Comparing with gazetteer row 1001897
+2025-08-07 22:14:51,580 DEBUG: [42] Comparing with gazetteer row 1001898
+2025-08-07 22:14:51,581 DEBUG: [42] Comparing with gazetteer row 1001899
+2025-08-07 22:14:51,581 DEBUG: [42] Comparing with gazetteer row 1001900
+2025-08-07 22:14:51,582 DEBUG: [42] Comparing with gazetteer row 1001901
+2025-08-07 22:14:51,582 DEBUG: [42] Comparing with gazetteer row 1001902
+2025-08-07 22:14:51,583 DEBUG: [42] Comparing with gazetteer row 1001903
+2025-08-07 22:14:51,583 DEBUG: [42] Comparing with gazetteer row 1001904
+2025-08-07 22:14:51,584 DEBUG: [42] Comparing with gazetteer row 1001905
+2025-08-07 22:14:51,585 DEBUG: [42] Comparing with gazetteer row 1004959
+2025-08-07 22:14:51,585 WARNING: [42] No match found.
+2025-08-07 22:14:51,609 DEBUG: [43] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:51,657 DEBUG: [43] After generic territory filter: 50820 rows
+2025-08-07 22:14:51,657 DEBUG: [43] Time filter using year: 1783
+2025-08-07 22:14:51,674 DEBUG: [43] After time filter: 28025 rows
+2025-08-07 22:14:53,356 DEBUG: [43] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 38 rows (was 28025)
+2025-08-07 22:14:53,357 DEBUG: [43] Comparing with gazetteer row 1001867
+2025-08-07 22:14:53,358 DEBUG: [43] Comparing with gazetteer row 1001868
+2025-08-07 22:14:53,359 DEBUG: [43] Comparing with gazetteer row 1001871
+2025-08-07 22:14:53,360 DEBUG: [43] Comparing with gazetteer row 1001872
+2025-08-07 22:14:53,360 DEBUG: [43] Comparing with gazetteer row 1001873
+2025-08-07 22:14:53,361 DEBUG: [43] Comparing with gazetteer row 1001874
+2025-08-07 22:14:53,361 DEBUG: [43] Comparing with gazetteer row 1001875
+2025-08-07 22:14:53,361 DEBUG: [43] Comparing with gazetteer row 1001876
+2025-08-07 22:14:53,362 DEBUG: [43] Comparing with gazetteer row 1001877
+2025-08-07 22:14:53,362 DEBUG: [43] Comparing with gazetteer row 1001878
+2025-08-07 22:14:53,362 DEBUG: [43] Comparing with gazetteer row 1001879
+2025-08-07 22:14:53,363 DEBUG: [43] Comparing with gazetteer row 1001880
+2025-08-07 22:14:53,363 DEBUG: [43] Comparing with gazetteer row 1001881
+2025-08-07 22:14:53,363 DEBUG: [43] Comparing with gazetteer row 1001882
+2025-08-07 22:14:53,364 DEBUG: [43] Comparing with gazetteer row 1001883
+2025-08-07 22:14:53,364 DEBUG: [43] Comparing with gazetteer row 1001884
+2025-08-07 22:14:53,364 DEBUG: [43] Comparing with gazetteer row 1001885
+2025-08-07 22:14:53,365 DEBUG: [43] Comparing with gazetteer row 1001886
+2025-08-07 22:14:53,365 DEBUG: [43] Comparing with gazetteer row 1001887
+2025-08-07 22:14:53,365 DEBUG: [43] Comparing with gazetteer row 1001888
+2025-08-07 22:14:53,366 DEBUG: [43] Comparing with gazetteer row 1001889
+2025-08-07 22:14:53,366 DEBUG: [43] Comparing with gazetteer row 1001890
+2025-08-07 22:14:53,367 DEBUG: [43] Comparing with gazetteer row 1001891
+2025-08-07 22:14:53,367 DEBUG: [43] Comparing with gazetteer row 1001892
+2025-08-07 22:14:53,367 DEBUG: [43] Comparing with gazetteer row 1001893
+2025-08-07 22:14:53,368 DEBUG: [43] Comparing with gazetteer row 1001894
+2025-08-07 22:14:53,368 DEBUG: [43] Comparing with gazetteer row 1001895
+2025-08-07 22:14:53,368 DEBUG: [43] Comparing with gazetteer row 1001896
+2025-08-07 22:14:53,369 DEBUG: [43] Comparing with gazetteer row 1001897
+2025-08-07 22:14:53,369 DEBUG: [43] Comparing with gazetteer row 1001898
+2025-08-07 22:14:53,370 DEBUG: [43] Comparing with gazetteer row 1001899
+2025-08-07 22:14:53,370 DEBUG: [43] Comparing with gazetteer row 1001900
+2025-08-07 22:14:53,370 DEBUG: [43] Comparing with gazetteer row 1001901
+2025-08-07 22:14:53,371 DEBUG: [43] Comparing with gazetteer row 1001902
+2025-08-07 22:14:53,371 DEBUG: [43] Comparing with gazetteer row 1001903
+2025-08-07 22:14:53,371 DEBUG: [43] Comparing with gazetteer row 1001904
+2025-08-07 22:14:53,372 DEBUG: [43] Comparing with gazetteer row 1001905
+2025-08-07 22:14:53,372 DEBUG: [43] Comparing with gazetteer row 1004959
+2025-08-07 22:14:53,372 WARNING: [43] No match found.
+2025-08-07 22:14:53,394 DEBUG: [44] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:53,432 DEBUG: [44] After generic territory filter: 50820 rows
+2025-08-07 22:14:53,433 DEBUG: [44] Time filter using year: 1807
+2025-08-07 22:14:53,448 DEBUG: [44] After time filter: 28115 rows
+2025-08-07 22:14:55,316 DEBUG: [44] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 38 rows (was 28115)
+2025-08-07 22:14:55,317 DEBUG: [44] Comparing with gazetteer row 1001867
+2025-08-07 22:14:55,318 DEBUG: [44] Comparing with gazetteer row 1001868
+2025-08-07 22:14:55,318 DEBUG: [44] Comparing with gazetteer row 1001871
+2025-08-07 22:14:55,319 DEBUG: [44] Comparing with gazetteer row 1001872
+2025-08-07 22:14:55,320 DEBUG: [44] Comparing with gazetteer row 1001873
+2025-08-07 22:14:55,320 DEBUG: [44] Comparing with gazetteer row 1001874
+2025-08-07 22:14:55,321 DEBUG: [44] Comparing with gazetteer row 1001875
+2025-08-07 22:14:55,322 DEBUG: [44] Comparing with gazetteer row 1001876
+2025-08-07 22:14:55,322 DEBUG: [44] Comparing with gazetteer row 1001877
+2025-08-07 22:14:55,323 DEBUG: [44] Comparing with gazetteer row 1001878
+2025-08-07 22:14:55,323 DEBUG: [44] Comparing with gazetteer row 1001879
+2025-08-07 22:14:55,324 DEBUG: [44] Comparing with gazetteer row 1001880
+2025-08-07 22:14:55,328 DEBUG: [44] Comparing with gazetteer row 1001881
+2025-08-07 22:14:55,329 DEBUG: [44] Comparing with gazetteer row 1001882
+2025-08-07 22:14:55,330 DEBUG: [44] Comparing with gazetteer row 1001883
+2025-08-07 22:14:55,331 DEBUG: [44] Comparing with gazetteer row 1001884
+2025-08-07 22:14:55,333 DEBUG: [44] Comparing with gazetteer row 1001885
+2025-08-07 22:14:55,334 DEBUG: [44] Comparing with gazetteer row 1001886
+2025-08-07 22:14:55,335 DEBUG: [44] Comparing with gazetteer row 1001887
+2025-08-07 22:14:55,336 DEBUG: [44] Comparing with gazetteer row 1001888
+2025-08-07 22:14:55,348 DEBUG: [44] Comparing with gazetteer row 1001889
+2025-08-07 22:14:55,350 DEBUG: [44] Comparing with gazetteer row 1001890
+2025-08-07 22:14:55,351 DEBUG: [44] Comparing with gazetteer row 1001891
+2025-08-07 22:14:55,388 DEBUG: [44] Comparing with gazetteer row 1001892
+2025-08-07 22:14:55,389 DEBUG: [44] Comparing with gazetteer row 1001893
+2025-08-07 22:14:55,389 DEBUG: [44] Comparing with gazetteer row 1001894
+2025-08-07 22:14:55,391 DEBUG: [44] Comparing with gazetteer row 1001895
+2025-08-07 22:14:55,391 DEBUG: [44] Comparing with gazetteer row 1001896
+2025-08-07 22:14:55,392 DEBUG: [44] Comparing with gazetteer row 1001897
+2025-08-07 22:14:55,393 DEBUG: [44] Comparing with gazetteer row 1001898
+2025-08-07 22:14:55,394 DEBUG: [44] Comparing with gazetteer row 1001899
+2025-08-07 22:14:55,394 DEBUG: [44] Comparing with gazetteer row 1001900
+2025-08-07 22:14:55,395 DEBUG: [44] Comparing with gazetteer row 1001901
+2025-08-07 22:14:55,396 DEBUG: [44] Comparing with gazetteer row 1001902
+2025-08-07 22:14:55,397 DEBUG: [44] Comparing with gazetteer row 1001903
+2025-08-07 22:14:55,398 DEBUG: [44] Comparing with gazetteer row 1001904
+2025-08-07 22:14:55,398 DEBUG: [44] Comparing with gazetteer row 1001905
+2025-08-07 22:14:55,399 DEBUG: [44] Comparing with gazetteer row 1004959
+2025-08-07 22:14:55,400 WARNING: [44] No match found.
+2025-08-07 22:14:55,424 DEBUG: [45] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:55,458 DEBUG: [45] After generic territory filter: 50820 rows
+2025-08-07 22:14:55,458 DEBUG: [45] Time filter using year: 1701
+2025-08-07 22:14:55,479 DEBUG: [45] After time filter: 27696 rows
+2025-08-07 22:14:57,019 DEBUG: [45] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 38 rows (was 27696)
+2025-08-07 22:14:57,020 DEBUG: [45] Comparing with gazetteer row 1001867
+2025-08-07 22:14:57,021 DEBUG: [45] Comparing with gazetteer row 1001868
+2025-08-07 22:14:57,022 DEBUG: [45] Comparing with gazetteer row 1001871
+2025-08-07 22:14:57,022 DEBUG: [45] Comparing with gazetteer row 1001872
+2025-08-07 22:14:57,023 DEBUG: [45] Comparing with gazetteer row 1001873
+2025-08-07 22:14:57,023 DEBUG: [45] Comparing with gazetteer row 1001874
+2025-08-07 22:14:57,024 DEBUG: [45] Comparing with gazetteer row 1001875
+2025-08-07 22:14:57,024 DEBUG: [45] Comparing with gazetteer row 1001876
+2025-08-07 22:14:57,025 DEBUG: [45] Comparing with gazetteer row 1001877
+2025-08-07 22:14:57,026 DEBUG: [45] Comparing with gazetteer row 1001878
+2025-08-07 22:14:57,026 DEBUG: [45] Comparing with gazetteer row 1001879
+2025-08-07 22:14:57,027 DEBUG: [45] Comparing with gazetteer row 1001880
+2025-08-07 22:14:57,027 DEBUG: [45] Comparing with gazetteer row 1001881
+2025-08-07 22:14:57,028 DEBUG: [45] Comparing with gazetteer row 1001882
+2025-08-07 22:14:57,028 DEBUG: [45] Comparing with gazetteer row 1001883
+2025-08-07 22:14:57,029 DEBUG: [45] Comparing with gazetteer row 1001884
+2025-08-07 22:14:57,030 DEBUG: [45] Comparing with gazetteer row 1001885
+2025-08-07 22:14:57,030 DEBUG: [45] Comparing with gazetteer row 1001886
+2025-08-07 22:14:57,031 DEBUG: [45] Comparing with gazetteer row 1001887
+2025-08-07 22:14:57,031 DEBUG: [45] Comparing with gazetteer row 1001888
+2025-08-07 22:14:57,032 DEBUG: [45] Comparing with gazetteer row 1001889
+2025-08-07 22:14:57,033 DEBUG: [45] Comparing with gazetteer row 1001890
+2025-08-07 22:14:57,033 DEBUG: [45] Comparing with gazetteer row 1001891
+2025-08-07 22:14:57,034 DEBUG: [45] Comparing with gazetteer row 1001892
+2025-08-07 22:14:57,034 DEBUG: [45] Comparing with gazetteer row 1001893
+2025-08-07 22:14:57,035 DEBUG: [45] Comparing with gazetteer row 1001894
+2025-08-07 22:14:57,036 DEBUG: [45] Comparing with gazetteer row 1001895
+2025-08-07 22:14:57,036 DEBUG: [45] Comparing with gazetteer row 1001896
+2025-08-07 22:14:57,037 DEBUG: [45] Comparing with gazetteer row 1001897
+2025-08-07 22:14:57,037 DEBUG: [45] Comparing with gazetteer row 1001898
+2025-08-07 22:14:57,038 DEBUG: [45] Comparing with gazetteer row 1001899
+2025-08-07 22:14:57,039 DEBUG: [45] Comparing with gazetteer row 1001900
+2025-08-07 22:14:57,039 DEBUG: [45] Comparing with gazetteer row 1001901
+2025-08-07 22:14:57,040 DEBUG: [45] Comparing with gazetteer row 1001902
+2025-08-07 22:14:57,040 DEBUG: [45] Comparing with gazetteer row 1001903
+2025-08-07 22:14:57,041 DEBUG: [45] Comparing with gazetteer row 1001904
+2025-08-07 22:14:57,041 DEBUG: [45] Comparing with gazetteer row 1001905
+2025-08-07 22:14:57,042 DEBUG: [45] Comparing with gazetteer row 1004959
+2025-08-07 22:14:57,042 WARNING: [45] No match found.
+2025-08-07 22:14:57,063 DEBUG: [46] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:57,112 DEBUG: [46] After generic territory filter: 50820 rows
+2025-08-07 22:14:57,113 DEBUG: [46] Time filter using year: 1800
+2025-08-07 22:14:57,126 DEBUG: [46] After time filter: 28115 rows
+2025-08-07 22:14:58,733 DEBUG: [46] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 38 rows (was 28115)
+2025-08-07 22:14:58,734 DEBUG: [46] Comparing with gazetteer row 1001867
+2025-08-07 22:14:58,734 DEBUG: [46] Comparing with gazetteer row 1001868
+2025-08-07 22:14:58,735 DEBUG: [46] Comparing with gazetteer row 1001871
+2025-08-07 22:14:58,735 DEBUG: [46] Comparing with gazetteer row 1001872
+2025-08-07 22:14:58,736 DEBUG: [46] Comparing with gazetteer row 1001873
+2025-08-07 22:14:58,736 DEBUG: [46] Comparing with gazetteer row 1001874
+2025-08-07 22:14:58,737 DEBUG: [46] Comparing with gazetteer row 1001875
+2025-08-07 22:14:58,738 DEBUG: [46] Comparing with gazetteer row 1001876
+2025-08-07 22:14:58,738 DEBUG: [46] Comparing with gazetteer row 1001877
+2025-08-07 22:14:58,739 DEBUG: [46] Comparing with gazetteer row 1001878
+2025-08-07 22:14:58,739 DEBUG: [46] Comparing with gazetteer row 1001879
+2025-08-07 22:14:58,740 DEBUG: [46] Comparing with gazetteer row 1001880
+2025-08-07 22:14:58,740 DEBUG: [46] Comparing with gazetteer row 1001881
+2025-08-07 22:14:58,741 DEBUG: [46] Comparing with gazetteer row 1001882
+2025-08-07 22:14:58,741 DEBUG: [46] Comparing with gazetteer row 1001883
+2025-08-07 22:14:58,742 DEBUG: [46] Comparing with gazetteer row 1001884
+2025-08-07 22:14:58,742 DEBUG: [46] Comparing with gazetteer row 1001885
+2025-08-07 22:14:58,743 DEBUG: [46] Comparing with gazetteer row 1001886
+2025-08-07 22:14:58,743 DEBUG: [46] Comparing with gazetteer row 1001887
+2025-08-07 22:14:58,744 DEBUG: [46] Comparing with gazetteer row 1001888
+2025-08-07 22:14:58,745 DEBUG: [46] Comparing with gazetteer row 1001889
+2025-08-07 22:14:58,745 DEBUG: [46] Comparing with gazetteer row 1001890
+2025-08-07 22:14:58,746 DEBUG: [46] Comparing with gazetteer row 1001891
+2025-08-07 22:14:58,746 DEBUG: [46] Comparing with gazetteer row 1001892
+2025-08-07 22:14:58,747 DEBUG: [46] Comparing with gazetteer row 1001893
+2025-08-07 22:14:58,747 DEBUG: [46] Comparing with gazetteer row 1001894
+2025-08-07 22:14:58,748 DEBUG: [46] Comparing with gazetteer row 1001895
+2025-08-07 22:14:58,749 DEBUG: [46] Comparing with gazetteer row 1001896
+2025-08-07 22:14:58,749 DEBUG: [46] Comparing with gazetteer row 1001897
+2025-08-07 22:14:58,750 DEBUG: [46] Comparing with gazetteer row 1001898
+2025-08-07 22:14:58,750 DEBUG: [46] Comparing with gazetteer row 1001899
+2025-08-07 22:14:58,751 DEBUG: [46] Comparing with gazetteer row 1001900
+2025-08-07 22:14:58,751 DEBUG: [46] Comparing with gazetteer row 1001901
+2025-08-07 22:14:58,752 DEBUG: [46] Comparing with gazetteer row 1001902
+2025-08-07 22:14:58,752 DEBUG: [46] Comparing with gazetteer row 1001903
+2025-08-07 22:14:58,753 DEBUG: [46] Comparing with gazetteer row 1001904
+2025-08-07 22:14:58,754 DEBUG: [46] Comparing with gazetteer row 1001905
+2025-08-07 22:14:58,754 DEBUG: [46] Comparing with gazetteer row 1004959
+2025-08-07 22:14:58,755 WARNING: [46] No match found.
+2025-08-07 22:14:58,776 DEBUG: [47] Filtering by lugar_region = Nueva España
+2025-08-07 22:14:58,832 DEBUG: [47] After generic territory filter: 50820 rows
+2025-08-07 22:14:58,832 DEBUG: [47] Time filter using year: 1783
+2025-08-07 22:14:58,851 DEBUG: [47] After time filter: 28025 rows
+2025-08-07 22:15:00,695 DEBUG: [47] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 0 rows (was 28025)
+2025-08-07 22:15:00,695 WARNING: [47] No candidates after territory filtering.
+2025-08-07 22:15:00,712 DEBUG: [48] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:00,746 DEBUG: [48] After generic territory filter: 50820 rows
+2025-08-07 22:15:00,746 DEBUG: [48] Time filter using year: 1803
+2025-08-07 22:15:00,758 DEBUG: [48] After time filter: 28115 rows
+2025-08-07 22:15:02,244 DEBUG: [48] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 0 rows (was 28115)
+2025-08-07 22:15:02,244 WARNING: [48] No candidates after territory filtering.
+2025-08-07 22:15:02,267 DEBUG: [49] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:02,316 DEBUG: [49] After generic territory filter: 50820 rows
+2025-08-07 22:15:02,317 DEBUG: [49] Time filter using year: 1762
+2025-08-07 22:15:02,332 DEBUG: [49] After time filter: 27976 rows
+2025-08-07 22:15:03,908 DEBUG: [49] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 0 rows (was 27976)
+2025-08-07 22:15:03,908 WARNING: [49] No candidates after territory filtering.
+2025-08-07 22:15:03,932 DEBUG: [50] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:03,968 DEBUG: [50] After generic territory filter: 50820 rows
+2025-08-07 22:15:03,968 DEBUG: [50] Time filter using year: 1799
+2025-08-07 22:15:03,978 DEBUG: [50] After time filter: 28178 rows
+2025-08-07 22:15:05,661 DEBUG: [50] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 0 rows (was 28178)
+2025-08-07 22:15:05,663 WARNING: [50] No candidates after territory filtering.
+2025-08-07 22:15:05,689 DEBUG: [51] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:05,730 DEBUG: [51] After generic territory filter: 50820 rows
+2025-08-07 22:15:05,730 DEBUG: [51] Time filter using year: 1733
+2025-08-07 22:15:05,745 DEBUG: [51] After time filter: 27939 rows
+2025-08-07 22:15:07,422 DEBUG: [51] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 4 rows (was 27939)
+2025-08-07 22:15:07,424 DEBUG: [51] Comparing with gazetteer row 1000092
+2025-08-07 22:15:07,424 DEBUG: [51] Comparing with gazetteer row 1001144
+2025-08-07 22:15:07,425 DEBUG: [51] Comparing with gazetteer row 1001145
+2025-08-07 22:15:07,426 DEBUG: [51] Comparing with gazetteer row 1004983
+2025-08-07 22:15:07,426 WARNING: [51] No match found.
+2025-08-07 22:15:07,450 DEBUG: [52] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:07,500 DEBUG: [52] After generic territory filter: 50820 rows
+2025-08-07 22:15:07,501 DEBUG: [52] Time filter using year: 1714
+2025-08-07 22:15:07,518 DEBUG: [52] After time filter: 27911 rows
+2025-08-07 22:15:09,185 DEBUG: [52] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 57 rows (was 27911)
+2025-08-07 22:15:09,186 DEBUG: [52] Comparing with gazetteer row 1000101
+2025-08-07 22:15:09,187 DEBUG: [52] Comparing with gazetteer row 1001480
+2025-08-07 22:15:09,187 DEBUG: [52] Comparing with gazetteer row 1001481
+2025-08-07 22:15:09,188 DEBUG: [52] Comparing with gazetteer row 1001482
+2025-08-07 22:15:09,188 DEBUG: [52] Comparing with gazetteer row 1001483
+2025-08-07 22:15:09,189 DEBUG: [52] Comparing with gazetteer row 1001484
+2025-08-07 22:15:09,190 DEBUG: [52] Comparing with gazetteer row 1001485
+2025-08-07 22:15:09,190 DEBUG: [52] Comparing with gazetteer row 1001486
+2025-08-07 22:15:09,191 DEBUG: [52] Comparing with gazetteer row 1001487
+2025-08-07 22:15:09,192 DEBUG: [52] Comparing with gazetteer row 1001488
+2025-08-07 22:15:09,193 DEBUG: [52] Comparing with gazetteer row 1001489
+2025-08-07 22:15:09,193 DEBUG: [52] Comparing with gazetteer row 1001490
+2025-08-07 22:15:09,194 DEBUG: [52] Comparing with gazetteer row 1001491
+2025-08-07 22:15:09,195 DEBUG: [52] Comparing with gazetteer row 1001492
+2025-08-07 22:15:09,196 DEBUG: [52] Comparing with gazetteer row 1001493
+2025-08-07 22:15:09,196 DEBUG: [52] Comparing with gazetteer row 1001494
+2025-08-07 22:15:09,197 DEBUG: [52] Comparing with gazetteer row 1001495
+2025-08-07 22:15:09,197 DEBUG: [52] Comparing with gazetteer row 1001496
+2025-08-07 22:15:09,198 DEBUG: [52] Comparing with gazetteer row 1001497
+2025-08-07 22:15:09,198 DEBUG: [52] Comparing with gazetteer row 1001498
+2025-08-07 22:15:09,199 DEBUG: [52] Comparing with gazetteer row 1001499
+2025-08-07 22:15:09,200 DEBUG: [52] Comparing with gazetteer row 1001500
+2025-08-07 22:15:09,200 DEBUG: [52] Comparing with gazetteer row 1001501
+2025-08-07 22:15:09,201 DEBUG: [52] Comparing with gazetteer row 1001502
+2025-08-07 22:15:09,202 DEBUG: [52] Comparing with gazetteer row 1001503
+2025-08-07 22:15:09,202 DEBUG: [52] Comparing with gazetteer row 1001504
+2025-08-07 22:15:09,203 DEBUG: [52] Comparing with gazetteer row 1001505
+2025-08-07 22:15:09,204 DEBUG: [52] Comparing with gazetteer row 1001506
+2025-08-07 22:15:09,205 DEBUG: [52] Comparing with gazetteer row 1001507
+2025-08-07 22:15:09,205 DEBUG: [52] Comparing with gazetteer row 1001508
+2025-08-07 22:15:09,206 DEBUG: [52] Comparing with gazetteer row 1001509
+2025-08-07 22:15:09,207 DEBUG: [52] Comparing with gazetteer row 1001510
+2025-08-07 22:15:09,207 DEBUG: [52] Comparing with gazetteer row 1001511
+2025-08-07 22:15:09,208 DEBUG: [52] Comparing with gazetteer row 1001512
+2025-08-07 22:15:09,209 DEBUG: [52] Comparing with gazetteer row 1001513
+2025-08-07 22:15:09,210 DEBUG: [52] Comparing with gazetteer row 1001514
+2025-08-07 22:15:09,210 DEBUG: [52] Comparing with gazetteer row 1001515
+2025-08-07 22:15:09,211 DEBUG: [52] Comparing with gazetteer row 1001516
+2025-08-07 22:15:09,212 DEBUG: [52] Comparing with gazetteer row 1001517
+2025-08-07 22:15:09,212 DEBUG: [52] Comparing with gazetteer row 1001518
+2025-08-07 22:15:09,213 DEBUG: [52] Comparing with gazetteer row 1001519
+2025-08-07 22:15:09,214 DEBUG: [52] Comparing with gazetteer row 1001520
+2025-08-07 22:15:09,215 DEBUG: [52] Comparing with gazetteer row 1001521
+2025-08-07 22:15:09,215 DEBUG: [52] Comparing with gazetteer row 1001522
+2025-08-07 22:15:09,216 DEBUG: [52] Comparing with gazetteer row 1001523
+2025-08-07 22:15:09,217 DEBUG: [52] Comparing with gazetteer row 1001524
+2025-08-07 22:15:09,217 DEBUG: [52] Comparing with gazetteer row 1001525
+2025-08-07 22:15:09,218 DEBUG: [52] Comparing with gazetteer row 1001526
+2025-08-07 22:15:09,219 DEBUG: [52] Comparing with gazetteer row 1001527
+2025-08-07 22:15:09,219 DEBUG: [52] Comparing with gazetteer row 1001528
+2025-08-07 22:15:09,220 DEBUG: [52] Comparing with gazetteer row 1001529
+2025-08-07 22:15:09,220 DEBUG: [52] Comparing with gazetteer row 1001530
+2025-08-07 22:15:09,221 DEBUG: [52] Comparing with gazetteer row 1001531
+2025-08-07 22:15:09,222 DEBUG: [52] Comparing with gazetteer row 1001532
+2025-08-07 22:15:09,222 DEBUG: [52] Comparing with gazetteer row 1001533
+2025-08-07 22:15:09,223 DEBUG: [52] Comparing with gazetteer row 1001534
+2025-08-07 22:15:09,223 DEBUG: [52] Comparing with gazetteer row 1001548
+2025-08-07 22:15:09,224 WARNING: [52] No match found.
+2025-08-07 22:15:09,246 DEBUG: [53] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:09,293 DEBUG: [53] After generic territory filter: 50820 rows
+2025-08-07 22:15:09,293 DEBUG: [53] Time filter using year: 1764
+2025-08-07 22:15:09,309 DEBUG: [53] After time filter: 27976 rows
+2025-08-07 22:15:11,036 DEBUG: [53] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 57 rows (was 27976)
+2025-08-07 22:15:11,037 DEBUG: [53] Comparing with gazetteer row 1000101
+2025-08-07 22:15:11,038 DEBUG: [53] Comparing with gazetteer row 1001480
+2025-08-07 22:15:11,038 INFO: [53] Match found: toponym_label (score: 1)
+2025-08-07 22:15:11,038 INFO: [53] High confidence match — stopping further checks.
+2025-08-07 22:15:11,055 DEBUG: [54] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:11,086 DEBUG: [54] After generic territory filter: 50820 rows
+2025-08-07 22:15:11,086 DEBUG: [54] Time filter using year: 1758
+2025-08-07 22:15:11,096 DEBUG: [54] After time filter: 27969 rows
+2025-08-07 22:15:12,921 DEBUG: [54] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 57 rows (was 27969)
+2025-08-07 22:15:12,923 DEBUG: [54] Comparing with gazetteer row 1000101
+2025-08-07 22:15:12,925 DEBUG: [54] Comparing with gazetteer row 1001480
+2025-08-07 22:15:12,926 DEBUG: [54] Comparing with gazetteer row 1001481
+2025-08-07 22:15:12,930 DEBUG: [54] Comparing with gazetteer row 1001482
+2025-08-07 22:15:12,931 DEBUG: [54] Comparing with gazetteer row 1001483
+2025-08-07 22:15:12,932 DEBUG: [54] Comparing with gazetteer row 1001484
+2025-08-07 22:15:12,933 DEBUG: [54] Comparing with gazetteer row 1001485
+2025-08-07 22:15:12,933 DEBUG: [54] Comparing with gazetteer row 1001486
+2025-08-07 22:15:12,934 DEBUG: [54] Comparing with gazetteer row 1001487
+2025-08-07 22:15:12,935 DEBUG: [54] Comparing with gazetteer row 1001488
+2025-08-07 22:15:12,935 DEBUG: [54] Comparing with gazetteer row 1001489
+2025-08-07 22:15:12,936 DEBUG: [54] Comparing with gazetteer row 1001490
+2025-08-07 22:15:12,936 DEBUG: [54] Comparing with gazetteer row 1001491
+2025-08-07 22:15:12,937 DEBUG: [54] Comparing with gazetteer row 1001492
+2025-08-07 22:15:12,938 DEBUG: [54] Comparing with gazetteer row 1001493
+2025-08-07 22:15:12,938 DEBUG: [54] Comparing with gazetteer row 1001494
+2025-08-07 22:15:12,945 DEBUG: [54] Comparing with gazetteer row 1001495
+2025-08-07 22:15:12,948 DEBUG: [54] Comparing with gazetteer row 1001496
+2025-08-07 22:15:12,967 DEBUG: [54] Comparing with gazetteer row 1001497
+2025-08-07 22:15:12,968 DEBUG: [54] Comparing with gazetteer row 1001498
+2025-08-07 22:15:12,969 DEBUG: [54] Comparing with gazetteer row 1001499
+2025-08-07 22:15:12,969 DEBUG: [54] Comparing with gazetteer row 1001500
+2025-08-07 22:15:12,970 DEBUG: [54] Comparing with gazetteer row 1001501
+2025-08-07 22:15:12,971 DEBUG: [54] Comparing with gazetteer row 1001502
+2025-08-07 22:15:12,971 DEBUG: [54] Comparing with gazetteer row 1001503
+2025-08-07 22:15:12,972 DEBUG: [54] Comparing with gazetteer row 1001504
+2025-08-07 22:15:12,972 DEBUG: [54] Comparing with gazetteer row 1001505
+2025-08-07 22:15:12,973 DEBUG: [54] Comparing with gazetteer row 1001506
+2025-08-07 22:15:12,973 DEBUG: [54] Comparing with gazetteer row 1001507
+2025-08-07 22:15:12,973 DEBUG: [54] Comparing with gazetteer row 1001508
+2025-08-07 22:15:12,974 INFO: [54] Match found: toponym_label (score: 1)
+2025-08-07 22:15:12,975 INFO: [54] High confidence match — stopping further checks.
+2025-08-07 22:15:12,994 DEBUG: [55] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:13,043 DEBUG: [55] After generic territory filter: 50820 rows
+2025-08-07 22:15:13,046 DEBUG: [55] Time filter using year: 1787
+2025-08-07 22:15:13,067 DEBUG: [55] After time filter: 28320 rows
+2025-08-07 22:15:14,538 DEBUG: [55] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 0 rows (was 28320)
+2025-08-07 22:15:14,539 WARNING: [55] No candidates after territory filtering.
+2025-08-07 22:15:14,562 DEBUG: [56] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:14,610 DEBUG: [56] After generic territory filter: 50820 rows
+2025-08-07 22:15:14,610 DEBUG: [56] Time filter using year: 1711
+2025-08-07 22:15:14,624 DEBUG: [56] After time filter: 27885 rows
+2025-08-07 22:15:16,292 DEBUG: [56] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 0 rows (was 27885)
+2025-08-07 22:15:16,292 WARNING: [56] No candidates after territory filtering.
+2025-08-07 22:15:16,314 DEBUG: [57] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:16,344 DEBUG: [57] After generic territory filter: 50820 rows
+2025-08-07 22:15:16,344 DEBUG: [57] Time filter using year: 1803
+2025-08-07 22:15:16,354 DEBUG: [57] After time filter: 28115 rows
+2025-08-07 22:15:18,280 DEBUG: [57] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 22 rows (was 28115)
+2025-08-07 22:15:18,281 DEBUG: [57] Comparing with gazetteer row 1000093
+2025-08-07 22:15:18,282 DEBUG: [57] Comparing with gazetteer row 1001147
+2025-08-07 22:15:18,284 DEBUG: [57] Comparing with gazetteer row 1001148
+2025-08-07 22:15:18,284 DEBUG: [57] Comparing with gazetteer row 1001149
+2025-08-07 22:15:18,285 DEBUG: [57] Comparing with gazetteer row 1001150
+2025-08-07 22:15:18,286 DEBUG: [57] Comparing with gazetteer row 1001151
+2025-08-07 22:15:18,286 DEBUG: [57] Comparing with gazetteer row 1001152
+2025-08-07 22:15:18,287 DEBUG: [57] Comparing with gazetteer row 1001153
+2025-08-07 22:15:18,288 DEBUG: [57] Comparing with gazetteer row 1001154
+2025-08-07 22:15:18,288 INFO: [57] Match found: toponym_label (score: 1)
+2025-08-07 22:15:18,289 INFO: [57] High confidence match — stopping further checks.
+2025-08-07 22:15:18,309 DEBUG: [58] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:18,345 DEBUG: [58] After generic territory filter: 50820 rows
+2025-08-07 22:15:18,345 DEBUG: [58] Time filter using year: 1808
+2025-08-07 22:15:18,359 DEBUG: [58] After time filter: 28115 rows
+2025-08-07 22:15:20,036 DEBUG: [58] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 22 rows (was 28115)
+2025-08-07 22:15:20,038 DEBUG: [58] Comparing with gazetteer row 1000093
+2025-08-07 22:15:20,039 DEBUG: [58] Comparing with gazetteer row 1001147
+2025-08-07 22:15:20,039 DEBUG: [58] Comparing with gazetteer row 1001148
+2025-08-07 22:15:20,040 DEBUG: [58] Comparing with gazetteer row 1001149
+2025-08-07 22:15:20,040 DEBUG: [58] Comparing with gazetteer row 1001150
+2025-08-07 22:15:20,041 DEBUG: [58] Comparing with gazetteer row 1001151
+2025-08-07 22:15:20,042 DEBUG: [58] Comparing with gazetteer row 1001152
+2025-08-07 22:15:20,042 DEBUG: [58] Comparing with gazetteer row 1001153
+2025-08-07 22:15:20,043 DEBUG: [58] Comparing with gazetteer row 1001154
+2025-08-07 22:15:20,043 INFO: [58] Match found: toponym_label (score: 1)
+2025-08-07 22:15:20,043 INFO: [58] High confidence match — stopping further checks.
+2025-08-07 22:15:20,066 DEBUG: [59] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:20,119 DEBUG: [59] After generic territory filter: 50820 rows
+2025-08-07 22:15:20,119 DEBUG: [59] Time filter using year: 1786
+2025-08-07 22:15:20,138 DEBUG: [59] After time filter: 28018 rows
+2025-08-07 22:15:21,729 DEBUG: [59] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 22 rows (was 28018)
+2025-08-07 22:15:21,730 DEBUG: [59] Comparing with gazetteer row 1000093
+2025-08-07 22:15:21,731 DEBUG: [59] Comparing with gazetteer row 1001147
+2025-08-07 22:15:21,731 INFO: [59] Match found: toponym_label (score: 1)
+2025-08-07 22:15:21,732 INFO: [59] High confidence match — stopping further checks.
+2025-08-07 22:15:21,754 DEBUG: [60] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:21,803 DEBUG: [60] After generic territory filter: 50820 rows
+2025-08-07 22:15:21,804 DEBUG: [60] Time filter using year: 1772
+2025-08-07 22:15:21,817 DEBUG: [60] After time filter: 28011 rows
+2025-08-07 22:15:23,422 DEBUG: [60] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 22 rows (was 28011)
+2025-08-07 22:15:23,423 DEBUG: [60] Comparing with gazetteer row 1000093
+2025-08-07 22:15:23,423 DEBUG: [60] Comparing with gazetteer row 1001147
+2025-08-07 22:15:23,424 DEBUG: [60] Comparing with gazetteer row 1001148
+2025-08-07 22:15:23,424 DEBUG: [60] Comparing with gazetteer row 1001149
+2025-08-07 22:15:23,425 DEBUG: [60] Comparing with gazetteer row 1001150
+2025-08-07 22:15:23,425 DEBUG: [60] Comparing with gazetteer row 1001151
+2025-08-07 22:15:23,425 DEBUG: [60] Comparing with gazetteer row 1001152
+2025-08-07 22:15:23,426 DEBUG: [60] Comparing with gazetteer row 1001153
+2025-08-07 22:15:23,426 DEBUG: [60] Comparing with gazetteer row 1001154
+2025-08-07 22:15:23,426 DEBUG: [60] Comparing with gazetteer row 1001155
+2025-08-07 22:15:23,426 DEBUG: [60] Comparing with gazetteer row 1001156
+2025-08-07 22:15:23,427 DEBUG: [60] Comparing with gazetteer row 1001157
+2025-08-07 22:15:23,427 DEBUG: [60] Comparing with gazetteer row 1001158
+2025-08-07 22:15:23,428 DEBUG: [60] Comparing with gazetteer row 1001159
+2025-08-07 22:15:23,428 DEBUG: [60] Comparing with gazetteer row 1001160
+2025-08-07 22:15:23,429 DEBUG: [60] Comparing with gazetteer row 1001161
+2025-08-07 22:15:23,429 DEBUG: [60] Comparing with gazetteer row 1001162
+2025-08-07 22:15:23,430 DEBUG: [60] Comparing with gazetteer row 1001163
+2025-08-07 22:15:23,430 DEBUG: [60] Comparing with gazetteer row 1001164
+2025-08-07 22:15:23,430 DEBUG: [60] Comparing with gazetteer row 1001165
+2025-08-07 22:15:23,431 DEBUG: [60] Comparing with gazetteer row 1001166
+2025-08-07 22:15:23,431 DEBUG: [60] Comparing with gazetteer row 1001167
+2025-08-07 22:15:23,431 WARNING: [60] No match found.
+2025-08-07 22:15:23,447 DEBUG: [61] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:23,474 DEBUG: [61] After generic territory filter: 50820 rows
+2025-08-07 22:15:23,474 DEBUG: [61] Time filter using year: 1797
+2025-08-07 22:15:23,484 DEBUG: [61] After time filter: 28178 rows
+2025-08-07 22:15:25,352 DEBUG: [61] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 22 rows (was 28178)
+2025-08-07 22:15:25,355 DEBUG: [61] Comparing with gazetteer row 1000093
+2025-08-07 22:15:25,360 INFO: [61] Match found: toponym_label (score: 1)
+2025-08-07 22:15:25,362 INFO: [61] High confidence match — stopping further checks.
+2025-08-07 22:15:25,392 DEBUG: [62] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:25,443 DEBUG: [62] After generic territory filter: 50820 rows
+2025-08-07 22:15:25,443 DEBUG: [62] Time filter using year: 1808
+2025-08-07 22:15:25,458 DEBUG: [62] After time filter: 28115 rows
+2025-08-07 22:15:27,109 DEBUG: [62] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 22 rows (was 28115)
+2025-08-07 22:15:27,110 DEBUG: [62] Comparing with gazetteer row 1000093
+2025-08-07 22:15:27,111 DEBUG: [62] Comparing with gazetteer row 1001147
+2025-08-07 22:15:27,111 DEBUG: [62] Comparing with gazetteer row 1001148
+2025-08-07 22:15:27,112 DEBUG: [62] Comparing with gazetteer row 1001149
+2025-08-07 22:15:27,112 DEBUG: [62] Comparing with gazetteer row 1001150
+2025-08-07 22:15:27,113 DEBUG: [62] Comparing with gazetteer row 1001151
+2025-08-07 22:15:27,114 DEBUG: [62] Comparing with gazetteer row 1001152
+2025-08-07 22:15:27,114 DEBUG: [62] Comparing with gazetteer row 1001153
+2025-08-07 22:15:27,115 DEBUG: [62] Comparing with gazetteer row 1001154
+2025-08-07 22:15:27,115 DEBUG: [62] Comparing with gazetteer row 1001155
+2025-08-07 22:15:27,116 DEBUG: [62] Comparing with gazetteer row 1001156
+2025-08-07 22:15:27,117 DEBUG: [62] Comparing with gazetteer row 1001157
+2025-08-07 22:15:27,117 DEBUG: [62] Comparing with gazetteer row 1001158
+2025-08-07 22:15:27,118 DEBUG: [62] Comparing with gazetteer row 1001159
+2025-08-07 22:15:27,119 DEBUG: [62] Comparing with gazetteer row 1001160
+2025-08-07 22:15:27,120 DEBUG: [62] Comparing with gazetteer row 1001161
+2025-08-07 22:15:27,120 DEBUG: [62] Comparing with gazetteer row 1001162
+2025-08-07 22:15:27,121 DEBUG: [62] Comparing with gazetteer row 1001163
+2025-08-07 22:15:27,122 DEBUG: [62] Comparing with gazetteer row 1001164
+2025-08-07 22:15:27,122 DEBUG: [62] Comparing with gazetteer row 1001165
+2025-08-07 22:15:27,123 DEBUG: [62] Comparing with gazetteer row 1001166
+2025-08-07 22:15:27,123 DEBUG: [62] Comparing with gazetteer row 1001167
+2025-08-07 22:15:27,123 INFO: [62] Match found: toponym_label (score: 1)
+2025-08-07 22:15:27,124 INFO: [62] High confidence match — stopping further checks.
+2025-08-07 22:15:27,146 DEBUG: [63] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:27,194 DEBUG: [63] After generic territory filter: 50820 rows
+2025-08-07 22:15:27,194 DEBUG: [63] Time filter using year: 1778
+2025-08-07 22:15:27,212 DEBUG: [63] After time filter: 28025 rows
+2025-08-07 22:15:28,834 DEBUG: [63] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 77 rows (was 28025)
+2025-08-07 22:15:28,835 DEBUG: [63] Comparing with gazetteer row 1000086
+2025-08-07 22:15:28,836 DEBUG: [63] Comparing with gazetteer row 1000903
+2025-08-07 22:15:28,836 DEBUG: [63] Comparing with gazetteer row 1000904
+2025-08-07 22:15:28,837 DEBUG: [63] Comparing with gazetteer row 1000905
+2025-08-07 22:15:28,837 DEBUG: [63] Comparing with gazetteer row 1000906
+2025-08-07 22:15:28,838 DEBUG: [63] Comparing with gazetteer row 1000907
+2025-08-07 22:15:28,838 DEBUG: [63] Comparing with gazetteer row 1000908
+2025-08-07 22:15:28,838 DEBUG: [63] Comparing with gazetteer row 1000909
+2025-08-07 22:15:28,838 DEBUG: [63] Comparing with gazetteer row 1000910
+2025-08-07 22:15:28,839 DEBUG: [63] Comparing with gazetteer row 1000911
+2025-08-07 22:15:28,839 DEBUG: [63] Comparing with gazetteer row 1000912
+2025-08-07 22:15:28,839 DEBUG: [63] Comparing with gazetteer row 1000913
+2025-08-07 22:15:28,840 DEBUG: [63] Comparing with gazetteer row 1000914
+2025-08-07 22:15:28,840 DEBUG: [63] Comparing with gazetteer row 1000915
+2025-08-07 22:15:28,840 DEBUG: [63] Comparing with gazetteer row 1000916
+2025-08-07 22:15:28,841 DEBUG: [63] Comparing with gazetteer row 1000917
+2025-08-07 22:15:28,841 DEBUG: [63] Comparing with gazetteer row 1000918
+2025-08-07 22:15:28,842 DEBUG: [63] Comparing with gazetteer row 1000919
+2025-08-07 22:15:28,842 DEBUG: [63] Comparing with gazetteer row 1000920
+2025-08-07 22:15:28,843 DEBUG: [63] Comparing with gazetteer row 1000921
+2025-08-07 22:15:28,843 DEBUG: [63] Comparing with gazetteer row 1000922
+2025-08-07 22:15:28,844 DEBUG: [63] Comparing with gazetteer row 1000923
+2025-08-07 22:15:28,844 DEBUG: [63] Comparing with gazetteer row 1000924
+2025-08-07 22:15:28,845 DEBUG: [63] Comparing with gazetteer row 1000925
+2025-08-07 22:15:28,845 DEBUG: [63] Comparing with gazetteer row 1000926
+2025-08-07 22:15:28,845 DEBUG: [63] Comparing with gazetteer row 1000927
+2025-08-07 22:15:28,846 DEBUG: [63] Comparing with gazetteer row 1000928
+2025-08-07 22:15:28,846 DEBUG: [63] Comparing with gazetteer row 1000929
+2025-08-07 22:15:28,847 DEBUG: [63] Comparing with gazetteer row 1000930
+2025-08-07 22:15:28,847 DEBUG: [63] Comparing with gazetteer row 1000931
+2025-08-07 22:15:28,847 DEBUG: [63] Comparing with gazetteer row 1000932
+2025-08-07 22:15:28,848 DEBUG: [63] Comparing with gazetteer row 1000933
+2025-08-07 22:15:28,848 DEBUG: [63] Comparing with gazetteer row 1000934
+2025-08-07 22:15:28,848 DEBUG: [63] Comparing with gazetteer row 1000935
+2025-08-07 22:15:28,849 DEBUG: [63] Comparing with gazetteer row 1000936
+2025-08-07 22:15:28,849 DEBUG: [63] Comparing with gazetteer row 1000937
+2025-08-07 22:15:28,850 DEBUG: [63] Comparing with gazetteer row 1000938
+2025-08-07 22:15:28,850 DEBUG: [63] Comparing with gazetteer row 1000939
+2025-08-07 22:15:28,850 DEBUG: [63] Comparing with gazetteer row 1000940
+2025-08-07 22:15:28,851 DEBUG: [63] Comparing with gazetteer row 1000941
+2025-08-07 22:15:28,851 DEBUG: [63] Comparing with gazetteer row 1000942
+2025-08-07 22:15:28,852 DEBUG: [63] Comparing with gazetteer row 1000943
+2025-08-07 22:15:28,852 DEBUG: [63] Comparing with gazetteer row 1000944
+2025-08-07 22:15:28,853 DEBUG: [63] Comparing with gazetteer row 1000945
+2025-08-07 22:15:28,853 DEBUG: [63] Comparing with gazetteer row 1000946
+2025-08-07 22:15:28,854 DEBUG: [63] Comparing with gazetteer row 1000947
+2025-08-07 22:15:28,854 DEBUG: [63] Comparing with gazetteer row 1000948
+2025-08-07 22:15:28,854 DEBUG: [63] Comparing with gazetteer row 1000949
+2025-08-07 22:15:28,855 DEBUG: [63] Comparing with gazetteer row 1000950
+2025-08-07 22:15:28,855 DEBUG: [63] Comparing with gazetteer row 1000951
+2025-08-07 22:15:28,855 DEBUG: [63] Comparing with gazetteer row 1000952
+2025-08-07 22:15:28,856 DEBUG: [63] Comparing with gazetteer row 1000953
+2025-08-07 22:15:28,856 INFO: [63] Match found: toponym_label (score: 1)
+2025-08-07 22:15:28,856 INFO: [63] High confidence match — stopping further checks.
+2025-08-07 22:15:28,882 DEBUG: [64] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:28,915 DEBUG: [64] After generic territory filter: 50820 rows
+2025-08-07 22:15:28,915 DEBUG: [64] Time filter using year: 1802
+2025-08-07 22:15:28,925 DEBUG: [64] After time filter: 28115 rows
+2025-08-07 22:15:30,632 DEBUG: [64] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 77 rows (was 28115)
+2025-08-07 22:15:30,633 DEBUG: [64] Comparing with gazetteer row 1000086
+2025-08-07 22:15:30,634 DEBUG: [64] Comparing with gazetteer row 1000903
+2025-08-07 22:15:30,635 DEBUG: [64] Comparing with gazetteer row 1000904
+2025-08-07 22:15:30,635 DEBUG: [64] Comparing with gazetteer row 1000905
+2025-08-07 22:15:30,636 DEBUG: [64] Comparing with gazetteer row 1000906
+2025-08-07 22:15:30,636 DEBUG: [64] Comparing with gazetteer row 1000907
+2025-08-07 22:15:30,637 DEBUG: [64] Comparing with gazetteer row 1000908
+2025-08-07 22:15:30,637 DEBUG: [64] Comparing with gazetteer row 1000909
+2025-08-07 22:15:30,638 DEBUG: [64] Comparing with gazetteer row 1000910
+2025-08-07 22:15:30,638 DEBUG: [64] Comparing with gazetteer row 1000911
+2025-08-07 22:15:30,639 DEBUG: [64] Comparing with gazetteer row 1000912
+2025-08-07 22:15:30,639 DEBUG: [64] Comparing with gazetteer row 1000913
+2025-08-07 22:15:30,639 DEBUG: [64] Comparing with gazetteer row 1000914
+2025-08-07 22:15:30,640 DEBUG: [64] Comparing with gazetteer row 1000915
+2025-08-07 22:15:30,640 DEBUG: [64] Comparing with gazetteer row 1000916
+2025-08-07 22:15:30,641 DEBUG: [64] Comparing with gazetteer row 1000917
+2025-08-07 22:15:30,641 DEBUG: [64] Comparing with gazetteer row 1000918
+2025-08-07 22:15:30,642 DEBUG: [64] Comparing with gazetteer row 1000919
+2025-08-07 22:15:30,643 DEBUG: [64] Comparing with gazetteer row 1000920
+2025-08-07 22:15:30,643 DEBUG: [64] Comparing with gazetteer row 1000921
+2025-08-07 22:15:30,644 DEBUG: [64] Comparing with gazetteer row 1000922
+2025-08-07 22:15:30,645 DEBUG: [64] Comparing with gazetteer row 1000923
+2025-08-07 22:15:30,646 DEBUG: [64] Comparing with gazetteer row 1000924
+2025-08-07 22:15:30,647 DEBUG: [64] Comparing with gazetteer row 1000925
+2025-08-07 22:15:30,647 DEBUG: [64] Comparing with gazetteer row 1000926
+2025-08-07 22:15:30,648 DEBUG: [64] Comparing with gazetteer row 1000927
+2025-08-07 22:15:30,648 DEBUG: [64] Comparing with gazetteer row 1000928
+2025-08-07 22:15:30,649 DEBUG: [64] Comparing with gazetteer row 1000929
+2025-08-07 22:15:30,650 DEBUG: [64] Comparing with gazetteer row 1000930
+2025-08-07 22:15:30,651 DEBUG: [64] Comparing with gazetteer row 1000931
+2025-08-07 22:15:30,651 DEBUG: [64] Comparing with gazetteer row 1000932
+2025-08-07 22:15:30,652 DEBUG: [64] Comparing with gazetteer row 1000933
+2025-08-07 22:15:30,653 DEBUG: [64] Comparing with gazetteer row 1000934
+2025-08-07 22:15:30,653 DEBUG: [64] Comparing with gazetteer row 1000935
+2025-08-07 22:15:30,654 DEBUG: [64] Comparing with gazetteer row 1000936
+2025-08-07 22:15:30,655 DEBUG: [64] Comparing with gazetteer row 1000937
+2025-08-07 22:15:30,656 DEBUG: [64] Comparing with gazetteer row 1000938
+2025-08-07 22:15:30,656 DEBUG: [64] Comparing with gazetteer row 1000939
+2025-08-07 22:15:30,657 DEBUG: [64] Comparing with gazetteer row 1000940
+2025-08-07 22:15:30,657 DEBUG: [64] Comparing with gazetteer row 1000941
+2025-08-07 22:15:30,658 DEBUG: [64] Comparing with gazetteer row 1000942
+2025-08-07 22:15:30,658 DEBUG: [64] Comparing with gazetteer row 1000943
+2025-08-07 22:15:30,659 DEBUG: [64] Comparing with gazetteer row 1000944
+2025-08-07 22:15:30,660 DEBUG: [64] Comparing with gazetteer row 1000945
+2025-08-07 22:15:30,660 DEBUG: [64] Comparing with gazetteer row 1000946
+2025-08-07 22:15:30,660 DEBUG: [64] Comparing with gazetteer row 1000947
+2025-08-07 22:15:30,662 DEBUG: [64] Comparing with gazetteer row 1000948
+2025-08-07 22:15:30,663 DEBUG: [64] Comparing with gazetteer row 1000949
+2025-08-07 22:15:30,664 DEBUG: [64] Comparing with gazetteer row 1000950
+2025-08-07 22:15:30,664 DEBUG: [64] Comparing with gazetteer row 1000951
+2025-08-07 22:15:30,665 DEBUG: [64] Comparing with gazetteer row 1000952
+2025-08-07 22:15:30,666 DEBUG: [64] Comparing with gazetteer row 1000953
+2025-08-07 22:15:30,667 DEBUG: [64] Comparing with gazetteer row 1000954
+2025-08-07 22:15:30,667 DEBUG: [64] Comparing with gazetteer row 1000955
+2025-08-07 22:15:30,668 DEBUG: [64] Comparing with gazetteer row 1000956
+2025-08-07 22:15:30,668 DEBUG: [64] Comparing with gazetteer row 1000957
+2025-08-07 22:15:30,669 DEBUG: [64] Comparing with gazetteer row 1000958
+2025-08-07 22:15:30,669 DEBUG: [64] Comparing with gazetteer row 1000959
+2025-08-07 22:15:30,669 DEBUG: [64] Comparing with gazetteer row 1000960
+2025-08-07 22:15:30,670 DEBUG: [64] Comparing with gazetteer row 1000961
+2025-08-07 22:15:30,670 DEBUG: [64] Comparing with gazetteer row 1000962
+2025-08-07 22:15:30,671 DEBUG: [64] Comparing with gazetteer row 1000963
+2025-08-07 22:15:30,671 DEBUG: [64] Comparing with gazetteer row 1000964
+2025-08-07 22:15:30,672 DEBUG: [64] Comparing with gazetteer row 1000965
+2025-08-07 22:15:30,673 DEBUG: [64] Comparing with gazetteer row 1000966
+2025-08-07 22:15:30,673 DEBUG: [64] Comparing with gazetteer row 1000967
+2025-08-07 22:15:30,674 DEBUG: [64] Comparing with gazetteer row 1000968
+2025-08-07 22:15:30,674 DEBUG: [64] Comparing with gazetteer row 1000969
+2025-08-07 22:15:30,674 DEBUG: [64] Comparing with gazetteer row 1000970
+2025-08-07 22:15:30,675 DEBUG: [64] Comparing with gazetteer row 1000971
+2025-08-07 22:15:30,675 DEBUG: [64] Comparing with gazetteer row 1000972
+2025-08-07 22:15:30,676 DEBUG: [64] Comparing with gazetteer row 1000973
+2025-08-07 22:15:30,676 DEBUG: [64] Comparing with gazetteer row 1000974
+2025-08-07 22:15:30,677 DEBUG: [64] Comparing with gazetteer row 1000975
+2025-08-07 22:15:30,679 DEBUG: [64] Comparing with gazetteer row 9900018
+2025-08-07 22:15:30,680 DEBUG: [64] Comparing with gazetteer row 9901307
+2025-08-07 22:15:30,680 DEBUG: [64] Comparing with gazetteer row 9901308
+2025-08-07 22:15:30,681 WARNING: [64] No match found.
+2025-08-07 22:15:30,704 DEBUG: [65] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:30,735 DEBUG: [65] After generic territory filter: 50820 rows
+2025-08-07 22:15:30,736 DEBUG: [65] Time filter using year: 1778
+2025-08-07 22:15:30,747 DEBUG: [65] After time filter: 28025 rows
+2025-08-07 22:15:32,452 DEBUG: [65] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 17 rows (was 28025)
+2025-08-07 22:15:32,454 DEBUG: [65] Comparing with gazetteer row 1000085
+2025-08-07 22:15:32,454 DEBUG: [65] Comparing with gazetteer row 1000885
+2025-08-07 22:15:32,455 DEBUG: [65] Comparing with gazetteer row 1000886
+2025-08-07 22:15:32,455 DEBUG: [65] Comparing with gazetteer row 1000887
+2025-08-07 22:15:32,456 DEBUG: [65] Comparing with gazetteer row 1000888
+2025-08-07 22:15:32,457 DEBUG: [65] Comparing with gazetteer row 1000889
+2025-08-07 22:15:32,457 DEBUG: [65] Comparing with gazetteer row 1000890
+2025-08-07 22:15:32,458 DEBUG: [65] Comparing with gazetteer row 1000892
+2025-08-07 22:15:32,458 DEBUG: [65] Comparing with gazetteer row 1000894
+2025-08-07 22:15:32,459 DEBUG: [65] Comparing with gazetteer row 1000895
+2025-08-07 22:15:32,459 DEBUG: [65] Comparing with gazetteer row 1000896
+2025-08-07 22:15:32,460 DEBUG: [65] Comparing with gazetteer row 1000897
+2025-08-07 22:15:32,460 DEBUG: [65] Comparing with gazetteer row 1000899
+2025-08-07 22:15:32,461 INFO: [65] Match found: toponym_label (score: 1)
+2025-08-07 22:15:32,461 INFO: [65] High confidence match — stopping further checks.
+2025-08-07 22:15:32,485 DEBUG: [66] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:32,542 DEBUG: [66] After generic territory filter: 50820 rows
+2025-08-07 22:15:32,542 DEBUG: [66] Time filter using year: 1784
+2025-08-07 22:15:32,561 DEBUG: [66] After time filter: 28025 rows
+2025-08-07 22:15:33,968 DEBUG: [66] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 72 rows (was 28025)
+2025-08-07 22:15:33,969 DEBUG: [66] Comparing with gazetteer row 1000080
+2025-08-07 22:15:33,970 DEBUG: [66] Comparing with gazetteer row 1000736
+2025-08-07 22:15:33,971 DEBUG: [66] Comparing with gazetteer row 1000737
+2025-08-07 22:15:33,971 DEBUG: [66] Comparing with gazetteer row 1000738
+2025-08-07 22:15:33,972 DEBUG: [66] Comparing with gazetteer row 1000739
+2025-08-07 22:15:33,972 DEBUG: [66] Comparing with gazetteer row 1000740
+2025-08-07 22:15:33,973 DEBUG: [66] Comparing with gazetteer row 1000741
+2025-08-07 22:15:33,973 DEBUG: [66] Comparing with gazetteer row 1000742
+2025-08-07 22:15:33,974 DEBUG: [66] Comparing with gazetteer row 1000743
+2025-08-07 22:15:33,974 DEBUG: [66] Comparing with gazetteer row 1000744
+2025-08-07 22:15:33,975 DEBUG: [66] Comparing with gazetteer row 1000745
+2025-08-07 22:15:33,976 DEBUG: [66] Comparing with gazetteer row 1000746
+2025-08-07 22:15:33,976 DEBUG: [66] Comparing with gazetteer row 1000747
+2025-08-07 22:15:33,977 DEBUG: [66] Comparing with gazetteer row 1000749
+2025-08-07 22:15:33,978 DEBUG: [66] Comparing with gazetteer row 1000750
+2025-08-07 22:15:33,978 DEBUG: [66] Comparing with gazetteer row 1000751
+2025-08-07 22:15:33,978 DEBUG: [66] Comparing with gazetteer row 1000752
+2025-08-07 22:15:33,979 DEBUG: [66] Comparing with gazetteer row 1000753
+2025-08-07 22:15:33,979 DEBUG: [66] Comparing with gazetteer row 1000754
+2025-08-07 22:15:33,980 DEBUG: [66] Comparing with gazetteer row 1000755
+2025-08-07 22:15:33,980 DEBUG: [66] Comparing with gazetteer row 1000756
+2025-08-07 22:15:33,981 DEBUG: [66] Comparing with gazetteer row 1000757
+2025-08-07 22:15:33,982 DEBUG: [66] Comparing with gazetteer row 1000758
+2025-08-07 22:15:33,982 DEBUG: [66] Comparing with gazetteer row 1000759
+2025-08-07 22:15:33,983 DEBUG: [66] Comparing with gazetteer row 1000760
+2025-08-07 22:15:33,983 DEBUG: [66] Comparing with gazetteer row 1000761
+2025-08-07 22:15:33,984 DEBUG: [66] Comparing with gazetteer row 1000762
+2025-08-07 22:15:33,984 DEBUG: [66] Comparing with gazetteer row 1000763
+2025-08-07 22:15:33,985 DEBUG: [66] Comparing with gazetteer row 1000764
+2025-08-07 22:15:33,986 DEBUG: [66] Comparing with gazetteer row 1000765
+2025-08-07 22:15:33,986 DEBUG: [66] Comparing with gazetteer row 1000766
+2025-08-07 22:15:33,986 DEBUG: [66] Comparing with gazetteer row 1000767
+2025-08-07 22:15:33,987 DEBUG: [66] Comparing with gazetteer row 1000769
+2025-08-07 22:15:33,988 DEBUG: [66] Comparing with gazetteer row 1000770
+2025-08-07 22:15:33,988 DEBUG: [66] Comparing with gazetteer row 1000771
+2025-08-07 22:15:33,989 DEBUG: [66] Comparing with gazetteer row 1000772
+2025-08-07 22:15:33,989 DEBUG: [66] Comparing with gazetteer row 1000773
+2025-08-07 22:15:33,990 DEBUG: [66] Comparing with gazetteer row 1000774
+2025-08-07 22:15:33,991 DEBUG: [66] Comparing with gazetteer row 1000775
+2025-08-07 22:15:33,991 DEBUG: [66] Comparing with gazetteer row 1000776
+2025-08-07 22:15:33,992 DEBUG: [66] Comparing with gazetteer row 1000777
+2025-08-07 22:15:33,993 DEBUG: [66] Comparing with gazetteer row 1000778
+2025-08-07 22:15:33,993 DEBUG: [66] Comparing with gazetteer row 1000779
+2025-08-07 22:15:33,994 DEBUG: [66] Comparing with gazetteer row 1000780
+2025-08-07 22:15:33,994 DEBUG: [66] Comparing with gazetteer row 1000781
+2025-08-07 22:15:33,995 DEBUG: [66] Comparing with gazetteer row 1000782
+2025-08-07 22:15:33,995 DEBUG: [66] Comparing with gazetteer row 1000783
+2025-08-07 22:15:33,996 DEBUG: [66] Comparing with gazetteer row 1000784
+2025-08-07 22:15:33,996 DEBUG: [66] Comparing with gazetteer row 1000785
+2025-08-07 22:15:33,997 DEBUG: [66] Comparing with gazetteer row 1000786
+2025-08-07 22:15:33,997 DEBUG: [66] Comparing with gazetteer row 1000787
+2025-08-07 22:15:33,998 DEBUG: [66] Comparing with gazetteer row 1000788
+2025-08-07 22:15:33,998 DEBUG: [66] Comparing with gazetteer row 1000790
+2025-08-07 22:15:33,999 DEBUG: [66] Comparing with gazetteer row 1000791
+2025-08-07 22:15:33,999 DEBUG: [66] Comparing with gazetteer row 1000792
+2025-08-07 22:15:34,000 DEBUG: [66] Comparing with gazetteer row 1000793
+2025-08-07 22:15:34,000 DEBUG: [66] Comparing with gazetteer row 1000794
+2025-08-07 22:15:34,000 DEBUG: [66] Comparing with gazetteer row 1000795
+2025-08-07 22:15:34,001 DEBUG: [66] Comparing with gazetteer row 1000796
+2025-08-07 22:15:34,001 DEBUG: [66] Comparing with gazetteer row 1000797
+2025-08-07 22:15:34,002 DEBUG: [66] Comparing with gazetteer row 1000798
+2025-08-07 22:15:34,002 DEBUG: [66] Comparing with gazetteer row 1000799
+2025-08-07 22:15:34,003 INFO: [66] Match found: toponym_label (score: 1)
+2025-08-07 22:15:34,003 INFO: [66] High confidence match — stopping further checks.
+2025-08-07 22:15:34,025 DEBUG: [67] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:34,068 DEBUG: [67] After generic territory filter: 50820 rows
+2025-08-07 22:15:34,068 DEBUG: [67] Time filter using year: 1799
+2025-08-07 22:15:34,080 DEBUG: [67] After time filter: 28178 rows
+2025-08-07 22:15:35,741 DEBUG: [67] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 72 rows (was 28178)
+2025-08-07 22:15:35,744 DEBUG: [67] Comparing with gazetteer row 1000080
+2025-08-07 22:15:35,745 DEBUG: [67] Comparing with gazetteer row 1000736
+2025-08-07 22:15:35,746 DEBUG: [67] Comparing with gazetteer row 1000737
+2025-08-07 22:15:35,746 DEBUG: [67] Comparing with gazetteer row 1000738
+2025-08-07 22:15:35,749 DEBUG: [67] Comparing with gazetteer row 1000739
+2025-08-07 22:15:35,753 DEBUG: [67] Comparing with gazetteer row 1000740
+2025-08-07 22:15:35,755 DEBUG: [67] Comparing with gazetteer row 1000741
+2025-08-07 22:15:35,757 DEBUG: [67] Comparing with gazetteer row 1000742
+2025-08-07 22:15:35,757 INFO: [67] Match found: toponym_label (score: 1)
+2025-08-07 22:15:35,758 INFO: [67] High confidence match — stopping further checks.
+2025-08-07 22:15:35,789 DEBUG: [68] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:35,836 DEBUG: [68] After generic territory filter: 50820 rows
+2025-08-07 22:15:35,837 DEBUG: [68] Time filter using year: 1799
+2025-08-07 22:15:35,850 DEBUG: [68] After time filter: 28178 rows
+2025-08-07 22:15:37,506 DEBUG: [68] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 72 rows (was 28178)
+2025-08-07 22:15:37,507 DEBUG: [68] Comparing with gazetteer row 1000080
+2025-08-07 22:15:37,508 DEBUG: [68] Comparing with gazetteer row 1000736
+2025-08-07 22:15:37,508 DEBUG: [68] Comparing with gazetteer row 1000737
+2025-08-07 22:15:37,509 DEBUG: [68] Comparing with gazetteer row 1000738
+2025-08-07 22:15:37,510 DEBUG: [68] Comparing with gazetteer row 1000739
+2025-08-07 22:15:37,510 DEBUG: [68] Comparing with gazetteer row 1000740
+2025-08-07 22:15:37,511 DEBUG: [68] Comparing with gazetteer row 1000741
+2025-08-07 22:15:37,512 DEBUG: [68] Comparing with gazetteer row 1000742
+2025-08-07 22:15:37,512 DEBUG: [68] Comparing with gazetteer row 1000743
+2025-08-07 22:15:37,513 DEBUG: [68] Comparing with gazetteer row 1000744
+2025-08-07 22:15:37,514 DEBUG: [68] Comparing with gazetteer row 1000745
+2025-08-07 22:15:37,514 DEBUG: [68] Comparing with gazetteer row 1000746
+2025-08-07 22:15:37,515 DEBUG: [68] Comparing with gazetteer row 1000747
+2025-08-07 22:15:37,516 DEBUG: [68] Comparing with gazetteer row 1000749
+2025-08-07 22:15:37,517 DEBUG: [68] Comparing with gazetteer row 1000750
+2025-08-07 22:15:37,517 DEBUG: [68] Comparing with gazetteer row 1000751
+2025-08-07 22:15:37,518 DEBUG: [68] Comparing with gazetteer row 1000752
+2025-08-07 22:15:37,519 DEBUG: [68] Comparing with gazetteer row 1000753
+2025-08-07 22:15:37,519 DEBUG: [68] Comparing with gazetteer row 1000754
+2025-08-07 22:15:37,520 DEBUG: [68] Comparing with gazetteer row 1000755
+2025-08-07 22:15:37,521 DEBUG: [68] Comparing with gazetteer row 1000756
+2025-08-07 22:15:37,521 DEBUG: [68] Comparing with gazetteer row 1000757
+2025-08-07 22:15:37,522 DEBUG: [68] Comparing with gazetteer row 1000758
+2025-08-07 22:15:37,522 DEBUG: [68] Comparing with gazetteer row 1000759
+2025-08-07 22:15:37,523 DEBUG: [68] Comparing with gazetteer row 1000760
+2025-08-07 22:15:37,523 DEBUG: [68] Comparing with gazetteer row 1000761
+2025-08-07 22:15:37,524 DEBUG: [68] Comparing with gazetteer row 1000762
+2025-08-07 22:15:37,524 DEBUG: [68] Comparing with gazetteer row 1000763
+2025-08-07 22:15:37,525 DEBUG: [68] Comparing with gazetteer row 1000764
+2025-08-07 22:15:37,526 DEBUG: [68] Comparing with gazetteer row 1000765
+2025-08-07 22:15:37,526 DEBUG: [68] Comparing with gazetteer row 1000766
+2025-08-07 22:15:37,527 DEBUG: [68] Comparing with gazetteer row 1000767
+2025-08-07 22:15:37,528 DEBUG: [68] Comparing with gazetteer row 1000769
+2025-08-07 22:15:37,528 DEBUG: [68] Comparing with gazetteer row 1000770
+2025-08-07 22:15:37,529 DEBUG: [68] Comparing with gazetteer row 1000771
+2025-08-07 22:15:37,529 DEBUG: [68] Comparing with gazetteer row 1000772
+2025-08-07 22:15:37,530 DEBUG: [68] Comparing with gazetteer row 1000773
+2025-08-07 22:15:37,530 DEBUG: [68] Comparing with gazetteer row 1000774
+2025-08-07 22:15:37,531 DEBUG: [68] Comparing with gazetteer row 1000775
+2025-08-07 22:15:37,532 DEBUG: [68] Comparing with gazetteer row 1000776
+2025-08-07 22:15:37,533 DEBUG: [68] Comparing with gazetteer row 1000777
+2025-08-07 22:15:37,533 DEBUG: [68] Comparing with gazetteer row 1000778
+2025-08-07 22:15:37,534 DEBUG: [68] Comparing with gazetteer row 1000779
+2025-08-07 22:15:37,535 DEBUG: [68] Comparing with gazetteer row 1000780
+2025-08-07 22:15:37,536 DEBUG: [68] Comparing with gazetteer row 1000781
+2025-08-07 22:15:37,536 DEBUG: [68] Comparing with gazetteer row 1000782
+2025-08-07 22:15:37,537 DEBUG: [68] Comparing with gazetteer row 1000783
+2025-08-07 22:15:37,537 DEBUG: [68] Comparing with gazetteer row 1000784
+2025-08-07 22:15:37,538 DEBUG: [68] Comparing with gazetteer row 1000785
+2025-08-07 22:15:37,538 DEBUG: [68] Comparing with gazetteer row 1000786
+2025-08-07 22:15:37,539 DEBUG: [68] Comparing with gazetteer row 1000787
+2025-08-07 22:15:37,539 DEBUG: [68] Comparing with gazetteer row 1000788
+2025-08-07 22:15:37,540 DEBUG: [68] Comparing with gazetteer row 1000790
+2025-08-07 22:15:37,540 DEBUG: [68] Comparing with gazetteer row 1000791
+2025-08-07 22:15:37,541 DEBUG: [68] Comparing with gazetteer row 1000792
+2025-08-07 22:15:37,541 DEBUG: [68] Comparing with gazetteer row 1000793
+2025-08-07 22:15:37,542 DEBUG: [68] Comparing with gazetteer row 1000794
+2025-08-07 22:15:37,542 DEBUG: [68] Comparing with gazetteer row 1000795
+2025-08-07 22:15:37,543 DEBUG: [68] Comparing with gazetteer row 1000796
+2025-08-07 22:15:37,543 DEBUG: [68] Comparing with gazetteer row 1000797
+2025-08-07 22:15:37,544 DEBUG: [68] Comparing with gazetteer row 1000798
+2025-08-07 22:15:37,544 DEBUG: [68] Comparing with gazetteer row 1000799
+2025-08-07 22:15:37,545 DEBUG: [68] Comparing with gazetteer row 1000800
+2025-08-07 22:15:37,545 DEBUG: [68] Comparing with gazetteer row 1000801
+2025-08-07 22:15:37,546 DEBUG: [68] Comparing with gazetteer row 1000802
+2025-08-07 22:15:37,546 DEBUG: [68] Comparing with gazetteer row 1000803
+2025-08-07 22:15:37,547 DEBUG: [68] Comparing with gazetteer row 1000804
+2025-08-07 22:15:37,547 DEBUG: [68] Comparing with gazetteer row 1000805
+2025-08-07 22:15:37,548 DEBUG: [68] Comparing with gazetteer row 1000806
+2025-08-07 22:15:37,548 DEBUG: [68] Comparing with gazetteer row 1000807
+2025-08-07 22:15:37,549 DEBUG: [68] Comparing with gazetteer row 1000808
+2025-08-07 22:15:37,549 DEBUG: [68] Comparing with gazetteer row 1000809
+2025-08-07 22:15:37,550 WARNING: [68] No match found.
+2025-08-07 22:15:37,572 DEBUG: [69] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:37,625 DEBUG: [69] After generic territory filter: 50820 rows
+2025-08-07 22:15:37,627 DEBUG: [69] Time filter using year: 1701
+2025-08-07 22:15:37,644 DEBUG: [69] After time filter: 27696 rows
+2025-08-07 22:15:39,266 DEBUG: [69] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 55 rows (was 27696)
+2025-08-07 22:15:39,268 DEBUG: [69] Comparing with gazetteer row 1000080
+2025-08-07 22:15:39,268 DEBUG: [69] Comparing with gazetteer row 1000736
+2025-08-07 22:15:39,269 DEBUG: [69] Comparing with gazetteer row 1000738
+2025-08-07 22:15:39,269 DEBUG: [69] Comparing with gazetteer row 1000740
+2025-08-07 22:15:39,270 DEBUG: [69] Comparing with gazetteer row 1000742
+2025-08-07 22:15:39,271 DEBUG: [69] Comparing with gazetteer row 1000743
+2025-08-07 22:15:39,271 DEBUG: [69] Comparing with gazetteer row 1000744
+2025-08-07 22:15:39,272 DEBUG: [69] Comparing with gazetteer row 1000745
+2025-08-07 22:15:39,272 DEBUG: [69] Comparing with gazetteer row 1000746
+2025-08-07 22:15:39,273 DEBUG: [69] Comparing with gazetteer row 1000747
+2025-08-07 22:15:39,274 DEBUG: [69] Comparing with gazetteer row 1000749
+2025-08-07 22:15:39,274 DEBUG: [69] Comparing with gazetteer row 1000750
+2025-08-07 22:15:39,275 DEBUG: [69] Comparing with gazetteer row 1000751
+2025-08-07 22:15:39,275 DEBUG: [69] Comparing with gazetteer row 1000752
+2025-08-07 22:15:39,276 DEBUG: [69] Comparing with gazetteer row 1000753
+2025-08-07 22:15:39,276 DEBUG: [69] Comparing with gazetteer row 1000755
+2025-08-07 22:15:39,277 DEBUG: [69] Comparing with gazetteer row 1000756
+2025-08-07 22:15:39,277 DEBUG: [69] Comparing with gazetteer row 1000757
+2025-08-07 22:15:39,278 DEBUG: [69] Comparing with gazetteer row 1000758
+2025-08-07 22:15:39,278 DEBUG: [69] Comparing with gazetteer row 1000759
+2025-08-07 22:15:39,279 DEBUG: [69] Comparing with gazetteer row 1000760
+2025-08-07 22:15:39,279 DEBUG: [69] Comparing with gazetteer row 1000761
+2025-08-07 22:15:39,280 DEBUG: [69] Comparing with gazetteer row 1000762
+2025-08-07 22:15:39,280 DEBUG: [69] Comparing with gazetteer row 1000763
+2025-08-07 22:15:39,281 DEBUG: [69] Comparing with gazetteer row 1000764
+2025-08-07 22:15:39,282 DEBUG: [69] Comparing with gazetteer row 1000765
+2025-08-07 22:15:39,282 DEBUG: [69] Comparing with gazetteer row 1000766
+2025-08-07 22:15:39,283 DEBUG: [69] Comparing with gazetteer row 1000767
+2025-08-07 22:15:39,283 DEBUG: [69] Comparing with gazetteer row 1000770
+2025-08-07 22:15:39,284 DEBUG: [69] Comparing with gazetteer row 1000771
+2025-08-07 22:15:39,285 DEBUG: [69] Comparing with gazetteer row 1000772
+2025-08-07 22:15:39,285 DEBUG: [69] Comparing with gazetteer row 1000776
+2025-08-07 22:15:39,286 DEBUG: [69] Comparing with gazetteer row 1000777
+2025-08-07 22:15:39,286 DEBUG: [69] Comparing with gazetteer row 1000778
+2025-08-07 22:15:39,287 DEBUG: [69] Comparing with gazetteer row 1000779
+2025-08-07 22:15:39,287 DEBUG: [69] Comparing with gazetteer row 1000780
+2025-08-07 22:15:39,288 DEBUG: [69] Comparing with gazetteer row 1000781
+2025-08-07 22:15:39,289 DEBUG: [69] Comparing with gazetteer row 1000782
+2025-08-07 22:15:39,289 DEBUG: [69] Comparing with gazetteer row 1000784
+2025-08-07 22:15:39,290 DEBUG: [69] Comparing with gazetteer row 1000785
+2025-08-07 22:15:39,290 DEBUG: [69] Comparing with gazetteer row 1000786
+2025-08-07 22:15:39,291 DEBUG: [69] Comparing with gazetteer row 1000788
+2025-08-07 22:15:39,291 DEBUG: [69] Comparing with gazetteer row 1000790
+2025-08-07 22:15:39,292 DEBUG: [69] Comparing with gazetteer row 1000791
+2025-08-07 22:15:39,292 INFO: [69] Match found: toponym_label (score: 1)
+2025-08-07 22:15:39,292 INFO: [69] High confidence match — stopping further checks.
+2025-08-07 22:15:39,312 DEBUG: [70] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:39,351 DEBUG: [70] After generic territory filter: 50820 rows
+2025-08-07 22:15:39,351 DEBUG: [70] Time filter using year: 1773
+2025-08-07 22:15:39,363 DEBUG: [70] After time filter: 28018 rows
+2025-08-07 22:15:41,120 DEBUG: [70] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 72 rows (was 28018)
+2025-08-07 22:15:41,121 DEBUG: [70] Comparing with gazetteer row 1000080
+2025-08-07 22:15:41,121 DEBUG: [70] Comparing with gazetteer row 1000736
+2025-08-07 22:15:41,122 DEBUG: [70] Comparing with gazetteer row 1000737
+2025-08-07 22:15:41,122 DEBUG: [70] Comparing with gazetteer row 1000738
+2025-08-07 22:15:41,123 DEBUG: [70] Comparing with gazetteer row 1000739
+2025-08-07 22:15:41,124 DEBUG: [70] Comparing with gazetteer row 1000740
+2025-08-07 22:15:41,124 DEBUG: [70] Comparing with gazetteer row 1000741
+2025-08-07 22:15:41,124 DEBUG: [70] Comparing with gazetteer row 1000742
+2025-08-07 22:15:41,125 DEBUG: [70] Comparing with gazetteer row 1000743
+2025-08-07 22:15:41,125 DEBUG: [70] Comparing with gazetteer row 1000744
+2025-08-07 22:15:41,125 DEBUG: [70] Comparing with gazetteer row 1000745
+2025-08-07 22:15:41,126 DEBUG: [70] Comparing with gazetteer row 1000746
+2025-08-07 22:15:41,126 DEBUG: [70] Comparing with gazetteer row 1000747
+2025-08-07 22:15:41,126 DEBUG: [70] Comparing with gazetteer row 1000749
+2025-08-07 22:15:41,127 DEBUG: [70] Comparing with gazetteer row 1000750
+2025-08-07 22:15:41,127 DEBUG: [70] Comparing with gazetteer row 1000751
+2025-08-07 22:15:41,127 DEBUG: [70] Comparing with gazetteer row 1000752
+2025-08-07 22:15:41,127 DEBUG: [70] Comparing with gazetteer row 1000753
+2025-08-07 22:15:41,128 DEBUG: [70] Comparing with gazetteer row 1000754
+2025-08-07 22:15:41,128 DEBUG: [70] Comparing with gazetteer row 1000755
+2025-08-07 22:15:41,128 DEBUG: [70] Comparing with gazetteer row 1000756
+2025-08-07 22:15:41,128 DEBUG: [70] Comparing with gazetteer row 1000757
+2025-08-07 22:15:41,129 DEBUG: [70] Comparing with gazetteer row 1000758
+2025-08-07 22:15:41,129 DEBUG: [70] Comparing with gazetteer row 1000759
+2025-08-07 22:15:41,129 DEBUG: [70] Comparing with gazetteer row 1000760
+2025-08-07 22:15:41,129 DEBUG: [70] Comparing with gazetteer row 1000761
+2025-08-07 22:15:41,130 DEBUG: [70] Comparing with gazetteer row 1000762
+2025-08-07 22:15:41,130 DEBUG: [70] Comparing with gazetteer row 1000763
+2025-08-07 22:15:41,130 DEBUG: [70] Comparing with gazetteer row 1000764
+2025-08-07 22:15:41,131 DEBUG: [70] Comparing with gazetteer row 1000765
+2025-08-07 22:15:41,131 DEBUG: [70] Comparing with gazetteer row 1000766
+2025-08-07 22:15:41,131 DEBUG: [70] Comparing with gazetteer row 1000767
+2025-08-07 22:15:41,131 DEBUG: [70] Comparing with gazetteer row 1000769
+2025-08-07 22:15:41,132 DEBUG: [70] Comparing with gazetteer row 1000770
+2025-08-07 22:15:41,132 DEBUG: [70] Comparing with gazetteer row 1000771
+2025-08-07 22:15:41,132 DEBUG: [70] Comparing with gazetteer row 1000772
+2025-08-07 22:15:41,133 DEBUG: [70] Comparing with gazetteer row 1000773
+2025-08-07 22:15:41,133 DEBUG: [70] Comparing with gazetteer row 1000774
+2025-08-07 22:15:41,133 DEBUG: [70] Comparing with gazetteer row 1000775
+2025-08-07 22:15:41,134 DEBUG: [70] Comparing with gazetteer row 1000776
+2025-08-07 22:15:41,134 DEBUG: [70] Comparing with gazetteer row 1000777
+2025-08-07 22:15:41,134 DEBUG: [70] Comparing with gazetteer row 1000778
+2025-08-07 22:15:41,135 DEBUG: [70] Comparing with gazetteer row 1000779
+2025-08-07 22:15:41,135 DEBUG: [70] Comparing with gazetteer row 1000780
+2025-08-07 22:15:41,135 DEBUG: [70] Comparing with gazetteer row 1000781
+2025-08-07 22:15:41,136 DEBUG: [70] Comparing with gazetteer row 1000782
+2025-08-07 22:15:41,136 DEBUG: [70] Comparing with gazetteer row 1000783
+2025-08-07 22:15:41,136 DEBUG: [70] Comparing with gazetteer row 1000784
+2025-08-07 22:15:41,137 DEBUG: [70] Comparing with gazetteer row 1000785
+2025-08-07 22:15:41,137 DEBUG: [70] Comparing with gazetteer row 1000786
+2025-08-07 22:15:41,137 DEBUG: [70] Comparing with gazetteer row 1000787
+2025-08-07 22:15:41,137 DEBUG: [70] Comparing with gazetteer row 1000788
+2025-08-07 22:15:41,138 DEBUG: [70] Comparing with gazetteer row 1000790
+2025-08-07 22:15:41,138 DEBUG: [70] Comparing with gazetteer row 1000791
+2025-08-07 22:15:41,138 INFO: [70] Match found: toponym_label (score: 1)
+2025-08-07 22:15:41,138 INFO: [70] High confidence match — stopping further checks.
+2025-08-07 22:15:41,157 DEBUG: [71] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:41,200 DEBUG: [71] After generic territory filter: 50820 rows
+2025-08-07 22:15:41,200 DEBUG: [71] Time filter using year: 1802
+2025-08-07 22:15:41,215 DEBUG: [71] After time filter: 28115 rows
+2025-08-07 22:15:42,869 DEBUG: [71] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 72 rows (was 28115)
+2025-08-07 22:15:42,870 DEBUG: [71] Comparing with gazetteer row 1000080
+2025-08-07 22:15:42,871 DEBUG: [71] Comparing with gazetteer row 1000736
+2025-08-07 22:15:42,872 DEBUG: [71] Comparing with gazetteer row 1000737
+2025-08-07 22:15:42,872 DEBUG: [71] Comparing with gazetteer row 1000738
+2025-08-07 22:15:42,873 DEBUG: [71] Comparing with gazetteer row 1000739
+2025-08-07 22:15:42,874 DEBUG: [71] Comparing with gazetteer row 1000740
+2025-08-07 22:15:42,875 DEBUG: [71] Comparing with gazetteer row 1000741
+2025-08-07 22:15:42,876 DEBUG: [71] Comparing with gazetteer row 1000742
+2025-08-07 22:15:42,876 DEBUG: [71] Comparing with gazetteer row 1000743
+2025-08-07 22:15:42,877 DEBUG: [71] Comparing with gazetteer row 1000744
+2025-08-07 22:15:42,878 DEBUG: [71] Comparing with gazetteer row 1000745
+2025-08-07 22:15:42,878 DEBUG: [71] Comparing with gazetteer row 1000746
+2025-08-07 22:15:42,878 DEBUG: [71] Comparing with gazetteer row 1000747
+2025-08-07 22:15:42,879 DEBUG: [71] Comparing with gazetteer row 1000749
+2025-08-07 22:15:42,880 DEBUG: [71] Comparing with gazetteer row 1000750
+2025-08-07 22:15:42,880 DEBUG: [71] Comparing with gazetteer row 1000751
+2025-08-07 22:15:42,881 INFO: [71] Match found: toponym_label (score: 1)
+2025-08-07 22:15:42,881 INFO: [71] High confidence match — stopping further checks.
+2025-08-07 22:15:42,902 DEBUG: [72] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:42,947 DEBUG: [72] After generic territory filter: 50820 rows
+2025-08-07 22:15:42,947 DEBUG: [72] Time filter using year: 1701
+2025-08-07 22:15:42,961 DEBUG: [72] After time filter: 27696 rows
+2025-08-07 22:15:44,409 DEBUG: [72] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 20 rows (was 27696)
+2025-08-07 22:15:44,410 DEBUG: [72] Comparing with gazetteer row 1000106
+2025-08-07 22:15:44,410 DEBUG: [72] Comparing with gazetteer row 1001610
+2025-08-07 22:15:44,411 DEBUG: [72] Comparing with gazetteer row 1001611
+2025-08-07 22:15:44,411 DEBUG: [72] Comparing with gazetteer row 1001613
+2025-08-07 22:15:44,412 DEBUG: [72] Comparing with gazetteer row 1001616
+2025-08-07 22:15:44,413 DEBUG: [72] Comparing with gazetteer row 1001617
+2025-08-07 22:15:44,413 DEBUG: [72] Comparing with gazetteer row 1001618
+2025-08-07 22:15:44,414 DEBUG: [72] Comparing with gazetteer row 1001619
+2025-08-07 22:15:44,414 DEBUG: [72] Comparing with gazetteer row 1001620
+2025-08-07 22:15:44,414 DEBUG: [72] Comparing with gazetteer row 1001621
+2025-08-07 22:15:44,415 DEBUG: [72] Comparing with gazetteer row 1001622
+2025-08-07 22:15:44,415 DEBUG: [72] Comparing with gazetteer row 1001623
+2025-08-07 22:15:44,415 DEBUG: [72] Comparing with gazetteer row 1001624
+2025-08-07 22:15:44,416 DEBUG: [72] Comparing with gazetteer row 1001625
+2025-08-07 22:15:44,416 DEBUG: [72] Comparing with gazetteer row 1001626
+2025-08-07 22:15:44,416 DEBUG: [72] Comparing with gazetteer row 1001627
+2025-08-07 22:15:44,417 DEBUG: [72] Comparing with gazetteer row 1001628
+2025-08-07 22:15:44,417 DEBUG: [72] Comparing with gazetteer row 1001632
+2025-08-07 22:15:44,417 DEBUG: [72] Comparing with gazetteer row 1001633
+2025-08-07 22:15:44,418 DEBUG: [72] Comparing with gazetteer row 9910001
+2025-08-07 22:15:44,418 WARNING: [72] No match found.
+2025-08-07 22:15:44,435 DEBUG: [73] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:44,465 DEBUG: [73] After generic territory filter: 50820 rows
+2025-08-07 22:15:44,465 DEBUG: [73] Time filter using year: 1744
+2025-08-07 22:15:44,476 DEBUG: [73] After time filter: 27929 rows
+2025-08-07 22:15:46,222 DEBUG: [73] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 27 rows (was 27929)
+2025-08-07 22:15:46,223 DEBUG: [73] Comparing with gazetteer row 1000106
+2025-08-07 22:15:46,223 DEBUG: [73] Comparing with gazetteer row 1001610
+2025-08-07 22:15:46,223 INFO: [73] Match found: toponym_label (score: 1)
+2025-08-07 22:15:46,223 INFO: [73] High confidence match — stopping further checks.
+2025-08-07 22:15:46,244 DEBUG: [74] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:46,272 DEBUG: [74] After generic territory filter: 50820 rows
+2025-08-07 22:15:46,273 DEBUG: [74] Time filter using year: 1701
+2025-08-07 22:15:46,284 DEBUG: [74] After time filter: 27696 rows
+2025-08-07 22:15:47,617 DEBUG: [74] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 20 rows (was 27696)
+2025-08-07 22:15:47,618 DEBUG: [74] Comparing with gazetteer row 1000106
+2025-08-07 22:15:47,618 DEBUG: [74] Comparing with gazetteer row 1001610
+2025-08-07 22:15:47,619 DEBUG: [74] Comparing with gazetteer row 1001611
+2025-08-07 22:15:47,619 DEBUG: [74] Comparing with gazetteer row 1001613
+2025-08-07 22:15:47,619 DEBUG: [74] Comparing with gazetteer row 1001616
+2025-08-07 22:15:47,620 DEBUG: [74] Comparing with gazetteer row 1001617
+2025-08-07 22:15:47,620 DEBUG: [74] Comparing with gazetteer row 1001618
+2025-08-07 22:15:47,620 DEBUG: [74] Comparing with gazetteer row 1001619
+2025-08-07 22:15:47,621 DEBUG: [74] Comparing with gazetteer row 1001620
+2025-08-07 22:15:47,621 DEBUG: [74] Comparing with gazetteer row 1001621
+2025-08-07 22:15:47,622 DEBUG: [74] Comparing with gazetteer row 1001622
+2025-08-07 22:15:47,622 DEBUG: [74] Comparing with gazetteer row 1001623
+2025-08-07 22:15:47,622 DEBUG: [74] Comparing with gazetteer row 1001624
+2025-08-07 22:15:47,623 DEBUG: [74] Comparing with gazetteer row 1001625
+2025-08-07 22:15:47,624 DEBUG: [74] Comparing with gazetteer row 1001626
+2025-08-07 22:15:47,624 DEBUG: [74] Comparing with gazetteer row 1001627
+2025-08-07 22:15:47,625 DEBUG: [74] Comparing with gazetteer row 1001628
+2025-08-07 22:15:47,625 DEBUG: [74] Comparing with gazetteer row 1001632
+2025-08-07 22:15:47,625 DEBUG: [74] Comparing with gazetteer row 1001633
+2025-08-07 22:15:47,626 DEBUG: [74] Comparing with gazetteer row 9910001
+2025-08-07 22:15:47,626 WARNING: [74] No match found.
+2025-08-07 22:15:47,645 DEBUG: [75] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:47,679 DEBUG: [75] After generic territory filter: 50820 rows
+2025-08-07 22:15:47,680 DEBUG: [75] Time filter using year: 1764
+2025-08-07 22:15:47,690 DEBUG: [75] After time filter: 27976 rows
+2025-08-07 22:15:48,716 DEBUG: [75] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 0 rows (was 27976)
+2025-08-07 22:15:48,716 WARNING: [75] No candidates after territory filtering.
+2025-08-07 22:15:48,734 DEBUG: [76] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:48,764 DEBUG: [76] After generic territory filter: 50820 rows
+2025-08-07 22:15:48,764 DEBUG: [76] Time filter using year: 1756
+2025-08-07 22:15:48,776 DEBUG: [76] After time filter: 27955 rows
+2025-08-07 22:15:49,678 DEBUG: [76] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 0 rows (was 27955)
+2025-08-07 22:15:49,679 WARNING: [76] No candidates after territory filtering.
+2025-08-07 22:15:49,696 DEBUG: [77] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:49,725 DEBUG: [77] After generic territory filter: 50820 rows
+2025-08-07 22:15:49,726 DEBUG: [77] Time filter using year: 1772
+2025-08-07 22:15:49,737 DEBUG: [77] After time filter: 28011 rows
+2025-08-07 22:15:50,727 DEBUG: [77] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 147 rows (was 28011)
+2025-08-07 22:15:50,728 DEBUG: [77] Comparing with gazetteer row 1000095
+2025-08-07 22:15:50,729 INFO: [77] Match found: toponym_label (score: 1)
+2025-08-07 22:15:50,730 INFO: [77] High confidence match — stopping further checks.
+2025-08-07 22:15:50,753 DEBUG: [78] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:50,804 DEBUG: [78] After generic territory filter: 50820 rows
+2025-08-07 22:15:50,804 DEBUG: [78] Time filter using year: 1805
+2025-08-07 22:15:50,815 DEBUG: [78] After time filter: 28115 rows
+2025-08-07 22:15:51,906 DEBUG: [78] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 147 rows (was 28115)
+2025-08-07 22:15:51,906 DEBUG: [78] Comparing with gazetteer row 1000095
+2025-08-07 22:15:51,907 DEBUG: [78] Comparing with gazetteer row 1001213
+2025-08-07 22:15:51,907 DEBUG: [78] Comparing with gazetteer row 1001214
+2025-08-07 22:15:51,908 DEBUG: [78] Comparing with gazetteer row 1001215
+2025-08-07 22:15:51,908 DEBUG: [78] Comparing with gazetteer row 1001216
+2025-08-07 22:15:51,908 DEBUG: [78] Comparing with gazetteer row 1001217
+2025-08-07 22:15:51,909 DEBUG: [78] Comparing with gazetteer row 1001218
+2025-08-07 22:15:51,909 DEBUG: [78] Comparing with gazetteer row 1001219
+2025-08-07 22:15:51,910 DEBUG: [78] Comparing with gazetteer row 1001220
+2025-08-07 22:15:51,910 DEBUG: [78] Comparing with gazetteer row 1001221
+2025-08-07 22:15:51,911 DEBUG: [78] Comparing with gazetteer row 1001222
+2025-08-07 22:15:51,911 DEBUG: [78] Comparing with gazetteer row 1001223
+2025-08-07 22:15:51,912 DEBUG: [78] Comparing with gazetteer row 1001224
+2025-08-07 22:15:51,912 DEBUG: [78] Comparing with gazetteer row 1001225
+2025-08-07 22:15:51,913 DEBUG: [78] Comparing with gazetteer row 1001226
+2025-08-07 22:15:51,913 DEBUG: [78] Comparing with gazetteer row 1001227
+2025-08-07 22:15:51,914 DEBUG: [78] Comparing with gazetteer row 1001228
+2025-08-07 22:15:51,914 DEBUG: [78] Comparing with gazetteer row 1001229
+2025-08-07 22:15:51,915 DEBUG: [78] Comparing with gazetteer row 1001230
+2025-08-07 22:15:51,916 DEBUG: [78] Comparing with gazetteer row 1001231
+2025-08-07 22:15:51,916 DEBUG: [78] Comparing with gazetteer row 1001232
+2025-08-07 22:15:51,917 DEBUG: [78] Comparing with gazetteer row 1001233
+2025-08-07 22:15:51,917 DEBUG: [78] Comparing with gazetteer row 1001234
+2025-08-07 22:15:51,918 DEBUG: [78] Comparing with gazetteer row 1001235
+2025-08-07 22:15:51,918 DEBUG: [78] Comparing with gazetteer row 1001236
+2025-08-07 22:15:51,918 DEBUG: [78] Comparing with gazetteer row 1001237
+2025-08-07 22:15:51,919 DEBUG: [78] Comparing with gazetteer row 1001238
+2025-08-07 22:15:51,919 DEBUG: [78] Comparing with gazetteer row 1001239
+2025-08-07 22:15:51,920 DEBUG: [78] Comparing with gazetteer row 1001240
+2025-08-07 22:15:51,920 DEBUG: [78] Comparing with gazetteer row 1001241
+2025-08-07 22:15:51,921 DEBUG: [78] Comparing with gazetteer row 1001242
+2025-08-07 22:15:51,921 DEBUG: [78] Comparing with gazetteer row 1001244
+2025-08-07 22:15:51,922 DEBUG: [78] Comparing with gazetteer row 1001245
+2025-08-07 22:15:51,922 DEBUG: [78] Comparing with gazetteer row 1001246
+2025-08-07 22:15:51,923 DEBUG: [78] Comparing with gazetteer row 1001247
+2025-08-07 22:15:51,923 DEBUG: [78] Comparing with gazetteer row 1001248
+2025-08-07 22:15:51,923 DEBUG: [78] Comparing with gazetteer row 1001249
+2025-08-07 22:15:51,924 DEBUG: [78] Comparing with gazetteer row 1001250
+2025-08-07 22:15:51,924 DEBUG: [78] Comparing with gazetteer row 1001251
+2025-08-07 22:15:51,925 DEBUG: [78] Comparing with gazetteer row 1001252
+2025-08-07 22:15:51,925 DEBUG: [78] Comparing with gazetteer row 1001253
+2025-08-07 22:15:51,925 DEBUG: [78] Comparing with gazetteer row 1001254
+2025-08-07 22:15:51,926 DEBUG: [78] Comparing with gazetteer row 1001255
+2025-08-07 22:15:51,926 DEBUG: [78] Comparing with gazetteer row 1001256
+2025-08-07 22:15:51,927 DEBUG: [78] Comparing with gazetteer row 1001257
+2025-08-07 22:15:51,927 DEBUG: [78] Comparing with gazetteer row 1001258
+2025-08-07 22:15:51,927 DEBUG: [78] Comparing with gazetteer row 1001259
+2025-08-07 22:15:51,928 DEBUG: [78] Comparing with gazetteer row 1001260
+2025-08-07 22:15:51,928 DEBUG: [78] Comparing with gazetteer row 1001261
+2025-08-07 22:15:51,929 DEBUG: [78] Comparing with gazetteer row 1001262
+2025-08-07 22:15:51,929 DEBUG: [78] Comparing with gazetteer row 1001263
+2025-08-07 22:15:51,930 DEBUG: [78] Comparing with gazetteer row 1001264
+2025-08-07 22:15:51,930 DEBUG: [78] Comparing with gazetteer row 1001265
+2025-08-07 22:15:51,930 DEBUG: [78] Comparing with gazetteer row 1001266
+2025-08-07 22:15:51,931 DEBUG: [78] Comparing with gazetteer row 1001267
+2025-08-07 22:15:51,931 DEBUG: [78] Comparing with gazetteer row 1001268
+2025-08-07 22:15:51,932 DEBUG: [78] Comparing with gazetteer row 1001269
+2025-08-07 22:15:51,933 DEBUG: [78] Comparing with gazetteer row 1001270
+2025-08-07 22:15:51,933 DEBUG: [78] Comparing with gazetteer row 1001271
+2025-08-07 22:15:51,933 DEBUG: [78] Comparing with gazetteer row 1001272
+2025-08-07 22:15:51,934 DEBUG: [78] Comparing with gazetteer row 1001273
+2025-08-07 22:15:51,934 DEBUG: [78] Comparing with gazetteer row 1001274
+2025-08-07 22:15:51,935 DEBUG: [78] Comparing with gazetteer row 1001275
+2025-08-07 22:15:51,935 DEBUG: [78] Comparing with gazetteer row 1001276
+2025-08-07 22:15:51,935 DEBUG: [78] Comparing with gazetteer row 1001277
+2025-08-07 22:15:51,936 DEBUG: [78] Comparing with gazetteer row 1001278
+2025-08-07 22:15:51,936 DEBUG: [78] Comparing with gazetteer row 1001279
+2025-08-07 22:15:51,936 DEBUG: [78] Comparing with gazetteer row 1001280
+2025-08-07 22:15:51,937 DEBUG: [78] Comparing with gazetteer row 1001281
+2025-08-07 22:15:51,937 DEBUG: [78] Comparing with gazetteer row 1001282
+2025-08-07 22:15:51,938 DEBUG: [78] Comparing with gazetteer row 1001283
+2025-08-07 22:15:51,939 DEBUG: [78] Comparing with gazetteer row 1001284
+2025-08-07 22:15:51,939 DEBUG: [78] Comparing with gazetteer row 1001285
+2025-08-07 22:15:51,939 DEBUG: [78] Comparing with gazetteer row 1001286
+2025-08-07 22:15:51,940 DEBUG: [78] Comparing with gazetteer row 1001287
+2025-08-07 22:15:51,940 DEBUG: [78] Comparing with gazetteer row 1001288
+2025-08-07 22:15:51,941 DEBUG: [78] Comparing with gazetteer row 1001289
+2025-08-07 22:15:51,941 DEBUG: [78] Comparing with gazetteer row 1001290
+2025-08-07 22:15:51,942 DEBUG: [78] Comparing with gazetteer row 1001291
+2025-08-07 22:15:51,942 DEBUG: [78] Comparing with gazetteer row 1001292
+2025-08-07 22:15:51,943 DEBUG: [78] Comparing with gazetteer row 1001293
+2025-08-07 22:15:51,943 DEBUG: [78] Comparing with gazetteer row 1001294
+2025-08-07 22:15:51,943 DEBUG: [78] Comparing with gazetteer row 1001295
+2025-08-07 22:15:51,944 DEBUG: [78] Comparing with gazetteer row 1001296
+2025-08-07 22:15:51,944 DEBUG: [78] Comparing with gazetteer row 1001297
+2025-08-07 22:15:51,944 DEBUG: [78] Comparing with gazetteer row 1001298
+2025-08-07 22:15:51,945 DEBUG: [78] Comparing with gazetteer row 1001299
+2025-08-07 22:15:51,945 DEBUG: [78] Comparing with gazetteer row 1001300
+2025-08-07 22:15:51,946 DEBUG: [78] Comparing with gazetteer row 1001301
+2025-08-07 22:15:51,946 DEBUG: [78] Comparing with gazetteer row 1001302
+2025-08-07 22:15:51,947 DEBUG: [78] Comparing with gazetteer row 1001303
+2025-08-07 22:15:51,948 DEBUG: [78] Comparing with gazetteer row 1001304
+2025-08-07 22:15:51,948 DEBUG: [78] Comparing with gazetteer row 1001305
+2025-08-07 22:15:51,949 DEBUG: [78] Comparing with gazetteer row 1001306
+2025-08-07 22:15:51,949 DEBUG: [78] Comparing with gazetteer row 1001307
+2025-08-07 22:15:51,950 DEBUG: [78] Comparing with gazetteer row 1001308
+2025-08-07 22:15:51,951 DEBUG: [78] Comparing with gazetteer row 1001309
+2025-08-07 22:15:51,952 DEBUG: [78] Comparing with gazetteer row 1001310
+2025-08-07 22:15:51,952 DEBUG: [78] Comparing with gazetteer row 1001311
+2025-08-07 22:15:51,953 DEBUG: [78] Comparing with gazetteer row 1001312
+2025-08-07 22:15:51,953 DEBUG: [78] Comparing with gazetteer row 1001313
+2025-08-07 22:15:51,954 DEBUG: [78] Comparing with gazetteer row 1001314
+2025-08-07 22:15:51,954 DEBUG: [78] Comparing with gazetteer row 1001315
+2025-08-07 22:15:51,955 DEBUG: [78] Comparing with gazetteer row 1001316
+2025-08-07 22:15:51,955 DEBUG: [78] Comparing with gazetteer row 1001317
+2025-08-07 22:15:51,955 DEBUG: [78] Comparing with gazetteer row 1001318
+2025-08-07 22:15:51,956 DEBUG: [78] Comparing with gazetteer row 1001319
+2025-08-07 22:15:51,956 DEBUG: [78] Comparing with gazetteer row 1001320
+2025-08-07 22:15:51,957 DEBUG: [78] Comparing with gazetteer row 1001321
+2025-08-07 22:15:51,957 DEBUG: [78] Comparing with gazetteer row 1001322
+2025-08-07 22:15:51,958 DEBUG: [78] Comparing with gazetteer row 1001323
+2025-08-07 22:15:51,958 DEBUG: [78] Comparing with gazetteer row 1001324
+2025-08-07 22:15:51,958 DEBUG: [78] Comparing with gazetteer row 1001325
+2025-08-07 22:15:51,959 DEBUG: [78] Comparing with gazetteer row 1001326
+2025-08-07 22:15:51,959 DEBUG: [78] Comparing with gazetteer row 1001327
+2025-08-07 22:15:51,960 DEBUG: [78] Comparing with gazetteer row 1001328
+2025-08-07 22:15:51,960 DEBUG: [78] Comparing with gazetteer row 1001329
+2025-08-07 22:15:51,961 DEBUG: [78] Comparing with gazetteer row 1001330
+2025-08-07 22:15:51,961 DEBUG: [78] Comparing with gazetteer row 1001331
+2025-08-07 22:15:51,962 DEBUG: [78] Comparing with gazetteer row 1001332
+2025-08-07 22:15:51,962 DEBUG: [78] Comparing with gazetteer row 1001333
+2025-08-07 22:15:51,963 DEBUG: [78] Comparing with gazetteer row 1001334
+2025-08-07 22:15:51,963 DEBUG: [78] Comparing with gazetteer row 1001335
+2025-08-07 22:15:51,964 DEBUG: [78] Comparing with gazetteer row 1001336
+2025-08-07 22:15:51,964 DEBUG: [78] Comparing with gazetteer row 1001337
+2025-08-07 22:15:51,964 DEBUG: [78] Comparing with gazetteer row 1001338
+2025-08-07 22:15:51,965 DEBUG: [78] Comparing with gazetteer row 1001339
+2025-08-07 22:15:51,966 DEBUG: [78] Comparing with gazetteer row 1001340
+2025-08-07 22:15:51,966 DEBUG: [78] Comparing with gazetteer row 1001341
+2025-08-07 22:15:51,967 DEBUG: [78] Comparing with gazetteer row 1001342
+2025-08-07 22:15:51,968 DEBUG: [78] Comparing with gazetteer row 1001343
+2025-08-07 22:15:51,968 DEBUG: [78] Comparing with gazetteer row 1001344
+2025-08-07 22:15:51,969 DEBUG: [78] Comparing with gazetteer row 1001345
+2025-08-07 22:15:51,969 DEBUG: [78] Comparing with gazetteer row 1001346
+2025-08-07 22:15:51,970 DEBUG: [78] Comparing with gazetteer row 1001347
+2025-08-07 22:15:51,970 DEBUG: [78] Comparing with gazetteer row 1001348
+2025-08-07 22:15:51,971 DEBUG: [78] Comparing with gazetteer row 1001349
+2025-08-07 22:15:51,971 DEBUG: [78] Comparing with gazetteer row 1001350
+2025-08-07 22:15:51,972 DEBUG: [78] Comparing with gazetteer row 1001351
+2025-08-07 22:15:51,972 DEBUG: [78] Comparing with gazetteer row 1001352
+2025-08-07 22:15:51,972 DEBUG: [78] Comparing with gazetteer row 1001353
+2025-08-07 22:15:51,973 DEBUG: [78] Comparing with gazetteer row 1001354
+2025-08-07 22:15:51,973 DEBUG: [78] Comparing with gazetteer row 1001355
+2025-08-07 22:15:51,974 DEBUG: [78] Comparing with gazetteer row 1001356
+2025-08-07 22:15:51,974 DEBUG: [78] Comparing with gazetteer row 1001357
+2025-08-07 22:15:51,975 DEBUG: [78] Comparing with gazetteer row 1001358
+2025-08-07 22:15:51,975 DEBUG: [78] Comparing with gazetteer row 1001359
+2025-08-07 22:15:51,975 WARNING: [78] No match found.
+2025-08-07 22:15:51,994 DEBUG: [79] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:52,027 DEBUG: [79] After generic territory filter: 50820 rows
+2025-08-07 22:15:52,028 DEBUG: [79] Time filter using year: 1805
+2025-08-07 22:15:52,038 DEBUG: [79] After time filter: 28115 rows
+2025-08-07 22:15:52,980 DEBUG: [79] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 147 rows (was 28115)
+2025-08-07 22:15:52,981 DEBUG: [79] Comparing with gazetteer row 1000095
+2025-08-07 22:15:52,982 DEBUG: [79] Comparing with gazetteer row 1001213
+2025-08-07 22:15:52,982 DEBUG: [79] Comparing with gazetteer row 1001214
+2025-08-07 22:15:52,982 DEBUG: [79] Comparing with gazetteer row 1001215
+2025-08-07 22:15:52,983 DEBUG: [79] Comparing with gazetteer row 1001216
+2025-08-07 22:15:52,984 DEBUG: [79] Comparing with gazetteer row 1001217
+2025-08-07 22:15:52,984 DEBUG: [79] Comparing with gazetteer row 1001218
+2025-08-07 22:15:52,984 DEBUG: [79] Comparing with gazetteer row 1001219
+2025-08-07 22:15:52,985 DEBUG: [79] Comparing with gazetteer row 1001220
+2025-08-07 22:15:52,985 DEBUG: [79] Comparing with gazetteer row 1001221
+2025-08-07 22:15:52,986 DEBUG: [79] Comparing with gazetteer row 1001222
+2025-08-07 22:15:52,986 DEBUG: [79] Comparing with gazetteer row 1001223
+2025-08-07 22:15:52,987 DEBUG: [79] Comparing with gazetteer row 1001224
+2025-08-07 22:15:52,987 DEBUG: [79] Comparing with gazetteer row 1001225
+2025-08-07 22:15:52,987 DEBUG: [79] Comparing with gazetteer row 1001226
+2025-08-07 22:15:52,988 DEBUG: [79] Comparing with gazetteer row 1001227
+2025-08-07 22:15:52,988 DEBUG: [79] Comparing with gazetteer row 1001228
+2025-08-07 22:15:52,989 DEBUG: [79] Comparing with gazetteer row 1001229
+2025-08-07 22:15:52,989 DEBUG: [79] Comparing with gazetteer row 1001230
+2025-08-07 22:15:52,990 DEBUG: [79] Comparing with gazetteer row 1001231
+2025-08-07 22:15:52,990 DEBUG: [79] Comparing with gazetteer row 1001232
+2025-08-07 22:15:52,990 DEBUG: [79] Comparing with gazetteer row 1001233
+2025-08-07 22:15:52,990 DEBUG: [79] Comparing with gazetteer row 1001234
+2025-08-07 22:15:52,991 DEBUG: [79] Comparing with gazetteer row 1001235
+2025-08-07 22:15:52,991 DEBUG: [79] Comparing with gazetteer row 1001236
+2025-08-07 22:15:52,992 DEBUG: [79] Comparing with gazetteer row 1001237
+2025-08-07 22:15:52,992 DEBUG: [79] Comparing with gazetteer row 1001238
+2025-08-07 22:15:52,992 DEBUG: [79] Comparing with gazetteer row 1001239
+2025-08-07 22:15:52,993 DEBUG: [79] Comparing with gazetteer row 1001240
+2025-08-07 22:15:52,999 DEBUG: [79] Comparing with gazetteer row 1001241
+2025-08-07 22:15:53,001 DEBUG: [79] Comparing with gazetteer row 1001242
+2025-08-07 22:15:53,001 DEBUG: [79] Comparing with gazetteer row 1001244
+2025-08-07 22:15:53,002 DEBUG: [79] Comparing with gazetteer row 1001245
+2025-08-07 22:15:53,002 DEBUG: [79] Comparing with gazetteer row 1001246
+2025-08-07 22:15:53,003 DEBUG: [79] Comparing with gazetteer row 1001247
+2025-08-07 22:15:53,003 DEBUG: [79] Comparing with gazetteer row 1001248
+2025-08-07 22:15:53,003 DEBUG: [79] Comparing with gazetteer row 1001249
+2025-08-07 22:15:53,004 DEBUG: [79] Comparing with gazetteer row 1001250
+2025-08-07 22:15:53,004 DEBUG: [79] Comparing with gazetteer row 1001251
+2025-08-07 22:15:53,004 DEBUG: [79] Comparing with gazetteer row 1001252
+2025-08-07 22:15:53,004 DEBUG: [79] Comparing with gazetteer row 1001253
+2025-08-07 22:15:53,005 DEBUG: [79] Comparing with gazetteer row 1001254
+2025-08-07 22:15:53,005 DEBUG: [79] Comparing with gazetteer row 1001255
+2025-08-07 22:15:53,005 DEBUG: [79] Comparing with gazetteer row 1001256
+2025-08-07 22:15:53,006 DEBUG: [79] Comparing with gazetteer row 1001257
+2025-08-07 22:15:53,006 DEBUG: [79] Comparing with gazetteer row 1001258
+2025-08-07 22:15:53,006 DEBUG: [79] Comparing with gazetteer row 1001259
+2025-08-07 22:15:53,006 DEBUG: [79] Comparing with gazetteer row 1001260
+2025-08-07 22:15:53,007 DEBUG: [79] Comparing with gazetteer row 1001261
+2025-08-07 22:15:53,008 DEBUG: [79] Comparing with gazetteer row 1001262
+2025-08-07 22:15:53,008 DEBUG: [79] Comparing with gazetteer row 1001263
+2025-08-07 22:15:53,008 DEBUG: [79] Comparing with gazetteer row 1001264
+2025-08-07 22:15:53,009 DEBUG: [79] Comparing with gazetteer row 1001265
+2025-08-07 22:15:53,009 DEBUG: [79] Comparing with gazetteer row 1001266
+2025-08-07 22:15:53,009 DEBUG: [79] Comparing with gazetteer row 1001267
+2025-08-07 22:15:53,009 DEBUG: [79] Comparing with gazetteer row 1001268
+2025-08-07 22:15:53,010 DEBUG: [79] Comparing with gazetteer row 1001269
+2025-08-07 22:15:53,011 DEBUG: [79] Comparing with gazetteer row 1001270
+2025-08-07 22:15:53,012 DEBUG: [79] Comparing with gazetteer row 1001271
+2025-08-07 22:15:53,013 DEBUG: [79] Comparing with gazetteer row 1001272
+2025-08-07 22:15:53,014 DEBUG: [79] Comparing with gazetteer row 1001273
+2025-08-07 22:15:53,015 DEBUG: [79] Comparing with gazetteer row 1001274
+2025-08-07 22:15:53,016 DEBUG: [79] Comparing with gazetteer row 1001275
+2025-08-07 22:15:53,017 DEBUG: [79] Comparing with gazetteer row 1001276
+2025-08-07 22:15:53,017 DEBUG: [79] Comparing with gazetteer row 1001277
+2025-08-07 22:15:53,018 DEBUG: [79] Comparing with gazetteer row 1001278
+2025-08-07 22:15:53,018 DEBUG: [79] Comparing with gazetteer row 1001279
+2025-08-07 22:15:53,019 DEBUG: [79] Comparing with gazetteer row 1001280
+2025-08-07 22:15:53,019 DEBUG: [79] Comparing with gazetteer row 1001281
+2025-08-07 22:15:53,021 DEBUG: [79] Comparing with gazetteer row 1001282
+2025-08-07 22:15:53,022 DEBUG: [79] Comparing with gazetteer row 1001283
+2025-08-07 22:15:53,023 DEBUG: [79] Comparing with gazetteer row 1001284
+2025-08-07 22:15:53,024 DEBUG: [79] Comparing with gazetteer row 1001285
+2025-08-07 22:15:53,024 DEBUG: [79] Comparing with gazetteer row 1001286
+2025-08-07 22:15:53,024 INFO: [79] Match found: toponym_nombre (score: 1)
+2025-08-07 22:15:53,025 DEBUG: [79] Comparing with gazetteer row 1001287
+2025-08-07 22:15:53,026 DEBUG: [79] Comparing with gazetteer row 1001288
+2025-08-07 22:15:53,026 DEBUG: [79] Comparing with gazetteer row 1001289
+2025-08-07 22:15:53,027 DEBUG: [79] Comparing with gazetteer row 1001290
+2025-08-07 22:15:53,028 DEBUG: [79] Comparing with gazetteer row 1001291
+2025-08-07 22:15:53,029 DEBUG: [79] Comparing with gazetteer row 1001292
+2025-08-07 22:15:53,029 DEBUG: [79] Comparing with gazetteer row 1001293
+2025-08-07 22:15:53,030 DEBUG: [79] Comparing with gazetteer row 1001294
+2025-08-07 22:15:53,030 DEBUG: [79] Comparing with gazetteer row 1001295
+2025-08-07 22:15:53,031 DEBUG: [79] Comparing with gazetteer row 1001296
+2025-08-07 22:15:53,031 DEBUG: [79] Comparing with gazetteer row 1001297
+2025-08-07 22:15:53,032 DEBUG: [79] Comparing with gazetteer row 1001298
+2025-08-07 22:15:53,032 DEBUG: [79] Comparing with gazetteer row 1001299
+2025-08-07 22:15:53,032 DEBUG: [79] Comparing with gazetteer row 1001300
+2025-08-07 22:15:53,033 DEBUG: [79] Comparing with gazetteer row 1001301
+2025-08-07 22:15:53,034 DEBUG: [79] Comparing with gazetteer row 1001302
+2025-08-07 22:15:53,034 DEBUG: [79] Comparing with gazetteer row 1001303
+2025-08-07 22:15:53,035 DEBUG: [79] Comparing with gazetteer row 1001304
+2025-08-07 22:15:53,035 DEBUG: [79] Comparing with gazetteer row 1001305
+2025-08-07 22:15:53,036 DEBUG: [79] Comparing with gazetteer row 1001306
+2025-08-07 22:15:53,038 DEBUG: [79] Comparing with gazetteer row 1001307
+2025-08-07 22:15:53,038 DEBUG: [79] Comparing with gazetteer row 1001308
+2025-08-07 22:15:53,039 DEBUG: [79] Comparing with gazetteer row 1001309
+2025-08-07 22:15:53,039 DEBUG: [79] Comparing with gazetteer row 1001310
+2025-08-07 22:15:53,039 DEBUG: [79] Comparing with gazetteer row 1001311
+2025-08-07 22:15:53,040 DEBUG: [79] Comparing with gazetteer row 1001312
+2025-08-07 22:15:53,040 DEBUG: [79] Comparing with gazetteer row 1001313
+2025-08-07 22:15:53,040 DEBUG: [79] Comparing with gazetteer row 1001314
+2025-08-07 22:15:53,041 DEBUG: [79] Comparing with gazetteer row 1001315
+2025-08-07 22:15:53,041 DEBUG: [79] Comparing with gazetteer row 1001316
+2025-08-07 22:15:53,042 DEBUG: [79] Comparing with gazetteer row 1001317
+2025-08-07 22:15:53,042 DEBUG: [79] Comparing with gazetteer row 1001318
+2025-08-07 22:15:53,043 DEBUG: [79] Comparing with gazetteer row 1001319
+2025-08-07 22:15:53,043 DEBUG: [79] Comparing with gazetteer row 1001320
+2025-08-07 22:15:53,044 DEBUG: [79] Comparing with gazetteer row 1001321
+2025-08-07 22:15:53,044 DEBUG: [79] Comparing with gazetteer row 1001322
+2025-08-07 22:15:53,044 DEBUG: [79] Comparing with gazetteer row 1001323
+2025-08-07 22:15:53,045 DEBUG: [79] Comparing with gazetteer row 1001324
+2025-08-07 22:15:53,045 DEBUG: [79] Comparing with gazetteer row 1001325
+2025-08-07 22:15:53,046 DEBUG: [79] Comparing with gazetteer row 1001326
+2025-08-07 22:15:53,047 DEBUG: [79] Comparing with gazetteer row 1001327
+2025-08-07 22:15:53,048 DEBUG: [79] Comparing with gazetteer row 1001328
+2025-08-07 22:15:53,049 DEBUG: [79] Comparing with gazetteer row 1001329
+2025-08-07 22:15:53,049 DEBUG: [79] Comparing with gazetteer row 1001330
+2025-08-07 22:15:53,051 DEBUG: [79] Comparing with gazetteer row 1001331
+2025-08-07 22:15:53,052 DEBUG: [79] Comparing with gazetteer row 1001332
+2025-08-07 22:15:53,053 DEBUG: [79] Comparing with gazetteer row 1001333
+2025-08-07 22:15:53,054 DEBUG: [79] Comparing with gazetteer row 1001334
+2025-08-07 22:15:53,054 DEBUG: [79] Comparing with gazetteer row 1001335
+2025-08-07 22:15:53,055 DEBUG: [79] Comparing with gazetteer row 1001336
+2025-08-07 22:15:53,056 DEBUG: [79] Comparing with gazetteer row 1001337
+2025-08-07 22:15:53,056 DEBUG: [79] Comparing with gazetteer row 1001338
+2025-08-07 22:15:53,057 DEBUG: [79] Comparing with gazetteer row 1001339
+2025-08-07 22:15:53,057 DEBUG: [79] Comparing with gazetteer row 1001340
+2025-08-07 22:15:53,058 DEBUG: [79] Comparing with gazetteer row 1001341
+2025-08-07 22:15:53,058 DEBUG: [79] Comparing with gazetteer row 1001342
+2025-08-07 22:15:53,059 DEBUG: [79] Comparing with gazetteer row 1001343
+2025-08-07 22:15:53,059 DEBUG: [79] Comparing with gazetteer row 1001344
+2025-08-07 22:15:53,060 DEBUG: [79] Comparing with gazetteer row 1001345
+2025-08-07 22:15:53,060 DEBUG: [79] Comparing with gazetteer row 1001346
+2025-08-07 22:15:53,060 DEBUG: [79] Comparing with gazetteer row 1001347
+2025-08-07 22:15:53,061 DEBUG: [79] Comparing with gazetteer row 1001348
+2025-08-07 22:15:53,061 DEBUG: [79] Comparing with gazetteer row 1001349
+2025-08-07 22:15:53,062 DEBUG: [79] Comparing with gazetteer row 1001350
+2025-08-07 22:15:53,063 DEBUG: [79] Comparing with gazetteer row 1001351
+2025-08-07 22:15:53,063 DEBUG: [79] Comparing with gazetteer row 1001352
+2025-08-07 22:15:53,063 DEBUG: [79] Comparing with gazetteer row 1001353
+2025-08-07 22:15:53,064 DEBUG: [79] Comparing with gazetteer row 1001354
+2025-08-07 22:15:53,064 DEBUG: [79] Comparing with gazetteer row 1001355
+2025-08-07 22:15:53,064 DEBUG: [79] Comparing with gazetteer row 1001356
+2025-08-07 22:15:53,065 DEBUG: [79] Comparing with gazetteer row 1001357
+2025-08-07 22:15:53,065 DEBUG: [79] Comparing with gazetteer row 1001358
+2025-08-07 22:15:53,066 DEBUG: [79] Comparing with gazetteer row 1001359
+2025-08-07 22:15:53,116 DEBUG: [80] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:53,180 DEBUG: [80] After generic territory filter: 50820 rows
+2025-08-07 22:15:53,181 DEBUG: [80] Time filter using year: 1777
+2025-08-07 22:15:53,196 DEBUG: [80] After time filter: 28025 rows
+2025-08-07 22:15:54,313 DEBUG: [80] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 147 rows (was 28025)
+2025-08-07 22:15:54,317 DEBUG: [80] Comparing with gazetteer row 1000095
+2025-08-07 22:15:54,318 DEBUG: [80] Comparing with gazetteer row 1001213
+2025-08-07 22:15:54,318 DEBUG: [80] Comparing with gazetteer row 1001214
+2025-08-07 22:15:54,319 DEBUG: [80] Comparing with gazetteer row 1001215
+2025-08-07 22:15:54,320 DEBUG: [80] Comparing with gazetteer row 1001216
+2025-08-07 22:15:54,321 DEBUG: [80] Comparing with gazetteer row 1001217
+2025-08-07 22:15:54,321 DEBUG: [80] Comparing with gazetteer row 1001218
+2025-08-07 22:15:54,321 DEBUG: [80] Comparing with gazetteer row 1001219
+2025-08-07 22:15:54,322 DEBUG: [80] Comparing with gazetteer row 1001220
+2025-08-07 22:15:54,322 DEBUG: [80] Comparing with gazetteer row 1001221
+2025-08-07 22:15:54,322 DEBUG: [80] Comparing with gazetteer row 1001222
+2025-08-07 22:15:54,323 DEBUG: [80] Comparing with gazetteer row 1001223
+2025-08-07 22:15:54,324 DEBUG: [80] Comparing with gazetteer row 1001224
+2025-08-07 22:15:54,324 DEBUG: [80] Comparing with gazetteer row 1001225
+2025-08-07 22:15:54,324 DEBUG: [80] Comparing with gazetteer row 1001226
+2025-08-07 22:15:54,325 DEBUG: [80] Comparing with gazetteer row 1001227
+2025-08-07 22:15:54,325 DEBUG: [80] Comparing with gazetteer row 1001228
+2025-08-07 22:15:54,326 DEBUG: [80] Comparing with gazetteer row 1001229
+2025-08-07 22:15:54,326 DEBUG: [80] Comparing with gazetteer row 1001230
+2025-08-07 22:15:54,327 DEBUG: [80] Comparing with gazetteer row 1001231
+2025-08-07 22:15:54,327 DEBUG: [80] Comparing with gazetteer row 1001232
+2025-08-07 22:15:54,328 DEBUG: [80] Comparing with gazetteer row 1001233
+2025-08-07 22:15:54,328 DEBUG: [80] Comparing with gazetteer row 1001234
+2025-08-07 22:15:54,328 DEBUG: [80] Comparing with gazetteer row 1001235
+2025-08-07 22:15:54,329 DEBUG: [80] Comparing with gazetteer row 1001236
+2025-08-07 22:15:54,329 DEBUG: [80] Comparing with gazetteer row 1001237
+2025-08-07 22:15:54,329 DEBUG: [80] Comparing with gazetteer row 1001238
+2025-08-07 22:15:54,330 DEBUG: [80] Comparing with gazetteer row 1001239
+2025-08-07 22:15:54,330 DEBUG: [80] Comparing with gazetteer row 1001240
+2025-08-07 22:15:54,331 DEBUG: [80] Comparing with gazetteer row 1001241
+2025-08-07 22:15:54,331 DEBUG: [80] Comparing with gazetteer row 1001242
+2025-08-07 22:15:54,332 DEBUG: [80] Comparing with gazetteer row 1001244
+2025-08-07 22:15:54,332 DEBUG: [80] Comparing with gazetteer row 1001245
+2025-08-07 22:15:54,332 INFO: [80] Match found: toponym_label (score: 1)
+2025-08-07 22:15:54,333 INFO: [80] High confidence match — stopping further checks.
+2025-08-07 22:15:54,349 DEBUG: [81] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:54,378 DEBUG: [81] After generic territory filter: 50820 rows
+2025-08-07 22:15:54,378 DEBUG: [81] Time filter using year: 1805
+2025-08-07 22:15:54,388 DEBUG: [81] After time filter: 28115 rows
+2025-08-07 22:15:55,285 DEBUG: [81] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 14 rows (was 28115)
+2025-08-07 22:15:55,286 DEBUG: [81] Comparing with gazetteer row 1000007
+2025-08-07 22:15:55,287 DEBUG: [81] Comparing with gazetteer row 1001380
+2025-08-07 22:15:55,287 DEBUG: [81] Comparing with gazetteer row 1001381
+2025-08-07 22:15:55,288 INFO: [81] Match found: toponym_label (score: 1)
+2025-08-07 22:15:55,288 INFO: [81] High confidence match — stopping further checks.
+2025-08-07 22:15:55,314 DEBUG: [82] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:55,343 DEBUG: [82] After generic territory filter: 50820 rows
+2025-08-07 22:15:55,343 DEBUG: [82] Time filter using year: 1771
+2025-08-07 22:15:55,354 DEBUG: [82] After time filter: 28004 rows
+2025-08-07 22:15:56,496 DEBUG: [82] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 14 rows (was 28004)
+2025-08-07 22:15:56,497 DEBUG: [82] Comparing with gazetteer row 1000007
+2025-08-07 22:15:56,497 INFO: [82] Match found: toponym_label (score: 1)
+2025-08-07 22:15:56,498 INFO: [82] High confidence match — stopping further checks.
+2025-08-07 22:15:56,535 DEBUG: [83] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:56,564 DEBUG: [83] After generic territory filter: 50820 rows
+2025-08-07 22:15:56,564 DEBUG: [83] Time filter using year: 1746
+2025-08-07 22:15:56,581 DEBUG: [83] After time filter: 27910 rows
+2025-08-07 22:15:57,860 DEBUG: [83] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 16 rows (was 27910)
+2025-08-07 22:15:57,861 DEBUG: [83] Comparing with gazetteer row 1000090
+2025-08-07 22:15:57,862 DEBUG: [83] Comparing with gazetteer row 1001047
+2025-08-07 22:15:57,862 DEBUG: [83] Comparing with gazetteer row 1001073
+2025-08-07 22:15:57,862 DEBUG: [83] Comparing with gazetteer row 1001074
+2025-08-07 22:15:57,863 DEBUG: [83] Comparing with gazetteer row 1001075
+2025-08-07 22:15:57,863 DEBUG: [83] Comparing with gazetteer row 1001076
+2025-08-07 22:15:57,864 DEBUG: [83] Comparing with gazetteer row 1001077
+2025-08-07 22:15:57,864 DEBUG: [83] Comparing with gazetteer row 1001078
+2025-08-07 22:15:57,865 DEBUG: [83] Comparing with gazetteer row 1001079
+2025-08-07 22:15:57,865 DEBUG: [83] Comparing with gazetteer row 1001080
+2025-08-07 22:15:57,865 DEBUG: [83] Comparing with gazetteer row 1001081
+2025-08-07 22:15:57,866 DEBUG: [83] Comparing with gazetteer row 1001082
+2025-08-07 22:15:57,866 DEBUG: [83] Comparing with gazetteer row 1001083
+2025-08-07 22:15:57,867 DEBUG: [83] Comparing with gazetteer row 1001084
+2025-08-07 22:15:57,868 DEBUG: [83] Comparing with gazetteer row 1001085
+2025-08-07 22:15:57,868 DEBUG: [83] Comparing with gazetteer row 9901154
+2025-08-07 22:15:57,868 WARNING: [83] No match found.
+2025-08-07 22:15:57,887 DEBUG: [84] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:57,918 DEBUG: [84] After generic territory filter: 50820 rows
+2025-08-07 22:15:57,918 DEBUG: [84] Time filter using year: 1779
+2025-08-07 22:15:57,928 DEBUG: [84] After time filter: 28025 rows
+2025-08-07 22:15:58,917 DEBUG: [84] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 16 rows (was 28025)
+2025-08-07 22:15:58,919 DEBUG: [84] Comparing with gazetteer row 1000090
+2025-08-07 22:15:58,928 DEBUG: [84] Comparing with gazetteer row 1001047
+2025-08-07 22:15:58,929 DEBUG: [84] Comparing with gazetteer row 1001073
+2025-08-07 22:15:58,929 DEBUG: [84] Comparing with gazetteer row 1001074
+2025-08-07 22:15:58,930 DEBUG: [84] Comparing with gazetteer row 1001075
+2025-08-07 22:15:58,931 DEBUG: [84] Comparing with gazetteer row 1001076
+2025-08-07 22:15:58,931 DEBUG: [84] Comparing with gazetteer row 1001077
+2025-08-07 22:15:58,932 DEBUG: [84] Comparing with gazetteer row 1001078
+2025-08-07 22:15:58,932 DEBUG: [84] Comparing with gazetteer row 1001079
+2025-08-07 22:15:58,933 DEBUG: [84] Comparing with gazetteer row 1001080
+2025-08-07 22:15:58,933 DEBUG: [84] Comparing with gazetteer row 1001081
+2025-08-07 22:15:58,934 DEBUG: [84] Comparing with gazetteer row 1001082
+2025-08-07 22:15:58,934 DEBUG: [84] Comparing with gazetteer row 1001083
+2025-08-07 22:15:58,934 DEBUG: [84] Comparing with gazetteer row 1001084
+2025-08-07 22:15:58,935 DEBUG: [84] Comparing with gazetteer row 1001085
+2025-08-07 22:15:58,935 DEBUG: [84] Comparing with gazetteer row 9901154
+2025-08-07 22:15:58,935 WARNING: [84] No match found.
+2025-08-07 22:15:58,953 DEBUG: [85] Filtering by lugar_region = Nueva España
+2025-08-07 22:15:58,981 DEBUG: [85] After generic territory filter: 50820 rows
+2025-08-07 22:15:58,982 DEBUG: [85] Time filter using year: 1769
+2025-08-07 22:15:58,996 DEBUG: [85] After time filter: 28004 rows
+2025-08-07 22:16:00,097 DEBUG: [85] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 57 rows (was 28004)
+2025-08-07 22:16:00,097 DEBUG: [85] Comparing with gazetteer row 1000111
+2025-08-07 22:16:00,097 DEBUG: [85] Comparing with gazetteer row 1001746
+2025-08-07 22:16:00,098 DEBUG: [85] Comparing with gazetteer row 1001747
+2025-08-07 22:16:00,098 DEBUG: [85] Comparing with gazetteer row 1001748
+2025-08-07 22:16:00,098 DEBUG: [85] Comparing with gazetteer row 1001749
+2025-08-07 22:16:00,099 DEBUG: [85] Comparing with gazetteer row 1001750
+2025-08-07 22:16:00,099 DEBUG: [85] Comparing with gazetteer row 1001751
+2025-08-07 22:16:00,099 DEBUG: [85] Comparing with gazetteer row 1001752
+2025-08-07 22:16:00,100 DEBUG: [85] Comparing with gazetteer row 1001753
+2025-08-07 22:16:00,100 DEBUG: [85] Comparing with gazetteer row 1001754
+2025-08-07 22:16:00,100 DEBUG: [85] Comparing with gazetteer row 1001755
+2025-08-07 22:16:00,100 DEBUG: [85] Comparing with gazetteer row 1001756
+2025-08-07 22:16:00,101 DEBUG: [85] Comparing with gazetteer row 1001757
+2025-08-07 22:16:00,101 DEBUG: [85] Comparing with gazetteer row 1001758
+2025-08-07 22:16:00,101 DEBUG: [85] Comparing with gazetteer row 1001759
+2025-08-07 22:16:00,102 DEBUG: [85] Comparing with gazetteer row 1001760
+2025-08-07 22:16:00,102 DEBUG: [85] Comparing with gazetteer row 1001761
+2025-08-07 22:16:00,102 DEBUG: [85] Comparing with gazetteer row 1001762
+2025-08-07 22:16:00,102 DEBUG: [85] Comparing with gazetteer row 1001763
+2025-08-07 22:16:00,103 DEBUG: [85] Comparing with gazetteer row 1001764
+2025-08-07 22:16:00,103 DEBUG: [85] Comparing with gazetteer row 1001765
+2025-08-07 22:16:00,103 DEBUG: [85] Comparing with gazetteer row 1001766
+2025-08-07 22:16:00,103 DEBUG: [85] Comparing with gazetteer row 1001767
+2025-08-07 22:16:00,103 DEBUG: [85] Comparing with gazetteer row 1001768
+2025-08-07 22:16:00,104 DEBUG: [85] Comparing with gazetteer row 1001769
+2025-08-07 22:16:00,104 DEBUG: [85] Comparing with gazetteer row 1001770
+2025-08-07 22:16:00,104 DEBUG: [85] Comparing with gazetteer row 1001771
+2025-08-07 22:16:00,104 DEBUG: [85] Comparing with gazetteer row 1001772
+2025-08-07 22:16:00,105 DEBUG: [85] Comparing with gazetteer row 1001773
+2025-08-07 22:16:00,105 DEBUG: [85] Comparing with gazetteer row 1001774
+2025-08-07 22:16:00,105 DEBUG: [85] Comparing with gazetteer row 1001775
+2025-08-07 22:16:00,105 DEBUG: [85] Comparing with gazetteer row 1001776
+2025-08-07 22:16:00,106 DEBUG: [85] Comparing with gazetteer row 1001777
+2025-08-07 22:16:00,106 DEBUG: [85] Comparing with gazetteer row 1001778
+2025-08-07 22:16:00,106 DEBUG: [85] Comparing with gazetteer row 1001779
+2025-08-07 22:16:00,106 DEBUG: [85] Comparing with gazetteer row 1001780
+2025-08-07 22:16:00,107 DEBUG: [85] Comparing with gazetteer row 1001781
+2025-08-07 22:16:00,107 DEBUG: [85] Comparing with gazetteer row 1001782
+2025-08-07 22:16:00,107 DEBUG: [85] Comparing with gazetteer row 1001783
+2025-08-07 22:16:00,108 DEBUG: [85] Comparing with gazetteer row 1001784
+2025-08-07 22:16:00,108 DEBUG: [85] Comparing with gazetteer row 1001785
+2025-08-07 22:16:00,108 DEBUG: [85] Comparing with gazetteer row 1001786
+2025-08-07 22:16:00,108 DEBUG: [85] Comparing with gazetteer row 1001787
+2025-08-07 22:16:00,108 DEBUG: [85] Comparing with gazetteer row 1001788
+2025-08-07 22:16:00,109 DEBUG: [85] Comparing with gazetteer row 1001789
+2025-08-07 22:16:00,109 DEBUG: [85] Comparing with gazetteer row 1001790
+2025-08-07 22:16:00,109 DEBUG: [85] Comparing with gazetteer row 1001791
+2025-08-07 22:16:00,109 DEBUG: [85] Comparing with gazetteer row 1001792
+2025-08-07 22:16:00,109 DEBUG: [85] Comparing with gazetteer row 1001793
+2025-08-07 22:16:00,110 DEBUG: [85] Comparing with gazetteer row 1001794
+2025-08-07 22:16:00,110 DEBUG: [85] Comparing with gazetteer row 1001795
+2025-08-07 22:16:00,110 DEBUG: [85] Comparing with gazetteer row 1001796
+2025-08-07 22:16:00,110 DEBUG: [85] Comparing with gazetteer row 1001797
+2025-08-07 22:16:00,111 DEBUG: [85] Comparing with gazetteer row 1001798
+2025-08-07 22:16:00,111 DEBUG: [85] Comparing with gazetteer row 1001799
+2025-08-07 22:16:00,111 DEBUG: [85] Comparing with gazetteer row 1001800
+2025-08-07 22:16:00,112 DEBUG: [85] Comparing with gazetteer row 1001801
+2025-08-07 22:16:00,112 WARNING: [85] No match found.
+2025-08-07 22:16:00,128 DEBUG: [86] Filtering by lugar_region = Nueva España
+2025-08-07 22:16:00,158 DEBUG: [86] After generic territory filter: 50820 rows
+2025-08-07 22:16:00,158 DEBUG: [86] Time filter using year: 1808
+2025-08-07 22:16:00,169 DEBUG: [86] After time filter: 28115 rows
+2025-08-07 22:16:01,055 DEBUG: [86] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 0 rows (was 28115)
+2025-08-07 22:16:01,056 WARNING: [86] No candidates after territory filtering.
+2025-08-07 22:16:01,074 DEBUG: [87] Filtering by lugar_region = Nueva España
+2025-08-07 22:16:01,101 DEBUG: [87] After generic territory filter: 50820 rows
+2025-08-07 22:16:01,101 DEBUG: [87] Time filter using year: 1766
+2025-08-07 22:16:01,112 DEBUG: [87] After time filter: 27997 rows
+2025-08-07 22:16:02,149 DEBUG: [87] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 0 rows (was 27997)
+2025-08-07 22:16:02,150 WARNING: [87] No candidates after territory filtering.
+2025-08-07 22:16:02,166 DEBUG: [88] Filtering by lugar_region = Nueva España
+2025-08-07 22:16:02,195 DEBUG: [88] After generic territory filter: 50820 rows
+2025-08-07 22:16:02,196 DEBUG: [88] Time filter using year: 1789
+2025-08-07 22:16:02,206 DEBUG: [88] After time filter: 28335 rows
+2025-08-07 22:16:03,080 DEBUG: [88] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 0 rows (was 28335)
+2025-08-07 22:16:03,081 WARNING: [88] No candidates after territory filtering.
+2025-08-07 22:16:03,096 DEBUG: [89] Filtering by lugar_region = Nueva España
+2025-08-07 22:16:03,125 DEBUG: [89] After generic territory filter: 50820 rows
+2025-08-07 22:16:03,126 DEBUG: [89] Time filter using year: 1766
+2025-08-07 22:16:03,139 DEBUG: [89] After time filter: 27997 rows
+2025-08-07 22:16:04,487 DEBUG: [89] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 0 rows (was 27997)
+2025-08-07 22:16:04,487 WARNING: [89] No candidates after territory filtering.
+2025-08-07 22:16:04,506 DEBUG: [90] Filtering by lugar_region = Nueva España
+2025-08-07 22:16:04,544 DEBUG: [90] After generic territory filter: 50820 rows
+2025-08-07 22:16:04,545 DEBUG: [90] Time filter using year: 1807
+2025-08-07 22:16:04,558 DEBUG: [90] After time filter: 28115 rows
+2025-08-07 22:16:05,877 DEBUG: [90] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 10 rows (was 28115)
+2025-08-07 22:16:05,878 DEBUG: [90] Comparing with gazetteer row 1000117
+2025-08-07 22:16:05,879 DEBUG: [90] Comparing with gazetteer row 1001921
+2025-08-07 22:16:05,879 DEBUG: [90] Comparing with gazetteer row 1001922
+2025-08-07 22:16:05,880 DEBUG: [90] Comparing with gazetteer row 1001923
+2025-08-07 22:16:05,880 DEBUG: [90] Comparing with gazetteer row 1001924
+2025-08-07 22:16:05,881 DEBUG: [90] Comparing with gazetteer row 1001925
+2025-08-07 22:16:05,881 DEBUG: [90] Comparing with gazetteer row 9901150
+2025-08-07 22:16:05,882 DEBUG: [90] Comparing with gazetteer row 9901151
+2025-08-07 22:16:05,882 DEBUG: [90] Comparing with gazetteer row 9901152
+2025-08-07 22:16:05,883 DEBUG: [90] Comparing with gazetteer row 9901153
+2025-08-07 22:16:05,884 WARNING: [90] No match found.
+2025-08-07 22:16:05,903 DEBUG: [91] Filtering by lugar_region = Nueva España
+2025-08-07 22:16:05,945 DEBUG: [91] After generic territory filter: 50820 rows
+2025-08-07 22:16:05,945 DEBUG: [91] Time filter using year: 1766
+2025-08-07 22:16:05,959 DEBUG: [91] After time filter: 27997 rows
+2025-08-07 22:16:07,105 DEBUG: [91] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 0 rows (was 27997)
+2025-08-07 22:16:07,105 WARNING: [91] No candidates after territory filtering.
+2025-08-07 22:16:07,124 DEBUG: [92] Filtering by lugar_region = Nueva España
+2025-08-07 22:16:07,152 DEBUG: [92] After generic territory filter: 50820 rows
+2025-08-07 22:16:07,152 DEBUG: [92] Time filter using year: 1805
+2025-08-07 22:16:07,164 DEBUG: [92] After time filter: 28115 rows
+2025-08-07 22:16:08,036 DEBUG: [92] After ref_Jurisdiccion + Nivel='Jurisdiccion' filter: 0 rows (was 28115)
+2025-08-07 22:16:08,037 WARNING: [92] No candidates after territory filtering.
+2025-08-07 22:16:08,039 WARNING: [93] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,050 WARNING: [94] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,061 WARNING: [95] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,073 WARNING: [96] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,084 WARNING: [97] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,097 WARNING: [98] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,108 WARNING: [99] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,120 WARNING: [100] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,133 WARNING: [101] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,144 WARNING: [102] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,157 WARNING: [103] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,169 WARNING: [104] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,183 WARNING: [105] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,193 WARNING: [106] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,206 WARNING: [107] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,219 WARNING: [108] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,233 WARNING: [109] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,243 WARNING: [110] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,255 WARNING: [111] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,268 WARNING: [112] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,282 WARNING: [113] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,295 WARNING: [114] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,307 WARNING: [115] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,320 WARNING: [116] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,332 WARNING: [117] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,346 WARNING: [118] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,358 WARNING: [119] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,368 WARNING: [120] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,379 WARNING: [121] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,392 WARNING: [122] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,403 WARNING: [123] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,414 WARNING: [124] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,425 WARNING: [125] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,436 WARNING: [126] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,448 WARNING: [127] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,461 WARNING: [128] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,472 WARNING: [129] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,483 WARNING: [130] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,495 WARNING: [131] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,506 WARNING: [132] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,517 WARNING: [133] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,529 WARNING: [134] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,541 WARNING: [135] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,553 WARNING: [136] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,563 WARNING: [137] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,574 WARNING: [138] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,585 WARNING: [139] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,596 WARNING: [140] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,607 WARNING: [141] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,620 WARNING: [142] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,631 WARNING: [143] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,643 WARNING: [144] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,653 WARNING: [145] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,664 WARNING: [146] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,674 WARNING: [147] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,677 WARNING: [148] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,680 WARNING: [149] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,693 WARNING: [150] No usable spatial fields. Relegating early.
+2025-08-07 22:16:08,739 DEBUG: Gazetteer columns: ['gz_id', 'lugar_label', 'lugar_nombre', 'lugar_variantes', 'lugar_categoria', 'lugar_categoria_especial', 'lugar_iglesia_cat', 'lugar_partido_generico', 'lugar_provincia_generica', 'lugar_region', 'lugar_pais', 'lat', 'lon', 'Nivel', 'polygon_label', 'polygon_nombre', 'polygon_variantes', 'polygon_tipo', 'polygon_entidad_id', 'overlap_start', 'overlap_end']
+2025-08-07 22:16:08,739 DEBUG: Input columns: ['rowID', 'Region', 'ref_Region', 'ref_Jurisdiccion', 'Subregion.Oaxaca.', 'ref_Label', 'ref_START', 'Source', 'AGN_Type', 'AGN_ID', 'ref_END']

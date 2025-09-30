@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xml:lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Categorías para<br/>{{ place.label }}, {{ place.categoria }} ({{ place.partido_generico }}/{{ place.provincia_generica }}/{{ place.region }})</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        .codebook-link {
+            margin-top: 20px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1>Categorías para<br/>{{ place.label }}, {{ place.categoria }} ({{ place.partido_generico }}/{{ place.provincia_generica }}/{{ place.region }})</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Inicio</th>
+                <th>Fin</th>
+                <th>Categoría</th>
+                <th>Subcategoría</th>
+                <th>Fuente</th>
+                <th>Parcialidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in category_data %}
+            <tr>
+                <td>{{ entry.start }} ({{ entry.start_ex }})</td>
+                <td>{{ entry.end_ }} ({{ entry.end_ex }})</td>
+                <td>{{ entry.categoria }}</td>
+                <td>{{ entry.categoria_esp }}</td>
+                <td><a href="../fuentes/{{ entry.fuente_ID }}">{{ entry.fuente_ID }}</a></td>
+                <td>{{ entry.parcialidad }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="codebook-link">
+        <p>Consulte el <a href="https://www.hgis-indias.net/dokuwiki/doku.php?id=conceptos:tabla_gz_categoria">códice de la tabla de categorías</a> para más información.</p>
+    </div>
+</body>
+</html>
