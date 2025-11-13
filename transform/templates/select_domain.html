@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Domain</title>
+</head>
+<body>
+    <h1>Select Domain</h1>
+    <form id="domainForm">
+        <label>
+            <input type="radio" name="domain" value="places" required> Places
+        </label>
+        <label>
+            <input type="radio" name="domain" value="territories" required> Territories
+        </label>
+        <button type="submit">Continue</button>
+    </form>
+
+    <script>
+        document.getElementById('domainForm').onsubmit = async function(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const domain = formData.get('domain');
+
+            const res = await fetch('/process_domain', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({domain})
+            });
+
+            const result = await res.json();
+            if (result.success) {
+                window.location.href = '/classify_columns';
+            } else {
+                alert(result.error);
+            }
+        }
+    </script>
+</body>
+</html>
