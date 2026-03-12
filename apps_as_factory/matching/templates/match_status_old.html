@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+  <title>Matching Status</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script>
+    // Check status every 2 seconds
+    let checkCount = 0;
+    const maxChecks = 150; // 5 minutes max
+    
+    function checkStatus() {
+      checkCount++;
+      
+      {% if matching_complete %}
+        // If matching is complete, redirect to disambiguation
+        console.log("Matching complete, redirecting to disambiguation...");
+        window.location.href = "{{ url_for('.disambiguate', prefix=prefix) }}";
+      {% else %}
+        // Still in progress, refresh the page
+        if (checkCount < maxChecks) {
+          setTimeout(function() {
+            window.location.reload();
+          }, 2000);
+        } else {
+          document.getElementById('status-message').innerHTML = 
+            '<p style="color: red;"><strong>Status check timed out. Please refresh manually or contact support.</strong></p>';
+        }
+      {% endif %}
+    }
+    
+    // Start checking when page loads
+    window.onload = checkStatus;
+  </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+    pre {
+      background-color: #f4f4f4;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 15px;
+      overflow-x: auto;
+      font-size: 14px;
+    }
+    .status-box {
+      border: 2px solid #4CAF50;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+      background-color: #f9f9f9;
+    }
+    .complete {
+      border-color: #2196F3;
+      background-color: #e3f2fd;
+    }
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid #3498db;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+    .button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>Matching Status</h1>
+  <h2>Dataset: {{ prefix }}</h2>
+  
+  <div class="status-box {% if matching_complete %}complete{% endif %}">
+    <h3>Current Status:</h3>
+    <pre>{{ content }}</pre>
+    
+    <div id="status-message">
+      {% if not matching_complete %}
+        <p>
+          <span class="loading"></span>
+          <em>Matching in progress... Auto-refreshing every 2 seconds</em>
+        </p>
+      {% else %}
+        <p><strong>✓ Phase 1 complete! Redirecting to disambiguation...</strong></p>
+        <p><a href="{{ url_for('.disambiguate', prefix=prefix) }}" class="button">Continue to Disambiguation</a></p>
+      {% endif %}
+    </div>
+  </div>
+  
+  <p><a href="{{ url_for('.index') }}" class="button">Back to Upload</a></p>
+  
+  <div style="margin-top: 30px; padding: 15px; background-color: #fff3cd; border: 1px solid #ffc107; border-radius: 4px;">
+    <h4>Process Overview:</h4>
+    <ul>
+      <li><strong>Phase 1a:</strong> Initial matching with full territorial constraints</li>
+      <li><strong>Phase 1b:</strong> Backoff strategy for unmatched rows (removes time, then territorial constraints progressively)</li>
+      <li><strong>Phase 2:</strong> Disambiguation (manual selection of best candidates)</li>
+      <li><strong>Phase 3:</strong> Resolution of relegated cases</li>
+    </ul>
+  </div>
+</body>
+</html>

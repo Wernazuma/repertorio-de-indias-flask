@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Processing Complete - Debug Version</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .debug-section { 
+            background: #f5f5f5; 
+            padding: 15px; 
+            margin: 10px 0; 
+            border-radius: 5px;
+            border-left: 4px solid #007bff;
+        }
+        .error { border-left-color: #dc3545; background: #f8d7da; }
+        .success { border-left-color: #28a745; background: #d4edda; }
+        pre { background: #f8f9fa; padding: 10px; border-radius: 3px; overflow-x: auto; }
+        .collapsible { cursor: pointer; background: #eee; padding: 10px; border: none; width: 100%; text-align: left; }
+        .collapsible:hover { background: #ddd; }
+        .content { display: none; padding: 0 15px; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>CSV Processing Complete</h1>
+    
+    <div class="debug-section success">
+        <h3>✅ Final Results</h3>
+        <p><strong>Original File:</strong> {{ original_filename }}</p>
+        <p><strong>Cleaned File:</strong> <a href="{{ url_for('download_file', filename=output_filename) }}">{{ output_filename }}</a></p>
+        <p><strong>Rows:</strong> {{ rows }}</p>
+        <p><strong>Columns:</strong> {{ columns }}</p>
+    </div>
+
+    {% if legacy_columns %}
+        <div class="debug-section">
+            <h3>🔄 Legacy Columns Added:</h3>
+            <ul>
+                {% for col, legacy in legacy_columns.items() %}
+                    <li><strong>{{ legacy }}</strong> (original values of {{ col }})</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    <!-- Debug Information -->
+    <button class="collapsible">🐛 Debug Information</button>
+    <div class="content">
+        <div class="debug-section">
+            <h4>Session Data</h4>
+            <table>
+                <tr><th>Key</th><th>Value</th></tr>
+                <tr><td>uploaded_file</td><td>{{ session.get('uploaded_file', 'N/A') }}</td></tr>
+                <tr><td>domain</td><td>{{ session.get('domain', 'N/A') }}</td></tr>
+                <tr><td>csv_rows</td><td>{{ session.get('csv_rows', 'N/A') }}</td></tr>
+                <tr><td>csv_columns</td><td>{{ session.get('csv_columns', 'N/A') }}</td></tr>
+                <tr><td>final_rows</td><td>{{ session.get('final_rows', 'N/A') }}</td></tr>
+                <tr><td>final_columns</td><td>{{ session.get('final_columns', 'N/A') }}</td></tr>
+            </table>
+        </div>
+
+        <div class="debug-section">
+            <h4>Original Columns</h4>
+            <pre>{{ session.get('columns', []) | tojson(indent=2) }}</pre>
+        </div>
+
+        <div class="debug-section">
+            <h4>Field Types</h4>
+            <pre>{{ session.get('field_types', {}) | tojson(indent=2) }}</pre>
+        </div>
+
+        <div class="debug-section">
+            <h4>Field Mapping</h4>
+            <pre>{{ session.get('field_mapping', {}) | tojson(indent=2) }}</pre>
+        </div>
+
+        <div class="debug-section">
+            <h4>Chronological Info</h4>
+            <pre>{{ session.get('chronological_info', {}) | tojson(indent=2) }}</pre>
+        </div>
+
+        {% if session.get('debug_column_types') %}
+        <div class="debug-section">
+            <h4>Column Types Debug</h4>
+            <pre>{{ session.get('debug_column_types', {}) | tojson(indent=2) }}</pre>
+        </div>
+        {% endif %}
+
+        {% if session.get('field_samples') %}
+        <div class="debug-section">
+            <h4>Field Samples</h4>
+            <pre>{{ session.get('field_samples', {}) | tojson(indent=2) }}</pre>
+        </div>
+        {% endif %}
+    </div>
+
+    <div style="margin-top: 30px;">
+        <a href="{{ url_for('index') }}" style="display: inline-block; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px;">Process Another File</a>
+    </div>
+
+    <script>
+        // Make debug sections collapsible
+        var coll = document.getElementsByClassName("collapsible");
+        for (var i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+    </script>
+</body>
+</html>

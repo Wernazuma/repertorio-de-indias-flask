@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Field Mapping</title>
+</head>
+<body>
+    <h1>Field Mapping - {{ domain|capitalize }}</h1>
+    <form id="mappingForm">
+        {% for field in required_fields %}
+            <div>
+                <label>{{ field.label }}</label>
+                <select name="{{ field.name }}">
+                    <option value="none">-- Select column --</option>
+                    {% for col in filtered_columns[field.name] %}
+                        <option value="{{ col }}">{{ col }}</option>
+                    {% endfor %}
+                </select>
+                {% if field.optional %}
+                    <span>(Optional)</span>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <button type="submit">Continue</button>
+    </form>
+
+    <script>
+        document.getElementById('mappingForm').onsubmit = async function(e) {
+            e.preventDefault();
+            const selects = document.querySelectorAll('select');
+            const field_mapping = {};
+            selects.forEach(select => {
+                field_mapping[select.name] = select.value;
+            });
+
+            const res = await fetch('/transform/save_field_mapping', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({field_mapping})
+            });
+
+            const result = await res.json();
+            if (result.success) {
+                window.location.href = '/transform/chronological_info';
+            } else {
+                alert(result.error);
+            }
+        }
+    </script>
+</body>
+</html>

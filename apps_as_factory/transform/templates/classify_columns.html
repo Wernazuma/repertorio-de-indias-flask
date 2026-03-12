@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Classify Columns</title>
+</head>
+<body>
+    <h1>Classify Columns</h1>
+    
+    <!-- Debug information -->
+    <div style="background-color: #f0f0f0; padding: 10px; margin: 10px 0; border: 1px solid #ccc;">
+        <h3>Debug Info:</h3>
+        <p><strong>Columns needing classification:</strong> {{ columns.keys() | list }}</p>
+        <p><strong>Number of columns to classify:</strong> {{ columns|length }}</p>
+        <p><strong>Column samples:</strong></p>
+        <ul>
+            {% for col, samples in columns.items() %}
+                <li><strong>{{ col }}:</strong> {{ samples }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <form id="classifyForm">
+        {% for column, samples in columns.items() %}
+            <div style="margin: 20px 0; padding: 10px; border: 1px solid #ddd;">
+                <h3>{{ column }}</h3>
+                <p><strong>Sample values:</strong> {{ samples | join(', ') }}</p>
+                <label>
+                    <input type="radio" name="{{ column }}" value="integer"> Integer
+                </label>
+                <label>
+                    <input type="radio" name="{{ column }}" value="decimal"> Decimal
+                </label>
+                <label>
+                    <input type="radio" name="{{ column }}" value="date"> Date
+                </label>
+                <label>
+                    <input type="radio" name="{{ column }}" value="text"> Text
+                </label>
+                <label>
+                    <input type="radio" name="{{ column }}" value="ignore"> Ignore
+                </label>
+            </div>
+        {% endfor %}
+        <button type="submit">Continue</button>
+    </form>
+    
+    <script>
+        document.getElementById('classifyForm').onsubmit = async function(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const columnTypes = {};
+            
+            // Get all form data
+            for (let [key, value] of formData.entries()) {
+                columnTypes[key] = value;
+            }
+            
+            // Debug: Show what we're sending
+            console.log('Sending column types:', columnTypes);
+            alert('Sending: ' + JSON.stringify(columnTypes));
+            
+            const res = await fetch('/transform/save_column_types', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({column_types: columnTypes})
+            });
+            const result = await res.json();
+            if (result.success) {
+                window.location.href = '/transform/field_mapping';
+            } else {
+                alert('Error: ' + result.error);
+            }
+        };
+    </script>
+</body>
+</html>

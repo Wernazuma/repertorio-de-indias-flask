@@ -1,0 +1,4 @@
+Logger setup for prefix: Balmis
+Current dir: C:\Users\Werner\Desktop\hgis-flask - factory\matching
+Log dir: C:\Users\Werner\Desktop\hgis-flask - factory\matching\logs
+Log file: C:\Users\Werner\Desktop\hgis-flask - factory\matching\logs\Balmis_matching.log

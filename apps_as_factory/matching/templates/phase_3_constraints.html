@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Phase 3: Set Global Constraints</title>
+</head>
+<body>
+  <h2>Global Constraints for Dataset: {{ prefix }}</h2>
+
+  <form method="post">
+    <h4>1. Select Region(s):</h4>
+    {% for region_code in region_choices %}
+      <label>
+        <input type="checkbox" name="regions" value="{{ region_code }}">
+        {{ region_code }} <!-- just show the code; no mapping dependency -->
+      </label><br>
+    {% endfor %}
+
+    <hr>
+
+    <h4>2. Select Generic Province(s):</h4>
+    <div id="province-selection">
+      <p>Select region(s) above to populate province options here.</p>
+    </div>
+
+    <br>
+    <input type="submit" value="Save Constraints">
+  </form>
+
+  <script>
+    const regionCheckboxes = document.querySelectorAll("input[name='regions']");
+    const provinceContainer = document.getElementById("province-selection");
+
+    function fetchProvinces(regionCode) {
+      return fetch(`/get_provinces/${regionCode}`)
+        .then(response => response.json())
+        .catch(() => []);
+    }
+
+    async function updateProvinces() {
+      const selected = Array.from(regionCheckboxes)
+                            .filter(cb => cb.checked)
+                            .map(cb => cb.value);
+
+      const seen = new Set();
+      provinceContainer.innerHTML = '';
+
+      for (const regionCode of selected) {
+        const provinces = await fetchProvinces(regionCode);
+        provinces.forEach(p => {
+          if (!seen.has(p)) {
+            seen.add(p);
+            const line = document.createElement("label");
+            line.innerHTML = `<input type="checkbox" name="provinces" value="${p}"> ${p}`;
+            provinceContainer.appendChild(line);
+            provinceContainer.appendChild(document.createElement("br"));
+          }
+        });
+      }
+
+      if (seen.size === 0) {
+        provinceContainer.innerHTML = '<p>No provinces available for selected region(s).</p>';
+      }
+    }
+
+    regionCheckboxes.forEach(cb => cb.addEventListener("change", updateProvinces));
+  </script>
+</body>
+</html>

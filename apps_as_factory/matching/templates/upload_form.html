@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Toponym Matcher — Step 1a</title>
+  <link rel="stylesheet" href="{{ url_for('matching.static', filename='style.css') }}">
+  <style>
+    body { font-family: sans-serif; margin: 2em; }
+    h2 { color: #222; }
+    .flash-messages { color: #c22; list-style-type: none; padding: 0; }
+    .flash-messages li { margin: 0.3em 0; }
+    form input[type="text"] { padding: 6px; width: 240px; }
+    form input[type="submit"] { padding: 6px 12px; }
+    a { color: #0056b3; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <h2>Toponym Matcher — Step 1a</h2>
+
+  <form method="POST" action="{{ url_for('matching.index') }}">
+    <label for="prefix">Enter file prefix:</label><br>
+    <input type="text" id="prefix" name="prefix" value="{{ prefix or '' }}" required>
+    <input type="submit" value="Load">
+  </form>
+
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class="flash-messages">
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
+  {% if prefix %}
+    <hr>
+    <h3>Loaded prefix: <code>{{ prefix }}</code></h3>
+    <ul>
+      <li><a href="{{ url_for('matching.run_matching_route', prefix=prefix) }}">▶ Run Matching (Step 1a)</a></li>
+      <li><a href="{{ url_for('matching.match_status', prefix=prefix) }}">📊 Match Status</a></li>
+      <li><a href="{{ url_for('matching.disambiguate', prefix=prefix) }}">⚖️ Start Disambiguation (Step 2)</a></li>
+    </ul>
+  {% endif %}
+</body>
+</html>

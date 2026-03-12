@@ -1,0 +1,263 @@
+rowID;ref_START;ref_END;Type;ref_Label;Location2;Location3;Location4;ref_Partido;ref_Obispado;ref_Audiencia;Country;Motive;Details;Source;Unnamed: 13;OBJECTID;ID_0;ISO;NAME_0;ID_1;NAME_1;ID_2;NAME_2;ID_3;NAME_3
+1;1708;1708;Rebellion or revolt;Huanuco;;;;;Lima;;;death of corregidor by vecinos;;O'Phelan, p. 285;;822;178;PER;Peru;9;Hu√°nuco;85;Huenuco;822;Huanuco
+2;1710;1710;Rebellion or revolt;Llamellin;;;;Conchucos;;;;revolt against diezmero alferez ;;O'Phelan, p. 285;;92;178;PER;Peru;2;Ancash;9;Antonio Raymondi;92;Llamellin
+3;1719;1719;Rebellion or revolt;Cayna;;;;Tarma;;;;cacique and indians revolted again parish-priest;;O'Phelan, p. 285;;788;178;PER;Peru;9;Hu√°nuco;81;Ambo;788;Cayna
+4;1720;1720;Rebellion or revolt;Mayunmarca;;;;Huanta;;;;revolt against tributos and mita quota;;O'Phelan, p. 285;;862;178;PER;Peru;10;Huancavelica;92;Acobamba;862;Andabamba
+5;1721;1723;Rebellion or revolt;Paucartambo;;;;Tarma;;;;against diezmero-obrajero ;;O'Phelan, p. 285;;1505;178;PER;Peru;20;Pasco;152;Pasco;1505;Paucartambo
+6;1722;1722;Rebellion or revolt;Tomina;;;;Potosi;;;Bolivia;death of ministro de justicia, aggression agains corregidores;;O'Phelan, p. 285;;;;;;;;;;;
+7;1724;1724;Rebellion or revolt;Quiquijana;;;;Cuzco;;;;aggression against corregidor and his lieutenant;;O'Phelan, p. 285;;778;178;PER;Peru;8;Cusco;79;Quispicanchi;778;Quiquijana
+8;1726;1726;Rebellion or revolt;Ayabata;;;;Carabaya;;;;homicide of corregidor;;O'Phelan, p. 285;;1593;178;PER;Peru;22;Puno;162;Carabaya;1593;Ayapata
+9;1726;1726;Rebellion or revolt;Andahuaylas;;;;Andahuaylas;Huamanga;;;revolt against corregidor and clergyman;;O'Phelan, p. 285;;259;178;PER;Peru;3;Apurimac;29;Andahuaylas;259;Andahuaylas
+10;1730;1730;Rebellion or revolt;San Marcos;;;;Cajamarca;;;;stoning of corregidor to rescue prisoner;;O'Phelan, p. 285;;647;178;PER;Peru;6;Cajamarca;63;San Marcos;647;Pedro Galvez
+11;1730;1730;Rebellion or revolt;Cochabamba;;;;;La Plata;;Bolivia;revolt against revisita;;O'Phelan, p. 286;;;;;;;;;;;
+12;1730;1730;Rebellion or revolt;Chipan;;;;Lucanas;;;;local priests resisted by the Indian community;;O'Phelan, p. 286;;482;178;PER;Peru;5;Ayacucho;48;Lucanas;482;Chipao
+13;1730;1730;Rebellion or revolt;Aucara;;;;Lucanas;;;;;;O'Phelan, p. 286;;478;178;PER;Peru;5;Ayacucho;48;Lucanas;478;Aucara
+14;1730;1730;Rebellion or revolt;Cabana;;;;Lucanas;;;;;;O'Phelan, p. 286;;479;178;PER;Peru;5;Ayacucho;48;Lucanas;479;Cabana
+15;1731;1731;Rebellion or revolt;San Marcos;;;;Cajamarca;;;;against corregidor;charged mestizos with repartos;O'Phelan, p. 286;;647;178;PER;Peru;6;Cajamarca;63;San Marcos;647;Pedro Galvez
+16;1731;1731;Rebellion or revolt;Cotabambas;;;;Cuzco;;;;against corregidor and tax collector;increase of mita quota;O'Phelan, p. 286;;311;178;PER;Peru;3;Apur√≠mac;33;Cotabambas;311;Cotabambas
+17;1731;1731;Rebellion or revolt;Mara;;;;Cotabambas;;;;attempted revolt against tax collector;;O'Phelan, p. 286;;314;178;PER;Peru;3;Apur√≠mac;33;Cotabambas;314;Mara
+18;1731;1731;Rebellion or revolt;Oruro;;;;;La Plata;;Bolivia;indian unrest connected to disclosure of tributos evasion;;O'Phelan, p. 286;;;;;;;;;;;
+19;1732;1732;Rebellion or revolt;Lucanas;;;;Ayacucho;;;;indian revolt by former Indian alcande against corregidor;;O'Phelan, p. 286;;487;178;PER;Peru;5;Ayacucho;48;Lucanas;487;Lucanas
+20;1735;1735;Rebellion or revolt;San Cristobal de Uco;;;;Cajamarca;;;;Indio forastero provoked revolt against civil and ecclesiastical authorities;;O'Phelan, p. 286;;164;178;PER;Peru;2;Ancash;17;Huari;164;Uco
+21;1736;1736;Rebellion or revolt;Lucanas;;;;;Huamanga;;;Indian uprising against Don during festivities;;O'Phelan, p. 286;;487;178;PER;Peru;5;Ayacucho;48;Lucanas;487;Lucanas
+22;1736;1736;Rebellion or revolt;Atavillos Bajos;;;;Canta;;;;revolt against primicias collection led by members of Cabildo indigena against collector priest;;O'Phelan, p. 286;;1313;178;PER;Peru;16;Lima;133;Huaral;1313;Atavillos Bajo
+23;1736;1736;Rebellion or revolt;Atonsulla;;;;Castrovirreyna;;;;mining laborers revolted against tax collector and enterador de mitas;;O'Phelan, p. 286;;;;;;;;;;;
+24;1736;1736;Rebellion or revolt;Asillo;;;;Azangaro;;;;unrest aimed at expelling priest;;O'Phelan, p. 286;;1578;178;PER;Peru;22;Puno;161;Azangaro;1578;Asillo
+25;1737;1737;Rebellion or revolt;Huamanga;;;;;Huamanga;;;unrest provoked by the alcalde ordinario ;;O'Phelan, p. 286;;447;178;PER;Peru;5;Ayacucho;44;Huamanga;447;Ayacucho
+26;1737;1737;Rebellion or revolt;Azangaro;;;;Cuzco;;;;abortive rebellion, 17 provinces were involved;;O'Phelan, p. 286;;1579;178;PER;Peru;22;Puno;161;Azangaro;1579;Azangaro
+27;1738;1738;Rebellion or revolt;Cutervo;;;;Cajamarca;;;;Indian revolt led by the mestizo against civil and ecclesiastical authorities;;O'Phelan, p. 286;;607;178;PER;Peru;6;Cajamarca;59;Cutervo;607;Cutervo
+28;1739;1739;Rebellion or revolt;Oruro;;;;;La Plata;;Bolivia;abortive revolt against taxation;;O'Phelan, p. 286;;;;;;;;;;;
+29;1739;1739;Rebellion or revolt;Huamantanga;;;;Canta;;;;against corregidor;;O'Phelan, p. 286;1730s;1307;178;PER;Peru;16;Lima;132;Canta;1307;Huamantanga
+30;1739;1739;Rebellion or revolt;Castrovirreyna;;;;;Huamanga;;;homicide of corregidor;;O'Phelan, p. 286;1730s;884;178;PER;Peru;10;Huancavelica;94;Castrovirreyna;884;Castrovirreyna
+31;1741;1741;Rebellion or revolt;Azangaro;;;;;Cuzco;;;Indian resistence agsint reparto ;;O'Phelan, p. 286;;1579;178;PER;Peru;22;Puno;161;Azangaro;1579;Azangaro
+32;1742;1750;Rebellion or revolt;Tarma;;;;;Lima;;;rebellion led Atahualpa;;O'Phelan, p. 286;;1110;178;PER;Peru;12;Junin;111;Tarma;1110;Tarma
+33;1744;1744;Rebellion or revolt;Iguari;;;;Chancay;;;Bolivia;revolt against priest;;O'Phelan, p. 286;;1317;178;PER;Peru;16;Lima;133;Huaral;1317;Ihuari
+34;1744;1744;Rebellion or revolt;Oteque;;;;Chancay;;;Bolivia;;;O'Phelan, p. 286;;1317;178;PER;Peru;16;Lima;133;Huaral;1317;Ihuari
+35;1744;1744;Rebellion or revolt;Guachinga;;;;Chancay;;;Bolivia;;;O'Phelan, p. 286;;1317;178;PER;Peru;16;Lima;133;Huaral;1317;Ihuari
+36;1744;1744;Rebellion or revolt;Tarma;;;;;Lima;;;homicide of corregidor;collection of reparto debts;O'Phelan, p. 286;;1110;178;PER;Peru;12;Junin;111;Tarma;1110;Tarma
+37;1744;1744;Rebellion or revolt;Rapaz;;;;Cajatambo;;;;violent land occupation by Indians;;O'Phelan, p. 286;;1372;178;PER;Peru;16;Lima;136;Oyon;1372;Oyon
+38;1747;1747;Rebellion or revolt;Cercado;;;;Lima;;;;revolt led by indios olleros against local authorities;;O'Phelan, p. 286;;1250;178;PER;Peru;15;Lima Province;128;Lima;1250;Lima
+39;1749;1749;Rebellion or revolt;Llacuabado;;;;Huarochiri;;;;armed resistence against corregidor lieutenant;;O'Phelan, p. 286;;;;;;;;;;;
+40;1749;1749;Rebellion or revolt;Ferrenafe;;;;Sana;;;;Indian tax collector revolted agasint corregidor;;O'Phelan, p. 286;;1219;178;PER;Peru;14;Lambayeque;126;Ferrenafe;1219;Ferrenafe
+41;1750;1750;Rebellion or revolt;Lima;;;;;Lima;;;"Indian and mestizo rebellion against ""bad government""";;O'Phelan, p. 286;;1250;178;PER;Peru;15;Lima Province;128;Lima;1250;Lima
+42;1750;1750;Rebellion or revolt;Huarochiri;;;;Lima;;;;Rebellion against Crown's anti-mestizo policy and Spanish authorities;;O'Phelan, p. 286;;1331;178;PER;Peru;16;Lima;134;Huarochiri;1331;Huarochiri
+43;1751;1751;Rebellion or revolt;Urubamba;;;;Cuzco;;;;against corregidor;against imprisonment of and Indian;O'Phelan, p. 286;;785;178;PER;Peru;8;Cusco;80;Urubamba;785;Urubamba
+44;1751;1751;Rebellion or revolt;Zana;;;;;;Lima;;revolt led by cuadrillas de negros;;O'Phelan, p. 286;;1216;178;PER;Peru;14;Lambayeque;125;Chiclayo;1216;Sa√±a
+45;1751;1751;Rebellion or revolt;Ferrenafe;;;;Sana;;;;against corregidor and local cacique;to avoid division of cacicazgo;O'Phelan, p. 286;;1219;178;PER;Peru;14;Lambayeque;126;Ferrenafe;1219;Ferrenafe
+46;1751;1751;Rebellion or revolt;Potosi;;;;;La Plata;;Bolivia;indios capchas;worked at mine killed Spaniard;O'Phelan, p. 286;;;;;;;;;;;
+47;1755;1755;Rebellion or revolt;Jauja;;;;;Lima;;;Land conflict between Spaniards and local cacique;;O'Phelan, p. 286;;1065;178;PER;Peru;12;Jun√≠n;108;Jauja;1065;Jauja
+48;1756;1756;Rebellion or revolt;Angaraes;;;;;Huamanga;;;Indian upheaval ;occupation of communal land by Spaniards and mestizos and against reparto;O'Phelan, p. 286;;876;178;PER;Peru;10;Huancavelica;93;Angaraes;876;Julcamarca
+49;1756;1756;Rebellion or revolt;Usquil;;;;Huamachuco;;;;against obraje administration;;O'Phelan, p. 286;;1154;178;PER;Peru;13;La Libertad;118;Otuzco;1154;Usquil
+50;1756;1756;Rebellion or revolt;Ninacaca;;;;Tarma;;;;local priest led revolt against corregidor;corregidor changed Indian alcalde appointed by them;O'Phelan, p. 286;;1503;178;PER;Peru;20;Pasco;152;Pasco;1503;Ninacaca
+51;1756;1756;Rebellion or revolt;Carhuamayo;;;;Tarma;;;;;;O'Phelan, p. 286;;1089;178;PER;Peru;12;Junin;109;Jun√≠n;1089;Carhuamayo
+52;1757;1757;Rebellion or revolt;Chacayan;;;;Tarma;;;;Indian revolt ;against corregidor, and primicia tax;O'Phelan, p. 286;;1484;178;PER;Peru;20;Pasco;150;Daniel Alcides Carri√≥n;1484;Chacayan
+53;1757;1757;Rebellion or revolt;Yanacocha;;;;Tarma;;;;;;O'Phelan, p. 286;;1102;178;PER;Peru;12;Junin;111;Tarma;1102;Acobamba
+54;1757;1757;Rebellion or revolt;Tapu;;;;Tarma;;;;;;O'Phelan, p. 286;;1109;178;PER;Peru;12;Jun√≠n;111;Tarma;1109;Tapo
+55;1757;1757;Rebellion or revolt;Michivilca;;;;Tarma;;;;;;O'Phelan, p. 286;;1489;178;PER;Peru;20;Pasco;150;Daniel Alcides Carri√≥n;1489;Tapuc
+56;1758;1758;Rebellion or revolt;Huarmacas;;;;Piura;;;;against priest;accused of expropriating communal land;O'Phelan, p. 286;;1525;178;PER;Peru;21;Piura;154;Huancabamba;1525;Huarmaca
+57;1758;1758;Rebellion or revolt;Huamachuco;;;;;Trujillo;;;against population count;;O'Phelan, p. 286;;1176;178;PER;Peru;13;La Libertad;121;S√°nchez Carri√≥n;1176;Huamachuco
+58;1758;1758;Rebellion or revolt;Otuzco;;;;;;Lima;;released prisoners;;O'Phelan, p. 286;;1150;178;PER;Peru;13;La Libertad;118;Otuzco;1150;Otuzco
+59;1760;1760;Rebellion or revolt;Pichuichuro;;;;Abancay;Cuzco;;;at obraje;oficinas burnt down;O'Phelan, p. 286;;685;178;PER;Peru;8;Cusco;69;Anta;685;Ancahuasi
+60;1760;1762;Rebellion or revolt;Totora;;;;Carangas;;;Bolivia;against revisita;;O'Phelan, p. 286;;;;;;;;;;;
+61;1761;1761;Rebellion or revolt;Simbal;;;;Trujillo;;;;by indios forasteros;to expel priest;O'Phelan, p. 286;;1197;178;PER;Peru;13;La Libertad;123;Trujillo;1197;Simbal
+62;1762;1762;Rebellion or revolt;Zepita;;;;;;Lima;;against local revisita and numeracion de tributarios;;O'Phelan, p. 286;;1608;178;PER;Peru;22;Puno;163;Chucuito;1608;Zepita
+63;1764;1764;Rebellion or revolt;Pueblo Nuevo;;;;Sana;;;;by Indians and mestizos;to defend local priest;O'Phelan, p. 286;;1223;178;PER;Peru;14;Lambayeque;126;Ferre√±afe;1223;Pueblo Nuevo
+64;1764;1764;Rebellion or revolt;San Luis Huancapi;;;;Vilcashuaman;;;;against tribute collector;against mita quota to Huancavelica;O'Phelan, p. 286;;536;178;PER;Peru;5;Ayacucho;52;Victor Fajardo;536;Huancapi
+65;1764;1764;Rebellion or revolt;Riobamba;;;;Quito;;;Ecuador;Indians;against obraje administrator due to increase in tareas;O'Phelan, p. 286;;;;;;;;;;;
+66;1765;1765;Rebellion or revolt;Pichuichuro;;;;Abancay;;;;Labourers from obraje;against mayordolomos and mandones;O'Phelan, p. 286;;685;178;PER;Peru;8;Cusco;69;Anta;685;Ancahuasi
+67;1766;1766;Rebellion or revolt;Caylloma;;;;;Arequipa;;;led by priests;;O'Phelan, p. 286;;398;178;PER;Peru;4;Arequipa;39;Caylloma;398;Caylloma
+68;1766;1767;Rebellion or revolt;Pomata;;;;Chucuito;;;;by Indians   ;against revisita and increase in tribute;O'Phelan, p. 286;;1607;178;PER;Peru;22;Puno;163;Chucu√≠to;1607;Pomata
+69;1766;1767;Rebellion or revolt;Puno;;;;;La Paz;;;by Indians;against Justicia mayor;O'Phelan, p. 286;;1658;178;PER;Peru;22;Puno;170;Puno;1658;Puno
+70;1767;1768;Rebellion or revolt;Mojos;;;;;Santa Cruz;;Bolivia?;by Indians;against Crown due to the expulsion of Jesuits;O'Phelan, p. 286;;;;;;;;;;;
+71;1768;1768;Rebellion or revolt;Paraysancos;;;;Lucanas;;;;led by priest  ;against reparto;O'Phelan, p. 286;;461;178;PER;Peru;5;Ayacucho;45;Huanca Sancos;461;Sancos
+72;1768;1768;Rebellion or revolt;Quito;;;;;Quito;;Ecuador;against alcabalas;;O'Phelan, p. 286;;;;;;;;;;;
+73;1768;1768;Rebellion or revolt;Chumbivilcas;;;;;Cuzco;;;against corregidor;support priest that Chala was part of Calamani's curato;O'Phelan, p. 286;;725;178;PER;Peru;8;Cusco;73;Chumbivilcas;725;Santo Tomas
+74;1769;1769;Rebellion or revolt;Contumaza;;;;;;Lima;;against tribute and revisitador;;O'Phelan, p. 286;;597;178;PER;Peru;6;Cajamarca;58;Contumaz√°;597;Contumaza
+75;1769;1769;Rebellion or revolt;Asuncion;;;;Cajamarca;;;;by Indians and mestizos;attacked revisitador de tributos;O'Phelan, p. 286;;553;178;PER;Peru;6;Cajamarca;55;Cajamarca;553;Asuncion
+76;1770;1770;Rebellion or revolt;Sicuani;;;;;;Lima;;by Indians;invasion of doctrina;O'Phelan, p. 286;;717;178;PER;Peru;8;Cusco;72;Canchis;717;Sicuani
+77;1770;1770;Rebellion or revolt;Checacupe;;;;Tinta;;;;by Indians;set fire of corregidor's home;O'Phelan, p. 286;;711;178;PER;Peru;8;Cusco;72;Canchis;711;Checacupe
+78;1770;1770;Rebellion or revolt;Sicasica;;;;;La Plata;;Bolivia;by Indians;killed a lieutenant ;O'Phelan, p. 286;;;;;;;;;;;
+79;1770;1770;Rebellion or revolt;Caylloma;;;;;Arequipa;;;by Indians;against corregidor, and reparto;O'Phelan, p. 286;;398;178;PER;Peru;4;Arequipa;39;Caylloma;398;Caylloma
+80;1771;1771;Rebellion or revolt;Chulimani;;;;Sicasica;;;Bolivia;by Indians;against corregidor;O'Phelan, p. 286;;;;;;;;;;;
+81;1771;1771;Rebellion or revolt;Pacajes;;;;;La Paz;;Bolivia;by Indians;homicide of corregidor;O'Phelan, p. 286;;;;;;;;;;;
+82;1771;1771;Rebellion or revolt;Santiago de Cao;;;;Trujillo;;;;against Indio alcalde ;he blocked access to local riegos;O'Phelan, p. 286;;1127;178;PER;Peru;13;La Libertad;113;Ascope;1127;Santiago de Cao
+83;1771;1771;Rebellion or revolt;Cocharcas;;;;Andahuaylas;;;;by priest;against corregidor;O'Phelan, p. 286;;304;178;PER;Peru;3;Apur√≠mac;32;Chincheros;304;Cocharcas
+84;1771;1771;Rebellion or revolt;Morrope;;;;Sana;;;;conflict btw caciques ;;O'Phelan, p. 286;;1229;178;PER;Peru;14;Lambayeque;127;Lambayeque;1229;Morrope
+85;1771;1771;Rebellion or revolt;Contumza;;;;Cajamarca;;;;against priest;;O'Phelan, p. 286;;597;178;PER;Peru;6;Cajamarca;58;Contumaz√°;597;Contumaza
+86;1771;1771;Rebellion or revolt;Quiquijana;;;;Quipicanchis;;;;by Indians;homicide of corregidor's tax collector as a result of their reparto indetedness;O'Phelan, p. 286;;778;178;PER;Peru;8;Cusco;79;Quispicanchi;778;Quiquijana
+87;1771;1771;Rebellion or revolt;Chipao;;;;Lucanas;;;;land dispute btw the cacique and Indians;;O'Phelan, p. 286;;482;178;PER;Peru;5;Ayacucho;48;Lucanas;482;Chipao
+88;1771;1771;Rebellion or revolt;Sodongo;;;;;Huamanga;;;;;O'Phelan, p. 286;;;;;;;;;;;
+89;1772;1772;Rebellion or revolt;Contumaza;;;;Cajamarca;;;;against juez de comision;;O'Phelan, p. 286;;597;178;PER;Peru;6;Cajamarca;58;Contumaz√°;597;Contumaza
+90;1772;1772;Rebellion or revolt;Quechualla;;;;Arequipa;;;;against corregidor;;O'Phelan, p. 286;;434;178;PER;Peru;4;Arequipa;42;La Uni√≥n;434;Quechualla
+91;1773;1773;Rebellion or revolt;Celendin;;;;Cajamarca;;;;against corregidor;involved creoles and mestizos in reparto;O'Phelan, p. 286;;565;178;PER;Peru;6;Cajamarca;56;Celend√≠n;565;Celendin
+92;1773;1773;Rebellion or revolt;Santiago de Chuco;;;;Huamachuco;;;;by mestizos;against corregidor;O'Phelan, p. 286;;1187;178;PER;Peru;13;La Libertad;122;Santiago de Chuco;1187;Santiago de Chuco
+93;1774;1774;Rebellion or revolt;Huari;;;;Conchucos;;;;against corregidor's lieutenant;;O'Phelan, p. 286;;156;178;PER;Peru;2;Ancash;17;Huari;156;Huari
+94;1774;1774;Rebellion or revolt;Chota;;;;Guambos;;;;against corregidor;;O'Phelan, p. 286;;583;178;PER;Peru;6;Cajamarca;57;Chota;583;Chota
+95;1774;1774;Rebellion or revolt;Chumbivilcas;;;;;Cuzco;;;homicide of Spaniard;he imprisoned local cacique;O'Phelan, p. 286;;725;178;PER;Peru;8;Cusco;73;Chumbivilcas;725;Santo Tomas
+96;1774;1774;Rebellion or revolt;Cacamarca;;;;Vilcashuaman;;;;against obraje administration;;O'Phelan, p. 286;;548;178;PER;Peru;5;Ayacucho;53;Vilcas Huam√°n;548;Vischongo
+97;1774;1774;Rebellion or revolt;Huaylas;;;;;Lima;;;homicide of alguacil;;O'Phelan, p. 286;;173;178;PER;Peru;2;Ancash;19;Huaylas;173;Huaylas
+98;1774;1774;Rebellion or revolt;Condo Condo;;;;Paria;;;;by Indians;homicide of cacique and his brother as reprisal for the murder of an indio tributario;O'Phelan, p. 286;;;;;;;;;;;
+99;1775;1775;Rebellion or revolt;Santiago de Huamachuco;;;;;Trujillo;;;by Indians;against corregidor due to piara de mulas;O'Phelan, p. 286;;1176;178;PER;Peru;13;La Libertad;121;S√°nchez Carri√≥n;1176;Huamachuco
+100;1775;1775;Rebellion or revolt;Cochabamba;;;;;La Plata;;Bolivia;against establishment of local custom house;;O'Phelan, p. 286;;;;;;;;;;;
+101;1775;1775;Rebellion or revolt;Viraco;;;;;;Lima;;by Indians;against tax collector, reparto;O'Phelan, p. 286;;394;178;PER;Peru;4;Arequipa;38;Castilla;394;Viraco
+102;1775;1775;Rebellion or revolt;Achoma;;;;Caylloma;;;;by Indians;against corregidor, tax collections;O'Phelan, p. 286;;395;178;PER;Peru;4;Arequipa;39;Caylloma;395;Achoma
+103;1776;1776;Rebellion or revolt;Huamalies;;;;;Lima;;;against corregidor;corregidor dead, obraje burnt;O'Phelan, p. 286;;812;178;PER;Peru;9;Hu√°nuco;84;Huamal√≠es;812;Llata
+104;1777;1777;Rebellion or revolt;Maras;;;;Urubamba;;;;against corregidor;;O'Phelan, p. 286;;783;178;PER;Peru;8;Cusco;80;Urubamba;783;Maras
+105;1777;1777;Rebellion or revolt;La Paz;;;;;La Paz;;Bolivia;against alcabalas;;O'Phelan, p. 286;;;;;;;;;;;
+106;1777;1777;Rebellion or revolt;Velille;;;;Chumbivilcas;;;;by Indians;against reparto, homicide of corregidor;O'Phelan, p. 286;;726;178;PER;Peru;8;Cusco;73;Chumbivilcas;726;Velille
+107;1779;1779;Rebellion or revolt;Yungay;;;;;;Lima;;by Indians;attack of receptor de alcabalas;O'Phelan, p. 286;;249;178;PER;Peru;2;Ancash;27;Yungay;249;Yungay
+108;1779;1779;Rebellion or revolt;Huaraz;;;;;Lima;;;against revisita;;O'Phelan, p. 286;;140;178;PER;Peru;2;Ancash;16;Huaraz;140;Huaraz
+109;1780;1780;Rebellion or revolt;Arequipa;;;;;Arequipa;;;against Aduana;;O'Phelan, p. 286;;331;178;PER;Peru;4;Arequipa;35;Arequipa;331;Arequipa
+110;1780;1780;Rebellion or revolt;Caylloma;;;;;Arequipa;;;against revisita and alcabala;;O'Phelan, p. 286;;398;178;PER;Peru;4;Arequipa;39;Caylloma;398;Caylloma
+111;1780;1780;Rebellion or revolt;Moquegua;;;;;Arequipa;;;against revista;;O'Phelan, p. 286;;1480;178;PER;Peru;19;Moquegua;149;Mariscal Nieto;1480;Moquegua
+112;1780;1780;Rebellion or revolt;Yungay;;;;;;Lima;;against alcabala and registration;;O'Phelan, p. 286;;249;178;PER;Peru;2;Ancash;27;Yungay;249;Yungay
+113;1780;1780;Rebellion or revolt;Caraz;;;;;Lima;;;;;O'Phelan, p. 286;;170;178;PER;Peru;2;Ancash;19;Huaylas;170;Caraz
+114;1780;1780;Rebellion or revolt;Huaraz;;;;;Lima;;;against alcabala, revisita;;O'Phelan, p. 286;;140;178;PER;Peru;2;Ancash;16;Huaraz;140;Huaraz
+115;1780;1780;Rebellion or revolt;Pasco;;;;;Lima;;;against administrador de alcabalas;;O'Phelan, p. 286;;1499;178;PER;Peru;20;Pasco;152;Pasco;1499;Chaupimarca
+116;1780;1780;Rebellion or revolt;La Paz;;;;;La Paz;;Bolivia;against Aduana;;O'Phelan, p. 286;;;;;;;;;;;
+117;1780;1780;Rebellion or revolt;Chongos;;;;Jauja;;;;against cajero;;O'Phelan, p. 286;;1171;178;PER;Peru;13;La Libertad;120;Pataz;1171;Tayabamba
+118;1780;1780;Rebellion or revolt;Mito;;;;Jauja;;;;;;O'Phelan, p. 286;;1022;178;PER;Peru;12;Junin;106;Concepcion;1022;Mito
+119;1780;1780;Rebellion or revolt;Chayanta;;;;;La Plata;;Bolivia;against corregidor;;O'Phelan, p. 286;;;;;;;;;;;
+120;1780;1780;Rebellion or revolt;Otuzco;;;;;;Lima;;against revisita;;O'Phelan, p. 286;;1150;178;PER;Peru;13;La Libertad;118;Otuzco;1150;Otuzco
+121;1780;1780;Rebellion or revolt;Huamachuco;;;;;Trujillo;;;against revisita;;O'Phelan, p. 286;;1176;178;PER;Peru;13;La Libertad;121;S√°nchez Carri√≥n;1176;Huamachuco
+122;1780;1780;Rebellion or revolt;Huamanga;;;;;Huamanga;;;against corregidor;;O'Phelan, p. 286;;447;178;PER;Peru;5;Ayacucho;44;Huamanga;447;Ayacucho
+123;1780;1780;Rebellion or revolt;Tinta;;;;;Cuzco;;;led by Tupac Amaru;against alcabalas, repartos, tributos, mitas.;O'Phelan, p. 286;;718;178;PER;Peru;8;Cusco;72;Canchis;718;Tinta
+124;1780;1780;Rebellion or revolt;Quipicanchis;;;;;Cuzco;;;several villages in Quispicanchis;;O'Phelan, p. 286;;777;178;PER;Peru;8;Cusco;79;Quispicanchi;777;Oropesa
+125;1780;1780;Rebellion or revolt;Chumbivilcas;;;;;Cuzco;;;113 spread to the province ;;O'Phelan, p. 286;;725;178;PER;Peru;8;Cusco;73;Chumbivilcas;725;Santo Tomas
+126;1780;1780;Rebellion or revolt;Condoroma;;;;;Arequipa;;;113 spread to mines of Condoroma;;O'Phelan, p. 286;;736;178;PER;Peru;8;Cusco;75;Espinar;736;Condoroma
+127;1780;1780;Rebellion or revolt;Carabaya;;;;;La Paz;;;113 spread to villages in Carabaya;;O'Phelan, p. 286;;1598;178;PER;Peru;22;Puno;162;Carabaya;1598;Macusani
+128;1780;1780;Rebellion or revolt;Paucartambo;;;;;Cuzco;;;113 spread to Paucartambo;;O'Phelan, p. 286;;767;178;PER;Peru;8;Cusco;78;Paucartambo;767;Paucartambo
+129;1780;1780;Rebellion or revolt;Paruro;;;;;Cuzco;;;113 spread to Paruro;;O'Phelan, p. 286;;759;178;PER;Peru;8;Cusco;77;Paruro;759;Paruro
+130;1780;1780;Rebellion or revolt;Lampa;;;;;La Paz;;;113 spread to Lampa;;O'Phelan, p. 286;;1625;178;PER;Peru;22;Puno;167;Lampa;1625;Lampa
+131;1780;1780;Rebellion or revolt;Azangaro;;;;;Cuzco;;;113 spread;;O'Phelan, p. 286;;1579;178;PER;Peru;22;Puno;161;Az√°ngaro;1579;Azangaro
+132;1780;1780;Rebellion or revolt;Chucuito;;;;;La Paz;;;113 spread;;O'Phelan, p. 286;;1650;178;PER;Peru;22;Puno;170;Puno;1650;Chucuito
+133;1780;1780;Rebellion or revolt;Paucarcolla;;;;;La Paz;;;113 spread;;O'Phelan, p. 286;;1655;178;PER;Peru;22;Puno;170;Puno;1655;Paucarcolla
+134;1781;1781;Rebellion or revolt;Paria;;;;;La Plata;;;113 spread;homicide of corregidor;O'Phelan, p. 286;;;;;;;;;;;
+135;1781;1781;Rebellion or revolt;Chuquisaca;;;;;La Plata;;Bolivia;unrest in Chuquisaca;;O'Phelan, p. 286;;;;;;;;;;;
+136;1781;1781;Rebellion or revolt;Cochabamba;;;;;La Plata;;Bolivia;against Aduana;;O'Phelan, p. 286;;;;;;;;;;;
+137;1781;1781;Rebellion or revolt;Oruro;;;;;La Plata;;Bolivia;by creoles;against Spanish authorities and alcabala;O'Phelan, p. 286;;;;;;;;;;;
+138;1781;1781;Rebellion or revolt;Tapacari;;;;;;Charcas;Bolivia;rebellion;;O'Phelan, p. 286;;;;;;;;;;;
+139;1781;1781;Rebellion or revolt;Larecaja;;;;Pacajes;;;Bolivia;113 spread led by Tupac Catari;;O'Phelan, p. 286;;;;;;;;;;;
+140;1781;1781;Rebellion or revolt;Omasuyos;;;;;La Paz;;Bolivia;;;O'Phelan, p. 286;;;;;;;;;;;
+141;1781;1781;Rebellion or revolt;Pacajes;;;;;La Paz;;Bolivia;;;O'Phelan, p. 286;;;;;;;;;;;
+142;1781;1781;Rebellion or revolt;La Paz;;;;;La Paz;;Bolivia;La Paz was besieged;;O'Phelan, p. 286;;;;;;;;;;;
+143;1781;1781;Rebellion or revolt;Tupiza;;;;Chichas;;;Bolivia;by Indians;homicide of corregidor;O'Phelan, p. 286;;;;;;;;;;;
+144;1781;1781;Rebellion or revolt;Caylloma;;;;;Arequipa;;;unrest;;O'Phelan, p. 286;;398;178;PER;Peru;4;Arequipa;39;Caylloma;398;Caylloma
+145;1781;1781;Rebellion or revolt;Ychuma;;;;;;Lima;;131 spread;;O'Phelan, p. 286;;;;;;;;;;;
+146;1781;1781;Rebellion or revolt;Arica;;;;;Arequipa;;Chile;revolt;;O'Phelan, p. 286;;;;;;;;;;;
+147;1781;1781;Rebellion or revolt;Cajatambo;;;;;Lima;;;against corregidor;;O'Phelan, p. 286;;1300;178;PER;Peru;16;Lima;131;Cajatambo;1300;Cajatambo
+148;1781;1781;Rebellion or revolt;Lambayeque;;;;;;;;against corregidor;;O'Phelan, p. 286;;1227;178;PER;Peru;14;Lambayeque;127;Lambayeque;1227;Lambayeque
+149;1781;1781;Rebellion or revolt;Vischongos;;;;;;Lima;;support of Tupac Amaru;;O'Phelan, p. 286;;548;178;PER;Peru;5;Ayacucho;53;Vilcas Huam√°n;548;Vischongo
+150;1781;1781;Rebellion or revolt;Checras;;;;Chancay;;;;against revisita;;O'Phelan, p. 286;;1358;178;PER;Peru;16;Lima;135;Huaura;1358;Checras
+151;1782;1782;Rebellion or revolt;Huamanga;;;;;Huamanga;;;against rezagos de repartimientos;;O'Phelan, p. 286;;447;178;PER;Peru;5;Ayacucho;44;Huamanga;447;Ayacucho
+152;1783;1783;Rebellion or revolt;Marcapata;;;;Quispicanchis;;;;against civil and ecclesiastical authority;;O'Phelan, p. 286;;775;178;PER;Peru;8;Cusco;79;Quispicanchi;775;Marcapata
+153;1783;1783;Rebellion or revolt;Huarochiri;;;;;Lima;;;started in Ascension and spread the whole province. ;38 people involved, Indians, caciques and mestizos.;O'Phelan, p. 286;;1331;178;PER;Peru;16;Lima;134;Huarochiri;1331;Huarochiri
+154;1755;1755;Protesta dentro del sistema legal;Oruro;;;;Oruro;;;Bolivia;exceso en el reparto;;Golte, p. 130;;;;;;;;;;;
+155;1756;1756;Protesta dentro del sistema legal;Sicasica;;;;Sicasica;;;Bolivia;exceso en el reparto;;Golte, p. 130;;;;;;;;;;;
+156;1757;1757;Protesta dentro del sistema legal;Coroma?;;;;Porco;;;Bolivia;;;Golte, p. 130;;;;;;;;;;;
+157;1757;1757;Protesta dentro del sistema legal;Chope;;;;Sicasica;;;Bolivia;;;Golte, p. 130;;;;;;;;;;;
+158;1758;1758;Protesta dentro del sistema legal;Yanacachi;;;;Sicasica;;;Bolivia;exceso en el reparto;;Golte, p. 130;;;;;;;;;;;
+159;1759;1759;Protesta dentro del sistema legal;Chuma;;;;Larecaja;;;Bolivia;embargo de bienes;;Golte, p. 130;;;;;;;;;;;
+160;1759;1759;Protesta dentro del sistema legal;Laxa;;;;Omasuyo;;;Bolivia;exceso en el reparto;;Golte, p. 130;;;;;;;;;;;
+161;1759;1759;Protesta dentro del sistema legal;Azangaro;;;;Azangaro;;;;reparto de mercancias inservibles;;Golte, p. 130;;1579;178;PER;Peru;22;Puno;161;Az√°ngaro;1579;Azangaro
+162;1759;1759;Protesta dentro del sistema legal;Cabari;;;;Sicasica;;;Bolivia;incauto mercancias para repartir;;Golte, p. 130;;;;;;;;;;;
+163;1759;1759;Protesta dentro del sistema legal;Laxa;;;;Omasuyo;;;Bolivia;precios excesivos;;Golte, p. 130;;;;;;;;;;;
+164;1760;1760;Protesta dentro del sistema legal;Calacoto;;;;Pacajes;;;Bolivia;precios excesivos;;Golte, p. 131;;;;;;;;;;;
+165;1760;1760;Protesta dentro del sistema legal;Toledo;;;;Paria;;;Bolivia;reparto de 100 mulas;;Golte, p. 131;;;;;;;;;;;
+166;1761;1761;Protesta dentro del sistema legal;Tarabucu;;;;Tomina;;;Bolivia;Tejidos a 8 reales vara;;Golte, p. 131;;;;;;;;;;;
+167;1761;1761;Protesta dentro del sistema legal;Tacobamba;;;;Porco;;;Bolivia;embargo de bienes;;Golte, p. 131;;;;;;;;;;;
+168;1761;1761;Protesta dentro del sistema legal;Pocota;;;;Chayanta;;;Bolivia;precios excesivos;;Golte, p. 131;;;;;;;;;;;
+169;1762;1762;Protesta dentro del sistema legal;Tapacari;;;;Cochabamba;;;Bolivia;reparto de mercancias a la fuerza;;Golte, p. 131;;;;;;;;;;;
+170;1762;1762;Protesta dentro del sistema legal;Viacha;;;;Pacajes;;;Bolivia;precios excesivos;;Golte, p. 131;;;;;;;;;;;
+171;1762;1762;Protesta dentro del sistema legal;Mohosa;;;;Sicasica;;;Bolivia;exceso en el reparto;;Golte, p. 131;;;;;;;;;;;
+172;1762;1762;Protesta dentro del sistema legal;Azangaro;;;;Azangaro;;;;embargo de bienes;;Golte, p. 131;;;;;;;;;;;
+173;1765;1765;Rebelion local;Paucarcolla;;;;;La Paz;;;contra corregidores;;Golte, p. 141;;1655;178;PER;Peru;22;Puno;170;Puno;1655;Paucarcolla
+174;1765;1765;Rebelion local;Paucarcolla;;;;;La Paz;;;contra corregidores;;Golte, p. 141;;1655;178;PER;Peru;22;Puno;170;Puno;1655;Paucarcolla
+175;1769;1769;Rebelion local;Pomacanchis;;;;Quispicanchis;;;;por reparto;homicidio de teniente/corregidor;Golte, p. 141;1760s;682;178;PER;Peru;8;Cusco;68;Acomayo;682;Pomacanchi
+176;1769;1769;Rebelion local;Cabanaconde;;;;Caylloma;;;;contra corregidor ;murieron 300 indios;Golte, p. 141;1760s;396;178;PER;Peru;4;Arequipa;39;Caylloma;396;Cabanaconde
+177;1769;1769;Rebelion local;Caylloma;;;;;Arequipa;;;contra corregidor ;;Golte, p. 141;1760s;398;178;PER;Peru;4;Arequipa;39;Caylloma;398;Caylloma
+178;1767;1767;Rebelion local;Huanchaco;;;;;Huamanga;;;sin datos;;Golte, p. 141;;1191;178;PER;Peru;13;La Libertad;123;Trujillo;1191;Huanchaco
+179;1768;1768;Rebelion local;Pinchuichuru;;;;;;Lima;;sin datos;;Golte, p. 141;;693;178;PER;Peru;8;Cusco;69;Anta;693;Zurite
+180;1768;1768;Rebelion local;Surite;;;;;;Lima;;;;;;693;178;PER;Peru;8;Cusco;69;Anta;693;Zurite
+181;1768;1768;Rebelion local;Abancay;;;;;Cuzco;;;;;;;250;178;PER;Peru;3;Apur√≠mac;28;Abancay;250;Abancay
+182;1768;1768;Rebelion local;Chala;;;;Chumbivilcas;;;;contra corregidor ;campesinos se niegan a recibir las mercancias;Golte, p. 141;;;;;;;;;;;
+183;1769;1769;Rebelion local;Callalli;;;;Caylloma;;;;explusion del corregidor;homicidio del teniente;Golte, p. 142;;397;178;PER;Peru;4;Arequipa;39;Caylloma;397;Callalli
+184;1769;1769;Rebelion local;Sicasica;Sicasica;;;;La Plata;;Bolivia;homicidio del cobrador;;Golte, p. 142;;;;;;;;;;;
+185;1769;1769;Rebelion local;Achacacha;;;;;;Charcas;Bolivia;levantamiento del corregidor;;Golte, p. 142;;;;;;;;;;;
+186;1769;1769;Rebelion local;Laxa;;;;;;Charcas;Bolivia;;;;;;;;;;;;;;
+187;1769;1769;Rebelion local;Omasuyu;;;;;La Paz;;Bolivia;;;;;;;;;;;;;;
+188;1769;1769;Rebelion local;Chulumani;;;;Sicasica;;;Bolivia;por reparto;confrontacion armada entre 600 hombres ;Golte, p. 142;;;;;;;;;;;
+189;1769;1769;Rebelion local;La Asunción;;;;Cajamarca;;;;sin datos;;Golte, p. 142;;553;178;PER;Peru;6;Cajamarca;55;Cajamarca;553;Asuncion
+190;1769;1769;Rebelion local;Caylloma;;;;;Arequipa;;;sin datos;;Golte, p. 142;;398;178;PER;Peru;4;Arequipa;39;Caylloma;398;Caylloma
+191;1769;1769;Rebelion local;Sicuani;;;;Canas y Canchis;;;;sin datos;;Golte, p. 142;;717;178;PER;Peru;8;Cusco;72;Canchis;717;Sicuani
+192;1770;1770;Rebelion local;Caylloma;;;;;Arequipa;;;sin datos;;Golte, p. 142;;398;178;PER;Peru;4;Arequipa;39;Caylloma;398;Caylloma
+193;1770;1770;Rebelion local;Totora;;;;Carangas;;;Bolivia;contra corregidor ;vioelntos y excesivos repartimientos y cobranzas;Golte, p. 142;;;;;;;;;;;
+194;1770;1770;;Curaguara;;;;Carangas;;;Bolivia;;;;;;;;;;;;;;
+195;1770;1770;Rebelion local;Morrope;;;;;Trujillo;;;sin datos;;Golte, p. 142;;1229;178;PER;Peru;14;Lambayeque;127;Lambayeque;1229;Morrope
+196;1770;1770;;Pacora;;;;;;Lima;;;;;;1232;178;PER;Peru;14;Lambayeque;127;Lambayeque;1232;Pacora
+197;1770;1770;;Jayanca;;;;;;Lima;;;;;;1226;178;PER;Peru;14;Lambayeque;127;Lambayeque;1226;Jayanca
+198;1770;1770;;Sana;;;;;Trujillo;;;;;;;1216;178;PER;Peru;14;Lambayeque;125;Chiclayo;1216;Sa√±a
+199;1771;1771;Rebelion local;Jesus de Machaca;Pacajes;;;Pacajes;La Paz;;;homicidio del corregidor;castigo a mujer por no pago del reparto;Golte, p. 142;;;;;;;;;;;
+200;1771;1771;Rebelion local;Quechualla;;;;;;Charcas;Bolivia;atentado de homicidio del corregidor;reparto;Golte, p. 142;;;;;;;;;;;
+201;1771;1771;;Velinga;;;;;;Charcas;Bolivia;;;;;;;;;;;;;;
+202;1771;1771;Rebelion local;Andahuaylas;;;;;Huamanga;;;contra corregidor ;;Golte, p. 142;;259;178;PER;Peru;3;Apur√≠mac;29;Andahuaylas;259;Andahuaylas
+203;1772;1772;Rebelion local;Sondondo;;;;Lucanas;;;;sin datos;;Golte, p. 142;;479;178;PER;Peru;5;Ayacucho;48;Lucanas;479;Cabana
+204;1772;1772;Rebelion local;Caylloma;;;;;Arequipa;;;contra el reparto;;Golte, p. 142;;398;178;PER;Peru;4;Arequipa;39;Caylloma;398;Caylloma
+205;1772;1772;Rebelion local;Quechualla;;;;Condesuyos;;;;contra corregidor ;;Golte, p. 143;;434;178;PER;Peru;4;Arequipa;42;La Uni√≥n;434;Quechualla
+206;1773;1773;Rebelion local;Celendin;;;;Cajamarca;;;;sin datos;;Golte, p. 143;;565;178;PER;Peru;6;Cajamarca;56;Celend√≠n;565;Celendin
+207;1773;1773;Rebelion local;Callalli;;;;Caylloma;;;;contra corregidor ;reparto de mulas;Golte, p. 143;;397;178;PER;Peru;4;Arequipa;39;Caylloma;397;Callalli
+208;1773;1773;Rebelion local;Chuco;;;;Huamachuco;;;;contra corregidor ;contra reparto;Golte, p. 143;;1187;178;PER;Peru;13;La Libertad;122;Santiago de Chuco;1187;Santiago de Chuco
+209;1774;1774;Rebelion local;Pampas Huanchay;;;;Huaylas;;;;contra corregidor ;cobro repartimiento;Golte, p. 143;;139;178;PER;Peru;2;Ancash;16;Huaraz;139;Huanchay
+210;1774;1774;Rebelion local;Pocsi;;;;Moquegua;;;;sin datos;;Golte, p. 143;;344;178;PER;Peru;4;Arequipa;35;Arequipa;344;Pocsi
+211;1774;1774;Rebelion local;Huaylas;;;;Huaylas;;;;homicidio del corregidor;;Golte, p. 143;;173;178;PER;Peru;2;Ancash;19;Huaylas;173;Huaylas
+212;1774;1774;Rebelion local;Huamalies;;;;;Lima;;;homicidio del corregidor;;Golte, p. 143;;812;178;PER;Peru;9;Hu√°nuco;84;Huamal√≠es;812;Llata
+213;1774;1774;Rebelion local;Sicasica;;;;;La Plata;;Bolivia;sin datos;;Golte, p. 143;;;;;;;;;;;
+214;1774;1774;Rebelion local;Chuco;;;;Huamachuco;;;;contra corregidor ;;Golte, p. 143;;1187;178;PER;Peru;13;La Libertad;122;Santiago de Chuco;1187;Santiago de Chuco
+215;1779;1779;Rebelion local;Camana;;;;;Arequipa;;;amenaza al corregidor con 300 hombres;cobro repartimiento;Golte, p. 143;1770s;360;178;PER;Peru;4;Arequipa;36;Caman√°;360;Camana
+216;1779;1779;Rebelion local;Lucanas;;;;;Huamanga;;;3 alzamientos contra el corregidor ;;Golte, p. 143;1770s;487;178;PER;Peru;5;Ayacucho;48;Lucanas;487;Lucanas
+217;1779;1779;Rebelion local;Puno;;;;Paucarcolla;;;;2 alzamientos contra los corregidores;;Golte, p. 143;1770s;1658;178;PER;Peru;22;Puno;170;Puno;1658;Puno
+218;1779;1779;Rebelion local;Paucarcolla;;;;;La Paz;;;;;Golte, p. 143;1770s;1655;178;PER;Peru;22;Puno;170;Puno;1655;Paucarcolla
+219;1779;1779;Rebelion local;Azangaro;;;;Azangaro;;;;atentado de homicidio del corregidor;;Golte, p. 144;1770s;1579;178;PER;Peru;22;Puno;161;Az√°ngaro;1579;Azangaro
+220;1779;1779;Rebelion local;Paria;;;;;La Plata;;;homicidio del gobernador de Lanquipacha;;Golte, p. 144;1770s;;;;;;;;;;
+221;1779;1779;Rebelion local;Conchucos;;;;;Lima;;;contra corregidor ;;Golte, p. 144;1770s;200;178;PER;Peru;2;Ancash;22;Pallasca;200;Conchucos
+222;1779;1779;Rebelion local;Urubamba;;;;;Cuzco;;;contra general Rosas y teniente;;Golte, p. 144;1770s;785;178;PER;Peru;8;Cusco;80;Urubamba;785;Urubamba
+223;1779;1779;Rebelion local;Aymaraes;;;;;Cuzco;;;por reparto;;Golte, p. 144;1770s;287;178;PER;Peru;3;Apur√≠mac;31;Aymaraes;287;Chalhuanca
+224;1779;1779;Rebelion local;Chaca;;;;;;Lima;;homicidio de corregidor y cobrador;;Golte, p. 144;1770s;96;178;PER;Peru;2;Ancash;10;Asunci√≥n;96;Chacas
+225;1779;1779;Rebelion local;Tinta;;;;;Cuzco;;;;;Golte, p. 144;1770s;718;178;PER;Peru;8;Cusco;72;Canchis;718;Tinta
+226;1779;1779;Rebelion local;Cotabambas;;;;;Cuzco;;;contra corregidor ;2 pueblos por reparto;Golte, p. 144;1770s;311;178;PER;Peru;3;Apur√≠mac;33;Cotabambas;311;Cotabambas
+227;1779;1779;Rebelion local;Parinacochas;;;;;;Lima;;contral general;3 veces;Golte, p. 144;1770s;500;178;PER;Peru;5;Ayacucho;49;Parinacochas;500;Coracora
+228;1779;1779;Rebelion local;Huanta;;;;;Lima;;;contra corregidor ;por reparto;Golte, p. 144;1770s;465;178;PER;Peru;5;Ayacucho;46;Huanta;465;Huanta
+229;1779;1779;Rebelion local;Tambo;;;;Arequipa;;;;intento de rebelion;contra reparto;Golte, p. 144;1770s;411;178;PER;Peru;4;Arequipa;39;Caylloma;411;Tisco
+230;1779;1779;Rebelion local;Caraveli;;;;Camana;;;;contra corregidor ;;Golte, p. 144;1770s;373;178;PER;Peru;4;Arequipa;37;Caravel√≠;373;Caraveli
+231;1779;1779;Rebelion local;Usmagama;;;;Tarapaca;;;Chile;contra cobrador;extorsiones ;Golte, p. 144;1770s;;;;;;;;;;
+232;1779;1779;Rebelion local;Majes;;;;Camana;;;;contra teniente;;Golte, p. 144;1770s;394;178;PER;Peru;4;Arequipa;38;Castilla;394;Viraco
+233;1775;1775;Rebelion local;San Juan;;;;Quispicanchis;;;;sin datos;;Golte, p. 145;;;;;;;;;;;
+234;1775;1775;Rebelion local;Quiquijana;;;;Quispicanchis;;;;homicidio del teniente;contra reparto;Golte, p. 145;;778;178;PER;Peru;8;Cusco;79;Quispicanchi;778;Quiquijana
+235;1775;1775;Rebelion local;Chumbivilcas;;;;;Cuzco;;;homicidio del corregidor;mujeres!;Golte, p. 145;;725;178;PER;Peru;8;Cusco;73;Chumbivilcas;725;Santo Tomas
+236;1775;1775;Rebelion local;Achoma;;;;Caylloma;;;;contra corregidor ;corregidor queria encarcerar a los deudores;Golte, p. 145;;395;178;PER;Peru;4;Arequipa;39;Caylloma;395;Achoma
+237;1775;1775;Rebelion local;Chuquibamba;;;;Condesuyos;;;;contra corregidor ;;Golte, p. 145;;417;178;PER;Peru;4;Arequipa;40;Condesuyos;417;Chuquibamba
+238;1776;1776;Rebelion local;San Gaban;;;;Carabaya;;;;contra teniente;deudas;Golte, p. 145;;1600;178;PER;Peru;22;Puno;162;Carabaya;1600;San Gaban
+239;1776;1776;Rebelion local;Urubamba;;;;;Cuzco;;;contra corregidor;;Golte, p. 145;;785;178;PER;Peru;8;Cusco;80;Urubamba;785;Urubamba
+240;1776;1776;Rebelion local;Pampacolca;;;;Condesuyos;;;;incendio casa del cura;contra reparto;Golte, p. 145;;390;178;PER;Peru;4;Arequipa;38;Castilla;390;Pampacolca
+241;1776;1776;Rebelion local;Pampacolca;;;;Condesuyos;;;;contra corregidor;;Golte, p. 145;;390;178;PER;Peru;4;Arequipa;38;Castilla;390;Pampacolca
+242;1776;1776;Rebelion local;Pampacolca;;;;Condesuyos;;;;atentado de homicidio al teniente;;Golte, p. 145;;390;178;PER;Peru;4;Arequipa;38;Castilla;390;Pampacolca
+243;1776;1776;Rebelion local;Velille;;;;Chumbivilcas;;;;homicidio del corregidor y cobrador;;Golte, p. 146;;726;178;PER;Peru;8;Cusco;73;Chumbivilcas;726;Velille
+244;1776;1776;Rebelion local;Guancarama;;;;Condesuyos;;;;ataque al corregidor;contra reparto;Golte, p. 146;;262;178;PER;Peru;3;Apur√≠mac;29;Andahuaylas;262;Huancarama
+245;1777;1777;Rebelion local;Casapalca;;;;;;Lima;;sin datos;;Golte, p. 146;;919;178;PER;Peru;10;Huancavelica;96;Huancavelica;919;Yauli
+246;1777;1777;Rebelion local;Chumbivilcas;;;;;Cuzco;;;homicidio del corregidor;;Golte, p. 146;;725;178;PER;Peru;8;Cusco;73;Chumbivilcas;725;Santo Tomas
+247;1777;1777;Rebelion local;Huamalies;;;;;Lima;;;sin datos;;Golte, p. 146;;812;178;PER;Peru;9;Hu√°nuco;84;Huamal√≠es;812;Llata
+248;1777;1777;Rebelion local;Ubinas;;;;Moquegua;;;;contra corregidor;;Golte, p. 146;;1473;178;PER;Peru;19;Moquegua;147;General S√°nchez Cerro;1473;Ubinas
+249;1777;1777;Rebelion local;Huamanga;;;;;Huamanga;;;atentado de homicidio del corregidor;contra reparto;Golte, p. 146;;447;178;PER;Peru;5;Ayacucho;44;Huamanga;447;Ayacucho
+250;1777;1777;Rebelion local;Chayanta;;;;;La Plata;;Bolivia;contra corregidor;;Golte, p. 146;;;;;;;;;;;
+251;1777;1777;Rebelion local;Caylloma;;;;;Arequipa;;;contra corregidor ;corregidor hirio al cacique por el reparto;Golte, p. 146;;398;178;PER;Peru;4;Arequipa;39;Caylloma;398;Caylloma
+252;1777;1777;Rebelion local;Urubamba;;;;;Cuzco;;;contra corregidor;;Golte, p. 146;;785;178;PER;Peru;8;Cusco;80;Urubamba;785;Urubamba
+253;1778;1778;Rebelion local;Llacta Ouivilla;;;;Huamalies;;;;sin datos;;Golte, p. 146;;;;;;;;;;;
+254;1778;1778;Rebelion local;Piscobamba;;;;;;Lima;;sin datos;;Golte, p. 146;;187;178;PER;Peru;2;Ancash;20;Mariscal Luzuriaga;187;Piscobamba
+255;1778;1778;Rebelion local;Chaca;;;;;;Lima;;;;Golte, p. 146;;96;178;PER;Peru;2;Ancash;10;Asunci√≥n;96;Chacas
+256;1778;1778;Rebelion local;Conchucos;;;;;Lima;;;;;Golte, p. 146;;200;178;PER;Peru;2;Ancash;22;Pallasca;200;Conchucos
+257;1778;1778;Rebelion local;Huamanga;;;;;Huamanga;;;sin datos;;Golte, p. 146;;447;178;PER;Peru;5;Ayacucho;44;Huamanga;447;Ayacucho
+258;1778;1778;Rebelion local;Cotabambas;;;;;Cuzco;;;homicidio del corregidor y teniente;;Golte, p. 146;;311;178;PER;Peru;3;Apur√≠mac;33;Cotabambas;311;Cotabambas
+259;1779;1779;Rebelion local;Viraco;;;;Condesuyos;;;;sin datos;;Golte, p. 146;;394;178;PER;Peru;4;Arequipa;38;Castilla;394;Viraco
+260;1779;1779;Rebelion local;Huaraz;;;;;Lima;;;contra corregidor;2000 hombres armados;Golte, p. 146;;140;178;PER;Peru;2;Ancash;16;Huaraz;140;Huaraz
+261;1779;1779;Rebelion local;Caraz;;;;;Lima;;;;;;;170;178;PER;Peru;2;Ancash;19;Huaylas;170;Caraz
+262;1779;1779;Rebelion local;Huaylas;;;;;Lima;;;;;;;173;178;PER;Peru;2;Ancash;19;Huaylas;173;Huaylas

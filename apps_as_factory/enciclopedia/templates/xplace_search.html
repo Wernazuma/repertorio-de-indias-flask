@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html xml:lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Search</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='/images/background/bg.jpg') }}");
+            background-color: #6666;
+            background-size: cover;
+            background-repeat: repeat;
+            background-size: auto;
+            font-family: "Garamond";
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .block {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        #left-block, #right-block {
+            width: 20%;
+        }
+
+        #central-block {
+            width: 55%;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="head" class="title">
+        <h1>Place Search</h1>
+    </div>
+    <div class="container">
+        <div class="block" id="left-block">
+			{% include 'blocks/menu.html' %}
+        </div>
+<div class="block" id="central-block">
+ <div class="form-container">
+    <div class="search-help">
+    <div class="search-tips-columns">
+        <div class="tips-spanish">
+		<p><strong>Consejos de búsqueda</strong></p>
+            <ul>
+                <li>La búsqueda predeterminada coincide con palabras completas: "Coro" encuentra "San Antonio Coro" pero no "Corozal"</li>
+                <li>Use "OR" para buscar múltiples términos: "Coro OR Caracas"</li>
+                <li>Use comodines (*): "Coro*" encuentra tanto "Coro" como "Corozal"</li>
+                <li>Active la Búsqueda Difusa para coincidencias aproximadas (encuentra variantes ortográficas pero puede incluir falsos positivos)</li>
+            </ul>
+        </div>
+        <div class="tips-english">
+		<p><strong>Search Tips</strong></p>
+            <ul>
+                <li>Default search matches complete words: "Coro" finds "San Antonio Coro" but not "Corozal"</li>
+                <li>Use "OR" to search multiple terms: "Coro OR Caracas"</li>
+                <li>Use wildcards (*): "Coro*" finds both "Coro" and "Corozal"</li>
+                <li>Enable Fuzzy Search for approximate matching (finds spelling variants but may include false positives)</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    <form method="get" action="/place/search" class="form-grid">
+        <div class="main-inputs">
+
+<div class="form-group">
+    <label for="name">Nombre / Name:</label><br/>
+    <input type="text" id="name" name="name" value="{{ name }}" 
+           placeholder="Enter place name (use * for wildcards)">
+    
+    <div class="checkbox-group">
+        <input type="checkbox" id="fuzzy_search" name="fuzzy_search" 
+               {% if fuzzy_search %}checked{% endif %}>
+        <label for="fuzzy_search">Fuzzy Search (Levenshtein matching)</label>
+    </div>
+</div>
+            <label for="category">Categoría de lugar / Category of place:</label>
+                               <select id="category" name="category">
+                    <option value="">-- Select Category --</option>
+                    <option value="Ciudad" {% if category == 'Ciudad' %}selected{% endif %}>Ciudad</option>
+                    <option value="Villa" {% if category == 'Villa' %}selected{% endif %}>Villa</option>
+                    <option value="Pueblo" {% if category == 'Pueblo' %}selected{% endif %}>Pueblo</option>
+                    <option value="Poblacion" {% if category == 'Poblacion' %}selected{% endif %}>Poblacion</option>
+                    <option value="Fuerte" {% if category == 'Fuerte' %}selected{% endif %}>Fuerte</option>
+                    <option value="Rural" {% if category == 'Rural' %}selected{% endif %}>Rural</option>
+                    <option value="Localidad" {% if category == 'Localidad' %}selected{% endif %}>Localidad</option>
+                    <option value="Parcialidad" {% if category == 'Parcialidad' %}selected{% endif %}>Parcialidad</option>
+                </select>
+
+<select name="subcategory" id="subcategory" disabled>
+    <option value="">-- Select Subcategory --</option>
+</select>
+
+            <label for="church_category">Categoría eclesiástica / Church Category:</label>
+                <select id="church_category" name="church_category">
+                    <option value="">-- Select Church Category --</option>
+                    <option value="curatos" {% if church_category == 'curatos' %}selected{% endif %}>Curatos</option>
+                    <option value="misiones" {% if church_category == 'misiones' %}selected{% endif %}>Misiones</option>
+                    <option value="curatos_misiones" {% if church_category == 'curatos_misiones' %}selected{% endif %}>Curatos y misiones</option>
+                    <option value="sede_obispado" {% if church_category == 'sede_obispado' %}selected{% endif %}>Sede de obispado</option>
+                </select>
+
+            <label for="religious_order">Orden religiosa / Religious Order:</label>
+                <select id="religious_order" name="religious_order">
+                    <option value="">-- Select Religious Order --</option>
+                    {% for order in religious_orders %}
+                        <option value="{{ order }}" {% if religious_order == order %}selected{% endif %}>{{ order }}</option>
+                    {% endfor %}
+                </select>
+        </div>
+
+        <div class="middle-inputs">
+            <label for="is_part_of_name">Pertenece a territorio / Belongs to territory:</label>
+            <input type="text" id="is_part_of_name" name="is_part_of_name" placeholder="Enter name" value="{{ is_part_of_name }}">
+
+            <label for="is_part_of_type">Pertenece a territorio de tipo / Belongs to territory of type:</label>
+            <input type="text" id="is_part_of_type" name="is_part_of_type" placeholder="Enter type" value="{{ is_part_of_type }}">
+			        </div>
+					<div class="additional-inputs">
+			<label>Puede indicar un año específico (preferido), o un período. / You may enter a specific year (preferred) or a range.</label>
+			<label for="year">Año de Referencia / Reference Year:</label>
+			<input type="number" id="year" name="year" value="{{ year or '' }}">
+
+			<label for="year_start">Desde / From:</label>
+			<input type="number" id="year_start" name="year_start" placeholder="Start year" value="{{ year_start }}">
+
+			<label for="year_end">Hasta / To:</label>
+			<input type="number" id="year_end" name="year_end" placeholder="End year" value="{{ year_end }}">
+
+        </div>
+
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+    <div class="results">
+        <h2>Results</h2>
+        <ul style="list-style: none; column-count: 2; column-width: 400px;">
+            {% if results %}
+                {% if results|length > 0 %}
+                    {% for result in results %}
+                        <li>
+                            <a href="/place/{{ result['gz_id'] }}">
+                                {{ result['label'] }} ({{ result['partido_generico'] }}, {{ result['provincia_generica'] }}, {{ result['region'] }}). Indias-ID: {{ result['gz_id'] }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <li>No matching results found.</li>
+                {% endif %}
+            {% else %}
+                <li>No matching results found.</li>
+            {% endif %}
+        </ul>
+{% if results %}
+    <form method="get" action="/place/download">
+        <input type="hidden" name="name" value="{{ name }}">
+        <input type="hidden" name="is_part_of_type" value="{{ is_part_of_type }}">
+        <input type="hidden" name="is_part_of_name" value="{{ is_part_of_name }}">
+        <input type="hidden" name="year_start" value="{{ year_start }}">
+		<input type="hidden" name="year_end" value="{{ year_end }}">
+        <input type="hidden" name="category" value="{{ category }}">
+        <input type="hidden" name="subcategory" value="{{ subcategory }}">
+        <input type="hidden" name="church_category" value="{{ church_category }}">
+        <input type="hidden" name="religious_order" value="{{ religious_order }}">
+        <button type="submit">Download</button>
+    </form>
+{% endif %}
+
+    </div>
+</div>
+    </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const categorySelect = document.getElementById('category');
+    const subcategorySelect = document.getElementById('subcategory');
+
+    // Function to update subcategories
+    function updateSubcategories(category) {
+        if (!category) {
+            subcategorySelect.disabled = true;
+            subcategorySelect.innerHTML = '<option value="">-- Select Subcategory --</option>';
+            return;
+        }
+
+        fetch(`/get_subcategories/${category}`)
+            .then(response => response.json())
+            .then(subcategories => {
+                subcategorySelect.innerHTML = '<option value="">-- Select Subcategory --</option>';
+                subcategories.forEach(subcat => {
+                    const option = document.createElement('option');
+                    option.value = subcat;
+                    option.textContent = subcat;
+                    if (subcat === "{{ subcategory }}") {
+                        option.selected = true;
+                    }
+                    subcategorySelect.appendChild(option);
+                });
+                subcategorySelect.disabled = false;
+            });
+    }
+
+    // Initial load if category is selected
+    if (categorySelect.value) {
+        updateSubcategories(categorySelect.value);
+    }
+
+    // Update on category change
+    categorySelect.addEventListener('change', function() {
+        updateSubcategories(this.value);
+    });
+});
+</script>
+</body>
+</html>

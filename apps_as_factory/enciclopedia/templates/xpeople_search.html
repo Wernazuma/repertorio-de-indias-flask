@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xml:lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda de personas</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='/images/background/bg.jpg') }}");
+            background-color: #6666;
+            background-size: cover;
+            background-repeat: repeat;
+            background-size: auto;
+            font-family: "Garamond";
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .block {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        #left-block, #right-block {
+            width: 20%;
+        }
+
+        #central-block {
+            width: 55%;
+            padding: 20px;
+        }
+
+    </style>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script type="text/javascript" src="functions.js"></script>
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+</head>
+<body>
+    <div id="head" class="title">
+        <h1>Búsqueda de personas / People Search</h1>
+    </div>
+    <div class="container">
+        <div class="block" id="left-block">
+			{% include 'blocks/menu.html' %}
+        </div>
+
+        <div class="block" id="central-block">
+
+
+<div class="form-container">
+    <div class="search-help">
+        <div class="search-tips-columns">
+                            <div class="tips-spanish">
+                                <p><strong>Consejos de búsqueda</strong></p>
+                                <ul>
+                                    <li>La búsqueda opera con palabras completas: "Aro" encuentra "Aro" pero no "Arostegui"</li>
+                                    <li>Use "OR" para buscar múltiples términos: "González OR García"</li>
+                                    <li>Use comodines (*): "Gonz*" encuentra tanto "González" como "Gonzaga"</li>
+                                    <li>Active la Búsqueda Difusa para coincidencias aproximadas (encuentra variantes ortográficas pero puede incluir falsos positivos)</li>
+                                </ul>
+                            </div>
+                            <div class="tips-english">
+                                <p><strong>Search Tips</strong></p>
+                                <ul>
+                                    <li>Default search matches complete words: "Aro" finds "Aro" but not "Arostegui"</li>
+                                    <li>Use "OR" to search multiple terms: "González OR García"</li>
+                                    <li>Use wildcards (*): "Gonz*" finds both "González" and "Gonzaga"</li>
+                                    <li>Enable Fuzzy Search for approximate matching (finds spelling variants but may include false positives)</li>
+                                </ul>
+                            </div>
+		</div>
+    </div>
+    
+    <form method="get">
+        <div class="form-grid">
+            <!-- Column 1 -->
+            <div class="main-inputs">
+    <div class="form-group">
+                            <label for="last_name">Apellido / Last Name:</label><br/>
+                            <input type="text" id="last_name" name="last_name" placeholder="Enter last name (use * for wildcards)" value="{{ last_name or '' }}">
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="fuzzy_search" name="fuzzy_search" 
+                                       {% if fuzzy_search %}checked{% endif %}>
+                                <label for="fuzzy_search">Fuzzy Search (Levenshtein matching)</label>
+                            </div>
+    </div>
+            </div>
+
+            <!-- Column 2 -->
+            <div class="middle-inputs">
+                        <label for="year">Año / Year:</label>
+                        <input type="number" id="year" name="year" placeholder="Enter year" value="{{ year or '' }}">
+
+                        <button type="submit">Search</button>
+      
+            </div>
+
+            <!-- Column 3 -->
+            <div class="additional-inputs">
+				
+            </div>
+        </div>
+		
+    </form>
+</div>
+
+
+
+
+
+                <div class="results">
+					<h2>Resultados / Results</h2>
+					<ul style="list-style: none; column-count: auto; column-width: 400px;">
+						{% if results %}
+							{% for person in results %}
+								<li>
+									<a href="/people/persIndias{{ person['OficialID'] }}">{{ person['NOM_entero'] }}</a>
+									({{ person['Nacimiento_y'] | int }}-{{ person['Fallecimiento_y'] | int }})
+								</li>
+							{% else %}
+								<li>No matching results found.</li>
+							{% endfor %}
+						{% endif %}
+					</ul>
+				</div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Activate the default tab
+        document.getElementById("defaultOpen").click();
+
+        // Set dynamic content (URL and date)
+        function formatDate(date) {
+            const day = date.getDate();
+            const month = date.toLocaleString('en-GB', { month: 'long' });
+            const year = date.getFullYear();
+            return `${day} ${month} ${year}`;
+        }
+
+        function setDynamicContent() {
+            const currentDate = new Date();
+            const currentURL = window.location.href;
+            document.getElementById('datetime').innerText = formatDate(currentDate);
+            document.getElementById('url').innerText = currentURL;
+        }
+        window.onload = setDynamicContent;
+    </script>
+</body>
+</html>

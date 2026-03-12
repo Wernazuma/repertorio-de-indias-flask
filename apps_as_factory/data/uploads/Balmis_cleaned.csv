@@ -1,0 +1,113 @@
+rowID;ref_Label;ref_Adm0_ISO;ref_Adm1;ref_START;START_Month;START_Day;START_Date;START_quality;ref_END;END_Month;END_Day;END_Date;END_quality;Balmis;Pastor;Gutiérrez;Salvany;Grajales;
+1;La Coruña;ESP;Galicia;1803;11;30;1803-11-30;sure;1803;11;30;1803-11-30;sure;yes;sub;sub;sub;sub;
+2;Santa Cruz de Tenerife;ESP;Islas Canarias;1803;12;9;1803-12-9;sure;1804;1;6;1804-1-6;sure;yes;sub;sub;sub;sub;
+3;San Juan;PRI;;1804;2;9;1804-2-9;sure;1804;3;12;1804-3-12;sure;yes;sub;sub;sub;sub;
+4;Puerto Cabello;VEN;;1804;3;20;1804-3-20;sure;1804;3;24;1804-3-24;sure;yes;sub;sub;;;
+5;Puerto Cabello;VEN;;1804;3;20;1804-3-20;sure;1804;3;31;1804-3-31;sure;;;;yes;sub;
+6;Caracas;VEN;;1804;4;5;1804-4-5;sure;1804;5;4;1804-5-4;fuzzy;;;;yes;sub;Date of leaving ranges May 2 to May 8.
+7;Caracas;VEN;;1804;3;28;1804-3-28;sure;1804;5;4;1804-5-4;fuzzy;yes;sub;sub;;;
+8;La Guaira;VEN;;1804;5;8;1804-5-8;sure;1804;5;8;1804-5-8;sure;yes;sub;sub;yes;sub;
+9;Barranquilla;COL;;1804;5;13;1804-5-13;sure;1804;5;15;1804-5-15;interpolated;;;;yes;sub;Shipwreck near Barranquilla
+10;Cartagena de Indias;COL;;1804;5;24;1804-5-24;sure;1804;7;15;1804-7-15;month;;;;yes;sub;
+11;Mompox;COL;;1804;7;31;1804-7-31;fuzzy;1804;8;15;1804-8-15;interpolated;;;;yes;sub;
+12;Ocaña;COL;;1804;8;25;1804-8-25;interpolated;1804;8;30;1804-8-30;interpolated;;;;;yes;
+13;Cúcuta;COL;;1804;9;15;1804-9-15;interpolated;1804;9;20;1804-9-20;interpolated;;;;;yes;
+14;Pamplona;COL;;1804;9;25;1804-9-25;interpolated;1804;9;30;1804-9-30;interpolated;;;;;yes;
+15;Girón;COL;;1804;10;15;1804-10-15;interpolated;1804;10;20;1804-10-20;interpolated;;;;;;
+16;Socorro;COL;;1804;10;25;1804-10-25;interpolated;1804;10;30;1804-10-30;interpolated;;;;;;
+17;San Gil;COL;;1804;11;5;1804-11-5;interpolated;1804;11;10;1804-11-10;interpolated;;;;;;
+18;Vélez;COL;;1804;11;15;1804-11-15;interpolated;1804;11;20;1804-11-20;interpolated;;;;;;
+19;Tunja;COL;;1804;11;25;1804-11-25;interpolated;1804;11;30;1804-11-30;interpolated;;;;;yes;
+20;Nares;COL;;1804;10;15;1804-10-15;interpolated;1804;10;22;1804-10-22;interpolated;;;;yes;;Delegation from Medellín takes two boys to provide vaccine for Antioquia province.
+21;Honda;COL;;1804;10;30;1804-10-30;interpolated;1804;11;5;1804-11-5;interpolated;;;;yes;;
+22;Santa Fe de Bogotá;COL;;1804;12;17;1804-12-17;sure;1805;3;8;1805-3-8;sure;;;;yes;yes;Arrival date of Grajales not specified.
+23;Neiva;COL;;1805;3;30;1805-3-30;interpolated;1805;4;5;1805-4-5;interpolated;;;;;yes;
+24;San Sebastián de la Plata;COL;;1805;4;15;1805-4-15;interpolated;1805;4;20;1805-4-20;interpolated;;;;;yes;
+25;Ibagué;COL;;1805;3;10;1805-3-10;interpolated;1805;3;11;1805-3-11;interpolated;;;;yes;;
+26;Cartago;COL;;1805;3;25;1805-3-25;sure;1805;4;20;1805-4-20;interpolated;;;;yes;;According to the Redactor de América, nr.
+27;Llano Grande;COL;;1805;4;25;1805-4-25;interpolated;1805;4;30;1805-4-30;interpolated;;;;yes;;
+28;Quilichao;COL;;1805;5;5;1805-5-5;interpolated;1805;5;10;1805-5-10;interpolated;;;;yes;;
+29;Popayán;COL;;1805;4;15;1805-4-15;month;1805;6;7;1805-6-7;sure;;;;;yes;Leaving date from Carlos Dáguer, De brazo en brazo: la odisea de una vacuna
+30;Popayán;COL;;1805;4;27;1805-4-27;sure;1805;6;7;1805-6-7;sure;;;;yes;;Leaving date from Carlos Dáguer, De brazo en brazo: la odisea de una vacuna
+31;San Juan de Pasto;COL;;1805;6;15;1805-6-15;interpolated;1805;6;16;1805-6-16;interpolated;;;;yes;;
+32;Tulcán;ECU;;1805;6;20;1805-6-20;interpolated;1805;6;21;1805-6-21;interpolated;;;;yes;;
+33;Ibarra;ECU;;1805;6;27;1805-6-27;sure;1805;7;6;1805-7-6;interpolated;;;;yes;;
+34;Otavalo;ECU;;1805;7;10;1805-7-10;interpolated;1805;7;11;1805-7-11;interpolated;;;;yes;;
+35;Cayambé;ECU;;1805;7;13;1805-7-13;interpolated;1805;7;14;1805-7-14;interpolated;;;;yes;;
+36;Quito;ECU;;1805;7;16;1805-7-16;sure;1805;9;13;1805-9-13;sure;;;;yes;;
+37;Cuenca;ECU;;1805;10;12;1805-10-12;sure;1805;11;16;1805-11-16;sure;;;;yes;;
+38;Loja;ECU;;1805;11;22;1805-11-22;sure;1805;12;10;1805-12-10;sure;;;;yes;;
+39;Piura;PER;;1805;12;23;1805-12-23;sure;1806;1;9;1806-1-9;sure;;;;yes;;
+40;Chocope;PER;;1806;1;30;1806-1-30;interpolated;1806;1;31;1806-1-31;interpolated;;;;yes;;Public unrest
+41;Lambayeque;PER;;1806;2;5;1806-2-5;interpolated;1806;2;15;1806-2-15;interpolated;;;;yes;;
+42;Cajamarca;PER;;1806;3;9;1806-3-9;sure;1806;3;31;1806-3-31;interpolated;;;;yes;;
+43;Trujillo;PER;;1806;4;15;1806-4-15;interpolated;1806;5;1;1806-5-1;interpolated;;;;yes;;
+44;Lima;PER;;1806;5;23;1806-5-23;sure;1807;1;28;1807-1-28;;;;;yes;;Salvany meets opposition as vaccination had already started with material from Buenos Aires
+45;Chilca;PER;;1807;1;31;1807-1-31;sure;1807;2;5;1807-2-5;interpolated;;;;yes;;
+46;Ica;PER;;1807;2;15;1807-2-15;interpolated;1807;8;15;1807-8-15;interpolated;;;;yes;;At Ica, there was public unrest. I could not find serious information on where Salvany spent the months between February and September. 
+47;Arequipa;PER;;1807;9;15;1807-9-15;fuzzy;1808;8;10;1808-8-10;interpolated;;;;yes;;We do not know how long Salvany stayed at Arequipa. Given his health condition, we assume he stayed there as long as the timeline permits and then travelled on to La Paz without delay en route.
+48;Barbacoas;COL;;1805;6;25;1805-6-25;interpolated;1805;6;30;1805-6-30;interpolated;;;;;yes;
+49;Tumaco;COL;;1805;7;5;1805-7-5;interpolated;1805;7;10;1805-7-10;interpolated;;;;;yes;
+50;Ibarra;ECU;;1805;8;30;1805-8-30;interpolated;1805;9;15;1805-9-15;interpolated;;;;;yes;
+51;Quito;ECU;;1805;12;12;1805-12-12;fuzzy;1806;1;30;1806-1-30;interpolated;;;;;yes;
+52;Guayaquil;ECU;;1806;2;24;1806-2-24;sure;1806;5;5;1806-5-5;interpolated;;;;;yes;
+53;Tumbes;PER;;1806;5;15;1806-5-15;interpolated;1806;5;30;1806-5-30;interpolated;;;;;yes;Timeline very uncertain
+54;Jaen;PER;;1806;7;1;1806-7-1;interpolated;1806;7;15;1806-7-15;interpolated;;;;;yes;We do not know the itinerary from Jaen  to Lima. Salvany had instructed Grajales to go to Jaen de Bracamoros, and the Redactor de América from May 1807 states that he had indeed visited the place. How he reached Lima from there, I do not know - he may have returned to Piura or Tumbes
+55;Lima;PER;;1806;12;15;1806-12-15;month;1807;1;15;1807-1-15;arbitrary;;;;;yes;We do not know how long Grajales actually stayed at Lima.
+56;Huarochiri;PER;;1807;1;20;1807-1-20;arbitrary;1807;1;25;1807-1-25;arbitrary;;;;;yes;Timeline of the itinerary is arbitrary. We only know it must have been during 1807
+57;Jauja;PER;;1807;2;1;1807-2-1;arbitrary;1807;2;5;1807-2-5;arbitrary;;;;;yes;Timeline of the itinerary is arbitrary. We only know it must have been during 1807
+58;Tarma;PER;;1807;2;10;1807-2-10;arbitrary;1807;2;15;1807-2-15;arbitrary;;;;;yes;Timeline of the itinerary is arbitrary. We only know it must have been during 1807
+59;Huanuco;PER;;1807;3;1;1807-3-1;arbitrary;1807;3;15;1807-3-15;arbitrary;;;;;yes;Timeline of the itinerary is arbitrary. We only know it must have been during 1807
+60;Cuchero;PER;;1807;4;1;1807-4-1;arbitrary;1807;4;15;1807-4-15;arbitrary;;;;;yes;Timeline of the itinerary is arbitrary. We only know it must have been during 1807. Actually, we only know about his presence in the province, not the exact place.
+61;Canta;PER;;1807;5;15;1807-5-15;arbitrary;1807;5;30;1807-5-30;arbitrary;;;;;yes;Timeline of the itinerary is arbitrary. We only know it must have been during 1807
+62;Lima;PER;;1807;6;15;1807-6-15;arbitrary;1807;11;15;1807-11-15;interpolated;;;;;;
+63;Copiapó;CHL;;1807;12;1;1807-12-1;interpolated;1807;12;2;1807-12-2;interpolated;;;;;yes;
+64;Guasco;CHL;;1807;12;4;1807-12-4;interpolated;1807;12;5;1807-12-5;interpolated;;;;;yes;
+65;Coquimbo;CHL;;1807;12;9;1807-12-9;interpolated;1807;12;10;1807-12-10;interpolated;;;;;yes;
+66;Valparaiso;CHL;;1807;12;15;1807-12-15;month;1808;4;5;1808-4-5;interpolated;;;;;yes;
+67;Santiago;CHL;;1808;4;8;1808-4-8;sure;1808;12;15;1808-12-15;interpolated;;;;;yes;The timeline of this leg is extremely uncertain.
+68;Talca;CHL;;1809;1;15;1809-1-15;month;1809;1;20;1809-1-20;interpolated;;;;;yes;
+69;Concepción;CHL;;1809;5;1;1809-5-1;interpolated;1810;8;1;1810-8-1;arbitrary;;;;;yes;The timeline of this leg is extremely uncertain.
+70;Valdivia;CHL;;1810;9;1;1810-9-1;month;1810;10;30;1810-10-30;arbitrary;;;;;yes;The timeline of this leg is extremely uncertain.
+71;San Carlos;CHL;Chiloé;1811;11;15;1811-11-15;arbitrary;1812;1;1;1812-1-1;arbitrary;;;;;yes;The timeline of this leg is extremely uncertain.
+72;Lima;PER;;1812;1;15;1812-1-15;month;1812;1;15;1812-1-15;month;;;;;yes;We consider Grajales's arrival in Lima as end of the expedition. 
+73;Puno;BOL;;1808;8;20;1808-8-20;interpolated;1808;9;1;1808-9-1;interpolated;;;;yes;;
+74;La Paz;BOL;;1808;9;15;1808-9-15;sure;1810;7;1;1810-7-1;interpolated;;;;yes;;
+75;Cochabamba;BOL;;1810;7;21;1810-7-21;sure;1810;7;30;1810-7-30;month;;;;yes;;End due to death of Salvany.
+76;La Habana;CUB;;1804;5;26;1804-5-26;sure;1804;6;18;1804-6-18;fuzzy;yes;sub;sub;;;
+77;Sisal;MEX;;1804;6;25;1804-6-25;sure;1804;6;25;1804-6-25;fuzzy;yes;sub;sub;;;
+78;Mérida;MEX;;1804;6;29;1804-6-29;sure;1804;7;18;1804-7-18;fuzzy;yes;sub;sub;;;
+79;Sisal;MEX;;1804;7;18;1804-7-18;fuzzy;1804;7;19;1804-7-19;sure;yes;sub;sub;;;
+80;Villahermosa;MEX;;1804;7;20;1804-7-20;sure;1804;7;25;1804-7-25;arbitrary;;yes;;;;The timeline of this leg is extremely uncertain.
+81;Ciudad Real;MEX;Chiapas;1804;8;10;1804-8-10;arbitrary;1804;8;15;1804-8-15;arbitrary;;yes;;;;The timeline of this leg is extremely uncertain.
+82;Guatemala;GTM;;1805;1;1;1805-1-1;arbitrary;1805;1;1;1805-1-1;arbitrary;;yes;;;;The timeline of this leg is extremely uncertain.
+83;Antequera;MEX;;1805;1;9;1805-1-9;arbitrary;1805;1;9;1805-1-9;arbitrary;;yes;;;;The timeline of this leg is extremely uncertain.
+84;México;MEX;;1805;1;15;1805-1-15;arbitrary;1805;1;17;1805-1-17;fuzzy;;yes;;;;The timeline of this leg is extremely uncertain.
+85;Campeche;MEX;;1804;7;23;1804-7-23;sure;1804;7;24;1804-7-24;fuzzy;yes;;sub;;;
+86;Veracruz;MEX;;1804;7;30;1804-7-30;fuzzy;1804;8;1;1804-8-1;sure;yes;;sub;;;
+87;México;MEX;;1804;8;9;1804-8-9;sure;1804;9;15;1804-9-15;fuzzy;yes;;;;;
+88;Puebla;MEX;;1804;9;22;1804-9-22;sure;1804;10;11;1804-10-11;fuzzy;yes;;;;;
+89;México;MEX;;1804;10;13;1804-10-13;fuzzy;1804;10;31;1804-10-31;sure;yes;;;;;
+90;Querétaro;MEX;;1804;11;4;1804-11-4;interpolated;1804;11;5;1804-11-5;interpolated;yes;;;;;
+91;Celaya;MEX;;1804;11;8;1804-11-8;interpolated;1804;11;9;1804-11-9;interpolated;yes;;;;;
+92;Guanajuato;MEX;;1804;11;13;1804-11-13;interpolated;1804;11;15;1804-11-15;interpolated;yes;;;;;
+93;Aguas Calientes;MEX;;1804;11;20;1804-11-20;interpolated;1804;11;21;1804-11-21;interpolated;yes;;;;;
+94;Fresnillo;MEX;;1804;11;26;1804-11-26;interpolated;1804;11;27;1804-11-27;interpolated;yes;;;;;
+95;Sombrerete;MEX;;1804;12;3;1804-12-3;interpolated;1804;12;5;1804-12-5;interpolated;yes;;;;;
+96;Durango;MEX;;1804;12;8;1804-12-8;sure;1804;12;10;1804-12-10;interpolated;yes;;;;;
+97;México;MEX;;1804;12;30;1804-12-30;fuzzy;1805;1;17;1805-1-17;fuzzy;yes;;;;;
+98;Acapulco;MEX;;1805;1;22;1805-1-22;fuzzy;1805;2;7;1805-2-7;sure;yes;sub;sub;;;
+99;Manila;PHL;;1805;4;15;1805-4-15;sure;1805;9;3;1805-9-3;sure;yes;sub;sub;;;
+100;Cebú;PHL;;1805;5;15;1805-5-15;interpolated;1805;5;30;1805-5-30;interpolated;;;yes;;;
+101;Santa Cruz;PHL;;1805;6;15;1805-6-15;interpolated;1805;6;30;1805-6-30;interpolated;yes;;sub;;;
+102;Mizamiso;PHL;;1805;6;15;1805-6-15;interpolated;1805;6;30;1805-6-30;interpolated;;yes;;;;
+103;Zambuanga;PHL;;1805;8;15;1805-8-15;interpolated;1805;8;30;1805-8-30;interpolated;;yes;;;;
+104;Macao;CHN;;1805;9;16;1805-9-16;sure;1805;10;5;1805-10-5;sure;yes;;;;;
+105;Canton;CHN;;1805;10;15;1805-10-15;interpolated;1806;1;1;1806-1-1;interpolated;yes;;;;;
+106;Macao;CHN;;1806;1;13;1806-1-13;sure;1806;2;5;1806-2-5;sure;yes;;;;;
+107;Saint Helena;SHN;;1807;2;11;1807-2-11;sure;1807;2;17;1807-2-17;sure;;;;;;
+108;Lisboa;POR;;1807;8;14;1807-8-14;sure;1807;8;31;1807-8-31;sure;;;;;;
+109;Cádiz;ESP;;1807;9;2;1807-9-2;fuzzy;1807;9;2;1807-9-2;fuzzy;;;;;;Arrival is treated as end of expedition.
+110;Valladolid;MEX;Morelia;1804;11;19;1804-11-19;month;1805;11;25;1805-11-25;interpolated;;;yes;;;
+111;Guadalajara;MEX;;1804;12;15;1804-12-15;month;1805;1;10;1805-1-10;interpolated;;;yes;;;
+112;México;MEX;;1805;1;17;1805-1-17;month;1805;1;17;1805-1-17;fuzzy;;;yes;;;

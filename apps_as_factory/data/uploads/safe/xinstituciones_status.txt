@@ -1,0 +1,1 @@
+Phase 1b (time-first): 599/1423 (rowID=599) [42.1%]

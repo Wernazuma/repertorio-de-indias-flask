@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Phase 3, Step 2 — Case-specific Territory Choice</title>
+</head>
+<body>
+
+<h2>Case-specific Territory Choice — {{ prefix }}</h2>
+
+<form method="POST">
+  <table border="1" cellpadding="4">
+    <tr>
+      <th>rowID</th>
+      <th>Ref Label</th>
+      <th>Region</th>
+      <th>Generic Province</th>
+      <th>Generic District</th>
+      <th>Ciudad/Villa Only</th>
+    </tr>
+
+    {% for case in relegated_cases %}
+    <tr>
+      <td>{{ case.rowID }}</td>
+      <td>{{ case.ref_Label }}</td>
+
+      <!-- Region -->
+      <td>
+        <select name="region_{{ case.rowID }}" class="region-select">
+          <option value="">-- Select Region --</option>
+          {% for reg in region_choices %}
+            <option value="{{ reg }}"
+              {% if case.manual_region == reg %}selected{% endif %}>
+              {{ reg }}
+            </option>
+          {% endfor %}
+        </select>
+      </td>
+
+      <!-- Province -->
+      <td>
+        <select name="province_{{ case.rowID }}" class="province-select">
+          <option value="">-- Select Province --</option>
+          {% for prov in province_choices %}
+            <option value="{{ prov }}"
+              {% if case.manual_province == prov %}selected{% endif %}>
+              {{ prov }}
+            </option>
+          {% endfor %}
+        </select>
+      </td>
+
+      <!-- District -->
+      <td>
+        <select name="district_{{ case.rowID }}" class="district-select">
+          <option value="">-- Select District --</option>
+          <option value="Unknown"
+            {% if case.manual_district == "Unknown" %}selected{% endif %}>
+            Unknown
+          </option>
+          {% for dist in district_choices %}
+            <option value="{{ dist }}"
+              {% if case.manual_district == dist %}selected{% endif %}>
+              {{ dist }}
+            </option>
+          {% endfor %}
+        </select>
+      </td>
+
+      <!-- Category -->
+      <td>
+        <input type="checkbox"
+               name="ciudad_villa_only_{{ case.rowID }}"
+               {% if case.manual_category in ["Ciudad", "Villa"] %}checked{% endif %}>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <br>
+  <button type="submit">Save and Continue</button>
+</form>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".region-select").forEach(function(regionSelect) {
+        regionSelect.addEventListener("change", function() {
+            const provinceSelect = this.closest("tr").querySelector(".province-select");
+            const districtSelect = this.closest("tr").querySelector(".district-select");
+            provinceSelect.innerHTML = '<option value="">-- Select Province --</option>';
+            districtSelect.innerHTML = '<option value="">-- Select District --</option><option value="Unknown">Unknown</option>';
+            if (this.value) {
+                fetch(`/get_provinces/${encodeURIComponent(this.value)}`)
+                    .then(response => response.json())
+                    .then(provinces => {
+                        provinces.forEach(prov => {
+                            const opt = document.createElement("option");
+                            opt.value = prov;
+                            opt.textContent = prov;
+                            provinceSelect.appendChild(opt);
+                        });
+                    });
+            }
+        });
+    });
+
+    document.querySelectorAll(".province-select").forEach(function(provinceSelect) {
+        provinceSelect.addEventListener("change", function() {
+            const districtSelect = this.closest("tr").querySelector(".district-select");
+            districtSelect.innerHTML = '<option value="">-- Select District --</option><option value="Unknown">Unknown</option>';
+            if (this.value) {
+                
+				fetch(`/get_districts/${encodeURIComponent(this.value)}`)
+                    .then(response => response.json())
+                    .then(districts => {
+                        districts.forEach(dist => {
+                            const opt = document.createElement("option");
+                            opt.value = dist;
+                            opt.textContent = dist;
+                            districtSelect.appendChild(opt);
+                        });
+                    });
+            }
+        });
+    });
+});
+</script>
+
+</body>
+</html>

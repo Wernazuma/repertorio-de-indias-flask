@@ -1,0 +1,165 @@
+rowID;ref_Label;gz_id;lat;lon;ref_Adm0_ISO;certainty_of_stay;ref_START;START_Month;START_Day;START_Date;START_quality;ref_END;END_Month;END_Day;END_Date;END_quality;Leg;Category;Balmis;Pastor;Gutiérrez;Lozano;Salvany;Grajales;note
+1;La Coruña;;43,369;-8,394;ESP;100;1803;11;30;1803-11-30;sure;1803;11;30;1803-11-30;sure;Intercontinental1;Balmis;yes;yes;yes;;yes;yes;
+2;Santa Cruz de Tenerife;;28,468;-16,25;ESP;100;1803;12;9;1803-12-09;sure;1804;1;6;1804-01-06;sure;Intercontinental1;Balmis;yes;yes;yes;;yes;yes;
+3;San Juan;3000003;18,4661458696363;-66,1158037998055;PRI;100;1804;2;9;1804-02-09;sure;1804;3;12;1804-03-12;sure;Intercontinental1;Balmis;yes;yes;yes;;yes;yes;
+4;Puerto Cabello;4000107;10,4786999996053;-68,006440000006;VEN;100;1804;3;20;1804-03-20;sure;1804;3;24;1804-03-24;sure;Venezuela;Balmis;yes;yes;yes;;;;
+5;Puerto Cabello;4000107;10,4786999996053;-68,006440000006;VEN;100;1804;3;20;1804-03-20;sure;1804;3;31;1804-03-31;sure;Venezuela;Salvany;;;;;yes;yes;
+7;Caracas;4000001;10,5060980004224;-66,9146019999823;VEN;100;1804;3;28;1804-03-28;sure;1804;5;4;1804-05-04;fuzzy;Venezuela;Balmis;yes;yes;yes;;;;
+6;Caracas;4000001;10,5060980004224;-66,9146019999823;VEN;100;1804;4;5;1804-04-05;sure;1804;5;4;1804-05-04;fuzzy;Venezuela;Salvany;;;;;yes;yes;Date of leaving ranges May 2 to May 8.
+8;La Guaira;4000010;10,6012688099077;-66,9314407099208;VEN;100;1804;5;8;1804-05-08;sure;1804;5;8;1804-05-08;sure;Venezuela;Balmis;yes;yes;yes;;yes;yes;
+9;Soledad;;10,9088;-74,7789;COL;100;1804;5;13;1804-05-13;sure;1804;5;14;1804-05-14;interpolated;Nueva Granada;Salvany;;;;;yes;yes;
+10;Barranquilla;5000047;10,979980000077;-74,7770800003417;COL;100;1804;5;13;1804-05-13;interpolated;1804;5;15;1804-05-15;interpolated;Nueva Granada;Salvany;;;;;yes;yes;Shipwreck near Barranquilla
+11;Cartagena de Indias;5000004;10,4230609995655;-75,550759999974;COL;100;1804;5;24;1804-05-24;interpolated;1804;7;15;1804-07-15;month;Nueva Granada;Salvany;;;;;yes;yes;
+112;La Habana;3000004;23,1411099998267;-82,3514300001943;CUB;100;1804;5;26;1804-05-26;sure;1804;6;18;1804-06-18;fuzzy;Caribbean;Balmis;yes;yes;yes;;;;
+113;Sisal;9900228;21,1649;-90,0333;MEX;100;1804;6;25;1804-06-25;sure;1804;6;25;1804-06-25;fuzzy;Caribbean;Balmis;yes;yes;yes;;;;
+114;Mérida;1000022;20,9667090003202;-89,6232219995956;MEX;100;1804;6;29;1804-06-29;sure;1804;7;18;1804-07-18;fuzzy;Caribbean;Balmis;yes;yes;yes;;;;
+115;Sisal;9900228;21,1649;-90,0333;MEX;100;1804;7;18;1804-07-18;fuzzy;1804;7;19;1804-07-19;sure;Caribbean;Balmis;yes;yes;yes;;;;
+116;Campeche;1000226;19,8443300002294;-90,5356980002625;MEX;100;1804;7;20;1804-07-20;sure;1804;7;20;1804-07-20;fuzzy;Caribbean;Balmis;yes;yes;;;;;
+117;Carmen;1004862;18,6525;-91,8082;MEX;100;1804;7;20;1804-07-20;fuzzy;1804;7;20;1804-07-20;fuzzy;Guatemala;Pastor;;yes;;;;;
+118;Campeche;1000226;19,8443;-90,5357;MEX;100;1804;7;20;1804-07-20;arbitrary;1804;7;20;1804-07-20;arbitrary;Caribbean;Gutiérrez;;;yes;;;;
+119;Villahermosa;1000018;17,9917300000395;-92,9281400003607;MEX;100;1804;7;20;1804-07-20;sure;1804;7;25;1804-07-25;arbitrary;Guatemala;Pastor;;yes;;;;;The timeline of this leg is extremely uncertain.
+124;Veracruz;1000021;19,1933270002409;-96,1377510001086;MEX;100;1804;7;30;1804-07-30;fuzzy;1804;8;1;1804-08-01;sure;Caribbean;Balmis;yes;;yes;;;;
+12;Mompox;5000024;9,24202000032278;-74,4249299999195;COL;100;1804;7;31;1804-07-31;fuzzy;1804;8;15;1804-08-15;interpolated;Nueva Granada;Salvany;;;;;yes;yes;
+125;México;1000001;19,4337864302996;-99,1331344502946;MEX;100;1804;8;9;1804-08-09;sure;1804;9;15;1804-09-15;fuzzy;Mexico;Balmis;yes;;;;;;
+126;México;1000001;19,4337864302996;-99,1331344502946;MEX;100;1804;8;9;1804-08-09;sure;1804;10;31;1804-10-31;sure;Mexico;Gutiérrez;;;yes;;;;
+120;Ciudad Real;2000005;16,7369499997428;-92,6375299996097;MEX;100;1804;8;10;1804-08-10;arbitrary;1804;8;15;1804-08-15;arbitrary;Guatemala;Pastor;;yes;;;;;The timeline of this leg is extremely uncertain.
+13;Ocaña;5000039;8,23532000001802;-73,3539500003922;COL;99;1804;8;25;1804-08-25;interpolated;1804;8;30;1804-08-30;interpolated;Nueva Granada;Grajales;;;;;;yes;
+14;Cúcuta;5000267;7,89290999999656;-72,4815600001938;COL;99;1804;9;15;1804-09-15;interpolated;1804;9;20;1804-09-20;interpolated;Nueva Granada;Grajales;;;;;;yes;
+127;Puebla;1000015;19,0425899998287;-98,1980400001459;MEX;100;1804;9;22;1804-09-22;sure;1804;10;11;1804-10-11;fuzzy;Mexico;Balmis;yes;;;;;;
+15;Pamplona;5000016;7,3756999996553;-72,64879999992;COL;99;1804;9;25;1804-09-25;interpolated;1804;9;30;1804-09-30;interpolated;Nueva Granada;Grajales;;;;;;yes;
+128;México;1000001;19,4337864302996;-99,1331344502946;MEX;100;1804;10;13;1804-10-13;fuzzy;1804;10;31;1804-10-31;sure;Mexico;Balmis;yes;yes;;;;;
+16;Girón;5000036;7,07323299980317;-73,1689199995583;COL;99;1804;10;15;1804-10-15;interpolated;1804;10;20;1804-10-20;interpolated;Nueva Granada;Grajales;;;;;;yes;
+21;Nares;5000218;6,19596000015395;-74,5916499999475;COL;100;1804;10;15;1804-10-15;interpolated;1804;10;22;1804-10-22;interpolated;Nueva Granada;Salvany;;;;;yes;;Delegation from Medellín takes two boys to provide vaccine for Antioquia province.
+17;Socorro;5000015;6,4699;-73,2612;COL;99;1804;10;25;1804-10-25;interpolated;1804;10;30;1804-10-30;interpolated;Nueva Granada;Grajales;;;;;;yes;
+22;Honda;5000029;5,20224999993758;-74,7375100002863;COL;100;1804;10;30;1804-10-30;interpolated;1804;11;5;1804-11-05;interpolated;Nueva Granada;Salvany;;;;;yes;;
+129;Querétaro;1000098;20,5875000003248;-100,392778000404;MEX;100;1804;11;4;1804-11-04;interpolated;1804;11;5;1804-11-05;interpolated;Norte;Balmis;yes;yes;yes;;;;
+18;San Gil;5000042;6,55528599964919;-73,1312350000952;COL;99;1804;11;5;1804-11-05;interpolated;1804;11;10;1804-11-10;interpolated;Nueva Granada;Grajales;;;;;;yes;
+19;Vélez;5000066;6,01282999970476;-73,6734899997637;COL;99;1804;11;15;1804-11-15;interpolated;1804;11;20;1804-11-20;interpolated;Nueva Granada;Grajales;;;;;;yes;
+130;Celaya;1000073;20,5248293397023;-100,815215000072;MEX;100;1804;11;17;1804-11-17;sure;1804;11;18;1804-11-18;interpolated;Norte;Balmis;yes;yes;yes;;;;
+157;Lagos;1000058;21,3575;-101,9329;MEX;100;1804;11;20;1804-11-20;month;1804;11;21;1804-11-21;interpolated;Norte2;Gutiérrez;;;yes;;;;
+131;Guanajuato;1000005;21,0166100001514;-101,252720000328;MEX;100;1804;11;21;1804-11-21;interpolated;1804;11;25;1804-11-25;interpolated;Norte;Balmis;yes;yes;;;;;
+20;Tunja;5000014;5,5330509997039;-73,3613390002946;COL;99;1804;11;25;1804-11-25;interpolated;1804;11;30;1804-11-30;interpolated;Nueva Granada;Grajales;;;;;;yes;
+132;Aguas Calientes;1000233;21,8823110003524;-102,294182000199;MEX;100;1804;11;28;1804-11-28;interpolated;1804;11;29;1804-11-29;interpolated;Norte;Balmis;yes;yes;;;;;
+133;Zacatecas;1000024;22,7758;-102,5715;MEX;100;1804;11;30;1804-11-30;sure;1804;12;2;1804-12-02;interpolated;Norte;Balmis;yes;yes;;;;;
+158;Valladolid;1000008;19,7038889997776;-101,184721999621;MEX;100;1804;11;30;1804-11-30;month;1804;12;1;1804-12-01;interpolated;Norte2;Gutiérrez;;;yes;;;;
+134;Fresnillo;1000234;23,1726999997053;-102,86940000011;MEX;100;1804;12;4;1804-12-04;interpolated;1804;12;5;1804-12-05;interpolated;Norte;Balmis;yes;yes;;;;;
+159;Guadalajara;1000005;20,6761429997997;-103,346998000257;MEX;100;1804;12;5;1804-12-05;month;1804;12;24;1804-12-24;sure;Norte2;Gutiérrez;;;yes;;;;
+135;Sombrerete;1000240;23,6327799995973;-103,641060000119;MEX;100;1804;12;6;1804-12-06;interpolated;1804;12;7;1804-12-07;interpolated;Norte;Balmis;yes;yes;;;;;
+136;Durango;1000004;24,0248399995664;-104,669859999739;MEX;100;1804;12;8;1804-12-08;sure;1804;12;9;1804-12-09;sure;Norte;Balmis;yes;yes;;;;;
+137;Sombrerete;1000240;23,6327799995973;-103,641060000119;MEX;100;1804;12;10;1804-12-10;interpolated;1804;12;11;1804-12-11;interpolated;Norte;Balmis;yes;yes;;;;;
+138;Fresnillo;1000234;23,1726999997053;-102,86940000011;MEX;100;1804;12;12;1804-12-12;interpolated;1804;12;13;1804-12-13;interpolated;Norte;Balmis;yes;yes;;;;;
+139;Zacatecas;1000024;22,7758;-102,5715;MEX;100;1804;12;16;1804-12-16;interpolated;1804;12;17;1804-12-17;interpolated;Norte;Balmis;yes;yes;;;;;
+23;Santa Fe de Bogotá;5000001;4,59743999965633;-74,0747500004122;COL;100;1804;12;17;1804-12-17;sure;1805;3;8;1805-03-08;sure;Nueva Granada;Salvany;;;;;yes;yes;Arrival date of Grajales not specified.
+140;Aguas Calientes;1000233;21,8823110003524;-102,294182000199;MEX;90;1804;12;18;1804-12-18;interpolated;1804;12;19;1804-12-19;interpolated;Norte;Balmis;yes;yes;;;;;
+141;León;1000074;21,1196;-101,6762;MEX;100;1804;12;21;1804-12-21;interpolated;1804;12;22;1804-12-22;interpolated;Norte;Balmis;yes;yes;;;;;
+142;Guanajuato;1000005;21,0166100001514;-101,252720000328;MEX;90;1804;12;23;1804-12-23;interpolated;1804;12;24;1804-12-24;interpolated;Norte;Balmis;yes;yes;;;;;
+143;Celaya;1000073;20,5248293397023;-100,815215000072;MEX;90;1804;12;24;1804-12-24;interpolated;1804;12;25;1804-12-25;interpolated;Norte;Balmis;yes;yes;;;;;
+144;Querétaro;1000098;20,5875000003248;-100,392778000404;MEX;100;1804;12;25;1804-12-25;interpolated;1804;12;26;1804-12-26;interpolated;Norte;Balmis;yes;yes;;;;;
+145;México;1000001;19,4337864302996;-99,1331344502946;MEX;100;1804;12;30;1804-12-30;fuzzy;1805;1;17;1805-01-17;fuzzy;Norte;Balmis;yes;yes;;;;;
+160;Guanajuato;1000005;21,0166;-101,2527;MEX;100;1804;12;30;1804-12-30;interpolated;1805;1;5;1805-01-05;interpolated;Norte2;Gutiérrez;;;yes;;;;
+121;Guatemala;2000003;14,6218110000776;-90,5187900002583;GTM;100;1805;1;1;1805-01-01;arbitrary;1805;1;1;1805-01-01;arbitrary;Guatemala;Pastor;;yes;;;;;The timeline of this leg is extremely uncertain.
+161;San Luis Potosí;1000016;22,1515;-100,9758;MEX;100;1805;1;5;1805-01-05;sure;1805;1;6;1805-01-06;fuzzy;Norte2;Gutiérrez;;;yes;;;;
+122;Antequera;1000014;17,0697099999166;-96,7189000001349;MEX;100;1805;1;9;1805-01-09;arbitrary;1805;1;9;1805-01-09;arbitrary;Guatemala;Pastor;;yes;;;;;The timeline of this leg is extremely uncertain.
+123;México;1000001;19,4337864302996;-99,1331344502946;MEX;100;1805;1;15;1805-01-15;arbitrary;1805;1;17;1805-01-17;fuzzy;Guatemala;Pastor;;yes;;;;;The timeline of this leg is extremely uncertain.
+162;México;1000001;19,4337864302996;-99,1331344502946;MEX;100;1805;1;17;1805-01-17;month;1805;1;17;1805-01-17;fuzzy;Philippines;Gutiérrez;;;yes;;;;
+146;Acapulco;1000006;16,8486500003972;-99,9084900002133;MEX;100;1805;1;22;1805-01-22;fuzzy;1805;2;7;1805-02-07;sure;Philippines;Balmis;yes;yes;yes;;;;
+26;Ibagué;5000030;4,44454999978274;-75,2415199998481;COL;99;1805;3;10;1805-03-10;interpolated;1805;3;11;1805-03-11;interpolated;Nueva Granada2;Salvany;;;;;yes;;
+27;Cartago;5600037;4,74651900005188;-75,9120490000612;COL;100;1805;3;25;1805-03-25;sure;1805;4;20;1805-04-20;interpolated;Nueva Granada2;Salvany;;;;;yes;;According to the Redactor de América, nr.
+24;Neiva;5000010;2,92356500002478;-75,2854189998869;COL;99;1805;3;30;1805-03-30;interpolated;1805;4;5;1805-04-05;interpolated;Nueva Granada2;Grajales;;;;;;yes;
+25;San Sebastián de la Plata;5000032;2,38921899995694;-75,8907990003735;COL;99;1805;4;15;1805-04-15;interpolated;1805;4;20;1805-04-20;interpolated;Nueva Granada2;Grajales;;;;;;yes;
+30;Popayán;5600005;2,44185199986993;-76,6060619995616;COL;100;1805;4;15;1805-04-15;month;1805;6;7;1805-06-07;sure;Nueva Granada2;Grajales;;;;;;yes;Leaving date from Carlos Dáguer, De brazo en brazo: la odisea de una vacuna
+147;Manila;1600001;14,5914110802572;120,973658870061;PHL;100;1805;4;15;1805-04-15;sure;1805;9;3;1805-09-03;sure;Philippines;Balmis;yes;yes;yes;;;;
+28;Llano Grande;5600720;3,5293;-76,2994;COL;100;1805;4;25;1805-04-25;interpolated;1805;4;30;1805-04-30;interpolated;Nueva Granada2;Salvany;;;;;yes;;
+31;Popayán;5600005;2,44185199986993;-76,6060619995616;COL;100;1805;4;27;1805-04-27;sure;1805;6;7;1805-06-07;sure;Nueva Granada2;Salvany;;;;;yes;;Leaving date from Carlos Dáguer, De brazo en brazo: la odisea de una vacuna
+29;Quilichao;5600164;3,00661399963644;-76,4842300002143;COL;100;1805;5;5;1805-05-05;interpolated;1805;5;10;1805-05-10;interpolated;Nueva Granada2;Salvany;;;;;yes;;
+148;Cebú;;10,296;123,891;PHL;100;1805;5;15;1805-05-15;interpolated;1805;5;30;1805-05-30;interpolated;Philippines;Pastor;;yes;;;;;
+32;Patia;5600196;2,0686;-77,0555;COL;90;1805;6;8;1805-06-08;interpolated;1805;6;9;1805-06-09;interpolated;Nueva Granada2;Salvany;;;;;yes;;
+33;La Herradura;5600689;1,8696;-76,8784;COL;90;1805;6;11;1805-06-11;interpolated;1805;6;12;1805-06-12;interpolated;Nueva Granada2;Salvany;;;;;yes;;
+34;San Juan de Pasto;5600042;1,2146289996287;-77,2782519999298;COL;99;1805;6;15;1805-06-15;interpolated;1805;6;16;1805-06-16;interpolated;Nueva Granada2;Salvany;;;;;yes;;
+149;Mizamiso;;8,146;123,845;PHL;100;1805;6;15;1805-06-15;interpolated;1805;6;30;1805-06-30;interpolated;Philippines;Gutiérrez;;;yes;;;;
+35;Tuquerres;5600188;1,0832;-77,6133;COL;99;1805;6;18;1805-06-18;interpolated;1805;6;19;1805-06-19;interpolated;Nueva Granada2;Salvany;;;;;yes;;
+36;Tulcán;5600433;0,812623989805331;-77,7164181197005;ECU;99;1805;6;20;1805-06-20;interpolated;1805;6;21;1805-06-21;interpolated;Nueva Granada2;Salvany;;;;;yes;;
+60;Barbacoas;5600050;1,67174500043149;-78,1375119998788;COL;100;1805;6;25;1805-06-25;interpolated;1805;6;30;1805-06-30;interpolated;Quito2;Grajales;;;;;;yes;
+37;Ibarra;5600008;0,350523000136377;-78,1179929999769;ECU;100;1805;6;27;1805-06-27;sure;1805;7;6;1805-07-06;interpolated;Nueva Granada2;Salvany;;;;;yes;;
+61;Usmal;5600345;1,6565;-78,7232;COL;100;1805;7;2;1805-07-02;interpolated;1805;7;3;1805-07-03;interpolated;Quito2;Grajales;;;;;;yes;
+62;Tumaco;5600070;1,80815200011477;-78,7654500001174;COL;100;1805;7;5;1805-07-05;interpolated;1805;8;1;1805-08-01;arbitrary;Quito2;Grajales;;;;;;yes;
+38;Otavalo;5600009;0,228435999821556;-78,2629629997426;ECU;100;1805;7;10;1805-07-10;interpolated;1805;7;11;1805-07-11;interpolated;Nueva Granada2;Salvany;;;;;yes;;
+39;Cayambé;5600152;0,039481999694601;-78,1448940003578;ECU;100;1805;7;13;1805-07-13;interpolated;1805;7;14;1805-07-14;interpolated;Nueva Granada2;Salvany;;;;;yes;;
+40;Quito;5600001;-0,220168999699524;-78,5120910003993;ECU;100;1805;7;16;1805-07-16;sure;1805;9;13;1805-09-13;sure;Quito;Salvany;;;;;yes;;
+63;Buenaventura;5600206;3,8796;-77,0248;COL;25;1805;7;20;1805-07-20;arbitrary;1805;8;1;1805-08-01;arbitrary;Quito2;Gutiérrez;;;yes;;;;Apocryphic leg of the expedition. Grajales himself, it seems, went directly from Tumaco to La Tola and on to Ibarra.
+66;Salahonda;5600344;2,0409;-78,6581;COL;100;1805;8;8;1805-08-08;arbitrary;1805;8;9;1805-08-09;arbitrary;Quito2;Grajales;;;;;;yes;
+67;La Tola;5600060;1,2041;-79,0457;ECU;100;1805;8;11;1805-08-11;arbitrary;1805;8;13;1805-08-13;arbitrary;Quito2;Grajales;;;;;;yes;
+68;Cayapas;5600061;1,0363;-78,8333;ECU;100;1805;8;14;1805-08-14;arbitrary;1805;8;15;1805-08-15;arbitrary;Quito2;Grajales;;;;;;yes;
+64;Tumaco;5600070;1,80815200011477;-78,7654500001174;COL;25;1805;8;15;1805-08-15;arbitrary;1805;8;16;1805-08-16;arbitrary;Quito2;Gutiérrez;;;yes;;;;Apocryphic leg of the expedition. Grajales himself, it seems, went directly from Tumaco to La Tola and on to Ibarra.
+150;Zambuanga;;6,907;122,077;PHL;100;1805;8;15;1805-08-15;interpolated;1805;8;30;1805-08-30;interpolated;Philippines;Gutiérrez;;;yes;;;;
+69;La Porquera;;1,0661;-78,8065;ECU;100;1805;8;16;1805-08-16;arbitrary;1805;8;17;1805-08-17;arbitrary;Quito2;Grajales;;;;;;yes;
+70;Carondelet;9900707;1,1247;-78,7611;ECU;100;1805;8;18;1805-08-18;arbitrary;1805;8;19;1805-08-19;arbitrary;Quito2;Grajales;;;;;;yes;
+71;Lita;5600062;0,8679;-78,4512;ECU;100;1805;8;22;1805-08-22;arbitrary;1805;8;23;1805-08-23;arbitrary;Quito2;Grajales;;;;;;yes;
+72;Malbucho;;0,7883;-78,2941;ECU;100;1805;8;25;1805-08-25;arbitrary;1805;8;26;1805-08-26;arbitrary;Quito2;Grajales;;;;;;yes;
+73;Ibarra;5600008;0,350523000136377;-78,1179929999769;ECU;100;1805;8;30;1805-08-30;arbitrary;1805;9;15;1805-09-15;arbitrary;Quito2;Grajales;;;;;;yes;
+65;Jipijapa;5600101;-1,3526;-80,5827;ECU;10;1805;9;1;1805-09-01;arbitrary;1805;9;2;1805-09-02;arbitrary;Quito2;Gutiérrez;;;yes;;;;Apocryphic leg of the expedition – maybe by Lozano, who only rejoined the rest of the expedition in Lima. What we know is that the vaccine arrived in Guayaquil by the way of Portoviejo before Grajales went there from Quito.
+41;Tacunga;5600010;-0,9336;-78,6149;ECU;99;1805;9;15;1805-09-15;interpolated;1805;9;16;1805-09-16;interpolated;Quito;Salvany;;;;;yes;;
+151;Macao;;22,197;113,543;CHN;100;1805;9;16;1805-09-16;sure;1805;10;5;1805-10-05;sure;China;Balmis;yes;;;;;;
+42;Ambato;5600237;-1,2431;-78,6264;ECU;99;1805;9;20;1805-09-20;interpolated;1805;9;25;1805-09-25;interpolated;Quito;Salvany;;;;;yes;;
+43;Riobamba;5600014;-1,7029;-78,7711;ECU;99;1805;9;30;1805-09-30;interpolated;1805;10;5;1805-10-05;interpolated;Quito;Salvany;;;;;yes;;
+44;Cuenca;5600002;-2,89752400043221;-79,0044240001674;ECU;100;1805;10;12;1805-10-12;sure;1805;11;16;1805-11-16;sure;Quito;Salvany;;;;;yes;;
+152;Canton;;23,128;113,259;CHN;100;1805;10;15;1805-10-15;interpolated;1806;1;1;1806-01-01;interpolated;China;Balmis;yes;;;;;;
+45;Loja;5600012;-3,99643099999059;-79,2013989996641;ECU;100;1805;11;22;1805-11-22;sure;1805;12;10;1805-12-10;sure;Quito;Salvany;;;;;yes;;
+46;Gonzanama;5600141;-4,2298;-79,4343;ECU;100;1805;12;12;1805-12-12;interpolated;1805;12;13;1805-12-13;interpolated;Quito;Salvany;;;;;yes;;
+74;Quito;5600001;-0,220168999699524;-78,5120910003993;ECU;100;1805;12;12;1805-12-12;fuzzy;1806;1;30;1806-01-30;interpolated;Quito2;Grajales;;;;;;yes;
+47;Cariamanga;5600138;-4,3271;-79,5542;ECU;100;1805;12;15;1805-12-15;interpolated;1805;12;16;1805-12-16;interpolated;Quito;Salvany;;;;;yes;;
+48;Piura;6001391;-5,17985000007741;-80,649662000301;PER;100;1805;12;23;1805-12-23;sure;1806;1;9;1806-01-09;sure;Peru;Salvany;;;;;yes;;
+163;Manila;1600001;14,5914110802572;120,973658870061;PHL;100;1806;1;1;1806-01-01;arbitrary;1807;4;19;1807-04-19;sure;Philippines;Gutiérrez;;;yes;;;;
+153;Macao;;22,197;113,543;CHN;100;1806;1;13;1806-01-13;sure;1806;2;5;1806-02-05;sure;China;Balmis;yes;;;;;;
+49;Chocope;6001441;-7,7908589998429;-79,2219159997236;PER;100;1806;1;30;1806-01-30;interpolated;1806;1;31;1806-01-31;interpolated;Peru;Salvany;;;;;yes;;Public unrest
+75;Tacunga;5600010;-0,9336;-78,6149;ECU;100;1806;2;2;1806-02-02;interpolated;1806;2;3;1806-02-03;interpolated;Quito2;Grajales;;;;;;yes;
+76;Guaranda;5600011;-1,5925;-79,0019;ECU;100;1806;2;4;1806-02-04;interpolated;1806;2;5;1806-02-05;interpolated;Quito2;Grajales;;;;;;yes;
+50;Chepen;6001425;-7,2272;-79,426;PER;100;1806;2;5;1806-02-05;interpolated;1806;2;15;1806-02-15;interpolated;Peru;Salvany;;;;;yes;;
+77;Babahoyo;5600022;-1,7989;-79,5323;ECU;100;1806;2;15;1806-02-15;interpolated;1806;2;16;1806-02-16;interpolated;Quito2;Grajales;;;;;;yes;
+51;Reque;6001421;-6,8644;-79,8178;PER;100;1806;2;;1806-02-17;interpolated;1806;;;1806-02-18;interpolated;Peru;Salvany;;;;;yes;;
+52;Lambayeque;6001438;-6,70341733024554;-79,9061124404367;PER;100;1806;2;;1806-02-19;interpolated;1806;;;1806-02-20;interpolated;Peru;Salvany;;;;;yes;;
+78;Guayaquil;5600003;-2,1945463897041;-79,8836188195529;ECU;100;1806;2;24;1806-02-24;sure;1806;5;5;1806-05-05;arbitrary;Quito2;Grajales;;;;;;yes;
+53;Chota;6001361;-6,5622;-78,6477;PER;100;1806;3;1;1806-03-01;interpolated;1806;3;2;1806-03-02;interpolated;Peru;Salvany;;;;;yes;;
+54;Cajamarca;6001261;-7,1567591300298;-78,518021780181;PER;100;1806;3;9;1806-03-09;sure;1806;3;31;1806-03-31;interpolated;Peru;Salvany;;;;;yes;;
+55;Trujillo;6000003;-8,11170157996389;-79,0287608598258;PER;100;1806;4;15;1806-04-15;interpolated;1806;5;1;1806-05-01;interpolated;Peru;Salvany;;;;;yes;;
+79;Tumbes;6001395;-3,57174199989333;-80,4528470000889;PER;100;1806;5;15;1806-05-15;arbitrary;1806;5;30;1806-05-30;arbitrary;Peru3;Grajales;;;;;;yes;Timeline very uncertain
+56;Lima;6000001;-12,0466525903447;-77,029980519885;PER;100;1806;5;23;1806-05-23;sure;1807;1;28;1807-01-28;interpolated;Peru;Salvany;;;;;yes;;Salvany meets opposition as vaccination had already started with material from Buenos Aires
+80;Piura;6001391;-5,17985000007741;-80,649662000301;PER;100;1806;6;5;1806-06-05;arbitrary;1806;6;10;1806-06-10;arbitrary;Peru3;Grajales;;;;;;yes;Timeline very uncertain
+81;Jaen;5600004;-5,70941199986385;-78,807482000394;PER;100;1806;7;1;1806-07-01;arbitrary;1806;7;15;1806-07-15;arbitrary;Peru3;Grajales;;;;;;yes;We do not know much about the itinerary from Jaen  to Lima. Salvany had instructed Grajales to go to Jaen de Bracamoros, and the Redactor de América from May 1807 states that he had indeed visited the place. There is information of at least planning the onward journey to Chachapoyas, Cajamarquilla, Huamachuco, and Conchucos.
+82;Chachapoyas;6001262;-6,2299;-77,8719;PER;90;1806;8;1;1806-08-01;arbitrary;1806;8;15;1806-08-15;arbitrary;Peru3;Grajales;;;;;;yes;We do not know much about the itinerary from Jaen  to Lima. Salvany had instructed Grajales to go to Jaen de Bracamoros, and the Redactor de América from May 1807 states that he had indeed visited the place. There is information of at least planning the onward journey to Chachapoyas, Cajamarquilla, Huamachuco, and Conchucos.
+83;Pataz;6001379;-7,7871;-77,5939;PER;75;1806;8;25;1806-08-25;arbitrary;1806;8;30;1806-08-30;arbitrary;Peru3;Grajales;;;;;;yes;We do not know much about the itinerary from Jaen  to Lima. Salvany had instructed Grajales to go to Jaen de Bracamoros, and the Redactor de América from May 1807 states that he had indeed visited the place. There is information of at least planning the onward journey to Chachapoyas, Cajamarquilla, Huamachuco, and Conchucos.
+84;Huamachuco;6001331;-7,8119;-78,0489;PER;75;1806;9;15;1806-09-15;arbitrary;1806;9;30;1806-09-30;arbitrary;Peru3;Grajales;;;;;;yes;We do not know much about the itinerary from Jaen  to Lima. Salvany had instructed Grajales to go to Jaen de Bracamoros, and the Redactor de América from May 1807 states that he had indeed visited the place. There is information of at least planning the onward journey to Chachapoyas, Cajamarquilla, Huamachuco, and Conchucos.
+85;Conchucos;6001033;-8,2681;-77,8531;PER;50;1806;10;15;1806-10-15;arbitrary;1806;10;20;1806-10-20;arbitrary;Peru3;Grajales;;;;;;yes;We do not know much about the itinerary from Jaen  to Lima. Salvany had instructed Grajales to go to Jaen de Bracamoros, and the Redactor de América from May 1807 states that he had indeed visited the place. There is information of at least planning the onward journey to Chachapoyas, Cajamarquilla, Huamachuco, and Conchucos.
+86;Trujillo;6000003;-8,11170157996389;-79,0287608598258;PER;90;1806;11;1;1806-11-01;arbitrary;1806;11;10;1806-11-10;arbitrary;Peru3;Grajales;;;;;;yes;We do not know much about the itinerary from Jaen  to Lima. Salvany had instructed Grajales to go to Jaen de Bracamoros, and the Redactor de América from May 1807 states that he had indeed visited the place. There is information of at least planning the onward journey to Chachapoyas, Cajamarquilla, Huamachuco, and Conchucos.
+87;Lima;6000001;-12,0466525903447;-77,029980519885;PER;100;1806;12;15;1806-12-15;month;1807;6;15;1807-06-15;arbitrary;Peru3;Grajales;;;;;;yes;We do not know how long Grajales actually stayed at Lima.
+88;Huarochiri;6000807;-12,1384390000597;-76,2321140002609;PER;75;1807;1;20;1807-01-20;arbitrary;1807;1;25;1807-01-25;arbitrary;Peru4;Lozano;;;;yes;;;Timeline of the itinerary is arbitrary. We only know it must have been during 1807
+57;Chilca;6000696;-12,5211000000649;-76,73719999998;PER;100;1807;1;31;1807-01-31;sure;1807;2;5;1807-02-05;interpolated;Peru2;Salvany;;;;;yes;;
+89;Jauja;6001133;-11,7759480002999;-75,5002069997532;PER;75;1807;2;1;1807-02-01;arbitrary;1807;2;5;1807-02-05;arbitrary;Peru4;Lozano;;;;yes;;;Timeline of the itinerary is arbitrary. We only know it must have been during 1807
+90;Tarma;6000004;-11,4181660000608;-75,6866690000742;PER;75;1807;2;10;1807-02-10;arbitrary;1807;2;15;1807-02-15;arbitrary;Peru4;Lozano;;;;yes;;;Timeline of the itinerary is arbitrary. We only know it must have been during 1807
+154;Saint Helena;;-15,926;-5,718;SHN;100;1807;2;11;1807-02-11;sure;1807;2;17;1807-02-17;sure;Return;Balmis;yes;;;;;;
+58;Ica;6000856;-14,0638810004078;-75,7291179997958;PER;100;1807;2;15;1807-02-15;interpolated;1807;8;15;1807-08-15;interpolated;Peru2;Salvany;;;;;yes;;At Ica, there was public unrest. I could not find serious information on where Salvany spent the months between February and September. 
+91;Huanuco;6001084;-9,92987799996968;-76,2430639998037;PER;75;1807;3;1;1807-03-01;arbitrary;1807;3;15;1807-03-15;arbitrary;Peru4;Lozano;;;;yes;;;Timeline of the itinerary is arbitrary. We only know it must have been during 1807
+92;Panao;6001166;-9,898;-75,9938;PER;75;1807;4;1;1807-04-01;arbitrary;1807;4;15;1807-04-15;arbitrary;Peru4;Lozano;;;;yes;;;Timeline of the itinerary is arbitrary. We only know it must have been during 1807. Actually, we only know about his presence in the province, not the exact place.
+93;Canta;6000706;-11,4685879996364;-76,6211399997112;PER;75;1807;5;15;1807-05-15;arbitrary;1807;5;30;1807-05-30;arbitrary;Peru4;Lozano;;;;yes;;;Timeline of the itinerary is arbitrary. We only know it must have been during 1807
+94;Lima;6000001;-12,0466525903447;-77,029980519885;PER;100;1807;6;15;1807-06-15;arbitrary;1807;11;15;1807-11-15;interpolated;Peru4;Lozano;;;;yes;;;
+155;Lisboa;;38,708;-9,137;POR;100;1807;8;14;1807-08-14;sure;1807;8;31;1807-08-31;sure;Return;Balmis;yes;;;;;;
+164;Acapulco;1000006;16,8486500003972;-99,9084900002133;MEX;100;1807;8;14;1807-08-14;sure;1807;8;14;1807-08-14;sure;Philippines;Gutiérrez;;;yes;;;;Arrival is treated as end of expedition.
+156;Cádiz;;36,535;-6,299;ESP;100;1807;9;2;1807-09-02;fuzzy;1807;9;2;1807-09-02;fuzzy;Return;Balmis;yes;;;;;;Arrival is treated as end of expedition.
+59;Arequipa;6000007;-16,3982233699126;-71,5367266899847;PER;100;1807;9;15;1807-09-15;fuzzy;1808;8;10;1808-08-10;interpolated;Peru2;Salvany;;;;;yes;;We do not know how long Salvany stayed at Arequipa. Given his health condition, we assume he stayed there as long as the timeline permits and then travelled on to La Paz without delay en route.
+95;Copiapó;9900704;-27,3334842304129;-70,9322701700323;CHL;100;1807;12;1;1807-12-01;interpolated;1807;12;2;1807-12-02;interpolated;Chile;Grajales;;;;;;yes;
+96;Guasco;9900701;-28,4664529904131;-71,2229066702066;CHL;100;1807;12;4;1807-12-04;interpolated;1807;12;5;1807-12-05;interpolated;Chile;Grajales;;;;;;yes;
+97;Coquimbo;7000078;-29,9027820000892;-71,2519870003997;CHL;100;1807;12;9;1807-12-09;interpolated;1807;12;10;1807-12-10;interpolated;Chile;Grajales;;;;;;yes;
+98;Valparaiso;7000003;-33,0477999996702;-71,6011000001648;CHL;100;1807;12;15;1807-12-15;month;1808;4;5;1808-04-05;interpolated;Chile;Grajales;;;;;;yes;
+99;Santiago;7000001;-33,4375599996942;-70,650059999969;CHL;100;1808;4;8;1808-04-08;sure;1808;12;15;1808-12-15;interpolated;Chile;Grajales;;;;;;yes;The timeline of this leg is extremely uncertain.
+108;Puno;8000002;-15,8405700001054;-70,0278860002387;BOL;100;1808;8;20;1808-08-20;interpolated;1808;9;1;1808-09-01;interpolated;Charcas;Salvany;;;;;yes;;
+109;La Paz;8000005;-16,4962550001681;-68,1341060003916;BOL;100;1808;9;15;1808-09-15;sure;1810;6;15;1810-06-15;interpolated;Charcas;Salvany;;;;;yes;;
+100;Talca;7000175;-35,4265640003283;-71,6660660004455;CHL;100;1809;1;15;1809-01-15;month;1809;1;20;1809-01-20;interpolated;Chile;Grajales;;;;;;yes;The timeline of this leg is extremely uncertain.
+101;Concepción;7000002;-36,8271670001569;-73,0501229998765;CHL;100;1809;5;1;1809-05-01;interpolated;1810;8;1;1810-08-01;arbitrary;Chile;Grajales;;;;;;yes;The timeline of this leg is extremely uncertain.
+110;Oruro;8000010;-17,9695;-67,1144;BOL;100;1810;6;25;1810-06-25;arbitrary;1810;7;1;1810-07-01;arbitrary;Charcas;Salvany;;;;;yes;;
+111;Cochabamba;8000004;-17,3935420000632;-66,1570139995964;BOL;100;1810;7;21;1810-07-21;sure;1810;7;30;1810-07-30;month;Charcas;Salvany;;;;;yes;;End due to death of Salvany.
+102;Valdivia;7000005;-39,815128000157;-73,242889000427;CHL;100;1810;9;1;1810-09-01;month;1810;10;30;1810-10-30;arbitrary;Chile;Grajales;;;;;;yes;The timeline of this leg is extremely uncertain.
+105;Calbuco;7000405;-41,7712;-73,1275;CHL;95;1811;3;1;1811-03-01;arbitrary;1811;3;5;1811-03-05;arbitrary;Chile;Grajales;;;;;;yes;The timeline of this leg is extremely uncertain.
+106;San Carlos;7000379;-39,8625473019164;-73,4329026825127;CHL;100;1811;3;6;1811-03-06;arbitrary;1812;12;1;1812-12-01;arbitrary;Chile;Grajales;;;;;;yes;The timeline of this leg is extremely uncertain.
+103;Carelmapu;7000494;-41,7458;-73,7064;CHL;99;1811;3;31;1811-03-31;arbitrary;1810;4;1;1810-04-01;arbitrary;Chile;Grajales;;;;;;yes;The timeline of this leg is extremely uncertain.
+104;San Carlos;7000379;-39,8625473019164;-73,4329026825127;CHL;100;1811;4;1;1811-04-01;arbitrary;1811;1;1;1811-01-01;arbitrary;Chile;Grajales;;;;;;yes;The timeline of this leg is extremely uncertain.
+107;Lima;6000001;-12,0466525903447;-77,029980519885;PER;100;1812;1;15;1812-01-15;month;1812;1;15;1812-01-15;month;Chile;Grajales;;;;;;yes;We consider Grajales's arrival in Lima as end of the expedition. 

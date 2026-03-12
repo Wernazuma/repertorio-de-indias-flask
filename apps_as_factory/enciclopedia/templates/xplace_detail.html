@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html xml:lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='/images/background/bg.jpg') }}");
+            background-color: #6666;
+            background-size: cover;
+            background-repeat: repeat;
+            background-size: auto;
+            font-family: "Garamond";
+            margin: 0;
+        }
+    </style>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='functions.js') }}"></script>
+
+    <script> 
+            var thisurl = document.URL; 
+            document.getElementById("url").innerHTML = thisurl; 
+    </script> 
+    <script>
+        function includeHTML() {
+            var z, i, elmnt, file, xhttp;
+            /* loop through a collection of all HTML elements: */
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                /* search for elements with a certain attribute: */
+                file = elmnt.getAttribute("w3-include-html");
+                if (file) {
+                    /* make an HTTP request using the attribute value as the file name: */
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4) {
+                            if (this.status == 200) { elmnt.innerHTML = this.responseText; }
+                            if (this.status == 404) { elmnt.innerHTML = "Page not found."; }
+                            /* remove the attribute, and call this function once more: */
+                            elmnt.removeAttribute("w3-include-html");
+                            includeHTML();
+                        }
+                    }
+                    xhttp.open("GET", file, true);
+                    xhttp.send();
+                    /* exit the function: */
+                    return;
+                }
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            includeHTML();
+            document.getElementById("defaultOpen").click();
+        });
+
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+	<script>
+        // Function to format the current date
+        function formatDate(date) {
+            const day = date.getDate();
+            const month = date.toLocaleString('en-GB', { month: 'long' });
+            const year = date.getFullYear();
+            return `${day} ${month} ${year}`;
+        }
+
+        // Function to set the URL and date
+        function setDynamicContent() {
+            // Get the current date
+            const currentDate = new Date();
+
+            // Get the current URL
+            const currentURL = window.location.href;
+
+            // Set the date and URL in the respective spans
+            document.getElementById('datetime').innerText = formatDate(currentDate);
+            document.getElementById('url').innerText = currentURL;
+        }
+
+        // Run the function on page load
+        window.onload = setDynamicContent;
+    </script>
+    <title>{{ place.label }}, {{ place.categoria }} ({{ place.partido_generico }}/{{ place.provincia_generica }}/{{ place.region }})</title>
+</head>
+<body>
+    <div id="head">
+        <h1 class="title" style="text-align: center;">{{ place.label }}, {{ place.categoria }} ({{ place.partido_generico }}/{{ place.provincia_generica }}/{{ place.region }})</h1>
+    </div>
+    <div class="container">
+        <div class="block" id="left-block">
+			{% include 'blocks/menu.html' %}
+        </div>
+        <div class="block" id="central-block">
+            <div class="tab">
+                <button class="tablinks" onclick="openTab(event, 'Informacion')" id="defaultOpen">Información básica</button>
+                <button class="tablinks" onclick="openTab(event, 'Historia')">Historia</button>
+				<button class="tablinks" onclick="openTab(event, 'Fuentes')">Recursos y Fuentes</button>
+                
+            </div>
+<div id="Informacion" class="tabcontent">
+    <h1>Información básica</h1>
+	<div class="infobox-grid">
+    <div class="infobox" id="info-1-base">        
+        <p style="font-weight: bold; font-size: 24px">Indias-ID: <span>{{ place.gz_id }}</span></p>
+        <p><span style="font-weight: bold;">IDs externos: </span><br/>
+            {% for f in foreignkeys_data %}<a href="{{ f.foreignprefix }}{{ f.foreignID }}">{{ f.foreignkey }}</a>, {% endfor %}
+        </p>
+<hr/>
+        <h3>Localización</h3>
+        {% for g in geometry_data %}
+        <p><span style="font-size: small;">{{ g.lat }} , {{ g.lon }}, {{ g.cert }}. {{ g.start }}-{{ g.end_ }} </span></p>
+        {% endfor %}
+        {% for g in geometry_data %}
+        <div class="map" id="map" style="height: 300px;width: 300px;"></div>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+    // Coordinates data passed from Flask
+    var coordinates = {{ coordinates|tojson }};
+    var map;
+
+    function initializeMap() {
+        // Initialize the map only if it hasn't been initialized yet
+        if (!map) {
+            map = L.map('map').setView([0, 0], 2);
+            var customIcon = L.icon({
+                iconUrl: "{{ url_for('static', filename='images/icons/leaflet_town.png') }}",
+                iconSize: [25, 33],
+                iconAnchor: [12, 33],
+                popupAnchor: [-3, -76]
+            });
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            var markers = [];
+            coordinates.forEach(function(coord) {
+                var marker = L.marker([coord.lat, coord.lng], { icon: customIcon }).addTo(map);
+                markers.push(marker);
+            });
+
+            if (markers.length > 0) {
+                var group = new L.featureGroup(markers);
+                map.fitBounds(group.getBounds());
+            }
+        } else {
+            setTimeout(function() {
+                map.invalidateSize();
+            }, 100);
+        }
+    }
+
+    // Event listener for tab changes
+    document.querySelectorAll('.tablinks').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            if (tab.getAttribute('onclick').includes('Informacion')) {
+                setTimeout(initializeMap, 100);  // Delay to ensure tab content is visible
+            }
+        });
+    });
+
+    // Initialize the map when the DOM content is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        if (document.getElementById('defaultOpen').getAttribute('onclick').includes('Informacion')) {
+            initializeMap();
+        }
+    });
+</script>
+
+        {% endfor %}
+
+    </div>
+    <div class="infobox" id="info-3-detalle">
+        <div id="info-3-1-nombres">
+            <h3>Nombres</h3>
+            {% for n in name_data %}{{ n.nombre }}, {{ n.start }}-{{ n.end_ }} <a href="/nombres/{{ place.gz_id }}" style="font-size: small;">Más</a><br/>{% endfor %}
+		<p><span style="font-weight: bold;">Nombres variantes:</span> {{ place.variantes }}</p>
+        <p><span style="font-weight: bold;">Nombre hoy:</span> {{ place.nombrehoy }}</p><hr/>
+        </div>
+        <div id="info-3-2-categorias">
+            <h3>Categoría urbana</h3>
+            {% for ct in category_data %}<a href="../dokuwiki/doku.php?id=conceptos:{{ ct.categoria }}">{{ ct.categoria }}</a>. <a href="../dokuwiki/doku.php?id=conceptos:{{ ct.categoria_esp }}">{{ ct.categoria_esp }}</a>,
+            {{ ct.start }}-{{ ct.end_ }} <a href="/categoria/{{ place.gz_id }}" style="font-size: small;">Más</a><br/>{% endfor %}
+			<hr/>
+        </div>
+        <div id="info-3-3-iglesia">
+            <h3>Iglesia</h3>
+            {% for c in church_data %}<a href="../dokuwiki/doku.php?id=conceptos:{{ c.iglesia_cat }}">{{ c.iglesia_cat }}</a> (<a href="../dokuwiki/doku.php?id=conceptos:ordenes_religiosas">{{ c.servido_por }}</a>), {{ c.start }}-{{ c.end_ }} <a href="/iglesia/{{ place.gz_id }}" style="font-size: small;">Más</a><br/>{% endfor %}
+        </div>
+    </div>
+    <div class="infobox" id="centralidad">
+        <div id="jerarquia-1-capital">
+            <h3>Funciones capitalinas:</h3>
+            {% for cp in capital_data %}
+            <a href="../territory/{{ cp.Entidad_ID}}">{{ cp.tipo }} de {{ cp.Label }}</a>, {{ cp.start }}-{{ cp.end_ }} <a href="/capital/{{ place.gz_id }}" style="font-size: small;">Más</a><br/>
+            {% endfor %}
+            <hr/>
+        </div>
+        <div id="jerarquia-2-instituciones">
+            <h3>Instituciones clave:</h3>
+            {% for inst in institution_data %}
+            {{ inst.Label }}, {{ inst.START_ }}-{{ inst.END_ }} <a href="/institucion/{{ placeInstID }}" style="font-size: small;">Más</a><br/>
+            {% endfor %}
+            <hr/>
+        </div>
+        <div id="jerarquia-3-dependencia">
+            <h3>Barrios, parroquias y estructuras de defensa:</h3>
+            {% for d in dependent_data %}
+            <a href="{{ d.gz_id }}">{{ d.categoria_especial }} de {{ d.label }}</a>, {{ d.start }}-{{ d.end_ }} <a href="/dependencia/{{ place.gz_id }}" style="font-size: small;">Más</a><br/>
+            {% endfor %}
+        </div>
+    </div>
+	</div>    
+	<div id="dependencia">
+        
+            <h3>Este lugar es parte de los siguientes territorios:</h3>
+		<div class="infobox-grid">
+		<div class="infobox" id="jerarquia-4-pertenencia-jurisdiccion">
+            <h4>Jurisdicción</h4>
+            {% for i in espartede_data %}{% if i.Nivel == "Jurisdiccion" %}
+            <a href="../territory/{{ i.polygon_entidad_id }}">{{ i.polygon_tipo }} de {{ i.polygon_label }}</a>, {{ i.overlap_start }}-{{ i.overlap_end }} <a href="/pertenencia/{{ place.gz_id }}" style="font-size: small;">Más</a><br/>{% endif %}{% endfor %}
+        </div>
+		<div class="infobox" id="jerarquia-4-pertenencia-provincia">
+            <h4>Provincia</h4>
+            {% for i in espartede_data %}{% if i.Nivel == "Provincia" %}
+            <a href="../territory/{{ i.polygon_entidad_id }}">{{ i.polygon_tipo }} de {{ i.polygon_label }}</a>, {{ i.overlap_start }}-{{ i.overlap_end }} <a href="/pertenencia/{{ place.gz_id }}" style="font-size: small;">Más</a><br/>{% endif %}{% endfor %}
+        </div>
+		<div class="infobox" id="jerarquia-4-pertenencia-audiencia">
+            <h4>Audiencia</h4>
+            {% for i in espartede_data %}{% if i.Nivel == "Audiencia" %}
+            <a href="../territory/{{ i.polygon_entidad_id }}">{{ i.polygon_tipo }} de {{ i.polygon_label }}</a>, {{ i.overlap_start }}-{{ i.overlap_end }} <a href="/pertenencia/{{ place.gz_id }}" style="font-size: small;">Más</a><br/>{% endif %}{% endfor %}
+        </div>
+		<div class="infobox" id="jerarquia-4-pertenencia-principal">
+            <h4>División principal</h4>
+            {% for i in espartede_data %}{% if i.Nivel == "Principal" %}
+            <a href="../territory/{{ i.polygon_entidad_id }}">{{ i.polygon_tipo }} de {{ i.polygon_label }}</a>, {{ i.overlap_start }}-{{ i.overlap_end }} <a href="/pertenencia/{{ place.gz_id }}" style="font-size: small;">Más</a><br/>{% endif %}{% endfor %}
+        </div>
+		<div class="infobox" id="jerarquia-4-pertenencia-obispado">
+            <h4>Obispado</h4>
+            {% for i in espartede_data %}{% if i.Nivel == "Obispado" %}
+            <a href="../territory/{{ i.polygon_entidad_id }}">{{ i.polygon_tipo }} de {{ i.polygon_label }}</a>, {{ i.overlap_start }}-{{ i.overlap_end }} <a href="/pertenencia/{{ place.gz_id }}" style="font-size: small;">Más</a><br/>{% endif %}{% endfor %}
+        </div>
+    </div>
+	</div>
+
+</div>
+
+            <div id="Historia" class="tabcontent">
+                <h1>Historia</h1>
+                {% if article_exists %}
+    <div w3-include-html="/data/historia_gz_entidades/gz_{{ place.gz_id }}.html"></div>
+{% else %}
+
+                    <p style="font-weight:bold;">Todavía no existe artículo enciclopédico dedicado a este lugar. Póngase en contacto con nosotros [werner[dot]stangl[at]yale[dot]edu] para escribir uno.</p>
+                {% endif %}
+            </div>
+            <div id="Fuentes" class="tabcontent">
+                <h1>Recursos</h1>
+                <!-- Content for Fuentes y Bibliografía -->
+            </div>
+        </div>
+        <div class="block" id="right-block">
+<div id="citeme">
+<h3>¿Cómo citar este artículo?</h3>
+<p>"{{ place.label }}, {{ place.categoria }} ({{ place.partido_generico }}/{{ place.provincia_generica }}/{{ place.region }})", Werner Stangl (ed.), Compendio digital de Indias. <span id="url"></span> Retrieved <span id="datetime"></span></p>
+</div>
+
+
+	</div>
+    </div>
+</body>
+</html>

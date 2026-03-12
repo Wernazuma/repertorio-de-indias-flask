@@ -1,0 +1,327 @@
+/* Container for Flexbox */
+div.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px;
+    max-width: 100%; /* Ensure the container uses the full available width */
+    flex-wrap: nowrap; /* Prevents wrapping of items */
+}
+
+/* Block styles */
+div#left-block, div#right-block {
+    width: 250px;
+    padding: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    background: rgba(255, 255, 255, 0.5);
+    margin: 10px;
+    flex-shrink: 0; /* Prevents blocks from shrinking */
+}
+
+div#central-block {
+    flex-grow: 1; /* Allows the central block to grow */
+    padding: 8px 10px 10px 10px;
+    border: none;
+    background: none;
+    min-width: 300px;
+    flex-shrink: 1; /* Allows the central block to shrink */
+}
+
+/* Responsive layout: Stack blocks on top of each other on small screens */
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    div#left-block, div#right-block, div#central-block {
+        width: 95%; /* Full width for all blocks */
+        margin: 10px 0; /* Add vertical margin between blocks */
+    }
+}
+
+/* Other existing styles */
+.title {
+    text-align: center;
+}
+
+p.small {
+    font-size: small;
+}
+
+.map {
+    width: 100%;
+    height: 200px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.2);
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-color: #333;
+}
+
+/* Tab CSS */
+.tab {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 5px;
+    border-bottom: 1px solid #ccc;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.tab button {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 15px;
+    text-align: center;
+    width: 100%;
+    font-family: "Garamond";
+    font-weight: bold;
+}
+
+.tab button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.tab button.active {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.tabcontent-single {
+    display: block;
+    padding: 6px 12px;
+    border-top: none;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.tabcontent.show {
+    display: block;
+}
+
+/* Responsive layout for tab buttons */
+@media (max-width: 599px) {
+    .tab {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 1199px) {
+    .tab {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+    .tab {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Grid for infoboxes */
+.infobox-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 10px !important;
+    padding: 10px;
+}
+
+.infobox {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+/* Responsive layout */
+@media (max-width: 599px) {
+    #Informacion {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 1199px) {
+    #Informacion {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+    #Informacion {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* CSS for territories template */
+#contenido-fuentes h3 {
+    margin-top: 20px;
+}
+
+#contenido-fuentes ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#contenido-fuentes ul li {
+    margin-bottom: 5px;
+}
+
+#contenido-fuentes ul li a:hover {
+    text-decoration: underline;
+}
+
+#contenido-fuentes ul li strong {
+    font-weight: bold;
+}
+
+#contenido-fuentes ul li[style*="font-size: smaller;"] {
+    font-size: smaller;
+}
+
+
+/* CSS for search templates */
+
+
+        .results {
+            margin-top: 20px;
+        }
+.form-container {
+    padding: 15px;
+    background-color: #DADADA;
+    font-family: "Roboto";
+	border-width: 2px;
+    border-style: solid;
+    border-color: black;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* Three columns */
+    gap: 20px;
+    width: 100%;
+}
+
+.main-inputs, .middle-inputs, .additional-inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+form {
+	margin:0;
+    align-items: flex-start;
+}
+
+form label {
+    font-size: 0.85em; /* Smaller label font size */
+    margin-top: 8px;
+}
+
+form input, form select {
+    width: 100%;
+    padding: 6px; /* Slightly smaller padding */
+    margin-top: 4px;
+    font-size: 0.9em; /* Slightly smaller font size */
+    max-width: 350px; /* Limit width of inputs and selects */
+}
+
+form button {
+    width: 75px;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr; /* Stack columns on small screens */
+    }
+}
+
+
+.checkbox-group {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+}
+
+.checkbox-group label {
+    margin: 0;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.search-help {
+    background: rgba(240, 248, 255, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+.search-tips-columns {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.tips-spanish,
+.tips-english {
+    flex: 1;
+    min-width: 300px;
+}
+
+.tips-spanish ul,
+.tips-english ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+@media (max-width: 768px) {
+    .search-tips-columns {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .tips-spanish,
+    .tips-english {
+        min-width: unset;
+    }
+}

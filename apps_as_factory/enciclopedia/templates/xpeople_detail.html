@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html xml:lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='/images/background/bg.jpg') }}");
+            background-color: #6666;
+            background-size: cover;
+            background-repeat: repeat;
+            background-size: auto;
+            font-family: "Garamond";
+            margin: 0;
+        }
+
+ 
+    </style>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script type="text/javascript" src="functions.js"></script>
+    <script>
+        function includeHTML() {
+            var z, i, elmnt, file, xhttp;
+            /* loop through a collection of all HTML elements: */
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                /* search for elements with a certain attribute: */
+                file = elmnt.getAttribute("w3-include-html");
+                if (file) {
+                    /* make an HTTP request using the attribute value as the file name: */
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4) {
+                            if (this.status == 200) { elmnt.innerHTML = this.responseText; }
+                            if (this.status == 404) { elmnt.innerHTML = "Page not found."; }
+                            /* remove the attribute, and call this function once more: */
+                            elmnt.removeAttribute("w3-include-html");
+                            includeHTML();
+                        }
+                    }
+                    xhttp.open("GET", file, true);
+                    xhttp.send();
+                    /* exit the function: */
+                    return;
+                }
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            includeHTML();
+            document.getElementById("defaultOpen").click();
+        });
+
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+	<script>
+        // Function to format the current date
+        function formatDate(date) {
+            const day = date.getDate();
+            const month = date.toLocaleString('en-GB', { month: 'long' });
+            const year = date.getFullYear();
+            return `${day} ${month} ${year}`;
+        }
+
+        // Function to set the URL and date
+        function setDynamicContent() {
+            // Get the current date
+            const currentDate = new Date();
+
+            // Get the current URL
+            const currentURL = window.location.href;
+
+            // Set the date and URL in the respective spans
+            document.getElementById('datetime').innerText = formatDate(currentDate);
+            document.getElementById('url').innerText = currentURL;
+        }
+
+        // Run the function on page load
+        window.onload = setDynamicContent;
+    </script>
+
+    <script>
+        function openSourceWindow(url) {
+            window.open(url, '_blank', 'width=320,height=600');
+        }
+    </script>
+    <title>{{ people.NOM_entero }} (persIndias{{ people.OficialID }})</title>
+</head>
+<body>
+    <div id="head" class="title">
+        <h1>{{ people.NOM_entero }} (persIndias{{ people.OficialID }})</h1>
+    </div>
+    <div class="container">
+        <div class="block" id="left-block">
+			{% include 'blocks/menu.html' %}
+        </div>
+        <div class="block" id="central-block">
+            <div class="tab">
+                <button class="tablinks" onclick="openTab(event, 'Informacion')" id="defaultOpen">Información básica</button>
+            </div>
+            <div id="Informacion" class="tabcontent">
+                <h1>Información básica</h1>
+            <div class="infobox-grid">
+<div class="infobox">
+        {% for o in oficiales_foreignkeys_data %}
+        {% if o.prefix == "dbe" %}
+            <p style="font-weight: bold;"><a href="{{ o.prefixurl }}{{ o.foreignkey }}{{ o.suffixurl }}">Biografía destacada de {{ people.NOM_entero }} por la Real Academia de Historia</a></p>
+        {% endif %}
+		
+    {% endfor %}
+	<hr/>
+	{% if people.N_date_t %}
+        * {{ people.N_date_t }}
+        {% if people.PlaceOfBirth_Settlement and people.PlaceOfBirth_GZ_ID%}
+             (<a href="{{ people.PlaceOfBirth_GZ_ID }}">{{ people.PlaceOfBirth_Settlement }}</a>, {{ people.PlaceOfBirth_Country }})
+        {% elif people.PlaceOfBirth_Settlement %}
+             ({{ people.PlaceOfBirth_Settlement }}, {{ people.PlaceOfBirth_Country }})
+		{% else %}
+        {% endif %}
+        <br/>
+    {% endif %}
+    
+    {% if people.F_date_t %}
+        † {{ people.F_date_t }}
+        {% if people.PlaceOfDeath_Settlement and people.PlaceOfDeath_GZ_ID%}
+             (<a href="{{ people.PlaceOfDeath_GZ_ID }}">{{ people.PlaceOfDeath_Settlement }}</a>, {{ people.PlaceOfDeath_Country }})
+        {% elif people.PlaceOfDeath_Settlement %}
+             ({{ people.PlaceOfDeath_Settlement }}, {{ people.PlaceOfDeath_Country }})
+		{% else %}
+		{% endif %}
+        <br/>
+    {% endif %}
+    
+    {% if people.titulos_de_nobleza %}
+        Título(s): {{ people.titulos_de_nobleza }}<br/>
+    {% endif %}
+    
+    {% if people.religious_order %}
+        Orden religiosa: <a href="../dokuwiki/doku.php?id=conceptos:ordenes_religiosas">{{ people.religious_order }}</a><br/><br/>
+    {% endif %}
+    
+    <hr/>
+{{ people.NOM_entero }} en otros sitios:<br/>
+    {% for o in oficiales_foreignkeys_data %}
+        {% if o.prefix != "dbe" %}
+            {{ o.prefix }}: <a href="{{ o.prefixurl }}{{ o.foreignkey }}{{ o.suffixurl }}">{{ o.foreignkey }}</a><br/>
+        {% endif %}
+    {% endfor %}
+</div>
+
+
+
+            </div>
+			<div class="infobox-grid">
+            <div id="Curriculum" class="infobox">
+                <h3>Curriculum indiano conocido</h3>
+                {% for o in oficiales_entity_data %}
+				{{ o.Titulo }} {{ o.Titulo2 }} de <a href="../territory/{{ o.EntidadID }}">{{ o.entidad_nombre }}</a>, {{ o.Primera_Fecha_y }}-{{ o.Ultima_Fecha_y }}<br/>
+    {% endfor %}
+            </div>
+				</div>
+			</div>
+			            <div id="Historia" class="tabcontent">
+                <h1>Historia</h1>
+
+            </div>
+            <div id="Fuentes" class="tabcontent">
+                <h1>Fuentes</h1>
+
+            </div>
+        </div>
+        <div class="block" id="right-block">
+                <div id="citeme">
+                    <h3>¿Cómo citar este recurso?</h3>
+                    <p>"{{ people.NOM_entero }} (persIndias{{ people.OficialID }})", Werner Stangl (ed.), Compendio digital de Indias. <span id="url"></span> Retrieved <span id="datetime"></span></p>
+                </div>
+        </div>
+    </div>
+</body>
+</html>

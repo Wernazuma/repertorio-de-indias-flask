@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xml:lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='/images/background/bg.jpg') }}");
+            background-color: #6666;
+            background-size: cover;
+            background-repeat: repeat;
+            background-size: auto;
+            font-family: "Garamond";
+            margin: 0;
+        }
+
+ 
+    </style>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='functions.js') }}"></script>
+    <script>
+        function includeHTML() {
+            var z, i, elmnt, file, xhttp;
+            /* loop through a collection of all HTML elements: */
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                /* search for elements with a certain attribute: */
+                file = elmnt.getAttribute("w3-include-html");
+                if (file) {
+                    /* make an HTTP request using the attribute value as the file name: */
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4) {
+                            if (this.status == 200) { elmnt.innerHTML = this.responseText; }
+                            if (this.status == 404) { elmnt.innerHTML = "Page not found."; }
+                            /* remove the attribute, and call this function once more: */
+                            elmnt.removeAttribute("w3-include-html");
+                            includeHTML();
+                        }
+                    }
+                    xhttp.open("GET", file, true);
+                    xhttp.send();
+                    /* exit the function: */
+                    return;
+                }
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            includeHTML();
+            document.getElementById("defaultOpen").click();
+        });
+
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+	<script>
+        // Function to format the current date
+        function formatDate(date) {
+            const day = date.getDate();
+            const month = date.toLocaleString('en-GB', { month: 'long' });
+            const year = date.getFullYear();
+            return `${day} ${month} ${year}`;
+        }
+
+        // Function to set the URL and date
+        function setDynamicContent() {
+            // Get the current date
+            const currentDate = new Date();
+
+            // Get the current URL
+            const currentURL = window.location.href;
+
+            // Set the date and URL in the respective spans
+            document.getElementById('datetime').innerText = formatDate(currentDate);
+            document.getElementById('url').innerText = currentURL;
+        }
+
+        // Run the function on page load
+        window.onload = setDynamicContent;
+    </script>
+
+    <script>
+        function openSourceWindow(url) {
+            window.open(url, '_blank', 'width=320,height=600');
+        }
+    </script>
+    <title>{{ territory.Nombre }}, {{ territory.tipo }} ({{ territory.Region }})</title>
+</head>
+<body>
+    <div id="head" class="title">
+        <h1>{{ territory.Nombre }}, {{ territory.tipo }} ({{ territory.Region }})</h1>
+    </div>
+    <div class="container">
+        <div class="block" id="left-block">
+			{% include 'blocks/menu.html' %}
+        </div>
+        <div class="block" id="central-block">
+            <div class="tab">
+                <button class="tablinks" onclick="openTab(event, 'Informacion')" id="defaultOpen">Información básica</button>
+                <button class="tablinks" onclick="openTab(event, 'Historia')">Historia</button>
+                <button class="tablinks" onclick="openTab(event, 'Fuentes')">Recursos y Fuentes</button>
+            </div>
+            <div id="Informacion" class="tabcontent">
+                <h1>Información básica</h1>
+            <div class="infobox-grid">
+                <div class="infobox" id="info-1-base">        
+                    <h2>Información básica</h2>
+                    <p style="font-weight: bold;">Indias-ID: {{ territory.Entidad }}</p>
+                    <p>Nombres variantes: {{ territory.Variantes }}</p>
+                </div>
+                <div class="infobox" id="info-2-maps">
+                    <h3>Mapas</h3>
+                    {% for year in [1701, 1725, 1750, 1775, 1800, 1808] %}
+                        <div class="map-thumbnail">
+                            <a href="../../images/phocagallery/basemaps/{{ territory.tipo }}s/{{ territory.tipo }}s {{ year }}/{{ territory.WikiID }}.png">
+                                <img src="../../images/phocagallery/basemaps/{{ territory.tipo }}s/{{ territory.tipo }}s {{ year }}/thumbs/phoca_thumb_s_{{ territory.WikiID }}.png" alt="Mapa base, {{ year }}">
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="infobox" id="info-3-detalle">
+                    <div id="info-2-1-infotable">
+                        <h3>Instancias</h3>
+                        {% for inf in infotable_data %}<a href="../dokuwiki/doku.php?id={{ inf.Wikilink_tipo }}">{{ inf.tipo }}</a> de {{ inf.Label }}, {{ inf.START }}-{{ inf.END }} <a href="/infotable/{{ territory.Entidad }}" style="font-size: small;">Más</a><br/>
+                        {% endfor %}
+                    </div>
+                    <div id="info-3-2-capital">
+                        <h3>Lugar capital</h3>
+                        {% for cp in capital_terr_data %}
+                        <a href="../place/{{ cp.gz_id}}">{{ cp.Cabecera }}</a>, {{ cp.start }}-{{ cp.end_ }} <a href="/capital-tb/{{cp.ID}}" style="font-size: small;">Más</a><br/>
+                        {% endfor %}
+                    </div>
+                </div>
+
+
+
+            </div>
+			<div class="infobox-grid">
+			        <div class="infobox" id="jerarquia-1-pertenencia">
+                    <h3>Este territorio depende de los de:</h3>
+                    {% for j in jerarquia_sup_data %}
+                    <a href="../territory/{{ j.Ent_sup }}">{{ j.sup_tipo }} de {{ j.sup_Label }}</a>, {{ j.START }}-{{ j.END }} <a href="/superior/{{ territory.Ent_sup }}" style="font-size: small;">Más</a><br/>
+                    {% endfor %}
+                </div>
+                <div class="infobox" id="jerarquia-3-dependencia">
+                    <h3>A este territorio pertenecen los de:</h3>
+                    {% for j in jerarquia_sub_data %}
+                    <a href="../territory/{{ j.Entidad }}">{{ j.tipo }} de {{ j.Label }}</a>, {{ j.START }}-{{ j.END }} <a href="/inferior/{{ territory.Entidad }}" style="font-size: small;">Más</a><br/>
+                    {% endfor %}
+                </div>
+                <div class="infobox" id="Oficiales">
+                    <h3>Funcionarios</h3>
+                    {% for o in oficiales_entity_data %}
+                    <a href="../people/persIndias{{ o.OficialID }}">{{ o.oficial_nombre}}</a>, {{ o.Primera_Fecha_y }}-{{ o.Ultima_Fecha_y }}<br/>
+                    {% endfor %}
+                </div>
+				</div>
+			</div>
+			            <div id="Historia" class="tabcontent">
+                <h1>Historia</h1>
+                {% if article_exists %}
+    <div w3-include-html="../data/historia_entidades/{{ territory.Entidad }}.html"></div>
+{% else %}
+                    <p style="font-weight:bold;">Todavía no existe artículo enciclopédico dedicado a este territorio. Póngase en contacto con nosotros [werner[dot]stangl[at]yale[dot]edu] para escribir uno.</p>
+                {% endif %}
+            </div>
+            <div id="Fuentes" class="tabcontent">
+                <h1>Recursos y Fuentes</h1>
+                {% for grupo, fuentes in fuentes_entidades_data.items() %}
+                    <h3>{{ grupo }}</h3>
+                    <ul>
+                    {% for f in fuentes %}
+                        {% if f.foco == 'si' %}
+                            <li><a href="javascript:void(0);" onclick="openSourceWindow('../fuentes/{{ f.fuenteID }}');"><strong>{{ f.Citacion }}</strong></a>, {{ f.tipo }}</li>
+                        {% elif f.foco == 'no' %}
+                            <li><a href="javascript:void(0);" onclick="openSourceWindow('../fuentes/{{ f.fuenteID }}');">{{ f.Citacion }}</a>, {{ f.tipo }}</li>
+                        {% elif f.foco == 'implicito' %}
+                            <li style="font-size: smaller;"><a href="javascript:void(0);" onclick="openSourceWindow('../fuentes/{{ f.fuenteID }}');">{{ f.Citacion }}</a>, {{ f.tipo }}</li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+                {% endfor %}
+                <hr/>
+            </div>
+        </div>
+        <div class="block" id="right-block">
+                <div id="citeme">
+                    <h3>¿Cómo citar este artículo?</h3>
+                    <p>"{{ territory.Nombre }}, {{ territory.tipo }} ({{ territory.Region }})", Werner Stangl (ed.), Compendio digital de Indias. <span id="url"></span> Retrieved <span id="datetime"></span></p>
+                </div>
+        </div>
+    </div>
+</body>
+</html>

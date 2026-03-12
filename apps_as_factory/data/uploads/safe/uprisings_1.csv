@@ -1,0 +1,152 @@
+rowID;Region;Jurisdiction;Subregion.Oaxaca.;Location;Year;Source;AGN_Type;AGN_ID
+1;Valley of Mexico ;Mexicalcingo;;Mexicalcingo;1802;AGN Criminal 138 exp. 2, 217 exp. 4 ;Criminal;138
+2;Valley of Mexico ;Mexicalcingo;;Santa Marta;1721;AGN Criminal 155, fols. 111-133 ;Criminal;155
+3;Valley of Mexico ;Mexicalcingo;;Huitzilopochco;1800;Navarro de Vargas, p. 599;NA;
+4;Valley of Mexico ;Tacuba;;San Pedro Excapusaltongo;1760;AGN Criminal 177 exp. 4;Criminal;177
+5;Valley of Mexico ;Tacuba;;Huixquilucan;1769;AGN Criminal 120 exp-. 25 ;Criminal;120
+6;Valley of Mexico ;Tacuba;;Tepetitlan;1743;AGN Criminal 177 exp. 23;Criminal;177
+7;Valley of Mexico ;Xochimilco;;Milpa Alta;1720;AGN Criminal 232 exp. 2 ;Criminal;232
+8;Valley of Mexico ;Xochimilco;;Xochitepec;1796;AGN Criminal 29 exp. 6 ;Criminal;29
+9;Valley of Mexico ;Ecatepec;;Tulpetlac;1780;AGN Civil 2114 exp. 8 ;Civil;2114
+10;Valley of Mexico ;Ecatepec;;Ecatepec;1782;AGN Policia 23;Policia;23
+11;Valley of Mexico ;Texcoco;;Atengo;1688;AGN Criminal 193 exp. 226 ;Criminal;193
+12;Valley of Mexico ;Texcoco;;Acolman;1774;AGN Criminal 145, fols. 235.;Criminal;145
+13;Valley of Mexico ;Otumba;;Betlen;1749;AGN Criminal 162, fols. 94-104 ;Criminal;162
+14;Valley of Mexico ;Otumba;;Ozumbilla;1783;AGN Criminal 162, fols. 187-223;Criminal;162
+15;Valley of Mexico ;Cuauhtitlan;;Cuauhtitlan;1785;AGN Clero regular y secular 103 ;Clero;103
+16;Valley of Mexico ;Mexico City;;Mexico City ;1692;Biblioteca Nacional MS 1358,  Cavo II, 82-83,  Di Tella, p. 96,  Rubio Mane, II, 44-61 ;NA;
+17;Valley of Mexico ;Mexico City;;Mexico City ;1696;parcialidad de Santa Maria de la Redonda, Bancroft Mexican MS 135 ;NA;
+18;Valley of Mexico ;Mexico City;;Mexico City ;1715;AGN General de Parte 21 exp. 165;General;21
+19;State of Mexico, fringes of Morelos and Guerrero;Metepec;;Tarasquillo;1720;AGN Criminal 168 ;Criminal;168
+20;State of Mexico, fringes of Morelos and Guerrero;Metepec;;Tarasquillo;1730;AGN Criminal 168 ;Criminal;168
+21;State of Mexico, fringes of Morelos and Guerrero;Metepec;;Yolotepec;1733;AGN Criminal 168 ;Criminal;168
+22;State of Mexico, fringes of Morelos and Guerrero;Metepec;;San Felipe, district of Ixtlahuaca;1730;AGN Criminal 93, exp. 10 ;Criminal;93
+23;State of Mexico, fringes of Morelos and Guerrero;Metepec;;Almoloya;1792;AGN Criminal 148 exp. 2 ;Criminal;148
+24;State of Mexico, fringes of Morelos and Guerrero;Metepec;;Metepec;1733;AGN Criminal 168, fols. 538.;Criminal;168
+25;State of Mexico, fringes of Morelos and Guerrero;Metepec;;Metepec;1735;AGN Criminal 151 exp. 1, Indios 54, exp. 85 ;Criminal;151
+26;State of Mexico, fringes of Morelos and Guerrero;Metepec;;Metepec;1772;AGN Criminal 168, fols. 283.;Criminal;168
+27;State of Mexico, fringes of Morelos and Guerrero;Metepec;;Metepec;1801;AGN Criminal 152, fols. 270.;Criminal;152
+28;State of Mexico, fringes of Morelos and Guerrero;Metepec;;Ocuioaca, district of Tenango;1807;AGN Civil 1599 exp. 1, Civil 1505 exp. 7, Criminal 207 exp. 12 ;Civil;1599
+29;State of Mexico, fringes of Morelos and Guerrero;Metepec;;Ixtlahuaca;1727;AGN Civil 1508 exp. 6 ;Civil;1508
+30;State of Mexico, fringes of Morelos and Guerrero;Metepec;;Ixtlahuaca;1769;University of Texas Mexican MS G 205;NA;
+31;State of Mexico, fringes of Morelos and Guerrero;Metepec;;Atlacomulco;1733;AGN Civil-2292 exps. 10-11 ;Civil;2292
+32;State of Mexico, fringes of Morelos and Guerrero;Metepec;;Atlacomulco;1810;AGN Criminal 229, fols. 263.;Criminal;229
+33;State of Mexico, fringes of Morelos and Guerrero;Metepec;;Atlacomulco;1811;AGN Criminal 231 exp. 1 ;Criminal;231
+34;State of Mexico, fringes of Morelos and Guerrero;Metepec;;Atlacomulco;1814;AGN Criminal 230 exp. 15;Criminal;230
+35;State of Mexico, fringes of Morelos and Guerrero;Metepec;;San Andres Mexicalcingo;1703;AGN Criminal 217 exp. 4 ;Criminal;217
+36;State of Mexico, fringes of Morelos and Guerrero;Metepec;;San Antonio;1735;AGN Indios 54 exp. 85;Indios;54
+37;State of Mexico, fringes of Morelos and Guerrero;Metepec;;Los Reyes, district of Xocotitlán;1767;AGN Criminal 92 exp. 5;Criminal;92
+38;State of Mexico, fringes of Morelos and Guerrero;Metepec;;San Mateo Atengo;1638;AGN Criminal 219 ;Criminal;219
+39;State of Mexico, fringes of Morelos and Guerrero;Metepec;;Amanalco;1792;AGN Criminal 243 exp. 1;Criminal;243
+40;State of Mexico, fringes of Morelos and Guerrero;Metepec;;San Lorenzo and Santa Maria Guisisilapa;1710;AGN Criminal 218, fols. 1-19 ;Criminal;218
+41;State of Mexico, fringes of Morelos and Guerrero;Zacualpa;;Yzcateopan;1808;AGN Criminal 166, fols. 134-136 ;Criminal;166
+42;State of Mexico, fringes of Morelos and Guerrero;Zacualpa;;Ostumac;1810;AGN Criminal 166, fols. 274-294 ;Criminal;166
+43;State of Mexico, fringes of Morelos and Guerrero;Zacualpa;;Alahuistlan;1795;AGN Criminal 166, fols. 354;Criminal;166
+44;State of Mexico, fringes of Morelos and Guerrero;Zacualpa;;Apastla;1783;AGN Criminal 167 exp. 1;Criminal;167
+45;State of Mexico, fringes of Morelos and Guerrero;Zacualpa;;Apastla;1807;AGN Criminal 168, fols. 1-13 ;Criminal;168
+46;State of Mexico, fringes of Morelos and Guerrero;Zacualpa;;Apastla;1111;AGN Criminal 166, fols. 185;Criminal;166
+47;State of Mexico, fringes of Morelos and Guerrero;Zacualpa;;Yztapa;1800;AGN Criminal 181, fols. 201.;Criminal;181
+48;State of Mexico, fringes of Morelos and Guerrero;Tenango del Valle (see also Ocuioaca under Metepec) ;;Quintana, district of Ozolotepec;1783;AGN Criminal 123 exp. 3 ;Criminal;123
+49;State of Mexico, fringes of Morelos and Guerrero;Tenango del Valle (see also Ocuioaca under Metepec) ;;Calimaya,;1803;AGN Criminal 123 exp. 28;Criminal;123
+50;State of Mexico, fringes of Morelos and Guerrero;Tenango del Valle (see also Ocuioaca under Metepec) ;;Tenango;1762;AGN Criminal 123 exp. 21 (six tumultos mentioned);Criminal;123
+51;State of Mexico, fringes of Morelos and Guerrero;Tenango del Valle (see also Ocuioaca under Metepec) ;;Ozolotepec;1799;AGN Indios 70 exp. 69;Indios;70
+52;State of Mexico, fringes of Morelos and Guerrero;Lerma;;San Miguel Amealco;1733;AGN Criminal 169, fols. 103-143 ;Criminal;169
+53;State of Mexico, fringes of Morelos and Guerrero;Temascaltepec and Sultepec;;Tescaticlan;1714;AGN Criminal 180, fols. 50-61 ;Criminal;180
+54;State of Mexico, fringes of Morelos and Guerrero;Temascaltepec and Sultepec;;Sultepec;1764;AGN Criminal 210, fok 243r ;Criminal;210
+55;State of Mexico, fringes of Morelos and Guerrero;Temascaltepec and Sultepec;;Pozontepec;1758;AGN Criminal 210, fols. 189-205;Criminal;210
+56;State of Mexico, fringes of Morelos and Guerrero;Ichcateopan ;;Yzcatepec;1787;AGN Criminal 81, fols. 238-300 ;Criminal;81
+57;State of Mexico, fringes of Morelos and Guerrero;Ichcateopan ;;Aclahuistlan;1711;AGN Criminal 166, fols. 320-353;Criminal;166
+58;State of Mexico, fringes of Morelos and Guerrero;Malinalco;;Malinalco;1803;AGN Criminal 191 exp. 1 ;Criminal;191
+59;State of Mexico, fringes of Morelos and Guerrero;Malinalco;;Malinalco;1818;AGN Civil 2292 exps. 7-8 ;Civil;2292
+60;State of Mexico, fringes of Morelos and Guerrero;Malinalco;;Azingo;1786;AGN Civil 865 exp. 8;Civil;865
+61;State of Mexico, fringes of Morelos and Guerrero;Malinalco;;Ocuila;1772;AGN Civil 865 exp. g;Civil;865
+62;State of Mexico, fringes of Morelos and Guerrero;Malinalco;;Tenancingo;1797;AGN Criminal 15 exps. 2-3;Criminal;15
+63;State of Mexico, fringes of Morelos and Guerrero;Malinalco;;Zumpahuacan;1808;AGN Criminal 17 exp. 11;Criminal;17
+64;State of Mexico, fringes of Morelos and Guerrero;Cuernavaca;;Tepoztlan;1778;AGN Criminal 203 exp. 4 ;Criminal;203
+65;State of Mexico, fringes of Morelos and Guerrero;Cuernavaca;;Achichipilco;1802;AGN Criminal 202 last expediente;Criminal;202
+66;State of Mexico, fringes of Morelos and Guerrero;Cuahutla;;Thetelzingo;1778;AGN Criminal 507 exp. 17 ;Criminal;507
+67;State of Mexico, fringes of Morelos and Guerrero;Chalco;;Tlayacapan;1784;AGN Criminal 1 exp. 11 ;Criminal;1
+68;State of Mexico, fringes of Morelos and Guerrero;Chalco;;Atlautla;1799;AGN Criminal 157, fols. 93-132 ;Criminal;157
+69;State of Mexico, fringes of Morelos and Guerrero;Chalco;;Amecameca, barrio Tlailotlacan, ;1799;AGN Criminal 226, fols. 401.;Criminal;226
+70;State of Mexico, fringes of Morelos and Guerrero;Chalco;;Tlalmanalco;1693;AGN Criminal 227 exp. g;Criminal;227
+71;State of Mexico, fringes of Morelos and Guerrero;Chalco;;Tlalmanalco;1773;AGN Criminal 90;Criminal;90
+72;State of Mexico, fringes of Morelos and Guerrero;Chalco;;Chimalhuacan;1802;AGN Criminal 255 exp. 13;Criminal;255
+74;State of Hidalgo ;Tetepango;;Misquiaguala;1681;AGN Criminal 115 exp. 1;Criminal;115
+75;State of Hidalgo ;Tetepango;;Axacuba;1744;AGN Criminal 53 exp. 20;Criminal;53
+76;State of Hidalgo ;Tetepango;;Tlapanaloya, district of Atitalaquia;1690;AGN Criminal 54 exp. 14;Criminal;54
+77;State of Hidalgo ;Actopan;;Tetitlan ;1764;AGN Criminal 117 exp. 7 ;Criminal;117
+78;State of Hidalgo ;Actopan;;Actopan;1756;AGN Civil 241 exp. 1;Civil;241
+80;State of Hidalgo ;Meztitlan ;;Meztitlan;1772;AGN Criminal 102, 104, 107 ;Criminal;102
+81;State of Hidalgo ;Meztitlan ;;Zozoquiapam;1805;AGN Criminal 180, fols. 361.;Criminal;180
+82;State of Hidalgo ;Meztitlan ;;San Juan Meztitlan ;1805;AGN Criminal 180, fols. 430-.;Criminal;180
+83;State of Hidalgo ;Meztitlan ;;Coamelco;1777;AGN Criminal 79 exp. 1;Criminal;79
+85;State of Hidalgo ;Pachuca;;Real del Monte;1805;AGN Criminal 115 exp. 7;Criminal;115
+86;State of Hidalgo ;Pachuca;;Pachuca;1771;AGN Criminal 303 exps. 1, 305, 306, 308;Criminal;303
+88;State of Hidalgo ;Ixmiquilpan;;Sabanilla;1746;AGN Criminal 57 exp. 1;Criminal;57
+89;State of Hidalgo ;Ixmiquilpan;;Donicha;1779;AGN Criminal 75 exps. 3-4;Criminal;75
+90;State of Hidalgo ;Tulancingo;;;1769;AGN Criminal 308 ;Criminal;308
+92;State of Hidalgo ;Xilotepec-Huichapan;;San Francisco Soyalmiquilpa;1818;AGN Criminal 26 exp. g ;Criminal;26
+93;State of Hidalgo ;Xilotepec-Huichapan;;San Pedro Donicaa;1766;AGN Criminal 178 exp. 1;Criminal;178
+94;State of Hidalgo ;Xilotepec-Huichapan;;Santa Maria Tixmadeje;1789;AGN Criminal 202 exp. 1 ;Criminal;202
+95;State of Hidalgo ;Xilotepec-Huichapan;;Alfajayuca;1766;AGN Civil 2166 exp. 5;Civil;2166
+96;State of Hidalgo ;Zimapan ;;Zimapatongo;1807;AGN Criminal 178 exp. 23;Criminal;178
+98;State of Hidalgo ;Tumultos in central Mexico unidentified by jurisdiction;;La Milpa;1766;AGN Criminal 155, fols. 358.;Criminal;155
+99;State of Hidalgo ;Tumultos in central Mexico unidentified by jurisdiction;;Dayonthe;1805;AGN Criminal 179, fols. 455.;Criminal;179
+101;State of Puebla ;;;San Andres Chalchicomula;1768;AGN Criminal 307 exp. 2 ;Criminal;307
+102;State of Puebla ;;;Tetela de Xonotla;1798;AGN Historia 334 exp. 5 ;Historia;334
+103;State of Puebla ;;;San Gabriel Chilac;1801;AGN Historia 413 ;Historia;413
+104;State of Puebla ;;;Soquitlan;1708;AGN Criminal 660;Criminal;660
+105;State of Puebla ;;;Izucar de Matamoros;1781;Calderon Quijano, II, 163-75;NA;
+108;State of Oaxaca ;;Valley of Oaxaca;Cuilapan;1725;AGN Hospital de Jesus 307 exp. 4 ;Hospital;307
+109;State of Oaxaca ;;Valley of Oaxaca;San Pablo Etla;1755;AGN Hospital de Jesus 308 exp. 18;Hospital;308
+110;State of Oaxaca ;;Valley of Oaxaca;Sant Cruz Amilpas;1710;AGN Indios 37 exp. 190;Indios;37
+111;State of Oaxaca ;;Valley of Oaxaca;Sant Cruz Amilpas;1720;AGN Tierras 381 exp. 5;Tierras;381
+112;State of Oaxaca ;;Valley of Oaxaca;Zaachila;1710;AGN Indios 6 primera parte exp. 473 ;Indios;6
+113;State of Oaxaca ;;Valley of Oaxaca;Zaachila;1776;AGN Intendencias 12 ;Intendencias;12
+114;State of Oaxaca ;;Valley of Oaxaca;Zaachila;1784;GI Audiencia de Mexico 2588 ;NA;
+115;State of Oaxaca ;;Valley of Oaxaca;Zaachila;1806;EO Juzgados 1806;NA;
+116;State of Oaxaca ;;Valley of Oaxaca;Guelavia;1690;AGN Tierras 148 exp. 3;Tierras;148
+117;State of Oaxaca ;;Valley of Oaxaca;Guelavia;1705;AGN Tierras 223 exp. 4;Tierras;223
+118;State of Oaxaca ;;Valley of Oaxaca;Ocotlan;1788;AGN Tierras 867 exp. 2;Tierras;867
+119;State of Oaxaca ;;Valley of Oaxaca;Soledad Etla;1797;AGN Tierras 1877 exp. 2 ;Tierras;1877
+121;State of Oaxaca ;;Valley of Oaxaca;Zimatlan;1740;AGN Tierras 1460 exp. 7;Tierras;1460
+122;State of Oaxaca ;;Valley of Oaxaca;Zimatlan;1773;AGN Criminal 306 exp. 5;Criminal;306
+123;State of Oaxaca ;;Valley of Oaxaca;Zimatlan;1774;AGI Audiencia de Mexico 2588 ;NA;
+124;State of Oaxaca ;;Valley of Oaxaca;San Antonio de la Cal;1730;AGN Tierras 2259 exp. 4;Tierras;2259
+125;State of Oaxaca ;;Valley of Oaxaca;San Antonio de la Cal, AGN Tierras 2259 exp. 4 (1730-1787) ;1754;AGN Tierras 2386 exp. 1;Tierras;2386
+126;State of Oaxaca ;;Valley of Oaxaca;Teotitlan del Valle;1792;AGN Epidemias 15;Epidemias;15
+127;State of Oaxaca ;;Valley of Oaxaca;Teotitlan del Valle;1793;AGN Indios 101 exp. 8 ;Indios;101
+128;State of Oaxaca ;;Valley of Oaxaca;Santa Lucia;1717;AGN Criminal 283 exp. 3 ;Criminal;283
+129;State of Oaxaca ;;Valley of Oaxaca;Various towns;1784;AGI Audiencia de Mexico 2588 ;NA;
+130;State of Oaxaca ;;Valley of Oaxaca;Abasolo;1800;AEO Juzgados 1800 ;NA;
+131;State of Oaxaca ;;Valley of Oaxaca;Tlalixtac;1804;AEO Juzgados 1804;NA;
+132;State of Oaxaca ;;Valley of Oaxaca;Trinidad de la Huertas;1808;AEO Juzgados 1808 ;NA;
+133;State of Oaxaca ;;Valley of Oaxaca;Macuilx6chitl;1757;CCC Hacienda Buenavista papers ;NA;
+134;State of Oaxaca ;;Valley of Oaxaca;Tlapacoya;1785;AGI Audiencia de Mexico 2588;NA;
+135;State of Oaxaca ;;Valley of Oaxaca;Lachixijo;1804;AEO Juzgados 1804 ;NA;
+136;State of Oaxaca ;;Valley of Oaxaca;San Pablo, district of Cuatro Villas;1689;AGN Indios 30 exp. 244 ;Indios;30
+137;State of Oaxaca ;;Valley of Oaxaca;Ayoquesco;1742;AGN Indios 55 exp. 91;Indios;55
+138;State of Oaxaca ;;Mixteca Alta (1629-1823) ;Achiutla;1629;CDCh roll 6, exp. 209;NA;
+139;State of Oaxaca ;;Mixteca Alta (1629-1823) ;Petalcingo;1631;CDCh roll 6, exp. 227;NA;
+140;State of Oaxaca ;;Mixteca Alta (1629-1823) ;Sujeto of Teposcolula;1639;CDCh roll 8, exp. 286;NA;
+141;State of Oaxaca ;;Mixteca Alta (1629-1823) ;Xinastla;1680;CDCh roll 8, exp. 475;NA;
+142;State of Oaxaca ;;Mixteca Alta (1629-1823) ;Santiago Tillo;1683;CDCh roll g, exp. 502 ;NA;
+143;State of Oaxaca ;;Mixteca Alta (1629-1823) ;Tamazulapa;1686;CDCh roll g, exp. 520 ;NA;
+144;State of Oaxaca ;;Mixteca Alta (1629-1823) ;Xaltepetongo;1688;CDCh roll g, exp. 529 ;NA;
+145;State of Oaxaca ;;Mixteca Alta (1629-1823) ;Tiltepec;1692;CDCh roll 10, exp. 551 ;NA;
+146;State of Oaxaca ;;Mixteca Alta (1629-1823) ;Usila;1702;AGN Indios 35 exp. 123 ;Indios;35
+147;State of Oaxaca ;;Mixteca Alta (1629-1823) ;Yanhuitlan;1775;CDCh roll 15, exp. 410 ;NA;
+148;State of Oaxaca ;;Mixteca Alta (1629-1823) ;Chalcatongo;1779;CDCh roll 15, exps. 428, 430;NA;
+149;State of Oaxaca ;;Mixteca Alta (1629-1823) ;Chalcatongo;1674;CDCh roll 21, exp. 107 ;NA;
+150;State of Oaxaca ;;Mixteca Alta (1629-1823) ;Achiutla;1785;CDCh roll 15, exp. 469 ;NA;
+151;State of Oaxaca ;;Mixteca Alta (1629-1823) ;Yolomecatl;1743;CDCh roll 14, exp. 209 ;NA;
+152;State of Oaxaca ;;Mixteca Alta (1629-1823) ;Yolomecatl;1744;CDCh roll 14, exp. 222 ;NA;
+153;State of Oaxaca ;;Mixteca Alta (1629-1823) ;Santo Domingo Yodoino;1753;CDCh roll 14, exp. 251 ;NA;
+154;State of Oaxaca ;;Mixteca Alta (1629-1823) ;San Andres Xinastla;1737;CDCh roll 12, exp. 172 ;NA;
+155;State of Oaxaca ;;Mixteca Alta (1629-1823) ;Teozacualco ;1774;AGN Criminal 306 exps. 1, 3 ;Criminal;306
+156;State of Oaxaca ;;Mixteca Alta (1629-1823) ;San Miguel Malinaltepec;1806;AEO Juzgados 1806;NA;
+157;State of Oaxaca ;;Mixteca Alta (1629-1823) ;Theotila;1754;AGN Inquisicion 960, fols. i63-89;Inquisicion;960
+158;State of Oaxaca ;;Mixteca Alta (1629-1823) ;Teposcolula;1777;CDCh roll 15 1785, CDCh roll 15 ;NA;
+159;State of Oaxaca ;;Mixteca Alta (1629-1823) ;San Miguel el Grande;1780;CDCh roll 15 ;NA;
+160;State of Oaxaca ;;Mixteca Alta (1629-1823) ;Coixtlahuaca;1822;CDCh roll 20, exps. 32, 196 ;NA;
+161;State of Oaxaca ;;Mixteca Alta (1629-1823) ;San Pedro Añañe;1823;CDCh roll 21;NA;

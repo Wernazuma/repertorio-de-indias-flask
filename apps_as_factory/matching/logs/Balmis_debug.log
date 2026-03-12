@@ -1,0 +1,29 @@
+Input: 'Puebla' → cleaned: 'puebla'
+================================================================================
+
+Input row data:
+  rowID: 88
+  ref_Label: Puebla
+  ref_Adm0_ISO: MEX
+================================================================================
+
+STEP 1: Token candidates: 7
+STEP 2: Fuzzy matches (≥70): 5
+  Top 5:
+    Score 100.0: gz_id=1000015 'Puebla'
+    Score 100.0: gz_id=1000015 'Puebla'
+    Score 100.0: gz_id=1000015 'Puebla'
+    Score 100.0: gz_id=2000697 'Puebla'
+    Score 100.0: gz_id=2000697 'Puebla'
+
+STEP 3: Phase decision for each match:
+  gz_id=1000015: score=1.00 → phase=candidate
+  gz_id=1000015: score=1.00 → phase=candidate
+  gz_id=1000015: score=1.00 → phase=candidate
+  gz_id=2000697: score=1.00 → phase=candidate
+  gz_id=2000697: score=1.00 → phase=candidate
+
+STEP 4: Checking what should happen:
+  - Scores ≥0.9 + no_saint + category_null + territory match → auto_adopt
+  - Scores ≥0.85 → candidate
+  - Scores <0.85 → relegated

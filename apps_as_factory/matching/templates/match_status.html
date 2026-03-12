@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Matching Status — {{ prefix }}</title>
+  <!-- Automatically refresh every 4 seconds until complete -->
+  {% if not matching_complete %}
+  <meta http-equiv="refresh" content="4">
+  {% endif %}
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 2em;
+      background: #fafafa;
+    }
+    h2 { color: #333; }
+    pre {
+      background: #f0f0f0;
+      padding: 1em;
+      border-radius: 5px;
+      white-space: pre-wrap;
+      font-family: monospace;
+    }
+    .complete {
+      color: green;
+      font-weight: bold;
+    }
+    .controls {
+      margin-top: 1em;
+    }
+    a {
+      color: #0056b3;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h2>Matching Progress — Step 1a</h2>
+  <p><strong>Prefix:</strong> <code>{{ prefix }}</code></p>
+
+  <pre>{{ content or 'No progress yet...' }}</pre>
+
+  {% if matching_complete %}
+    <p class="complete">✅ Matching complete!</p>
+    <p>Results saved to:
+      <code>data/uploads/{{ prefix }}_processing.csv</code>
+    </p>
+    <div class="controls">
+      <a href="{{ url_for('matching.index') }}">← Back to Start</a>
+    </div>
+  {% else %}
+    <p>⏳ Matching in progress. This page will refresh automatically every 4 seconds.</p>
+    <div class="controls">
+      <a href="{{ url_for('matching.match_status', prefix=prefix) }}">Refresh manually</a> |
+      <a href="{{ url_for('matching.index') }}">Back to Start</a>
+    </div>
+  {% endif %}
+</body>
+</html>

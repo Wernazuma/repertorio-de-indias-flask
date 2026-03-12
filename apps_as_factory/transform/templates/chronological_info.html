@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chronological Info</title>
+</head>
+<body>
+    <h1>Chronological Info</h1>
+    
+    <!-- Debug information -->
+    <div style="background-color: #f0f0f0; padding: 10px; margin: 10px 0; border: 1px solid #ccc;">
+        <h3>Debug Info:</h3>
+        <p><strong>Integer columns available:</strong> {{ integer_columns }}</p>
+        <p><strong>Number of integer columns:</strong> {{ integer_columns|length }}</p>
+    </div>
+    
+    <form id="chronoForm">
+        <label>
+            <input type="checkbox" name="has_chronological" id="hasChrono"> Has chronological data
+        </label>
+        <div id="chronoOptions" style="display:none;">
+            <label>
+                <input type="radio" name="mode" value="single"> Single year column
+            </label>
+            <label>
+                <input type="radio" name="mode" value="range"> Start and end year columns
+            </label>
+            <div id="singleField" style="display:none;">
+                <label>Year Column:
+                    <select name="year_column">
+                        {% if integer_columns %}
+                            {% for col in integer_columns %}
+                                <option value="{{ col }}">{{ col }}</option>
+                            {% endfor %}
+                        {% else %}
+                            <option value="">No integer columns available</option>
+                        {% endif %}
+                    </select>
+                </label>
+            </div>
+            <div id="rangeFields" style="display:none;">
+                <label>Start Year Column:
+                    <select name="start_year_column">
+                        {% if integer_columns %}
+                            {% for col in integer_columns %}
+                                <option value="{{ col }}">{{ col }}</option>
+                            {% endfor %}
+                        {% else %}
+                            <option value="">No integer columns available</option>
+                        {% endif %}
+                    </select>
+                </label>
+                <label>End Year Column:
+                    <select name="end_year_column">
+                        {% if integer_columns %}
+                            {% for col in integer_columns %}
+                                <option value="{{ col }}">{{ col }}</option>
+                            {% endfor %}
+                        {% else %}
+                            <option value="">No integer columns available</option>
+                        {% endif %}
+                    </select>
+                </label>
+            </div>
+        </div>
+        <button type="submit">Continue</button>
+    </form>
+    <script>
+        const hasChrono = document.getElementById('hasChrono');
+        const chronoOptions = document.getElementById('chronoOptions');
+        const singleField = document.getElementById('singleField');
+        const rangeFields = document.getElementById('rangeFields');
+        hasChrono.onchange = () => {
+            chronoOptions.style.display = hasChrono.checked ? 'block' : 'none';
+        };
+        document.querySelectorAll('input[name="mode"]').forEach(radio => {
+            radio.onchange = () => {
+                singleField.style.display = radio.value === 'single' ? 'block' : 'none';
+                rangeFields.style.display = radio.value === 'range' ? 'block' : 'none';
+            };
+        });
+        document.getElementById('chronoForm').onsubmit = async function(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const payload = {
+                has_chronological: formData.has('has_chronological'),
+                single_field: formData.get('mode') === 'single',
+                year_column: formData.get('year_column'),
+                start_year_column: formData.get('start_year_column'),
+                end_year_column: formData.get('end_year_column'),
+            };
+            const res = await fetch('/transform/save_chronological_info', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(payload)
+            });
+            const result = await res.json();
+            if (result.success) {
+                window.location.href = '/transform/process_final';
+            } else {
+                alert(result.error);
+            }
+        };
+    </script>
+</body>
+</html>
