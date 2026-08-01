@@ -1422,3 +1422,11 @@ FIL;1600001;Consulado_Manila;Consulado de Manila;Consulado;;0;Manila;1769;;9999;
 NGR;5000004;Inquisicion_Cartagena;Tribunal del Santo Oficio de Cartagena;Tribunal del Santo Oficio;;1;Cartagena;1610;;1811;;;;;;;Inquisicion
 PER;6000001;Inquisicion_Lima;Tribunal del Santo Oficio de Lima;Tribunal del Santo Oficio;;1;Lima;1569;;1811;;;;;;;Inquisicion
 NES;1000001;Inquisicion_Mexico;Tribunal del Santo Oficio de México;Tribunal del Santo Oficio;;1;México;1569;;1811;;;;;;;Inquisicion
+;;OdeMerc;Mercedarios;Orden religiosa;;0;;;;;;;;;;;
+;;OSA;Agustinos;Orden religiosa;;0;;;;;;;;;;;
+;;OP;Dominicanos;Orden religiosa;;0;;;;;;;;;;;
+;;OFM;Franciscanos;Orden religiosa;;0;;;;;;;;;;;
+;;OFMCap;Capuchinos;Orden religiosa;;0;;;;;;;;;;;
+;;SJ;Jesuitas;Orden religiosa;;0;;;;;;;;;;;
+;;Secular;Clero secular;Clero;;0;;;;;;;;;;;
+;;OFMRec;Recoletos;Orden religiosa;;0;;;;;;;;;;;

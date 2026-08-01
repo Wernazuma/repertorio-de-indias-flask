@@ -1,105 +1,122 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Chronological Info</title>
-</head>
-<body>
-    <h1>Chronological Info</h1>
-    
-    <!-- Debug information -->
-    <div style="background-color: #f0f0f0; padding: 10px; margin: 10px 0; border: 1px solid #ccc;">
-        <h3>Debug Info:</h3>
-        <p><strong>Integer columns available:</strong> {{ integer_columns }}</p>
-        <p><strong>Number of integer columns:</strong> {{ integer_columns|length }}</p>
-    </div>
-    
-    <form id="chronoForm">
-        <label>
-            <input type="checkbox" name="has_chronological" id="hasChrono"> Has chronological data
-        </label>
-        <div id="chronoOptions" style="display:none;">
-            <label>
-                <input type="radio" name="mode" value="single"> Single year column
-            </label>
-            <label>
-                <input type="radio" name="mode" value="range"> Start and end year columns
-            </label>
-            <div id="singleField" style="display:none;">
-                <label>Year Column:
-                    <select name="year_column">
-                        {% if integer_columns %}
-                            {% for col in integer_columns %}
-                                <option value="{{ col }}">{{ col }}</option>
-                            {% endfor %}
-                        {% else %}
-                            <option value="">No integer columns available</option>
-                        {% endif %}
-                    </select>
-                </label>
-            </div>
-            <div id="rangeFields" style="display:none;">
-                <label>Start Year Column:
-                    <select name="start_year_column">
-                        {% if integer_columns %}
-                            {% for col in integer_columns %}
-                                <option value="{{ col }}">{{ col }}</option>
-                            {% endfor %}
-                        {% else %}
-                            <option value="">No integer columns available</option>
-                        {% endif %}
-                    </select>
-                </label>
-                <label>End Year Column:
-                    <select name="end_year_column">
-                        {% if integer_columns %}
-                            {% for col in integer_columns %}
-                                <option value="{{ col }}">{{ col }}</option>
-                            {% endfor %}
-                        {% else %}
-                            <option value="">No integer columns available</option>
-                        {% endif %}
-                    </select>
-                </label>
-            </div>
+{% extends "base.html" %}
+{% set active = 'arca' %}
+{% block title %}Chronological information — ARCA{% endblock %}
+
+{% block extra_head %}
+<style>
+  .tx-step { max-width: 46rem; }
+  .tx-step h1 { font-family: var(--serif); font-size: var(--step-2); margin-bottom: .4rem; }
+  .chrono-box { padding: var(--sp-3); border: 1px solid var(--border);
+    border-radius: var(--radius); background: var(--surface); margin-bottom: .8rem; }
+  .chrono-box label.opt { display: block; margin: .35rem 0; }
+  .chrono-box select { padding: .4rem; font-family: var(--body); font-size: var(--step--1);
+    border: 1px solid var(--border-strong); border-radius: 5px;
+    background: var(--surface); color: var(--ink); min-width: 16rem; }
+  .chrono-box .fieldrow { margin: .5rem 0; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="tx-step">
+  {% set wf_step = 'chrono' %}{% include '_steps.html' %}
+  <h1>Chronological information</h1>
+  <p style="color: var(--muted); margin-bottom: var(--sp-3);">
+    Does your table say <i>when</i> each row applies? If so, point us at the year
+    column(s) so records can be placed in time.
+  </p>
+
+  {% if not integer_columns %}
+  <div class="notice warn">
+    <p>No integer columns were found in your table, so no year column can be selected.
+      You can continue without chronological data — every row will then be treated as
+      covering the whole period.</p>
+  </div>
+  {% endif %}
+
+  <form id="chronoForm">
+    <div class="chrono-box">
+      <label><input type="checkbox" name="has_chronological" id="hasChrono">
+        My table has chronological data</label>
+
+      <div id="chronoOptions" style="display:none; margin-top:.6rem;">
+        <label class="opt"><input type="radio" name="mode" value="single"> A single year column</label>
+        <label class="opt"><input type="radio" name="mode" value="range"> Separate start and end year columns</label>
+
+        <div id="singleField" style="display:none;" class="fieldrow">
+          <label>Year column:<br>
+            <select name="year_column">
+              {% for col in integer_columns %}<option value="{{ col }}">{{ col }}</option>
+              {% else %}<option value="">No integer columns available</option>{% endfor %}
+            </select>
+          </label>
         </div>
-        <button type="submit">Continue</button>
-    </form>
-    <script>
-        const hasChrono = document.getElementById('hasChrono');
-        const chronoOptions = document.getElementById('chronoOptions');
-        const singleField = document.getElementById('singleField');
-        const rangeFields = document.getElementById('rangeFields');
-        hasChrono.onchange = () => {
-            chronoOptions.style.display = hasChrono.checked ? 'block' : 'none';
+
+        <div id="rangeFields" style="display:none;">
+          <div class="fieldrow">
+            <label>Start year column:<br>
+              <select name="start_year_column">
+                {% for col in integer_columns %}<option value="{{ col }}">{{ col }}</option>
+                {% else %}<option value="">No integer columns available</option>{% endfor %}
+              </select>
+            </label>
+          </div>
+          <div class="fieldrow">
+            <label>End year column:<br>
+              <select name="end_year_column">
+                {% for col in integer_columns %}<option value="{{ col }}">{{ col }}</option>
+                {% else %}<option value="">No integer columns available</option>{% endfor %}
+              </select>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wf-actions">
+      {% include '_abort.html' %}
+      <span class="spacer"></span>
+      <button class="btn" type="submit">Continue</button>
+    </div>
+  </form>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    const hasChrono = document.getElementById('hasChrono');
+    const chronoOptions = document.getElementById('chronoOptions');
+    const singleField = document.getElementById('singleField');
+    const rangeFields = document.getElementById('rangeFields');
+    hasChrono.onchange = () => {
+        chronoOptions.style.display = hasChrono.checked ? 'block' : 'none';
+    };
+    document.querySelectorAll('input[name="mode"]').forEach(radio => {
+        radio.onchange = () => {
+            singleField.style.display = radio.value === 'single' ? 'block' : 'none';
+            rangeFields.style.display = radio.value === 'range' ? 'block' : 'none';
         };
-        document.querySelectorAll('input[name="mode"]').forEach(radio => {
-            radio.onchange = () => {
-                singleField.style.display = radio.value === 'single' ? 'block' : 'none';
-                rangeFields.style.display = radio.value === 'range' ? 'block' : 'none';
-            };
+    });
+    document.getElementById('chronoForm').onsubmit = async function(e) {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const payload = {
+            has_chronological: formData.has('has_chronological'),
+            single_field: formData.get('mode') === 'single',
+            year_column: formData.get('year_column'),
+            start_year_column: formData.get('start_year_column'),
+            end_year_column: formData.get('end_year_column'),
+        };
+        const res = await fetch('/transform/save_chronological_info', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(payload)
         });
-        document.getElementById('chronoForm').onsubmit = async function(e) {
-            e.preventDefault();
-            const formData = new FormData(e.target);
-            const payload = {
-                has_chronological: formData.has('has_chronological'),
-                single_field: formData.get('mode') === 'single',
-                year_column: formData.get('year_column'),
-                start_year_column: formData.get('start_year_column'),
-                end_year_column: formData.get('end_year_column'),
-            };
-            const res = await fetch('/transform/save_chronological_info', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(payload)
-            });
-            const result = await res.json();
-            if (result.success) {
-                window.location.href = '/transform/process_final';
-            } else {
-                alert(result.error);
-            }
-        };
-    </script>
-</body>
-</html>
+        const result = await res.json();
+        if (result.success) {
+            window.location.href = '/transform/process_final';
+        } else {
+            alert(result.error);
+        }
+    };
+</script>
+{% endblock %}

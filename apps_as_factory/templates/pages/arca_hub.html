@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% set active = 'arca' %}
+{% block title %}About ARCA{% endblock %}
+
+{% block content %}
+<div class="hero">
+  <img class="hero-logo" src="{{ url_for('static', filename='images/logo_arca.jpg') }}" alt="ARCA">
+  <span class="eyebrow">About ARCA</span>
+  <h1>Archive &amp; Resource Center for the Americas</h1>
+  <p class="lead">ARCA builds and provides shared resources for the history of the
+    Americas, connecting them through a common framework — raising interoperability
+    and growing a datascape that aggregates ever denser information.</p>
+</div>
+
+<div class="card-grid arca-cta">
+  <a class="card" href="https://dataverse.yale.edu/dataverse/arca" target="_blank" rel="noopener">
+    <span class="card-icon"><img src="{{ url_for('static', filename='images/cards/dataverse.png') }}" alt=""></span>
+    <h3>Browse datasets</h3>
+    <p>Explore the open datasets published on the Yale Dataverse.</p>
+    <span class="go">Dataverse ↗</span>
+  </a>
+  <a class="card" href="{{ url_for('bring_your_data') }}">
+    <span class="card-icon"><img src="{{ url_for('static', filename='images/cards/joindata.png') }}" alt=""></span>
+    <h3>Bring your data</h3>
+    <p>Contribute, transform, and match your historical data to the framework, creating
+      geodata with it. Use it to boost your research or to showcase your work.</p>
+    <span class="go">Get started →</span>
+  </a>
+  <a class="card" href="{{ url_for('collaborate') }}">
+    <span class="card-icon"><img src="{{ url_for('static', filename='images/cards/collaborate.png') }}" alt=""></span>
+    <h3>Collaborate</h3>
+    <p>You can collaborate with ARCA in many other ways tpp. Explore them here.</p>
+    <span class="go">Explore →</span>
+  </a>
+</div>
+
+<div class="section-head">
+  <h2>Where ARCA comes from</h2>
+  <span class="rule"></span>
+</div>
+<div class="prose">
+  <p>The idea of ARCA was born from discussions between the project's leads on how to
+    expand the work done by <a href="{{ url_for('atlas') }}"><i>HGIS de las Indias</i></a>.
+    That original project centered on the geography of Spanish America in the Bourbon
+    period (1701–1808), also linking demographic, socio-economic, and other data to its
+    spatial entities. But the close of the funding period, together with the project's
+    limited scope and its own “gravitational pull”, prompted a reboot with a wider
+    approach: ARCA.</p>
+
+  <p>ARCA expands the theoretical scope considerably:</p>
+  <ul>
+    <li>From the 18th century to the 21st — and back to the 16th, or even beyond.</li>
+    <li>From Spanish America to Portuguese, French, Anglo-American, and Indigenous spheres.</li>
+    <li>From geographic entities and concepts to  entities and concepts of other domains.</li>
+    <li>From a limited set of individual contributions to an “open-world datascape”
+      interconnected through the frame — a pool of data that fills up over time, weaving
+      an ever denser net of interrelated information.</li>
+  </ul>
+</div>
+
+<div class="section-head" style="margin-top: var(--sp-5);">
+  <h2>Paths of expansion</h2>
+  <span class="rule"></span>
+</div>
+<div class="prose">
+  <p>The first step toward ARCA is the option to contribute, transform, and match
+    historical data to HGIS de las Indias — and to provide curated knowledge on the
+    existing geographic entities.
+    <a href="{{ url_for('orientation.index') }}">Bring your data →</a></p>
+
+  <p>With more funding — ideally as part of a thematic research project — the geographic
+    core, the gazetteer of places and territorial units, can be extended to other areas
+    and periods, letting us connect more and more datasets. If you are planning a project
+    that would benefit from an existing shared framework, join forces:
+    <a href="{{ url_for('team') }}">contact us</a> to help build it as part of
+    your project.</p>
+</div>
+{% endblock %}

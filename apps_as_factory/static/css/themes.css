@@ -1,0 +1,180 @@
+/* =====================================================================
+   ARCA — theme tokens
+   Themes switch via  <html data-theme="slate|sepia|verdigris|cyanotype|dark">.
+   :root carries the non-colour tokens + the default (slate) palette; each
+   [data-theme] block overrides only the colour tokens. All themes share the
+   same typefaces (see --serif / --body below).
+   ===================================================================== */
+
+:root {
+  /* Display/headings: Chaparral Pro if installed (Adobe CC), else the open
+     slab serif Bitter (self-host as /static/fonts if desired — see arca.css). */
+  --serif: "Chaparral Pro", "Bitter", "Aleo", "Roboto Slab",
+           "Palatino Linotype", Palatino, Georgia, serif;
+  /* Body + labels: a light old-style serif (Garamond lineage), echoing the
+     original site's Garamond. Open + shippable fallback: EB Garamond. */
+  --body: "Adobe Garamond Pro", "EB Garamond", Garamond, "Sabon LT Std",
+          "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  --mono: "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+
+  --step--1: clamp(0.82rem, 0.78rem + 0.2vw, 0.9rem);
+  --step-0:  clamp(1.04rem, 1rem + 0.25vw, 1.16rem);
+  --step-1:  clamp(1.18rem, 1.08rem + 0.5vw, 1.42rem);
+  --step-2:  clamp(1.5rem, 1.32rem + 0.9vw, 2.05rem);
+  --step-3:  clamp(2rem, 1.65rem + 1.7vw, 3rem);
+
+  --sp-1: 0.5rem;  --sp-2: 0.85rem; --sp-3: 1.25rem;
+  --sp-4: 2rem;    --sp-5: 3rem;    --sp-6: 4.5rem;
+  --radius: 10px;
+  --maxw: 1120px;
+
+  /* ---- default palette = Atlas Slate ---- */
+  --bg: #eaeef2;
+  --surface: #ffffff;
+  --surface-2: #f1f5f9;
+  --ink: #17222e;
+  --muted: #52616f;
+  --accent: #2b4b68;
+  --accent-ink: #ffffff;
+  --accent-2: #b06f2f;
+  --border: #d7dfe7;
+  --border-strong: #bcc8d3;
+  --header-bg: #2b4b68;
+  --header-ink: #f3f7fb;
+  --header-muted: #adc1d4;
+  --header-line: rgba(255, 255, 255, .14);
+  --nav-ink-active: #ffffff;
+  --nav-underline: #e0b483;
+  --shadow: 0 1px 2px rgba(23,34,46,.06), 0 10px 28px rgba(23,34,46,.12);
+  --bg-grad: none;
+  --paper-noise: none;
+  --paper-noise-opacity: 0;
+}
+
+/* Atlas Slate — existing brand #2b4b68 + ochre (explicit; matches :root) */
+:root[data-theme="slate"] {
+  --bg: #eaeef2;
+  --surface: #ffffff;
+  --surface-2: #f1f5f9;
+  --ink: #17222e;
+  --muted: #52616f;
+  --accent: #2b4b68;
+  --accent-ink: #ffffff;
+  --accent-2: #b06f2f;
+  --border: #d7dfe7;
+  --border-strong: #bcc8d3;
+  --header-bg: #2b4b68;
+  --header-ink: #f3f7fb;
+  --header-muted: #adc1d4;
+  --header-line: rgba(255, 255, 255, .14);
+  --nav-ink-active: #ffffff;
+  --nav-underline: #e0b483;
+  --shadow: 0 1px 2px rgba(23,34,46,.06), 0 10px 28px rgba(23,34,46,.12);
+  --bg-grad: none;
+  --paper-noise: none;
+  --paper-noise-opacity: 0;
+}
+
+/* Sepia / historical — logo palette: sand ground, terracotta arch, navy nodes */
+:root[data-theme="sepia"] {
+  --bg: #e6d8b9;
+  --surface: #f5ecd4;
+  --surface-2: #efe3c6;
+  --ink: #3a2c1a;
+  --muted: #7c6844;
+  --accent: #b9603a;
+  --accent-ink: #fbf3e2;
+  --accent-2: #22406a;
+  --border: #d8c096;
+  --border-strong: #c2a670;
+  --header-bg: #ddca9f;
+  --header-ink: #3a2c1a;
+  --header-muted: #806a44;
+  --header-line: rgba(58, 44, 26, .22);
+  --nav-ink-active: #2c2013;
+  --nav-underline: #b9603a;
+  --shadow: 0 1px 2px rgba(70,52,26,.10), 0 10px 26px rgba(70,52,26,.14);
+  --bg-grad:
+    radial-gradient(135% 95% at 12% -10%, rgba(248,240,218,.9), transparent 55%),
+    radial-gradient(120% 100% at 108% 118%, rgba(206,182,135,.6), transparent 52%),
+    linear-gradient(180deg, rgba(233,220,190,.5), rgba(226,210,176,.5));
+  --paper-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.62' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+  --paper-noise-opacity: .05;
+}
+
+/* Verdigris — aged copper-green: sage paper, verdigris ink, copper accents */
+:root[data-theme="verdigris"] {
+  --bg: #dbe1cf;
+  --surface: #edf1e4;
+  --surface-2: #e2e8d5;
+  --ink: #26332a;
+  --muted: #5d6b58;
+  --accent: #2f6f63;
+  --accent-ink: #f2f6ee;
+  --accent-2: #a35a30;
+  --border: #c7d1bb;
+  --border-strong: #adbb9c;
+  --header-bg: #2b3d34;
+  --header-ink: #eef3e6;
+  --header-muted: #a6b79f;
+  --header-line: rgba(255, 255, 255, .09);
+  --nav-ink-active: #ffffff;
+  --nav-underline: #d0904c;
+  --shadow: 0 1px 2px rgba(38,51,42,.10), 0 10px 26px rgba(38,51,42,.14);
+  --bg-grad:
+    radial-gradient(135% 95% at 12% -10%, rgba(240,244,231,.85), transparent 55%),
+    radial-gradient(120% 100% at 108% 118%, rgba(196,208,178,.6), transparent 52%),
+    linear-gradient(180deg, rgba(220,228,206,.5), rgba(212,222,196,.5));
+  --paper-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.62' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+  --paper-noise-opacity: .045;
+}
+
+/* Cyanotype — blueprint / night sea-chart: Prussian blue, faint grid, brass */
+:root[data-theme="cyanotype"] {
+  --bg: #0f2436;
+  --surface: #143047;
+  --surface-2: #183a54;
+  --ink: #dbe7ef;
+  --muted: #8ea9bb;
+  --accent: #e0a244;
+  --accent-ink: #10222e;
+  --accent-2: #7fc3c9;
+  --border: #234459;
+  --border-strong: #315a76;
+  --header-bg: #0a1b28;
+  --header-ink: #e7f0f6;
+  --header-muted: #83a0b3;
+  --header-line: rgba(140, 190, 210, .12);
+  --nav-ink-active: #ffffff;
+  --nav-underline: #e0a244;
+  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 34px rgba(3,14,22,.5);
+  --bg-grad:
+    repeating-linear-gradient(0deg, transparent 0 39px, rgba(140,190,210,.055) 39px 40px),
+    repeating-linear-gradient(90deg, transparent 0 39px, rgba(140,190,210,.055) 39px 40px);
+  --paper-noise: none;
+  --paper-noise-opacity: 0;
+}
+
+/* Dark — ink + gilt gold */
+:root[data-theme="dark"] {
+  --bg: #12161d;
+  --surface: #1b212b;
+  --surface-2: #212936;
+  --ink: #e8ebf0;
+  --muted: #97a2b1;
+  --accent: #d7a94a;
+  --accent-ink: #17130a;
+  --accent-2: #6fb0a0;
+  --border: #2a323f;
+  --border-strong: #3a4453;
+  --header-bg: #0d1117;
+  --header-ink: #eceff4;
+  --header-muted: #8b96a5;
+  --header-line: rgba(255, 255, 255, .09);
+  --nav-ink-active: #ffffff;
+  --nav-underline: #d7a94a;
+  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 34px rgba(0,0,0,.45);
+  --bg-grad: none;
+  --paper-noise: none;
+  --paper-noise-opacity: 0;
+}

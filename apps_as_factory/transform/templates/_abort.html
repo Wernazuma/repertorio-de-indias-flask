@@ -1,0 +1,10 @@
+{# Abort control — deletes the uploaded CSV and everything derived from it.
+   A type="button" that POSTs via a script-created form, NOT a nested <form>:
+   this include often sits inside another <form>, and nested forms are invalid
+   HTML — the browser drops the inner one, so a submit button would submit the
+   OUTER form and advance the workflow instead of aborting. Building the form in
+   JS on click sidesteps that entirely. #}
+<button class="btn small danger" type="button"
+        onclick="if(confirm('Abort and delete your uploaded table from our server? This cannot be undone.')){var f=document.createElement('form');f.method='POST';f.action='{{ url_for('transform.discard') }}';{% if base is defined and base %}var p=document.createElement('input');p.type='hidden';p.name='prefix';p.value='{{ base }}';f.appendChild(p);{% endif %}document.body.appendChild(f);f.submit();}">
+  Abort &amp; delete my table
+</button>

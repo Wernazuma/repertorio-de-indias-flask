@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Review — {{ prefix }} ({{ idx + 1 }}/{{ total }})</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; margin: 0; background: #f4f5f7; color: #222; }
+
+    .topbar {
+      background: #1a3c5e;
+      color: #fff;
+      padding: 0.6em 1.5em;
+      display: flex;
+      align-items: center;
+      gap: 1.5em;
+    }
+    .topbar h1 { margin: 0; font-size: 1.1em; font-weight: 600; }
+    .progress-text { font-size: 0.9em; opacity: 0.85; }
+    .progress-bar-outer {
+      flex: 1;
+      background: rgba(255,255,255,0.2);
+      border-radius: 4px;
+      height: 8px;
+    }
+    .progress-bar-inner {
+      background: #4caf50;
+      height: 8px;
+      border-radius: 4px;
+      width: {{ ((idx + 1) / total * 100) | round(1) }}%;
+    }
+    .topbar-right { font-size: 0.85em; opacity: 0.8; }
+
+    .layout { display: flex; gap: 1em; padding: 1em 1.5em; max-width: 1200px; margin: 0 auto; }
+
+    /* Left: input context */
+    .panel-context {
+      flex: 0 0 260px;
+      background: #fff;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      padding: 1em;
+    }
+    .panel-context h3 { margin: 0 0 0.75em; font-size: 0.9em; text-transform: uppercase;
+                         letter-spacing: .05em; color: #555; }
+    .ctx-label { font-size: 1.15em; font-weight: 700; margin-bottom: 0.6em; color: #1a3c5e; }
+    .ctx-row { display: flex; gap: 0.4em; font-size: 0.85em; margin-bottom: 0.3em; }
+    .ctx-key { color: #666; flex: 0 0 120px; }
+    .ctx-val { font-weight: 500; }
+
+    /* Center: match card(s) */
+    .panel-matches { flex: 1; display: flex; flex-direction: column; gap: 0.75em; }
+
+    .outcome-badge {
+      display: inline-block;
+      padding: 0.25em 0.75em;
+      border-radius: 12px;
+      font-size: 0.8em;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      margin-bottom: 0.5em;
+    }
+    .badge-auto_adopt  { background: #d4edda; color: #155724; }
+    .badge-candidate   { background: #fff3cd; color: #856404; }
+    .badge-relegated   { background: #f8d7da; color: #721c24; }
+
+    .match-card {
+      background: #fff;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      padding: 1em;
+    }
+    .match-card h4 { margin: 0 0 0.5em; font-size: 1em; color: #1a3c5e; }
+    .match-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.4em 1em;
+      font-size: 0.85em;
+    }
+    .mg-item { display: flex; flex-direction: column; }
+    .mg-key { color: #666; font-size: 0.78em; text-transform: uppercase; letter-spacing: .04em; }
+    .mg-val { font-weight: 500; }
+    .score-high { color: #155724; }
+    .score-mid  { color: #856404; }
+    .score-low  { color: #721c24; }
+
+    /* Right: action panel */
+    .panel-action {
+      flex: 0 0 200px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6em;
+    }
+    .action-group { background: #fff; border: 1px solid #d0d7de; border-radius: 6px; padding: 0.85em; }
+    .action-group h3 { margin: 0 0 0.6em; font-size: 0.85em; text-transform: uppercase;
+                        letter-spacing: .05em; color: #555; }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 0.55em 0.8em;
+      margin-bottom: 0.45em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9em;
+      font-weight: 600;
+      text-align: center;
+    }
+    .btn-confirm  { background: #28a745; color: #fff; }
+    .btn-confirm:hover  { background: #218838; }
+    .btn-false    { background: #dc3545; color: #fff; }
+    .btn-false:hover    { background: #c82333; }
+    .btn-cand     { background: #fd7e14; color: #fff; }
+    .btn-cand:hover     { background: #e8620a; }
+    .btn-skip     { background: #e9ecef; color: #495057; }
+    .btn-skip:hover     { background: #dee2e6; }
+
+    .current-review {
+      font-size: 0.8em;
+      padding: 0.4em 0.6em;
+      border-radius: 4px;
+      text-align: center;
+      font-weight: 600;
+    }
+    .rv-confirmed        { background: #d4edda; color: #155724; }
+    .rv-false_match      { background: #f8d7da; color: #721c24; }
+    .rv-correct_candidate{ background: #fff3cd; color: #856404; }
+
+    .nav-links { font-size: 0.8em; }
+    .nav-links a { display: block; color: #0056b3; margin-bottom: 0.3em; }
+
+    .no-match { color: #888; font-style: italic; font-size: 0.9em; }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <h1>Match Review — {{ prefix }}</h1>
+  <span class="progress-text">{{ idx + 1 }} / {{ total }}</span>
+  <div class="progress-bar-outer"><div class="progress-bar-inner"></div></div>
+  <span class="topbar-right">rowID {{ row_id }}</span>
+</div>
+
+<div class="layout">
+
+  <!-- Context panel -->
+  <div class="panel-context">
+    <h3>Input</h3>
+    {% set first = case_rows[0] %}
+    <div class="ctx-label">{{ first.ref_Label }}</div>
+    {% for col in ctx_cols %}
+      {% set val = first[col] %}
+      {% if val and val == val and val != '' %}
+        <div class="ctx-row">
+          <span class="ctx-key">{{ col }}</span>
+          <span class="ctx-val">{{ val }}</span>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <!-- Match cards -->
+  <div class="panel-matches">
+    <div>
+      <span class="outcome-badge badge-{{ outcome }}">{{ outcome }}</span>
+    </div>
+
+    {% if case_rows | selectattr('gz_id') | list | length == 0 %}
+      <div class="match-card"><p class="no-match">Relegated — no candidate found.</p></div>
+    {% else %}
+      {% for row in case_rows %}
+        {% if row.gz_id and row.gz_id == row.gz_id %}
+          {% set gz = gz_extra.get(row.gz_id | int, {}) %}
+          <div class="match-card">
+            <h4>
+              {{ gz.get('lugar_nombre', row.get('lugar_label', '')) or row.get('lugar_label', '') }}
+              <small style="color:#666; font-weight:400;">gz_id {{ row.gz_id }}</small>
+            </h4>
+            <div class="match-grid">
+
+              <div class="mg-item">
+                <span class="mg-key">Label gazetteer</span>
+                <span class="mg-val">{{ row.get('lugar_label', '') }}</span>
+              </div>
+
+              <div class="mg-item">
+                <span class="mg-key">Nombre</span>
+                <span class="mg-val">{{ gz.get('lugar_nombre', '') }}</span>
+              </div>
+
+              <div class="mg-item">
+                <span class="mg-key">Variantes</span>
+                <span class="mg-val">{{ gz.get('lugar_variantes', '') }}</span>
+              </div>
+
+              <div class="mg-item">
+                <span class="mg-key">Categoría</span>
+                <span class="mg-val">{{ gz.get('lugar_categoria', '') }}{% if gz.get('lugar_categoria_especial') %} / {{ gz['lugar_categoria_especial'] }}{% endif %}</span>
+              </div>
+
+              <div class="mg-item">
+                <span class="mg-key">Partido gen.</span>
+                <span class="mg-val">{{ row.get('lugar_partido_generico', '') }}</span>
+              </div>
+
+              <div class="mg-item">
+                <span class="mg-key">Provincia gen.</span>
+                <span class="mg-val">{{ row.get('lugar_provincia_generica', '') }}</span>
+              </div>
+
+              <div class="mg-item">
+                <span class="mg-key">Región</span>
+                <span class="mg-val">{{ gz.get('lugar_region', '') or gz.get('region', '') }}</span>
+              </div>
+
+              <div class="mg-item">
+                <span class="mg-key">Fuzzy score</span>
+                {% set fs = row.get('fuzzy_score') %}
+                {% if fs and fs == fs %}
+                  {% set fnum = fs | float %}
+                  <span class="mg-val {% if fnum >= 0.9 %}score-high{% elif fnum >= 0.75 %}score-mid{% else %}score-low{% endif %}">
+                    {{ "%.3f" | format(fnum) }}
+                  </span>
+                {% else %}
+                  <span class="mg-val">—</span>
+                {% endif %}
+              </div>
+
+              <div class="mg-item">
+                <span class="mg-key">Toponym match</span>
+                <span class="mg-val">{{ row.get('toponym_match', '') }}</span>
+              </div>
+
+              <div class="mg-item">
+                <span class="mg-key">Saint match</span>
+                <span class="mg-val">{{ row.get('saint_match', '') }}</span>
+              </div>
+
+              <div class="mg-item">
+                <span class="mg-key">Category match</span>
+                <span class="mg-val">{{ row.get('category_match', '') }}</span>
+              </div>
+
+              <div class="mg-item">
+                <span class="mg-key">Territory match</span>
+                <span class="mg-val">{{ row.get('territories_match', '') }}</span>
+              </div>
+
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  <!-- Action panel -->
+  <div class="panel-action">
+
+    <div class="action-group">
+      <h3>Bewertung</h3>
+
+      {% if current_review %}
+        <div class="current-review rv-{{ current_review }}">
+          Aktuell: {{ current_review }}
+        </div>
+        <br>
+      {% endif %}
+
+      {% if outcome == "auto_adopt" %}
+        <form method="POST">
+          <input type="hidden" name="row_id" value="{{ row_id }}">
+          <button class="btn btn-confirm" name="action" value="confirm">✓ Bestätigen</button>
+          <button class="btn btn-false"   name="action" value="false_match">✗ Falscher Match</button>
+          <button class="btn btn-skip"    name="action" value="skip">→ Überspringen</button>
+        </form>
+
+      {% elif outcome == "candidate" %}
+        <form method="POST">
+          <input type="hidden" name="row_id" value="{{ row_id }}">
+          <button class="btn btn-cand"    name="action" value="correct_candidate">✓ Korrekt (ambig.)</button>
+          <button class="btn btn-false"   name="action" value="false_match">✗ Falscher Match</button>
+          <button class="btn btn-skip"    name="action" value="skip">→ Überspringen</button>
+        </form>
+
+      {% else %}
+        <form method="POST">
+          <input type="hidden" name="row_id" value="{{ row_id }}">
+          <button class="btn btn-skip"    name="action" value="skip">→ Weiter</button>
+        </form>
+      {% endif %}
+    </div>
+
+    <div class="action-group nav-links">
+      <h3>Navigation</h3>
+      {% if idx > 0 %}
+        <a href="{{ url_for('matching.review', prefix=prefix, idx=idx - 1) }}">← Zurück</a>
+      {% endif %}
+      {% if idx < total - 1 %}
+        <a href="{{ url_for('matching.review', prefix=prefix, idx=idx + 1) }}">→ Vor (ohne Bewertung)</a>
+      {% endif %}
+      <a href="{{ url_for('matching.match_status', prefix=prefix) }}" style="margin-top:0.5em; color:#666;">↩ Abbrechen</a>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

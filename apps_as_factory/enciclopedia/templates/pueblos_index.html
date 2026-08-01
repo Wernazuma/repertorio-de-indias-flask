@@ -1,0 +1,24 @@
+{% extends "enc_base.html" %}
+
+{% block title %}{{ t('enc_card_pueblos') }}{% endblock %}
+{% block header_h1 %}{{ t('enc_card_pueblos') }}{% endblock %}
+
+{% block enc_content %}
+<div class="infobox pueblos-notice" style="border-left: 3px solid var(--accent, #999);
+   background: var(--surface-2, rgba(0,0,0,.03)); padding: var(--sp-3) var(--sp-3);
+   border-radius: 8px; margin-bottom: var(--sp-4);">
+  <p>{{ t('pueblos_notice_1') }}</p>
+  <p>{{ t('pueblos_notice_2') | safe }}</p>
+  <p style="margin-bottom: 0;">{{ t('pueblos_notice_3') }}</p>
+</div>
+
+<ul class="pueblos-list" style="columns: 3; column-gap: var(--sp-4); list-style: none; padding: 0;">
+  {% for p in pueblos %}
+  <li style="break-inside: avoid; margin-bottom: .3rem;">
+    <a href="{{ url_for('enciclopedia.pueblos_detail', pid=p['peopleID']) }}">{{ p['nombre_pueblo'] }}</a>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}
+
+{% block right_block %}{% endblock %}

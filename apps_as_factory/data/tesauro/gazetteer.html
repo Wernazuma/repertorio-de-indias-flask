@@ -1,0 +1,78 @@
+<article class="wiki-entry">
+  <h1>Gazetteer</h1>
+  <h2>Definición general</h2>
+  <p>El término inglés <em>gazetteer</em> se traduce como "nomenclátor" o índice de topónimos. Especialmente en proyectos digitales, el término se usa con frecuencia para bases de datos geográficos de topónimos. El gazetteer histórico mejor conocido es la  <a href="//www.alexandria.ucsb.edu">Alexandria Digital Library</a> para lugares de la antigüedad clásica.</p>
+  <p>Los elementos (atributos) clave de un gazetteer digital son</p>
+  <ul>
+    <li>Nombre</li>
+    <li>Tipo</li>
+    <li>Localización (coordenadas)</li>
+    <li>(Tiempo)</li>
+  </ul>
+  <h2>Gazetteer de HGIS de las Indias</h2>
+  <p>El gazetteer de <a href="//hgis-indias.net">HGIS de las Indias</a> tiene una estructura dual:</p>
+  <ul>
+    <li><a href="tabla_gz_entidades">Gazetteer-Entidades</a></li>
+    <li><a href="tabla_gz_instancias">Gazetteer-Instancias</a></li>
+  </ul>
+  <p>Cada lugar  colonial con identidad propia encontrado en las fuentes de la época es una posible <strong><em>__entidad__</em></strong>. Esta entidad, a su vez, tiene por lo menos una <strong><em>__instancia__</em></strong> concreta, o varias si cambia la información de atributos. Las instancias se computan a partir de una serie de atributos independientemente compilados y reconstruidos a través del tiempo: Tipo de población; estatus de república; estatus eclesiástico; coordenadas; nombre.</p>
+  <p>P.e. <strong>Entidad</strong></p>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">GZ_ID   ^Etiqueta ^Categoria generica ^Provincia_generica ^Reg</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>5600002</td>
+          <td>Cuenca</td>
+          <td>Ciudad</td>
+          <td>Cuenca</td>
+          <td>QUI</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>Instancias</strong></p>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">GZ_ID   ^START  ^END    ^Etiqueta ^... ^Categoria ^... ^Cat.ecl. ^... ^Reg    ^Pais</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>5600002</td>
+          <td>1701</td>
+          <td>1786</td>
+          <td>Cuenca</td>
+          <td></td>
+          <td>Ciudad</td>
+          <td></td>
+          <td>Curato</td>
+          <td></td>
+          <td>QUI</td>
+          <td>ECU</td>
+        </tr>
+        <tr>
+          <td>5600002</td>
+          <td>1787</td>
+          <td>1808</td>
+          <td>Cuenca</td>
+          <td></td>
+          <td>Ciudad</td>
+          <td></td>
+          <td>Sagrario</td>
+          <td></td>
+          <td>QUI</td>
+          <td>ECU</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>Páginas individuales en el diccionario</h3>
+  <p>El enlace primitivo a las páginas individuales de los lugares del gazetteer desde el WebGIS sigue esta estructura: &lt;nowiki&gt;"https:<em>www.hgis-indias.net/dokuwiki/doku.php?id="&lt;/nowiki&gt; + "gazetteer:[GZ_ID]", p.e. para la ciudad de Cuenca: &lt;nowiki&gt;"https:</em>www.hgis-indias.net/dokuwiki/doku.php?id=gazetteer:5600002"&lt;/nowiki&gt;.</p>
+</article>

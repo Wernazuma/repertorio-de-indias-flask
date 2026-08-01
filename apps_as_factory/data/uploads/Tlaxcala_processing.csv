@@ -1,0 +1,690 @@
+rowID;ref_Label;gz_id;fuzzy_score;category_match;saint_match;territories_match;phase_1a_outcome;toponym_match;lugar_label;lugar_partido_generico;lugar_provincia_generica;fine_level_mismatch;TYPE;Partido;Column3;ref_Jurisdiccion;ref_START;ref_END;phase_1b_step
+1;Tlaxcala;1000020;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Tlaxcala;Tlaxcala;Tlaxcala;;Ciudad;Tlaxcala;;Tlaxcala;1111;9999;
+2;San Diego;;1.0;category_null;saint_match;jurisdiccion_exact;relegated;exact;Xocoyucan;Tlaxcala;Tlaxcala;;Pueblo;Tlaxcala;;Tlaxcala;1111;9999;
+3;San Lucas;1004097;1.0;category_null;saint_match;jurisdiccion_exact;auto_adopt;toponym_nombre;San Lucas;Tlaxcala;Tlaxcala;;Pueblo;Tlaxcala;;Tlaxcala;1111;9999;
+4;Acuitlapilco;1004042;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Acuitlapilco;Tlaxcala;Tlaxcala;;Pueblo;Tlaxcala;;Tlaxcala;1111;9999;
+5;San Sebastián;1004049;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Atlalpa;Tlaxcala;Tlaxcala;;Pueblo;Tlaxcala;;Tlaxcala;1111;9999;
+6;Yxtulco;1004079;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Ixtulco;Tlaxcala;Tlaxcala;;Pueblo;Tlaxcala;;Tlaxcala;1111;9999;
+7;Panotla;1004092;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Panotla;Tlaxcala;Tlaxcala;;Pueblo;Tlaxcala;;Tlaxcala;1111;9999;
+8;San Esteban;1004124;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Tizantla;Tlaxcala;Tlaxcala;;Pueblo;Tlaxcala;;Tlaxcala;1111;9999;
+9;La Candelaria;1004058;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Candelaria;Tlaxcala;Tlaxcala;;Pueblo;Tlaxcala;;Tlaxcala;1111;9999;
+10;Santiago;1004091;1.0;category_null;saint_mismatch;jurisdiccion_exact;adopted_candidate;none;Ocotlan;Tlaxcala;Tlaxcala;;Pueblo;Tlaxcala;;Tlaxcala;1111;9999;
+11;Acxotla;1004043;1.0;category_null;no_saint;jurisdiccion_exact;adopted_candidate;exact;Acxotla;Tlaxcala;Tlaxcala;;Pueblo;Tlaxcala;;Tlaxcala;1111;9999;
+11;Acxotla;1004053;0.923;category_null;no_saint;jurisdiccion_exact;deleted_candidate;fuzzy;Axotla;Tlaxcala;Tlaxcala;;Pueblo;Tlaxcala;;Tlaxcala;1111;9999;
+12;Ocozelulco;1004089;0.9;category_null;no_saint;jurisdiccion_exact;auto_adopt;fuzzy;Ocotelulco;Tlaxcala;Tlaxcala;;Pueblo;Tlaxcala;;Tlaxcala;1111;9999;
+13;San Miguel;;1.0;category_null;saint_match;jurisdiccion_exact;relegated;exact;San Miguel del Milagro;Tlaxcala;Tlaxcala;;Pueblo;Tlaxcala;;Tlaxcala;1111;9999;
+14;San Juan Totola;1004133;1.0;category_null;saint_match;jurisdiccion_exact;auto_adopt;exact;Totolac;Tlaxcala;Tlaxcala;;Pueblo;Tlaxcala;;Tlaxcala;1111;9999;
+15;San Ambrocio;1004121;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Texantla;Tlaxcala;Tlaxcala;;Pueblo;Tlaxcala;;Tlaxcala;1111;9999;
+16;Los Reyes;1004095;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Quiahuixtlan;Tlaxcala;Tlaxcala;;Pueblo;Tlaxcala;;Tlaxcala;1111;9999;
+18;La Trenidad;1004111;0.875;category_null;no_saint;jurisdiccion_exact;adopted_candidate;fuzzy;Tenexyecac;Tlaxcala;Tlaxcala;;Pueblo;Tlaxcala;;Tlaxcala;1111;9999;
+19;San Jorxe;1004096;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;San Jorge;Tlaxcala;Tlaxcala;;Pueblo;Tlaxcala;;Tlaxcala;1111;9999;
+20;San Matheo;1004054;0.947;category_null;no_saint;jurisdiccion_exact;deleted_candidate;fuzzy;Ayecac;Tlaxcala;Tlaxcala;;Pueblo;Tlaxcala;;Tlaxcala;1111;9999;
+20;San Matheo;1004072;0.947;category_null;no_saint;jurisdiccion_exact;adopted_candidate;fuzzy;Huexoyucan;Tlaxcala;Tlaxcala;;Pueblo;Tlaxcala;;Tlaxcala;1111;9999;
+20;San Matheo;1004114;0.947;category_null;no_saint;jurisdiccion_exact;deleted_candidate;fuzzy;Tepetitla;Tlaxcala;Tlaxcala;;Pueblo;Tlaxcala;;Tlaxcala;1111;9999;
+20;San Matheo;1004098;0.824;category_null;no_saint;jurisdiccion_exact;deleted_candidate;none;San Matias;Tlaxcala;Tlaxcala;;Pueblo;Tlaxcala;;Tlaxcala;1111;9999;
+20;San Matheo;1004115;0.824;category_null;no_saint;jurisdiccion_exact;deleted_candidate;none;Tepetomatitlan;Tlaxcala;Tlaxcala;;Pueblo;Tlaxcala;;Tlaxcala;1111;9999;
+21;San Tadeo;1004075;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Huiloapan;Tlaxcala;Tlaxcala;;Pueblo;Tlaxcala;;Tlaxcala;1111;9999;
+22;San Francisco Temetzontla;1004107;1.0;category_null;saint_match;jurisdiccion_exact;auto_adopt;toponym_nombre;Temetzontla;Tlaxcala;Tlaxcala;;Pueblo;Tlaxcala;;Tlaxcala;1111;9999;
+23;Santa Ana Chiautempan;1004060;1.0;category_null;saint_match;jurisdiccion_exact;auto_adopt;toponym_nombre;Chiautempan;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+24;Santa María Magdalena;;0.8;category_null;saint_mismatch;jurisdiccion_exact;relegated;none;Acxotla;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+25;San Francisco Tetlanoca;1004119;0.957;category_null;saint_match;jurisdiccion_exact;adopted_candidate;fuzzy;Tetlanohcan;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+25;San Francisco Tetlanoca;1004127;0.878;category_null;saint_match;jurisdiccion_exact;deleted_candidate;fuzzy;Tlacuilohcan;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+25;San Francisco Tetlanoca;1004086;0.865;category_null;saint_match;jurisdiccion_exact;deleted_candidate;fuzzy;Mitepec;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+25;San Francisco Tetlanoca;1004116;0.844;category_null;saint_match;jurisdiccion_exact;deleted_candidate;none;Tepeyanco;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+25;San Francisco Tetlanoca;1004048;0.837;category_null;saint_match;jurisdiccion_exact;deleted_candidate;none;Atexcatzinco;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+25;San Francisco Tetlanoca;1004089;0.821;category_null;saint_match;jurisdiccion_exact;deleted_candidate;none;Ocotelulco;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+25;San Francisco Tetlanoca;1004107;0.821;category_null;saint_match;jurisdiccion_exact;deleted_candidate;none;Temetzontla;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+26;San Pedro Tlalcoapan;1004128;0.95;category_null;saint_match;jurisdiccion_exact;auto_adopt;fuzzy;Tlalcuapan;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+27;San Bartolomé;1004064;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Cuahuixmatlac;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+27;San Bartolomé;1004082;1.0;category_null;saint_match;jurisdiccion_exact;deleted_candidate;exact;Matlalohcan;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+27;San Bartolomé;1004109;1.0;category_null;saint_match;jurisdiccion_exact;deleted_candidate;exact;Tenango;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+28;San Pablo Apetlatitlan;1004046;0.957;category_null;saint_match;jurisdiccion_exact;adopted_candidate;fuzzy;Apetatitlan;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+28;San Pablo Apetlatitlan;1004101;0.8;category_null;saint_match;jurisdiccion_exact;deleted_candidate;none;San Pablo del Monte;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+28;San Pablo Apetlatitlan;1004147;0.8;category_null;saint_match;jurisdiccion_exact;deleted_candidate;none;Zitlaltepec;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+29;San Bernardino;1004063;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Contla;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+30;Santa Cruz;1004130;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Santa Cruz Tlaxcala;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+31;San Bernabé;1004045;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Amaxac;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+32;San Miguel;1004099;1.0;category_null;saint_match;jurisdiccion_exact;deleted_candidate;exact;San Miguel del Milagro;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+32;San Miguel;1004100;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;San Miguelito;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+32;San Miguel;1004108;1.0;category_null;saint_match;jurisdiccion_exact;deleted_candidate;exact;Tenancingo;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+32;San Miguel;1004140;1.0;category_null;saint_match;jurisdiccion_exact;deleted_candidate;exact;Xochitecatitla;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+33;San Lucas;1004097;1.0;category_null;saint_match;jurisdiccion_exact;auto_adopt;toponym_nombre;San Lucas;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+34;Belén;1004057;1.0;category_null;saint_mismatch;jurisdiccion_exact;adopted_candidate;none;Belen;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+34;Belén;1004085;0.8;category_null;saint_mismatch;jurisdiccion_exact;deleted_candidate;none;Michacatitlan;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+35;San Matías;1004098;1.0;category_null;saint_match;jurisdiccion_exact;auto_adopt;toponym_nombre;San Matias;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+36;San Damián;1004123;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Texoloc;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+36;San Damián;1004125;1.0;category_null;saint_match;jurisdiccion_exact;deleted_candidate;exact;Tlacocalpan;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+37;San Dionisio;1004143;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Yauhquemehcan;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+38;Atlihuetzian;1004051;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Atlihuetzian;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+39;San Francisco Tlacuiloca;1004127;0.958;category_null;saint_match;jurisdiccion_exact;adopted_candidate;fuzzy;Tlacuilohcan;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+39;San Francisco Tlacuiloca;1004093;0.85;category_null;saint_match;jurisdiccion_exact;deleted_candidate;fuzzy;Papalotla;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+39;San Francisco Tlacuiloca;1004086;0.833;category_null;saint_match;jurisdiccion_exact;deleted_candidate;none;Mitepec;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+39;San Francisco Tlacuiloca;1004119;0.833;category_null;saint_match;jurisdiccion_exact;deleted_candidate;none;Tetlanohcan;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+39;San Francisco Tlacuiloca;1004116;0.829;category_null;saint_match;jurisdiccion_exact;deleted_candidate;none;Tepeyanco;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+39;San Francisco Tlacuiloca;1004089;0.809;category_null;saint_match;jurisdiccion_exact;deleted_candidate;none;Ocotelulco;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+40;San Lorenzo;1004052;1.0;category_null;saint_match;jurisdiccion_exact;deleted_candidate;exact;Axocomanitla;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+40;San Lorenzo;1004059;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Chaquitla;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+40;San Lorenzo;1004066;1.0;category_null;saint_match;jurisdiccion_exact;deleted_candidate;exact;Cuapiaxtla;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+41;San Martín Xaltocan;1004136;1.0;category_null;saint_match;jurisdiccion_exact;auto_adopt;toponym_nombre;Xaltocan;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+42;San Simón;1004102;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;San Simon;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+42;San Simón;1004103;1.0;category_null;saint_match;jurisdiccion_exact;deleted_candidate;exact;San Simon;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+43;Santa Bárbara;1004041;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Acuicuizcatepec;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+44;San Lucas;1004097;1.0;category_null;saint_match;jurisdiccion_exact;auto_adopt;toponym_nombre;San Lucas;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+46;San Antonio Cuaxomulco;1004068;1.0;category_null;saint_match;jurisdiccion_exact;auto_adopt;toponym_nombre;Cuaxomulco;Tlaxcala;Tlaxcala;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;
+47;San Luis Huamantla;1004071;1.0;category_null;saint_match;jurisdiccion_exact;auto_adopt;toponym_nombre;Huamantla;Tlaxcala;Tlaxcala;;Pueblo;San Luis Huamantla;;Tlaxcala;1111;9999;
+48;San Lorenzo Quapistla;1004066;0.947;category_null;saint_match;jurisdiccion_exact;adopted_candidate;fuzzy;Cuapiaxtla;Tlaxcala;Tlaxcala;;Pueblo;San Luis Huamantla;;Tlaxcala;1111;9999;
+48;San Lorenzo Quapistla;1004059;0.857;category_null;saint_match;jurisdiccion_exact;deleted_candidate;fuzzy;Chaquitla;Tlaxcala;Tlaxcala;;Pueblo;San Luis Huamantla;;Tlaxcala;1111;9999;
+49;San Pablo Zitlaltepeque;1004147;0.976;category_null;saint_match;jurisdiccion_exact;adopted_candidate;fuzzy;Zitlaltepec;Tlaxcala;Tlaxcala;;Pueblo;San Luis Huamantla;;Tlaxcala;1111;9999;
+49;San Pablo Zitlaltepeque;1004101;0.8;category_null;saint_match;jurisdiccion_exact;deleted_candidate;none;San Pablo del Monte;Tlaxcala;Tlaxcala;;Pueblo;San Luis Huamantla;;Tlaxcala;1111;9999;
+50;San Juan Ystenco;1004078;0.938;category_null;saint_match;jurisdiccion_exact;auto_adopt;fuzzy;Ixtenco;Tlaxcala;Tlaxcala;;Pueblo;San Luis Huamantla;;Tlaxcala;1111;9999;
+51;San Nicolás Terrenate;1004117;1.0;category_null;saint_match;jurisdiccion_exact;auto_adopt;toponym_nombre;Terrenate;Tlaxcala;Tlaxcala;;Pueblo;San Luis Huamantla;;Tlaxcala;1111;9999;
+52;San Luis Apizaco;1004047;1.0;category_null;saint_match;jurisdiccion_exact;auto_adopt;toponym_nombre;Apizaco;Tlaxcala;Tlaxcala;;Pueblo;Apizaco;;Tlaxcala;1111;9999;
+53;Santiago Tetla;1004118;1.0;category_null;saint_match;jurisdiccion_exact;auto_adopt;toponym_nombre;Tetla;Tlaxcala;Tlaxcala;;Pueblo;Apizaco;;Tlaxcala;1111;9999;
+54;Santa María Tescalaque;1004122;0.923;category_null;saint_match;jurisdiccion_exact;adopted_candidate;fuzzy;Texcalac;Tlaxcala;Tlaxcala;;Pueblo;Apizaco;;Tlaxcala;1111;9999;
+54;Santa María Tescalaque;1004132;0.872;category_null;saint_match;jurisdiccion_exact;deleted_candidate;fuzzy;Tocatlan;Tlaxcala;Tlaxcala;;Pueblo;Apizaco;;Tlaxcala;1111;9999;
+54;Santa María Tescalaque;1004104;0.857;category_null;saint_match;jurisdiccion_exact;deleted_candidate;fuzzy;Santa Maria España;Tlaxcala;Tlaxcala;;Pueblo;Apizaco;;Tlaxcala;1111;9999;
+54;Santa María Tescalaque;1004076;0.812;category_null;saint_match;jurisdiccion_exact;deleted_candidate;none;Ixcotla;Tlaxcala;Tlaxcala;;Pueblo;Apizaco;;Tlaxcala;1111;9999;
+54;Santa María Tescalaque;1004079;0.812;category_null;saint_match;jurisdiccion_exact;deleted_candidate;none;Ixtulco;Tlaxcala;Tlaxcala;;Pueblo;Apizaco;;Tlaxcala;1111;9999;
+55;San Francisco Atexcatzinco;1004048;1.0;category_null;saint_match;jurisdiccion_exact;auto_adopt;toponym_nombre;Atexcatzinco;Tlaxcala;Tlaxcala;;Pueblo;Apizaco;;Tlaxcala;1111;9999;
+56;San Bartolomé (Matlalocan?);1004082;0.96;category_null;saint_match;jurisdiccion_exact;adopted_candidate;fuzzy;Matlalohcan;Tlaxcala;Tlaxcala;;Pueblo;Apizaco;;Tlaxcala;1111;9999;
+56;San Bartolomé (Matlalocan?);1004109;0.8;category_null;saint_match;jurisdiccion_exact;deleted_candidate;none;Tenango;Tlaxcala;Tlaxcala;;Pueblo;Apizaco;;Tlaxcala;1111;9999;
+57;San Salvador;1004134;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Tzompantepec;Tlaxcala;Tlaxcala;;Pueblo;Apizaco;;Tlaxcala;1111;9999;
+58;San Juan Quetzalcoapan;1004094;1.0;category_null;saint_match;jurisdiccion_exact;auto_adopt;toponym_nombre;Quetzalcoapan;Tlaxcala;Tlaxcala;;Pueblo;Apizaco;;Tlaxcala;1111;9999;
+59;San Cosme;1004081;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Matlaloca;Tlaxcala;Tlaxcala;;Pueblo;Apizaco;;Tlaxcala;1111;9999;
+59;San Cosme;1004083;1.0;category_null;saint_match;jurisdiccion_exact;deleted_candidate;exact;Mazatecochco;Tlaxcala;Tlaxcala;;Pueblo;Apizaco;;Tlaxcala;1111;9999;
+60;San Andrés;1004044;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Aguatepec;Tlaxcala;Tlaxcala;;Pueblo;Apizaco;;Tlaxcala;1111;9999;
+60;San Andrés;1004065;1.0;category_null;saint_match;jurisdiccion_exact;deleted_candidate;exact;Cuamilpa;Tlaxcala;Tlaxcala;;Pueblo;Apizaco;;Tlaxcala;1111;9999;
+61;Santa Úrsula;1004146;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Zimatepec;Tlaxcala;Tlaxcala;;Pueblo;Apizaco;;Tlaxcala;1111;9999;
+62;Santa Ana Guiloaque;1004074;0.97;category_null;saint_match;jurisdiccion_exact;adopted_candidate;fuzzy;Huiloac;Tlaxcala;Tlaxcala;;Pueblo;Apizaco;Huiloac;Tlaxcala;1111;9999;
+62;Santa Ana Guiloaque;1004060;0.833;category_null;saint_match;jurisdiccion_exact;deleted_candidate;none;Chiautempan;Tlaxcala;Tlaxcala;;Pueblo;Apizaco;Huiloac;Tlaxcala;1111;9999;
+63;San Benito;;1.0;category_null;saint_match;jurisdiccion_exact;relegated;exact;Xaltocan;Tlaxcala;Tlaxcala;;Pueblo;Apizaco;;Tlaxcala;1111;9999;
+64;Santa María Tocatlan;1004132;1.0;category_null;saint_match;jurisdiccion_exact;auto_adopt;toponym_nombre;Tocatlan;Tlaxcala;Tlaxcala;;Pueblo;Apizaco;;Tlaxcala;1111;9999;
+65;San Agustin Tlaxco;1004131;1.0;category_null;saint_match;jurisdiccion_exact;auto_adopt;toponym_nombre;Tlaxco;Tlaxcala;Tlaxcala;;Pueblo;Tlaxco;;Tlaxcala;1111;9999;
+67;San Felipe Ixtacuistla;1004077;1.0;category_null;saint_match;jurisdiccion_exact;auto_adopt;toponym_nombre;Ixtacuistla;Tlaxcala;Tlaxcala;;Pueblo;San Felipe;;Tlaxcala;1111;9999;
+68;La Trinidad;1004111;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Tenexyecac;Tlaxcala;Tlaxcala;;Pueblo;San Felipe;;Tlaxcala;1111;9999;
+69;Hueyotlipam;1004073;0.952;category_null;no_saint;jurisdiccion_exact;auto_adopt;fuzzy;Hueyotlipan;Tlaxcala;Tlaxcala;;Pueblo;San Felipe;;Tlaxcala;1111;9999;
+70;San Simon;1004102;1.0;category_null;saint_match;jurisdiccion_exact;deleted_candidate;exact;San Simon;Tlaxcala;Tlaxcala;;Pueblo;San Felipe;;Tlaxcala;1111;9999;
+70;San Simon;1004103;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;San Simon;Tlaxcala;Tlaxcala;;Pueblo;San Felipe;;Tlaxcala;1111;9999;
+71;Nra Sra de España;1004104;0.8;category_null;no_saint;jurisdiccion_exact;adopted_candidate;none;Santa Maria España;Tlaxcala;Tlaxcala;;Pueblo;San Felipe;;Tlaxcala;1111;9999;
+72;Ixcotla;1004076;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Ixcotla;Tlaxcala;Tlaxcala;;Pueblo;San Felipe;;Tlaxcala;1111;9999;
+73;La Magdalena;1004080;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Magdalena;Tlaxcala;Tlaxcala;;Pueblo;San Felipe;;Tlaxcala;1111;9999;
+73;La Magdalena;1004129;1.0;category_null;saint_match;jurisdiccion_exact;deleted_candidate;exact;Tlaltelulco;Tlaxcala;Tlaxcala;;Pueblo;San Felipe;;Tlaxcala;1111;9999;
+74;San Meteo;;0.889;category_null;no_saint;jurisdiccion_exact;relegated;fuzzy;Ayecac;Tlaxcala;Tlaxcala;;Pueblo;San Felipe;;Tlaxcala;1111;9999;
+75;San Diego;1004141;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Xocoyucan;Tlaxcala;Tlaxcala;;Pueblo;San Felipe;;Tlaxcala;1111;9999;
+76;Santa Justina;1004069;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Ecatepec;Tlaxcala;Tlaxcala;;Pueblo;San Felipe;;Tlaxcala;1111;9999;
+77;Santa Ines;1004106;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Tecuexcomac;Tlaxcala;Tlaxcala;;Pueblo;San Felipe;;Tlaxcala;1111;9999;
+77;Santa Ines;1004144;1.0;category_null;saint_match;jurisdiccion_exact;deleted_candidate;exact;Zacatelco;Tlaxcala;Tlaxcala;;Pueblo;San Felipe;;Tlaxcala;1111;9999;
+78;..paluca;1004088;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Nopalucan;Tlaxcala;Tlaxcala;;Pueblo;San Felipe;;Tlaxcala;1111;9999;
+80;Santa María Nativitas;1004087;1.0;category_null;saint_match;jurisdiccion_exact;auto_adopt;toponym_nombre;Nativitas;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+81;Santo Tomás;1004142;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Xostla;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+82;Santiago;;1.0;category_null;saint_mismatch;jurisdiccion_exact;relegated;none;Ocotlan;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+83;San Miguel;1004099;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;San Miguel del Milagro;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+83;San Miguel;1004100;1.0;category_null;saint_match;jurisdiccion_exact;deleted_candidate;exact;San Miguelito;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+83;San Miguel;1004108;1.0;category_null;saint_match;jurisdiccion_exact;deleted_candidate;exact;Tenancingo;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+83;San Miguel;1004140;1.0;category_null;saint_match;jurisdiccion_exact;deleted_candidate;exact;Xochitecatitla;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+84;San Rafael;1004110;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Tenanyecac;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+85;San Vicente;1004138;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Xiloxochitla;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+86;Santa Elena;1004085;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Michacatitlan;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+87;San Andrés;1004044;1.0;category_null;saint_match;jurisdiccion_exact;deleted_candidate;exact;Aguatepec;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+87;San Andrés;1004065;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Cuamilpa;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+88;San Damián;1004123;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Texoloc;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+88;San Damián;1004125;1.0;category_null;saint_match;jurisdiccion_exact;deleted_candidate;exact;Tlacocalpan;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+89;San Bartolomé;1004064;1.0;category_null;saint_match;jurisdiccion_exact;deleted_candidate;exact;Cuahuixmatlac;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+89;San Bartolomé;1004082;1.0;category_null;saint_match;jurisdiccion_exact;deleted_candidate;exact;Matlalohcan;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+89;San Bartolomé;1004109;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Tenango;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+90;Santa Inés;1004106;1.0;category_null;saint_match;jurisdiccion_exact;deleted_candidate;exact;Tecuexcomac;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+90;Santa Inés;1004144;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Zacatelco;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+91;San Jerónimo;1004145;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Zacualpan;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+92;Santa Catarina;1004055;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Ayometla;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+93;Santa Toribia;1004137;0.88;category_null;no_saint;jurisdiccion_exact;adopted_candidate;fuzzy;Xicohtzinco;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+94;San Marcos;1004062;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Contla;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+95;San Francisco Topoyango;1004116;0.87;category_null;saint_match;jurisdiccion_exact;deleted_candidate;fuzzy;Tepeyanco;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+95;San Francisco Topoyango;1004086;0.842;category_null;saint_match;jurisdiccion_exact;deleted_candidate;none;Mitepec;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+95;San Francisco Topoyango;1004093;0.821;category_null;saint_match;jurisdiccion_exact;adopted_candidate;none;Papalotla;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+95;San Francisco Topoyango;1004119;0.818;category_null;saint_match;jurisdiccion_exact;deleted_candidate;none;Tetlanohcan;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+95;San Francisco Topoyango;1004089;0.8;category_null;saint_match;jurisdiccion_exact;deleted_candidate;none;Ocotelulco;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+95;San Francisco Topoyango;1004127;0.8;category_null;saint_match;jurisdiccion_exact;deleted_candidate;none;Tlacuilohcan;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+96;San Juan;1004050;1.0;category_null;saint_match;jurisdiccion_exact;deleted_candidate;exact;Atlangatepec;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+96;San Juan;1004070;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Huactzinco;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+96;San Juan;1004078;1.0;category_null;saint_match;jurisdiccion_exact;deleted_candidate;exact;Ixtenco;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+96;San Juan;1004094;1.0;category_null;saint_match;jurisdiccion_exact;deleted_candidate;exact;Quetzalcoapan;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+96;San Juan;1004133;1.0;category_null;saint_match;jurisdiccion_exact;deleted_candidate;exact;Totolac;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+97;Santiago;;1.0;category_null;saint_mismatch;jurisdiccion_exact;relegated;none;Ocotlan;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+98;Santa Isabel;;1.0;category_null;saint_match;jurisdiccion_exact;relegated;exact;Tetlatlahuca;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+99;Tenancingo;1004108;1.0;category_null;no_saint;jurisdiccion_exact;adopted_candidate;exact;Tenancingo;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+99;Tenancingo;1004109;1.0;category_null;no_saint;jurisdiccion_exact;deleted_candidate;exact;Tenango;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+100;San Cosme;1004081;1.0;category_null;saint_match;jurisdiccion_exact;deleted_candidate;exact;Matlaloca;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+100;San Cosme;1004083;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Mazatecochco;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+101;San Francisco Papalotla;1004093;1.0;category_null;saint_match;jurisdiccion_exact;auto_adopt;toponym_nombre;Papalotla;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+102;San Pablo del Monte;1004101;1.0;category_null;saint_match;jurisdiccion_exact;auto_adopt;toponym_nombre;San Pablo del Monte;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+103;San Miguel Canoa;1004100;0.897;category_null;saint_match;jurisdiccion_exact;deleted_candidate;fuzzy;San Miguelito;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+103;San Miguel Canoa;1004108;0.839;category_null;saint_match;jurisdiccion_exact;adopted_candidate;none;Tenancingo;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+103;San Miguel Canoa;1004140;0.828;category_null;saint_match;jurisdiccion_exact;deleted_candidate;none;Xochitecatitla;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+103;San Miguel Canoa;1004099;0.815;category_null;saint_match;jurisdiccion_exact;deleted_candidate;none;San Miguel del Milagro;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+104;Santa Isabel;1004120;1.0;category_null;saint_match;jurisdiccion_exact;deleted_candidate;exact;Tetlatlahuca;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+104;Santa Isabel;1004139;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Xiloxoxtla;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+105;San Luis Teolocholco;1004112;1.0;category_null;saint_match;jurisdiccion_exact;auto_adopt;toponym_nombre;Teolocholco;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+106;San Antonio;1004040;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Acuamanala;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+106;San Antonio;1004068;1.0;category_null;saint_match;jurisdiccion_exact;deleted_candidate;exact;Cuaxomulco;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+107;Santa María Astama;;1.0;category_null;saint_mismatch;jurisdiccion_exact;relegated;exact;Aztama;Tlaxcala;Tlaxcala;;Pueblo;Nativitas;;Tlaxcala;1111;9999;
+109;Santa Marta;;0.909;category_null;saint_mismatch;jurisdiccion_exact;relegated;fuzzy;Acxotla;Tlaxcala;Tlaxcala;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+112;Nuestra Señora del Carmen;;0.81;category_null;saint_match;jurisdiccion_exact;relegated;none;Ocotlan;Tlaxcala;Tlaxcala;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+113;San Bartolomé Jonecuila;;0.85;category_null;saint_match;jurisdiccion_exact;relegated;fuzzy;Cuahuixmatlac;Tlaxcala;Tlaxcala;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+114;San Juan Bautista de Zavaleta;;0.875;category_null;saint_match;jurisdiccion_exact;relegated;fuzzy;Atlangatepec;Tlaxcala;Tlaxcala;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+116;Santiago Escalzingo;;0.833;category_null;saint_match;jurisdiccion_exact;relegated;none;Tetla;Tlaxcala;Tlaxcala;;Hacienda;Tlaxcala;Ocotzingo;Tlaxcala;1111;9999;
+117;San Francisco Cuezcomatepeque;;0.833;category_null;saint_match;jurisdiccion_exact;relegated;none;Mitepec;Tlaxcala;Tlaxcala;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+118;Santiago Alzayanga;;0.833;category_null;saint_match;jurisdiccion_exact;relegated;none;Tetla;Tlaxcala;Tlaxcala;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+119;San Diego Texinola;;0.8;category_null;saint_match;jurisdiccion_exact;relegated;none;Xocoyucan;Tlaxcala;Tlaxcala;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+121;San Juan Bautista Cuapiastla;;0.88;category_null;saint_match;jurisdiccion_exact;relegated;fuzzy;Atlangatepec;Tlaxcala;Tlaxcala;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+122;San José Temalacayuca;;0.812;category_null;saint_match;jurisdiccion_exact;relegated;none;Chimalpa;Tlaxcala;Tlaxcala;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+123;La Compasión Tlascantla;;;pending;pending;unknown;relegated;none;;;;False;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+124;San Diego La Paloma y Indiana;;0.8;category_null;saint_match;jurisdiccion_exact;relegated;none;Xocoyucan;Tlaxcala;Tlaxcala;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+125;San Juan Tepeyahualco;;0.815;category_null;saint_match;jurisdiccion_exact;relegated;none;Ixtenco;Tlaxcala;Tlaxcala;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+126;San Martín;;1.0;category_null;saint_match;jurisdiccion_exact;relegated;exact;Xaltocan;Tlaxcala;Tlaxcala;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+127;San Pablo;;1.0;category_null;saint_match;jurisdiccion_exact;relegated;exact;Apetatitlan;Tlaxcala;Tlaxcala;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+128;La Candelaria;;1.0;category_null;saint_match;jurisdiccion_exact;relegated;exact;Candelaria;Tlaxcala;Tlaxcala;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+130;San Antonio Cuatla;;0.909;category_null;saint_match;jurisdiccion_exact;relegated;fuzzy;Cuaxomulco;Tlaxcala;Tlaxcala;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+132;Santa María de la Noria;;0.903;category_null;saint_match;jurisdiccion_exact;relegated;fuzzy;Nativitas;Tlaxcala;Tlaxcala;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+137;Señora Santa Ana;;0.8;category_null;saint_match;jurisdiccion_exact;relegated;none;Huiloac;Tlaxcala;Tlaxcala;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+138;El Balconcillo;;;pending;pending;unknown;relegated;none;;;;False;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+139;San Bartolomé Xonecuila;;0.85;category_null;saint_match;jurisdiccion_exact;relegated;fuzzy;Cuahuixmatlac;Tlaxcala;Tlaxcala;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+140;Santa Bárbara;;1.0;category_null;saint_match;jurisdiccion_exact;relegated;exact;Acuicuizcatepec;Tlaxcala;Tlaxcala;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+141;San Antonio;;1.0;category_null;saint_match;jurisdiccion_exact;relegated;exact;Acuamanala;Tlaxcala;Tlaxcala;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+142;San Diego;;1.0;category_null;saint_match;jurisdiccion_exact;relegated;exact;Xocoyucan;Tlaxcala;Tlaxcala;;Hacienda y venta;Tlaxcala;;Tlaxcala;1111;9999;
+143;San Miguel Quimichuca;;0.87;category_null;saint_match;jurisdiccion_exact;relegated;fuzzy;San Miguelito;Tlaxcala;Tlaxcala;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+144;San Juan Bautista;;1.0;category_null;saint_match;jurisdiccion_exact;relegated;exact;Atlangatepec;Tlaxcala;Tlaxcala;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+145;San Francisco de Asís;;0.909;category_null;saint_match;jurisdiccion_exact;relegated;fuzzy;Atexcatzinco;Tlaxcala;Tlaxcala;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+146;San Miguel Tomecuila y Santa María Soapila;;0.923;category_null;saint_mismatch;jurisdiccion_exact;relegated;fuzzy;San Miguelito;Tlaxcala;Tlaxcala;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+147;La Natividad Tazacuala;;;pending;pending;unknown;relegated;none;;;;False;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+148;San Miguel Tazaguala y San Pedro Cuatoque;;0.88;category_null;saint_match;jurisdiccion_exact;relegated;fuzzy;San Miguelito;Tlaxcala;Tlaxcala;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+152;San Miguel y su Rancho;;0.88;category_null;saint_match;jurisdiccion_exact;relegated;fuzzy;San Miguelito;Tlaxcala;Tlaxcala;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+153;San Francisco Jalapasco;;0.837;category_null;saint_match;jurisdiccion_exact;relegated;none;Papalotla;Tlaxcala;Tlaxcala;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;
+154;Santiago Tochaque;;0.833;category_null;saint_match;jurisdiccion_exact;relegated;none;Tetla;Tlaxcala;Tlaxcala;;Hacienda;Apizaco;;Tlaxcala;1111;9999;
+157;Teometitlan;;0.857;category_null;no_saint;jurisdiccion_exact;relegated;fuzzy;Tepetomatitlan;Tlaxcala;Tlaxcala;;Hacienda;Apizaco;;Tlaxcala;1111;9999;
+158;Tlacaxolotepeque;;;pending;pending;unknown;relegated;none;;;;False;Hacienda;Apizaco;;Tlaxcala;1111;9999;
+159;San Miguel  Tlacotepeque;;0.903;category_null;saint_match;jurisdiccion_exact;relegated;fuzzy;San Miguelito;Tlaxcala;Tlaxcala;;Hacienda;Apizaco;;Tlaxcala;1111;9999;
+160;Topizaque;;;pending;pending;unknown;relegated;none;;;;False;Hacienda;Apizaco;;Tlaxcala;1111;9999;
+161;Quimichuca;;;pending;pending;unknown;relegated;none;;;;False;Hacienda;Apizaco;;Tlaxcala;1111;9999;
+162;San José de la Halaguna;;0.8;category_null;saint_match;jurisdiccion_exact;relegated;none;Chimalpa;Tlaxcala;Tlaxcala;;Hacienda;Apizaco;;Tlaxcala;1111;9999;
+164;San Juan Bautista;;1.0;category_null;saint_match;jurisdiccion_exact;relegated;exact;Atlangatepec;Tlaxcala;Tlaxcala;;Hacienda;Tlaxco;;Tlaxcala;1111;9999;
+165;San Miguel Payuca;;0.87;category_null;saint_match;jurisdiccion_exact;relegated;fuzzy;San Miguelito;Tlaxcala;Tlaxcala;;Hacienda;Tlaxco;;Tlaxcala;1111;9999;
+167;San Diego Siochuca;;0.833;category_null;saint_match;jurisdiccion_exact;relegated;none;Xocoyucan;Tlaxcala;Tlaxcala;;Hacienda;Tlaxco;;Tlaxcala;1111;9999;
+169;Massaquiahuac;;;pending;pending;unknown;relegated;none;;;;False;Hacienda;Tlaxco;;Tlaxcala;1111;9999;
+170;Los Jardines;;;pending;pending;unknown;relegated;none;;;;False;Hacienda;Tlaxco;;Tlaxcala;1111;9999;
+174;San José;;1.0;category_null;saint_match;jurisdiccion_exact;relegated;exact;Chimalpa;Tlaxcala;Tlaxcala;;Hacienda;Tlaxco;;Tlaxcala;1111;9999;
+176;Jalostoque;;;pending;pending;unknown;relegated;none;;;;False;Hacienda;Tlaxco;;Tlaxcala;1111;9999;
+177;Metla;;0.889;category_null;no_saint;jurisdiccion_exact;relegated;fuzzy;Tetla;Tlaxcala;Tlaxcala;;Hacienda;Tlaxco;;Tlaxcala;1111;9999;
+180;San Diego;;1.0;category_null;saint_match;jurisdiccion_exact;relegated;exact;Xocoyucan;Tlaxcala;Tlaxcala;;Hacienda;San Felipe;;Tlaxcala;1111;9999;
+181;Techalote;;;pending;pending;unknown;relegated;none;;;;False;Hacienda;San Felipe;;Tlaxcala;1111;9999;
+182;San Blas;;0.857;category_null;saint_mismatch;jurisdiccion_exact;relegated;fuzzy;Cuahuixmatlac;Tlaxcala;Tlaxcala;;Hacienda;San Felipe;;Tlaxcala;1111;9999;
+188;San Pedro;;1.0;category_null;saint_match;jurisdiccion_exact;relegated;exact;Tlalcuapan;Tlaxcala;Tlaxcala;;Hacienda;San Felipe;;Tlaxcala;1111;9999;
+189;San Diego;;1.0;category_null;saint_match;jurisdiccion_exact;relegated;exact;Xocoyucan;Tlaxcala;Tlaxcala;;Hacienda;San Felipe;;Tlaxcala;1111;9999;
+190;Tlapesco;;;pending;pending;unknown;relegated;none;;;;False;Hacienda;San Felipe;;Tlaxcala;1111;9999;
+192;Santiago;;1.0;category_null;saint_mismatch;jurisdiccion_exact;relegated;none;Ocotlan;Tlaxcala;Tlaxcala;;Hacienda;San Felipe;;Tlaxcala;1111;9999;
+195;San Pedro;;1.0;category_null;saint_match;jurisdiccion_exact;relegated;exact;Tlalcuapan;Tlaxcala;Tlaxcala;;Hacienda;San Felipe;;Tlaxcala;1111;9999;
+197;La Compasión;;;pending;pending;unknown;relegated;none;;;;False;Hacienda;Nativitas;;Tlaxcala;1111;9999;
+198;San José;;1.0;category_null;saint_match;jurisdiccion_exact;relegated;exact;Chimalpa;Tlaxcala;Tlaxcala;;Hacienda;Nativitas;;Tlaxcala;1111;9999;
+199;La Compasión;;;pending;pending;unknown;relegated;none;;;;False;Hacienda;Nativitas;;Tlaxcala;1111;9999;
+200;Jaltelulco;1004129;0.947;category_null;no_saint;jurisdiccion_exact;auto_adopt;fuzzy;Tlaltelulco;Tlaxcala;Tlaxcala;;Hacienda;Nativitas;;Tlaxcala;1111;9999;
+201;San Diego;;1.0;category_null;saint_match;jurisdiccion_exact;relegated;exact;Xocoyucan;Tlaxcala;Tlaxcala;;Hacienda;Nativitas;;Tlaxcala;1111;9999;
+203;Tenexaque;;;pending;pending;unknown;relegated;none;;;;False;Hacienda;Nativitas;;Tlaxcala;1111;9999;
+204;San Pedro;;1.0;category_null;saint_match;jurisdiccion_exact;relegated;exact;Tlalcuapan;Tlaxcala;Tlaxcala;;Hacienda;Nativitas;;Tlaxcala;1111;9999;
+206;San Juan;;1.0;category_null;saint_match;jurisdiccion_exact;relegated;exact;Atlangatepec;Tlaxcala;Tlaxcala;;Hacienda;Nativitas;;Tlaxcala;1111;9999;
+207;Los Reyes;;1.0;category_null;saint_match;jurisdiccion_exact;relegated;exact;Quiahuixtlan;Tlaxcala;Tlaxcala;;Hacienda;Nativitas;;Tlaxcala;1111;9999;
+210;Santa Ana;;1.0;category_null;saint_match;jurisdiccion_exact;relegated;exact;Chiautempan;Tlaxcala;Tlaxcala;;Hacienda;Nativitas;;Tlaxcala;1111;9999;
+211;Santa Bárbara;;1.0;category_null;saint_match;jurisdiccion_exact;relegated;exact;Acuicuizcatepec;Tlaxcala;Tlaxcala;;Hacienda;Nativitas;;Tlaxcala;1111;9999;
+212;San Antonio;;1.0;category_null;saint_match;jurisdiccion_exact;relegated;exact;Acuamanala;Tlaxcala;Tlaxcala;;Hacienda;Nativitas;;Tlaxcala;1111;9999;
+213;San Rafael;;1.0;category_null;saint_match;jurisdiccion_exact;relegated;exact;Tenanyecac;Tlaxcala;Tlaxcala;;Hacienda;Nativitas;;Tlaxcala;1111;9999;
+215;San Juan Mixco;;0.88;category_null;saint_match;jurisdiccion_exact;relegated;fuzzy;Ixtenco;Tlaxcala;Tlaxcala;;Hacienda;Nativitas;;Tlaxcala;1111;9999;
+216;Santa Elena;;1.0;category_null;saint_match;jurisdiccion_exact;relegated;exact;Michacatitlan;Tlaxcala;Tlaxcala;;Hacienda;Nativitas;;Tlaxcala;1111;9999;
+217;Ocotlan;1004091;1.0;category_null;no_saint;jurisdiccion_exact;candidate;exact;Ocotlan;Tlaxcala;Tlaxcala;;Rancho;Tlaxcala;;Tlaxcala;1111;9999;
+217;Ocotlan;1004132;0.857;category_null;no_saint;jurisdiccion_exact;candidate;fuzzy;Tocatlan;Tlaxcala;Tlaxcala;;Rancho;Tlaxcala;;Tlaxcala;1111;9999;
+217;Ocotlan;1004090;0.8;category_null;no_saint;jurisdiccion_exact;candidate;none;Ocotitlan;Tlaxcala;Tlaxcala;;Rancho;Tlaxcala;;Tlaxcala;1111;9999;
+218;San Bernardo Sitlaltepeque;1004147;0.952;category_null;saint_mismatch;jurisdiccion_exact;candidate;fuzzy;Zitlaltepec;Tlaxcala;Tlaxcala;;Rancho;Huamantla;;Tlaxcala;1111;9999;
+218;San Bernardo Sitlaltepeque;1004063;0.872;category_null;saint_mismatch;jurisdiccion_exact;candidate;fuzzy;Contla;Tlaxcala;Tlaxcala;;Rancho;Huamantla;;Tlaxcala;1111;9999;
+220;San Antonio Acopilco;1004040;0.824;category_null;saint_match;jurisdiccion_exact;candidate;none;Acuamanala;Tlaxcala;Tlaxcala;;Rancho;Huamantla;;Tlaxcala;1111;9999;
+221;San Diego Cuapiaxtla;1004066;1.0;category_null;saint_mismatch;jurisdiccion_exact;candidate;exact;Cuapiaxtla;Tlaxcala;Tlaxcala;;Rancho;Huamantla;;Tlaxcala;1111;9999;
+221;San Diego Cuapiaxtla;1004141;0.812;category_null;saint_match;jurisdiccion_exact;candidate;none;Xocoyucan;Tlaxcala;Tlaxcala;;Rancho;Huamantla;;Tlaxcala;1111;9999;
+223;San Pedro;1004128;1.0;category_null;saint_match;jurisdiccion_exact;candidate;exact;Tlalcuapan;Tlaxcala;Tlaxcala;;Rancho;Huamantla;;Tlaxcala;1111;9999;
+225;Santa Clara;1004055;0.857;category_null;saint_mismatch;jurisdiccion_exact;candidate;fuzzy;Ayometla;Tlaxcala;Tlaxcala;;Rancho;Huamantla;;Tlaxcala;1111;9999;
+225;Santa Clara;1004130;0.842;category_null;saint_mismatch;jurisdiccion_exact;candidate;none;Santa Cruz Tlaxcala;Tlaxcala;Tlaxcala;;Rancho;Huamantla;;Tlaxcala;1111;9999;
+225;Santa Clara;1004041;0.818;category_null;saint_mismatch;jurisdiccion_exact;candidate;none;Acuicuizcatepec;Tlaxcala;Tlaxcala;;Rancho;Huamantla;;Tlaxcala;1111;9999;
+225;Santa Clara;1004043;0.818;category_null;saint_mismatch;jurisdiccion_exact;candidate;none;Acxotla;Tlaxcala;Tlaxcala;;Rancho;Huamantla;;Tlaxcala;1111;9999;
+225;Santa Clara;1004051;0.818;category_null;saint_mismatch;jurisdiccion_exact;candidate;none;Atlihuetzian;Tlaxcala;Tlaxcala;;Rancho;Huamantla;;Tlaxcala;1111;9999;
+225;Santa Clara;1004053;0.818;category_null;saint_mismatch;jurisdiccion_exact;candidate;none;Axotla;Tlaxcala;Tlaxcala;;Rancho;Huamantla;;Tlaxcala;1111;9999;
+225;Santa Clara;1004057;0.818;category_null;saint_mismatch;jurisdiccion_exact;candidate;none;Belen;Tlaxcala;Tlaxcala;;Rancho;Huamantla;;Tlaxcala;1111;9999;
+225;Santa Clara;1004076;0.818;category_null;saint_mismatch;jurisdiccion_exact;candidate;none;Ixcotla;Tlaxcala;Tlaxcala;;Rancho;Huamantla;;Tlaxcala;1111;9999;
+225;Santa Clara;1004079;0.818;category_null;saint_mismatch;jurisdiccion_exact;candidate;none;Ixtulco;Tlaxcala;Tlaxcala;;Rancho;Huamantla;;Tlaxcala;1111;9999;
+225;Santa Clara;1004087;0.818;category_null;saint_mismatch;jurisdiccion_exact;candidate;none;Nativitas;Tlaxcala;Tlaxcala;;Rancho;Huamantla;;Tlaxcala;1111;9999;
+225;Santa Clara;1004104;0.818;category_null;saint_mismatch;jurisdiccion_exact;candidate;none;Santa Maria España;Tlaxcala;Tlaxcala;;Rancho;Huamantla;;Tlaxcala;1111;9999;
+225;Santa Clara;1004122;0.818;category_null;saint_mismatch;jurisdiccion_exact;candidate;none;Texcalac;Tlaxcala;Tlaxcala;;Rancho;Huamantla;;Tlaxcala;1111;9999;
+225;Santa Clara;1004132;0.818;category_null;saint_mismatch;jurisdiccion_exact;candidate;none;Tocatlan;Tlaxcala;Tlaxcala;;Rancho;Huamantla;;Tlaxcala;1111;9999;
+225;Santa Clara;1004148;0.818;category_null;saint_mismatch;jurisdiccion_exact;candidate;none;Zumpango;Tlaxcala;Tlaxcala;;Rancho;Huamantla;;Tlaxcala;1111;9999;
+225;Santa Clara;1004060;0.8;category_null;saint_mismatch;jurisdiccion_exact;candidate;none;Chiautempan;Tlaxcala;Tlaxcala;;Rancho;Huamantla;;Tlaxcala;1111;9999;
+225;Santa Clara;1004074;0.8;category_null;saint_mismatch;jurisdiccion_exact;candidate;none;Huiloac;Tlaxcala;Tlaxcala;;Rancho;Huamantla;;Tlaxcala;1111;9999;
+225;Santa Clara;1004088;0.8;category_null;saint_mismatch;jurisdiccion_exact;candidate;none;Nopalucan;Tlaxcala;Tlaxcala;;Rancho;Huamantla;;Tlaxcala;1111;9999;
+227;Tenexaque;;;pending;pending;unknown;relegated;none;;;;False;Rancho;Apizaco;;Tlaxcala;1111;9999;
+230;Totolcuesco;;;pending;pending;unknown;relegated;none;;;;False;Rancho;Apizaco;;Tlaxcala;1111;9999;
+233;Gucicalco;;;pending;pending;unknown;relegated;none;;;;False;Rancho;Apizaco;;Tlaxcala;1111;9999;
+237;X.l...npusco;;;pending;pending;unknown;relegated;none;;;;False;Rancho;Apizaco;;Tlaxcala;1111;9999;
+238;San Miguel Atescacinco;1004100;0.87;category_null;saint_match;jurisdiccion_exact;candidate;fuzzy;San Miguelito;Tlaxcala;Tlaxcala;;Rancho;Apizaco;;Tlaxcala;1111;9999;
+238;San Miguel Atescacinco;1004108;0.829;category_null;saint_match;jurisdiccion_exact;candidate;none;Tenancingo;Tlaxcala;Tlaxcala;;Rancho;Apizaco;;Tlaxcala;1111;9999;
+238;San Miguel Atescacinco;1004099;0.8;category_null;saint_match;jurisdiccion_exact;candidate;none;San Miguel del Milagro;Tlaxcala;Tlaxcala;;Rancho;Apizaco;;Tlaxcala;1111;9999;
+239;San Pedro Zotoluca;1004128;0.839;category_null;saint_match;jurisdiccion_exact;candidate;none;Tlalcuapan;Tlaxcala;Tlaxcala;;Rancho;Apizaco;;Tlaxcala;1111;9999;
+243;San Bartolomé;1004064;1.0;category_null;saint_match;jurisdiccion_exact;candidate;exact;Cuahuixmatlac;Tlaxcala;Tlaxcala;;Rancho;Apizaco;;Tlaxcala;1111;9999;
+243;San Bartolomé;1004082;1.0;category_null;saint_match;jurisdiccion_exact;candidate;exact;Matlalohcan;Tlaxcala;Tlaxcala;;Rancho;Apizaco;;Tlaxcala;1111;9999;
+243;San Bartolomé;1004109;1.0;category_null;saint_match;jurisdiccion_exact;candidate;exact;Tenango;Tlaxcala;Tlaxcala;;Rancho;Apizaco;;Tlaxcala;1111;9999;
+245;Socaque;;;pending;pending;unknown;relegated;none;;;;False;Rancho;Apizaco;;Tlaxcala;1111;9999;
+246;Tepezalam;;;pending;pending;unknown;relegated;none;;;;False;Rancho;Apizaco;;Tlaxcala;1111;9999;
+251;Tlacotla;1004043;0.923;category_null;no_saint;jurisdiccion_exact;auto_adopt;fuzzy;Acxotla;Tlaxcala;Tlaxcala;;Rancho;Tlaxco;;Tlaxcala;1111;9999;
+253;San José;1004061;1.0;category_null;saint_match;jurisdiccion_exact;candidate;exact;Chimalpa;Tlaxcala;Tlaxcala;;Rancho;San Felipe;;Tlaxcala;1111;9999;
+255;El Carmen;1004056;1.0;category_null;saint_match;jurisdiccion_exact;candidate;exact;Aztama;Tlaxcala;Tlaxcala;;Rancho;San Felipe;;Tlaxcala;1111;9999;
+258;Guizye;;;pending;pending;unknown;relegated;none;;;;False;Rancho;San Felipe;;Tlaxcala;1111;9999;
+259;San Lorenzo;1004052;1.0;category_null;saint_match;jurisdiccion_exact;candidate;exact;Axocomanitla;Tlaxcala;Tlaxcala;;Rancho;San Felipe;;Tlaxcala;1111;9999;
+259;San Lorenzo;1004059;1.0;category_null;saint_match;jurisdiccion_exact;candidate;exact;Chaquitla;Tlaxcala;Tlaxcala;;Rancho;San Felipe;;Tlaxcala;1111;9999;
+259;San Lorenzo;1004066;1.0;category_null;saint_match;jurisdiccion_exact;candidate;exact;Cuapiaxtla;Tlaxcala;Tlaxcala;;Rancho;San Felipe;;Tlaxcala;1111;9999;
+260;Santa Cruz;1004130;1.0;category_null;saint_match;jurisdiccion_exact;candidate;exact;Santa Cruz Tlaxcala;Tlaxcala;Tlaxcala;;Rancho;San Felipe;;Tlaxcala;1111;9999;
+261;San Miguel;1004099;1.0;category_null;saint_match;jurisdiccion_exact;candidate;exact;San Miguel del Milagro;Tlaxcala;Tlaxcala;;Rancho;San Felipe;;Tlaxcala;1111;9999;
+261;San Miguel;1004100;1.0;category_null;saint_match;jurisdiccion_exact;candidate;exact;San Miguelito;Tlaxcala;Tlaxcala;;Rancho;San Felipe;;Tlaxcala;1111;9999;
+261;San Miguel;1004108;1.0;category_null;saint_match;jurisdiccion_exact;candidate;exact;Tenancingo;Tlaxcala;Tlaxcala;;Rancho;San Felipe;;Tlaxcala;1111;9999;
+261;San Miguel;1004140;1.0;category_null;saint_match;jurisdiccion_exact;candidate;exact;Xochitecatitla;Tlaxcala;Tlaxcala;;Rancho;San Felipe;;Tlaxcala;1111;9999;
+265;Alporonga;;;pending;pending;unknown;relegated;none;;;;False;Rancho;San Felipe;;Tlaxcala;1111;9999;
+266;Santo Tomás;1004142;1.0;category_null;saint_match;jurisdiccion_exact;candidate;exact;Xostla;Tlaxcala;Tlaxcala;;Rancho;San Felipe;;Tlaxcala;1111;9999;
+269;Valbarcera;;;pending;pending;unknown;relegated;none;;;;False;Rancho;Nativitas;;Tlaxcala;1111;9999;
+270;San Damián;1004123;1.0;category_null;saint_match;jurisdiccion_exact;candidate;exact;Texoloc;Tlaxcala;Tlaxcala;;Rancho;Nativitas;;Tlaxcala;1111;9999;
+270;San Damián;1004125;1.0;category_null;saint_match;jurisdiccion_exact;candidate;exact;Tlacocalpan;Tlaxcala;Tlaxcala;;Rancho;Nativitas;;Tlaxcala;1111;9999;
+272;San Antonio;1004040;1.0;category_null;saint_match;jurisdiccion_exact;candidate;exact;Acuamanala;Tlaxcala;Tlaxcala;;Venta;;;Tlaxcala;1111;9999;
+272;San Antonio;1004068;1.0;category_null;saint_match;jurisdiccion_exact;candidate;exact;Cuaxomulco;Tlaxcala;Tlaxcala;;Venta;;;Tlaxcala;1111;9999;
+273;Tenexaque;;;pending;pending;unknown;relegated;none;;;;False;Venta;;;Tlaxcala;1111;9999;
+275;Santa María de la Defensa;1004043;1.0;category_null;saint_match;jurisdiccion_exact;candidate;exact;Acxotla;Tlaxcala;Tlaxcala;;Molino;;;Tlaxcala;1111;9999;
+275;Santa María de la Defensa;1004087;0.848;category_null;saint_match;jurisdiccion_exact;candidate;none;Nativitas;Tlaxcala;Tlaxcala;;Molino;;;Tlaxcala;1111;9999;
+275;Santa María de la Defensa;1004057;0.842;category_null;saint_match;jurisdiccion_exact;candidate;none;Belen;Tlaxcala;Tlaxcala;;Molino;;;Tlaxcala;1111;9999;
+275;Santa María de la Defensa;1004051;0.812;category_null;saint_match;jurisdiccion_exact;candidate;none;Atlihuetzian;Tlaxcala;Tlaxcala;;Molino;;;Tlaxcala;1111;9999;
+275;Santa María de la Defensa;1004053;0.812;category_null;saint_match;jurisdiccion_exact;candidate;none;Axotla;Tlaxcala;Tlaxcala;;Molino;;;Tlaxcala;1111;9999;
+275;Santa María de la Defensa;1004104;0.812;category_null;saint_match;jurisdiccion_exact;candidate;none;Santa Maria España;Tlaxcala;Tlaxcala;;Molino;;;Tlaxcala;1111;9999;
+275;Santa María de la Defensa;1004148;0.812;category_null;saint_match;jurisdiccion_exact;candidate;none;Zumpango;Tlaxcala;Tlaxcala;;Molino;;;Tlaxcala;1111;9999;
+17;Las Nieves;;1.0;category_null;saint_match;;relegated;toponym_nombre;Nieves;Nieves;Zacatecas;;Pueblo;Tlaxcala;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+45;La Asunción;;1.0;category_null;saint_match;;relegated;toponym_nombre;Asuncion;Putumayo;Popayan;;Pueblo;Santa Ana Chiautempan;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+66;Atlancatepeque;;0.87;category_null;no_saint;;relegated;fuzzy;Tonacatepeque;San Salvador;San Salvador;;Pueblo;Tlaxco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+79;Mitepeque;;0.941;category_null;no_saint;;relegated;fuzzy;Yupitepeque;Chiquimula;Guatemala;;Pueblo;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+108;Nuestra Señora de la Defensa;;0.882;category_null;saint_match;;relegated;fuzzy;Nuestra Señora del Rayo;Parral;Durango;;Pueblo;Nativitas;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+110;Xaltip.C;;0.857;category_null;no_saint;;relegated;fuzzy;Jaltipan;Coatzacoalcos;Veracruz;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+111;Tepalcatepeque;;0.957;category_null;no_saint;;relegated;fuzzy;Tepalcatepec;Cholula;Puebla;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+115;Soltepeque;;0.9;category_null;no_saint;;relegated;fuzzy;Quetzaltepeque de la Sierra;San Salvador;San Salvador;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+120;La Asunción;;1.0;category_null;saint_match;;relegated;toponym_nombre;Asuncion;Putumayo;Popayan;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+129;San Cristóbal Jalapasco;;1.0;category_null;saint_match;;relegated;exact;San Cristobal;Tetela del Rio;Mexico;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+131;La Purísima Concepción;;1.0;category_null;saint_match;;relegated;exact;La Concepcion;Cosihuiriachic;Durango;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+133;Santo Domingo Texmola;;1.0;category_null;saint_match;;relegated;exact;Santo Domingo;Talamanca;Costa Rica;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+134;Guadalupe;;1.0;category_null;saint_match;;relegated;toponym_nombre;Guadalupe;Cuencame;Durango;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+135;San Cristóbal de la Rosa;;1.0;category_null;saint_match;;relegated;exact;San Cristobal;Tetela del Rio;Mexico;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+136;San Diego Azumatla;;1.0;category_null;saint_match;;relegated;exact;San Diego;Acaponeta;Guadalajara;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+149;San Buenaventura;;1.0;category_null;saint_match;;relegated;toponym_nombre;San Buenaventura;Mezquital;Durango;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+150;San Diego Zitlaltepeque;;1.0;category_null;saint_match;;relegated;exact;San Diego;Acaponeta;Guadalajara;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+151;San Diego del Pilancon;;1.0;category_null;saint_match;;relegated;exact;San Diego;Acaponeta;Guadalajara;;Hacienda;Tlaxcala;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+155;San Juan Acocotla;;1.0;category_null;saint_match;;relegated;exact;San Juan;Cienega de los Olivos;Durango;;Hacienda;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+156;Piedras Negras;;1.0;category_null;no_saint;;relegated;exact;Piedras;Montevideo;Banda oriental;;Hacienda;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+163;San José Buenavista;;1.0;category_null;saint_match;;relegated;exact;San Jose;Cienega de los Olivos;Durango;;Hacienda;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+166;San Juan Cuapesco [?];;1.0;category_null;saint_match;;relegated;exact;San Juan;Cienega de los Olivos;Durango;;Hacienda;Tlaxco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+168;Nuestra Señora del Rosario;;1.0;category_null;saint_match;;relegated;toponym_nombre;Nuestra Señora del Rosario;Tonala;Guadalajara;;Hacienda;Tlaxco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+171;Zoltepeque;;0.9;category_null;no_saint;;relegated;fuzzy;Quetzaltepeque de la Sierra;San Salvador;San Salvador;;Hacienda;Tlaxco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+172;San Andrés Buena Vista;;1.0;category_null;saint_match;;relegated;exact;San Andres;Chinipas-Tepehuana;Durango;;Hacienda;Tlaxco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+173;Tliquitepeque;;0.909;category_null;no_saint;;relegated;fuzzy;Yupitepeque;Chiquimula;Guatemala;;Hacienda;Tlaxco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+175;Icatepeque;;0.947;category_null;no_saint;;relegated;fuzzy;Jayaque;Santa Ana;San Salvador;;Hacienda;Tlaxco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+178;Tecomaluca;;0.889;category_null;no_saint;;relegated;fuzzy;Tecoluca;San Vicente;San Salvador;;Hacienda;Tlaxco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+179;Toluquilla;;1.0;category_null;no_saint;;relegated;exact;Toluquilla;Tonala;Guadalajara;;Hacienda;Tlaxco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+183;Huatepeque;;1.0;category_null;no_saint;;relegated;exact;Siguatepeque;Comayagua;Comayagua;;Hacienda;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+184;Metepeque;;0.889;category_null;no_saint;;relegated;fuzzy;Teotepeque;Santa Ana;San Salvador;;Hacienda;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+185;Meca;;1.0;category_null;no_saint;;relegated;exact;Amecac;Atlixco;Puebla;;Hacienda;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+186;Tepalcatepeque;;0.957;category_null;no_saint;;relegated;fuzzy;Tepalcatepec;Cholula;Puebla;;Hacienda;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+187;La Concepción;;1.0;category_null;saint_match;;relegated;toponym_nombre;La Concepcion;Cosihuiriachic;Durango;;Hacienda;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+191;Atotonilco;;1.0;category_null;no_saint;;relegated;exact;Atotonilco;Cuernavaca;Mexico;;Hacienda;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+193;Atoyaque;;0.857;category_null;no_saint;;relegated;fuzzy;Jayaque;Santa Ana;San Salvador;;Hacienda;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+194;San Cristóbal;;1.0;category_null;saint_match;;relegated;toponym_nombre;San Cristobal;Tetela del Rio;Mexico;;Hacienda;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+196;La Concepción;;1.0;category_null;saint_match;;relegated;toponym_nombre;La Concepcion;Cosihuiriachic;Durango;;Hacienda;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+202;Palula;;0.909;category_null;no_saint;;relegated;fuzzy;Pallan;Durango;Durango;;Hacienda;Nativitas;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+205;Buena Vista;;1.0;category_null;no_saint;;relegated;toponym_nombre;Buena Vista;Santa Cruz SC;Cochabamba;;Hacienda;Nativitas;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+208;Santa Águeda;;1.0;category_null;saint_match;;relegated;exact;Mariquita;Mariquita;Mariquita;;Hacienda;Nativitas;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+209;Los Dolores;;1.0;category_null;saint_match;;relegated;toponym_nombre;Dolores;Cuencame;Durango;;Hacienda;Nativitas;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+214;El Rosario;;1.0;category_null;saint_match;;relegated;toponym_nombre;Rosario;Salta;Tucuman;;Hacienda;Nativitas;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+219;El Pilancón;6000881;1.0;category_null;no_saint;;candidate;exact;Ancon;Lima;Lima;;Rancho y casas;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1000019;1.0;category_null;saint_match;;candidate;exact;San Antonio;Texas;Texas;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1001041;1.0;category_null;saint_match;;candidate;exact;San Antonio;Huichapan;Mexico;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1001042;1.0;category_null;saint_match;;candidate;exact;San Antonio;Huichapan;Mexico;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1001112;1.0;category_null;saint_match;;candidate;exact;San Antonio;Ixtlahuaca;Mexico;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1001187;1.0;category_null;saint_match;;candidate;exact;San Antonio;Metepec;Mexico;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1001510;1.0;category_null;saint_match;;candidate;exact;San Antonio;Sultepec;Mexico;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1002620;1.0;category_null;saint_match;;candidate;exact;Huitepec;Peñoles;Oaxaca;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1003261;1.0;category_null;saint_match;;candidate;exact;San Antonio;Huauchinango;Puebla;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1004023;1.0;category_null;saint_match;;candidate;exact;San Antonio;Chontalapa;Tabasco;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1004417;1.0;category_null;saint_match;;candidate;exact;San Antonio;Peten;Guatemala;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1005002;1.0;category_null;saint_match;;candidate;exact;San Antonio;Valles;San Luis Potosi;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1005368;1.0;category_null;saint_match;;candidate;exact;San Antonio;Cosihuiriachic;Durango;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1005433;1.0;category_null;saint_match;;candidate;exact;San Antonio;Cuencame;Durango;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;2000353;1.0;category_null;saint_match;;candidate;exact;San Antonio;Huehuetenango;Guatemala;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;2000829;1.0;category_null;saint_match;;candidate;exact;San Antonio;Yoro;Comayagua;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;2000861;1.0;category_null;saint_match;;candidate;exact;San Antonio;Tegucigalpa;Comayagua;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;2000872;1.0;category_null;saint_match;;candidate;exact;San Antonio;;;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;2000883;1.0;category_null;saint_match;;candidate;exact;San Antonio;San Vicente;San Salvador;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;2000934;1.0;category_null;saint_match;;candidate;exact;San Antonio;Comayagua;Comayagua;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;2000943;1.0;category_null;saint_match;;candidate;exact;San Antonio;Comayagua;Comayagua;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;3000246;1.0;category_null;saint_match;;candidate;exact;San Antonio;Habana Oeste;Habana;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;4000176;1.0;category_null;saint_match;;candidate;exact;San Antonio;San Jaime;Caracas;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;4000407;1.0;category_null;saint_match;;candidate;exact;San Antonio;Alto Orinoco;Guayana;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;5000388;1.0;category_null;saint_match;;candidate;exact;San Antonio;Santa Marta;Santa Marta;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;5000710;1.0;category_null;saint_match;;candidate;exact;Vetas bajas;Vetas-Giron;Pamplona;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;5000858;1.0;category_null;saint_match;;candidate;exact;San Antonio;Andaquies;Neiva;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;5000904;1.0;category_null;saint_match;;candidate;exact;San Antonio;Santa Marta;Santa Marta;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;5600117;1.0;category_null;saint_match;;candidate;exact;San Antonio;Ibarra;Quito;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;5600204;1.0;category_null;saint_match;;candidate;exact;San Antonio;Popayan;Popayan;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;5600529;1.0;category_null;saint_mismatch;;candidate;exact;Mamos;Putumayo;Popayan;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;5600650;1.0;category_null;saint_match;;candidate;exact;San Antonio;Cali;Popayan;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;7000023;1.0;category_null;saint_match;;candidate;exact;San Antonio;Aconcagua;Santiago;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;7000192;1.0;category_null;saint_match;;candidate;exact;San Antonio;Melipilla;Santiago;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;8000693;1.0;category_null;saint_match;;candidate;exact;San Antonio;Yuracarees;Moxos;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;9000271;1.0;category_null;saint_match;;candidate;exact;San Antonio;Chaco;Buenos Aires;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;9000616;1.0;category_null;saint_match;;candidate;exact;San Antonio;Lujan;Buenos Aires;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;9000650;1.0;category_null;saint_match;;candidate;exact;San Antonio;Campaña;Banda oriental;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;9000662;1.0;category_null;saint_match;;candidate;exact;San Antonio;Asuncion;Paraguay;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;9900009;1.0;category_null;saint_match;;candidate;exact;San Antonio;Talamanca;Costa Rica;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;9900115;1.0;category_null;saint_match;;candidate;exact;San Antonio;Calabozo;Caracas;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;9900282;1.0;category_null;saint_match;;candidate;exact;San Antonio;Coahuila;Coahuila;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;9900647;1.0;category_null;saint_match;;candidate;exact;San Antonio;Corrientes;Buenos Aires;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;9900914;1.0;category_null;saint_match;;candidate;exact;San Antonio;Andaquies;Neiva;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;9900928;1.0;category_null;saint_mismatch;;candidate;exact;San Salvador;Putumayo;Popayan;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;9901106;1.0;category_null;saint_match;;candidate;exact;San Antonio;Jujuy;Tucuman;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;9990002;1.0;category_null;saint_match;;candidate;exact;San Antonio;Guayra;Paraguay;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1002211;0.968;category_null;saint_match;;candidate;fuzzy;Tula;Jaumave;Nuevo Santander;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1002608;0.938;category_null;saint_match;;candidate;fuzzy;Tutla;Nejapa;Oaxaca;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;9901219;0.938;category_null;saint_match;;candidate;fuzzy;San Antonio de Talca;Puchacai;Concepcion;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1000319;0.933;category_null;saint_match;;candidate;fuzzy;Tule;Cienega de los Olivos;Durango;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1005143;0.933;category_null;saint_match;;candidate;fuzzy;San Antonio del Tule;San Bartolome;Durango;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1002755;0.909;category_null;saint_match;;candidate;fuzzy;Acutla;Teposcolula;Oaxaca;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1001565;0.903;category_null;saint_match;;candidate;fuzzy;San Antonio Isla;Metepec-Tenango;Mexico;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1004495;0.903;category_null;saint_match;;candidate;fuzzy;Ticul;Sierra;Yucatan;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;3000201;0.903;category_null;saint_match;;candidate;fuzzy;Tuna;Puerto Rico;Puerto Rico;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;5000325;0.903;category_null;saint_match;;candidate;fuzzy;Tena;Boza;Santa Fe;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1003509;0.897;category_null;saint_match;;candidate;fuzzy;San Antonio de la Sal;Tehuacan;Puebla;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1004502;0.897;category_null;saint_match;;candidate;fuzzy;Xul;Sierra;Yucatan;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;8000309;0.897;category_null;saint_match;;candidate;fuzzy;Poto;Azangaro;Puno;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;8000401;0.897;category_null;saint_match;;candidate;fuzzy;Aten;Apolobamba;La Paz;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1004461;0.889;category_null;saint_match;;candidate;fuzzy;Uci;Costa;Yucatan;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1000557;0.882;category_null;saint_match;;candidate;fuzzy;Tapalpa;Sayula;Guadalajara;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1003127;0.882;category_null;saint_match;;candidate;fuzzy;Cuautla;Atlixco;Puebla;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1000564;0.878;category_null;saint_match;;candidate;fuzzy;Tlayacapan;Sayula;Guadalajara;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1004362;0.875;category_null;saint_match;;candidate;fuzzy;Ebula;Bolonchencauich;Yucatan;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;2000647;0.875;category_null;saint_match;;candidate;fuzzy;Esteli;Nueva Segovia;Nicaragua;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;4000426;0.875;category_null;saint_match;;candidate;fuzzy;Upata;Misiones capuchinas;Guayana;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;9000377;0.875;category_null;saint_match;;candidate;fuzzy;Naranjoy;Llanos de Manso;Chaco;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1004325;0.867;category_null;saint_match;;candidate;fuzzy;Tituk;Beneficios Altos;Yucatan;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1004493;0.867;category_null;saint_match;;candidate;fuzzy;Tekit;Sierra;Yucatan;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;2000764;0.867;category_null;saint_match;;candidate;fuzzy;San Antonio del Monte;Sonsonate;Guatemala;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;4000027;0.867;category_null;saint_match;;candidate;fuzzy;Turen;Araure;Caracas;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;4000193;0.867;category_null;saint_match;;candidate;fuzzy;San Antonio de los Altos;Caracas;Caracas;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1003365;0.865;category_null;saint_match;;candidate;fuzzy;Tlatenco;Huejotzingo;Puebla;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;4000561;0.865;category_null;saint_match;;candidate;fuzzy;Tachira;San Cristobal;Maracaibo;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1001113;0.857;category_null;saint_match;;candidate;fuzzy;San Antonio La Cienega;Ixtlahuaca;Mexico;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1002820;0.857;category_null;saint_match;;candidate;fuzzy;San Antonio  Abad;Teposcolula;Oaxaca;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1003493;0.857;category_null;saint_match;;candidate;fuzzy;Cañada;Tehuacan;Puebla;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1004300;0.857;category_null;saint_match;;candidate;fuzzy;Tepetlan;Xalapa;Veracruz;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;5000137;0.857;category_null;saint_match;;candidate;fuzzy;San Antonio Abad;Rio Sinu;Cartagena;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;5000812;0.857;category_null;saint_match;;candidate;fuzzy;Jobo;Valledupar;Santa Marta;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;5600283;0.857;category_null;saint_match;;candidate;fuzzy;San Estanislao Kostka;Maynas;Maynas;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;9900649;0.857;category_null;saint_match;;candidate;fuzzy;San Antonio Miri;Corrientes;Buenos Aires;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+222;San Antonio Tlaxcantenco;1003744;0.85;category_null;saint_match;;candidate;fuzzy;Alpanocan;Tochimilco;Puebla;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+224;Las Ánimas;9000492;1.0;category_null;no_saint;;candidate;toponym_nombre;Las Animas;Pueblos;Paraguay;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+224;Las Ánimas;1005312;1.0;category_null;no_saint;;candidate;toponym_nombre;Las Animas;Rio Nazas;Durango;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+224;Las Ánimas;1005444;1.0;category_null;no_saint;;candidate;toponym_nombre;Animas;Parral;Durango;;Rancho;Huamantla;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+226;Atenco;1001174;1.0;category_null;no_saint;;candidate;exact;Atenco;Metepec;Mexico;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+226;Atenco;1000849;1.0;category_null;no_saint;;candidate;exact;Chimalhuacan Atenco;Coatepec;Mexico;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+226;Atenco;1001434;1.0;category_null;no_saint;;candidate;exact;San Andres;Tacuba;Mexico;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+226;Atenco;1001638;1.0;category_null;no_saint;;candidate;exact;Atenco;Texcoco;Mexico;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+226;Atenco;8000401;1.0;category_null;no_saint;;candidate;exact;Aten;Apolobamba;La Paz;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+226;Atenco;1003300;1.0;category_null;no_saint;;candidate;exact;Atenco;Huayacocotla;Puebla;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+226;Atenco;1003365;1.0;category_null;no_saint;;candidate;exact;Tlatenco;Huejotzingo;Puebla;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+226;Atenco;1003469;0.909;category_null;no_saint;;candidate;fuzzy;Caltenco;Tecali;Puebla;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+226;Atenco;1000794;0.909;category_null;no_saint;;candidate;fuzzy;Tlaltenco;Chalco;Mexico;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+226;Atenco;2000255;0.909;category_null;no_saint;;candidate;fuzzy;Tencoa;Tencoa;Comayagua;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+226;Atenco;1001927;0.909;category_null;no_saint;;candidate;fuzzy;Jaltenco;Zumpango;Mexico;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+226;Atenco;7000351;0.909;category_null;no_saint;;candidate;fuzzy;Maytenco;Itata;Concepcion;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+226;Atenco;1001807;0.909;category_null;no_saint;;candidate;fuzzy;Cuautenco;Xochimilco;Mexico;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+226;Atenco;6000675;0.857;category_null;no_saint;;candidate;fuzzy;Anco;Tayacaja;Huancavelica;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+226;Atenco;6000390;0.857;category_null;no_saint;;candidate;fuzzy;Anco;Anco;Huamanga;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+228;La Mancera;5600034;0.857;category_null;no_saint;;candidate;fuzzy;Anserma Vieja;Vega de Supia;Popayan;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+228;La Mancera;5600036;0.857;category_null;no_saint;;candidate;fuzzy;Anserma;Anserma;Popayan;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+228;La Mancera;6001476;0.857;category_null;no_saint;;candidate;fuzzy;Mancora;Piura;Trujillo;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+229;Barranca Seca;5600281;1.0;category_null;no_saint;;candidate;exact;Pucabarranca;Maynas;Maynas;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+229;Barranca Seca;5000104;1.0;category_null;no_saint;;candidate;exact;Barranca Nueva;Barranca;Cartagena;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+229;Barranca Seca;6000771;1.0;category_null;no_saint;;candidate;exact;Barranca;Chancay;Lima;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+231;Atlixtaca;1003661;1.0;category_null;no_saint;;candidate;exact;Atlixtac;Tlapa;Puebla;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+231;Atlixtaca;1003301;0.941;category_null;no_saint;;candidate;fuzzy;Atixtaca;Huayacocotla;Puebla;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+231;Atlixtaca;1000948;0.875;category_null;no_saint;;candidate;fuzzy;Telixtac;Cuernavaca;Mexico;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+231;Atlixtaca;1001680;0.875;category_null;no_saint;;candidate;fuzzy;Atliaca;Tixtla;Mexico;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+232;San Jacinto Aticpaque;1000857;1.0;category_null;saint_match;;candidate;exact;San Angel;Coyoacan;Mexico;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+232;San Jacinto Aticpaque;1002736;1.0;category_null;saint_match;;candidate;exact;San Jacinto;Teozacualco;Oaxaca;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+232;San Jacinto Aticpaque;2000227;1.0;category_null;saint_match;;candidate;exact;San Jacinto;San Salvador;San Salvador;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+232;San Jacinto Aticpaque;2000778;1.0;category_null;saint_match;;candidate;exact;San Jacinto;Chiquimula;Guatemala;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+232;San Jacinto Aticpaque;4000658;1.0;category_null;saint_match;;candidate;exact;San Jacinto;Trujillo VE;Caracas;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+232;San Jacinto Aticpaque;5000156;1.0;category_null;saint_match;;candidate;exact;San Jacinto;Montañas Altas;Cartagena;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+232;San Jacinto Aticpaque;5000814;1.0;category_null;saint_match;;candidate;exact;San Jacinto;Ocaña;Santa Marta;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+232;San Jacinto Aticpaque;9000173;1.0;category_null;saint_match;;candidate;exact;San Jacinto;Cordoba;Tucuman;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+232;San Jacinto Aticpaque;5000376;0.875;category_null;saint_match;;candidate;fuzzy;Gaira;Santa Marta;Santa Marta;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+232;San Jacinto Aticpaque;1002282;0.865;category_null;saint_match;;candidate;fuzzy;Amilpas;Cuatro Villas;Oaxaca;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+234;Cobalonga;1005428;0.889;category_null;no_saint;;candidate;fuzzy;Covadonga;Cuencame;Durango;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+235;Atecosco;1001225;0.875;category_null;no_saint;;candidate;fuzzy;Atecoxco;Metztitlan;Mexico;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+235;Atecosco;1001226;0.875;category_null;no_saint;;candidate;fuzzy;Atecoxco;Metztitlan;Mexico;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+235;Atecosco;1000107;0.857;category_null;no_saint;;candidate;fuzzy;Texcoco;Texcoco;Mexico;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+235;Atecosco;2000291;0.857;category_null;no_saint;;candidate;fuzzy;Tecuaco;Guazacapan;Guatemala;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+236;Quichaque;7000467;0.875;category_null;no_saint;;candidate;fuzzy;Quinchau;Chacao;Chiloe;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1000019;1.0;category_null;saint_match;;candidate;exact;San Antonio;Texas;Texas;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1001041;1.0;category_null;saint_match;;candidate;exact;San Antonio;Huichapan;Mexico;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1001042;1.0;category_null;saint_match;;candidate;exact;San Antonio;Huichapan;Mexico;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1001112;1.0;category_null;saint_match;;candidate;exact;San Antonio;Ixtlahuaca;Mexico;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1001187;1.0;category_null;saint_match;;candidate;exact;San Antonio;Metepec;Mexico;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1001510;1.0;category_null;saint_match;;candidate;exact;San Antonio;Sultepec;Mexico;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1002620;1.0;category_null;saint_match;;candidate;exact;Huitepec;Peñoles;Oaxaca;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1003261;1.0;category_null;saint_match;;candidate;exact;San Antonio;Huauchinango;Puebla;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1004023;1.0;category_null;saint_match;;candidate;exact;San Antonio;Chontalapa;Tabasco;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1004417;1.0;category_null;saint_match;;candidate;exact;San Antonio;Peten;Guatemala;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1005002;1.0;category_null;saint_match;;candidate;exact;San Antonio;Valles;San Luis Potosi;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1005368;1.0;category_null;saint_match;;candidate;exact;San Antonio;Cosihuiriachic;Durango;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1005433;1.0;category_null;saint_match;;candidate;exact;San Antonio;Cuencame;Durango;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;2000353;1.0;category_null;saint_match;;candidate;exact;San Antonio;Huehuetenango;Guatemala;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;2000829;1.0;category_null;saint_match;;candidate;exact;San Antonio;Yoro;Comayagua;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;2000861;1.0;category_null;saint_match;;candidate;exact;San Antonio;Tegucigalpa;Comayagua;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;2000872;1.0;category_null;saint_match;;candidate;exact;San Antonio;;;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;2000883;1.0;category_null;saint_match;;candidate;exact;San Antonio;San Vicente;San Salvador;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;2000934;1.0;category_null;saint_match;;candidate;exact;San Antonio;Comayagua;Comayagua;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;2000943;1.0;category_null;saint_match;;candidate;exact;San Antonio;Comayagua;Comayagua;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;3000246;1.0;category_null;saint_match;;candidate;exact;San Antonio;Habana Oeste;Habana;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;4000176;1.0;category_null;saint_match;;candidate;exact;San Antonio;San Jaime;Caracas;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;4000407;1.0;category_null;saint_match;;candidate;exact;San Antonio;Alto Orinoco;Guayana;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;5000388;1.0;category_null;saint_match;;candidate;exact;San Antonio;Santa Marta;Santa Marta;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;5000710;1.0;category_null;saint_match;;candidate;exact;Vetas bajas;Vetas-Giron;Pamplona;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;5000858;1.0;category_null;saint_match;;candidate;exact;San Antonio;Andaquies;Neiva;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;5000904;1.0;category_null;saint_match;;candidate;exact;San Antonio;Santa Marta;Santa Marta;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;5600117;1.0;category_null;saint_match;;candidate;exact;San Antonio;Ibarra;Quito;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;5600204;1.0;category_null;saint_match;;candidate;exact;San Antonio;Popayan;Popayan;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;5600529;1.0;category_null;saint_mismatch;;candidate;exact;Mamos;Putumayo;Popayan;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;5600650;1.0;category_null;saint_match;;candidate;exact;San Antonio;Cali;Popayan;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;7000023;1.0;category_null;saint_match;;candidate;exact;San Antonio;Aconcagua;Santiago;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;7000192;1.0;category_null;saint_match;;candidate;exact;San Antonio;Melipilla;Santiago;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;8000693;1.0;category_null;saint_match;;candidate;exact;San Antonio;Yuracarees;Moxos;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;9000271;1.0;category_null;saint_match;;candidate;exact;San Antonio;Chaco;Buenos Aires;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;9000616;1.0;category_null;saint_match;;candidate;exact;San Antonio;Lujan;Buenos Aires;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;9000650;1.0;category_null;saint_match;;candidate;exact;San Antonio;Campaña;Banda oriental;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;9000662;1.0;category_null;saint_match;;candidate;exact;San Antonio;Asuncion;Paraguay;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;9900009;1.0;category_null;saint_match;;candidate;exact;San Antonio;Talamanca;Costa Rica;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;9900115;1.0;category_null;saint_match;;candidate;exact;San Antonio;Calabozo;Caracas;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;9900282;1.0;category_null;saint_match;;candidate;exact;San Antonio;Coahuila;Coahuila;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;9900647;1.0;category_null;saint_match;;candidate;exact;San Antonio;Corrientes;Buenos Aires;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;9900914;1.0;category_null;saint_match;;candidate;exact;San Antonio;Andaquies;Neiva;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;9900928;1.0;category_null;saint_mismatch;;candidate;exact;San Salvador;Putumayo;Popayan;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;9901106;1.0;category_null;saint_match;;candidate;exact;San Antonio;Jujuy;Tucuman;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;9990002;1.0;category_null;saint_match;;candidate;exact;San Antonio;Guayra;Paraguay;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;9000049;0.938;category_null;saint_match;;candidate;fuzzy;Areco;Lujan;Buenos Aires;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1003509;0.929;category_null;saint_match;;candidate;fuzzy;San Antonio de la Sal;Tehuacan;Puebla;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1002897;0.909;category_null;saint_match;;candidate;fuzzy;Analco;Chinantla;Oaxaca;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;7000412;0.909;category_null;saint_match;;candidate;fuzzy;Chacao;Castro;Chiloe;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;6000396;0.903;category_null;saint_match;;candidate;fuzzy;Cachi;Andahuaylas;Huamanga;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;9901219;0.903;category_null;saint_match;;candidate;fuzzy;San Antonio de Talca;Puchacai;Concepcion;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1001113;0.897;category_null;saint_match;;candidate;fuzzy;San Antonio La Cienega;Ixtlahuaca;Mexico;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1001565;0.897;category_null;saint_match;;candidate;fuzzy;San Antonio Isla;Metepec-Tenango;Mexico;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1002211;0.897;category_null;saint_match;;candidate;fuzzy;Tula;Jaumave;Nuevo Santander;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1002820;0.897;category_null;saint_match;;candidate;fuzzy;San Antonio  Abad;Teposcolula;Oaxaca;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1003493;0.897;category_null;saint_match;;candidate;fuzzy;Cañada;Tehuacan;Puebla;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1004461;0.897;category_null;saint_match;;candidate;fuzzy;Uci;Costa;Yucatan;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;3000201;0.897;category_null;saint_match;;candidate;fuzzy;Tuna;Puerto Rico;Puerto Rico;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;5000137;0.897;category_null;saint_match;;candidate;fuzzy;San Antonio Abad;Rio Sinu;Cartagena;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;5000325;0.897;category_null;saint_match;;candidate;fuzzy;Tena;Boza;Santa Fe;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;5600283;0.897;category_null;saint_match;;candidate;fuzzy;San Estanislao Kostka;Maynas;Maynas;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;8000401;0.897;category_null;saint_match;;candidate;fuzzy;Aten;Apolobamba;La Paz;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1004502;0.889;category_null;saint_match;;candidate;fuzzy;Xul;Sierra;Yucatan;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;2000393;0.882;category_null;saint_match;;candidate;fuzzy;San Antonio Palopo;Atitan;Guatemala;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1001274;0.875;category_null;saint_match;;candidate;fuzzy;Jacala;Metztitlan;Mexico;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1002755;0.875;category_null;saint_match;;candidate;fuzzy;Acutla;Teposcolula;Oaxaca;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;4000193;0.875;category_null;saint_match;;candidate;fuzzy;San Antonio de los Altos;Caracas;Caracas;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;8000288;0.875;category_null;saint_match;;candidate;fuzzy;San Antonio del Cobre;Atacama alta;Potosi;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1000375;0.867;category_null;saint_match;;candidate;fuzzy;San Antonio De Padua;Mezquital;Durango;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1002608;0.867;category_null;saint_match;;candidate;fuzzy;Tutla;Nejapa;Oaxaca;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1004362;0.867;category_null;saint_match;;candidate;fuzzy;Ebula;Bolonchencauich;Yucatan;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1004751;0.867;category_null;saint_match;;candidate;fuzzy;San Antonio de Padua;Monterey;California;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;4000142;0.867;category_null;saint_match;;candidate;fuzzy;Humocaro alto;Tocuyo;Caracas;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;4000426;0.867;category_null;saint_match;;candidate;fuzzy;Upata;Misiones capuchinas;Guayana;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;5000677;0.867;category_null;saint_match;;candidate;fuzzy;El Anime;San Juan Llanos;Llanos;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;5600098;0.867;category_null;saint_match;;candidate;fuzzy;Bahia;Puerto Viejo;Guayaquil;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;6000817;0.867;category_null;saint_match;;candidate;fuzzy;Yauli;Huarochiri;Lima;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;6000831;0.867;category_null;saint_match;;candidate;fuzzy;Huari;Huarochiri;Lima;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;9000377;0.867;category_null;saint_match;;candidate;fuzzy;Naranjoy;Llanos de Manso;Chaco;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;9900926;0.867;category_null;saint_match;;candidate;fuzzy;San Antonio de Padua;Putumayo;Popayan;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1000319;0.857;category_null;saint_match;;candidate;fuzzy;Tule;Cienega de los Olivos;Durango;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1003365;0.857;category_null;saint_match;;candidate;fuzzy;Tlatenco;Huejotzingo;Puebla;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1004175;0.857;category_null;saint_match;;candidate;fuzzy;Huatusco;Cordoba;Veracruz;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1005143;0.857;category_null;saint_match;;candidate;fuzzy;San Antonio del Tule;San Bartolome;Durango;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;2000581;0.857;category_null;saint_match;;candidate;fuzzy;Achiotes;Tegucigalpa;Comayagua;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;3000145;0.857;category_null;saint_match;;candidate;fuzzy;Anacape;Florida Oriental;Florida;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;4000294;0.857;category_null;saint_match;;candidate;fuzzy;Caroni;Guayana;Guayana;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;5000812;0.857;category_null;saint_match;;candidate;fuzzy;Jobo;Valledupar;Santa Marta;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;8000309;0.857;category_null;saint_match;;candidate;fuzzy;Poto;Azangaro;Puno;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;9900649;0.857;category_null;saint_match;;candidate;fuzzy;San Antonio Miri;Corrientes;Buenos Aires;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1003180;0.85;category_null;saint_match;;candidate;fuzzy;Cacalotepec;Cholula;Puebla;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1003536;0.85;category_null;saint_match;;candidate;fuzzy;Atzitzintla;Tepeaca;Puebla;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+240;San Antonio Acopinalco;1005017;0.85;category_null;saint_match;;candidate;fuzzy;Coyonostla;San Luis Potosi;San Luis Potosi;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+241;San Buenaventura;1000377;1.0;category_null;saint_match;;candidate;toponym_nombre;San Buenaventura;Mezquital;Durango;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+241;San Buenaventura;1001709;1.0;category_null;saint_match;;candidate;toponym_nombre;San Buenaventura;Toluca;Mexico;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+241;San Buenaventura;1001730;1.0;category_null;saint_match;;candidate;toponym_nombre;San Buenaventura;Tula;Mexico;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+241;San Buenaventura;1004745;1.0;category_null;saint_match;;candidate;toponym_nombre;San Buenaventura;Santa Barbara;California;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+241;San Buenaventura;1005250;1.0;category_null;saint_match;;candidate;toponym_nombre;San Buenaventura;Durango;Durango;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+241;San Buenaventura;2000860;1.0;category_null;saint_match;;candidate;toponym_nombre;San Buenaventura;Olancho;Comayagua;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+241;San Buenaventura;6000757;1.0;category_null;saint_match;;candidate;toponym_nombre;San Buenaventura;Canta;Lima;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+241;San Buenaventura;9900916;1.0;category_null;saint_match;;candidate;toponym_nombre;San Buenaventura;Putumayo;Popayan;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+242;Huexotitlan;1000507;1.0;category_null;no_saint;;candidate;exact;Huejotitlan;Tecaltiche;Guadalajara;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+242;Huexotitlan;1000295;0.952;category_null;no_saint;;candidate;fuzzy;Huejotitan;Cienega de los Olivos;Durango;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+242;Huexotitlan;1001652;0.857;category_null;no_saint;;candidate;fuzzy;Huejotla;Texcoco;Mexico;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+244;Zacapexco;1001071;1.0;category_null;no_saint;;candidate;exact;Zacapexco;Huichapan;Mexico;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+244;Zacapexco;1001024;0.941;category_null;no_saint;;candidate;fuzzy;Macapexco;Huichapan;Mexico;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+244;Zacapexco;1003126;0.933;category_null;no_saint;;candidate;fuzzy;Cuapexco;Atlixco;Puebla;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+244;Zacapexco;1001149;0.933;category_null;no_saint;;candidate;fuzzy;Coapexco;Malinalco;Mexico;;Rancho;Apizaco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+247;Zotoluca;1000109;1.0;category_null;no_saint;;candidate;exact;Toluca;Toluca;Mexico;;Rancho;Tlaxco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+247;Zotoluca;1003638;0.923;category_null;no_saint;;candidate;fuzzy;Atoluca;Teziutlan;Puebla;;Rancho;Tlaxco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+248;Toltecapa;2000484;1.0;category_null;no_saint;;candidate;exact;Tecapa;San Miguel SS;San Salvador;;Rancho;Tlaxco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+249;La  Palma;7000258;1.0;category_null;no_saint;;candidate;toponym_nombre;Palma;Quillota;Santiago;;Molino;Tlaxco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+249;La  Palma;5000031;1.0;category_null;no_saint;;candidate;toponym_nombre;La Palma;La Palma;Mariquita;;Molino;Tlaxco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+250;Toloquilla;1000623;0.9;category_null;no_saint;;candidate;fuzzy;Toluquilla;Tonala;Guadalajara;;Rancho;Tlaxco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+252;Tecamacal;1000989;1.0;category_null;no_saint;;candidate;exact;Tecamac;Ecatepec;Mexico;;Rancho;Tlaxco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+252;Tecamacal;1001439;0.889;category_null;no_saint;;candidate;fuzzy;Tecamachalco;Tacuba;Mexico;;Rancho;Tlaxco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+252;Tecamacal;1003564;0.889;category_null;no_saint;;candidate;fuzzy;Tecamachalco;Tepeaca;Puebla;;Rancho;Tlaxco;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;4000661;1.0;category_null;no_saint;;candidate;exact;Bomboi;Trujillo VE;Caracas;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;3000247;1.0;category_null;no_saint;;candidate;exact;Puerta de la Guira;Habana Oeste;Habana;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;9901005;0.909;category_null;no_saint;;candidate;fuzzy;Puerto de Brito;Nicaragua;Nicaragua;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;2000568;0.909;category_null;no_saint;;candidate;fuzzy;Puerto Caballos;San Pedro Sula;Comayagua;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;5000218;0.909;category_null;no_saint;;candidate;fuzzy;Puerto de Nare;Honda;Mariquita;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;6000024;0.909;category_null;no_saint;;candidate;fuzzy;Ilo;Arica;Arequipa;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;3000002;0.909;category_null;no_saint;;candidate;fuzzy;Puerto Principe;Puerto Principe;Habana;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;5000623;0.909;category_null;no_saint;;candidate;fuzzy;Cañaverales;Giron;Pamplona;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;7000118;0.909;category_null;no_saint;;candidate;fuzzy;Huerta;Curico-Maule;Santiago;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;3000174;0.909;category_null;no_saint;;candidate;fuzzy;Puerto Plata;Puerto Plata;Santo Domingo;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;6001447;0.909;category_null;no_saint;;candidate;fuzzy;Huanchaco;Trujillo PE;Trujillo;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;9901029;0.909;category_null;no_saint;;candidate;fuzzy;Puerto;Leon;Nicaragua;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;9940002;0.909;category_null;no_saint;;candidate;fuzzy;Guiria;Cumana;Cumana;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;5600028;0.909;category_null;no_saint;;candidate;fuzzy;Puerto Viejo;Puerto Viejo;Guayaquil;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;5000374;0.909;category_null;no_saint;;candidate;fuzzy;Puerto Real;Ocaña;Santa Marta;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;4000107;0.909;category_null;no_saint;;candidate;fuzzy;Puerto Cabello;Valencia;Caracas;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;5000653;0.909;category_null;no_saint;;candidate;fuzzy;Puerto de San Salvador;Casanare;Llanos;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;2000875;0.909;category_null;no_saint;;candidate;fuzzy;Puerto San Carlos;San Miguel SS;San Salvador;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;9900197;0.909;category_null;no_saint;;candidate;fuzzy;India Muerta;Santafe;Buenos Aires;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;1000059;0.909;category_null;no_saint;;candidate;fuzzy;Puerto de San Blas;Tepic;Guadalajara;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;5600602;0.909;category_null;no_saint;;candidate;fuzzy;Napo;Quijos;Quijos;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;4000004;0.909;category_null;no_saint;;candidate;fuzzy;Puerto de España;Trinidad TR;Trinidad;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;9901246;0.909;category_null;no_saint;;candidate;fuzzy;Puerto Real;Santo Domingo;Santo Domingo;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;9000716;0.909;category_null;no_saint;;candidate;fuzzy;Puerto Deseado;Patagonia;Patagonia;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;9000717;0.909;category_null;no_saint;;candidate;fuzzy;Puerto Deseado;Patagonia;Patagonia;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;7000322;0.909;category_null;no_saint;;candidate;fuzzy;La Huerta;Linares-Cauquenes;Concepcion;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;2000132;0.909;category_null;no_saint;;candidate;fuzzy;Puerto de Acajutla;Sonsonate;Guatemala;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;3000257;0.909;category_null;no_saint;;candidate;fuzzy;Manzanillo;Bayamo;Habana;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;5000714;0.909;category_null;no_saint;;candidate;fuzzy;Puerto de San Buenaventura;Cucuta;Pamplona;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;9900974;0.909;category_null;no_saint;;candidate;fuzzy;Puerto del Salto;Machala;Guayaquil;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;2000009;0.909;category_null;no_saint;;candidate;fuzzy;Trujillo;Trujillo HO;Comayagua;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;9900701;0.909;category_null;no_saint;;candidate;fuzzy;Puerto Huasco;Huasco;Santiago;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;9900839;0.909;category_null;no_saint;;candidate;fuzzy;La Huerta;San Andres de la Sierra;Durango;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;9900704;0.909;category_null;no_saint;;candidate;fuzzy;Puerto Copiapo;Copiapo;Santiago;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+254;La Puerta;4000323;0.909;category_null;no_saint;;candidate;fuzzy;Puerto Santo;Cumana;Cumana;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+256;Zoltepeque;2000475;0.9;category_null;no_saint;;candidate;fuzzy;Quetzaltepeque de la Sierra;San Salvador;San Salvador;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+256;Zoltepeque;2000552;0.889;category_null;no_saint;;candidate;fuzzy;Ocotepeque;Sensenti;Comayagua;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+256;Zoltepeque;2000438;0.889;category_null;no_saint;;candidate;fuzzy;Teotepeque;Santa Ana;San Salvador;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+256;Zoltepeque;2000239;0.875;category_null;no_saint;;candidate;fuzzy;Ixtepeque;San Vicente;San Salvador;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+257;Caballero;5600034;1.0;category_null;no_saint;;candidate;exact;Anserma Vieja;Vega de Supia;Popayan;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+257;Caballero;3000233;1.0;category_null;no_saint;;candidate;exact;Santiago;Santiago SD;Santo Domingo;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+257;Caballero;1005447;1.0;category_null;no_saint;;candidate;exact;San Juan Bautista;Junta;Durango;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+257;Caballero;5601001;1.0;category_null;no_saint;;candidate;exact;Logroño;Macas;Quijos;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+257;Caballero;1005206;1.0;category_null;no_saint;;candidate;exact;Santiago de los Caballeros;Santiago Caballeros;Sonora-Sinaloa;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+257;Caballero;5000038;1.0;category_null;no_saint;;candidate;exact;Nata;Nata;Tierra Firme;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+257;Caballero;9901065;0.875;category_null;no_saint;;candidate;fuzzy;Cabeza de Caballo;Rosario;Sonora-Sinaloa;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+257;Caballero;1005289;0.857;category_null;no_saint;;candidate;fuzzy;Calleros;Durango;Durango;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+257;Caballero;5600733;0.857;category_null;no_saint;;candidate;fuzzy;Caballos;Iscuande;Popayan;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+262;Mixtec;1003697;1.0;category_null;no_saint;;candidate;exact;Mixtecapa;Tlapa;Puebla;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+262;Mixtec;1002580;0.909;category_null;no_saint;;candidate;fuzzy;Mixtepec;Nejapa;Oaxaca;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+262;Mixtec;1002485;0.909;category_null;no_saint;;candidate;fuzzy;Mixtepec;Juxtlahuaca;Oaxaca;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+262;Mixtec;1003066;0.909;category_null;no_saint;;candidate;fuzzy;Santa Catalina;Zimatlan;Oaxaca;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+262;Mixtec;1002458;0.909;category_null;no_saint;;candidate;fuzzy;San Gabriel;Jicayan;Oaxaca;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+262;Mixtec;1002460;0.909;category_null;no_saint;;candidate;fuzzy;San Pedro;Jicayan;Oaxaca;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+262;Mixtec;1002241;0.909;category_null;no_saint;;candidate;fuzzy;Santa Cruz Mixtepec;Antequera;Oaxaca;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+263;Atotonilco;1000915;1.0;category_null;no_saint;;candidate;exact;Atotonilco;Cuernavaca;Mexico;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+263;Atotonilco;1004604;1.0;category_null;no_saint;;candidate;exact;Atotonilco;Juchipila;Guadalajara;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+263;Atotonilco;1001751;1.0;category_null;no_saint;;candidate;exact;Atotonilco;Tulancingo;Mexico;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+263;Atotonilco;1000307;1.0;category_null;no_saint;;candidate;exact;San Juan;Cienega de los Olivos;Durango;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+263;Atotonilco;1005425;1.0;category_null;no_saint;;candidate;exact;Atotonilco;Cuencame;Durango;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+263;Atotonilco;1000405;1.0;category_null;no_saint;;candidate;exact;Atotonilco;valle de San Bartolome;Durango;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+263;Atotonilco;1001380;1.0;category_null;no_saint;;candidate;exact;Real del Chico;Pachuca;Mexico;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+263;Atotonilco;1000387;1.0;category_null;no_saint;;candidate;exact;Atotonilco;Papasquiaro;Durango;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+263;Atotonilco;1000542;1.0;category_null;no_saint;;candidate;exact;Atotonilco;Sayula;Guadalajara;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+263;Atotonilco;1001615;1.0;category_null;no_saint;;candidate;exact;Atotonilco;Atitalaquia;Mexico;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+263;Atotonilco;1000385;1.0;category_null;no_saint;;candidate;exact;Atotonilco;Nombre de Dios;Durango;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+263;Atotonilco;1000484;1.0;category_null;no_saint;;candidate;exact;Atotonilco El Alto;La Barca;Guadalajara;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+263;Atotonilco;1000485;1.0;category_null;no_saint;;candidate;exact;Atotonilco El Bajo;La Barca;Guadalajara;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+263;Atotonilco;1001752;1.0;category_null;no_saint;;candidate;exact;Atotonilco El Grande;Tulancingo;Mexico;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+264;Capula;3000147;1.0;category_null;no_saint;;candidate;exact;Potano;Florida Oriental;Florida;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+264;Capula;1001989;1.0;category_null;no_saint;;candidate;exact;Capula;Huaniqueo;Michoacan;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+264;Capula;2000159;1.0;category_null;no_saint;;candidate;exact;Sacapulas;Huehuetenango;Guatemala;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+264;Capula;1001491;1.0;category_null;no_saint;;candidate;exact;Capula;Sultepec;Mexico;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+264;Capula;1001236;0.909;category_null;no_saint;;candidate;fuzzy;Chapula;Metztitlan;Mexico;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+264;Capula;1001545;0.909;category_null;no_saint;;candidate;fuzzy;Capulhuac;Metepec-Tenango;Mexico;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+264;Capula;6001087;0.909;category_null;no_saint;;candidate;fuzzy;Caulan;Huanuco;Tarma;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+264;Capula;1001546;0.909;category_null;no_saint;;candidate;fuzzy;Capulhuac;Metepec-Tenango;Mexico;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+264;Capula;1005403;0.857;category_null;no_saint;;candidate;fuzzy;Cula;Panuco;Veracruz;;Rancho;San Felipe;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+267;Tepepan;1001817;1.0;category_null;no_saint;;candidate;exact;Tepepan;Xochimilco;Mexico;;Rancho;Nativitas;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+267;Tepepan;1001797;1.0;category_null;no_saint;;candidate;exact;Tepepa;Tulancingo;Mexico;;Rancho;Nativitas;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+267;Tepepan;1001593;0.857;category_null;no_saint;;candidate;fuzzy;Tepexpan;Teotihuacan;Mexico;;Rancho;Nativitas;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+267;Tepepan;1001130;0.857;category_null;no_saint;;candidate;fuzzy;Santa Cruz;Ixtlahuaca;Mexico;;Rancho;Nativitas;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+268;Los Cinco Señores;1000320;1.0;category_null;saint_match;;candidate;toponym_nombre;Cinco Señores;Cuencame;Durango;;Rancho;Nativitas;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+268;Los Cinco Señores;1005278;1.0;category_null;saint_match;;candidate;toponym_nombre;Cinco Señores;Durango;Durango;;Rancho;Nativitas;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+271;Buena Vista;8000389;1.0;category_null;no_saint;;candidate;toponym_nombre;Buena Vista;Santa Cruz SC;Cochabamba;;Venta;;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+271;Buena Vista;9000313;1.0;category_null;no_saint;;candidate;toponym_nombre;Buena Vista;San Luis;Cuyo;;Venta;;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+274;Capula;3000147;1.0;category_null;no_saint;;candidate;exact;Potano;Florida Oriental;Florida;;Venta;;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+274;Capula;1001989;1.0;category_null;no_saint;;candidate;exact;Capula;Huaniqueo;Michoacan;;Venta;;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+274;Capula;2000159;1.0;category_null;no_saint;;candidate;exact;Sacapulas;Huehuetenango;Guatemala;;Venta;;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+274;Capula;1001491;1.0;category_null;no_saint;;candidate;exact;Capula;Sultepec;Mexico;;Venta;;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+274;Capula;1001236;0.909;category_null;no_saint;;candidate;fuzzy;Chapula;Metztitlan;Mexico;;Venta;;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+274;Capula;1001545;0.909;category_null;no_saint;;candidate;fuzzy;Capulhuac;Metepec-Tenango;Mexico;;Venta;;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+274;Capula;6001087;0.909;category_null;no_saint;;candidate;fuzzy;Caulan;Huanuco;Tarma;;Venta;;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+274;Capula;1001546;0.909;category_null;no_saint;;candidate;fuzzy;Capulhuac;Metepec-Tenango;Mexico;;Venta;;;Tlaxcala;1111;9999;no_partido_jurisdiccion
+274;Capula;1005403;0.857;category_null;no_saint;;candidate;fuzzy;Cula;Panuco;Veracruz;;Venta;;;Tlaxcala;1111;9999;no_partido_jurisdiccion

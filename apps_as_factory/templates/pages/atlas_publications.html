@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% set active = 'atlas' %}
+{% block title %}Publications — HGIS de las Indias — ARCA{% endblock %}
+
+{% block content %}
+<div class="hero">
+  <span class="eyebrow">Atlas · Publications</span>
+  <h1>Publications</h1>
+  <p class="lead">Articles, chapters, and datasets documenting and building on
+    HGIS de las Indias.</p>
+</div>
+
+<div class="section-head" id="articles">
+  <h2>Academic articles and book chapters</h2>
+  <span class="rule"></span>
+</div>
+
+<ul class="pub-list">
+  <li>
+    <span class="pub-year">2023</span>
+    <span>
+      <span class="pub-authors">Stangl, W.</span>
+      <span class="pub-title">“Cuerpos de la entidad política: Concepciones e ideologías
+        territoriales en Centroamérica desde las raíces coloniales hasta el Estado-nación
+        moderno”</span>
+      <span class="pub-venue">In: La emancipación de América Central en su retrospectiva
+        (1821–2021)</span>
+    </span>
+  </li>
+  <li>
+    <span class="pub-year">2023</span>
+    <span>
+      <span class="pub-authors">Stangl, W.</span>
+      <span class="pub-title">“All Roads Lead to Mexico? The Postal Network of Late
+        Colonial New Spain as an Integrated Communication Space”</span>
+      <span class="pub-venue">Palgrave Studies in Comparative Global History</span>
+    </span>
+  </li>
+  <li>
+    <span class="pub-year">2021</span>
+    <span>
+      <span class="pub-authors">Stangl, W.</span>
+      <span class="pub-title">“‘The Sea Doesn't Kill Anyone Whose Time Has Not Yet Come’:
+        Atlantic and Pacific as Connectors and Barriers in Spanish Emigrants'
+        Correspondences, 1500–1824”</span>
+      <span class="pub-venue">In: Das Meer. Maritime Welten in der Frühen Neuzeit</span>
+    </span>
+  </li>
+  <li>
+    <span class="pub-year">2020</span>
+    <span>
+      <span class="pub-authors">Stangl, W. &amp; Stangl, P.</span>
+      <span class="pub-title">“Sinfonía del Nuevo Mundo: el modelaje espacio-temporal de
+        HGIS de las Indias, una infraestructura SIG para la América hispana
+        borbónica”</span>
+      <span class="pub-venue">Revista Cartográfica</span>
+    </span>
+  </li>
+  <li>
+    <span class="pub-year">2020</span>
+    <span>
+      <span class="pub-authors">Stangl, W.</span>
+      <span class="pub-title">“Digital Resources: HGIS de las Indias”</span>
+      <span class="pub-venue">Oxford Research Encyclopedia of Latin American History</span>
+    </span>
+  </li>
+  <li>
+    <span class="pub-year">2020</span>
+    <span>
+      <span class="pub-authors">Stangl, W.</span>
+      <span class="pub-title">“Los correos terrestres de Cartagena de Indias en tiempos de
+        la renta (1768–1810)”</span>
+      <span class="pub-venue">Revista de Indias</span>
+    </span>
+  </li>
+  <li>
+    <span class="pub-year">2019</span>
+    <span>
+      <span class="pub-authors">Stangl, W.</span>
+      <span class="pub-title">“A Matter of Scales: Understanding Spatial Patterns of
+        Colonial Spanish America's Silver Mining in the Digital Age”</span>
+      <span class="pub-venue">In: Mining, Money and Markets in the Early Modern Atlantic</span>
+    </span>
+  </li>
+  <li>
+    <span class="pub-year">2018</span>
+    <span>
+      <span class="pub-authors">Stangl, W.</span>
+      <span class="pub-title">“‘The Empire Strikes Back’?: HGIS de las Indias and the
+        Postcolonial Death Star”</span>
+      <span class="pub-venue">International Journal of Humanities and Arts Computing</span>
+    </span>
+  </li>
+  <li>
+    <span class="pub-year">2017</span>
+    <span>
+      <span class="pub-authors">Stangl, W.</span>
+      <span class="pub-title">“¿Provincias y partidos o gobiernos y corregimientos? Los
+        principios rectores del desordenamiento territorial de las Indias”</span>
+      <span class="pub-venue">Jahrbuch für Geschichte Lateinamerikas</span>
+    </span>
+  </li>
+  <li>
+    <span class="pub-year">2016</span>
+    <span>
+      <span class="pub-authors">Stangl, W.</span>
+      <span class="pub-title">“Vom Imperium zur ‚Nation der Republiken‘: Die Bedeutung des
+        <i>uti possidetis juris</i> für Identitäten und Grenzkonflikte in
+        Hispanoamerika”</span>
+      <span class="pub-venue">In: Grenzen – kulturhistorische Annäherungen</span>
+    </span>
+  </li>
+  <li>
+    <span class="pub-year">2015</span>
+    <span>
+      <span class="pub-authors">Stangl, W.</span>
+      <span class="pub-title">“Scylla and Charybdis 2.0: reconstructing colonial Spanish
+        American territories”</span>
+      <span class="pub-venue">Culture &amp; History Digital Journal</span>
+    </span>
+  </li>
+</ul>
+
+<div class="section-head" id="datasets" style="margin-top: var(--sp-5);">
+  <h2>Datasets and repositories</h2>
+  <span class="rule"></span>
+</div>
+<div class="prose">
+  <p>The project's raw data — Python code, the original relational tables, and the
+    processed shapefiles — is deposited in public repositories:</p>
+  <ul>
+    <li><a href="https://dataverse.harvard.edu/dataverse/hgis_indias" target="_blank" rel="noopener">Harvard
+      Dataverse</a> — the HGIS de las Indias data and code.</li>
+    <li><a href="https://dataverse.yale.edu/dataverse/arca" target="_blank" rel="noopener">Yale
+      Dataverse</a> — mirror and repository for follow-up initiatives, including ARCA.</li>
+  </ul>
+</div>
+
+<p style="margin-top: var(--sp-5);">
+  <a href="{{ url_for('atlas') }}">← Back to HGIS de las Indias</a>
+</p>
+{% endblock %}

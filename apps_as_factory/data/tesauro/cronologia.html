@@ -1,0 +1,29 @@
+<article class="wiki-entry">
+  <p>En todas las tablas de HGIS de las Indias, la documentación de cronología para visualizarse en el sistema debe ser uniforme. Consiste de dos atributos obligatorios (START_ y END_) y dos que son frecuentes y recomendados (START_ex y END_ex).</p>
+  <p>En tablas de datos agregados, se calcula además una cronología compósita, que combina los datos cronológicos del gazetteer con aquéllos de la tabla agregada. Estos campos luego se llaman <strong>Agg_START_</strong> y <strong>Agg_END_</strong>.</p>
+  <p><strong>START_</strong></p>
+  <blockquote><p>Integer</p></blockquote>
+  <p>Año a partir del cual un dato es válida. En caso de ser no haber datos, se acepta su existencia desde un principio, con el valor “1111”.</p>
+  <p><strong>START_ex</strong></p>
+  <blockquote><p>String</p></blockquote>
+  <p>Valor que especifica la vaguedad o naturaleza del año indicado en START. Puede tener uno de los siguientes valores:</p>
+  <ul>
+    <li>start: Se usa siempre que START_ es “1111”.</li>
+    <li>hgis: Significa que el dato ya existió en el momento inicial del HGIS (1701).</li>
+    <li>exact: Significa que la(s) fuente(s) usada(s) para definir la instancia dan un año concreto de principio (por ejemplo, un acta fundacional).</li>
+    <li>not_before: No hay dato a partir de qué momento fue válida la instancia pero seguramente “no antes de”</li>
+    <li>not_after: No hay dato a partir de qué momento fue válida la instancia pero seguramente “no después de”.</li>
+    <li>ca: El dato de START_ es solo aproximado (puede haber empezado un par de años antes o después).</li>
+    <li>arbitrary: La fecha de START_ es meramente arbitraria por causa de falta de información o decisiones que se basan en otros razonamientos.</li>
+  </ul>
+  <p><strong>END_</strong></p>
+  <blockquote><p>Integer</p></blockquote>
+  <p>Año hasta el cual un dato fue válido. En caso de ignorarlo o no especificarse, se presume existencia “hasta siempre” con el año fictivo de 9999.</p>
+  <p><strong>END_ex</strong></p>
+  <blockquote><p>String</p></blockquote>
+  <p>Cf. arriba, START_ex, con la diferencia de los primeros dos valores:</p>
+  <ul>
+    <li>end: Análogo a start, “end” se refiere a datos de los que no hemos identificado fecha “final” (aquéllos con fecha 9999).</li>
+    <li>conceptos: En este caso significa que el dato se presume válido en el momento final del HGIS (1808).</li>
+  </ul>
+</article>

@@ -1,0 +1,264 @@
+<article class="wiki-entry">
+  <h1>Distrito cabecera</h1>
+  <aside class="wiki-box center round box">
+  <p>Frecuentemente, los distritos de las capitales ("cabeceras") de entidades administrativas carecían de magistrados propios en el nivel más bajo (tenientes de gobernadores, corregidores, subdelegados...) . El gobierno de estos distritos, en cambio, fue privativo de la autoridad inmediata superior.</p>
+  </aside>
+  <p><mark class="wiki-highlight"><a href="cabecera-lista">Listado de todas las cabeceras de la base de datos</a>.</mark></p>
+  <h1>Jurisdicción/Partido cabecera</h1>
+  <p>El alcance territorial de estos distritos cabecera podía limitarse practicamente al recinto urbano mismo mientras que en los arrabales se apuntaron corregidores u otros oficiales (p.e. Guadalajara o Lima), en otros casos quedó algún distrito rural reducido (p.e. León de Nicaragua), en aún otros casos, la jurisdicción cabecera coincidía con el area jurisdiccional primitiva de la ciudad o villa cabecera (p.e. Mendoza en Cuyo o San Salvador en Guatemala).</p>
+  <p>A veces, los gobernadores apuntaron tenientes generales para el gobierno de las jurisdicciones cabecera, pero también hay que considerar a los cabildos metropolitanos como pilares de autoridad gubernamental-administrativa y jurisdiccional.</p>
+  <h1>Provincia cabecera</h1>
+  <p>Mientras que la mayoría de los distritos cabecera en la base de datos se centran en las jurisdicciones de cabeceras, en algunos casos de entidades mayores o "provincias compuestas"cabe hablar más bien de "provincias cabecera". Por ejemplo, a partir de 1777, la "gobernación de California" se dividió administrativamente en el "Departamiento del Sur" y el "Departamiento del Norte" en la Península - cada uno con un cabo miltar en su frente, mientras que la Alta California fue el distrito bajo el gobierno inmediato del gobernador.</p>
+  <p>La "provincia" de Nueva España bajo el gobierno directo del virrey (con diferencia a las demás gobernaciones como Yucatán o Nueva Galicia etc.) es otro ejemplo, como también el caso de Quito, donde existió una defincición de provincia o gobernación cabecera que incluía a los diferentes corregimientos andinos, pero no a las provincias/gobernaciones más alejadas de la audiencia, como Cuenca, Jaén, Maynas o Popayán.</p>
+  <p>En Santa Fe de Bogotá hasta tenemos dos niveles de distritos cabecera: Por un lado, el territorio del "superior gobierno" del gobernador-presidente (y luego virrey) - sin las provincias de Antioquia, Neiva, Tunja, etc. - y en el nivel más local, el distrito de la capital no sujeto a los corregimientos rurales inmediatos.</p>
+  <h3>El dilema cabecera en la base de datos</h3>
+  <p>Siempre que hay agregaciones de jurisdicciones o una nueva subdivisión de jurisdicciones, tenemos el dilema conceptual de cómo modelar la relación entre la entidad administrativa y el territorio inmediato cabecera. Hay tres posibles opciones para resolverlo, que todas se pueden encontrar en la base de datos.</p>
+  <ul>
+    <li>Presumir que la entidad nuevamente creada constituye algo fundamentalmente nuevo. Por lo tanto introducir una nueva entidad en el nivel superior a partir de la fecha de la agregación, convirtiendo la entidad tradicional a "territorio cabecera" (cf. Ejemplo 1 , abajo).</li>
+    <li>Presumir una continuidad de la nueva jurisdicción compuesta con aquella anterior que se centró en el mismo lugar capitalicio. Por lo tanto introducir una nueva entidad para el partido cabecera a partir de la fecha de la reforma (ejemplo 2).</li>
+    <li>Diferenciar desde el principio, aunque hasta la agregación "entidad cabecera" y "entidad administrativa" sean idénticas. Es una variante menos limpia que la anterior, pero facilita el proceso de la reconstrucción territorial porque en cada nivel hay una entidad correspondiente durante todo el período (ejemplo 3).</li>
+  </ul>
+  <p><u><strong>Ejemplo para 1.</strong></u> Cuando se crea la La nueva "intendencia de Huamanga" de 1784 con intendente, tiene poco que ver con el "corregimiento de Huamanga", porque incluye también otros ex-corregimientos - con una base territorial totalmente nueva, muy superior a la antigua provincia-corregimiento. Por esto, diferenciamos entre "Huamanga Provincia" (PRPEHU00) y "Huamanga Jurisdiccion" (JUPEHUHU), que hasta 1783 era "corregimiento" y a partir de 1784 se convierte en "partido cabecera de Huamanga provincia" porque era el distrito de gobierno directo del intendente, sin subdelegado (Si lo hubiese sido, el título debería ser "subdelegacion"). Formalizado, tenemos: <strong>Entidades</strong></p>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Entidad_ID</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Variantes</th>
+          <th scope="col">Tipo generico</th>
+          <th scope="col">Provincia_generica</th>
+          <th scope="col">Reg</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>JUPEHUHU</td>
+          <td>Huamanga</td>
+          <td></td>
+          <td>Jurisdiccion</td>
+          <td>Huamanga</td>
+          <td>PER</td>
+        </tr>
+        <tr>
+          <td>PRPEHU00</td>
+          <td>Huamanga</td>
+          <td></td>
+          <td>Provincia</td>
+          <td>Huamanga</td>
+          <td>PER</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>Instancias</strong></p>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Entidad_ID</th>
+          <th scope="col">START</th>
+          <th scope="col">END</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">...</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">...</th>
+          <th scope="col">Entidad identica</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>JUPEHUHU</td>
+          <td>1701</td>
+          <td>1783</td>
+          <td>Huamanga</td>
+          <td></td>
+          <td>Corregimiento</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>JUPEHUHU</td>
+          <td>1784</td>
+          <td>1808</td>
+          <td>Huamanga</td>
+          <td></td>
+          <td>Partido cabecera</td>
+          <td>PRPEHU00</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>PRPEHU00</td>
+          <td>1784</td>
+          <td>1808</td>
+          <td>Huamanga</td>
+          <td></td>
+          <td>Gobernacion-Intendencia</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p><u><strong>Ejemplo para 2.</strong></u> Tomemos la jurisdicción de Celaya. En el régimen de subdelegaciones, a partir de 1787, sabemos que había un teniente de subdelegado para Salvatierra, que reconstruimos en el nivel de partidos. Por esto, a partir de 1787, la jurisdicción (JUNEGJCE) en ese nivel se divide en la tenencia de Salvatierra (PTNEGJSA) y un partido cabecera de Celaya (PTNEGJCE), mientras que en el de jurisdicción seguimos reconstruyendo la subdelegación entera (JUNEGJCE). <strong>Entidades</strong></p>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Entidad_ID</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Variantes</th>
+          <th scope="col">Tipo generico</th>
+          <th scope="col">Provincia_generica</th>
+          <th scope="col">Reg</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>JUNEGJCE</td>
+          <td>Celaya</td>
+          <td></td>
+          <td>Jurisdiccion</td>
+          <td>Guanajuato</td>
+          <td>NES</td>
+        </tr>
+        <tr>
+          <td>PTNEGJCE</td>
+          <td>Celaya</td>
+          <td></td>
+          <td>Partido</td>
+          <td>Guanajuato</td>
+          <td>NES</td>
+        </tr>
+        <tr>
+          <td>PTNEGJSA</td>
+          <td>Salvatierra</td>
+          <td></td>
+          <td>Partido</td>
+          <td>Guanajuato</td>
+          <td>NES</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>Instancias (Versión limpia)</strong></p>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Entidad_ID</th>
+          <th scope="col">START</th>
+          <th scope="col">END</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">...</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">...</th>
+          <th scope="col">Entidad identica</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>JUNEGJCE</td>
+          <td>1701</td>
+          <td>1786</td>
+          <td>Celaya</td>
+          <td></td>
+          <td>Alcaldia mayor</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>JUNEGJCE</td>
+          <td>1787</td>
+          <td>1808</td>
+          <td>Celaya</td>
+          <td></td>
+          <td>Subdelegacion</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>PTNEGJCE</td>
+          <td>1787</td>
+          <td>1808</td>
+          <td>Celaya</td>
+          <td></td>
+          <td>Partido cabecera</td>
+          <td>JUNEGJCE</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>PTNEGJSA</td>
+          <td>1787</td>
+          <td>1808</td>
+          <td>Salvatierra</td>
+          <td></td>
+          <td>Tenencia de subdelgación</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Esta versión es limpia, porque solo necesitamos la entidad PTNEGJCE a partir de 1787.</p>
+  <p><u><strong>Ejemplo para 3.</strong></u> <strong>Instancias (Versión práctica)</strong></p>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Entidad_ID</th>
+          <th scope="col">START</th>
+          <th scope="col">END</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">...</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">...</th>
+          <th scope="col">Entidad identica</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>JUNEGJCE</td>
+          <td>1701</td>
+          <td>1786</td>
+          <td>Celaya</td>
+          <td></td>
+          <td>Alcaldia mayor</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>JUNEGJCE</td>
+          <td>1787</td>
+          <td>1808</td>
+          <td>Celaya</td>
+          <td></td>
+          <td>Subdelegacion</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>PTNEGJCE</td>
+          <td>1701</td>
+          <td>1808</td>
+          <td>Celaya</td>
+          <td></td>
+          <td>Partido cabecera</td>
+          <td>JUNEGJCE</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>PTNEGJSA</td>
+          <td>1787</td>
+          <td>1808</td>
+          <td>Salvatierra</td>
+          <td></td>
+          <td>Tenencia de subdelgación</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Esta versión es práctica, porque podemos definir que el territorio "Celaya" en el nivel jurisdicción pertenece a JUNEGJCE; y en el de partido a PTNEGJCE - <u>desde 1701 hasta 1808</u>, sin preocuparnos más.</p>
+</article>

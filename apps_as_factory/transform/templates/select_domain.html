@@ -1,39 +1,65 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Select Domain</title>
-</head>
-<body>
-    <h1>Select Domain</h1>
-    <form id="domainForm">
-        <label>
-            <input type="radio" name="domain" value="places" required> Places
-        </label>
-        <label>
-            <input type="radio" name="domain" value="territories" required> Territories
-        </label>
-        <button type="submit">Continue</button>
-    </form>
+{% extends "base.html" %}
+{% set active = 'arca' %}
+{% block title %}Places or territories? — ARCA{% endblock %}
 
-    <script>
-        document.getElementById('domainForm').onsubmit = async function(e) {
-            e.preventDefault();
-            const formData = new FormData(e.target);
-            const domain = formData.get('domain');
+{% block extra_head %}
+<style>
+  .tx-step { max-width: 46rem; }
+  .tx-step h1 { font-family: var(--serif); font-size: var(--step-2); margin-bottom: var(--sp-3); }
+  .choice { display: block; padding: var(--sp-3); margin-bottom: .6rem;
+    border: 1px solid var(--border); border-radius: var(--radius);
+    background: var(--surface); cursor: pointer; }
+  .choice:hover { border-color: var(--accent); }
+  .choice input { margin-right: .5rem; }
+  .choice b { font-size: var(--step-1); font-family: var(--serif); }
+  .choice span { display: block; color: var(--muted); font-size: var(--step--1);
+    margin-left: 1.6rem; }
+</style>
+{% endblock %}
 
-            const res = await fetch('/transform/process_domain', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({domain})
-            });
+{% block content %}
+<div class="tx-step">
+  {% set wf_step = 'domain' %}{% include '_steps.html' %}
+  <h1>Tell us if your table is about places or territories</h1>
 
-            const result = await res.json();
-            if (result.success) {
-                window.location.href = '/transform/classify_columns';
-            } else {
-                alert(result.error);
-            }
+  <form id="domainForm">
+    <label class="choice">
+      <input type="radio" name="domain" value="places" required> <b>Places</b>
+      <span>Settlements: cities, towns, pueblos, missions, forts, haciendas.</span>
+    </label>
+    <label class="choice">
+      <input type="radio" name="domain" value="territories" required> <b>Territories</b>
+      <span>Jurisdictions: provinces, districts, bishoprics, audiencias.</span>
+    </label>
+
+    <div class="wf-actions">
+      {% include '_abort.html' %}
+      <span class="spacer"></span>
+      <button class="btn" type="submit">Continue</button>
+    </div>
+  </form>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    document.getElementById('domainForm').onsubmit = async function(e) {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const domain = formData.get('domain');
+
+        const res = await fetch('/transform/process_domain', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({domain})
+        });
+
+        const result = await res.json();
+        if (result.success) {
+            window.location.href = '/transform/classify_columns';
+        } else {
+            alert(result.error);
         }
-    </script>
-</body>
-</html>
+    }
+</script>
+{% endblock %}

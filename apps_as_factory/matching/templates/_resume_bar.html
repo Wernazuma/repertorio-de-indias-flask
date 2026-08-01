@@ -1,0 +1,12 @@
+{# Persistent save/resume notice for matching steps. Expects `prefix`.
+   Self-contained inline styles so it works in the standalone step templates. #}
+<div class="resume-bar" style="max-width:680px;margin:1em auto 0;padding:.55em .9em;
+     border:1px solid #d9c98a;background:#fdf7e3;border-radius:8px;font-size:.85em;
+     color:#5a4b1a;display:flex;gap:.8em;align-items:center;justify-content:space-between;
+     flex-wrap:wrap;">
+  <span>💾 Progress is saved automatically under prefix
+    <code style="background:#f0e7c4;padding:0 5px;border-radius:3px;">{{ prefix }}</code>.
+    You can pause and resume anytime.</span>
+  <a href="{{ url_for('matching.index', prefix=prefix) }}"
+     style="color:#0056b3;text-decoration:none;white-space:nowrap;">Pause &amp; resume later →</a>
+</div>

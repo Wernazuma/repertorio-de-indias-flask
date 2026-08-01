@@ -1,6 +1,43 @@
 # app.py
+from datetime import datetime
 from pathlib import Path
-from flask import Flask, url_for, render_template
+from flask import Flask, url_for, render_template, abort
+
+from i18n import init_app as init_i18n
+
+# Subpages of the Atlas / HGIS de las Indias section. Each renders through
+# pages/atlas_sub.html until it gets its own content.
+ATLAS_PAGES = {
+    # The web apps (Explorative GIS, Narrative Maps, Guided Tours) now live as
+    # sections on the /atlas page itself rather than on separate subpages.
+    "technical-methodology": {
+        "title": "Technical Methodology",
+        "eyebrow": "Atlas · Methodology",
+        "lead": "Data model, gazetteer structure, geometries, and the technical "
+                "decisions behind HGIS de las Indias.",
+        "template": "pages/atlas_technical.html",
+    },
+    "historical-methodology": {
+        "title": "Historical Methodology",
+        "eyebrow": "Atlas · Methodology",
+        "lead": "Sources, criteria, and historiographical principles used to "
+                "reconstruct places and jurisdictions.",
+        "template": "pages/atlas_historical.html",
+    },
+    "project-history": {
+        "title": "Project History",
+        "eyebrow": "Atlas · History",
+        "lead": "From the FWF-funded project at the University of Graz to the ARCA framework.",
+        "template": "pages/atlas_history.html",
+    },
+    "publications": {
+        "title": "Publications",
+        "eyebrow": "Atlas · Publications",
+        "lead": "Articles, datasets, and presentations documenting and building on "
+                "HGIS de las Indias.",
+        "template": "pages/atlas_publications.html",
+    },
+}
 
 def create_app():
     app = Flask(__name__)
@@ -17,16 +54,77 @@ def create_app():
     from orientation import bp as orientation_bp
     from transform import bp as transform_bp
 
-    app.register_blueprint(enciclopedia_bp, url_prefix="/enciclopedia")
+    app.register_blueprint(enciclopedia_bp, url_prefix="/apps/enciclopedia")
     app.register_blueprint(matching_bp, url_prefix="/matching")
     app.register_blueprint(orientation_bp, url_prefix="/orientation")
     app.register_blueprint(transform_bp, url_prefix="/transform")
 
-    # Main route
+    # Bilingual (EN/ES) support: language toggle route + t / vt / lang in templates.
+    init_i18n(app)
+
+    # ------------------------------------------------------------------
+    # Site-wide template globals (default theme, external Atlas URL, year).
+    # The active theme is chosen client-side by the switcher and persisted in
+    # localStorage; this only sets the server-rendered default.
+    # ------------------------------------------------------------------
+    @app.context_processor
+    def inject_site_globals():
+        return {
+            "theme": "slate",
+            "atlas_url": "https://www.hgis-indias.net/index.php/en/webgis",
+            "year": datetime.now().year,
+        }
+
+    # ---- ARCA static/site pages ----
     @app.route("/")
     def index():
-        return render_template("index.html")
+        # Welcome landing page.
+        return render_template("pages/home.html")
 
+    @app.route("/arca")
+    def arca_hub():
+        # Geodata-workflow hub (replaces the old "Geodata Workflow" index).
+        return render_template("pages/arca_hub.html")
+
+    @app.route("/atlas")
+    def atlas():
+        # In-site HGIS de las Indias / Atlas landing.
+        return render_template("pages/atlas.html")
+
+    @app.route("/atlas/<slug>")
+    def atlas_page(slug):
+        page = ATLAS_PAGES.get(slug)
+        if page is None:
+            abort(404)
+        # a page may supply its own template; otherwise the shared placeholder
+        return render_template(
+            page.get("template", "pages/atlas_sub.html"), page=page, slug=slug
+        )
+
+    @app.route("/news")
+    def news():
+        return render_template("pages/news.html")
+
+    @app.route("/datasets")
+    def datasets():
+        return render_template("pages/datasets.html")
+
+    @app.route("/collaborate")
+    def collaborate():
+        return render_template("pages/collaborate.html")
+
+    @app.route("/bring-your-data")
+    def bring_your_data():
+        # Entry point to the geodata workflow: guide / upload / match / resume.
+        return render_template("pages/bring_your_data.html")
+
+    @app.route("/team")
+    def team():
+        return render_template("pages/team.html")
+
+    @app.route("/impressum")
+    def impressum():
+        return render_template("pages/impressum.html")
 
     return app
 
@@ -35,4 +133,6 @@ def create_app():
 app = create_app()
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # threaded=True so the live progress page can be polled while the
+    # matching pipeline runs in a background thread.
+    app.run(debug=True, threaded=True)

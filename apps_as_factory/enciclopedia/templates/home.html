@@ -1,53 +1,101 @@
-<!DOCTYPE html>
-<html lang="es" xml:lang="es">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
+{% extends "enc_base.html" %}
+{% block title %}Encyclopedia — ARCA{% endblock %}
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
-    <style>
-        body {
-            background-image: url("{{ url_for('static', filename='images/background/bg.jpg') }}");
-            background-color: #6666;
-            background-repeat: repeat;
-            background-size: auto;
-            font-family: "Garamond";
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-        }
-    </style>
-</head>
-<body>
-    <div id="head" class="title">
-        <h1>Repertorio geográfico e histórico de las Indias</h1>
-    </div>
+{% block enc_content %}
+<div class="hero">
+  <img class="hero-logo" src="{{ url_for('static', filename='images/logo_encyclopedia.jpg') }}" alt="{{ t('enc_eyebrow') }}">
+  <span class="eyebrow">{{ t('enc_eyebrow') }}</span>
+  <h1>Repertorio geográfico e histórico de las Indias</h1>
+  <p class="lead" style="font-size: var(--step-0);">
+    {{ t('enc_lead', places=places, territories=territories, officials=officials) }}
+  </p>
+</div>
 
-    <div class="container">
-        <div class="block" id="left-block">
-            {% include 'blocks/menu.html' %}
-        </div>
+<div class="card-grid trio">
+  <a class="card" href="{{ url_for('enciclopedia.place_search') }}">
+    <h3>{{ t('enc_card_places') }}</h3>
+    <p>{{ t('enc_card_places_desc') }}</p>
+    <span class="go">{{ t('search') }} →</span>
+  </a>
+  <a class="card" href="{{ url_for('enciclopedia.territory_search') }}">
+    <h3>{{ t('enc_card_territories') }}</h3>
+    <p>{{ t('enc_card_territories_desc') }}</p>
+    <span class="go">{{ t('search') }} →</span>
+  </a>
+  <a class="card" href="{{ url_for('enciclopedia.people_search') }}">
+    <h3>{{ t('enc_card_people') }}</h3>
+    <p>{{ t('enc_card_people_desc') }}</p>
+    <span class="go">{{ t('search') }} →</span>
+  </a>
+  <a class="card" href="{{ url_for('enciclopedia.tesauro_index') }}">
+    <h3>{{ t('enc_card_thesaurus') }}</h3>
+    <p>{{ t('enc_card_thesaurus_desc') }}</p>
+    <span class="go">{{ t('view') }} →</span>
+  </a>
+  <a class="card" href="{{ url_for('enciclopedia.pueblos_index') }}">
+    <h3>{{ t('enc_card_pueblos') }}</h3>
+    <p>{{ t('enc_card_pueblos_desc') }}</p>
+    <span class="go">{{ t('view') }} →</span>
+  </a>
+</div>
 
-        <div class="block" id="central-block">
-            
-            <h2>
-                Recupera información sobre {{ places }} lugares, {{ territories }} territorios
-                y {{ officials }} funcionarios coloniales.
-            </h2>
-            <h2>Conoce los conceptos y las fuentes que sustentan nuestra base de datos.</h2>
-            <h2>Ponte en contacto, reclama lugares o territorios y redacta un texto enciclopédico dedicado a ellos.</h2>
-            
-        </div>
-    </div>
-</body>
-</html>
+{% if carousel %}
+<p class="enc-random-heading" style="font-size: var(--step--1); text-transform: uppercase;
+   letter-spacing: .08em; color: var(--muted, #777); margin: var(--sp-5) 0 .3rem;">{{ t('random_pages') }}</p>
+<style>
+  .enc-carousel { position: relative; margin: var(--sp-4) 0; border: 1px solid var(--border, #ddd);
+    border-radius: 10px; background: var(--card-bg, rgba(0,0,0,.02)); min-height: 6.5rem; overflow: hidden; }
+  .enc-slide { display: none; text-decoration: none; color: inherit;
+    padding: var(--sp-3) 3rem; }
+  .enc-slide.active { display: block; }
+  .enc-slide .enc-kind { display: inline-block; font-size: var(--step--1); font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--muted, #777); margin-bottom: .3rem; }
+  .enc-slide .enc-title { display: block; font-family: var(--serif); font-size: var(--step-2); line-height: 1.2; }
+  .enc-slide .enc-meta { font-family: var(--sans, inherit); font-size: var(--step--1); font-weight: 400;
+    color: var(--muted, #777); margin-left: .4rem; white-space: nowrap; }
+  .enc-slide .enc-sub { display: block; font-size: var(--step--1); color: var(--muted, #777); margin-top: .25rem; }
+  .enc-nav { position: absolute; top: 0; bottom: 0; width: 2.4rem; border: none; cursor: pointer;
+    background: transparent; color: var(--muted, #999); font-size: 1.6rem; line-height: 1; }
+  .enc-nav:hover { color: inherit; }
+  .enc-prev { left: 0; } .enc-next { right: 0; }
+  .enc-dots { position: absolute; bottom: .5rem; left: 0; right: 0; text-align: center; }
+  .enc-dots span { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin: 0 3px;
+    background: var(--muted, #bbb); opacity: .4; }
+  .enc-dots span.on { opacity: 1; }
+</style>
+<div class="enc-carousel" id="encCarousel">
+  {% for item in carousel %}
+  <a class="enc-slide{% if loop.first %} active{% endif %}" href="{{ item.url }}">
+    <span class="enc-kind">{{ t(item.kind_key) }}</span>
+    <span class="enc-title">{{ item.title }}{% if item.meta %}<span class="enc-meta">{{ item.meta }}</span>{% endif %}</span>
+    {% if item.subtitle %}<span class="enc-sub">{{ item.subtitle }}</span>{% endif %}
+  </a>
+  {% endfor %}
+  <button type="button" class="enc-nav enc-prev" aria-label="Previous">&lsaquo;</button>
+  <button type="button" class="enc-nav enc-next" aria-label="Next">&rsaquo;</button>
+  <div class="enc-dots">{% for item in carousel %}<span{% if loop.first %} class="on"{% endif %}></span>{% endfor %}</div>
+</div>
+<script>
+  (function () {
+    var root = document.getElementById('encCarousel');
+    if (!root) return;
+    var slides = root.querySelectorAll('.enc-slide');
+    var dots = root.querySelectorAll('.enc-dots span');
+    if (slides.length < 2) return;
+    var i = 0, timer;
+    function show(n) {
+      i = (n + slides.length) % slides.length;
+      slides.forEach(function (s, k) { s.classList.toggle('active', k === i); });
+      dots.forEach(function (d, k) { d.classList.toggle('on', k === i); });
+    }
+    function next() { show(i + 1); }
+    function start() { timer = setInterval(next, 5000); }
+    function reset() { clearInterval(timer); start(); }
+    root.querySelector('.enc-next').addEventListener('click', function (e) { e.preventDefault(); next(); reset(); });
+    root.querySelector('.enc-prev').addEventListener('click', function (e) { e.preventDefault(); show(i - 1); reset(); });
+    start();
+  })();
+</script>
+{% endif %}
+
+{% endblock %}

@@ -8,12 +8,16 @@ def decide_phase_outcome(toponym_type: str,
     fully aligned with the original matching logic.
     """
 
+    # A fuzzy category match is acceptable for auto-adopt; only an outright
+    # category_mismatch blocks it (the input type contradicts the gazetteer).
+    category_ok = category_status in ("category_match", "category_fuzzy", "category_null")
+
     # --- AUTO ADOPT ---
     if (
         # (A) exact name match
         toponym_type in ("toponym_label", "toponym_nombre")
         and saint_status in ("saint_match", "no_saint")
-        and category_status in ("category_match", "category_null")
+        and category_ok
     ):
         return "auto_adopt"
 
@@ -21,7 +25,7 @@ def decide_phase_outcome(toponym_type: str,
     if (
         fuzzy_score >= 0.9
         and saint_status in ("saint_match", "no_saint")
-        and category_status in ("category_match", "category_null")
+        and category_ok
     ):
         return "auto_adopt"
 

@@ -1,0 +1,18 @@
+{% extends "enc_base.html" %}
+
+{% block title %}{{ t('enc_card_thesaurus') }}{% endblock %}
+{% block header_h1 %}{{ t('enc_card_thesaurus') }}{% endblock %}
+
+{% block enc_content %}
+<p class="lead" style="font-size: var(--step-0);">{{ t('enc_card_thesaurus_desc') }}</p>
+
+<ul class="tesauro-list" style="columns: 3; column-gap: var(--sp-4); list-style: none; padding: 0;">
+  {% for l in lemmata %}
+  <li style="break-inside: avoid; margin-bottom: .3rem;">
+    <a href="{{ url_for('enciclopedia.tesauro_detail', term=l['ID']) }}">{{ l['term-en'] if lang == 'en' and l['term-en'] else l['termino-es'] }}</a>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}
+
+{% block right_block %}{% endblock %}

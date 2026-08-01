@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xml:lang="es">
+<html lang="{{ lang|default('en') }}">
 <head>
     <meta charset="UTF-8">
-    <title>Categorías para<br/>{{ place.label }}, {{ place.categoria }} ({{ place.partido_generico }}/{{ place.provincia_generica }}/{{ place.region }})</title>
+    <title>{{ t('cat_title') }}<br/>{{ place.label }}, {{ vt(place.categoria) }} ({{ place.partido_generico }}/{{ place.provincia_generica }}/{{ place.region }})</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -36,17 +36,17 @@
     </style>
 </head>
 <body>
-    <h1>Categorías para<br/>{{ place.label }}, {{ place.categoria }} ({{ place.partido_generico }}/{{ place.provincia_generica }}/{{ place.region }})</h1>
-    
+    <h1>{{ t('cat_title') }}<br/>{{ place.label }}, {{ vt(place.categoria) }} ({{ place.partido_generico }}/{{ place.provincia_generica }}/{{ place.region }})</h1>
+
     <table>
         <thead>
             <tr>
-                <th>Inicio</th>
-                <th>Fin</th>
-                <th>Categoría</th>
-                <th>Subcategoría</th>
-                <th>Fuente</th>
-                <th>Parcialidad</th>
+                <th>{{ t('cat_start') }}</th>
+                <th>{{ t('cat_end') }}</th>
+                <th>{{ t('cat_category') }}</th>
+                <th>{{ t('cat_subcategory') }}</th>
+                <th>{{ t('cat_source') }}</th>
+                <th>{{ t('cat_parcialidad') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -64,7 +64,7 @@
     </table>
 
     <div class="codebook-link">
-        <p>Consulte el <a href="https://www.hgis-indias.net/dokuwiki/doku.php?id=conceptos:tabla_gz_categoria">códice de la tabla de categorías</a> para más información.</p>
+        <p>{{ t('cat_codebook') | safe }}</p>
     </div>
 </body>
 </html>

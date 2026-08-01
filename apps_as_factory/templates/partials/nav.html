@@ -1,0 +1,41 @@
+{# Main navigation — single source of truth. Pages set `active` to one of:
+   home | news | arca | atlas | encyclopedia | team  to highlight the section.
+   Dropdown parents are a real link plus a caret button that opens the submenu. #}
+{% set active = active | default('') %}
+<ul class="menu">
+  <li class="has-sub" {% if active in ['home', 'news'] %}data-current{% endif %}>
+    <a href="{{ url_for('index') }}">Home</a>
+    <button type="button" class="sub-toggle" aria-expanded="false" aria-haspopup="true"
+            aria-label="Open Home submenu"><span class="caret"></span></button>
+    <ul class="submenu">
+      <li><a href="{{ url_for('news') }}">News / Blog</a></li>
+    </ul>
+  </li>
+  <li class="has-sub" {% if active == 'arca' %}data-current{% endif %}>
+    <a href="{{ url_for('arca_hub') }}"><img class="menu-icon" src="{{ url_for('static', filename='images/logo_arca.jpg') }}" alt="">ARCA</a>
+    <button type="button" class="sub-toggle" aria-expanded="false" aria-haspopup="true"
+            aria-label="Open ARCA submenu"><span class="caret"></span></button>
+    <ul class="submenu">
+      <li><a href="{{ url_for('datasets') }}">Data</a></li>
+      <li><a href="{{ url_for('bring_your_data') }}">Bring your data</a></li>
+      <li><a href="{{ url_for('collaborate') }}">Collaborate</a></li>
+    </ul>
+  </li>
+  <li {% if active == 'atlas' %}data-current aria-current="page"{% endif %}>
+    <a href="{{ url_for('atlas') }}"><img class="menu-icon" src="{{ url_for('static', filename='images/logo_hgis.jpg') }}" alt="">Atlas (HGIS-Indias)</a>
+  </li>
+  <li class="has-sub" {% if active == 'encyclopedia' %}data-current{% endif %}>
+    <a href="{{ url_for('enciclopedia.index') }}"><img class="menu-icon" src="{{ url_for('static', filename='images/logo_encyclopedia.jpg') }}" alt="">Encyclopedia</a>
+    <button type="button" class="sub-toggle" aria-expanded="false" aria-haspopup="true"
+            aria-label="Open Encyclopedia submenu"><span class="caret"></span></button>
+    <ul class="submenu">
+      <li><a href="{{ url_for('enciclopedia.place_search') }}">Places</a></li>
+      <li><a href="{{ url_for('enciclopedia.territory_search') }}">Territories</a></li>
+      <li><a href="{{ url_for('enciclopedia.people_search') }}">Prosopography</a></li>
+      <li><a href="{{ url_for('enciclopedia.tesauro_index') }}">Thesaurus</a></li>
+    </ul>
+  </li>
+  <li {% if active == 'team' %}data-current aria-current="page"{% endif %}>
+    <a href="{{ url_for('team') }}">Team</a>
+  </li>
+</ul>

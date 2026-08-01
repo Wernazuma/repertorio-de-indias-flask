@@ -1,0 +1,14 @@
+{% extends "enc_base.html" %}
+
+{% block title %}{{ t('nf_title') }} — ARCA{% endblock %}
+
+{% block enc_content %}
+<div class="hero">
+  <span class="eyebrow">{{ t('enc_eyebrow') }}</span>
+  <h1>{{ t('nf_heading') }}</h1>
+  <p class="lead">{{ t('nf_body') }}</p>
+</div>
+<p><a href="{{ url_for('enciclopedia.index') }}">← {{ t('nf_back') }}</a></p>
+{% endblock %}
+
+{% block right_block %}{% endblock %}

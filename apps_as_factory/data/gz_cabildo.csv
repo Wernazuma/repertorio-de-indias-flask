@@ -7523,7 +7523,6 @@ ID;gz_id;republica;fuente_ID;start;start_ex;end_;end_ex;check;template;es_parte_
 7549;4000663;s.d.;s.d.;1111;start;9999;end;0;---- dataentry cabildo ----@GZ ID_wiki: [[:gazetteer:4000663]]@republica: s.d.@Desde: 1111@Hasta: 9999@Desdefuzzy: start@Hastafuzzy: end@Fuente_wiki:  [[:fuentes:s.d.]]@ID:4000663@----;;;
 7550;4000665;s.d.;s.d.;1111;start;9999;end;0;---- dataentry cabildo ----@GZ ID_wiki: [[:gazetteer:4000665]]@republica: s.d.@Desde: 1111@Hasta: 9999@Desdefuzzy: start@Hastafuzzy: end@Fuente_wiki:  [[:fuentes:s.d.]]@ID:4000665@----;;;
 7551;4000666;Si;s.d.;1111;start;9999;end;-1;---- dataentry cabildo ----@GZ ID_wiki: [[:gazetteer:4000666]]@republica: Si@Desde: 1111@Hasta: 9999@Desdefuzzy: start@Hastafuzzy: end@Fuente_wiki:  [[:fuentes:s.d.]]@ID:4000666@----;;;
-7552;4000666;Si;s.d.;1111;start;9999;end;-1;---- dataentry cabildo ----@GZ ID_wiki: [[:gazetteer:4000666]]@republica: Si@Desde: 1111@Hasta: 9999@Desdefuzzy: start@Hastafuzzy: end@Fuente_wiki:  [[:fuentes:s.d.]]@ID:4000666@----;;;
 7553;4000667;No;s.d.;1111;start;9999;end;0;---- dataentry cabildo ----@GZ ID_wiki: [[:gazetteer:4000667]]@republica: No@Desde: 1111@Hasta: 9999@Desdefuzzy: start@Hastafuzzy: end@Fuente_wiki:  [[:fuentes:s.d.]]@ID:4000667@----;;;
 7554;4000668;s.d.;s.d.;1111;start;9999;end;0;---- dataentry cabildo ----@GZ ID_wiki: [[:gazetteer:4000668]]@republica: s.d.@Desde: 1111@Hasta: 9999@Desdefuzzy: start@Hastafuzzy: end@Fuente_wiki:  [[:fuentes:s.d.]]@ID:4000668@----;;;
 7555;4000669;No;s.d.;1111;start;9999;end;0;---- dataentry cabildo ----@GZ ID_wiki: [[:gazetteer:4000669]]@republica: No@Desde: 1111@Hasta: 9999@Desdefuzzy: start@Hastafuzzy: end@Fuente_wiki:  [[:fuentes:s.d.]]@ID:4000669@----;;;
@@ -7581,7 +7580,7 @@ ID;gz_id;republica;fuente_ID;start;start_ex;end_;end_ex;check;template;es_parte_
 7608;5000012;Cabildo;s.d.;1111;start;9999;end;-1;---- dataentry cabildo ----@GZ ID_wiki: [[:gazetteer:5000012]]@republica: Cabildo@Desde: 1111@Hasta: 9999@Desdefuzzy: start@Hastafuzzy: end@Fuente_wiki:  [[:fuentes:s.d.]]@ID:5000012@----;;;
 7609;5000013;Cabildo;s.d.;1111;start;9999;end;-1;---- dataentry cabildo ----@GZ ID_wiki: [[:gazetteer:5000013]]@republica: Cabildo@Desde: 1111@Hasta: 9999@Desdefuzzy: start@Hastafuzzy: end@Fuente_wiki:  [[:fuentes:s.d.]]@ID:5000013@----;;;
 7610;5000014;Cabildo;s.d.;1111;start;9999;end;-1;---- dataentry cabildo ----@GZ ID_wiki: [[:gazetteer:5000014]]@republica: Cabildo@Desde: 1111@Hasta: 9999@Desdefuzzy: start@Hastafuzzy: end@Fuente_wiki:  [[:fuentes:s.d.]]@ID:5000014@----;;;
-7611;5000015;Cabildo;agnc-buscador;11771;exact;9999;end;-1;---- dataentry cabildo ----@GZ ID_wiki: [[:gazetteer:5000015]]@republica: Cabildo@Desde: 11771@Hasta: 9999@Desdefuzzy: exact@Hastafuzzy: end@Fuente_wiki:  [[:fuentes:agnc-buscador]]@ID:5000015@----;;;
+7611;5000015;Cabildo;agnc-buscador;1771;exact;9999;end;-1;---- dataentry cabildo ----@GZ ID_wiki: [[:gazetteer:5000015]]@republica: Cabildo@Desde: 11771@Hasta: 9999@Desdefuzzy: exact@Hastafuzzy: end@Fuente_wiki:  [[:fuentes:agnc-buscador]]@ID:5000015@----;;;
 7612;5000016;Cabildo;s.d.;1111;start;9999;end;-1;---- dataentry cabildo ----@GZ ID_wiki: [[:gazetteer:5000016]]@republica: Cabildo@Desde: 1111@Hasta: 9999@Desdefuzzy: start@Hastafuzzy: end@Fuente_wiki:  [[:fuentes:s.d.]]@ID:5000016@----;;;
 7613;5000017;Cabildo;s.d.;1585;exact;9999;end;-1;---- dataentry cabildo ----@GZ ID_wiki: [[:gazetteer:5000017]]@republica: Cabildo@Desde: 1585@Hasta: 9999@Desdefuzzy: exact@Hastafuzzy: end@Fuente_wiki:  [[:fuentes:s.d.]]@ID:5000017@----;;;
 7615;5000018;s.d.;s.d.;1111;start;9999;end;0;---- dataentry cabildo ----@GZ ID_wiki: [[:gazetteer:5000018]]@republica: s.d.@Desde: 1111@Hasta: 9999@Desdefuzzy: start@Hastafuzzy: end@Fuente_wiki:  [[:fuentes:s.d.]]@ID:5000018@----;;;
@@ -10695,8 +10694,7 @@ ID;gz_id;republica;fuente_ID;start;start_ex;end_;end_ex;check;template;es_parte_
 10732;6001551;s.d.;s.d.;1111;start;9999;end;0;---- dataentry cabildo ----@GZ ID_wiki: [[:gazetteer:6001551]]@republica: s.d.@Desde: 1111@Hasta: 9999@Desdefuzzy: start@Hastafuzzy: end@Fuente_wiki:  [[:fuentes:s.d.]]@ID:6001551@----;;;
 10733;6001552;s.d.;s.d.;1111;start;9999;end;0;---- dataentry cabildo ----@GZ ID_wiki: [[:gazetteer:6001552]]@republica: s.d.@Desde: 1111@Hasta: 9999@Desdefuzzy: start@Hastafuzzy: end@Fuente_wiki:  [[:fuentes:s.d.]]@ID:6001552@----;;;
 10734;6001553;s.d.;s.d.;1111;start;9999;end;0;---- dataentry cabildo ----@GZ ID_wiki: [[:gazetteer:6001553]]@republica: s.d.@Desde: 1111@Hasta: 9999@Desdefuzzy: start@Hastafuzzy: end@Fuente_wiki:  [[:fuentes:s.d.]]@ID:6001553@----;;;
-10735;6001554;s.d.;s.d.;1111;start;1741;ca;0;---- dataentry cabildo ----@GZ ID_wiki: [[:gazetteer:6001554]]@republica: s.d.@Desde: 1111@Hasta: 1741@Desdefuzzy: start@Hastafuzzy: ca@Fuente_wiki:  [[:fuentes:s.d.]]@ID:6001554@----;;;
-10736;6001554;s.d.;s.d.;1767;not_after;1786;not_after;0;---- dataentry cabildo ----@GZ ID_wiki: [[:gazetteer:6001554]]@republica: s.d.@Desde: 1767@Hasta: 1786@Desdefuzzy: not_after@Hastafuzzy: not_after@Fuente_wiki:  [[:fuentes:s.d.]]@ID:6001554@----;;;
+10735;6001554;s.d.;s.d.;1111;start;9999;end;0;---- dataentry cabildo ----@GZ ID_wiki: [[:gazetteer:6001554]]@republica: s.d.@Desde: 1111@Hasta: 1741@Desdefuzzy: start@Hastafuzzy: ca@Fuente_wiki:  [[:fuentes:s.d.]]@ID:6001554@----;;;
 10737;6001555;s.d.;s.d.;1111;start;1764;exact;0;---- dataentry cabildo ----@GZ ID_wiki: [[:gazetteer:6001555]]@republica: s.d.@Desde: 1111@Hasta: 1764@Desdefuzzy: start@Hastafuzzy: exact@Fuente_wiki:  [[:fuentes:s.d.]]@ID:6001555@----;;;
 10738;6001555;s.d.;s.d.;1765;exact;1766;ca;0;---- dataentry cabildo ----@GZ ID_wiki: [[:gazetteer:6001555]]@republica: s.d.@Desde: 1765@Hasta: 1766@Desdefuzzy: exact@Hastafuzzy: ca@Fuente_wiki:  [[:fuentes:s.d.]]@ID:6001555@----;;;
 10739;6001556;s.d.;s.d.;1111;start;9999;end;0;---- dataentry cabildo ----@GZ ID_wiki: [[:gazetteer:6001556]]@republica: s.d.@Desde: 1111@Hasta: 9999@Desdefuzzy: start@Hastafuzzy: end@Fuente_wiki:  [[:fuentes:s.d.]]@ID:6001556@----;;;
@@ -13833,3 +13831,15 @@ ID;gz_id;republica;fuente_ID;start;start_ex;end_;end_ex;check;template;es_parte_
 13983;9990035;s.d.;s.d.;1111;start;9999;end;0;---- dataentry cabildo ----@GZ ID_wiki: [[:gazetteer:9990035]]@republica: s.d.@Desde: 1111@Hasta: 9999@Desdefuzzy: start@Hastafuzzy: end@Fuente_wiki:  [[:fuentes:s.d.]]@ID:9990035@----;1000000;0;
 13984;9990034;s.d.;s.d.;1111;start;9999;end;0;---- dataentry cabildo ----@GZ ID_wiki: [[:gazetteer:9990034]]@republica: s.d.@Desde: 1111@Hasta: 9999@Desdefuzzy: start@Hastafuzzy: end@Fuente_wiki:  [[:fuentes:s.d.]]@ID:9990034@----;1000000;0;
 13985;9990033;s.d.;s.d.;1111;start;9999;end;0;---- dataentry cabildo ----@GZ ID_wiki: [[:gazetteer:9990033]]@republica: s.d.@Desde: 1111@Hasta: 9999@Desdefuzzy: start@Hastafuzzy: end@Fuente_wiki:  [[:fuentes:s.d.]]@ID:9990033@----;1000000;0;
+13986;9960005;s.d.;s.d.;1111;start;9999;end;0;;1000000;0;
+13987;9960006;s.d.;s.d.;1111;start;9999;end;0;;1000000;0;
+13988;9960007;s.d.;;1111;start;9999;end;0;;1000000;0;
+13989;9960008;s.d.;s.d.;1111;start;9999;end;0;;1000000;0;
+13990;9960009;s.d.;s.d.;1111;start;9999;end;0;;1000000;0;
+13991;9960010;s.d.;s.d.;1111;start;9999;end;0;;1000000;0;
+13992;9960014;s.d.;s.d.;1111;start;9999;end;0;;1000000;0;
+13993;9960013;s.d.;s.d.;1111;start;9999;end;0;;1000000;0;
+13994;9960012;s.d.;s.d.;1111;start;9999;end;0;;1000000;0;
+13995;9960011;s.d.;s.d.;1111;start;9999;end;0;;1000000;0;
+13996;9916002;s.d.;s.d.;1111;start;9999;end;0;;1000000;0;
+13997;9970006;s.d.;s.d.;1111;start;9999;end;0;;1000000;0;

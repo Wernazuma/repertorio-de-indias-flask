@@ -1,9 +1,9 @@
-{% extends "base.html" %}
+{% extends "enc_base.html" %}
 
-{% block title %}{{ territory.Nombre }}, {{ territory.tipo }} ({{ territory.Region }}){% endblock %}
-{% block header_h1 %}{{ territory.Nombre }}, {{ territory.tipo }} ({{ territory.Region }}){% endblock %}
+{% block title %}{{ territory.Nombre }}, {{ vt(territory.tipo) }} ({{ territory.Region }}){% endblock %}
+{% block header_h1 %}{{ territory.Nombre }}, {{ vt(territory.tipo) }} ({{ territory.Region }}){% endblock %}
 
-{% block extra_head %}
+{% block enc_head %}
 <script>
   // Include external HTML chunks (for history articles)
   function includeHTML() {
@@ -61,6 +61,13 @@
     window.open(url, '_blank', 'width=320,height=600');
   }
 
+  // Reveal the hidden overflow items in a list block (>5 entries)
+  function showMore(btn) {
+    var box = btn.previousElementSibling;
+    if (box) box.style.display = '';
+    btn.style.display = 'none';
+  }
+
   // Init
   document.addEventListener("DOMContentLoaded", function() {
     includeHTML();
@@ -71,99 +78,130 @@
 </script>
 {% endblock %}
 
-{% block content %}
+{% block enc_content %}
 <div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'Informacion')" id="defaultOpen">Información básica</button>
-  <button class="tablinks" onclick="openTab(event, 'Historia')">Historia</button>
-  <button class="tablinks" onclick="openTab(event, 'Fuentes')">Recursos y Fuentes</button>
+  <button class="tablinks" onclick="openTab(event, 'Informacion')" id="defaultOpen">{{ t('td_tab_info') }}</button>
+  <button class="tablinks" onclick="openTab(event, 'Oficiales')">{{ t('officials') }}</button>
+  <button class="tablinks" onclick="openTab(event, 'Historia')">{{ t('td_tab_history') }}</button>
+  <button class="tablinks" onclick="openTab(event, 'Data')">{{ t('tab_data') }}</button>
+  <button class="tablinks" onclick="openTab(event, 'Fuentes')">{{ t('td_tab_sources') }}</button>
+  <button class="tablinks" onclick="openTab(event, 'Citar')">{{ t('tab_cite') }}</button>
 </div>
 
 <div id="Informacion" class="tabcontent" style="display:none;">
-  <h1>Información básica</h1>
+  <h1>{{ territory.Nombre }}, {{ vt(territory.tipo) }}, {{ territory.Region }}.<br/>{{ t('indias_id') }}: {{ territory.Entidad }}</h1>
 
-  <div class="infobox-grid">
+  <div class="infobox-grid two-col">
+    <!-- Block 1: Name / Variants -->
     <div class="infobox" id="info-1-base">
-      <h2>Información básica</h2>
-      <p style="font-weight: bold;">Indias-ID: {{ territory.Entidad }}</p>
-      <p>Nombres variantes: {{ territory.Variantes }}</p>
+      <h3>{{ t('name_variants') }}</h3>
+      <p style="font-weight: bold;">{{ territory.Nombre }}</p>
+      <p>{{ territory.Variantes }}</p>
     </div>
 
+    <!-- Block 2: Base maps (comma-separated, no line breaks) -->
     <div class="infobox" id="info-2-maps">
-      <h3>Mapas</h3>
-      {% for year in [1701, 1725, 1750, 1775, 1800, 1808] %}
-        <div class="map-thumbnail">
-          <a href="../../images/phocagallery/basemaps/{{ territory.tipo }}s/{{ territory.tipo }}s {{ year }}/{{ territory.WikiID }}.png">
-            <img src="../../images/phocagallery/basemaps/{{ territory.tipo }}s/{{ territory.tipo }}s {{ year }}/thumbs/phoca_thumb_s_{{ territory.WikiID }}.png"
-                 alt="Mapa base, {{ year }}">
-          </a>
-        </div>
+      <h3>{{ t('base_maps') }}</h3>
+      <p>{% for year in [1701, 1725, 1750, 1775, 1800, 1808] -%}
+        <a href="../../images/phocagallery/basemaps/{{ territory.tipo }}s/{{ territory.tipo }}s {{ year }}/{{ territory.WikiID }}.png">{{ year }}</a>{% if not loop.last %}, {% endif %}
+      {%- endfor %}</p>
+    </div>
+
+    <!-- Block 3: Instances -->
+    <div class="infobox" id="info-3-infotable">
+      <h3>{{ t('instances') }}</h3>
+      {% for inf in infotable_data %}
+        <a href="/apps/enciclopedia/tesauro/{{ inf.tipo | replace(' ', '_') }}">{{ inf.tipo }}</a>
+        de {{ inf.Label }}, {{ timespan(inf.START, inf.END) }}
+        <a href="javascript:void(0)" onclick='showRawRow(event, {{ inf|tojson }}, {{ t("instances")|tojson }})' style="font-size: small;">{{ t('more') }}</a><br/>
       {% endfor %}
     </div>
 
-    <div class="infobox" id="info-3-detalle">
-      <div id="info-2-1-infotable">
-        <h3>Instancias</h3>
-        {% for inf in infotable_data %}
-          <a href="../dokuwiki/doku.php?id={{ inf.Wikilink_tipo }}">{{ inf.tipo }}</a>
-          de {{ inf.Label }}, {{ inf.START }}-{{ inf.END }}
-          <a href="/infotable/{{ territory.Entidad }}" style="font-size: small;">Más</a><br/>
-        {% endfor %}
-      </div>
-
-      <div id="info-3-2-capital">
-        <h3>Lugar capital</h3>
-        {% for cp in capital_terr_data %}
-          <a href="../place/{{ cp.gz_id }}">{{ cp.Cabecera }}</a>,
-          {{ cp.start }}-{{ cp.end_ }}
-          <a href="/capital-tb/{{ cp.ID }}" style="font-size: small;">Más</a><br/>
-        {% endfor %}
-      </div>
+    <!-- Block 4: Capitals -->
+    <div class="infobox" id="info-4-capital">
+      <h3>{{ t('capitals') }}</h3>
+      {% for cp in capital_terr_data %}
+        <a href="../place/{{ cp.gz_id }}">{{ cp.Cabecera }}</a>,
+        {{ timespan(cp.start, cp.end_) }}
+        <a href="javascript:void(0)" onclick='showRawRow(event, {{ cp|tojson }}, {{ t("capitals")|tojson }})' style="font-size: small;">{{ t('more') }}</a><br/>
+      {% endfor %}
     </div>
-  </div>
 
-  <div class="infobox-grid">
-    <div class="infobox" id="jerarquia-1-pertenencia">
-      <h3>Este territorio depende de los de:</h3>
-      {% for j in jerarquia_sup_data %}
+    <!-- Block 5: This territory depends on (expand if > 5) -->
+    <div class="infobox" id="info-5-superior">
+      <h3>{{ t('depends_on') }}</h3>
+      {% for j in jerarquia_sup_data[:5] %}
         <a href="../territory/{{ j.Ent_sup }}">{{ j.sup_tipo }} de {{ j.sup_Label }}</a>,
-        {{ j.START }}-{{ j.END }}
-        <a href="/superior/{{ territory.Entidad }}" style="font-size: small;">Más</a><br/>
+        {{ timespan(j.START, j.END) }}<br/>
       {% endfor %}
+      {% if jerarquia_sup_data|length > 5 %}
+        <span class="more-items" style="display:none;">
+        {% for j in jerarquia_sup_data[5:] %}
+          <a href="../territory/{{ j.Ent_sup }}">{{ j.sup_tipo }} de {{ j.sup_Label }}</a>,
+          {{ timespan(j.START, j.END) }}<br/>
+        {% endfor %}
+        </span>
+        <button type="button" class="more-btn" onclick="showMore(this)">{{ t('show_more') }} ({{ jerarquia_sup_data|length }})</button>
+      {% endif %}
     </div>
 
-    <div class="infobox" id="jerarquia-3-dependencia">
-      <h3>A este territorio pertenecen los de:</h3>
-      {% for j in jerarquia_sub_data %}
+    <!-- Block 6: Dependent territories (expand if > 5) -->
+    <div class="infobox" id="info-6-inferior">
+      <h3>{{ t('dependent_territories') }}:</h3>
+      {% for j in jerarquia_sub_data[:5] %}
         <a href="../territory/{{ j.Entidad }}">{{ j.tipo }} de {{ j.Label }}</a>,
-        {{ j.START }}-{{ j.END }}
-        <a href="/inferior/{{ territory.Entidad }}" style="font-size: small;">Más</a><br/>
+        {{ timespan(j.START, j.END) }}<br/>
       {% endfor %}
-    </div>
-
-    <div class="infobox" id="Oficiales">
-      <h3>Funcionarios</h3>
-      {% for o in oficiales_entity_data %}
-        <a href="../people/persIndias{{ o.OficialID }}">{{ o.oficial_nombre }}</a>,
-        {{ o.Primera_Fecha_y }}-{{ o.Ultima_Fecha_y }}<br/>
-      {% endfor %}
+      {% if jerarquia_sub_data|length > 5 %}
+        <span class="more-items" style="display:none;">
+        {% for j in jerarquia_sub_data[5:] %}
+          <a href="../territory/{{ j.Entidad }}">{{ j.tipo }} de {{ j.Label }}</a>,
+          {{ timespan(j.START, j.END) }}<br/>
+        {% endfor %}
+        </span>
+        <button type="button" class="more-btn" onclick="showMore(this)">{{ t('show_more') }} ({{ jerarquia_sub_data|length }})</button>
+      {% endif %}
     </div>
   </div>
+
+</div>
+
+<div id="Oficiales" class="tabcontent" style="display:none;">
+  <h1>{{ t('officials') }}</h1>
+  {% for o in oficiales_entity_data %}
+    <a href="../people/persIndias{{ o.OficialID }}">{{ o.oficial_nombre }}</a>,
+    {{ timespan(o.Primera_Fecha_y, o.Ultima_Fecha_y) }}<br/>
+  {% endfor %}
 </div>
 
 <div id="Historia" class="tabcontent" style="display:none;">
-  <h1>Historia</h1>
+  <h1>{{ t('history') }}</h1>
   {% if article_exists %}
-    <div w3-include-html="/data/historia_entidades/{{ territory.Entidad }}.html"></div>
+    {% if lang == 'en' %}
+    <p class="lang-hint" style="font-size: var(--step--1); color: var(--muted, #777);
+       background: var(--surface-2, rgba(0,0,0,.03)); border-left: 3px solid var(--accent, #999);
+       padding: .5rem .75rem; border-radius: 6px; margin: 0 0 var(--sp-3);">{{ t('spanish_only_hint') }}</p>
+    {% endif %}
+    <div w3-include-html="{{ url_for('enciclopedia.historia_territorio', filename=territory.Entidad ~ '.html') }}"></div>
   {% else %}
-    <p style="font-weight:bold;">
-      Todavía no existe artículo enciclopédico dedicado a este territorio.
-      Póngase en contacto con nosotros [werner[dot]stangl[at]yale[dot]edu] para escribir uno.
-    </p>
+    <p style="font-weight:bold;">{{ t('no_article_territory') }}</p>
+  {% endif %}
+
+  {% if comment_exists %}
+    <div class="infobox comment-box">
+      <h3>{{ t('hgis_comment') }}</h3>
+      <div w3-include-html="{{ url_for('enciclopedia.historia_territorio', filename='comentarioshgis/' ~ territory.Entidad ~ '.html') }}"></div>
+    </div>
   {% endif %}
 </div>
 
+<div id="Data" class="tabcontent" style="display:none;">
+  <h1>{{ t('tab_data') }}</h1>
+  <p>{{ t('data_soon') }}</p>
+</div>
+
 <div id="Fuentes" class="tabcontent" style="display:none;">
-  <h1>Recursos y Fuentes</h1>
+  <h1>{{ t('resources_sources') }}</h1>
   {% for grupo, fuentes in fuentes_entidades_data.items() %}
     <h3>{{ grupo }}</h3>
     <ul>
@@ -180,17 +218,18 @@
   {% endfor %}
   <hr/>
 </div>
-{% endblock %}
 
-{% block right_block %}
-<div class="block" id="right-block">
+<div id="Citar" class="tabcontent" style="display:none;">
+  <h1>{{ t('tab_cite') }}</h1>
   <div id="citeme">
-    <h3>¿Cómo citar este artículo?</h3>
+    <h3>{{ t('how_to_cite') }}</h3>
     <p>
-      "{{ territory.Nombre }}, {{ territory.tipo }} ({{ territory.Region }})",
+      "{{ territory.Nombre }}, {{ vt(territory.tipo) }} ({{ territory.Region }})",
       Werner Stangl (ed.), Compendio digital de Indias.
-      <span id="url"></span> Retrieved <span id="datetime"></span>
+      <span id="url"></span> {{ t('retrieved') }} <span id="datetime"></span>
     </p>
   </div>
 </div>
 {% endblock %}
+
+{% block right_block %}{% endblock %}

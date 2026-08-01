@@ -79,7 +79,9 @@ p.small {
 /* Tab CSS */
 .tab {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    /* All tabs on a single row, however many there are; each shares the width. */
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
     gap: 5px;
     border-bottom: 1px solid #ccc;
     background-color: rgba(255, 255, 255, 0.2);
@@ -125,22 +127,13 @@ p.small {
     display: block;
 }
 
-/* Responsive layout for tab buttons */
+/* Responsive layout for tab buttons: single row everywhere except narrow
+   phones, where 6 tabs on one line would be unusable, so they stack. */
 @media (max-width: 599px) {
     .tab {
+        grid-auto-flow: row;
+        grid-auto-columns: auto;
         grid-template-columns: 1fr;
-    }
-}
-
-@media (min-width: 600px) and (max-width: 1199px) {
-    .tab {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 1200px) {
-    .tab {
-        grid-template-columns: repeat(4, 1fr);
     }
 }
 
@@ -210,12 +203,11 @@ p.small {
             margin-top: 20px;
         }
 .form-container {
-    padding: 15px;
-    background-color: #DADADA;
-    font-family: "Roboto";
-	border-width: 2px;
-    border-style: solid;
-    border-color: black;
+    padding: var(--sp-3, 14px) var(--sp-4, 18px);
+    background: var(--surface-2, #f4f5f7);
+    color: var(--ink, #1a1a1a);
+    border: 1px solid var(--border, #ccc);
+    border-radius: var(--radius, 10px);
 }
 
 .form-grid {
@@ -236,30 +228,46 @@ form {
 }
 
 form label {
-    font-size: 0.85em; /* Smaller label font size */
+    font-size: 0.85em;
     margin-top: 8px;
+    color: var(--ink, #1a1a1a);
 }
 
 form input, form select {
     width: 100%;
-    padding: 6px; /* Slightly smaller padding */
+    padding: 7px 9px;
     margin-top: 4px;
-    font-size: 0.9em; /* Slightly smaller font size */
-    max-width: 350px; /* Limit width of inputs and selects */
+    font-size: 0.9em;
+    max-width: 320px;              /* slimmer boxes */
+    background: var(--surface, #fff);
+    color: var(--ink, #1a1a1a);
+    border: 1px solid var(--border-strong, #b8b8b8);
+    border-radius: 7px;
+    transition: border-color .15s ease, box-shadow .15s ease;
 }
 
+form input:focus, form select:focus {
+    outline: none;
+    border-color: var(--accent, #2b4b68);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent, #2b4b68) 25%, transparent);
+}
+
+form input::placeholder { color: var(--muted, #888); }
+
 form button {
-    width: 75px;
-    padding: 10px;
+    width: auto;
+    padding: 9px 20px;
     margin-top: 15px;
-    background-color: #4CAF50;
-    color: white;
+    background: var(--accent, #2b4b68);
+    color: var(--accent-ink, #fff);
     border: none;
+    border-radius: 7px;
+    font-size: 0.9em;
     cursor: pointer;
 }
 
 form button:hover {
-    background-color: #45a049;
+    filter: brightness(1.08);
 }
 
 /* Responsive adjustments for smaller screens */
@@ -285,13 +293,15 @@ form button:hover {
 .checkbox-group label {
     margin: 0;
     font-size: 0.9em;
-    color: #666;
+    color: var(--muted, #555);
 }
 
 .search-help {
-    background: rgba(240, 248, 255, 0.8);
-    padding: 10px;
-    border-radius: 5px;
+    background: var(--surface, #fff);
+    color: var(--ink, #1a1a1a);
+    border: 1px solid var(--border, #ddd);
+    padding: 10px 12px;
+    border-radius: var(--radius, 8px);
     margin-top: 10px;
     font-size: 0.9em;
 }

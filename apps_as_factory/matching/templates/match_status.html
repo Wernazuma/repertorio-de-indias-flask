@@ -2,61 +2,144 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Matching Status — {{ prefix }}</title>
-  <!-- Automatically refresh every 4 seconds until complete -->
-  {% if not matching_complete %}
-  <meta http-equiv="refresh" content="4">
-  {% endif %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Matching — {{ prefix }}</title>
   <style>
-    body {
-      font-family: system-ui, sans-serif;
-      margin: 2em;
-      background: #fafafa;
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; margin: 0; background: #f4f5f7; color: #222; }
+    .wrap { max-width: 620px; margin: 12vh auto 0; padding: 0 1.5em; }
+    h1 { font-size: 1.3em; margin: 0 0 0.2em; }
+    .prefix { color: #666; font-size: 0.9em; margin-bottom: 1.8em; }
+    .prefix code { background: #e9edf2; padding: 1px 6px; border-radius: 4px; }
+
+    .phases { display: flex; gap: 0.5em; margin-bottom: 1.2em; }
+    .phase {
+      flex: 1; padding: 0.5em 0.7em; border-radius: 6px; font-size: 0.85em;
+      background: #e9edf2; color: #888; border: 1px solid #dde2e8; text-align: center;
     }
-    h2 { color: #333; }
-    pre {
-      background: #f0f0f0;
-      padding: 1em;
-      border-radius: 5px;
-      white-space: pre-wrap;
-      font-family: monospace;
+    .phase.active { background: #e7f0fb; color: #0056b3; border-color: #b9d4f0; font-weight: 600; }
+    .phase.done   { background: #e4f6e4; color: #1a7a1a; border-color: #9ad29a; }
+
+    .bar { height: 14px; background: #e3e6ea; border-radius: 7px; overflow: hidden; }
+    .fill {
+      height: 100%; width: 0%; background: #0056b3; border-radius: 7px;
+      transition: width 0.35s ease;
     }
-    .complete {
-      color: green;
-      font-weight: bold;
+    .fill.indeterminate {
+      width: 35% !important; background: linear-gradient(90deg, #0056b3, #6aa3e0, #0056b3);
+      background-size: 200% 100%; animation: slide 1.1s linear infinite;
     }
-    .controls {
-      margin-top: 1em;
+    @keyframes slide { from { margin-left: -35%; } to { margin-left: 100%; } }
+
+    .status-line { margin-top: 0.8em; font-size: 0.95em; color: #444; }
+    .status-sub  { margin-top: 0.2em; font-size: 0.82em; color: #888; }
+
+    .done-box, .error-box { margin-top: 1.4em; padding: 0.9em 1em; border-radius: 6px; font-size: 0.9em; }
+    .done-box  { background: #e4f6e4; border: 1px solid #9ad29a; color: #1a5c1a; }
+    .error-box { background: #fdecec; border: 1px solid #e8a0a0; color: #a02020; white-space: pre-wrap; }
+
+    a.btn {
+      display: inline-block; margin-top: 0.8em; padding: 0.5em 1em; border-radius: 6px;
+      background: #0056b3; color: #fff; text-decoration: none; font-size: 0.9em;
     }
-    a {
-      color: #0056b3;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
+    a.btn:hover { background: #00408a; }
+    a.link { color: #0056b3; text-decoration: none; font-size: 0.85em; }
+    .footer { margin-top: 2em; font-size: 0.82em; }
   </style>
 </head>
 <body>
-  <h2>Matching Progress — Step 1a</h2>
-  <p><strong>Prefix:</strong> <code>{{ prefix }}</code></p>
+  <div class="wrap">
+    <h1>Matching in progress</h1>
+    <div class="prefix">Prefix: <code>{{ prefix }}</code></div>
 
-  <pre>{{ content or 'No progress yet...' }}</pre>
+    <div class="phases">
+      <div class="phase" id="ph-1a">Phase 1a — Matching</div>
+      <div class="phase" id="ph-1b">Phase 1b — Backoff</div>
+    </div>
 
-  {% if matching_complete %}
-    <p class="complete">✅ Matching complete!</p>
-    <p>Results saved to:
-      <code>data/uploads/{{ prefix }}_processing.csv</code>
-    </p>
-    <div class="controls">
-      <a href="{{ url_for('matching.index') }}">← Back to Start</a>
+    <div class="bar"><div class="fill indeterminate" id="fill"></div></div>
+    <div class="status-line" id="statusLine">Starting…</div>
+    <div class="status-sub" id="statusSub"></div>
+
+    <div class="done-box" id="doneBox" style="display:none;">
+      ✅ Matching complete. Opening disambiguation…
     </div>
-  {% else %}
-    <p>⏳ Matching in progress. This page will refresh automatically every 4 seconds.</p>
-    <div class="controls">
-      <a href="{{ url_for('matching.match_status', prefix=prefix) }}">Refresh manually</a> |
-      <a href="{{ url_for('matching.index') }}">Back to Start</a>
+    <div class="error-box" id="errorBox" style="display:none;"></div>
+
+    <div class="footer">
+      <a class="link" href="{{ url_for('matching.index') }}">← Back to start</a>
     </div>
-  {% endif %}
+  </div>
+
+  <script>
+    const PROGRESS_URL = "{{ url_for('matching.match_progress', prefix=prefix) }}";
+
+    const fill = document.getElementById("fill");
+    const statusLine = document.getElementById("statusLine");
+    const statusSub = document.getElementById("statusSub");
+    const ph1a = document.getElementById("ph-1a");
+    const ph1b = document.getElementById("ph-1b");
+    const doneBox = document.getElementById("doneBox");
+    const errorBox = document.getElementById("errorBox");
+
+    const PHASE_NAME = { "1a": "Phase 1a — Matching", "1b": "Phase 1b — Backoff matching" };
+    let stopped = false;
+
+    function setPhaseChips(phase, done) {
+      ph1a.classList.remove("active", "done");
+      ph1b.classList.remove("active", "done");
+      if (done) { ph1a.classList.add("done"); ph1b.classList.add("done"); return; }
+      if (phase === "1a") { ph1a.classList.add("active"); }
+      else if (phase === "1b") { ph1a.classList.add("done"); ph1b.classList.add("active"); }
+    }
+
+    async function poll() {
+      if (stopped) return;
+      try {
+        const r = await fetch(PROGRESS_URL, { cache: "no-store" });
+        const d = await r.json();
+
+        if (d.stage === "error") {
+          stopped = true;
+          fill.classList.remove("indeterminate");
+          fill.style.background = "#b32020";
+          fill.style.width = "100%";
+          errorBox.style.display = "block";
+          errorBox.textContent = "An error occurred:\n" + (d.error || "unknown error");
+          statusLine.textContent = "Failed.";
+          return;
+        }
+
+        if (d.stage === "done") {
+          stopped = true;
+          setPhaseChips(d.phase, true);
+          fill.classList.remove("indeterminate");
+          fill.style.width = "100%";
+          statusLine.textContent = "Complete.";
+          statusSub.textContent = "";
+          doneBox.style.display = "block";
+          if (d.redirect) setTimeout(() => { window.location = d.redirect; }, 900);
+          return;
+        }
+
+        // running
+        setPhaseChips(d.phase, false);
+        statusLine.textContent = PHASE_NAME[d.phase] || ("Phase " + d.phase);
+        if (d.total > 0) {
+          fill.classList.remove("indeterminate");
+          fill.style.width = (d.percent || 0) + "%";
+          statusSub.textContent = d.processed + " of " + d.total + " rows (" + (d.percent || 0) + "%)";
+        } else {
+          fill.classList.add("indeterminate");
+          statusSub.textContent = "Preparing…";
+        }
+      } catch (e) {
+        statusSub.textContent = "Waiting for status…";
+      }
+      setTimeout(poll, 1200);
+    }
+
+    poll();
+  </script>
 </body>
 </html>

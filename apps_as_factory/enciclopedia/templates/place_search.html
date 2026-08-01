@@ -1,143 +1,182 @@
-{% extends "base.html" %}
+{% extends "enc_base.html" %}
 
-{% block title %}Place Search{% endblock %}
-{% block header_h1 %}Place Search{% endblock %}
+{% block title %}{{ t('title_place_search') }} — ARCA{% endblock %}
 
-{% block extra_styles %}
+{% block enc_head %}
 <style>
   .form-container { margin-bottom: 1rem; }
-  .search-tips-columns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
   .results ul {
     list-style: none;
     column-count: 2;
     column-width: 400px;
     padding-left: 0;
   }
+  /* Territory drill-down: region -> province -> territories */
+  .terr-drill { display: flex; flex-direction: column; gap: .5rem; margin-top: 4px; }
+  .terr-step-label { font-size: .78em; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .04em; color: var(--muted, #777); margin-bottom: 2px; }
+  .terr-checks { max-height: 9.5rem; overflow-y: auto; border: 1px solid var(--border, #ccc);
+    border-radius: 7px; background: var(--surface, #fff); padding: 5px 8px; }
+  .terr-checks label { display: block; margin: 2px 0; font-size: .85em; color: var(--ink, #1a1a1a);
+    cursor: pointer; }
+  .terr-checks input[type="checkbox"] { width: auto; max-width: none; margin: 0 5px 0 0; }
+  .terr-info { font-size: .82em; font-weight: 400; text-transform: none;
+    letter-spacing: 0; margin-left: 6px; }
+
+  /* Collapsible filter groups */
+  .filter-acc { border: 1px solid var(--border, #ccc); border-radius: 8px;
+    margin-bottom: .55rem; background: var(--surface, #fff); }
+  .filter-acc > summary { cursor: pointer; padding: .5rem .8rem; font-weight: 700;
+    font-size: .8em; text-transform: uppercase; letter-spacing: .04em;
+    color: var(--muted, #555); list-style: none; user-select: none; }
+  .filter-acc > summary::-webkit-details-marker { display: none; }
+  .filter-acc > summary::before { content: "\25B8"; display: inline-block;
+    margin-right: .5em; transition: transform .15s ease; }
+  .filter-acc[open] > summary::before { transform: rotate(90deg); }
+  .filter-acc .acc-body { padding: .2rem .8rem .75rem; }
+  .filter-acc .acc-body label { font-size: .9em; }
 </style>
 {% endblock %}
 
-{% block content %}
+{% block enc_content %}
+<h1 class="enc-title">{{ t('title_place_search') }}</h1>
 <div class="form-container">
-  <div class="search-help">
-    <div class="search-tips-columns">
-      <div class="tips-spanish">
-        <p><strong>Consejos de búsqueda</strong></p>
-        <ul>
-          <li>La búsqueda predeterminada coincide con palabras completas: "Coro" encuentra "San Antonio Coro" pero no "Corozal"</li>
-          <li>Use "OR" para buscar múltiples términos: "Coro OR Caracas"</li>
-          <li>Use comodines (*): "Coro*" encuentra tanto "Coro" como "Corozal"</li>
-          <li>Active la Búsqueda Difusa para coincidencias aproximadas (encuentra variantes ortográficas pero puede incluir falsos positivos)</li>
-        </ul>
-      </div>
-      <div class="tips-english">
-        <p><strong>Search Tips</strong></p>
-        <ul>
-          <li>Default search matches complete words: "Coro" finds "San Antonio Coro" but not "Corozal"</li>
-          <li>Use "OR" to search multiple terms: "Coro OR Caracas"</li>
-          <li>Use wildcards (*): "Coro*" finds both "Coro" and "Corozal"</li>
-          <li>Enable Fuzzy Search for approximate matching (finds spelling variants but may include false positives)</li>
-        </ul>
-      </div>
+  <details class="filter-acc">
+    <summary>{{ t('tips_title') }}</summary>
+    <div class="acc-body">
+      <ul>
+        <li>{{ t('pl_tip_word') }}</li>
+        <li>{{ t('tip_or') }}</li>
+        <li>{{ t('pl_tip_wild') }}</li>
+        <li>{{ t('tip_fuzzy') }}</li>
+      </ul>
     </div>
-  </div>
+  </details>
 
-  <form method="get" action="/place/search" class="form-grid">
+  <form method="get" action="{{ url_for('enciclopedia.place_search') }}">
     <div class="main-inputs">
       <div class="form-group">
-        <label for="name">Nombre / Name:</label><br/>
+        <label for="name">{{ t('lbl_name') }}:</label><br/>
         <input type="text" id="name" name="name" value="{{ name }}"
-               placeholder="Enter place name (use * for wildcards)">
+               placeholder="{{ t('ph_place_name') }}">
         <div class="checkbox-group">
           <input type="checkbox" id="fuzzy_search" name="fuzzy_search" {% if fuzzy_search %}checked{% endif %}>
-          <label for="fuzzy_search">Fuzzy Search (Levenshtein matching)</label>
+          <label for="fuzzy_search">{{ t('lbl_fuzzy') }}</label>
         </div>
       </div>
 
-      <label for="category">Categoría de lugar / Category of place:</label>
-      <select id="category" name="category">
-        <option value="">-- Select Category --</option>
-        <option value="Ciudad" {% if category == 'Ciudad' %}selected{% endif %}>Ciudad</option>
-        <option value="Villa" {% if category == 'Villa' %}selected{% endif %}>Villa</option>
-        <option value="Pueblo" {% if category == 'Pueblo' %}selected{% endif %}>Pueblo</option>
-        <option value="Poblacion" {% if category == 'Poblacion' %}selected{% endif %}>Poblacion</option>
-        <option value="Fuerte" {% if category == 'Fuerte' %}selected{% endif %}>Fuerte</option>
-        <option value="Rural" {% if category == 'Rural' %}selected{% endif %}>Rural</option>
-        <option value="Localidad" {% if category == 'Localidad' %}selected{% endif %}>Localidad</option>
-        <option value="Parcialidad" {% if category == 'Parcialidad' %}selected{% endif %}>Parcialidad</option>
-      </select>
+    <details class="filter-acc">
+      <summary>{{ t('filters_category') }}</summary>
+      <div class="acc-body">
+        <label for="category">{{ t('lbl_category') }}:</label>
+        <select id="category" name="category">
+          <option value="">{{ t('opt_select_category') }}</option>
+          {% for c in ['Ciudad', 'Villa', 'Pueblo', 'Poblacion', 'Fuerte', 'Rural', 'Localidad', 'Parcialidad'] %}
+            <option value="{{ c }}" {% if category == c %}selected{% endif %}>{{ vt(c) }}</option>
+          {% endfor %}
+        </select>
 
-      <select name="subcategory" id="subcategory" disabled>
-        <option value="">-- Select Subcategory --</option>
-      </select>
+        <select name="subcategory" id="subcategory" disabled>
+          <option value="">{{ t('opt_select_subcategory') }}</option>
+        </select>
 
-      <label for="church_category">Categoría eclesiástica / Church Category:</label>
-      <select id="church_category" name="church_category">
-        <option value="">-- Select Church Category --</option>
-        <option value="curatos" {% if church_category == 'curatos' %}selected{% endif %}>Curatos</option>
-        <option value="misiones" {% if church_category == 'misiones' %}selected{% endif %}>Misiones</option>
-        <option value="curatos_misiones" {% if church_category == 'curatos_misiones' %}selected{% endif %}>Curatos y misiones</option>
-        <option value="sede_obispado" {% if church_category == 'sede_obispado' %}selected{% endif %}>Sede de obispado</option>
-      </select>
+        <label for="church_category">{{ t('lbl_church_category') }}:</label>
+        <select id="church_category" name="church_category">
+          <option value="">{{ t('opt_select_church') }}</option>
+          <option value="curatos" {% if church_category == 'curatos' %}selected{% endif %}>{{ t('church_curatos') }}</option>
+          <option value="misiones" {% if church_category == 'misiones' %}selected{% endif %}>{{ t('church_misiones') }}</option>
+          <option value="curatos_misiones" {% if church_category == 'curatos_misiones' %}selected{% endif %}>{{ t('church_curatos_misiones') }}</option>
+          <option value="sede_obispado" {% if church_category == 'sede_obispado' %}selected{% endif %}>{{ t('church_sede') }}</option>
+        </select>
 
-      <label for="religious_order">Orden religiosa / Religious Order:</label>
-      <select id="religious_order" name="religious_order">
-        <option value="">-- Select Religious Order --</option>
-        {% for order in religious_orders %}
-          <option value="{{ order }}" {% if religious_order == order %}selected{% endif %}>{{ order }}</option>
-        {% endfor %}
-      </select>
+        <label for="religious_order">{{ t('lbl_religious_order') }}:</label>
+        <select id="religious_order" name="religious_order">
+          <option value="">{{ t('opt_select_order') }}</option>
+          {% for order in religious_orders %}
+            <option value="{{ order }}" {% if religious_order == order %}selected{% endif %}>{{ order }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </details>
+
+    <details class="filter-acc">
+      <summary>{{ t('filters_territorial') }}</summary>
+      <div class="acc-body">
+        <div class="terr-step">
+          <div class="terr-step-label">{{ t('lbl_region') }}</div>
+          <div class="terr-checks">
+            {% for code, label in region_options %}
+            <label><input type="checkbox" name="region" value="{{ code }}"
+              {% if code in place_regions %}checked{% endif %}> {{ label }}</label>
+            {% endfor %}
+          </div>
+        </div>
+
+        <label style="margin-top:10px;">{{ t('lbl_belongs_to') }}:</label>
+
+        <div class="terr-step">
+          <div class="terr-step-label">
+            {{ t('lbl_levels') }}
+            <a href="{{ url_for('enciclopedia.tesauro_detail', term='niveles') }}" target="_blank"
+               rel="noopener" class="terr-info">{{ t('levels_more_info') }}</a>
+          </div>
+          <div class="terr-checks">
+            {% for lv in level_options %}
+            <label><input type="checkbox" name="terr_level" value="{{ lv }}"
+              {% if not terr_levels or lv in terr_levels %}checked{% endif %}> {{ lv | replace('_', ' ') }}</label>
+            {% endfor %}
+          </div>
+        </div>
+
+        <label for="terr_name" style="margin-top:8px;">{{ t('lbl_territory_name') }}:</label>
+        <input type="text" id="terr_name" name="terr_name" value="{{ terr_name }}"
+               placeholder="{{ t('ph_territory_name') }}">
+      </div>
+    </details>
+
+    <details class="filter-acc">
+      <summary>{{ t('filters_temporal') }}</summary>
+      <div class="acc-body">
+        <label>{{ t('lbl_year_hint') }}</label>
+
+        <label for="year">{{ t('lbl_ref_year') }}:</label>
+        <input type="number" id="year" name="year" value="{{ request.args.get('year') or '' }}" autocomplete="off">
+
+        <label for="year_start">{{ t('lbl_from') }}:</label>
+        <input type="number" id="year_start" name="year_start" placeholder="{{ t('ph_start_year') }}" value="{{ year_start }}">
+
+        <label for="year_end">{{ t('lbl_to') }}:</label>
+        <input type="number" id="year_end" name="year_end" placeholder="{{ t('ph_end_year') }}" value="{{ year_end }}">
+      </div>
+    </details>
     </div>
 
-    <div class="middle-inputs">
-      <label for="is_part_of_name">Pertenece a territorio / Belongs to territory:</label>
-      <input type="text" id="is_part_of_name" name="is_part_of_name" placeholder="Enter name" value="{{ is_part_of_name }}">
-
-      <label for="is_part_of_type">Pertenece a territorio de tipo / Belongs to territory of type:</label>
-      <input type="text" id="is_part_of_type" name="is_part_of_type" placeholder="Enter type" value="{{ is_part_of_type }}">
-    </div>
-
-    <div class="additional-inputs">
-      <label>Puede indicar un año específico (preferido), o un período. / You may enter a specific year (preferred) or a range.</label>
-
-      <label for="year">Año de Referencia / Reference Year:</label>
-      <input type="number" id="year" name="year" value="{{ year or '' }}">
-
-      <label for="year_start">Desde / From:</label>
-      <input type="number" id="year_start" name="year_start" placeholder="Start year" value="{{ year_start }}">
-
-      <label for="year_end">Hasta / To:</label>
-      <input type="number" id="year_end" name="year_end" placeholder="End year" value="{{ year_end }}">
-    </div>
-
-    <button type="submit">Search</button>
+    <button type="submit">{{ t('search') }}</button>
   </form>
 </div>
 
 <div class="results">
-  <h2>Results</h2>
+  <h2>{{ t('results') }}</h2>
   <ul>
     {% if results and results|length > 0 %}
       {% for result in results %}
         <li>
-          <a href="/place/{{ result['gz_id'] }}">
-            {{ result['label'] }} ({{ result['partido_generico'] }}, {{ result['provincia_generica'] }}, {{ result['region'] }}). Indias-ID: {{ result['gz_id'] }}
+          <a href="{{ url_for('enciclopedia.place_detail', place_id=result['gz_id']) }}">
+            {{ result['label'] }} ({{ result['partido_generico'] }}, {{ result['provincia_generica'] }}, {{ result['region'] }}). {{ t('indias_id') }}: {{ result['gz_id'] }}
           </a>
         </li>
       {% endfor %}
     {% else %}
-      <li>No matching results found.</li>
+      <li>{{ t('no_results') }}</li>
     {% endif %}
   </ul>
 
   {% if results and results|length > 0 %}
-  <form method="get" action="/place/download">
+  <form method="get" action="{{ url_for('enciclopedia.place_download') }}">
     <input type="hidden" name="name" value="{{ name }}">
-    <input type="hidden" name="is_part_of_type" value="{{ is_part_of_type }}">
-    <input type="hidden" name="is_part_of_name" value="{{ is_part_of_name }}">
+    <input type="hidden" name="terr_name" value="{{ terr_name }}">
+    {% for lv in terr_levels %}<input type="hidden" name="terr_level" value="{{ lv }}">{% endfor %}
+    {% for r in place_regions %}<input type="hidden" name="region" value="{{ r }}">{% endfor %}
     <input type="hidden" name="year_start" value="{{ year_start }}">
     <input type="hidden" name="year_end" value="{{ year_end }}">
     <input type="hidden" name="year" value="{{ year }}">
@@ -145,7 +184,7 @@
     <input type="hidden" name="subcategory" value="{{ subcategory }}">
     <input type="hidden" name="church_category" value="{{ church_category }}">
     <input type="hidden" name="religious_order" value="{{ religious_order }}">
-    <button type="submit">Download</button>
+    <button type="submit">{{ t('download') }}</button>
   </form>
   {% endif %}
 </div>
@@ -158,17 +197,18 @@
 document.addEventListener('DOMContentLoaded', function() {
   const categorySelect = document.getElementById('category');
   const subcategorySelect = document.getElementById('subcategory');
+  const SELECT_SUBCAT = "{{ t('opt_select_subcategory') }}";
 
   function updateSubcategories(category) {
     if (!category) {
       subcategorySelect.disabled = true;
-      subcategorySelect.innerHTML = '<option value="">-- Select Subcategory --</option>';
+      subcategorySelect.innerHTML = '<option value="">' + SELECT_SUBCAT + '</option>';
       return;
     }
-    fetch(`/get_subcategories/${category}`)
+    fetch(`{{ url_for('enciclopedia.get_subcategories', category='__CAT__') }}`.replace('__CAT__', encodeURIComponent(category)))
       .then(response => response.json())
       .then(subcategories => {
-        subcategorySelect.innerHTML = '<option value="">-- Select Subcategory --</option>';
+        subcategorySelect.innerHTML = '<option value="">' + SELECT_SUBCAT + '</option>';
         subcategories.forEach(subcat => {
           const option = document.createElement('option');
           option.value = subcat;
@@ -186,4 +226,5 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+
 {% endblock %}

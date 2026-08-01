@@ -1,101 +1,77 @@
-{% extends "base.html" %}
+{% extends "enc_base.html" %}
 
-{% block title %}Búsqueda de personas{% endblock %}
-{% block header_h1 %}Búsqueda de personas / People Search{% endblock %}
+{% block title %}{{ t('title_people_search') }} — ARCA{% endblock %}
 
-{% block extra_styles %}
+{% block enc_head %}
 <style>
   .form-container { margin-bottom: 1rem; }
-  .search-tips-columns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
   .results h2 { margin-top: 1rem; }
   .results ul { list-style: none; column-count: auto; column-width: 400px; padding-left: 0; }
+  /* Collapsible filter groups */
+  .filter-acc { border: 1px solid var(--border, #ccc); border-radius: 8px;
+    margin-bottom: .55rem; background: var(--surface, #fff); }
+  .filter-acc > summary { cursor: pointer; padding: .5rem .8rem; font-weight: 700;
+    font-size: .8em; text-transform: uppercase; letter-spacing: .04em;
+    color: var(--muted, #555); list-style: none; user-select: none; }
+  .filter-acc > summary::-webkit-details-marker { display: none; }
+  .filter-acc > summary::before { content: "\25B8"; display: inline-block;
+    margin-right: .5em; transition: transform .15s ease; }
+  .filter-acc[open] > summary::before { transform: rotate(90deg); }
+  .filter-acc .acc-body { padding: .2rem .8rem .75rem; }
+  .filter-acc .acc-body label { font-size: .9em; }
 </style>
 {% endblock %}
 
-{% block extra_head %}
-<script>
-  function openTab(evt, tabName) {
-    var i, tabcontent = document.getElementsByClassName("tabcontent"),
-        tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tabcontent.length; i++) tabcontent[i].style.display = "none";
-    for (i = 0; i < tablinks.length; i++)
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-    var tgt = document.getElementById(tabName);
-    if (tgt) tgt.style.display = "block";
-    evt.currentTarget.className += " active";
-  }
-</script>
-{% endblock %}
-
-{% block content %}
+{% block enc_content %}
+<h1 class="enc-title">{{ t('title_people_search') }}</h1>
 <div class="form-container">
-  <div class="search-help">
-    <div class="search-tips-columns">
-      <div class="tips-spanish">
-        <p><strong>Consejos de búsqueda</strong></p>
-        <ul>
-          <li>La búsqueda opera con palabras completas: "Aro" encuentra "Aro" pero no "Arostegui"</li>
-          <li>Use "OR" para buscar múltiples términos: "González OR García"</li>
-          <li>Use comodines (*): "Gonz*" encuentra tanto "González" como "Gonzaga"</li>
-          <li>Active la Búsqueda Difusa para coincidencias aproximadas (encuentra variantes ortográficas pero puede incluir falsos positivos)</li>
-        </ul>
-      </div>
-      <div class="tips-english">
-        <p><strong>Search Tips</strong></p>
-        <ul>
-          <li>Default search matches complete words: "Aro" finds "Aro" but not "Arostegui"</li>
-          <li>Use "OR" to search multiple terms: "González OR García"</li>
-          <li>Use wildcards (*): "Gonz*" finds both "González" and "Gonzaga"</li>
-          <li>Enable Fuzzy Search for approximate matching (finds spelling variants but may include false positives)</li>
-        </ul>
-      </div>
+  <details class="filter-acc">
+    <summary>{{ t('tips_title') }}</summary>
+    <div class="acc-body">
+      <ul>
+        <li>{{ t('pp_tip_word') }}</li>
+        <li>{{ t('pp_tip_or') }}</li>
+        <li>{{ t('pp_tip_wild') }}</li>
+        <li>{{ t('tip_fuzzy') }}</li>
+      </ul>
     </div>
-  </div>
+  </details>
 
   <form method="get">
-    <div class="form-grid">
-      <!-- Column 1 -->
-      <div class="main-inputs">
-        <div class="form-group">
-          <label for="last_name">Apellido / Last Name:</label><br/>
-          <input type="text" id="last_name" name="last_name" placeholder="Enter last name (use * for wildcards)" value="{{ last_name or '' }}">
-          <div class="checkbox-group">
-            <input type="checkbox" id="fuzzy_search" name="fuzzy_search" {% if fuzzy_search %}checked{% endif %}>
-            <label for="fuzzy_search">Fuzzy Search (Levenshtein matching)</label>
-          </div>
+    <div class="main-inputs">
+      <div class="form-group">
+        <label for="last_name">{{ t('lbl_last_name') }}:</label><br/>
+        <input type="text" id="last_name" name="last_name" placeholder="{{ t('ph_last_name') }}" value="{{ last_name or '' }}">
+        <div class="checkbox-group">
+          <input type="checkbox" id="fuzzy_search" name="fuzzy_search" {% if fuzzy_search %}checked{% endif %}>
+          <label for="fuzzy_search">{{ t('lbl_fuzzy') }}</label>
         </div>
       </div>
 
-      <!-- Column 2 -->
-      <div class="middle-inputs">
-        <label for="year">Año / Year:</label>
-        <input type="number" id="year" name="year" placeholder="Enter year" value="{{ year or '' }}">
-        <button type="submit">Search</button>
-      </div>
-
-      <!-- Column 3 -->
-      <div class="additional-inputs">
-        <!-- Reserved for future filters -->
-      </div>
+      <details class="filter-acc">
+        <summary>{{ t('filters_temporal') }}</summary>
+        <div class="acc-body">
+          <label for="year">{{ t('lbl_year') }}:</label>
+          <input type="number" id="year" name="year" placeholder="{{ t('ph_year') }}" value="{{ year or '' }}">
+        </div>
+      </details>
     </div>
+
+    <button type="submit">{{ t('search') }}</button>
   </form>
 </div>
 
 <div class="results">
-  <h2>Resultados / Results</h2>
+  <h2>{{ t('results') }}</h2>
   <ul>
     {% if results %}
       {% for person in results %}
         <li>
-          <a href="/people/persIndias{{ person['OficialID'] }}">{{ person['NOM_entero'] }}</a>
+          <a href="{{ url_for('enciclopedia.people_detail', OficialID=person['OficialID']) }}">{{ person['NOM_entero'] }}</a>
           ({{ person['Nacimiento_y'] | int }}-{{ person['Fallecimiento_y'] | int }})
         </li>
       {% else %}
-        <li>No matching results found.</li>
+        <li>{{ t('no_results') }}</li>
       {% endfor %}
     {% endif %}
   </ul>

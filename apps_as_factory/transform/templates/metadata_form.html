@@ -1,0 +1,277 @@
+{% extends "base.html" %}
+{% set active = 'arca' %}
+{% block title %}Metadata &amp; licensing — ARCA{% endblock %}
+
+{% block extra_head %}
+<style>
+  .tx-step { max-width: 46rem; }
+  .tx-step h1 { font-family: var(--serif); font-size: var(--step-2); margin-bottom: .2rem; }
+  .tx-step .sub { color: var(--muted); font-size: var(--step--1); margin-bottom: var(--sp-3); }
+  .mcard { background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: var(--sp-3); margin-top: var(--sp-3); }
+  .mcard h3 { font-size: var(--step-1); margin: 0 0 .5rem; }
+  label.f { display: block; margin: .9rem 0 .1rem; font-size: var(--step--1);
+    font-weight: 600; }
+  .hint { display: block; font-weight: 400; color: var(--muted);
+    font-size: var(--step--1); margin-bottom: .25rem; }
+  .mcard input[type="text"], .mcard textarea, .mcard select,
+  .mcard input[type="file"] {
+    width: 100%; padding: .4rem .5rem; font-family: var(--body);
+    font-size: var(--step--1); border: 1px solid var(--border-strong);
+    border-radius: 5px; background: var(--surface); color: var(--ink); }
+  .mcard textarea { min-height: 60px; resize: vertical; }
+  .lic label { display: block; margin: .35rem 0; }
+  .req-mark { color: #b3261e; }
+  pre { background: var(--surface-2); border: 1px solid var(--border);
+    padding: .7rem; border-radius: 5px; overflow-x: auto; font-size: .8em; }
+  /* repeatable rows */
+  .rep-row { display: flex; gap: .4rem; margin-bottom: .35rem; }
+  .rep-row input { flex: 1 1 auto; }
+  .rep-row .rm { flex: 0 0 auto; padding: .2rem .55rem; line-height: 1;
+    border: 1px solid var(--border-strong); border-radius: 5px; cursor: pointer;
+    background: var(--surface-2); color: var(--muted); font-size: 1rem; }
+  .add-more { margin-top: .1rem; padding: .25rem .7rem; font-size: var(--step--1);
+    border: 1px solid var(--border-strong); border-radius: 5px; cursor: pointer;
+    background: var(--surface-2); color: var(--accent); font-weight: 600; }
+  .fixed-pub { display: inline-block; padding: .35rem .6rem; border-radius: 5px;
+    background: var(--surface-2); border: 1px solid var(--border);
+    font-size: var(--step--1); font-weight: 600; }
+  .defs-table { width: 100%; border-collapse: collapse; }
+  .defs-table th, .defs-table td { text-align: left; padding: .3rem .4rem;
+    border-bottom: 1px solid var(--border); vertical-align: middle; }
+  .defs-table th { font-size: var(--step--1); color: var(--muted); font-weight: 600; }
+  .defs-table td.col { font-family: var(--mono); font-size: .8em; width: 38%; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="tx-step">
+  {% set wf_step = 'metadata' %}{% include '_steps.html' %}
+  <h1>Dataset metadata &amp; licensing</h1>
+  <div class="sub">Dataset: <code>{{ base }}</code> — creates a Dublin Core metadata file.</div>
+
+  {% if saved %}
+    <div class="notice ok">
+      <p>Metadata saved to <code>{{ base }}_metadata.txt</code>.
+        {% if accepted %}Licensed under CC-BY-SA 4.0.
+        {% else %}Marked as <b>not openly licensed</b> — the site owner may offer an
+        individual solution.{% endif %}</p>
+      {% if biblio_saved %}<p>Bibliography stored as <code>{{ base }}_bibliography.txt</code>.</p>{% endif %}
+      {% if definitions %}<p>{{ definitions }} column definition{{ '' if definitions == 1 else 's' }}
+        stored as <code>{{ base }}_field_definitions.csv</code>.</p>{% endif %}
+    </div>
+    <pre>{{ preview }}</pre>
+    <div class="wf-actions">
+      {% include '_abort.html' %}
+      <span class="spacer"></span>
+      <a class="btn secondary" href="{{ url_for('transform.metadata_form', prefix=base) }}">Edit metadata</a>
+      <a class="btn" href="{{ url_for('matching.export_results', prefix=base) }}">▶ Return to finish &amp; export</a>
+    </div>
+  {% else %}
+
+  {% if errors %}
+  <div class="notice warn">
+    <p><b>Please complete the following before saving:</b></p>
+    {% for e in errors %}<p>· {{ e }}</p>{% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="notice info">
+    <p>Adding metadata makes your matched dataset <b>citable and reusable</b> — it
+      records what your dataset is, who made it, what it is based on, and how it may
+      be used. It is optional and can be done any time after matching.
+      Fields marked <span class="req-mark">*</span> are mandatory if you save.</p>
+  </div>
+
+  <form method="POST" action="{{ url_for('transform.metadata_form', prefix=base) }}"
+        enctype="multipart/form-data">
+    <input type="hidden" name="prefix" value="{{ base }}">
+    <div class="mcard">
+      <h3>Descriptive metadata</h3>
+
+      <label class="f">Title <span class="req-mark">*</span></label>
+      <span class="hint">A short, distinctive name for your dataset. “Spatial data: ”
+        is prepended automatically.</span>
+      <input type="text" name="title" required value="{{ form.title if form else '' }}">
+
+      <label class="f">Creator(s) <span class="req-mark">*</span></label>
+      <span class="hint">Who made this dataset — person or project. Add one entry per
+        creator, in the order they should be cited.</span>
+      <div id="creatorRows">
+        {% for c in (form.creators if form and form.creators else ['']) %}
+        <div class="rep-row">
+          <input type="text" name="creator" placeholder="Surname, First name" value="{{ c }}">
+          <button type="button" class="rm" title="Remove">×</button>
+        </div>
+        {% endfor %}
+      </div>
+      <button type="button" class="add-more" data-target="creatorRows"
+              data-name="creator" data-ph="Surname, First name">+ Add another creator</button>
+
+      <label class="f">Description <span class="req-mark">*</span></label>
+      <span class="hint">What the dataset contains, how it was compiled, and what a
+        reuser should know about it.</span>
+      <textarea name="description" required>{{ form.description if form else '' }}</textarea>
+
+      <label class="f">Source(s) <span class="req-mark">*</span></label>
+      <span class="hint">Indicate all primary sources and secondary sources used to
+        create the resource; if too complex, upload a .txt file as bibliography.</span>
+      <div id="sourceRows">
+        {% for s in (form.sources if form and form.sources else ['']) %}
+        <div class="rep-row">
+          <input type="text" name="source" placeholder="Archive, fonds, signature — or a bibliographic reference" value="{{ s }}">
+          <button type="button" class="rm" title="Remove">×</button>
+        </div>
+        {% endfor %}
+      </div>
+      <button type="button" class="add-more" data-target="sourceRows"
+              data-name="source" data-ph="Archive, fonds, signature — or a bibliographic reference">+ Add another source</button>
+
+      <label class="f">Bibliography file <span class="hint" style="display:inline;">— optional</span></label>
+      <span class="hint">If your source list is too complex for the fields above, upload
+        it as a plain-text file. It is stored as <code>{{ base }}_bibliography.txt</code>
+        and travels with your data in later downloads.</span>
+      <input type="file" name="bibliography" accept=".txt">
+
+      <label class="f">Subjects</label>
+      <span class="hint">Comma-separated keywords describing the topic, so others can
+        find your dataset.</span>
+      <input type="text" name="subjects" placeholder="administración, historia colonial, ..."
+             value="{{ form.subjects if form else '' }}">
+
+      <label class="f">Publisher(s)</label>
+      <span class="hint">ARCA always publishes the dataset. Add your institution or
+        project if it co-publishes — extra publishers appear in the citation.</span>
+      <p><span class="fixed-pub">ARCA</span> <span class="hint" style="display:inline;">(always included)</span></p>
+      <div id="publisherRows">
+        {% for p in (form.publishers if form and form.publishers else ['']) %}
+        <div class="rep-row">
+          <input type="text" name="publisher" placeholder="e.g. Universidad de …" value="{{ p }}">
+          <button type="button" class="rm" title="Remove">×</button>
+        </div>
+        {% endfor %}
+      </div>
+      <button type="button" class="add-more" data-target="publisherRows"
+              data-name="publisher" data-ph="e.g. Universidad de …">+ Add another publisher</button>
+
+      <label class="f">Contributor</label>
+      <span class="hint">Anyone who helped but is not a main creator — assistants,
+        funders, digitisers.</span>
+      <input type="text" name="contributor" value="{{ form.contributor if form else '' }}">
+
+      <label class="f">Spatial coverage</label>
+      <span class="hint">The region your data covers — e.g. Hispanoamérica, Nueva España,
+        Audiencia de Quito.</span>
+      <input type="text" name="spatial" value="{{ form.spatial if form else '' }}">
+
+      <label class="f">Temporal coverage</label>
+      <span class="hint">The period your data covers — e.g. 1492-1808.</span>
+      <input type="text" name="coverage" value="{{ form.coverage if form else '' }}">
+
+      <label class="f">Type</label>
+      <span class="hint">The kind of resource; leave as “Dataset” unless it is something else.</span>
+      <input type="text" name="type" value="{{ form.type if form and form.type else 'Dataset' }}">
+
+      <div class="notice info" style="margin-top: var(--sp-3);">
+        <p><b>Bibliographic citation</b> is generated automatically, so every ARCA
+          dataset cites the same way:</p>
+        <p><code>Creator, "Title": An ARCA [- Publisher2 …] Dataset. YYYY-MM-DD.</code></p>
+      </div>
+    </div>
+
+    <!-- ---------- best practice: per-column definitions ---------- -->
+    {% if columns %}
+    <div class="mcard">
+      <h3>Column definitions <span class="hint" style="display:inline;">— recommended</span></h3>
+      <div class="notice info" style="margin: 0 0 .6rem;">
+        <p><b>Best practice:</b> define what each column of your table means. It costs a
+          few minutes and makes your data intelligible to anyone who finds it later
+          (including you). Saved as <code>{{ base }}_field_definitions.csv</code>.</p>
+      </div>
+      <table class="defs-table">
+        <thead><tr><th>Column</th><th>What it means</th></tr></thead>
+        <tbody>
+          {% for c in columns %}
+          <tr>
+            <td class="col">{{ c }}</td>
+            <td><input type="text" name="def__{{ c }}"
+                       placeholder="e.g. tribute payers counted in that year"></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+
+    <div class="mcard lic">
+      <h3>Licensing</h3>
+      <div class="notice info" style="margin: 0 0 .6rem;">
+        <p>The geodata this dataset joins to is published under <b>CC-BY-SA 4.0</b>.
+          If you share, <b>“Arca de las Indias”</b> will be added as a secondary
+          <b>contributor</b> and <b>publisher</b>, and <b>“Spatial data: ”</b> will be
+          prepended to the title.</p>
+      </div>
+      <label><input type="radio" name="license" value="accept" checked onchange="toggleLic()">
+        I accept sharing under CC-BY-SA 4.0</label>
+      <label><input type="radio" name="license" value="decline" onchange="toggleLic()">
+        I don't accept</label>
+
+      <div id="embargoRow">
+        <label class="f">Embargo</label>
+        <span class="hint">How long before the dataset becomes openly available.</span>
+        <select name="embargo">
+          <option value="immediate">Immediate (available now)</option>
+          <option value="1year">1 year</option>
+          <option value="2years">2 years</option>
+          <option value="3years">3 years</option>
+        </select>
+      </div>
+      <div id="declineNote" class="notice warn" style="display:none; margin-top:.6rem;">
+        <p>You chose not to accept the open license. Your data can still be processed,
+          but it won't be published openly. Please <b>contact the site owner
+          (Arca de las Indias)</b> for an individual solution.</p>
+      </div>
+    </div>
+
+    <div class="wf-actions">
+      {% include '_abort.html' %}
+      <span class="spacer"></span>
+      <button class="btn" type="submit">Save metadata</button>
+    </div>
+  </form>
+  {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+  function toggleLic() {
+    const accept = document.querySelector('input[name="license"]:checked').value === 'accept';
+    document.getElementById('embargoRow').style.display = accept ? 'block' : 'none';
+    document.getElementById('declineNote').style.display = accept ? 'none' : 'block';
+  }
+
+  // repeatable rows: "+ Add another …" and per-row remove
+  document.querySelectorAll('.add-more').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const box = document.getElementById(btn.dataset.target);
+      const row = document.createElement('div');
+      row.className = 'rep-row';
+      row.innerHTML = '<input type="text" name="' + btn.dataset.name +
+                      '" placeholder="' + btn.dataset.ph +
+                      '"><button type="button" class="rm" title="Remove">×</button>';
+      box.appendChild(row);
+      row.querySelector('input').focus();
+    });
+  });
+  document.addEventListener('click', function (e) {
+    if (!e.target.classList.contains('rm')) return;
+    const box = e.target.closest('.rep-row').parentElement;
+    if (box.querySelectorAll('.rep-row').length > 1) {
+      e.target.closest('.rep-row').remove();     // always keep one row
+    } else {
+      box.querySelector('input').value = '';
+    }
+  });
+</script>
+{% endblock %}

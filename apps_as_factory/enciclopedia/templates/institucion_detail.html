@@ -1,0 +1,149 @@
+{% extends "enc_base.html" %}
+
+{% block title %}{{ inst.Label }} ({{ inst.InstID }}){% endblock %}
+{% block header_h1 %}{{ inst.Label }} ({{ inst.InstID }}){% endblock %}
+
+{% block enc_head %}
+<script>
+  // Include external HTML chunks (history article)
+  function includeHTML() {
+    var z = document.getElementsByTagName("*");
+    for (var i = 0; i < z.length; i++) {
+      var elmnt = z[i];
+      var file = elmnt.getAttribute("w3-include-html");
+      if (file) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+          if (this.readyState == 4) {
+            if (this.status == 200) { elmnt.innerHTML = this.responseText; }
+            if (this.status == 404) { elmnt.innerHTML = "Page not found."; }
+            elmnt.removeAttribute("w3-include-html");
+            includeHTML();
+          }
+        };
+        xhttp.open("GET", file, true);
+        xhttp.send();
+        return;
+      }
+    }
+  }
+
+  function openTab(evt, tabName) {
+    var i, tabcontent = document.getElementsByClassName("tabcontent"),
+        tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tabcontent.length; i++) tabcontent[i].style.display = "none";
+    for (i = 0; i < tablinks.length; i++)
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    var tgt = document.getElementById(tabName);
+    if (tgt) tgt.style.display = "block";
+    if (evt && evt.currentTarget) evt.currentTarget.className += " active";
+  }
+
+  function formatDate(date) {
+    const day = date.getDate();
+    const month = date.toLocaleString('en-GB', { month: 'long' });
+    const year = date.getFullYear();
+    return `${day} ${month} ${year}`;
+  }
+  function setDynamicContent() {
+    const currentDate = new Date();
+    const currentURL = window.location.href;
+    var dt = document.getElementById('datetime');
+    var u = document.getElementById('url');
+    if (dt) dt.innerText = formatDate(currentDate);
+    if (u) u.innerText = currentURL;
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    includeHTML();
+    setDynamicContent();
+    var def = document.getElementById("defaultOpen");
+    if (def) def.click();
+  });
+</script>
+{% endblock %}
+
+{% block enc_content %}
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Informacion')" id="defaultOpen">{{ t('td_tab_info') }}</button>
+  <button class="tablinks" onclick="openTab(event, 'Historia')">{{ t('td_tab_history') }}</button>
+  <button class="tablinks" onclick="openTab(event, 'Data')">{{ t('tab_data') }}</button>
+  <button class="tablinks" onclick="openTab(event, 'Fuentes')">{{ t('resources_sources') }}</button>
+  <button class="tablinks" onclick="openTab(event, 'Citar')">{{ t('tab_cite') }}</button>
+</div>
+
+<div id="Informacion" class="tabcontent" style="display:none;">
+  <h1>{{ inst.Label }}</h1>
+
+  <div class="infobox-grid">
+    <div class="infobox" id="info-1-base">
+      <p><span style="font-weight: bold;">{{ t('inst_id') }}:</span> {{ inst.InstID }}</p>
+
+      {% if inst.Tipo %}
+      <p><span style="font-weight: bold;">{{ t('inst_type') }}:</span>
+        <a href="/apps/enciclopedia/tesauro/{{ inst.Tipo | replace(' ', '_') }}">{{ vt(inst.Tipo) }}</a></p>
+      {% endif %}
+
+      {% if cardinalidad_data | selectattr('Cardinalidad') | list %}
+      <div>
+        <span style="font-weight: bold;">{{ t('inst_cardinality') }}:</span><br/>
+        {% for c in cardinalidad_data %}
+          {% if c.Cardinalidad %}
+            {{ c.Cardinalidad }}, {{ timespan(c.START_, c.END_) }}<br/>
+          {% endif %}
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {% if settlement_data %}
+      <div>
+        <span style="font-weight: bold;">{{ t('inst_settlement') }}:</span><br/>
+        {% for s in settlement_data %}
+          {% if s.gz_id %}<a href="../place/{{ s.gz_id }}">{{ s.Lugar }}</a>{% else %}{{ s.Lugar }}{% endif %}{% if s.START_ is not none %}, {{ timespan(s.START_, s.END_) }}{% endif %}<br/>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <hr/>
+      {% if inst.Fuente %}
+      <p><span style="font-weight: bold;">{{ t('inst_source') }}:</span> {{ inst.Fuente }}</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<div id="Historia" class="tabcontent" style="display:none;">
+  <h1>{{ t('history') }}</h1>
+  {% if article_exists %}
+    <div w3-include-html="/data/historia_instituciones/{{ inst.InstID }}.html"></div>
+  {% else %}
+    <p style="font-weight:bold;">{{ t('no_article_institucion') }}</p>
+  {% endif %}
+</div>
+
+<div id="Data" class="tabcontent" style="display:none;">
+  <h1>{{ t('tab_data') }}</h1>
+  <p>{{ t('data_soon') }}</p>
+</div>
+
+<div id="Fuentes" class="tabcontent" style="display:none;">
+  <h1>{{ t('resources_sources') }}</h1>
+  {% for f in fuentes %}
+    <p>{{ f }}</p>
+  {% endfor %}
+</div>
+
+<div id="Citar" class="tabcontent" style="display:none;">
+  <h1>{{ t('tab_cite') }}</h1>
+  <div id="citeme">
+    <h3>{{ t('how_to_cite_resource') }}</h3>
+    <p>
+      "{{ inst.Label }} ({{ inst.InstID }})",
+      Werner Stangl (ed.), Compendio digital de Indias.
+      <span id="url"></span> {{ t('retrieved') }} <span id="datetime"></span>
+    </p>
+  </div>
+</div>
+{% endblock %}
+
+{% block right_block %}{% endblock %}

@@ -1,0 +1,21 @@
+{# Progress bar for the transform workflow.
+   Each step template sets `wf_step` to one of the keys below before including. #}
+{% set wf_steps = [
+     ('upload',   'Upload'),
+     ('domain',   'Domain'),
+     ('columns',  'Columns'),
+     ('mapping',  'Field mapping'),
+     ('chrono',   'Chronology'),
+     ('result',   'Result'),
+     ('metadata', 'Metadata'),
+   ] %}
+{% set wf_keys = wf_steps | map(attribute=0) | list %}
+{% set wf_at = wf_keys.index(wf_step) if wf_step in wf_keys else -1 %}
+<ol class="wf-steps" aria-label="Transform progress">
+  {% for key, label in wf_steps %}
+    <li class="{% if loop.index0 < wf_at %}done{% elif loop.index0 == wf_at %}current{% endif %}"
+        {% if loop.index0 == wf_at %}aria-current="step"{% endif %}>
+      <span class="n">{{ loop.index }}</span><span>{{ label }}</span>
+    </li>
+  {% endfor %}
+</ol>

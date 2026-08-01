@@ -1,76 +1,70 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Classify Columns</title>
-</head>
-<body>
-    <h1>Classify Columns</h1>
-    
-    <!-- Debug information -->
-    <div style="background-color: #f0f0f0; padding: 10px; margin: 10px 0; border: 1px solid #ccc;">
-        <h3>Debug Info:</h3>
-        <p><strong>Columns needing classification:</strong> {{ columns.keys() | list }}</p>
-        <p><strong>Number of columns to classify:</strong> {{ columns|length }}</p>
-        <p><strong>Column samples:</strong></p>
-        <ul>
-            {% for col, samples in columns.items() %}
-                <li><strong>{{ col }}:</strong> {{ samples }}</li>
-            {% endfor %}
-        </ul>
+{% extends "base.html" %}
+{% set active = 'arca' %}
+{% block title %}Classify columns — ARCA{% endblock %}
+
+{% block extra_head %}
+<style>
+  .tx-step { max-width: 48rem; }
+  .tx-step h1 { font-family: var(--serif); font-size: var(--step-2); margin-bottom: .4rem; }
+  .col { margin: 0 0 .8rem; padding: var(--sp-3); border: 1px solid var(--border);
+    border-radius: var(--radius); background: var(--surface); }
+  .col h3 { font-size: var(--step-1); margin: 0 0 .2rem; }
+  .col .samples { color: var(--muted); font-size: var(--step--1); margin: 0 0 .6rem; }
+  .col label { margin-right: 1rem; font-size: var(--step--1); white-space: nowrap; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="tx-step">
+  {% set wf_step = 'columns' %}{% include '_steps.html' %}
+  <h1>Classify columns</h1>
+  <p style="color: var(--muted); margin-bottom: var(--sp-3);">Choose a data type for each
+    column below. Numeric-looking columns are pre-selected.</p>
+
+  <form id="classifyForm">
+    {% for column, samples in columns.items() %}
+      {% set sug = suggested.get(column) %}
+      <div class="col">
+        <h3>{{ column }}</h3>
+        <p class="samples">Sample values: {{ samples | join(', ') }}</p>
+        <label><input type="radio" name="{{ column }}" value="integer" {{ 'checked' if sug == 'integer' }}> Integer</label>
+        <label><input type="radio" name="{{ column }}" value="decimal" {{ 'checked' if sug == 'decimal' }}> Decimal</label>
+        <label><input type="radio" name="{{ column }}" value="date"> Date</label>
+        <label><input type="radio" name="{{ column }}" value="text"> Text</label>
+        <label><input type="radio" name="{{ column }}" value="ignore"> Ignore</label>
+      </div>
+    {% endfor %}
+
+    <div class="wf-actions">
+      {% include '_abort.html' %}
+      <span class="spacer"></span>
+      <button class="btn" type="submit">Continue</button>
     </div>
-    
-    <form id="classifyForm">
-        {% for column, samples in columns.items() %}
-            <div style="margin: 20px 0; padding: 10px; border: 1px solid #ddd;">
-                <h3>{{ column }}</h3>
-                <p><strong>Sample values:</strong> {{ samples | join(', ') }}</p>
-                <label>
-                    <input type="radio" name="{{ column }}" value="integer"> Integer
-                </label>
-                <label>
-                    <input type="radio" name="{{ column }}" value="decimal"> Decimal
-                </label>
-                <label>
-                    <input type="radio" name="{{ column }}" value="date"> Date
-                </label>
-                <label>
-                    <input type="radio" name="{{ column }}" value="text"> Text
-                </label>
-                <label>
-                    <input type="radio" name="{{ column }}" value="ignore"> Ignore
-                </label>
-            </div>
-        {% endfor %}
-        <button type="submit">Continue</button>
-    </form>
-    
-    <script>
-        document.getElementById('classifyForm').onsubmit = async function(e) {
-            e.preventDefault();
-            const formData = new FormData(e.target);
-            const columnTypes = {};
-            
-            // Get all form data
-            for (let [key, value] of formData.entries()) {
-                columnTypes[key] = value;
-            }
-            
-            // Debug: Show what we're sending
-            console.log('Sending column types:', columnTypes);
-            alert('Sending: ' + JSON.stringify(columnTypes));
-            
-            const res = await fetch('/transform/save_column_types', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({column_types: columnTypes})
-            });
-            const result = await res.json();
-            if (result.success) {
-                window.location.href = '/transform/field_mapping';
-            } else {
-                alert('Error: ' + result.error);
-            }
-        };
-    </script>
-</body>
-</html>
+  </form>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    document.getElementById('classifyForm').onsubmit = async function(e) {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const columnTypes = {};
+        for (let [key, value] of formData.entries()) {
+            columnTypes[key] = value;
+        }
+
+        const res = await fetch('/transform/save_column_types', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({column_types: columnTypes})
+        });
+        const result = await res.json();
+        if (result.success) {
+            window.location.href = '/transform/field_mapping';
+        } else {
+            alert('Error: ' + result.error);
+        }
+    };
+</script>
+{% endblock %}

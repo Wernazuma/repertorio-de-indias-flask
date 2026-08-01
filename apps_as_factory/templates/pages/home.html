@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% set active = 'home' %}
+{% block title %}ARCA — Archive &amp; Resource Center for the Americas{% endblock %}
+
+{% block content %}
+<div class="hero">
+  <span class="eyebrow">Historical GIS · Spanish America, 1500–1808</span>
+  <h1>A hub and shared framework for the history of the Americas</h1>
+  <p class="lead">ARCA compiles, connects, and distributes historical resources and
+    datasets related to the Americas, expanding on the work of
+    <i>HGIS de las Indias</i>, focussing on colonial Spanish America.</p>
+  <p class="hero-actions">
+    <a class="btn" href="{{ url_for('arca_hub') }}">Learn about ARCA</a>
+    <a class="btn secondary" href="{{ url_for('atlas') }}">Learn about HGIS-Indias</a>
+  </p>
+</div>
+
+<div class="section-head">
+  <h2>What you can do here</h2>
+  <span class="rule"></span>
+</div>
+<div class="card-grid duo">
+  <a class="card" href="{{ url_for('atlas') }}">
+    <img class="card-media" src="{{ url_for('static', filename='images/cards/atlas.png') }}" alt="">
+    <h3>Browse the Atlas</h3>
+    <p>Historical maps and the interactive WebGIS of HGIS de las Indias.</p>
+    <span class="go">Atlas →</span>
+  </a>
+  <a class="card" href="{{ url_for('enciclopedia.index') }}">
+    <img class="card-media" src="{{ url_for('static', filename='images/cards/encyclopedia.png') }}" alt="">
+    <h3>Explore the Encyclopedia</h3>
+    <p>Search places, territories, and people; read the sources behind each record.</p>
+    <span class="go">Encyclopedia →</span>
+  </a>
+  <a class="card" href="{{ url_for('datasets') }}">
+    <img class="card-media" src="{{ url_for('static', filename='images/cards/dataverse.png') }}" alt="">
+    <h3>Discover Datasets</h3>
+    <p>Browse and download the open datasets that underpin ARCA.</p>
+    <span class="go">Datasets →</span>
+  </a>
+  <a class="card" href="{{ url_for('bring_your_data') }}">
+    <img class="card-media" src="{{ url_for('static', filename='images/cards/joindata.png') }}" alt="">
+    <h3>Join your Data</h3>
+    <p>Upload, transform, and match your own data against the gazetteer.</p>
+    <span class="go">Geodata workflow →</span>
+  </a>
+</div>
+
+<div class="section-head" style="margin-top: var(--sp-5);">
+  <h2>Announcements</h2>
+  <span class="rule"></span>
+  <a class="eyebrow" style="text-decoration:none;" href="{{ url_for('news') }}">News / Blog →</a>
+</div>
+<div class="placeholder-note">
+  <span>📣</span>
+  <span><strong>No announcements yet.</strong> Project news and blog posts will
+    appear here — see <a href="{{ url_for('news') }}">News / Blog</a>.</span>
+</div>
+{% endblock %}

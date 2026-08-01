@@ -1,0 +1,91 @@
+<article class="wiki-entry">
+  <h1>La base de datos</h1>
+  <p>La base de datos de HGIS de las Indias se compone de diferentes tablas relacionadas entre si (<a href="tablas_database">lista de tablas</a>) y también relacionada con geometrías base en la geodatabase <a href="the_geom_gdb">the_geom_gdb</a>.</p>
+  <p>La combinación y el procesamiento programático de las tablas relacionadas se hace en un <a href="workflow_database">workflow automatizado</a> y desencadena en la creación de <a href="hgis_de_las_indias_gdb">HGIS de las indias geodatabase</a>, con objetos espacio-temporales (con "estampas temporales" para indicar su validez cronológica), así como páginas y fichas informativas que informan este recurso de documentación Dokuwiki.</p>
+  <p>El workflow también incluye la creación de mapas-base de entidades territoriales para algunos momentos específicos (1701, 1725, 1750, 1775, 1787, 1800, 1808).</p>
+  <p>Existe un repositorio de los datos, tanto la base de datos como los archivos creados a partir de ella, en el <a href="https://dataverse.harvard.edu/dataverse/hgis-indias" class="external-link">Harvard Dataverse</a>. Además, hay una aplicación web <a href="WebGIS">WebGIS</a> para de visualizar la evolución de la geografía histórica del imperio español en la época borbónica y facilitar acceso interactivo público a los resultados.</p>
+  <p><img src="hgis/db.jpeg" alt="" width="200" loading="lazy"></p>
+  <p>Los cuatro elementos clave de la base de datos relacional son: I. Lugares (elemento nuclear). II. Organización territorial (elemento nuclear). III. Datos agregados (elementos satélite). IV. Fuentes (elemento universal).</p>
+  <p>(Cf. también la <a href="tablas_database">lista de tablas</a>).</p>
+  <p>En la geodatabase (<a href="hgis_de_las_indias_gdb">hgis_de_las_indias_gdb</a>) existe además un cierto número de <a href="feature class">feature classes</a> creados independientemente de las tablas en la base de datos relacional.</p>
+  <h2>I.  "Lugares" (gazetteer de lugares).</h2>
+  <p><img src="hgis/pueblos_wip_0.jpeg" alt="" width="200" loading="lazy"> Consiste de diferentes tablas con información sobre lugares/poblaciones coloniales. Cada entidad individual (~13.500)  tiene un identificador único (p.e. 2000003 para Guatemala) que la enlaza con una o varias (si cambia un atributo) instancias concretas espacio-temporales (~15.500) en diferentes aspectos.</p>
+  <p>Para más información, cf. la entrada <a href="gazetteer">gazetteer</a>.</p>
+  <p>P.e.: <strong>Entidad</strong> Monterrey (Ciudad): GZ_ID: 1000010 <strong>Instancias</strong></p>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">GZ_ID</th>
+          <th scope="col">START_</th>
+          <th scope="col">END_</th>
+          <th scope="col">Cat.ecl.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1000010</td>
+          <td>1701</td>
+          <td>1778</td>
+          <td>Curato</td>
+        </tr>
+        <tr>
+          <td>1000010</td>
+          <td>1779</td>
+          <td>1808</td>
+          <td>Sagrario</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>En el <a href="WebGIS">WebGIS</a>, las instancias del gazetteer se visualizan en el servicio <a href="servicio-poblaciones">Poblaciones</a>.</p>
+  <h2>II. "Organización territorial".</h2>
+  <p>Esta parte se organiza de manera similar, pero el modelo es algo diferente porque:</p>
+  <ol>
+    <li>la representación espacial de áreas no es reducible a dos simples coordenadas.</li>
+    <li>hay diferentes niveles y "ramos" de organización territorial que no son estrictamente jerárquicas.</li>
+  </ol>
+  <p>Solucionamos este dilema separando el aspecto cualitativo (entidades administrativas) y el espacial (areas/polígonos) que luego se relacionan a través de tablas. En el <a href="WebGIS">WebGIS</a>, los resulados de estas operaciones se visualizan en los servicios <a href="servicio-territorios">Organización territorial</a> y <a href="servicio-fronteras">Fronteras, rebeliones y relaciones exteriores</a>.</p>
+  <h4>IIa. Gazetteer de entidades administrativas.</h4>
+  <p><img src="hgis/entidades_0.jpeg" alt="" width="200" loading="lazy">Las entidades administrativas se modelan de forma análoga al gazetteer: a cada "entidad" le corresponden una o varias "instancias": P.e.: "Provincia de Paraguay" (ID= "PRRPPA00") --&gt; 1701-1783 "Gobernación de Paraguay"; 1784-1808 "Intendencia de Paraguay".</p>
+  <h4>IIb. Geometría base (LCG)</h4>
+  <p><img src="hgis/lcgacapulco.jpeg" alt="" width="200" loading="lazy">El núcleo espacial de la base consiste en un archivo .shp que cubre todo el continente americano, dividido en polígonos.  Cada polígono tiene un identificador único (p.e.  "Acapulco Oeste="NEMX01"; "Acapulco Este" = "NEMX02").</p>
+  <p>Para entender la metodología de la división en estos partidos, véase el artículo sobre el <a href="concepto LCG">concepto LCG</a>.</p>
+  <h4>IIc. Tablas de enlace para los niveles administrativos</h4>
+  <p>Se enlazan las entidades con las geometrías en cada <a href="servicio-territorios">nivel administrativo reconstruido</a> (virreinato, provincia, partido, etc....) para determinados períodos.</p>
+  <p>P.e. <strong>TABLA JURISDICCIONES</strong></p>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Polígono</th>
+          <th scope="col">Entidad</th>
+          <th scope="col">START_</th>
+          <th scope="col">END_</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>NEMX01</td>
+          <td>JUNEMXAC</td>
+          <td>1701</td>
+          <td>1808</td>
+        </tr>
+        <tr>
+          <td>NEMX02</td>
+          <td>JUNEMXAC</td>
+          <td>1701</td>
+          <td>1808</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>En otras palabras, ambos polígonos perenecieron a la entidad JUNEMXAC (Gobierno de Acapulco) durante todo el período (1701-1808).</p>
+  <p>Para más detalles y ejemplos, cf. la entrada <a href="entidades administrativas">entidades administrativas</a>.</p>
+  <h2>III. Datos agregados</h2>
+  <p>Es sencillo preparar todo tipo de datos con Excel con lugares o territorios de HGIS de las Indias para que se puedan procesar con un workflow estandarizado. Existe un video-tutorial sobre cómo <a href="https://www.youtube.com/watch?v=jz5OFdvfrn4" class="external-link">preparar datos</a>. Además, tenemos una <a href="https://www.hgis-indias.net/images/files/Plantilla_Datos_agregados.xlsx" class="external-link">plantilla Excel</a> que puede ayudar o guiar el proceso.</p>
+  <p>En el <a href="WebGIS">WebGIS</a>, las diferentes capas de datos agregados (como universidades, demografía de ciudades, etc.) se visualizan esencialmente en el servicio <a href="servicio-datos-agregados">Datos agregados</a>.</p>
+  <p>Hay también elementos incompletos, como una base de datos de oficiales a cargo de divisiones administrativas, que todavía no se publican por ser trabajo en proceso.</p>
+  <h2>IV. Fuentes</h2>
+  <p>Es una sola <a href="tabla_fuentes">tabla</a>, pero central para la estructura de la base de datos porque la mayoría de sus tablas tiene un campo que enlaza a las diferentes fuentes aquí listadas.</p>
+</article>

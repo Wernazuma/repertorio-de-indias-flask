@@ -857,7 +857,7 @@ PTGDDUCA;Presidio;San Carlos;PRGDDU00;Gobernacion-Capitania General;Nueva Vizcay
 PTGDDUPR;Presidio;El Principe;PRGDDU00;Gobernacion-Capitania General;Nueva Vizcaya;1774;exact;1808;hgis;1562;exact;1786;exact;1774;1786;913;;
 JUGDSSMY;Alcaldia Mayor*;Maloya;PRGDDU00;Gobernacion-Capitania General;Nueva Vizcaya;1703;not_before;1732;exact;1562;exact;1786;exact;1703;1732;914;;
 JUGDDUNP;Alcaldia Mayor;San Juan Nepomuceno;PRGDDU00;Gobernacion-Capitania General;Nueva Vizcaya;1777;not_after;1787;not_after;1562;exact;1786;exact;1777;1786;915;;
-JUGDDUJA;Alcaldia Mayor;San Joaquin;PRGDDU00;Gobernacion-Capitania General;Nueva Vizcaya;1777;not_after;1787;not_after;1562;exact;1786;exact;1777;1786;916;;
+JUGDDUJA;Alcaldia Mayor; San Joaquin;PRGDDU00;Gobernacion-Capitania General;Nueva Vizcaya;1777;not_after;1787;not_after;1562;exact;1786;exact;1777;1786;916;;
 JUGDDUPS;Alcaldia Mayor;Parras y Saltillo;PRGDDU00;Gobernacion-Capitania General;Nueva Vizcaya;1766;not_after;1786;exact;1562;exact;1786;exact;1766;1786;917;;
 JUGDDUCG;Comandancia;Cerro Gordo;PRGDDU00;Gobernacion-Capitania General;Nueva Vizcaya;1646;ca;1750;exact;1562;exact;1786;exact;1646;1750;918;;
 PTGDDUVE;Comandancia;San Buenaventura;PRGDDU00;Gobernacion-Capitania General;Nueva Vizcaya;1779;exact;1808;hgis;1562;exact;1786;exact;1779;1786;919;;
@@ -875,7 +875,7 @@ JUGDDUDU;Jursidiccion;Durango;PRGDDU00;Gobernacion-Capitania General;Nueva Vizca
 PTGDDUCN;Misiones;Chinipas;PRGDDU00;Gobernacion-Capitania General;Nueva Vizcaya;1701;hgis;1808;hgis;1562;exact;1786;exact;1701;1786;931;;
 JUGDDUGL;Alcaldia mayor;Guanabal;PRGDDU00;Gobernacion-Capitania General;Nueva Vizcaya;1630;not_after;1642;not_before;1562;exact;1786;exact;1630;1642;932;;
 PTGDDUAT;Misiones;Alta Tarahumara;PRGDDU00;Gobernacion-Capitania General;Nueva Vizcaya;1111;start;1808;hgis;1562;exact;1786;exact;1562;1786;933;;
-JUGDDUME;Subdelegacion;Mezquital;PRGDDU00;Gobernacion-Intendencia;Durango;1793;not_before;1808;hgis;1787;exact;1808;hgis;1793;1808;934;;
+JUGDDUME;Subdelegacion; Mezquital;PRGDDU00;Gobernacion-Intendencia;Durango;1793;not_before;1808;hgis;1787;exact;1808;hgis;1793;1808;934;;
 PTGDDUPJ;Presidio;El Norte;PRGDDU00;Gobernacion-Intendencia;Durango;1773;exact;1808;hgis;1787;exact;1808;hgis;1787;1808;935;;
 JUGDDUTA;Subdelegacion;Tayoltita;PRGDDU00;Gobernacion-Intendencia;Durango;1808;not_after;1808;hgis;1787;exact;1808;hgis;1808;1808;936;;
 JUGDDUSD;Subdelegacion;San Dimas;PRGDDU00;Gobernacion-Intendencia;Durango;1808;not_after;1808;hgis;1787;exact;1808;hgis;1808;1808;937;;
@@ -893,7 +893,7 @@ PTGDDUCA;Presidio;San Carlos;PRGDDU00;Gobernacion-Intendencia;Durango;1774;exact
 PTGDDUPR;Presidio;El Principe;PRGDDU00;Gobernacion-Intendencia;Durango;1774;exact;1808;hgis;1787;exact;1808;hgis;1787;1808;949;;
 JUGDDUVB;Subdelegacion;San Bartolome;PRGDDU00;Gobernacion-Intendencia;Durango;1788;not_before;1808;hgis;1787;exact;1808;hgis;1788;1808;950;;
 JUGDDUNP;Alcaldia Mayor;San Juan Nepomuceno;PRGDDU00;Gobernacion-Intendencia;Durango;1777;not_after;1787;not_after;1787;exact;1808;hgis;1787;1787;951;;
-JUGDDUJA;Alcaldia Mayor;San Joaquin;PRGDDU00;Gobernacion-Intendencia;Durango;1777;not_after;1787;not_after;1787;exact;1808;hgis;1787;1787;952;;
+JUGDDUJA;Alcaldia Mayor; San Joaquin;PRGDDU00;Gobernacion-Intendencia;Durango;1777;not_after;1787;not_after;1787;exact;1808;hgis;1787;1787;952;;
 JUGDDUCG;Subdelegacion;Cerro Gordo;PRGDDU00;Gobernacion-Intendencia;Durango;1788;exact;1808;hgis;1787;exact;1808;hgis;1788;1808;953;;
 PTGDDUVE;Comandancia;San Buenaventura;PRGDDU00;Gobernacion-Intendencia;Durango;1779;exact;1808;hgis;1787;exact;1808;hgis;1787;1808;954;;
 JUGDDUGQ;Subdelegacion;Guajoquilla;PRGDDU00;Gobernacion-Intendencia;Durango;1788;not_before;1808;hgis;1787;exact;1808;hgis;1788;1808;955;;
@@ -2499,34 +2499,34 @@ JUVECUCA;Jurisdiccion;Cariaco;PRVECU00;Gobernacion-Capitania General;Nueva Andal
 JUVECUGC;Tenencia de gobierno;Golfo de Cariaco;PRVECU00;Gobernacion-Capitania General;Nueva Andalucia;1111;start;1771;arbitrary;1568;exact;1700;arbitrary;1568;1700;2681;;
 JUVECUCU;Jurisdiccion;Cumana;PRVECU00;Gobernacion-Capitania General;Nueva Andalucia;1568;exact;1808;hgis;1568;exact;1700;arbitrary;1568;1700;2682;dontclip;
 JUVECUBA;Jurisdiccion;Barcelona;PRVECU00;Gobernacion-Capitania General;Nueva Andalucia;1638;exact;1808;hgis;1568;exact;1700;arbitrary;1638;1700;2683;;
-PTVEGUOB;Partido;Bajo Orinoco;PRVEGU00;Gobernacion-Intendencia;Guayana;1111;start;9999;end;1791;exact;1808;hgis;1791;1808;2684;;
+PTVEGUOB;Partido; Bajo Orinoco;PRVEGU00;Gobernacion-Intendencia;Guayana;1111;start;9999;end;1791;exact;1808;hgis;1791;1808;2684;;
 JUVEGUGU;Jurisdiccion;Guayana;PRVEGU00;Gobernacion-Intendencia;Guayana;1762;exact;1808;hgis;1791;exact;1808;hgis;1791;1808;2685;dontclip;
 JUVEGUOR;Comandancia General;Alto y Bajo Orinoco;PRVEGU00;Gobernacion-Intendencia;Guayana;1768;exact;9999;end;1791;exact;1808;hgis;1791;1808;2686;dontclip;
-PTVEGUAO;Partido;Alto Orinoco;PRVEGU00;Gobernacion-Intendencia;Guayana;1111;start;9999;end;1791;exact;1808;hgis;1791;1808;2687;;
+PTVEGUAO;Partido; Alto Orinoco;PRVEGU00;Gobernacion-Intendencia;Guayana;1111;start;9999;end;1791;exact;1808;hgis;1791;1808;2687;;
 PTVEGUCC;Partido;Misiones capuchinas;PRVEGU00;Gobernacion-Intendencia;Guayana;1111;start;9999;end;1791;exact;1808;hgis;1791;1808;2688;;
 FRVEGUPA;Fronteras;Paria;PRVEGU00;Gobernacion-Intendencia;Guayana;1111;start;9999;end;1791;exact;1808;hgis;1791;1808;2689;;
 FRVEGULP;Fronteras;Laguna del Parime;PRVEGU00;Gobernacion-Intendencia;Guayana;1111;start;9999;end;1791;exact;1808;hgis;1791;1808;2690;;
 FRVEGUCA;Fronteras;Caribana;PRVEGU00;Gobernacion-Intendencia;Guayana;1111;start;9999;end;1791;exact;1808;hgis;1791;1808;2691;;
 FRVEGUXX;Fronteras;Guayana;PRVEGU00;Gobernacion-Intendencia;Guayana;1111;start;9999;end;1791;exact;1808;hgis;1791;1808;2692;;
-PTVEGUOB;Partido;Bajo Orinoco;PRVECU00;Gobernacion-Capitania General;Nueva Andalucia;1111;start;9999;end;1585;exact;1761;exact;1585;1761;2693;;agregado
-PTVEGUAO;Partido;Alto Orinoco;PRVECU00;Gobernacion-Capitania General;Nueva Andalucia;1111;start;9999;end;1585;exact;1761;exact;1585;1761;2694;;agregado
+PTVEGUOB;Partido; Bajo Orinoco;PRVECU00;Gobernacion-Capitania General;Nueva Andalucia;1111;start;9999;end;1585;exact;1761;exact;1585;1761;2693;;agregado
+PTVEGUAO;Partido; Alto Orinoco;PRVECU00;Gobernacion-Capitania General;Nueva Andalucia;1111;start;9999;end;1585;exact;1761;exact;1585;1761;2694;;agregado
 PTVEGUCC;Partido;Misiones capuchinas;PRVECU00;Gobernacion-Capitania General;Nueva Andalucia;1111;start;9999;end;1585;exact;1761;exact;1585;1761;2695;;agregado
 FRVEGUPA;Fronteras;Paria;PRVECU00;Gobernacion-Capitania General;Nueva Andalucia;1111;start;9999;end;1585;exact;1761;exact;1585;1761;2696;;agregado
 FRVEGULP;Fronteras;Laguna del Parime;PRVECU00;Gobernacion-Capitania General;Nueva Andalucia;1111;start;9999;end;1585;exact;1761;exact;1585;1761;2697;;agregado
 FRVEGUCA;Fronteras;Caribana;PRVECU00;Gobernacion-Capitania General;Nueva Andalucia;1111;start;9999;end;1585;exact;1761;exact;1585;1761;2698;;agregado
 FRVEGUXX;Fronteras;Guayana;PRVECU00;Gobernacion-Capitania General;Nueva Andalucia;1111;start;9999;end;1585;exact;1761;exact;1585;1761;2699;;agregado
-PTVEGUOB;Partido;Bajo Orinoco;PRVEGU00;Gobernacion;Guayana;1111;start;9999;end;1768;exact;1790;exact;1768;1790;2700;;
+PTVEGUOB;Partido; Bajo Orinoco;PRVEGU00;Gobernacion;Guayana;1111;start;9999;end;1768;exact;1790;exact;1768;1790;2700;;
 JUVEGUGU;Jurisdiccion;Guayana;PRVEGU00;Gobernacion;Guayana;1762;exact;1808;hgis;1768;exact;1790;exact;1768;1790;2701;dontclip;
 JUVEGUOR;Comandancia General;Alto y Bajo Orinoco;PRVEGU00;Gobernacion;Guayana;1768;exact;9999;end;1768;exact;1790;exact;1768;1790;2702;dontclip;
-PTVEGUAO;Partido;Alto Orinoco;PRVEGU00;Gobernacion;Guayana;1111;start;9999;end;1768;exact;1790;exact;1768;1790;2703;;
+PTVEGUAO;Partido; Alto Orinoco;PRVEGU00;Gobernacion;Guayana;1111;start;9999;end;1768;exact;1790;exact;1768;1790;2703;;
 PTVEGUCC;Partido;Misiones capuchinas;PRVEGU00;Gobernacion;Guayana;1111;start;9999;end;1768;exact;1790;exact;1768;1790;2704;;
 FRVEGUPA;Fronteras;Paria;PRVEGU00;Gobernacion;Guayana;1111;start;9999;end;1768;exact;1790;exact;1768;1790;2705;;
 FRVEGULP;Fronteras;Laguna del Parime;PRVEGU00;Gobernacion;Guayana;1111;start;9999;end;1768;exact;1790;exact;1768;1790;2706;;
 FRVEGUCA;Fronteras;Caribana;PRVEGU00;Gobernacion;Guayana;1111;start;9999;end;1768;exact;1790;exact;1768;1790;2707;;
 FRVEGUXX;Fronteras;Guayana;PRVEGU00;Gobernacion;Guayana;1111;start;9999;end;1768;exact;1790;exact;1768;1790;2708;;
-PTVEGUOB;Partido;Bajo Orinoco;PRVEGU00;Comandancia General;Guayana;1111;start;9999;end;1762;exact;1767;exact;1762;1767;2709;;
+PTVEGUOB;Partido; Bajo Orinoco;PRVEGU00;Comandancia General;Guayana;1111;start;9999;end;1762;exact;1767;exact;1762;1767;2709;;
 JUVEGUGU;Jurisdiccion;Guayana;PRVEGU00;Comandancia General;Guayana;1762;exact;1808;hgis;1762;exact;1767;exact;1762;1767;2710;dontclip;
-PTVEGUAO;Partido;Alto Orinoco;PRVEGU00;Comandancia General;Guayana;1111;start;9999;end;1762;exact;1767;exact;1762;1767;2711;;
+PTVEGUAO;Partido; Alto Orinoco;PRVEGU00;Comandancia General;Guayana;1111;start;9999;end;1762;exact;1767;exact;1762;1767;2711;;
 PTVEGUCC;Partido;Misiones capuchinas;PRVEGU00;Comandancia General;Guayana;1111;start;9999;end;1762;exact;1767;exact;1762;1767;2712;;
 FRVEGUPA;Fronteras;Paria;PRVEGU00;Comandancia General;Guayana;1111;start;9999;end;1762;exact;1767;exact;1762;1767;2713;;
 FRVEGULP;Fronteras;Laguna del Parime;PRVEGU00;Comandancia General;Guayana;1111;start;9999;end;1762;exact;1767;exact;1762;1767;2714;;

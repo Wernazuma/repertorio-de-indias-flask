@@ -1,0 +1,10 @@
+<dc:title>Spatial data: Padrón general de Tlaxcala, 1779</dc:title>
+<dc:creator>Werner Stangl</dc:creator>
+<dc:description>blabla</dc:description>
+<dc:publisher>ARCA</dc:publisher>
+<dcterms:dateSubmitted>2026-07-29</dcterms:dateSubmitted>
+<dcterms:issued>2026-07-29</dcterms:issued>
+<dc:type>Dataset</dc:type>
+<dcterms:bibliographicCitation>Werner Stangl, "Padrón general de Tlaxcala, 1779": An ARCA Dataset. 2026-07-29.</dcterms:bibliographicCitation>
+<dc:source>AGN, México</dc:source>
+<dc:rights>http://creativecommons.org/licenses/by-sa/4.0/</dc:rights>

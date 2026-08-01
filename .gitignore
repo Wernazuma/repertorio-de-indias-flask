@@ -28,3 +28,6 @@ enciclopedia/templates/xplace_detail.html
 enciclopedia/templates/xplace_search.html
 enciclopedia/templates/xterritory_detail.html
 enciclopedia/templates/xterritory_search.html
+
+# Derived matching cache (rebuilt from reference_gazetteer.csv; see matching/main.py)
+apps_as_factory/data/reference_gazetteer_collapsed.csv

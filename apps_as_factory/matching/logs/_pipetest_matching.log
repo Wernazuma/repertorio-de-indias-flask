@@ -1,0 +1,453 @@
+2026-06-30 17:45:38 - matching__pipetest - INFO - ================================================================================
+2026-06-30 17:45:38 - matching__pipetest - INFO - Matching process started at 2026-06-30 17:45:38.166766
+2026-06-30 17:45:38 - matching__pipetest - INFO - ================================================================================
+2026-06-30 17:45:45 - matching__pipetest - INFO - Index built: 11867 unique tokens, 651 single-char tokens skipped
+2026-06-30 17:45:45 - matching__pipetest - INFO - Phase 1b: 3 relegated rows to process
+2026-06-30 17:45:45 - matching__pipetest - INFO - Processing row 0, rowID=7366
+2026-06-30 17:45:45 - matching__pipetest - INFO - 
+============================================================
+2026-06-30 17:45:45 - matching__pipetest - INFO - Processing rowID=7366: 'Curato de la Catedral' -> cleaned: 'curato catedral'
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Token-based candidates: 26
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Filtering: need match on substantive tokens: ['curato', 'catedral'] OR 2+ total tokens
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Fuzzy matches (score >= 70, limit=500): 11
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=4000443 'cura' score=1.000 nombre=False saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=4000443 'cura' score=1.000 nombre=False saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=4000443 'cura' score=1.000 nombre=False saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=1004873 'cedral' score=0.909 nombre=False saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=1004873 'cedral' score=0.909 nombre=False saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=1004873 'cedral' score=0.909 nombre=False saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=1004873 'cedral' score=0.909 nombre=False saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=1005248 'cantera' score=0.857 nombre=False saint_only=False terr= phase=candidate
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=1005248 'cantera' score=0.857 nombre=False saint_only=False terr= phase=candidate
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=7000470 'curaco' score=0.833 nombre=False saint_only=False terr= phase=relegated
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=7000470 'curaco' score=0.833 nombre=False saint_only=False terr= phase=relegated
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Before dedup: 11 candidates
+2026-06-30 17:45:45 - matching__pipetest - INFO -   After dedup: 4 unique gz_ids
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Dropped 4 territory-contradicting candidates
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Input has territorial data: True
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Candidates with territory match: 0
+2026-06-30 17:45:45 - matching__pipetest - INFO -   No territorial filtering applied (no matching territories found)
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Nombre matches (exact on lugar_nombre): 0
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Saint-only matches: 0
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Substantive matches: 0
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Candidate pool (>= threshold): 0
+2026-06-30 17:45:45 - matching__pipetest - WARNING -   No candidate above threshold - relegated
+2026-06-30 17:45:45 - matching__pipetest - INFO - Processing row 0, rowID=7366
+2026-06-30 17:45:45 - matching__pipetest - INFO - 
+============================================================
+2026-06-30 17:45:45 - matching__pipetest - INFO - Processing rowID=7366: 'Curato de la Catedral' -> cleaned: 'curato catedral'
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Token-based candidates: 26
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Filtering: need match on substantive tokens: ['curato', 'catedral'] OR 2+ total tokens
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Fuzzy matches (score >= 70, limit=500): 11
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=4000443 'cura' score=1.000 nombre=False saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=4000443 'cura' score=1.000 nombre=False saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=4000443 'cura' score=1.000 nombre=False saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=1004873 'cedral' score=0.909 nombre=False saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=1004873 'cedral' score=0.909 nombre=False saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=1004873 'cedral' score=0.909 nombre=False saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=1004873 'cedral' score=0.909 nombre=False saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=1005248 'cantera' score=0.857 nombre=False saint_only=False terr= phase=candidate
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=1005248 'cantera' score=0.857 nombre=False saint_only=False terr= phase=candidate
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=7000470 'curaco' score=0.833 nombre=False saint_only=False terr= phase=relegated
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=7000470 'curaco' score=0.833 nombre=False saint_only=False terr= phase=relegated
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Before dedup: 11 candidates
+2026-06-30 17:45:45 - matching__pipetest - INFO -   After dedup: 4 unique gz_ids
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Dropped 4 territory-contradicting candidates
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Input has territorial data: True
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Candidates with territory match: 0
+2026-06-30 17:45:45 - matching__pipetest - INFO -   No territorial filtering applied (no matching territories found)
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Nombre matches (exact on lugar_nombre): 0
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Saint-only matches: 0
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Substantive matches: 0
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Candidate pool (>= threshold): 0
+2026-06-30 17:45:45 - matching__pipetest - WARNING -   No candidate above threshold - relegated
+2026-06-30 17:45:45 - matching__pipetest - INFO - Processing row 0, rowID=7366
+2026-06-30 17:45:45 - matching__pipetest - INFO - 
+============================================================
+2026-06-30 17:45:45 - matching__pipetest - INFO - Processing rowID=7366: 'Curato de la Catedral' -> cleaned: 'curato catedral'
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Token-based candidates: 26
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Filtering: need match on substantive tokens: ['curato', 'catedral'] OR 2+ total tokens
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Fuzzy matches (score >= 70, limit=500): 11
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=4000443 'cura' score=1.000 nombre=False saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=4000443 'cura' score=1.000 nombre=False saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=4000443 'cura' score=1.000 nombre=False saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=1004873 'cedral' score=0.909 nombre=False saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=1004873 'cedral' score=0.909 nombre=False saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=1004873 'cedral' score=0.909 nombre=False saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=1004873 'cedral' score=0.909 nombre=False saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=1005248 'cantera' score=0.857 nombre=False saint_only=False terr= phase=candidate
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=1005248 'cantera' score=0.857 nombre=False saint_only=False terr= phase=candidate
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=7000470 'curaco' score=0.833 nombre=False saint_only=False terr= phase=relegated
+2026-06-30 17:45:45 - matching__pipetest - DEBUG -     gz_id=7000470 'curaco' score=0.833 nombre=False saint_only=False terr= phase=relegated
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Before dedup: 11 candidates
+2026-06-30 17:45:45 - matching__pipetest - INFO -   After dedup: 4 unique gz_ids
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Dropped 4 territory-contradicting candidates
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Input has territorial data: True
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Candidates with territory match: 0
+2026-06-30 17:45:45 - matching__pipetest - INFO -   No territorial filtering applied (no matching territories found)
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Nombre matches (exact on lugar_nombre): 0
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Saint-only matches: 0
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Substantive matches: 0
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Candidate pool (>= threshold): 0
+2026-06-30 17:45:45 - matching__pipetest - WARNING -   No candidate above threshold - relegated
+2026-06-30 17:45:45 - matching__pipetest - INFO - 
+============================================================
+2026-06-30 17:45:45 - matching__pipetest - INFO - Processing rowID=7367: 'San Lázaro' -> cleaned: 'san lasaro'
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Token-based candidates: 12285
+2026-06-30 17:45:45 - matching__pipetest - INFO -   Filtering: need match on substantive tokens: ['lasaro'] OR 2+ total tokens
+2026-06-30 17:45:47 - matching__pipetest - INFO -   After filtering weak token matches: 26 candidates
+2026-06-30 17:45:47 - matching__pipetest - INFO -   Fuzzy matches (score >= 70, limit=500): 26
+2026-06-30 17:45:47 - matching__pipetest - DEBUG -     gz_id=9900204 'san lasaro' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:47 - matching__pipetest - DEBUG -     gz_id=9900204 'san lasaro' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:47 - matching__pipetest - DEBUG -     gz_id=9900335 'san lasaro' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:47 - matching__pipetest - DEBUG -     gz_id=9900335 'san lasaro' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:47 - matching__pipetest - DEBUG -     gz_id=1002410 'san lasaro' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:47 - matching__pipetest - DEBUG -     gz_id=1002410 'san lasaro' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:47 - matching__pipetest - DEBUG -     gz_id=3000062 'san lasaro' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:47 - matching__pipetest - DEBUG -     gz_id=3000062 'san lasaro' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:47 - matching__pipetest - DEBUG -     gz_id=3000062 'san lasaro' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:47 - matching__pipetest - DEBUG -     gz_id=3000062 'san lasaro' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:47 - matching__pipetest - DEBUG -     gz_id=3000062 'san lasaro' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:47 - matching__pipetest - DEBUG -     gz_id=3000062 'san lasaro' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:47 - matching__pipetest - DEBUG -     gz_id=3000330 'san lasaro' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:47 - matching__pipetest - DEBUG -     gz_id=3000330 'san lasaro' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:47 - matching__pipetest - DEBUG -     gz_id=4000654 'san lasaro' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:47 - matching__pipetest - DEBUG -     gz_id=4000654 'san lasaro' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:47 - matching__pipetest - DEBUG -     gz_id=4000654 'san lasaro' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:47 - matching__pipetest - DEBUG -     gz_id=4000654 'san lasaro' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:47 - matching__pipetest - DEBUG -     gz_id=4000654 'san lasaro' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:47 - matching__pipetest - DEBUG -     gz_id=4000654 'san lasaro' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:47 - matching__pipetest - DEBUG -     gz_id=5000110 'cano oro' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:47 - matching__pipetest - DEBUG -     gz_id=6001285 'san lasaro' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:47 - matching__pipetest - DEBUG -     gz_id=6001285 'san lasaro' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:47 - matching__pipetest - DEBUG -     gz_id=8000662 'san lasaro' score=1.000 nombre=False saint_only=True terr=region_exact phase=candidate
+2026-06-30 17:45:47 - matching__pipetest - DEBUG -     gz_id=8000662 'san lasaro' score=1.000 nombre=False saint_only=True terr=region_exact phase=candidate
+2026-06-30 17:45:47 - matching__pipetest - DEBUG -     gz_id=8000662 'san lasaro' score=1.000 nombre=False saint_only=True terr=region_exact phase=candidate
+2026-06-30 17:45:47 - matching__pipetest - INFO -   Before dedup: 26 candidates
+2026-06-30 17:45:47 - matching__pipetest - INFO -   After dedup: 9 unique gz_ids
+2026-06-30 17:45:47 - matching__pipetest - INFO -   Dropped 8 territory-contradicting candidates
+2026-06-30 17:45:47 - matching__pipetest - INFO -   Input has territorial data: True
+2026-06-30 17:45:47 - matching__pipetest - INFO -   Candidates with territory match: 1
+2026-06-30 17:45:47 - matching__pipetest - INFO -   After territorial filter (keeping region): 1 candidates
+2026-06-30 17:45:47 - matching__pipetest - INFO -   Nombre matches (exact on lugar_nombre): 0
+2026-06-30 17:45:47 - matching__pipetest - INFO -   Saint-only matches: 1
+2026-06-30 17:45:47 - matching__pipetest - INFO -   Substantive matches: 0
+2026-06-30 17:45:47 - matching__pipetest - INFO -   Candidate pool (>= threshold): 1
+2026-06-30 17:45:47 - matching__pipetest - INFO -   1 candidate(s) -> candidate
+2026-06-30 17:45:47 - matching__pipetest - INFO -   rowID=7367: found at step 'no_partido_jurisdiccion'
+2026-06-30 17:45:47 - matching__pipetest - INFO - 
+============================================================
+2026-06-30 17:45:47 - matching__pipetest - INFO - Processing rowID=7368: 'San Sebastián' -> cleaned: 'san cebastian'
+2026-06-30 17:45:47 - matching__pipetest - INFO -   Token-based candidates: 12282
+2026-06-30 17:45:47 - matching__pipetest - INFO -   Filtering: need match on substantive tokens: ['cebastian'] OR 2+ total tokens
+2026-06-30 17:45:49 - matching__pipetest - INFO -   After filtering weak token matches: 296 candidates
+2026-06-30 17:45:50 - matching__pipetest - INFO -   Fuzzy matches (score >= 70, limit=500): 296
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000055 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000055 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000055 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000201 'benado' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000201 'benado' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000201 'benado' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000201 'benado' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000201 'benado' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000201 'benado' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000201 'benado' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000497 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000497 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000539 'apango' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000539 'apango' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000558 'techaluta' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000558 'techaluta' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000605 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000605 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000618 'san cebastian chico' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000618 'san cebastian chico' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000712 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000712 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=9900215 'balsa' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000804 'juchitan' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000804 'juchitan' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000804 'juchitan' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=9900243 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000852 'chimalistac' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000852 'chimalistac' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000852 'chimalistac' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000852 'chimalistac' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000882 'xhala' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000882 'xhala' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000882 'xhala' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000882 'xhala' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000904 'achichipico' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000904 'achichipico' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000904 'achichipico' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000904 'achichipico' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000924 'cuentepec' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000924 'cuentepec' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000924 'cuentepec' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000924 'cuentepec' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000972 'jochitlan' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000972 'jochitlan' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000972 'jochitlan' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1000972 'jochitlan' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1001013 'cerro prieto tenochtitlan' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1001013 'cerro prieto tenochtitlan' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1001051 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1001051 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1001197 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1001197 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1001197 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1001247 'contepec' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1001247 'contepec' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1001332 'tlahuiltepa' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1001332 'tlahuiltepa' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1001403 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1001403 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1001404 'san cebastian i su aujiliar santa rosa' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1001404 'san cebastian i su aujiliar santa rosa' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=9901096 'san cebastian indios' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=9901096 'san cebastian indios' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=9901215 'san cebastian manco' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=9901215 'san cebastian manco' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1001711 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1001711 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1001711 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1001711 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1001781 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1001781 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1001782 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1001782 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002087 'huancito' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002087 'huancito' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002087 'huancito' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002089 'piedad' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002089 'piedad' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002145 'chapatuato' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002145 'chapatuato' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002145 'chapatuato' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002145 'chapatuato' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002145 'chapatuato' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002190 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002190 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002190 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002226 'fustes' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002226 'fustes' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002250 'san cebastian ocotlan' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002250 'san cebastian ocotlan' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002264 'cedas' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002264 'cedas' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002315 'tutla' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002315 'tutla' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002315 'tutla' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002315 'tutla' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002369 'san cebastian monte' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002369 'san cebastian monte' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002393 'sapotitlan' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002393 'sapotitlan' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002411 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002411 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002438 'ixcapa' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002438 'ixcapa' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002488 'tecomaxtlahuaca' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002488 'tecomaxtlahuaca' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002488 'tecomaxtlahuaca' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002504 'san cebastian coatlan' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002504 'san cebastian coatlan' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002537 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002537 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002565 'san cebastian jilotepec' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002565 'san cebastian jilotepec' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002565 'san cebastian jilotepec' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002626 'rio dulce' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002626 'rio dulce' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002697 'tlacolula' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002697 'tlacolula' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002748 'iutanino' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002748 'iutanino' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002798 'nicananduta' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002798 'nicananduta' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002952 'huiloji' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1002952 'huiloji' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003081 'san cebastian teitipac' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003081 'san cebastian teitipac' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003202 'tepalcatepec' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003202 'tepalcatepec' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003421 'puctla' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003421 'puctla' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003486 'alcomunga' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003486 'alcomunga' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003522 'tlacotepec' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003522 'tlacotepec' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003527 'cinacatepec' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003527 'cinacatepec' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003542 'cuacnopalan' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003542 'cuacnopalan' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003542 'cuacnopalan' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003568 'tepatlaxco' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003568 'tepatlaxco' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003568 'tepatlaxco' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003641 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003641 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003648 'ahuacatepec' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003648 'ahuacatepec' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003648 'ahuacatepec' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003666 'cacahuatepec' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003666 'cacahuatepec' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003666 'cacahuatepec' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003798 'tuxtla' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003798 'tuxtla' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003814 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003814 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003827 'chapulhuacan' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1003827 'chapulhuacan' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1004049 'atlalpa' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1004049 'atlalpa' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1004049 'atlalpa' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1004263 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1004263 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1004616 'sain alto' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1004616 'sain alto' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=9900205 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=9900205 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1004712 'barrio san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1004712 'barrio san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=9900222 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=9900222 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=9900222 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=9900222 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=9900225 'pepino' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=9900225 'pepino' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=9900243 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1004839 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1004839 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1004840 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1004840 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1004878 'huajicori' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1004878 'huajicori' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1004901 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1004901 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1004901 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1004901 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1005050 'canada grande' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1005050 'canada grande' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1005050 'canada grande' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1005050 'canada grande' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1005050 'canada grande' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=1005050 'canada grande' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=2000085 'sabanilla' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=2000085 'sabanilla' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=2000218 'san cebastian tejar' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=2000218 'san cebastian tejar' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=2000302 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=2000302 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=2000302 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=2000302 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=2000335 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=2000349 'coatan' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=2000453 'analco' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=2000453 'analco' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=2000456 'sahuaiapa' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=2000456 'sahuaiapa' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=2000465 'tejincal' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=2000465 'tejincal' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=2000482 'aiutustepeque' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=2000482 'aiutustepeque' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=2000798 'san cebastian retaluleuh' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=2000853 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=2000853 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=2000853 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=2000853 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=4000023 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=4000023 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=4000023 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=4000023 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=4000023 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=4000023 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=4000128 'barbacoas llanos' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=4000128 'barbacoas llanos' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=4000128 'barbacoas llanos' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=4000128 'barbacoas llanos' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=4000128 'barbacoas llanos' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=4000128 'barbacoas llanos' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=4000542 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=4000542 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=4000542 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=4000542 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=4000542 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=4000542 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=4000542 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=4000542 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5000032 'plata' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5000129 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5000129 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5000129 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5000129 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5000129 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5000141 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5000141 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5000141 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5000141 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5000141 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5000141 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5000381 'rabago' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5000382 'san carlos' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5000394 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5000394 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5600338 'quiebralomo' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5600338 'quiebralomo' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5600338 'quiebralomo' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5600409 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5600409 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5600409 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5600409 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5600409 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5600647 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5600647 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5600647 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5600647 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5600647 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5600649 'san cebastian indios' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5600649 'san cebastian indios' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5600649 'san cebastian indios' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5600649 'san cebastian indios' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5600683 'iumbo' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5600683 'iumbo' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5600683 'iumbo' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5600759 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5600759 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=5600759 'san cebastian' score=1.000 nombre=True saint_only=False terr= phase=auto_adopt
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=6000155 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=6000155 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=6000155 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=6000243 'libitaca' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=6000243 'libitaca' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=6000243 'libitaca' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=6000663 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=6000663 'san cebastian' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=6001098 'huaras' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=6001098 'huaras' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=7000376 'san cebastian crus' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=7000376 'san cebastian crus' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=7000376 'san cebastian crus' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=8000663 'san cebastian' score=1.000 nombre=False saint_only=True terr=region_exact phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=8000663 'san cebastian' score=1.000 nombre=False saint_only=True terr=region_exact phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=8000663 'san cebastian' score=1.000 nombre=False saint_only=True terr=region_exact phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=8000666 'san cebastian' score=1.000 nombre=False saint_only=True terr=region_exact phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=8000666 'san cebastian' score=1.000 nombre=False saint_only=True terr=region_exact phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=8000698 'san cebastian' score=1.000 nombre=False saint_only=True terr=region_exact phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=9000132 'hualehuai' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=9000132 'hualehuai' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=9000132 'hualehuai' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - DEBUG -     gz_id=9000132 'hualehuai' score=1.000 nombre=False saint_only=True terr= phase=candidate
+2026-06-30 17:45:50 - matching__pipetest - INFO -   Before dedup: 296 candidates
+2026-06-30 17:45:50 - matching__pipetest - INFO -   After dedup: 110 unique gz_ids
+2026-06-30 17:45:50 - matching__pipetest - INFO -   Dropped 107 territory-contradicting candidates
+2026-06-30 17:45:50 - matching__pipetest - INFO -   Input has territorial data: True
+2026-06-30 17:45:50 - matching__pipetest - INFO -   Candidates with territory match: 3
+2026-06-30 17:45:50 - matching__pipetest - INFO -   After territorial filter (keeping region): 3 candidates
+2026-06-30 17:45:50 - matching__pipetest - INFO -   Nombre matches (exact on lugar_nombre): 0
+2026-06-30 17:45:50 - matching__pipetest - INFO -   Saint-only matches: 3
+2026-06-30 17:45:50 - matching__pipetest - INFO -   Substantive matches: 0
+2026-06-30 17:45:50 - matching__pipetest - INFO -   Candidate pool (>= threshold): 3
+2026-06-30 17:45:50 - matching__pipetest - INFO -   3 candidate(s) -> candidate
+2026-06-30 17:45:50 - matching__pipetest - INFO -   rowID=7368: found at step 'no_partido_jurisdiccion'
+2026-06-30 17:45:50 - matching__pipetest - INFO - Phase 1b complete: 2 of 3 relegated rows recovered

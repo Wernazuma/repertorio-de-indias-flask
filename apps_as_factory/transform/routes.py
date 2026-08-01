@@ -41,6 +41,19 @@ def classify_column_type(samples):
         return "date"
     return "string"
 
+def _suggest_type(samples):
+    """Suggest a data type for the classify-columns radios (integer/decimal), or
+    None when it isn't obviously numeric."""
+    vals = [str(s).strip() for s in samples
+            if s is not None and str(s).strip() and str(s).strip().lower() != "nan"]
+    if not vals:
+        return None
+    if all(re.fullmatch(r"-?\d+", v) for v in vals):
+        return "integer"
+    if all(re.fullmatch(r"-?\d+(?:[.,]\d+)?", v) for v in vals):
+        return "decimal"
+    return None
+
 def detect_csv_format(file_path):
     """Detect CSV format (separator, text qualifier, decimal marker)"""
     with open(file_path, 'r', encoding='utf-8') as f:
@@ -122,8 +135,33 @@ def detect_and_classify_columns(df):
     
     return field_types, field_samples
 
+def _dedupe_columns(df):
+    """Give duplicate column labels a suffix.
+
+    Field mapping and the chronology step rename columns, which can collide with a
+    header the uploaded table already has (e.g. a source column literally called
+    'ref_Label', or an existing 'ref_END'). With a duplicated label, df[col] returns
+    a DataFrame instead of a Series and the coercion below fails with
+    "'DataFrame' object has no attribute 'str'". Keep the first, suffix the rest so
+    no data is silently lost.
+    """
+    seen, out = {}, []
+    for col in df.columns:
+        if col in seen:
+            seen[col] += 1
+            out.append(f"{col}_dup{seen[col]}")
+        else:
+            seen[col] = 0
+            out.append(col)
+    if out != list(df.columns):
+        print(f"Renamed duplicate columns: {set(out) - set(df.columns)}")
+        df.columns = out
+    return df
+
+
 def clean_and_coerce_data(df, field_types):
     """Clean and coerce data based on field types"""
+    df = _dedupe_columns(df.copy())
     cleaned_df = df.copy()
     legacy_columns = {}
 
@@ -172,40 +210,105 @@ def clean_and_coerce_data(df, field_types):
 @bp.route('/')
 def upload_csv():
     # Clear session data for new upload
+    discarded = request.args.get('discarded', type=int)
     session.clear()
-    return render_template('upload_csv.html')
+    return render_template('upload_csv.html', discarded=discarded)
+
+def _base_taken(base, folder):
+    """A table name is taken if the raw upload or its cleaned output exists."""
+    return (os.path.exists(os.path.join(folder, f"{base}.csv"))
+            or os.path.exists(os.path.join(folder, f"{base}_cleaned.csv")))
+
+
+def _next_free_base(base, folder):
+    n = 1
+    while _base_taken(f"{base}_{n}", folder):
+        n += 1
+    return f"{base}_{n}"
+
+
+# ---------------------------------------------------------------------------
+# Artifacts owned by the transform step, for abort / delete-my-table.
+# ---------------------------------------------------------------------------
+TRANSFORM_ARTIFACTS = ("{base}.csv", "{base}_formatted.csv", "{base}_cleaned.csv",
+                       "{base}_domain.txt", "{base}_metadata.txt",
+                       "{base}_bibliography.txt", "{base}_field_definitions.csv")
+
+
+def _current_base():
+    """The dataset prefix for the session, or '' when nothing is uploaded."""
+    base = session.get('prefix')
+    if not base and session.get('uploaded_file'):
+        base = os.path.splitext(session['uploaded_file'])[0]
+    return base or ''
+
+
+def _metadata_exists(base):
+    return bool(base) and os.path.exists(
+        os.path.join(current_app.config['UPLOAD_FOLDER'], f"{base}_metadata.txt"))
+
+
+def _delete_artifacts(base):
+    """Remove the raw upload and everything derived from it. Returns the names removed."""
+    folder = current_app.config['UPLOAD_FOLDER']
+    removed = []
+    for pattern in TRANSFORM_ARTIFACTS:
+        path = os.path.join(folder, pattern.format(base=base))
+        try:
+            if os.path.exists(path):
+                os.remove(path)
+                removed.append(os.path.basename(path))
+        except OSError:
+            pass
+    return removed
+
+
+@bp.route('/discard', methods=['POST'])
+def discard():
+    """Abort the workflow: delete the uploaded table and all derived files.
+
+    Accepts an explicit ?prefix / form prefix so it also works after matching or
+    on a prefix-only resume (no active session)."""
+    base = request.values.get('prefix', '').strip() or _current_base()
+    removed = _delete_artifacts(base) if base else []
+    session.clear()
+    return redirect(url_for('.upload_csv', discarded=len(removed)))
+
 
 @bp.route('/upload', methods=['POST'])
 def upload_file():
     if 'file' not in request.files:
         return jsonify({'error': 'No file selected'}), 400
-    
+
     file = request.files['file']
     if file.filename == '':
         return jsonify({'error': 'No file selected'}), 400
-    
-    if file and allowed_file(file.filename):
-        filename = secure_filename(file.filename)
-        filepath = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
-        
-        # Handle filename conflicts by adding a counter instead of timestamp
-        counter = 1
-        original_filename = filename
-        while os.path.exists(filepath):
-            name, ext = os.path.splitext(original_filename)
-            filename = f"{name}_{counter}{ext}"
-            filepath = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
-            counter += 1
-        
-        file.save(filepath)
-        
-        # Store file info in session
-        session['uploaded_file'] = filename
-        session['original_filename'] = file.filename
-        
-        return jsonify({'success': True, 'filename': filename})
-    
-    return jsonify({'error': 'Invalid file type. Please upload a CSV file.'}), 400
+
+    if not (file and allowed_file(file.filename)):
+        return jsonify({'error': 'Invalid file type. Please upload a CSV file.'}), 400
+
+    folder = current_app.config['UPLOAD_FOLDER']
+    os.makedirs(folder, exist_ok=True)
+
+    # Desired name (chosen by the user after a conflict warning), else the upload name.
+    desired = (request.form.get('desired_name') or '').strip()
+    src = desired if desired else file.filename
+    base = os.path.splitext(secure_filename(src))[0]
+    if not base:
+        return jsonify({'error': 'Invalid file name.'}), 400
+
+    # Conflict: warn instead of silently renaming, proposing the next free name.
+    if _base_taken(base, folder):
+        return jsonify({'conflict': True, 'existing': base,
+                        'proposed': _next_free_base(base, folder)})
+
+    filename = f"{base}.csv"
+    file.save(os.path.join(folder, filename))
+
+    session['uploaded_file'] = filename
+    session['original_filename'] = file.filename
+    session['prefix'] = base
+    return jsonify({'success': True, 'filename': filename})
 
 @bp.route('/select_domain')
 def select_domain():
@@ -221,9 +324,18 @@ def process_domain():
     domain = request.json.get('domain')
     if domain not in ['places', 'territories']:
         return jsonify({'error': 'Invalid domain selection'}), 400
-    
+
     session['domain'] = domain
-    
+    # Persist per-prefix so the matching step can pick up the domain on resume
+    # (users aren't logged in — the prefix is the only handle).
+    base = session.get('prefix') or os.path.splitext(session['uploaded_file'])[0]
+    try:
+        with open(os.path.join(current_app.config['UPLOAD_FOLDER'], f"{base}_domain.txt"),
+                  'w', encoding='utf-8') as _df:
+            _df.write(domain)
+    except OSError:
+        pass
+
     # Process the CSV file
     filepath = os.path.join(current_app.config['UPLOAD_FOLDER'], session['uploaded_file'])
     
@@ -279,9 +391,13 @@ def classify_columns():
         # No columns need classification, go to field mapping
         print("No columns need classification, redirecting to field mapping")
         return redirect(url_for('.field_mapping'))
-    
-    return render_template('classify_columns.html', 
-                         columns=needs_classification)
+
+    # Suggest a type per column so the radios come pre-selected sensibly.
+    suggested = {col: _suggest_type(samples) for col, samples in needs_classification.items()}
+
+    return render_template('classify_columns.html',
+                         columns=needs_classification,
+                         suggested=suggested)
 
 @bp.route('/save_column_types', methods=['POST'])
 def save_column_types():
@@ -324,9 +440,10 @@ def field_mapping():
     # Define required fields based on domain
     if domain == 'places':
         required_fields = [
-            {'name': 'rowID', 'label': 'Internal ID of each row', 'types': ['integer', 'text', 'string'], 'optional': True},
             {'name': 'ref_Label', 'label': 'Associated place\'s name', 'types': ['text', 'string'], 'optional': False},
+            {'name': 'rowID', 'label': 'Internal ID of each row', 'types': ['integer', 'text', 'string'], 'optional': True},
             {'name': 'ref_Variantes', 'label': 'Variant or variants of the name', 'types': ['text', 'string'], 'optional': True},
+            {'name': 'ref_categoria', 'label': 'Settlement type / category (ciudad, villa, pueblo, curato…)', 'types': ['text', 'string'], 'optional': True},
             {'name': 'ref_Partido', 'label': 'District/partido (including corregimientos de naturales)', 'types': ['text', 'string'], 'optional': True},
             {'name': 'ref_Jurisdiccion', 'label': 'City jurisdiction or minor province', 'types': ['text', 'string'], 'optional': True},
             {'name': 'ref_Provincia', 'label': 'Province (Gobierno, Intendencia)', 'types': ['text', 'string'], 'optional': True},
@@ -338,11 +455,12 @@ def field_mapping():
         ]
     else:  # territories
         required_fields = [
-            {'name': 'rowID', 'label': 'Internal ID of each row', 'types': ['integer', 'text', 'string'], 'optional': True},
             {'name': 'ref_Label', 'label': 'Territory\'s name', 'types': ['text', 'string'], 'optional': False},
+            {'name': 'rowID', 'label': 'Internal ID of each row', 'types': ['integer', 'text', 'string'], 'optional': True},
             {'name': 'ref_Variantes', 'label': 'Variant or variants of the name', 'types': ['text', 'string'], 'optional': True},
             {'name': 'ref_Titulo', 'label': 'Territory title (alcaldía mayor, corregimiento, etc.)', 'types': ['text', 'string'], 'optional': True},
             {'name': 'ref_Nivel', 'label': 'Hierarchical level or general type', 'types': ['text', 'string'], 'optional': True},
+            {'name': 'ref_Provincia_generica', 'label': 'Generic province it is in', 'types': ['text', 'string'], 'optional': True},
             {'name': 'ref_Region', 'label': 'Generic region it is in', 'types': ['text', 'string'], 'optional': True},
         ]
     
@@ -513,9 +631,13 @@ def process_final():
         print(f"Final cleaned dataframe shape: {cleaned_df.shape}")
         print(f"Final columns: {cleaned_df.columns.tolist()}")
         
-        # Save cleaned CSV
+        # Save cleaned CSV. Use the SAVED (possibly de-duplicated) upload name as
+        # the base so the cleaned file aligns with the _formatted file and the
+        # downstream matching prefix (e.g. padroncharcas_1 -> ..._cleaned.csv).
         original_filename = session['original_filename']
-        output_filename = original_filename.replace('.csv', '_cleaned.csv')
+        base_saved = os.path.splitext(session.get('uploaded_file', original_filename))[0]
+        session['prefix'] = base_saved
+        output_filename = f"{base_saved}_cleaned.csv"
         output_path = os.path.join(current_app.config['UPLOAD_FOLDER'], output_filename)
         cleaned_df.to_csv(output_path, sep=";", index=False, encoding="utf-8")
         print(f"Saved cleaned CSV to: {output_path}")
@@ -532,6 +654,8 @@ def process_final():
                              rows=len(cleaned_df),
                              columns=len(cleaned_df.columns),
                              legacy_columns=legacy_columns,
+                             # metadata & licensing is required before matching
+                             metadata_done=_metadata_exists(base_saved),
                              session=session)  # Pass session for debugging
         
     except Exception as e:
@@ -553,61 +677,190 @@ def process_final():
                              error=str(e),
                              session=session)  # Pass session for debugging
 
-    
-@bp.route('/run_places_matching', methods=['GET'])
-def run_places_matching():
-    if 'domain' not in session or session['domain'] != 'places':
-        return jsonify({'error': 'Matching is only available for the "places" domain.'}), 400
 
+CC_BY_SA = "http://creativecommons.org/licenses/by-sa/4.0/"
+EMBARGO_YEARS = {"immediate": 0, "1year": 1, "2years": 2, "3years": 3}
+
+
+def _plus_years(d, years):
     try:
-        import sys
-        sys.path.append('data/')  # Adjust as needed
-        from .match_places import (
-            load_patron_saints,
-            group_places_by_territory,
-            find_place_matches_optimized,
-            prefilter_places_by_temporal_constraints,
-        )
+        return d.replace(year=d.year + years)
+    except ValueError:  # Feb 29
+        return d.replace(month=2, day=28, year=d.year + years)
 
-        saints = load_patron_saints()
 
-        # Load the formatted input file
-        input_path = session['formatted_path']
-        input_df = pd.read_csv(input_path, sep=';', encoding='utf-8')
+ARCA_PUBLISHER = "ARCA"
 
-        # Load places data (e.g., espartede.csv)
-        places_path = os.path.join('..', 'data', 'espartede.csv')  # Adjust if needed
-        places_df = pd.read_csv(places_path, sep=';', encoding='utf-8')
 
-        # Pre-filter by temporal constraints
-        places_df_filtered = prefilter_places_by_temporal_constraints(places_df, input_df)
+def _clean_list(values):
+    """Trimmed, non-empty values from a repeatable form field."""
+    return [v.strip() for v in (values or []) if v and v.strip()]
 
-        # Group places by territory
-        territory_groups = group_places_by_territory(places_df_filtered)
 
-        # Initialize match columns
-        input_df['matched_gz_id'] = None
-        input_df['matched_label'] = None
-        input_df['matched_similarity'] = None
+def _build_citation(creators, title, publishers, date_submitted):
+    """The citation is always generated here, never supplied by the user:
 
-        # Apply matching
-        for idx, row in input_df.iterrows():
-            matches = find_place_matches_optimized(row, territory_groups, saints)
-            if matches:
-                top_match = matches[0]
-                input_df.at[idx, 'matched_gz_id'] = top_match.get('gz_id')
-                input_df.at[idx, 'matched_label'] = top_match.get('lugar_nombre')
-                input_df.at[idx, 'matched_similarity'] = top_match.get('similarity')
+        Creator, "Title": An ARCA [- Publisher2 - Publisher3] Dataset. YYYY-MM-DD.
+    """
+    who = ", ".join(creators)
+    extra = [p for p in publishers if p.strip().lower() != ARCA_PUBLISHER.lower()]
+    pubs = " - ".join([ARCA_PUBLISHER] + extra)
+    head = f'{who}, "{title}"' if who else f'"{title}"'
+    return f'{head}: An {pubs} Dataset. {date_submitted}.'
 
-        # Save result to a new file
-        matched_filename = f"ARCA_{original_filename}{datetime.now().strftime('%Y%m%d')}.csv"
-        matched_path = os.path.join(current_app.config['UPLOAD_FOLDER'], matched_filename)
-        input_df.to_csv(matched_path, sep=';', index=False, encoding='utf-8')
 
-        return send_file(matched_path, as_attachment=True)
+def _dataset_columns(base):
+    """Column names of the cleaned table, for the field-definition helper."""
+    path = os.path.join(current_app.config['UPLOAD_FOLDER'], f"{base}_cleaned.csv")
+    if os.path.exists(path):
+        try:
+            return list(pd.read_csv(path, sep=';', nrows=0, encoding='utf-8').columns)
+        except Exception:
+            pass
+    return list(session.get('columns') or [])
 
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+
+def _build_dublin_core(f, accept, embargo_key, base, extras=None):
+    """Build the Dublin Core metadata text (one tag per line)."""
+    from datetime import date
+    esc = lambda s: (str(s or "").strip()
+                     .replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"))
+    extras = extras or {}
+    today = date.today()
+    date_submitted = today.isoformat()          # YYYY-MM-DD
+
+    creators = f.get("creators") or []
+    publishers = f.get("publishers") or []
+    sources = f.get("sources") or []
+
+    lines = []
+    # "Spatial data: " is prepended to the title automatically.
+    lines.append(f"<dc:title>Spatial data: {esc(f.get('title'))}</dc:title>")
+    for c in creators:
+        lines.append(f"<dc:creator>{esc(c)}</dc:creator>")
+    for s in (f.get("subjects") or "").split(","):
+        if s.strip():
+            lines.append(f"<dc:subject>{esc(s)}</dc:subject>")
+    if f.get("description"):
+        lines.append(f"<dc:description>{esc(f.get('description'))}</dc:description>")
+
+    # ARCA is always a publisher; user-supplied ones follow.
+    for p in [ARCA_PUBLISHER] + [x for x in publishers
+                                 if x.strip().lower() != ARCA_PUBLISHER.lower()]:
+        lines.append(f"<dc:publisher>{esc(p)}</dc:publisher>")
+    if f.get("contributor"):
+        lines.append(f"<dc:contributor>{esc(f.get('contributor'))}</dc:contributor>")
+
+    lines.append(f"<dcterms:dateSubmitted>{date_submitted}</dcterms:dateSubmitted>")
+    lines.append(f"<dcterms:issued>{date_submitted}</dcterms:issued>")
+    years = EMBARGO_YEARS.get(embargo_key, 0)
+    if accept and years > 0:
+        lines.append(f"<dcterms:available>{_plus_years(today, years).isoformat()}</dcterms:available>")
+
+    lines.append(f"<dc:type>{esc(f.get('type') or 'Dataset')}</dc:type>")
+    citation = _build_citation(creators, f.get("title"), publishers, date_submitted)
+    lines.append(f"<dcterms:bibliographicCitation>{esc(citation)}</dcterms:bibliographicCitation>")
+
+    for s in sources:
+        lines.append(f"<dc:source>{esc(s)}</dc:source>")
+    if extras.get("bibliography"):
+        lines.append(f"<dc:source>Bibliography file: {esc(base)}_bibliography.txt</dc:source>")
+    if extras.get("field_definitions"):
+        lines.append(f"<dcterms:hasPart>{esc(base)}_field_definitions.csv</dcterms:hasPart>")
+
+    if f.get("spatial"):
+        lines.append(f"<dcterms:spatial>{esc(f.get('spatial'))}</dcterms:spatial>")
+    if f.get("coverage"):
+        lines.append(f"<dc:coverage>{esc(f.get('coverage'))}</dc:coverage>")
+
+    if accept:
+        lines.append(f"<dc:rights>{CC_BY_SA}</dc:rights>")
+    else:
+        lines.append("<dc:rights>All rights reserved. Contact the site owner "
+                     "(Arca de las Indias) for an individual licensing solution.</dc:rights>")
+    return "\n".join(lines) + "\n"
+
+
+@bp.route('/metadata', methods=['GET', 'POST'])
+def metadata_form():
+    # Metadata now happens AFTER matching and is reachable by prefix alone (e.g.
+    # resuming a finished run in a fresh browser), so accept ?prefix / form prefix
+    # and fall back to the session only when none is given.
+    base = (request.values.get('prefix', '').strip()
+            or session.get('prefix')
+            or (os.path.splitext(session['uploaded_file'])[0]
+                if session.get('uploaded_file') else ''))
+    if not base:
+        return redirect(url_for('.upload_csv'))
+    folder = current_app.config['UPLOAD_FOLDER']
+    columns = _dataset_columns(base)
+
+    if request.method == 'POST':
+        fields = {
+            "title": request.form.get("title", "").strip(),
+            "creators": _clean_list(request.form.getlist("creator")),
+            "publishers": _clean_list(request.form.getlist("publisher")),
+            "sources": _clean_list(request.form.getlist("source")),
+            "subjects": request.form.get("subjects", ""),
+            "description": request.form.get("description", "").strip(),
+            "contributor": request.form.get("contributor", ""),
+            "type": request.form.get("type", ""),
+            "spatial": request.form.get("spatial", ""),
+            "coverage": request.form.get("coverage", ""),
+        }
+        accept = request.form.get("license") == "accept"
+        embargo = request.form.get("embargo", "immediate")
+
+        # --- bibliography upload (optional alternative to listing sources) ---
+        biblio = request.files.get("bibliography")
+        biblio_saved = False
+        if biblio and biblio.filename:
+            if not biblio.filename.lower().endswith(".txt"):
+                return render_template('metadata_form.html', base=base, saved=False,
+                                       columns=columns, form=fields,
+                                       errors=["The bibliography must be a .txt file."])
+            biblio.save(os.path.join(folder, f"{base}_bibliography.txt"))
+            biblio_saved = True
+        elif os.path.exists(os.path.join(folder, f"{base}_bibliography.txt")):
+            biblio_saved = True
+
+        # --- required fields ---
+        errors = []
+        if not fields["title"]:
+            errors.append("A title is required.")
+        if not fields["creators"]:
+            errors.append("At least one creator is required.")
+        if not fields["description"]:
+            errors.append("A description is required.")
+        if not fields["sources"] and not biblio_saved:
+            errors.append("At least one source is required — list it, or upload a "
+                          "bibliography .txt file.")
+        if errors:
+            return render_template('metadata_form.html', base=base, saved=False,
+                                   columns=columns, form=fields, errors=errors)
+
+        # --- optional per-column definitions ---
+        defs = [(c, request.form.get(f"def__{c}", "").strip()) for c in columns]
+        defs = [(c, d) for c, d in defs if d]
+        if defs:
+            with open(os.path.join(folder, f"{base}_field_definitions.csv"), "w",
+                      encoding="utf-8", newline="") as fh:
+                w = csv.writer(fh, delimiter=";")
+                w.writerow(["column", "definition"])
+                w.writerows(defs)
+
+        text = _build_dublin_core(fields, accept, embargo, base,
+                                  extras={"bibliography": biblio_saved,
+                                          "field_definitions": bool(defs)})
+        with open(os.path.join(folder, f"{base}_metadata.txt"), "w", encoding="utf-8") as fh:
+            fh.write(text)
+        return render_template('metadata_form.html', base=base, saved=True,
+                               preview=text, accepted=accept,
+                               biblio_saved=biblio_saved, definitions=len(defs))
+
+    return render_template('metadata_form.html', base=base, saved=False,
+                           columns=columns, form=None, errors=None)
+
 
 @bp.route('/download/<matched_filename>')
 def download_file(matched_filename):

@@ -1,22 +1,31 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Toponym Matcher — Step 1a</title>
-  <link rel="stylesheet" href="{{ url_for('matching.static', filename='style.css') }}">
-  <style>
-    body { font-family: sans-serif; margin: 2em; }
-    h2 { color: #222; }
-    .flash-messages { color: #c22; list-style-type: none; padding: 0; }
-    .flash-messages li { margin: 0.3em 0; }
-    form input[type="text"] { padding: 6px; width: 240px; }
-    form input[type="submit"] { padding: 6px 12px; }
-    a { color: #0056b3; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-  </style>
-</head>
-<body>
-  <h2>Toponym Matcher — Step 1a</h2>
+{% extends "base.html" %}
+{% set active = 'arca' %}
+{% block title %}Match — Step 1a — ARCA{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{{ url_for('matching.static', filename='style.css') }}">
+<style>
+  .mx-wrap { max-width: 720px; }
+  .mx-wrap h1 { font-family: var(--serif); font-size: var(--step-2); margin-bottom: var(--sp-3); }
+  .mx-wrap .flash-messages { color: #c22; list-style: none; padding: 0; }
+  .mx-wrap .flash-messages li { margin: 0.3em 0; }
+  .mx-wrap form input[type="text"] { padding: 8px; width: 260px; border: 1px solid var(--border-strong);
+    border-radius: 6px; font-size: var(--step-0); }
+  .mx-wrap form input[type="submit"] { padding: 8px 16px; margin-left: 6px; cursor: pointer;
+    background: var(--accent); color: var(--accent-ink); border: 0; border-radius: 6px; }
+  .mx-wrap hr { border: 0; border-top: 1px solid var(--border); margin: var(--sp-4) 0; }
+  .mx-wrap code { background: var(--surface-2); padding: 2px 6px; border-radius: 4px; }
+  .mx-cta { display: inline-block; padding: 12px 26px; color: #fff; text-decoration: none;
+    border-radius: 6px; font-size: 16px; }
+  .mx-cta.start { background: #157a2b; }
+  .mx-cta.cont { background: var(--accent); color: var(--accent-ink); }
+  .mx-note { font-size: 0.9em; color: var(--muted); }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="mx-wrap">
+  <h1>Match your data — Step 1a</h1>
 
   <form method="POST" action="{{ url_for('matching.index') }}">
     <label for="prefix">Enter file prefix:</label><br>
@@ -37,11 +46,28 @@
   {% if prefix %}
     <hr>
     <h3>Loaded prefix: <code>{{ prefix }}</code></h3>
-    <ul>
-      <li><a href="{{ url_for('matching.run_matching_route', prefix=prefix) }}">▶ Run Matching (Step 1a)</a></li>
-      <li><a href="{{ url_for('matching.match_status', prefix=prefix) }}">📊 Match Status</a></li>
-      <li><a href="{{ url_for('matching.disambiguate', prefix=prefix) }}">⚖️ Start Disambiguation (Step 2)</a></li>
-    </ul>
+    {% if stage == 'start_matching' %}
+      <p>
+        <a href="{{ url_for('matching.run_matching_route', prefix=prefix) }}" class="mx-cta start">
+          ▶ Start matching process
+        </a>
+      </p>
+      <p class="mx-note">Runs matching (phases 1a + 1b), then guides you through disambiguation, territory resolution, and export.</p>
+      <p class="mx-note">
+        Optional: <a href="{{ url_for('matching.set_constraints', prefix=prefix, after='match') }}">set global
+        region/province constraints first</a> — restricts the whole table to that area so you never
+        see candidates from elsewhere.
+      </p>
+    {% else %}
+      <p style="color:var(--muted);">Current stage: <strong>{{ stage_label }}</strong></p>
+      <p>
+        <a href="{{ continue_url }}" class="mx-cta cont">▶ Continue where you left off</a>
+      </p>
+      <p class="mx-note">
+        Or <a href="{{ url_for('matching.run_matching_route', prefix=prefix) }}">restart matching from scratch</a>
+        (this re-runs phases 1a + 1b and discards manual decisions).
+      </p>
+    {% endif %}
   {% endif %}
-</body>
-</html>
+</div>
+{% endblock %}

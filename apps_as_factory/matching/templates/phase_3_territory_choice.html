@@ -1,130 +1,405 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Phase 3, Step 2 — Case-specific Territory Choice</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phase 3b — Territory Resolution ({{ prefix }})</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; margin: 0; background: #f4f5f7; color: #222; }
+    .topbar { display: flex; align-items: center; gap: 1em; padding: 0.55em 1.2em; background: #fff; border-bottom: 1px solid #ddd; position: sticky; top: 0; z-index: 1000; }
+    .topbar h1 { font-size: 1.05em; margin: 0; }
+    .topbar .prefix { color: #666; font-size: 0.85em; }
+    .progress-wrap { flex: 1; }
+    .progress-bar { height: 8px; background: #e3e6ea; border-radius: 4px; overflow: hidden; }
+    .progress-fill { height: 100%; background: #0056b3; transition: width 0.3s; }
+    .progress-text { font-size: 0.78em; color: #555; margin-top: 2px; }
+    .topbar a { color: #0056b3; text-decoration: none; font-size: 0.88em; }
+
+    .layout { display: flex; height: calc(100vh - 50px); }
+    .left { width: 46%; min-width: 380px; overflow-y: auto; padding: 1em 1.2em; }
+    .right { flex: 1; position: relative; }
+    #map { width: 100%; height: 100%; }
+
+    .ref-card { background: #eef3fb; border: 1px solid #cfddf2; border-radius: 6px; padding: 0.7em 1em; margin-bottom: 0.9em; }
+    .ref-card h2 { margin: 0 0 0.4em; font-size: 1.2em; }
+    .chips { display: flex; flex-wrap: wrap; gap: 0.35em; }
+    .chip { background: #fff; border: 1px solid #cfddf2; border-radius: 12px; padding: 1px 9px; font-size: 0.8em; color: #334; }
+    .chip b { color: #06c; font-weight: 600; }
+
+    .filters { background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; padding: 0.7em 0.9em; margin-bottom: 0.9em; }
+    .filters .row { display: flex; flex-wrap: wrap; gap: 0.5em 0.8em; align-items: center; }
+    .filters label { font-size: 0.82em; color: #555; }
+    .filters select { font-size: 0.85em; padding: 3px 5px; max-width: 160px; }
+    .filters .checks { margin-top: 0.5em; font-size: 0.85em; display: flex; gap: 1.2em; }
+    .lookup-row { margin-top: 0.55em; display: flex; gap: 0.4em; align-items: center; }
+    .lookup-row input[type="text"] { flex: 1; padding: 4px 7px; font-size: 0.88em; }
+    .clear-lookup { font-size: 0.8em; color: #a00; text-decoration: none; }
+
+    .hint { font-size: 0.8em; color: #777; margin: 0.3em 0 0.5em; }
+    .count { font-size: 0.82em; color: #555; margin: 0.2em 0 0.5em; }
+
+    .cand { border: 1px solid #ddd; border-left: 5px solid var(--c, #999); border-radius: 6px; background: #fff; margin-bottom: 0.6em; padding: 0.55em 0.8em 0.6em 0.9em; cursor: pointer; transition: box-shadow .15s, background .15s; }
+    .cand:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+    .cand.selected { background: #f0f7ff; box-shadow: 0 0 0 2px #0056b3 inset; }
+    .cand .head { display: flex; align-items: center; gap: 0.5em; }
+    .badge-num { display: inline-flex; align-items: center; justify-content: center; width: 21px; height: 21px; border-radius: 50%; color: #fff; background: var(--c, #999); font-size: 0.78em; font-weight: 700; flex: none; }
+    .cand .title { font-weight: 600; flex: 1; }
+    .nocoord { font-size: 0.7em; color: #b36b00; background: #fff5e0; border-radius: 3px; padding: 0 5px; }
+    .matchbar { display: flex; flex-wrap: wrap; gap: 0.3em; margin: 0.45em 0 0.15em; }
+    .mb { display: inline-block; padding: 1px 7px; border-radius: 10px; font-size: 0.72em; font-weight: 600; }
+    .mb-green { background: #e4f6e4; color: #1a7a1a; border: 1px solid #9ad29a; }
+    .mb-orange { background: #fff3e0; color: #aa5d00; border: 1px solid #f0c080; }
+    .mb-red { background: #fdecec; color: #b32020; border: 1px solid #e8a0a0; }
+    .mb-gray { background: #eee; color: #666; border: 1px solid #ccc; }
+    .cand dl { margin: 0.4em 0 0; display: grid; grid-template-columns: auto 1fr; gap: 0 0.6em; font-size: 0.8em; }
+    .cand dt { color: #888; }
+    .cand dd { margin: 0; }
+
+    .actionbar { position: sticky; bottom: 0; background: #fff; border-top: 1px solid #ddd; padding: 0.7em 0; display: flex; gap: 0.5em; flex-wrap: wrap; align-items: center; margin: 0.5em -1.2em 0; padding-left: 1.2em; padding-right: 1.2em; }
+    button { font-size: 0.88em; padding: 0.5em 0.9em; border-radius: 5px; border: 1px solid #bbb; cursor: pointer; }
+    .btn-primary { background: #0056b3; color: #fff; border-color: #0056b3; }
+    .btn-new { background: #157a2b; color: #fff; border-color: #157a2b; }
+    .btn-reject { background: #fff; color: #a00; border-color: #d99; }
+    .btn-skip { background: #f4f5f7; }
+
+    .manualbox { border: 1px solid #e0e0e0; border-radius: 6px; padding: 0.6em 0.8em; margin-top: 0.6em; background: #fafbfc; font-size: 0.85em; }
+    .reusebox { border: 1px solid #cfe0cf; border-radius: 6px; padding: 0.6em 0.8em; margin-top: 0.6em; background: #eef7ee; font-size: 0.85em; }
+    .reuse-title { margin: 0 0 0.4em; color: #1a5c1a; font-weight: 600; }
+    .btn-reuse { display: block; width: 100%; text-align: left; margin: 0.25em 0; padding: 0.4em 0.6em; border: 1px solid #9ad29a; border-radius: 5px; background: #fff; color: #1a5c1a; cursor: pointer; font-size: 0.95em; }
+    .btn-reuse:hover { background: #dff2df; }
+    .manual-row { display: flex; gap: 0.5em; align-items: center; flex-wrap: wrap; }
+    .manual-row input[type="text"] { padding: 4px 6px; width: 140px; font-size: 0.9em; }
+    .btn-id { background: #fff; border: 1px solid #0056b3; color: #0056b3; padding: 0.35em 0.7em; }
+    .notdb-toggle { display: block; margin-top: 0.55em; }
+    .notdb-panel { display: flex; gap: 0.8em; align-items: center; flex-wrap: wrap; margin-top: 0.45em; padding-top: 0.45em; border-top: 1px dashed #ddd; }
+    .notdb-panel select { padding: 3px 5px; font-size: 0.9em; }
+    .coord-readout { color: #157a2b; font-weight: 600; }
+    .nav-links { margin-left: auto; font-size: 0.85em; }
+    .nav-links a { color: #0056b3; text-decoration: none; }
+
+    .marker-num { display: flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,.4); color: #fff; font-weight: 700; font-size: 0.85em; }
+    .marker-num span { transform: rotate(45deg); }
+  </style>
 </head>
 <body>
+  <div class="topbar">
+    <h1>Territory Resolution <span class="prefix">{{ prefix }}</span></h1>
+    <div class="progress-wrap">
+      <div class="progress-bar"><div class="progress-fill" style="width: {{ ((idx+1)/total*100)|round(1) }}%"></div></div>
+      <div class="progress-text">Case {{ idx+1 }} of {{ total }} &nbsp;·&nbsp; rowID {{ row_id }}</div>
+    </div>
+    <a href="{{ url_for('matching.match_status', prefix=prefix) }}">← Status</a>
+  </div>
 
-<h2>Case-specific Territory Choice — {{ prefix }}</h2>
+  {% include '_resume_bar.html' %}
 
-<form method="POST">
-  <table border="1" cellpadding="4">
-    <tr>
-      <th>rowID</th>
-      <th>Ref Label</th>
-      <th>Region</th>
-      <th>Generic Province</th>
-      <th>Generic District</th>
-      <th>Ciudad/Villa Only</th>
-    </tr>
-
-    {% for case in relegated_cases %}
-    <tr>
-      <td>{{ case.rowID }}</td>
-      <td>{{ case.ref_Label }}</td>
-
-      <!-- Region -->
-      <td>
-        <select name="region_{{ case.rowID }}" class="region-select">
-          <option value="">-- Select Region --</option>
-          {% for reg in region_choices %}
-            <option value="{{ reg }}"
-              {% if case.manual_region == reg %}selected{% endif %}>
-              {{ reg }}
-            </option>
+  <div class="layout">
+    <div class="left">
+      <div class="ref-card">
+        <h2>{{ ref_label }}</h2>
+        <div class="chips">
+          {% for k, v in ref_info.items() %}
+            <span class="chip"><b>{{ k.replace('ref_','') }}</b> {{ v }}</span>
           {% endfor %}
-        </select>
-      </td>
+        </div>
+      </div>
 
-      <!-- Province -->
-      <td>
-        <select name="province_{{ case.rowID }}" class="province-select">
-          <option value="">-- Select Province --</option>
-          {% for prov in province_choices %}
-            <option value="{{ prov }}"
-              {% if case.manual_province == prov %}selected{% endif %}>
-              {{ prov }}
-            </option>
+      <!-- Territory + place-type filters (auto-submit on change) -->
+      <form method="GET" action="{{ url_for('matching.territory_choice', prefix=prefix) }}" id="filterForm" class="filters">
+        <input type="hidden" name="idx" value="{{ idx }}">
+        <div class="row">
+          <label>Region
+            <select name="region" id="fRegion">
+              <option value="">— any —</option>
+              {% for code, name in region_options %}
+                <option value="{{ code }}" {{ 'selected' if filters.region == code else '' }}>{{ name }}</option>
+              {% endfor %}
+            </select>
+          </label>
+          <label>Province
+            <select name="province" id="fProvince">
+              <option value="">— any —</option>
+              {% for p in province_options %}
+                <option value="{{ p }}" {{ 'selected' if filters.province == p else '' }}>{{ p }}</option>
+              {% endfor %}
+            </select>
+          </label>
+          <label>District
+            <select name="district" id="fDistrict">
+              <option value="">— any —</option>
+              {% for d in district_options %}
+                <option value="{{ d }}" {{ 'selected' if filters.district == d else '' }}>{{ d }}</option>
+              {% endfor %}
+            </select>
+          </label>
+        </div>
+        <div class="checks">
+          <label><input type="checkbox" name="central" value="1" id="fCentral" {{ 'checked' if filters.central else '' }}> Central places (Curato, Misión cabecera)</label>
+          <label><input type="checkbox" name="ciudadvilla" value="1" id="fCiudad" {{ 'checked' if filters.ciudadvilla else '' }}> Ciudad / Villa only</label>
+        </div>
+        <div class="lookup-row">
+          <input type="text" name="q" id="fLookup" value="{{ lookup }}" placeholder="Look up any place by name (within these filters)…">
+          <button type="submit" class="btn-id">Search</button>
+          {% if lookup %}<a class="clear-lookup" href="{{ url_for('matching.territory_choice', prefix=prefix, idx=idx, region=filters.region, province=filters.province, district=filters.district, central=filters.central, ciudadvilla=filters.ciudadvilla) }}">✕ clear</a>{% endif %}
+        </div>
+      </form>
+      {% if lookup %}<p class="hint">Showing lookup results for “<b>{{ search_term }}</b>” — not the row label.</p>{% endif %}
+
+      {% if not filters.region and not filters.province %}
+        <p class="hint">Select at least a region to search for candidates.</p>
+      {% else %}
+        <p class="count">{{ candidates|length }} candidate(s) found, ranked by toponym &amp; saint match.</p>
+      {% endif %}
+
+      <!-- Decision form -->
+      <form method="POST" action="{{ url_for('matching.territory_choice', prefix=prefix) }}" id="decisionForm">
+        <input type="hidden" name="row_id" value="{{ row_id }}">
+        <input type="hidden" name="idx" value="{{ idx }}">
+        <input type="hidden" name="action" id="actionInput" value="">
+        <input type="hidden" name="choice" id="choiceInput" value="">
+        <input type="hidden" name="region" value="{{ filters.region }}">
+        <input type="hidden" name="province" value="{{ filters.province }}">
+        <input type="hidden" name="district" value="{{ filters.district }}">
+        <input type="hidden" name="central" value="{{ filters.central }}">
+        <input type="hidden" name="ciudadvilla" value="{{ filters.ciudadvilla }}">
+
+        {% for c in candidates %}
+          <div class="cand" data-gz="{{ c.gz_id }}" data-idx="{{ loop.index0 }}" id="cand-{{ loop.index0 }}">
+            <div class="head">
+              <span class="badge-num">{{ loop.index }}</span>
+              <span class="title">{{ c.lugar_label or c.gz_id }}</span>
+              {% if c.lat is none or c.lon is none %}<span class="nocoord">no coord.</span>{% endif %}
+            </div>
+            <div class="matchbar">
+              <span class="mb {{ 'mb-orange' if c.match_field == 'variante' else 'mb-green' }}">Toponym: {{ c.match_field }} ({{ c.match_score }})</span>
+              {% if c.saint_status == 'saint_match' %}<span class="mb mb-green">Saint: match</span>
+              {% elif c.saint_status == 'saint_mismatch' %}<span class="mb mb-red">Saint: mismatch</span>
+              {% else %}<span class="mb mb-gray">Saint: none</span>{% endif %}
+              {% if c.lugar_iglesia_cat in ['Curato', 'Mision cabecera'] %}<span class="mb mb-green">{{ c.lugar_iglesia_cat }}</span>{% endif %}
+            </div>
+            <dl>
+              {% if c.lugar_nombre %}<dt>Nombre</dt><dd>{{ c.lugar_nombre }}</dd>{% endif %}
+              {% if c.lugar_variantes %}<dt>Variantes</dt><dd>{{ c.lugar_variantes }}</dd>{% endif %}
+              <dt>Categoría</dt><dd>{{ c.lugar_categoria }}{% if c.lugar_iglesia_cat %} · {{ c.lugar_iglesia_cat }}{% endif %}</dd>
+              <dt>Partido</dt><dd>{{ c.lugar_partido_generico }}</dd>
+              <dt>Provincia</dt><dd>{{ c.lugar_provincia_generica }} ({{ c.lugar_region }})</dd>
+              <dt>gz_id</dt><dd>{{ c.gz_id }}</dd>
+            </dl>
+          </div>
+        {% endfor %}
+
+        {% if prior_new %}
+        <!-- New places already created this run for the same toponym -->
+        <div class="reusebox">
+          <p class="reuse-title">You already added a new place named
+            “{{ ref_label }}” — reuse its coordinates?</p>
+          {% for p in prior_new %}
+          <button type="button" class="btn-reuse"
+                  data-lat="{{ p.lat }}" data-lon="{{ p.lon }}" data-cat="{{ p.category }}">
+            ↻ Reuse: {{ p.category or 'place' }} at {{ '%.4f'|format(p.lat|float) }}, {{ '%.4f'|format(p.lon|float) }}
+          </button>
           {% endfor %}
-        </select>
-      </td>
+        </div>
+        {% endif %}
 
-      <!-- District -->
-      <td>
-        <select name="district_{{ case.rowID }}" class="district-select">
-          <option value="">-- Select District --</option>
-          <option value="Unknown"
-            {% if case.manual_district == "Unknown" %}selected{% endif %}>
-            Unknown
-          </option>
-          {% for dist in district_choices %}
-            <option value="{{ dist }}"
-              {% if case.manual_district == dist %}selected{% endif %}>
-              {{ dist }}
-            </option>
-          {% endfor %}
-        </select>
-      </td>
+        <!-- Manual options -->
+        <div class="manualbox">
+          <div class="manual-row">
+            <label>HGIS Indias ID (gz_id):
+              <input type="text" id="manualGz" inputmode="numeric" placeholder="e.g. 8000073">
+            </label>
+            <button type="button" class="btn-id" id="btnAdoptId">Adopt by ID</button>
+          </div>
+          <label class="notdb-toggle"><input type="checkbox" id="notInDb"> Place not in database</label>
+          <div class="notdb-panel" id="notdbPanel" style="display:none;">
+            <label>Place type:
+              <select id="placeType" name="place_type">
+                {% for t in place_types %}<option value="{{ t }}" {{ 'selected' if t == 'Poblacion' }}>{{ t }}</option>{% endfor %}
+              </select>
+            </label>
+            <span class="coord-readout" id="coordReadout">Click the map to set the coordinates.</span>
+          </div>
+        </div>
 
-      <!-- Category -->
-      <td>
-        <input type="checkbox"
-               name="ciudad_villa_only_{{ case.rowID }}"
-               {% if case.manual_category in ["Ciudad", "Villa"] %}checked{% endif %}>
-      </td>
-    </tr>
-    {% endfor %}
-  </table>
+        <input type="hidden" name="manual_lat" id="manualLat" value="">
+        <input type="hidden" name="manual_lon" id="manualLon" value="">
 
-  <br>
-  <button type="submit">Save and Continue</button>
-</form>
+        <div class="actionbar">
+          <button type="button" class="btn-primary" id="btnAdopt">✓ Adopt selected</button>
+          <button type="button" class="btn-new" id="btnAdoptNew" style="display:none;">✓ Save new place</button>
+          <button type="button" class="btn-reject" id="btnReject">✗ Reject (no match)</button>
+          <button type="button" class="btn-skip" id="btnSkip">→ Skip</button>
+          <span class="nav-links">
+            {% if idx > 0 %}<a href="{{ url_for('matching.territory_choice', prefix=prefix, idx=idx-1, **filters) }}">← back</a>{% endif %}
+          </span>
+        </div>
+      </form>
+    </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    document.querySelectorAll(".region-select").forEach(function(regionSelect) {
-        regionSelect.addEventListener("change", function() {
-            const provinceSelect = this.closest("tr").querySelector(".province-select");
-            const districtSelect = this.closest("tr").querySelector(".district-select");
-            provinceSelect.innerHTML = '<option value="">-- Select Province --</option>';
-            districtSelect.innerHTML = '<option value="">-- Select District --</option><option value="Unknown">Unknown</option>';
-            if (this.value) {
-                fetch(`/get_provinces/${encodeURIComponent(this.value)}`)
-                    .then(response => response.json())
-                    .then(provinces => {
-                        provinces.forEach(prov => {
-                            const opt = document.createElement("option");
-                            opt.value = prov;
-                            opt.textContent = prov;
-                            provinceSelect.appendChild(opt);
-                        });
-                    });
-            }
-        });
+    <div class="right"><div id="map"></div></div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    const CANDIDATES = {{ candidates_json|safe }};
+    const IDENTIFIED = {{ identified_json|safe }};
+    const FILTERS = {{ filters|tojson }};
+    const DISTRICTS_URL = "{{ url_for('matching.districts_geojson') }}";
+    const PALETTE = ["#e6194b","#3cb44b","#f58231","#911eb4","#0082c8","#46f0f0","#d2f53c","#fabebe","#008080","#aa6e28"];
+
+    const map = L.map('map', { scrollWheelZoom: true }).setView([-15, -70], 4);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '© OpenStreetMap' }).addTo(map);
+
+    // identified (already matched) places
+    IDENTIFIED.forEach(p => {
+      L.circleMarker([p.lat, p.lon], { radius: 3, color: '#777', weight: 1, fillColor: '#aaa', fillOpacity: 0.6 })
+        .addTo(map).bindTooltip(p.label + (p.lugar_label ? ' → ' + p.lugar_label : ''), { direction: 'top' });
     });
 
-    document.querySelectorAll(".province-select").forEach(function(provinceSelect) {
-        provinceSelect.addEventListener("change", function() {
-            const districtSelect = this.closest("tr").querySelector(".district-select");
-            districtSelect.innerHTML = '<option value="">-- Select District --</option><option value="Unknown">Unknown</option>';
-            if (this.value) {
-                
-				fetch(`/get_districts/${encodeURIComponent(this.value)}`)
-                    .then(response => response.json())
-                    .then(districts => {
-                        districts.forEach(dist => {
-                            const opt = document.createElement("option");
-                            opt.value = dist;
-                            opt.textContent = dist;
-                            districtSelect.appendChild(opt);
-                        });
-                    });
+    // district polygons for the selected region, highlight selected province/district
+    if (FILTERS.region) {
+      fetch(DISTRICTS_URL + "?reg=" + encodeURIComponent(FILTERS.region))
+        .then(r => r.json())
+        .then(gj => {
+          L.geoJSON(gj, {
+            style: f => {
+              const p = f.properties || {};
+              if (FILTERS.district && p.Partido === FILTERS.district)
+                return { color: '#157a2b', weight: 2, fillColor: '#2ecc40', fillOpacity: 0.55 };
+              if (FILTERS.province && p.Provincia === FILTERS.province)
+                return { color: '#0056b3', weight: 1.1, fillColor: '#4a90d9', fillOpacity: 0.22 };
+              return { color: '#999', weight: 0.8, fillColor: '#ccc', fillOpacity: 0.08 };
+            },
+            onEachFeature: (f, layer) => {
+              const p = f.properties || {};
+              layer.bindTooltip((p.Partido || '?') + (p.Provincia ? ' — ' + p.Provincia : ''), { sticky: true });
             }
-        });
-    });
-});
-</script>
+          }).addTo(map).bringToBack();
+        }).catch(() => {});
+    }
 
+    // candidate markers
+    const bounds = [];
+    const candMarkers = {};
+    CANDIDATES.forEach((c, i) => {
+      const color = PALETTE[i % PALETTE.length];
+      const card = document.querySelector('#cand-' + i);
+      if (card) { card.style.setProperty('--c', color); }
+      if (c.lat == null || c.lon == null) return;
+      const icon = L.divIcon({ className: '', iconSize: [26, 26], iconAnchor: [13, 26],
+        html: '<div class="marker-num" style="background:' + color + '"><span>' + (i + 1) + '</span></div>' });
+      const m = L.marker([c.lat, c.lon], { icon }).addTo(map)
+        .bindTooltip((i + 1) + '. ' + (c.lugar_label || c.gz_id), { direction: 'top' });
+      m.on('click', () => selectCand(i));
+      candMarkers[i] = m;
+      bounds.push([c.lat, c.lon]);
+    });
+    if (bounds.length) { try { map.fitBounds(bounds, { padding: [40, 40], maxZoom: 10 }); } catch (e) {} }
+    else if (IDENTIFIED.length) { try { map.fitBounds(IDENTIFIED.map(p => [p.lat, p.lon]), { padding: [40, 40], maxZoom: 7 }); } catch (e) {} }
+
+    const choiceInput = document.getElementById('choiceInput');
+    function selectCand(i, scroll = true) {
+      const card = document.querySelector('#cand-' + i);
+      if (!card) return;
+      document.querySelectorAll('.cand').forEach(el => el.classList.remove('selected'));
+      card.classList.add('selected');
+      choiceInput.value = card.dataset.gz;
+      if (scroll) card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      if (candMarkers[i]) candMarkers[i].openTooltip();
+    }
+    document.querySelectorAll('.cand').forEach(card => {
+      card.addEventListener('click', () => selectCand(parseInt(card.dataset.idx)));
+    });
+    if (CANDIDATES.length) selectCand(0, false);
+
+    // ---- filter form: changing region clears province+district; province clears district ----
+    const filterForm = document.getElementById('filterForm');
+    const fRegion = document.getElementById('fRegion');
+    const fProvince = document.getElementById('fProvince');
+    const fDistrict = document.getElementById('fDistrict');
+    fRegion.addEventListener('change', () => { fProvince.value = ''; fDistrict.value = ''; filterForm.submit(); });
+    fProvince.addEventListener('change', () => { fDistrict.value = ''; filterForm.submit(); });
+    fDistrict.addEventListener('change', () => filterForm.submit());
+    document.getElementById('fCentral').addEventListener('change', () => filterForm.submit());
+    document.getElementById('fCiudad').addEventListener('change', () => filterForm.submit());
+
+    // ---- decision buttons ----
+    const decisionForm = document.getElementById('decisionForm');
+    const actionInput = document.getElementById('actionInput');
+    const btnAdopt = document.getElementById('btnAdopt');
+    const btnAdoptNew = document.getElementById('btnAdoptNew');
+    document.getElementById('btnAdopt').addEventListener('click', () => {
+      if (!choiceInput.value) { alert('Select a candidate first.'); return; }
+      actionInput.value = 'adopt'; decisionForm.submit();
+    });
+    document.getElementById('btnReject').addEventListener('click', () => { actionInput.value = 'reject'; decisionForm.submit(); });
+    document.getElementById('btnSkip').addEventListener('click', () => { actionInput.value = 'skip'; decisionForm.submit(); });
+
+    // ---- manual gz_id ----
+    document.getElementById('btnAdoptId').addEventListener('click', () => {
+      const v = document.getElementById('manualGz').value.trim();
+      if (!/^\d+$/.test(v)) { alert('Enter a numeric HGIS Indias ID (gz_id).'); return; }
+      choiceInput.value = v; actionInput.value = 'adopt'; decisionForm.submit();
+    });
+
+    // ---- place not in database: pick coordinates on the map ----
+    const notInDb = document.getElementById('notInDb');
+    const notdbPanel = document.getElementById('notdbPanel');
+    const manualLat = document.getElementById('manualLat');
+    const manualLon = document.getElementById('manualLon');
+    const coordReadout = document.getElementById('coordReadout');
+    let newMarker = null;
+
+    function setNewCoords(latlng) {
+      manualLat.value = latlng.lat.toFixed(6);
+      manualLon.value = latlng.lng.toFixed(6);
+      coordReadout.textContent = 'Coordinates: ' + latlng.lat.toFixed(5) + ', ' + latlng.lng.toFixed(5);
+    }
+
+    notInDb.addEventListener('change', () => {
+      const on = notInDb.checked;
+      notdbPanel.style.display = on ? 'flex' : 'none';
+      btnAdoptNew.style.display = on ? 'inline-block' : 'none';
+      btnAdopt.style.display = on ? 'none' : 'inline-block';
+      map.getContainer().style.cursor = on ? 'crosshair' : '';
+      if (!on && newMarker) {
+        map.removeLayer(newMarker); newMarker = null;
+        manualLat.value = ''; manualLon.value = '';
+        coordReadout.textContent = 'Click the map to set the coordinates.';
+      }
+    });
+
+    map.on('click', (e) => {
+      if (!notInDb.checked) return;
+      setNewCoords(e.latlng);
+      if (newMarker) newMarker.setLatLng(e.latlng);
+      else {
+        newMarker = L.marker(e.latlng, { draggable: true }).addTo(map);
+        newMarker.on('dragend', () => setNewCoords(newMarker.getLatLng()));
+      }
+    });
+
+    btnAdoptNew.addEventListener('click', () => {
+      if (!document.getElementById('placeType').value) { alert('Choose a place type.'); return; }
+      if (!manualLat.value || !manualLon.value) { alert('Click the map to set the coordinates.'); return; }
+      actionInput.value = 'adopt_new'; decisionForm.submit();
+    });
+
+    // ---- reuse a new place already created for this same toponym ----
+    document.querySelectorAll('.btn-reuse').forEach((b) => {
+      b.addEventListener('click', () => {
+        manualLat.value = b.dataset.lat;
+        manualLon.value = b.dataset.lon;
+        const pt = document.getElementById('placeType');
+        if (b.dataset.cat) pt.value = b.dataset.cat;
+        actionInput.value = 'adopt_new';
+        decisionForm.submit();
+      });
+    });
+  </script>
 </body>
 </html>

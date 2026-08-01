@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Export results — {{ prefix }}</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; margin: 0; background: #f4f5f7; color: #222; }
+    .wrap { max-width: 680px; margin: 8vh auto 0; padding: 0 1.5em 3em; }
+    h1 { font-size: 1.35em; margin: 0 0 0.2em; }
+    .prefix { color: #666; font-size: 0.9em; }
+    .prefix code { background: #e9edf2; padding: 1px 6px; border-radius: 4px; }
+    .card { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 1.1em 1.3em; margin-top: 1.4em; }
+    .stats { display: flex; gap: 1.5em; margin: 0.4em 0 0; }
+    .stat { text-align: center; }
+    .stat .n { font-size: 1.5em; font-weight: 700; }
+    .stat .l { font-size: 0.78em; color: #777; }
+    .stat.ok .n { color: #1a7a1a; }
+    .stat.warn .n { color: #b36b00; }
+    h3 { margin: 0 0 0.5em; font-size: 1.02em; }
+    .mand { font-size: 0.88em; color: #555; }
+    .mand code { background: #eef3fb; padding: 0 5px; border-radius: 3px; color: #06c; }
+    .opt label { display: block; margin: 0.35em 0; font-size: 0.92em; }
+    .opt .desc { color: #888; font-size: 0.82em; }
+    .note { font-size: 0.82em; color: #777; margin-top: 0.6em; }
+    button { font-size: 1em; padding: 0.65em 1.4em; border-radius: 6px; border: 1px solid #157a2b; background: #157a2b; color: #fff; cursor: pointer; margin-top: 1.2em; }
+    button:hover { background: #10621f; }
+    a.link { color: #0056b3; text-decoration: none; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    {% include '_resume_bar.html' %}
+    <h1>Finalize &amp; export</h1>
+    <div class="prefix">Prefix: <code>{{ prefix }}</code></div>
+
+    <div class="card">
+      <h3>Resolution summary</h3>
+      <div class="stats">
+        <div class="stat"><div class="n">{{ total_rows }}</div><div class="l">rows</div></div>
+        <div class="stat ok"><div class="n">{{ resolved }}</div><div class="l">resolved</div></div>
+        <div class="stat warn"><div class="n">{{ unresolved }}</div><div class="l">unresolved</div></div>
+      </div>
+      {% if unresolved %}<p class="note">Unresolved rows will get empty gz_id / coordinates.</p>{% endif %}
+    </div>
+
+    <div class="card">
+      <h3>Metadata &amp; licensing <span style="font-weight:400;color:#888;font-size:.8em;">(optional)</span></h3>
+      {% if metadata_done %}
+        <p class="mand" style="color:#1a7a1a;">✓ Metadata saved — your dataset is citable, and it is included in the bundle below.</p>
+        <a class="link" href="{{ url_for('transform.metadata_form', prefix=prefix) }}">Edit metadata &amp; licensing</a>
+      {% else %}
+        <p class="mand">Add a description and licence to make your matched dataset citable and
+          reusable. You can also skip this and just download your results — see
+          “Download &amp; delete” below.</p>
+        <a class="link" href="{{ url_for('transform.metadata_form', prefix=prefix) }}">＋ Add metadata &amp; licensing</a>
+      {% endif %}
+    </div>
+
+    <form method="POST" action="{{ url_for('matching.export_results', prefix=prefix) }}">
+      <div class="card">
+        <h3>Fields to add to your table</h3>
+        <p class="mand">Always added: <code>gz_id</code> · <code>lat_y</code> · <code>lon_x</code></p>
+        <div class="opt">
+          <label><input type="checkbox" name="cert" value="1"> cert <span class="desc">— coordinate certainty</span></label>
+          <label><input type="checkbox" name="iglesia_cat" value="1"> iglesia_cat <span class="desc">— church status</span></label>
+          <label><input type="checkbox" name="categoria" value="1"> categoria <span class="desc">— category</span></label>
+          <label><input type="checkbox" name="categoria_esp" value="1"> categoria_esp <span class="desc">— subcategory</span></label>
+        </div>
+        <p class="note">
+          Coordinates are taken from the manual input, else the latest <code>gz_info_1</code> slice
+          overlapping the row's date range, else <code>gz_entidades</code>.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Bundle contents</h3>
+        <ul class="mand" style="margin:0.2em 0 0; padding-left:1.2em;">
+          <li><code>{{ prefix }}_results.csv</code> — formatted table + new columns
+            {% if formatted_name %}<span class="note">(from {{ formatted_name }})</span>{% else %}<span class="note" style="color:#b36b00;">(no formatted table found!)</span>{% endif %}
+          </li>
+          <li><code>{{ prefix }}_original_results.csv</code> — original table + new columns</li>
+          <li><code>{{ prefix }}.geojson</code> — matched places as points</li>
+          <li><code>{{ prefix }}_processing.csv</code> — the working match table</li>
+          <li><code>{{ prefix }}_metadata.txt</code> — dataset metadata</li>
+          <li><code>{{ prefix }}_field_definitions.csv</code> — column definitions (if provided)</li>
+        </ul>
+        <div style="display:flex;gap:.8em;flex-wrap:wrap;align-items:center;">
+          <button type="submit">⬇ Build &amp; download bundle</button>
+          <button type="submit" name="and_delete" value="1"
+                  style="background:#b3241f;border-color:#b3241f;"
+                  onclick="return confirm('Download your results and then permanently delete this dataset (including any metadata) from our server? This cannot be undone.');">
+            ⬇ Download &amp; delete my table
+          </button>
+        </div>
+        <p class="note">“Download &amp; delete” removes your table and all derived files from
+          the server once the download starts — use it if you don’t want to keep or publish the dataset.</p>
+      </div>
+    </form>
+
+    <p style="margin-top:1.5em;"><a class="link" href="{{ url_for('matching.match_status', prefix=prefix) }}">← Back to status</a></p>
+  </div>
+</body>
+</html>

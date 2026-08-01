@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+{% set active = 'atlas' %}
+{% block title %}Project History — HGIS de las Indias — ARCA{% endblock %}
+
+{% block content %}
+<div class="hero">
+  <span class="eyebrow">Atlas · History</span>
+  <h1>A digital infrastructure for Bourbon Spanish America</h1>
+  <p class="lead">HGIS de las Indias was conceived in 2014 to address a critical gap in
+    the field of colonial Spanish America — and many others: the lack of historical
+    geodata and shapefiles of historical territorial units, and more generally of a
+    spatiotemporal digital infrastructure.</p>
+</div>
+
+<div class="prose">
+  <p>While most historical data inherently possess a geographic component, this context
+    is frequently lost in traditional tabular or textual formats, leaving researchers
+    without a clear “mental map” of the past.</p>
+
+  <p>The project was primarily funded by the <b>Austrian Science Fund (FWF)</b> and
+    developed at the <b>University of Graz</b> by principal investigator
+    <b>Werner Stangl</b> from 2014 to 2017. Originally set out only to reconstruct the
+    territories of the last colonial decades, it soon managed to integrate the entire
+    18th century. The reconstruction and gazetteer of <i>places</i> likewise came to
+    rival the territorial reconstruction in importance.</p>
+
+  <p>Over the years, further data — mail routes, colonial institutions, demography —
+    was added to the HGIS de las Indias core.</p>
+</div>
+
+<div class="btn-row" style="margin-top: var(--sp-4);">
+  <a class="btn small" href="{{ url_for('atlas_page', slug='publications') }}">Publications</a>
+</div>
+
+<figure class="figure">
+  <div class="fig-slot">
+    <b>Suggested figure 1</b>
+    A horizontal project timeline, 2014 → today: the FWF/Graz funding phase (2014–2017),
+    the scope expansions (last decades → full 18th century; territories → places), the
+    partnership milestones as markers along the way, and the hand-over to TopUrbi and
+    ARCA/Yale at the right-hand end.
+  </div>
+  <figcaption>Fig. 1 — From an FWF project in Graz to a shared infrastructure.</figcaption>
+</figure>
+
+<div class="section-head" id="collaborations">
+  <h2>Collaborations and expansion</h2>
+  <span class="rule"></span>
+</div>
+<div class="prose">
+  <p>As the project evolved, it shifted from a narrow research tool to a broad domain
+    infrastructure through a series of key international collaborations.</p>
+</div>
+
+<div class="card-grid wide">
+  <a class="card" href="http://lhs.unb.br/atlas/" target="_blank" rel="noopener">
+    <img class="card-media" src="{{ url_for('static', filename='images/banners/partner-atlas-lusa.png') }}" alt="">
+    <h3>Atlas Digital da América Lusa</h3>
+    <p><b>Tiago Gil</b>, University of Brasília. A pivotal partnership that allowed the
+      integration of comparable data from <b>Portuguese America</b> into the HGIS WebGIS.</p>
+    <span class="go">lhs.unb.br ↗</span>
+  </a>
+  <div class="card">
+    <img class="card-media" src="{{ url_for('static', filename='images/banners/partner-tanck.png') }}" alt="">
+    <h3>Dorothy Tanck de Estrada</h3>
+    <p>Thanks to generous access to her database, HGIS de las Indias could integrate
+      <b>4,000 indigenous settlements</b> in Mexico from her <i>Atlas ilustrado de los
+      pueblos de indios</i> in a single stroke — instrumental in verifying the inclusion
+      or exclusion of towns within specific jurisdictions over time.</p>
+  </div>
+  <a class="card" href="http://commons.pelagios.org/2018/06/latam-a-historical-gazetteer-for-latin-america-and-the-caribbean/"
+     target="_blank" rel="noopener">
+    <img class="card-media" src="{{ url_for('static', filename='images/banners/partner-latamgazetteer.png') }}" alt="">
+    <h3>LatAmGazetteer</h3>
+    <p>Led by <b>Gimena del Río Riande</b> and <b>Ben Brumfield</b>, this initiative
+      cooperated with HGIS de las Indias to extract and match data from the historical
+      dictionary of <b>Antonio de Alcedo</b>, which had already partly been used during
+      the HGIS research.</p>
+    <span class="go">pelagios.org ↗</span>
+  </a>
+  <a class="card" href="https://whgazetteer.org/" target="_blank" rel="noopener">
+    <img class="card-media" src="{{ url_for('static', filename='images/banners/partner-whg.png') }}" alt="">
+    <h3>World Historical Gazetteer</h3>
+    <p>Through contact with its then technical lead <b>Karl Grossner</b>, the WHG became
+      a primary partner for making HGIS data part of a global <b>Linked Open Data</b>
+      ecosystem. Colonial Latin America — centred on HGIS de las Indias data — was
+      selected as the first “domain” within this global infrastructure.</p>
+    <span class="go">whgazetteer.org ↗</span>
+  </a>
+  <a class="card" href="https://pelagios.org/" target="_blank" rel="noopener">
+    <img class="card-media" src="{{ url_for('static', filename='images/banners/partner-pelagios.png') }}" alt="">
+    <h3>Pelagios Network &amp; Recogito</h3>
+    <p>Through collaboration with <b>Rainer Simon</b>, the project's data was integrated
+      into the <b>Recogito</b> environment, allowing researchers to tag geographical
+      references in historical texts and link them directly to the HGIS gazetteer.</p>
+    <span class="go">pelagios.org ↗</span>
+  </a>
+  <a class="card" href="https://www.lancaster.ac.uk/digging-ecm/" target="_blank" rel="noopener">
+    <img class="card-media" src="{{ url_for('static', filename='images/banners/partner-decm.png') }}" alt="">
+    <h3>DECM — Digging into Early Colonial Mexico</h3>
+    <p>A research partnership with <b>Patricia Murrieta-Flores</b> at Lancaster
+      University, seeking to link 18th-century infrastructure with 16th-century data
+      extracted via machine learning from sources such as the
+      <i>relaciones geográficas</i>.</p>
+    <span class="go">lancaster.ac.uk ↗</span>
+  </a>
+  <a class="card" href="https://anr.fr/Projet-ANR-21-CE27-0023" target="_blank" rel="noopener">
+    <img class="card-media" src="{{ url_for('static', filename='images/banners/partner-topurbi.png') }}" alt="">
+    <h3>TopUrbi</h3>
+    <p>Following the conclusion of its initial funding phase, Werner Stangl docked at
+      <b>TopUrbi</b> (<i>Topographie de l'urbanisation impériale hispanique</i>), funded
+      by the French ANR, based at <b>EHESS-CRH</b>, with PI <b>Jean-Paul Zúñiga</b> and
+      technical lead <b>Carmen Brando</b>. TopUrbi focuses on a digital edition and
+      geocoding of Alcedo's dictionary to reconstruct the urban landscape at the end of
+      the colonial period. Inspired by the concept of <i>géographies croisées</i>
+      (entangled geographies), it confronts Alcedo's textual data with census and
+      cartographic material to discuss historical biases and angles.</p>
+    <span class="go">anr.fr ↗</span>
+  </a>
+  <div class="card">
+    <img class="card-media" src="{{ url_for('static', filename='images/banners/partner-yale.png') }}" alt="">
+    <h3>ARCA and Yale</h3>
+    <p>Today the project is moving — and slowly dissolving — into <b>ARCA</b> (Archive
+      and Resource Center for the Americas), an initiative developed between
+      <b>José Antonio Espín-Sánchez</b> and <b>Werner Stangl</b>, designed to unite
+      disparate datasets into a shared framework and ensure the long-term
+      sustainability and interoperability of colonial research. It is currently hosted
+      at Yale University thanks to the support of <b>Ron Borzekowski</b> of DISSC,
+      <b>Jennifer Marlon</b> of the Yale Center for Geospatial Solutions, and their staff.</p>
+    <span class="go">
+      <a href="https://dissc.yale.edu/" target="_blank" rel="noopener">DISSC ↗</a> ·
+      <a href="https://geospatial.yale.edu/" target="_blank" rel="noopener">YCGS ↗</a>
+    </span>
+  </div>
+</div>
+
+<p class="prose" style="font-size: var(--step--1); color: var(--muted); margin-top: var(--sp-3);">
+  Partner thumbnails are neutral placeholders. Replace the files in
+  <code>static/images/banners/partner-*.png</code> with each partner's own logo once
+  you have permission to use it.
+</p>
+
+<figure class="figure">
+  <div class="fig-slot">
+    <b>Suggested figure 2</b>
+    A partner network diagram: HGIS de las Indias at the centre, with edges to each
+    collaboration, and the edge <i>labelled by what flowed</i> — data in (Tanck de
+    Estrada's 4,000 pueblos, Portuguese America), data out (WHG, Recogito), method
+    exchange (DECM, LatAmGazetteer, TopUrbi). Shows the project as a hub, not a list.
+  </div>
+  <figcaption>Fig. 2 — The collaboration network, drawn by what each partnership contributed.</figcaption>
+</figure>
+
+<figure class="figure">
+  <div class="fig-slot">
+    <b>Suggested figure 3</b>
+    A small map of the institutional geography: Graz, Brasília, Paris (EHESS), Lancaster,
+    Pittsburgh (WHG), Buenos Aires, Mexico City, New Haven — connected to the study
+    region. A quiet reminder that the infrastructure is international.
+  </div>
+  <figcaption>Fig. 3 — Where the project has been built.</figcaption>
+</figure>
+
+<div class="prose" style="margin-top: var(--sp-4);">
+  <p>Interested in joining? <a href="{{ url_for('collaborate') }}">Help us grow</a> or
+    <a href="{{ url_for('team') }}">contact us</a>.</p>
+</div>
+
+<p style="margin-top: var(--sp-5);">
+  <a href="{{ url_for('atlas') }}">← Back to HGIS de las Indias</a>
+</p>
+{% endblock %}

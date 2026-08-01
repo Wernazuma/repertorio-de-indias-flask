@@ -1,9 +1,9 @@
-{% extends "base.html" %}
+{% extends "enc_base.html" %}
 
-{% block title %}{{ place.label }}, {{ place.categoria }} ({{ place.partido_generico }}/{{ place.provincia_generica }}/{{ place.region }}){% endblock %}
-{% block header_h1 %}{{ place.label }}, {{ place.categoria }} ({{ place.partido_generico }}/{{ place.provincia_generica }}/{{ place.region }}){% endblock %}
+{% block title %}{{ place.label }}, {{ vt(place.categoria) }} ({{ place.partido_generico }}/{{ place.provincia_generica }}/{{ place.region }}){% endblock %}
+{% block header_h1 %}{{ place.label }}, {{ vt(place.categoria) }} ({{ place.partido_generico }}/{{ place.provincia_generica }}/{{ place.region }}){% endblock %}
 
-{% block extra_head %}
+{% block enc_head %}
 <script>
   // W3 include helper (for including external history HTML)
   function includeHTML() {
@@ -109,32 +109,37 @@
 </script>
 {% endblock %}
 
-{% block content %}
+{% block enc_content %}
 <div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'Informacion')" id="defaultOpen">Información básica</button>
-  <button class="tablinks" onclick="openTab(event, 'Historia')">Historia</button>
-  <button class="tablinks" onclick="openTab(event, 'Fuentes')">Recursos y Fuentes</button>
+  <button class="tablinks" onclick="openTab(event, 'Informacion')" id="defaultOpen">{{ t('td_tab_info') }}</button>
+  <button class="tablinks" onclick="openTab(event, 'Historia')">{{ t('td_tab_history') }}</button>
+  <button class="tablinks" onclick="openTab(event, 'Data')">{{ t('tab_data') }}</button>
+  <button class="tablinks" onclick="openTab(event, 'Fuentes')">{{ t('td_tab_sources') }}</button>
+  <button class="tablinks" onclick="openTab(event, 'Citar')">{{ t('tab_cite') }}</button>
 </div>
 
 <div id="Informacion" class="tabcontent" style="display:none;">
-  <h1>Información básica</h1>
+  <h1>{{ place.label }}, {{ vt(place.categoria) }}, {{ place.region }}.<br/>{{ t('indias_id') }}: {{ place.gz_id }}</h1>
 
   <div class="infobox-grid">
     <div class="infobox" id="info-1-base">
-      <p style="font-weight: bold; font-size: 24px">
-        Indias-ID: <span>{{ place.gz_id }}</span>
-      </p>
-
-      <p><span style="font-weight: bold;">IDs externos: </span><br/>
+      <p><span style="font-weight: bold;">{{ t('pd_external_ids') }}: </span><br/>
+        <span style="font-size: small;">
         {% for f in foreignkeys_data %}
           <a href="{{ f.foreignprefix }}{{ f.foreignID }}">{{ f.foreignkey }}</a>{% if not loop.last %}, {% endif %}
         {% endfor %}
+        </span>
       </p>
 
+      {% if place.fundacion %}
+      <p><span style="font-weight: bold;">{{ t('foundation_date') }}:</span>
+        {{ place.fundacion }}{% if place.fundacion_ex %} ({{ place.fundacion_ex }}){% endif %}</p>
+      {% endif %}
+
       <hr/>
-      <h3>Localización</h3>
+      <h3>{{ t('pd_location') }}</h3>
       {% for g in geometry_data %}
-        <p><span style="font-size: small;">{{ g.lat }} , {{ g.lon }}, {{ g.cert }}. {{ g.start }}-{{ g.end_ }} </span></p>
+        <p><span style="font-size: small;">{{ g.lat }} , {{ g.lon }}, {{ g.cert }}. {{ timespan(g.start, g.end_) }} </span></p>
       {% endfor %}
 
       <!-- Single map container (plots all coordinates) -->
@@ -143,123 +148,123 @@
 
     <div class="infobox" id="info-3-detalle">
       <div id="info-3-1-nombres">
-        <h3>Nombres</h3>
+        <h3>{{ t('pd_names') }}</h3>
         {% for n in name_data %}
-          {{ n.nombre }}, {{ n.start }}-{{ n.end_ }}
-          <a href="/nombres/{{ place.gz_id }}" style="font-size: small;">Más</a><br/>
+          {{ n.nombre }}, {{ timespan(n.start, n.end_) }}
+          <a href="javascript:void(0)" onclick='showRawRow(event, {{ n|tojson }}, {{ t("pd_names")|tojson }})' style="font-size: small;">{{ t('more') }}</a><br/>
         {% endfor %}
-        <p><span style="font-weight: bold;">Nombres variantes:</span> {{ place.variantes }}</p>
-        <p><span style="font-weight: bold;">Nombre hoy:</span> {{ place.nombrehoy }}</p>
+        <p><span style="font-weight: bold;">{{ t('variant_names') }}:</span> {{ place.variantes }}</p>
+        <p><span style="font-weight: bold;">{{ t('pd_name_today') }}:</span> {{ place.nombrehoy }}</p>
         <hr/>
       </div>
 
       <div id="info-3-2-categorias">
-        <h3>Categoría urbana</h3>
+        <h3>{{ t('pd_urban_category') }}</h3>
         {% for ct in category_data %}
-          <a href="../dokuwiki/doku.php?id=conceptos:{{ ct.categoria }}">{{ ct.categoria }}</a>.
-          <a href="../dokuwiki/doku.php?id=conceptos:{{ ct.categoria_esp }}">{{ ct.categoria_esp }}</a>,
-          {{ ct.start }}-{{ ct.end_ }}
-          <a href="/categoria/{{ place.gz_id }}" style="font-size: small;">Más</a><br/>
+          <a href="/apps/enciclopedia/tesauro/{{ ct.categoria | replace(' ', '_') }}">{{ ct.categoria }}</a>.
+          <a href="/apps/enciclopedia/tesauro/{{ ct.categoria_esp | replace(' ', '_') }}">{{ ct.categoria_esp }}</a>,
+          {{ timespan(ct.start, ct.end_) }}
+          <a href="/categoria/{{ place.gz_id }}" style="font-size: small;">{{ t('more') }}</a><br/>
         {% endfor %}
         <hr/>
       </div>
 
       <div id="info-3-3-iglesia">
-        <h3>Iglesia</h3>
+        <h3>{{ t('pd_church') }}</h3>
         {% for c in church_data %}
-          <a href="../dokuwiki/doku.php?id=conceptos:{{ c.iglesia_cat }}">{{ c.iglesia_cat }}</a>
-          (<a href="../dokuwiki/doku.php?id=conceptos:ordenes_religiosas">{{ c.servido_por }}</a>),
-          {{ c.start }}-{{ c.end_ }}
-          <a href="/iglesia/{{ place.gz_id }}" style="font-size: small;">Más</a><br/>
+          <a href="/apps/enciclopedia/tesauro/{{ c.iglesia_cat | replace(' ', '_') }}">{{ c.iglesia_cat }}</a>
+          (<a href="/apps/enciclopedia/instituciones/{{ c.servido_por | replace(' ', '_') }}">{{ c.servido_por }}</a>),
+          {{ timespan(c.start, c.end_) }}
+          <a href="javascript:void(0)" onclick='showRawRow(event, {{ c|tojson }}, {{ t("pd_church")|tojson }})' style="font-size: small;">{{ t('more') }}</a><br/>
         {% endfor %}
       </div>
     </div>
 
     <div class="infobox" id="centralidad">
       <div id="jerarquia-1-capital">
-        <h3>Funciones capitalinas:</h3>
+        <h3>{{ t('pd_capital_functions') }}</h3>
         {% for cp in capital_data %}
           <a href="../territory/{{ cp.Entidad_ID }}">{{ cp.tipo }} de {{ cp.Label }}</a>,
-          {{ cp.start }}-{{ cp.end_ }}
-          <a href="/capital/{{ place.gz_id }}" style="font-size: small;">Más</a><br/>
+          {{ timespan(cp.start, cp.end_) }}
+          <a href="javascript:void(0)" onclick='showRawRow(event, {{ cp|tojson }}, {{ t("pd_capital_functions")|tojson }})' style="font-size: small;">{{ t('more') }}</a><br/>
         {% endfor %}
         <hr/>
       </div>
 
       <div id="jerarquia-2-instituciones">
-        <h3>Instituciones clave:</h3>
+        <h3>{{ t('pd_key_institutions') }}</h3>
         {% for inst in institution_data %}
-          {{ inst.Label }}, {{ inst.START_ }}-{{ inst.END_ }}
-          <a href="/institucion/{{ placeInstID }}" style="font-size: small;">Más</a><br/>
+          {{ inst.Label }}, {{ timespan(inst.START_, inst.END_) }}
+          <a href="javascript:void(0)" onclick='showRawRow(event, {{ inst|tojson }}, {{ t("pd_key_institutions")|tojson }})' style="font-size: small;">{{ t('more') }}</a><br/>
         {% endfor %}
         <hr/>
       </div>
 
       <div id="jerarquia-3-dependencia">
-        <h3>Barrios, parroquias y estructuras de defensa:</h3>
+        <h3>{{ t('pd_barrios') }}</h3>
         {% for d in dependent_data %}
           <a href="{{ d.gz_id }}">{{ d.categoria_especial }} de {{ d.label }}</a>,
-          {{ d.start }}-{{ d.end_ }}
-          <a href="/dependencia/{{ place.gz_id }}" style="font-size: small;">Más</a><br/>
+          {{ timespan(d.start, d.end_) }}
+          <a href="javascript:void(0)" onclick='showRawRow(event, {{ d|tojson }}, {{ t("pd_barrios")|tojson }})' style="font-size: small;">{{ t('more') }}</a><br/>
         {% endfor %}
       </div>
     </div>
   </div>
 
   <div id="dependencia">
-    <h3>Este lugar es parte de los siguientes territorios:</h3>
+    <h3>{{ t('pd_partof') }}</h3>
     <div class="infobox-grid">
       <div class="infobox" id="jerarquia-4-pertenencia-jurisdiccion">
-        <h4>Jurisdicción</h4>
+        <h4>{{ t('pd_jurisdiccion') }}</h4>
         {% for i in espartede_data %}
           {% if i.Nivel == "Jurisdiccion" %}
             <a href="../territory/{{ i.polygon_entidad_id }}">{{ i.polygon_tipo }} de {{ i.polygon_label }}</a>,
-            {{ i.overlap_start }}-{{ i.overlap_end }}
-            <a href="/pertenencia/{{ place.gz_id }}" style="font-size: small;">Más</a><br/>
+            {{ timespan(i.overlap_start, i.overlap_end) }}
+            <a href="javascript:void(0)" onclick='showRawRow(event, {{ i|tojson }}, {{ t("pd_partof")|tojson }})' style="font-size: small;">{{ t('more') }}</a><br/>
           {% endif %}
         {% endfor %}
       </div>
 
       <div class="infobox" id="jerarquia-4-pertenencia-provincia">
-        <h4>Provincia</h4>
+        <h4>{{ t('pd_provincia') }}</h4>
         {% for i in espartede_data %}
           {% if i.Nivel == "Provincia" %}
             <a href="../territory/{{ i.polygon_entidad_id }}">{{ i.polygon_tipo }} de {{ i.polygon_label }}</a>,
-            {{ i.overlap_start }}-{{ i.overlap_end }}
-            <a href="/pertenencia/{{ place.gz_id }}" style="font-size: small;">Más</a><br/>
+            {{ timespan(i.overlap_start, i.overlap_end) }}
+            <a href="javascript:void(0)" onclick='showRawRow(event, {{ i|tojson }}, {{ t("pd_partof")|tojson }})' style="font-size: small;">{{ t('more') }}</a><br/>
           {% endif %}
         {% endfor %}
       </div>
 
       <div class="infobox" id="jerarquia-4-pertenencia-audiencia">
-        <h4>Audiencia</h4>
+        <h4>{{ t('pd_audiencia') }}</h4>
         {% for i in espartede_data %}
           {% if i.Nivel == "Audiencia" %}
             <a href="../territory/{{ i.polygon_entidad_id }}">{{ i.polygon_tipo }} de {{ i.polygon_label }}</a>,
-            {{ i.overlap_start }}-{{ i.overlap_end }}
-            <a href="/pertenencia/{{ place.gz_id }}" style="font-size: small;">Más</a><br/>
+            {{ timespan(i.overlap_start, i.overlap_end) }}
+            <a href="javascript:void(0)" onclick='showRawRow(event, {{ i|tojson }}, {{ t("pd_partof")|tojson }})' style="font-size: small;">{{ t('more') }}</a><br/>
           {% endif %}
         {% endfor %}
       </div>
 
       <div class="infobox" id="jerarquia-4-pertenencia-principal">
-        <h4>División principal</h4>
+        <h4>{{ t('pd_principal') }}</h4>
         {% for i in espartede_data %}
           {% if i.Nivel == "Principal" %}
             <a href="../territory/{{ i.polygon_entidad_id }}">{{ i.polygon_tipo }} de {{ i.polygon_label }}</a>,
-            {{ i.overlap_start }}-{{ i.overlap_end }}
-            <a href="/pertenencia/{{ place.gz_id }}" style="font-size: small;">Más</a><br/>
+            {{ timespan(i.overlap_start, i.overlap_end) }}
+            <a href="javascript:void(0)" onclick='showRawRow(event, {{ i|tojson }}, {{ t("pd_partof")|tojson }})' style="font-size: small;">{{ t('more') }}</a><br/>
           {% endif %}
         {% endfor %}
       </div>
 
       <div class="infobox" id="jerarquia-4-pertenencia-obispado">
-        <h4>Obispado</h4>
+        <h4>{{ t('pd_obispado') }}</h4>
         {% for i in espartede_data %}
           {% if i.Nivel == "Obispado" %}
             <a href="../territory/{{ i.polygon_entidad_id }}">{{ i.polygon_tipo }} de {{ i.polygon_label }}</a>,
-            {{ i.overlap_start }}-{{ i.overlap_end }}
-            <a href="/pertenencia/{{ place.gz_id }}" style="font-size: small;">Más</a><br/>
+            {{ timespan(i.overlap_start, i.overlap_end) }}
+            <a href="javascript:void(0)" onclick='showRawRow(event, {{ i|tojson }}, {{ t("pd_partof")|tojson }})' style="font-size: small;">{{ t('more') }}</a><br/>
           {% endif %}
         {% endfor %}
       </div>
@@ -268,32 +273,48 @@
 </div>
 
 <div id="Historia" class="tabcontent" style="display:none;">
-  <h1>Historia</h1>
-  {% if article_exists %}
-    <div w3-include-html="/data/historia_gz_entidades/gz_{{ place.gz_id }}.html"></div>
+  <h1>{{ t('history') }}</h1>
+  {% if history_exists or reconstruction_exists %}
+    {% if lang == 'en' %}
+    <p class="lang-hint" style="font-size: var(--step--1); color: var(--muted, #777);
+       background: var(--surface-2, rgba(0,0,0,.03)); border-left: 3px solid var(--accent, #999);
+       padding: .5rem .75rem; border-radius: 6px; margin: 0 0 var(--sp-3);">{{ t('spanish_only_hint') }}</p>
+    {% endif %}
+    {% if history_exists %}
+      <div w3-include-html="{{ url_for('enciclopedia.historia_lugar', filename='gz_' ~ place.gz_id ~ '.html') }}"></div>
+    {% endif %}
+    {% if reconstruction_exists %}
+      <div class="infobox comment-box" style="margin-top: var(--sp-4);">
+        <h3>{{ t('reconstruction_notes') }}</h3>
+        <div w3-include-html="{{ url_for('static', filename='articulos/gz_' ~ place.gz_id ~ '.html') }}"></div>
+      </div>
+    {% endif %}
   {% else %}
-    <p style="font-weight:bold;">
-      Todavía no existe artículo enciclopédico dedicado a este lugar.
-      Póngase en contacto con nosotros [werner[dot]stangl[at]yale[dot]edu] para escribir uno.
-    </p>
+    <p style="font-weight:bold;">{{ t('no_article_place') }}</p>
   {% endif %}
 </div>
 
+<div id="Data" class="tabcontent" style="display:none;">
+  <h1>{{ t('tab_data') }}</h1>
+  <p>{{ t('data_soon') }}</p>
+</div>
+
 <div id="Fuentes" class="tabcontent" style="display:none;">
-  <h1>Recursos</h1>
+  <h1>{{ t('resources') }}</h1>
   <!-- Content for Fuentes y Bibliografía -->
 </div>
-{% endblock %}
 
-{% block right_block %}
-<div class="block" id="right-block">
+<div id="Citar" class="tabcontent" style="display:none;">
+  <h1>{{ t('tab_cite') }}</h1>
   <div id="citeme">
-    <h3>¿Cómo citar este artículo?</h3>
+    <h3>{{ t('how_to_cite') }}</h3>
     <p>
-      "{{ place.label }}, {{ place.categoria }} ({{ place.partido_generico }}/{{ place.provincia_generica }}/{{ place.region }})",
+      "{{ place.label }}, {{ vt(place.categoria) }} ({{ place.partido_generico }}/{{ place.provincia_generica }}/{{ place.region }})",
       Werner Stangl (ed.), Compendio digital de Indias.
-      <span id="url"></span> Retrieved <span id="datetime"></span>
+      <span id="url"></span> {{ t('retrieved') }} <span id="datetime"></span>
     </p>
   </div>
 </div>
 {% endblock %}
+
+{% block right_block %}{% endblock %}

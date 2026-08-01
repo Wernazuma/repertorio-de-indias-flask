@@ -1,0 +1,68 @@
+{# Encyclopedia layout, nested inside the ARCA shell (templates/base.html).
+   Loads the legacy style.css (form / table / tab classes), Leaflet, and the
+   shared functions.js, then the page's own head additions via `enc_head`.
+   The left-menu and right citation column will be reworked later; for now the
+   central content renders full-width and any `right_block` is shown after it. #}
+{% extends "base.html" %}
+{% set active = 'encyclopedia' %}
+
+{% block extra_head %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="{{ url_for('static', filename='functions.js') }}"></script>
+  <script>
+    // Shared "raw row" popup for the not-yet-built "More" links: shows the raw
+    // source-table row for the entry the link belongs to, in a small popup.
+    function rawrowEscape(s) {
+      return String(s)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+    function showRawRow(evt, obj, title) {
+      evt = evt || window.event;
+      if (evt) { if (evt.preventDefault) evt.preventDefault(); if (evt.stopPropagation) evt.stopPropagation(); }
+      var old = document.getElementById('rawrow-pop');
+      if (old) old.parentNode.removeChild(old);
+      var pop = document.createElement('div');
+      pop.id = 'rawrow-pop';
+      pop.className = 'rawrow-pop';
+      var html = '<button type="button" class="rawrow-close" ' +
+                 'onclick="var p=document.getElementById(\'rawrow-pop\'); if(p)p.parentNode.removeChild(p);">&times;</button>';
+      if (title) html += '<div class="rawrow-title">' + rawrowEscape(title) + '</div>';
+      html += '<table class="rawrow-table">';
+      for (var k in obj) {
+        if (!Object.prototype.hasOwnProperty.call(obj, k)) continue;
+        var v = obj[k];
+        if (v === null || v === undefined) v = '';
+        html += '<tr><th>' + rawrowEscape(k) + '</th><td>' + rawrowEscape(v) + '</td></tr>';
+      }
+      html += '</table>';
+      pop.innerHTML = html;
+      document.body.appendChild(pop);
+      var x = (evt && evt.pageX) ? evt.pageX : 60;
+      var y = (evt && evt.pageY) ? evt.pageY : 60;
+      var left = Math.min(x + 12, (window.pageXOffset || 0) + document.documentElement.clientWidth - pop.offsetWidth - 12);
+      pop.style.left = Math.max(8, left) + 'px';
+      pop.style.top = Math.max(8, y + 12) + 'px';
+    }
+    document.addEventListener('click', function (e) {
+      var pop = document.getElementById('rawrow-pop');
+      if (pop && !pop.contains(e.target)) pop.parentNode.removeChild(pop);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        var pop = document.getElementById('rawrow-pop');
+        if (pop) pop.parentNode.removeChild(pop);
+      }
+    });
+  </script>
+  {% block enc_head %}{% endblock %}
+{% endblock %}
+
+{% block content %}
+  <div class="enc-central">
+    {% block enc_content %}{% endblock %}
+  </div>
+  {% block right_block %}{% endblock %}
+{% endblock %}

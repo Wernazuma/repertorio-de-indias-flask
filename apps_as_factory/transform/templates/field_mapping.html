@@ -1,50 +1,88 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Field Mapping</title>
-</head>
-<body>
-    <h1>Field Mapping - {{ domain|capitalize }}</h1>
-    <form id="mappingForm">
+{% extends "base.html" %}
+{% set active = 'arca' %}
+{% block title %}Field mapping ({{ domain }}) — ARCA{% endblock %}
+
+{% block extra_head %}
+<style>
+  .tx-step { max-width: 48rem; }
+  .tx-step h1 { font-family: var(--serif); font-size: var(--step-2); margin-bottom: .4rem; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="tx-step">
+  {% set wf_step = 'mapping' %}{% include '_steps.html' %}
+  <h1>Field mapping — {{ domain|capitalize }}</h1>
+  <p style="color: var(--muted); margin-bottom: var(--sp-3);">
+    Tell us which column of your table holds each piece of information. Only columns of a
+    fitting data type are offered. Fields marked <span class="req-mark">*</span> are required.
+  </p>
+
+  <div class="notice info">
+    <p>Not sure what belongs where? See the guidebook
+      <a href="{{ url_for('orientation.guidebook', number=1) }}">“Prepare and upload data”</a>
+      (.docx) for a description of every field.</p>
+  </div>
+
+  <form id="mappingForm">
+    <table class="form-table">
+      <thead>
+        <tr><th scope="col">ARCA field</th><th scope="col">Column in your table</th></tr>
+      </thead>
+      <tbody>
         {% for field in required_fields %}
-            <div>
-                <label>{{ field.label }}</label>
-                <select name="{{ field.name }}">
-                    <option value="none">-- Select column --</option>
-                    {% for col in filtered_columns[field.name] %}
-                        <option value="{{ col }}">{{ col }}</option>
-                    {% endfor %}
-                </select>
-                {% if field.optional %}
-                    <span>(Optional)</span>
-                {% endif %}
-            </div>
+        <tr>
+          <th scope="row">
+            {{ field.label }}
+            {% if field.optional %}<span class="opt">(optional)</span>
+            {% else %}<span class="req-mark">*</span>{% endif %}
+          </th>
+          <td>
+            {# empty value so `required` actually blocks an unmade choice;
+               the backend skips falsy/'none' mappings alike #}
+            <select name="{{ field.name }}" {% if not field.optional %}required{% endif %}>
+              <option value="">-- Select column --</option>
+              {% for col in filtered_columns[field.name] %}
+                <option value="{{ col }}">{{ col }}</option>
+              {% endfor %}
+            </select>
+          </td>
+        </tr>
         {% endfor %}
-        <button type="submit">Continue</button>
-    </form>
+      </tbody>
+    </table>
 
-    <script>
-        document.getElementById('mappingForm').onsubmit = async function(e) {
-            e.preventDefault();
-            const selects = document.querySelectorAll('select');
-            const field_mapping = {};
-            selects.forEach(select => {
-                field_mapping[select.name] = select.value;
-            });
+    <div class="wf-actions">
+      {% include '_abort.html' %}
+      <span class="spacer"></span>
+      <button class="btn" type="submit">Continue</button>
+    </div>
+  </form>
+</div>
+{% endblock %}
 
-            const res = await fetch('/transform/save_field_mapping', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({field_mapping})
-            });
+{% block extra_scripts %}
+<script>
+    document.getElementById('mappingForm').onsubmit = async function(e) {
+        e.preventDefault();
+        const selects = document.querySelectorAll('#mappingForm select');
+        const field_mapping = {};
+        selects.forEach(select => {
+            field_mapping[select.name] = select.value;
+        });
 
-            const result = await res.json();
-            if (result.success) {
-                window.location.href = '/transform/chronological_info';
-            } else {
-                alert(result.error);
-            }
+        const res = await fetch('/transform/save_field_mapping', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({field_mapping})
+        });
+
+        const result = await res.json();
+        if (result.success) {
+            window.location.href = '/transform/chronological_info';
+        } else {
+            alert(result.error);
         }
-    </script>
-</body>
-</html>
+    }
+</script>
+{% endblock %}

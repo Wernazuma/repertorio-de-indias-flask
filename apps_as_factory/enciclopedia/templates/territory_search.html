@@ -1,125 +1,125 @@
-{% extends "base.html" %}
+{% extends "enc_base.html" %}
 
-{% block title %}Búsqueda de territorios{% endblock %}
-{% block header_h1 %}Búsqueda de territorios / Territory Search{% endblock %}
+{% block title %}{{ t('title_territory_search') }} — ARCA{% endblock %}
 
-{% block extra_styles %}
+{% block enc_head %}
 <style>
   .form-container { margin-bottom: 1rem; }
-  .search-tips-columns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
   .results ul {
     list-style: none;
     column-count: auto;
     column-width: 400px;
     padding-left: 0;
   }
+  /* Collapsible filter groups */
+  .filter-acc { border: 1px solid var(--border, #ccc); border-radius: 8px;
+    margin-bottom: .55rem; background: var(--surface, #fff); }
+  .filter-acc > summary { cursor: pointer; padding: .5rem .8rem; font-weight: 700;
+    font-size: .8em; text-transform: uppercase; letter-spacing: .04em;
+    color: var(--muted, #555); list-style: none; user-select: none; }
+  .filter-acc > summary::-webkit-details-marker { display: none; }
+  .filter-acc > summary::before { content: "\25B8"; display: inline-block;
+    margin-right: .5em; transition: transform .15s ease; }
+  .filter-acc[open] > summary::before { transform: rotate(90deg); }
+  .filter-acc .acc-body { padding: .2rem .8rem .75rem; }
+  .filter-acc .acc-body label { font-size: .9em; }
 </style>
 {% endblock %}
 
-{% block content %}
+{% block enc_content %}
+<h1 class="enc-title">{{ t('title_territory_search') }}</h1>
 <div class="form-container">
-  <div class="search-help">
-    <div class="search-tips-columns">
-      <div class="tips-spanish">
-        <p><strong>Consejos de búsqueda</strong></p>
-        <ul>
-          <li>La búsqueda predeterminada coincide con palabras completas: "Cali" encuentra "Cali" pero no "Californias"</li>
-          <li>Use "OR" para buscar múltiples términos: "Costa Rica OR Costarrica OR Panama"</li>
-          <li>Use comodines (*): "Cali*" encuentra tanto "Cali" como "Californias" como "Alta California"</li>
-          <li>Active la Búsqueda Difusa para coincidencias aproximadas (encuentra variantes ortográficas pero puede incluir falsos positivos)</li>
-        </ul>
-      </div>
-      <div class="tips-english">
-        <p><strong>Search Tips</strong></p>
-        <ul>
-          <li>Default search matches complete words: "Cali" finds "Nueva Valencia" but not "Californias"</li>
-          <li>Use "OR" to search multiple terms: "Costa Rica OR Costarrica OR Panama"</li>
-          <li>Use wildcards (*): "Cali*" finds both "Cali", "Californias" and "Alta California"</li>
-          <li>Enable Fuzzy Search for approximate matching (finds spelling variants but may include false positives)</li>
-        </ul>
-      </div>
+  <details class="filter-acc">
+    <summary>{{ t('tips_title') }}</summary>
+    <div class="acc-body">
+      <ul>
+        <li>{{ t('tr_tip_word') }}</li>
+        <li>{{ t('tr_tip_or') }}</li>
+        <li>{{ t('tr_tip_wild') }}</li>
+        <li>{{ t('tip_fuzzy') }}</li>
+      </ul>
     </div>
-  </div>
+  </details>
 
-  <form method="get" action="/territory/search">
-    <div class="form-grid">
-      <!-- Column 1 -->
-      <div class="main-inputs">
-        <div class="form-group">
-          <label for="name">Nombre / Name:</label><br/>
-          <input type="text" id="name" name="name" placeholder="Enter name (use * for wildcards)" value="{{ name_query or '' }}">
-          <div class="checkbox-group">
-            <input type="checkbox" id="fuzzy_search" name="fuzzy_search" {% if fuzzy_search %}checked{% endif %}>
-            <label for="fuzzy_search">Fuzzy Search (Levenshtein matching)</label>
-          </div>
+  <form method="get" action="{{ url_for('enciclopedia.territory_search') }}">
+    <div class="main-inputs">
+      <div class="form-group">
+        <label for="name">{{ t('lbl_name') }}:</label><br/>
+        <input type="text" id="name" name="name" placeholder="{{ t('ph_name_wild') }}" value="{{ name_query or '' }}">
+        <div class="checkbox-group">
+          <input type="checkbox" id="fuzzy_search" name="fuzzy_search" {% if fuzzy_search %}checked{% endif %}>
+          <label for="fuzzy_search">{{ t('lbl_fuzzy') }}</label>
         </div>
       </div>
 
-      <!-- Column 2 -->
-      <div class="middle-inputs">
-        <label for="region">Región genérica / Generic region:</label>
-        <select id="region" name="region">
-          <option value="">-- Select Region --</option>
-          {% for r in regions %}
-            <option value="{{ r }}" {% if r == selected_region %}selected{% endif %}>{{ r }}</option>
-          {% endfor %}
-        </select>
+      <details class="filter-acc">
+        <summary>{{ t('filters_territorial') }}</summary>
+        <div class="acc-body">
+          <label for="region">{{ t('lbl_region') }}:</label>
+          <select id="region" name="region">
+            <option value="">{{ t('opt_select_region') }}</option>
+            {% for r in regions %}
+              <option value="{{ r }}" {% if r == selected_region %}selected{% endif %}>{{ r }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </details>
 
-        <label for="tipo">Tipo genérico / Generic Type:</label>
-        <select id="tipo" name="tipo">
-          <option value="">-- Select Tipo --</option>
-          {% for t in tipos %}
-            <option value="{{ t }}" {% if t == selected_tipo %}selected{% endif %}>{{ t }}</option>
-          {% endfor %}
-        </select>
-      </div>
+      <details class="filter-acc">
+        <summary>{{ t('filters_category') }}</summary>
+        <div class="acc-body">
+          <label for="tipo">{{ t('lbl_tipo') }}:</label>
+          <select id="tipo" name="tipo">
+            <option value="">{{ t('opt_select_tipo') }}</option>
+            {% for tp in tipos %}
+              <option value="{{ tp }}" {% if tp == selected_tipo %}selected{% endif %}>{{ vt(tp) }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </details>
 
-      <!-- Column 3 -->
-      <div class="additional-inputs">
-        <label for="year">Año de referencia / Reference Year:</label>
-        <input type="number" id="year" name="year" value="{{ year or '' }}">
+      <details class="filter-acc">
+        <summary>{{ t('filters_temporal') }}</summary>
+        <div class="acc-body">
+          <label for="year">{{ t('lbl_ref_year') }}:</label>
+          <input type="number" id="year" name="year" value="{{ request.args.get('year') or '' }}" autocomplete="off">
 
-        <label>&nbsp;</label>
+          <label for="year_start">{{ t('lbl_from') }}:</label>
+          <input type="number" id="year_start" name="year_start" value="{{ year_start or '' }}">
 
-        <label for="year_start">Desde / From year:</label>
-        <input type="number" id="year_start" name="year_start" value="{{ year_start or '' }}">
-
-        <label for="year_end">Hasta / To:</label>
-        <input type="number" id="year_end" name="year_end" value="{{ year_end or '' }}">
-
-        <button type="submit">Search</button>
-      </div>
+          <label for="year_end">{{ t('lbl_to') }}:</label>
+          <input type="number" id="year_end" name="year_end" value="{{ year_end or '' }}">
+        </div>
+      </details>
     </div>
+
+    <button type="submit">{{ t('search') }}</button>
   </form>
 </div>
 
 <div class="results">
-  <h2>Resultados / Results</h2>
+  <h2>{{ t('results') }}</h2>
   <ul>
     {% if results %}
       {% for territory in results %}
         <li>
-          <a href="/territory/{{ territory['Entidad'] }}">
-            {{ territory['Nombre'] }}, {{ territory['tipo'] }} ({{ territory['Region'] }})
+          <a href="{{ url_for('enciclopedia.territory_detail', territory_id=territory['Entidad']) }}">
+            {{ territory['Nombre'] }}, {{ vt(territory['tipo']) }} ({{ territory['Region'] }})
           </a>
         </li>
       {% else %}
-        <li>No matching results found.</li>
+        <li>{{ t('no_results') }}</li>
       {% endfor %}
     {% endif %}
   </ul>
 
   {% if results %}
-  <form method="get" action="/territory/download">
+  <form method="get" action="{{ url_for('enciclopedia.territory_download') }}">
     <input type="hidden" name="name" value="{{ name_query }}">
     <input type="hidden" name="region" value="{{ selected_region }}">
     <input type="hidden" name="tipo" value="{{ selected_tipo }}">
     <input type="hidden" name="Entidad" value="{{ entidad }}">
-    <button type="submit">Download</button>
+    <button type="submit">{{ t('download') }}</button>
   </form>
   {% endif %}
 </div>

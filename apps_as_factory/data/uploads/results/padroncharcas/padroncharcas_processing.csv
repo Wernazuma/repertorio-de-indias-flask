@@ -1,0 +1,140 @@
+rowID;ref_Label;level;gz_id;fuzzy_score;category_match;saint_match;territories_match;phase_1a_outcome;toponym_match;lugar_label;lugar_partido_generico;lugar_provincia_generica;fine_level_mismatch;GZ_ID;Contexto-Sup1;Contexto-Sup2;ref_Jurisdiccion;Contexto-Sup4;ref_Region;ref_START;ref_END;phase_1b_step
+7366;Curato de la Catedral;Barrio;8000001;;pending;pending;unknown;adopted_relegated;none;Charcas;La Plata;Charcas;True;;;Charcas;Yamparaez;;CHA;1777;1777;
+7367;San Lázaro;Barrio;8000662;1.0;category_null;saint_match;region_exact;adopted_candidate;exact;San Lazaro;La Plata;Charcas;;;;Charcas;Yamparaez;;CHA;1777;1777;no_partido_jurisdiccion
+7368;San Sebastián;Barrio;8000663;1.0;category_null;saint_match;region_exact;adopted_candidate;exact;San Sebastian;La Plata;Charcas;;;;Charcas;Yamparaez;;CHA;1777;1777;no_partido_jurisdiccion
+7369;Charcas;Nucleo;8000001;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Charcas;La Plata;Charcas;;;;Charcas;Yamparaez;;CHA;1777;1777;
+7370;Guata;Curato;8000077;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Quata;Yamparaez;Charcas;;;;Guata;Yamparaez;;CHA;1777;1777;
+7371;Yotala;Curato;8000079;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Yotala;Yamparaez;Charcas;;;;Yotala;Yamparaez;;CHA;1777;1777;
+7372;Aravate;Curato;8000069;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Arabate;Yamparaez;Charcas;;;;Aravate;Yamparaez;;CHA;1777;1777;
+7373;Quilaquila;Curato;8000078;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Quilaquila;Yamparaez;Charcas;;;;Quilaquila;Yamparaez;;CHA;1777;1777;
+7374;Yamparà;Curato;8000024;923;category_null;no_saint;jurisdiccion_exact;auto_adopt;fuzzy;Yampara;Yamparaez;Charcas;;;;Yamparà;Yamparaez;;CHA;1777;1777;
+7375;Paccha;Curato;8000071;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Paccha;Yamparaez;Charcas;;;;Paccha;Yamparaez;;CHA;1777;1777;
+7376;Sapse;Curato;8000073;889;category_null;no_saint;jurisdiccion_exact;adopted_candidate;fuzzy;Sapsi;Yamparaez;Charcas;;;;Sapse;Yamparaez;;CHA;1777;1777;
+7377;Chuxumatas;Curato;8000070;0.9;category_null;no_saint;jurisdiccion_exact;auto_adopt;fuzzy;Churumatas;Yamparaez;Charcas;;;;Chuxumatas;Yamparaez;;CHA;1777;1777;
+7378;Copavilque;Curato;8000081;0.9;category_null;no_saint;jurisdiccion_exact;auto_adopt;fuzzy;Colpavilque;Yamparaez;Charcas;;;;Copavilque;Yamparaez;;CHA;1777;1777;
+7379;Potoma;Curato;8000074;833;category_null;no_saint;jurisdiccion_exact;adopted_candidate;none;Poroma;Yamparaez;Charcas;;;;Potoma;Yamparaez;;CHA;1777;1777;
+7380;Pocpo;Curato;8000075;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Pocpo;Yamparaez;Charcas;;;;Pocpo;Yamparaez;;CHA;1777;1777;
+7381;Moxotoro;Curato;8000072;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Mojotoro;Yamparaez;Charcas;;;;Mororoco;Yamparaez;;CHA;1777;1777;
+7382;Siccha;Curato;8000076;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Siccha;Yamparaez;Charcas;;;;Siccha;Yamparaez;;CHA;1777;1777;
+7383;Acachila;Curato;8000362;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Acachila;Yamparaez;Charcas;;;;Acachila;Yamparaez;;CHA;1777;1777;
+7384;Curato de la Matriz;Barrio;8000006;;pending;pending;unknown;adopted_relegated;none;Potosi;Potosi;Potosi;True;;;Potosi;Potosi;;CHA;1777;1777;
+7385;Piezas;Barrio;8000675;;pending;pending;unknown;adopted_relegated;none;San Lorenzo y San Bernardo;Potosi;Potosi;True;;;Potosi;Potosi;;CHA;1777;1777;
+7386;San Roque;Barrio;8000676;1.0;category_null;saint_match;region_exact;adopted_candidate;exact;San Roque;Potosi;Potosi;;;;Potosi;Potosi;;CHA;1777;1777;no_partido_jurisdiccion
+7387;San Bernardo;Barrio;8000704;1.0;category_null;saint_match;region_exact;adopted_candidate;exact;San Bernardo;Potosi;Potosi;;;;Potosi;Potosi;;CHA;1777;1777;no_partido_jurisdiccion
+7388;San Benito;Barrio;8000674;1.0;category_null;saint_match;region_exact;adopted_candidate;exact;San Benito;Potosi;Potosi;;;;Potosi;Potosi;;CHA;1777;1777;no_partido_jurisdiccion
+7389;San Pedro;Barrio;8000672;1.0;category_null;saint_mismatch;region_exact;adopted_candidate;exact;San Pedro y San Francisco;Potosi;Potosi;;;;Potosi;Potosi;;CHA;1777;1777;no_partido_jurisdiccion
+7390;San Pablo;Barrio;8000669;1.0;category_null;saint_match;region_exact;adopted_relegated;toponym_nombre;San Pablo;Potosi;Potosi;;;;Potosi;Potosi;;CHA;1777;1777;no_partido_jurisdiccion
+7391;Santiago;Barrio;8000673;1.0;category_null;saint_match;region_exact;adopted_relegated;toponym_nombre;Santiago;Potosi;Potosi;;;;Potosi;Potosi;;CHA;1777;1777;no_partido_jurisdiccion
+7392;San Juan;Barrio;8000670;1.0;category_null;saint_match;region_exact;adopted_relegated;toponym_nombre;San Juan y San Martin;Potosi;Potosi;;;;Potosi;Potosi;;CHA;1777;1777;no_partido_jurisdiccion
+7393;Concepción;Barrio;8000671;1.0;category_null;saint_match;region_exact;adopted_relegated;toponym_nombre;Concepcion;Potosi;Potosi;;;;Potosi;Potosi;;CHA;1777;1777;no_partido_jurisdiccion
+7394;Potosi;Nucleo;8000006;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Potosi;Potosi;Potosi;;;;Potosi;Potosi;;CHA;1777;1777;
+7395;Curato de la Villa;Curato;8000004;;pending;pending;unknown;adopted_relegated;none;Cochabamba;Cochabamba;Cochabamba;True;;;Cochabamba;Cochabamba;;CHA;1777;1777;
+7396;Sacava;Curato;8000028;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Sacaba;Sacaba;Cochabamba;;;;Sacava;Cochabamba;;CHA;1777;1777;
+7397;Quillacollo;Curato;8000098;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Quillacollo;Tapacari;Cochabamba;;;;Quillacollo;Cochabamba;;CHA;1777;1777;
+7398;Passo;Curato;9900990;857;category_null;no_saint;jurisdiccion_exact;adopted_candidate;fuzzy;El Paso;Tapacari;Cochabamba;;;;Passo;Cochabamba;;CHA;1777;1777;
+7399;Tiquipaya;Curato;8000099;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Tiquipaya;Tapacari;Cochabamba;;;;Tiquipaya;Cochabamba;;CHA;1777;1777;
+7400;Sipesipe;Curato;8000097;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Sipesipe;Tapacari;Cochabamba;;;;Sipesipe;Cochabamba;;CHA;1777;1777;
+7401;Arque;Curato;8000025;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Arque;Arque;Cochabamba;;;;Arque;Cochabamba;;CHA;1777;1777;
+7402;Caraza;Curato;8000085;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Caraza;Arque;Cochabamba;;;;Caraza;Cochabamba;;CHA;1777;1777;
+7403;Colcha;Curato;8000083;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Colcha;Arque;Cochabamba;;;;Colcha;Cochabamba;;CHA;1777;1777;
+7404;Machacamarca;Curato;8000089;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Machacamarca;Ayopaya;Cochabamba;;;;Machacamarca;Cochabamba;;CHA;1777;1777;
+7405;Tani;Curato;8000088;;pending;pending;unknown;adopted_relegated;none;Yani;Ayopaya;Cochabamba;True;;;Tani;Cochabamba;;CHA;1777;1777;
+7406;Capinota;Curato;8000084;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Capinota;Arque;Cochabamba;;;;Capinota;Cochabamba;;CHA;1777;1777;
+7407;Choquecamata;Curato;8000096;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Choquecamata;Sacaba;Cochabamba;;;;Choquecamata;Cochabamba;;CHA;1777;1777;
+7408;Tapacarí;Curato;8000029;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Tapacari;Tapacari;Cochabamba;;;;Tapacarí;Cochabamba;;CHA;1777;1777;
+7409;Tarija;Curato;8000017;1.0;category_null;no_saint;jurisdiccion_exact;adopted_candidate;exact;Tarija;Tarija;Potosi;;;;Villa de Tarija;Chichas;;CHA;1777;1777;
+7410;Concepción;Curato;8000186;1.0;category_null;saint_match;jurisdiccion_exact;auto_adopt;toponym_nombre;Concepcion;Tarija;Potosi;;;;Concepción;Chichas;;CHA;1777;1777;
+7411;San Lorenzo;Curato;8000185;1.0;category_null;saint_match;jurisdiccion_exact;auto_adopt;toponym_nombre;San Lorenzo;Tarija;Potosi;;;;San Lorenzo;Chichas;;CHA;1777;1777;
+7412;Tupiza;Curato;8000038;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Tupiza;Chichas;Potosi;;;;Villa de Tupiza;Chichas;;CHA;1777;1777;
+7413;Calcha;Curato;8000165;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Calcha;Chichas;Potosi;;;;Calcha;Chichas;;CHA;1777;1777;
+7414;Talina;Curato;8000163;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Talina;Chichas;Potosi;;;;Talina;Chichas;;CHA;1777;1777;
+7415;Santiago de Cotagayta;Curato;8000164;1.0;category_null;saint_match;jurisdiccion_exact;auto_adopt;toponym_nombre;Cotagaita;Chichas;Potosi;;;;Santiago de Cotagayta;Chichas;;CHA;1777;1777;
+7416;Chocaya;Curato;8000480;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Chocaya;Chichas;Potosi;;;;Chocaya;Chichas;;CHA;1777;1777;
+7417;Matriz;Barrio;8000010;;pending;pending;unknown;adopted_relegated;none;Oruro;Oruro;Charcas;True;;;Matriz;Oruro;;CHA;1777;1777;
+7418;Rancheria;Barrio;8000664;;pending;pending;unknown;adopted_relegated;none;San Miguel;Oruro;Charcas;False;;;Rancheria;Oruro;;CHA;1777;1777;
+7419;Oruro;Nucleo;8000010;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Oruro;Oruro;Charcas;;;;Oruro;Oruro;;CHA;1777;1777;
+7420;Porco;Curato;8000170;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Porco;Porco;Potosi;;;;Porco;Porco;;CHA;1777;1777;
+7421;Puna;Curato;8000016;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Talavera;Porco;Potosi;;;;Puna;Porco;;CHA;1777;1777;
+7422;Chaqui;Curato;8000174;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Chaqui;Porco;Potosi;;;;Chaqui;Porco;;CHA;1777;1777;
+7423;Cayza;Curato;8000168;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Cayza;Porco;Potosi;;;;Cayza;Porco;;CHA;1777;1777;
+7424;Toropalca;Curato;8000169;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Toropalca;Porco;Potosi;;;;Toropalca;Porco;;CHA;1777;1777;
+7425;Bartholo;Curato;8000176;857;category_null;no_saint;jurisdiccion_exact;adopted_candidate;fuzzy;Bartolo;Porco;Potosi;;;;Bartholo;Porco;;CHA;1777;1777;
+7426;Sipooro;Curato;8000181;909;category_null;no_saint;jurisdiccion_exact;auto_adopt;fuzzy;Siporo;Porco;Potosi;;;;Sipooxo;Porco;;CHA;1777;1777;
+7427;Tomahave;Curato;8000172;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Tomabe;Porco;Potosi;;;;Tomahave;Porco;;CHA;1777;1777;
+7428;Miculpaya;Curato;8000180;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Miculpaya;Porco;Potosi;;;;Miculpaya;Porco;;CHA;1777;1777;
+7429;Tinquipaya;Curato;8000175;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Tinguipaya;Porco;Potosi;;;;Tinquipaya;Porco;;CHA;1777;1777;
+7430;Esquiri Mataca alta;Curato;8000177;1.0;category_null;no_saint;jurisdiccion_exact;adopted_candidate;exact;Esquiri;Porco;Potosi;;;;Esquiri Mataca alta;Porco;;CHA;1777;1777;
+7431;Santa Ana Mataca vaja;Curato;8000184;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Mataca baja;Porco;Potosi;;;;Santa Ana Mataca vaja;Porco;;CHA;1777;1777;
+7432;Tacobamba;Curato;8000183;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Tacobamba;Porco;Potosi;;;;Tacobamba;Porco;;CHA;1777;1777;
+7433;Turuchipa;Curato;8000179;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Turuchipa;Porco;Potosi;;;;Turuchipa;Porco;;CHA;1777;1777;
+7434;Potobamba;Curato;8000182;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Potobamba;Porco;Potosi;;;;Potobamba;Porco;;CHA;1777;1777;
+7435;Tuna;Curato;8000171;;pending;pending;unknown;adopted_relegated;none;Yura;Porco;Potosi;True;;;Tuna;Porco;;CHA;1777;1777;
+7436;Pocopoco;Curato;8000178;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Pocopoco;Porco;Potosi;;;;Pocopoco;Porco;;CHA;1777;1777;
+7437;Chulchucani;Curato;8000695;1.0;category_null;no_saint;region_exact;adopted_candidate;toponym_nombre;Chulchucani;Potosi;Potosi;;;;Chulchucani;Porco;;CHA;1777;1777;no_partido_jurisdiccion
+7438;Tarapaya;Curato;8000637;1.0;category_null;no_saint;region_exact;adopted_candidate;toponym_nombre;Tarapaya;Potosi;Potosi;;;;Tarapaya;Porco;;CHA;1777;1777;no_partido_jurisdiccion
+7439;Salinas de Yocalla;Curato;8000636;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Yocalla;Porco;Potosi;;;;Salinas de Yocalla;Porco;;CHA;1777;1777;
+7440;Curato de Chayanta;Curato;8000037;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Chayanta;Chayanta;Potosi;;;;Chayanta;Chayanta;;CHA;1777;1777;
+7441;Chayantacas;Curato;8000037;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Chayanta;Chayanta;Potosi;;;;Chayantacas;Chayanta;;CHA;1777;1777;
+7442;San Pedro de Buenavista;Curato;8000150;1.0;category_null;saint_match;jurisdiccion_exact;auto_adopt;toponym_nombre;San Pedro;Chayanta;Potosi;;;;San Pedro de Buenavista;Chayanta;;CHA;1777;1777;
+7443;Miraflores;Curato;8000152;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Miraflores;Chayanta;Potosi;;;;Miraflores;Chayanta;;CHA;1777;1777;
+7444;Moromoro;Curato;8000156;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Moromoro;Chayanta;Potosi;;;;Moromoro;Chayanta;;CHA;1777;1777;
+7445;Pitantora;Curato;8000155;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Pitantora;Chayanta;Potosi;;;;Pitantora;Chayanta;;CHA;1777;1777;
+7446;Guaycoma;Curato;8000154;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Huaycoma;Chayanta;Potosi;;;;Guarycoma;Chayanta;;CHA;1777;1777;
+7447;Micani;Curato;8000151;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Micani;Chayanta;Potosi;;;;Micani;Chayanta;;CHA;1777;1777;
+7448;Acacio;Curato;8000149;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Acasio;Chayanta;Potosi;;;;Acacio;Chayanta;;CHA;1777;1777;
+7449;Aymaya;Curato;8000147;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Aimaya;Chayanta;Potosi;;;;Aymaya;Chayanta;;CHA;1777;1777;
+7450;Panacachi;Curato;8000160;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Panacachi;Chayanta;Potosi;;;;Panacachi;Chayanta;;CHA;1777;1777;
+7451;Pocoata;Curato;8000161;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Pocoata;Chayanta;Potosi;;;;Pocoata;Chayanta;;CHA;1777;1777;
+7452;Macha;Curato;8000158;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Macha;Chayanta;Potosi;;;;Macha;Chayanta;;CHA;1777;1777;
+7453;Carazi;Curato;8000153;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Carasi;Chayanta;Potosi;;;;Caxazi;Chayanta;;CHA;1777;1777;
+7454;Moscari;Curato;8000159;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Moscari;Chayanta;Potosi;;;;Moscari;Chayanta;;CHA;1777;1777;
+7455;Aullagas;Curato;8000157;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Aullagas;Chayanta;Potosi;;;;Aullagas;Chayanta;;CHA;1777;1777;
+7456;Sacaca;Curato;8000148;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Sacaca;Chayanta;Potosi;;;;Sacaca;Chayanta;;CHA;1777;1777;
+7457;San Ildefonso de Paria;Curato;8000049;1.0;category_null;saint_match;region_exact;adopted_candidate;toponym_nombre;Paria;Oruro;Charcas;;;;San Ildefonso de Paria;Paria;;CHA;1777;1777;no_partido_jurisdiccion
+7458;Caracollo;Curato;9900187;0.8;category_null;no_saint;jurisdiccion_exact;adopted_relegated;none;Caracollo;Sicasica;La Paz;;;;Caracollo;Paria;;CHA;1777;1777;
+7459;Soracora;Curato;8000282;875;category_null;no_saint;region_exact;adopted_candidate;fuzzy;Sorasora;Oruro;Charcas;;;;Soracoxa;Paria;;CHA;1777;1777;no_partido_jurisdiccion
+7460;Condocondo;Curato;8000055;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Condocondo;Paria;Charcas;;;;Condocondo;Paria;;CHA;1777;1777;
+7461;Challapata;Curato;8000056;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Challapata;Paria;Charcas;;;;Challapata;Paria;;CHA;1777;1777;
+7462;Coroma;Curato;8000173;1.0;category_null;no_saint;region_exact;adopted_candidate;toponym_nombre;Coroma;Porco;Potosi;;;;Coxoma;Paria;;CHA;1777;1777;no_partido_jurisdiccion
+7463;Quillacas;Curato;8000054;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Atun Quillacas;Paria;Charcas;;;;Quillacas;Paria;;CHA;1777;1777;
+7464;Challacollo;Curato;8000052;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Challacollo;Paria;Charcas;;;;Challacollo;Paria;;CHA;1777;1777;
+7465;Toledo;Curato;8000053;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Toledo;Paria;Charcas;;;;Toledo;Paria;;CHA;1777;1777;
+7466;Poopo;Curato;8000021;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Poopo;Paria;Charcas;;;;Poopo;Paria;;CHA;1777;1777;
+7467;Salinas de Garcimendoza;Curato;8000011;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Salinas;Paria;Charcas;;;;Salinas de Garcimendoza;Paria;;CHA;1777;1777;
+7468;Santiago de Tomina;Curato;8000013;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Tomina;Tomina;Charcas;;;;Santiago de Tomina;Tomina;;CHA;1777;1777;
+7469;Laguna;Curato;8000012;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;La Laguna;Tomina;Charcas;;;;Laguna;Tomina;;CHA;1777;1777;
+7470;Tacopaya;Curato;8000068;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Tacopaya;Tomina;Charcas;;;;Tacopaya;Tomina;;CHA;1777;1777;
+7471;Morocoya;Curato;8000063;875;category_null;no_saint;jurisdiccion_exact;adopted_candidate;fuzzy;Mojocoya;Tomina;Charcas;;;;Morocoya;Tomina;;CHA;1777;1777;
+7472;Pomabamba;Curato;8000023;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Pomabamba;Pomabamba;Charcas;;;;Pomabamba;Tomina;;CHA;1777;1777;
+7473;Presto;Curato;8000064;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Presto;Tomina;Charcas;;;;Presto;Tomina;;CHA;1777;1777;
+7474;Villar;Curato;8000067;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Villar;Tomina;Charcas;;;;Villar;Tomina;;CHA;1777;1777;
+7475;Tarabuco;Curato;8000065;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Tarabuco;Tomina;Charcas;;;;Tarabuco;Tomina;;CHA;1777;1777;
+7476;Sopachuy;Curato;8000066;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Sopachuy;Tomina;Charcas;;;;Sopachuy;Tomina;;CHA;1777;1777;
+7477;Colquemarca;Curato;8000048;909;category_null;no_saint;jurisdiccion_exact;auto_adopt;fuzzy;Corquemarca;Carangas;Charcas;;;;Colquemarca;Carangas;;CHA;1777;1777;
+7478;Chuquicota;Curato;8000046;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Choquecota;Carangas;Charcas;;;;Chuquicota;Carangas;;CHA;1777;1777;
+7479;Guayllamarca;Curato;8000045;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Guayllamarca;Carangas;Charcas;;;;Guayllamarca;Carangas;;CHA;1777;1777;
+7480;Totora;Curato;8000044;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Totora;Carangas;Charcas;;;;Totora;Carangas;;CHA;1777;1777;
+7481;Turco;Curato;8000043;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Turco;Carangas;Charcas;;;;Turco;Carangas;;CHA;1777;1777;
+7482;Curaguara;Curato;8000020;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Curaguara;Carangas;Charcas;;;;Curaguara;Carangas;;CHA;1777;1777;
+7483;Andamarca;Curato;8000047;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Andamarca;Carangas;Charcas;;;;Andamarca;Carangas;;CHA;1777;1777;
+7484;Guachacalla;Curato;8000042;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Guachacalla;Carangas;Charcas;;;;Guachacalla;Carangas;;CHA;1777;1777;
+7485;Pilaya;Curato;8000061;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Loma;Pilaya y Paspaya;Charcas;;;;Pilaya;Pilaya;;CHA;1777;1777;
+7486;Acchilla;Curato;8000058;875;category_null;no_saint;jurisdiccion_exact;adopted_candidate;fuzzy;Agchilla;Pilaya y Paspaya;Charcas;;;;Acchilla;Pilaya;;CHA;1777;1777;
+7487;Santa Elena;Curato;8000060;1.0;category_null;saint_match;jurisdiccion_exact;auto_adopt;toponym_nombre;Santa Elena;Pilaya y Paspaya;Charcas;;;;Santa Elena;Pilaya;;CHA;1777;1777;
+7488;San Lucas;Curato;8000057;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Payacollo;Pilaya y Paspaya;Charcas;;;;San Lucas;Pilaya;;CHA;1777;1777;
+7489;Pisuani;Curato;8000059;;pending;pending;unknown;adopted_relegated;none;Pirguani;Pilaya y Paspaya;Charcas;False;;;Pisuani;Pilaya;;CHA;1777;1777;
+7490;Sinti;Curato;8000022;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Cinti;Pilaya y Paspaya;Charcas;;;;Sinti;Pilaya;;CHA;1777;1777;
+7491;Sicasica;Curato;8000034;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Sicasica;Sicasica;La Paz;;;;Sicasica;Sicasica;;CHA;1777;1777;
+7492;Yaco;Curato;8000132;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Yaco;Sicasica;La Paz;;;;Yaco;Sicasica;;CHA;1777;1777;
+7493;Luribay;Curato;8000138;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Luribay;Sicasica;La Paz;;;;Luribay;Sicasica;;CHA;1777;1777;
+7494;Mohosa;Curato;8000137;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Mohosa;Sicasica;La Paz;;;;Mohosa;Sicasica;;CHA;1777;1777;
+7495;Cavari;Curato;8000135;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Cabari;Sicasica;La Paz;;;;Cavari;Sicasica;;CHA;1777;1777;
+7496;San Christoval;Curato;8000166;963;category_null;no_saint;jurisdiccion_exact;adopted_candidate;fuzzy;San Cristobal;Lipez;Potosi;;;;San Christoval;Lipez;;CHA;1777;1777;
+7497;Comoraca;Curato;8000476;;pending;pending;unknown;adopted_relegated;none;Esmoraca;Chichas;Potosi;False;;;Comoxaca;Lipez;;CHA;1777;1777;
+7498;Llica y Tagua;Curato;8000234;1.0;category_null;no_saint;jurisdiccion_exact;adopted_candidate;exact;Llica;Lipez;Potosi;;;;Llica y Tagua;Lipez;;CHA;1777;1777;
+7499;San Antonio;Curato;8000039;1.0;category_null;saint_match;jurisdiccion_exact;adopted_candidate;exact;Lipes;Lipez;Potosi;;;;San Antonio;Lipez;;CHA;1777;1777;
+7500;Callapa;Curato;8000122;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;toponym_nombre;Callapa;Pacajes;La Paz;;;;Callapa;Pacajes;;CHA;1777;1777;
+7501;Tulloma;Curato;8000124;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Ulloma;Pacajes;La Paz;;;;Tulloma;Pacajes;;CHA;1777;1777;
+7502;Joya;Curato;8000123;;pending;pending;unknown;adopted_relegated;none;Curaguara;Pacajes;La Paz;True;;;Joya;Pacajes;;CHA;1777;1777;
+7503;San Pedro Atacama;Curato;8000036;1.0;category_null;saint_match;jurisdiccion_exact;auto_adopt;toponym_nombre;Atacama la alta;Atacama alta;Potosi;;;;San Pedro Atacama;Atacama;;CHA;1777;1777;
+7504;San Francisco de Chiuchiu;Curato;8000146;1.0;category_null;no_saint;jurisdiccion_exact;auto_adopt;exact;Atacama la baja;Atacama baja;Potosi;;;;San Francisco de Chiuchiu;Atacama;;CHA;1777;1777;

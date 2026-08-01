@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% set active = 'atlas' %}
+{% block title %}{{ page.title }} — HGIS de las Indias — ARCA{% endblock %}
+
+{% block content %}
+<div class="hero">
+  <span class="eyebrow">{{ page.eyebrow }}</span>
+  <h1>{{ page.title }}</h1>
+  <p class="lead">{{ page.lead }}</p>
+  {% if page.webgis %}
+  <p class="hero-actions">
+    <a class="btn" href="{{ atlas_url | default('https://www.hgis-indias.net/index.php/en/webgis') }}"
+       target="_blank" rel="noopener">Open the WebGIS ↗</a>
+  </p>
+  {% endif %}
+</div>
+
+<div class="placeholder-note">
+  <span>🏗️</span>
+  <span><strong>This page is a placeholder.</strong> {{ page.todo }}</span>
+</div>
+
+<p style="margin-top: var(--sp-4);">
+  <a href="{{ url_for('atlas') }}">← Back to HGIS de las Indias</a>
+</p>
+{% endblock %}

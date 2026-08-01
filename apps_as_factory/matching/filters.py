@@ -1,6 +1,7 @@
 # main/matching/filters.py
 import pandas as pd
 from typing import Optional
+from rapidfuzz import fuzz
 
 def prefilter_by_territory(ref_df: pd.DataFrame, row: pd.Series) -> pd.DataFrame:
     """
@@ -41,14 +42,34 @@ def compare_category(ref_category: Optional[str],
                      lugar_categoria: Optional[str],
                      lugar_categoria_especial: Optional[str]) -> str:
     """
-    Compare input and reference category fields.
+    Compare the input settlement type against the gazetteer categoria /
+    categoria_especial, fuzzily.
+
+    Returns:
+      category_null     — the input has no settlement type (nothing to compare)
+      category_match    — exact, or a strong fuzzy match (>= 85)
+      category_fuzzy    — a looser fuzzy match (>= 70)
+      category_mismatch — both sides have a value but they disagree
     """
     if not ref_category or pd.isna(ref_category) or not str(ref_category).strip():
         return "category_null"
 
-    if ref_category in (lugar_categoria, lugar_categoria_especial):
-        return "category_match"
+    rc = str(ref_category).strip().lower()
+    cands = [str(x).strip().lower() for x in (lugar_categoria, lugar_categoria_especial)
+             if x is not None and pd.notna(x) and str(x).strip()]
+    if not cands:
+        return "category_null"  # gazetteer has no category here — not a contradiction
 
+    if rc in cands:
+        return "category_match"
+    # token_set_ratio so a descriptive input ("pueblo de indios") still matches the
+    # controlled gazetteer term ("Pueblo"); plain ratio for close spellings/typos.
+    best = max((max(fuzz.ratio(rc, c), fuzz.token_set_ratio(rc, c)) for c in cands),
+               default=0)
+    if best >= 85:
+        return "category_match"
+    if best >= 70:
+        return "category_fuzzy"
     return "category_mismatch"
 
 

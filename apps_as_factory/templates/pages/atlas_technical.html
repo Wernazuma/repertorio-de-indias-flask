@@ -1,0 +1,290 @@
+{% extends "base.html" %}
+{% set active = 'atlas' %}
+{% block title %}Technical Methodology — HGIS de las Indias — ARCA{% endblock %}
+
+{% block content %}
+<div class="hero">
+  <span class="eyebrow">Atlas · Methodology</span>
+  <h1>Technical Methodology</h1>
+  <p class="lead">The technical implementation of HGIS de las Indias is a response to
+    the particular challenge of modelling colonial space, where boundaries were 
+    defined by <i>ink</i> rather than trigonometric measurement and had different meanings than today.</p>
+</div>
+
+
+
+<nav class="toc" aria-label="On this page">
+  <h2>On this page</h2>
+  <ol>
+    <li><a href="#lcg">The atomic foundation: Least Common Geometry</a></li>
+    <li><a href="#entity-instance">Spatiotemporal modelling: the entity–instance concept</a></li>
+    <li><a href="#levels">The hierarchical architecture: the 13 levels</a></li>
+    <li><a href="#database">The relational database engine</a></li>
+    <li><a href="#python">The Python automation workflow</a></li>
+    <li><a href="#publication">Publication, accessibility, and repositories</a></li>
+  </ol>
+</nav>
+
+<!-- 1 ---------------------------------------------------------------->
+<div class="section-head" id="lcg">
+  <h2>1. The atomic foundation: Least Common Geometry</h2>
+  <span class="rule"></span>
+</div>
+<div class="prose">
+  <p>The spatial core of the system is built on <b>Least Common Geometry (LCG)</b>, an
+    approach originally developed for the Belgian National HGIS. In a standard GIS,
+    researchers create separate layers for different years or administrative branches,
+    which creates a problem when changes must be made in a boundary, which then needs
+    to be repaired for every layer and year separately.</p>
+
+  <p>The LCG method divides the entire Spanish American continent into a single set of
+    non-overlapping polygons that serve as the <b>spatial atoms</b> of the system. Each
+    LCG polygon obeys one rule: it must encompass an area that shares exactly the same
+    administrative affiliations across all reconstructed levels, throughout the entire
+    period.</p>
+
+  <p>If a territory belonged to the same civil district, intendancy and audiencia as its
+    neighbour but fell under a different Bishopric, it had to become its own LCG polygon.
+    If a small area — a cattle ranch, say — was transferred to a different jurisdiction in
+    1750, a new polygon was created to reflect that change. The system can therefore generate
+    a clean, coherent map for any moment in time simply by joining these atomic polygons
+    through a relational table.</p>
+</div>
+
+<figure class="figure">
+  <div class="fig-slot">
+    <b>Suggested figure 1a</b>
+    Two-panel schematic of the <i>sliver problem</i>: the same border digitised twice
+    for two different layers, producing slivers and gaps — versus the LCG solution
+    where one shared line is used by both.
+  </div>
+  <figcaption>Fig. 1a — Why LCG: independent digitising vs. a shared atomic geometry.</figcaption>
+</figure>
+
+<figure class="figure">
+  <div class="fig-slot">
+    <b>Suggested figure 1b</b>
+    Three-step diagram: (i) a mosaic of small LCG atoms; (ii) the same mosaic coloured
+    by three different levels (Intendancy / Audiencia / Bishopric), showing that the
+    same atoms aggregate differently per level; (iii) the dissolved result — one clean
+    administrative polygon.
+  </div>
+  <figcaption>Fig. 1b — Atoms → attribute join → dissolve. The core idea of the whole system.</figcaption>
+</figure>
+
+<!-- 2 ---------------------------------------------------------------->
+<div class="section-head" id="entity-instance">
+  <h2>2. Spatiotemporal modelling: the entity–instance concept</h2>
+  <span class="rule"></span>
+</div>
+<div class="prose">
+  <p>To handle the fluid nature of colonial history, the project separates the permanent
+    identity of a place from its qualitative attributes through an
+    <b>entity–instance</b> model.</p>
+  <ul>
+    <li><b>Entities</b> — every place or territory carries a stable Entity ID. The
+      “Province of Chiapas” keeps the same ID (<code>PRGUCH00</code>) regardless of how
+      its borders or official title changed over a century.</li>
+    <li><b>Instances</b> — the qualitative “embodiments” of an entity at specific points
+      in time. Arizpe remains the same entity, but its instances track its shifting
+      status: from a mission (1701–1782) to a diocesan see (1783–1808), and from a town
+      (1701–1780) to a city (1781–1808).</li>
+  </ul>
+  <p>This separation lets researchers track institutional evolution (a
+    <i>corregimiento</i> becoming a <i>subdelegación</i>) and spatial evolution (the
+    “footprint” of a territory) as independent variables, reconnected only during the
+    final output process. It also accommodates the historical custom of referring to
+    those institutions as the same <i>thing</i> — “the province of Chiapas”, “the
+    settlement Arizpe in Sonora”.</p>
+</div>
+
+<figure class="figure">
+  <div class="fig-slot">
+    <b>Suggested figure 2</b>
+    A timeline / swimlane chart for <b>Arizpe</b>, 1701–1808: one stable Entity-ID bar
+    at the bottom, with parallel attribute tracks above it (ecclesiastical status:
+    mission → diocesan see in 1783; settlement type: town → city in 1781), so the
+    reader sees one identity carrying several independently-changing attributes.
+  </div>
+  <figcaption>Fig. 2 — One entity, many instances: Arizpe as the worked example.</figcaption>
+</figure>
+
+<!-- 3 ---------------------------------------------------------------->
+<div class="section-head" id="levels">
+  <h2>3. The hierarchical architecture: the 13 levels</h2>
+  <span class="rule"></span>
+</div>
+<div class="prose">
+  <p>Colonial administration was not a neat, single hierarchy. It consisted of
+    overlapping and sometimes contradictory branches — civil, military, and
+    ecclesiastical. And bottom up, municipal institutions — indigenous and Spanish —
+    integrated into, mingled with, substituted, and competed with crown institutions.
+    To capture this vernacular logic, the project reconstructs space
+    across 13 levels (see the <a href="{{ url_for('atlas_page', slug='historical-methodology') }}">historical
+    methodology</a>):</p>
+  <ul>
+    <li><b>Superior government</b> — viceroyalties and independent captaincies-general.</li>
+    <li><b>Judicial / administrative</b> — audiencias, intendencies, and three
+      interpretations of “province” (major, regular, minor) to account for varying
+      historical definitions and regional constellations.</li>
+    <li><b>Larger and smaller districts</b> — jurisdicciones and <i>partidos</i>.</li>
+    <li><b>Ecclesiastical</b> — archdioceses and dioceses.</li>
+    <li><b>Special categories</b> — <i>señoríos</i>, frontier and uncontrolled
+      territories, and foreign domains.</li>
+  </ul>
+  <p>This multi-level approach lets the project represent the Viceroyalty of Peru in its
+    broad definition — including the autonomous kingdoms of Chile and New Granada — at
+    one level, while showing its narrower effective administration at another.</p>
+</div>
+
+<figure class="figure">
+  <div class="fig-slot">
+    <b>Suggested figure 3a</b>
+    An exploded “layer cake”: 13 translucent map planes stacked in perspective, each
+    labelled with its level and colour-coded by branch (civil / judicial /
+    ecclesiastical / special), making visible that the branches overlap rather than nest.
+  </div>
+  <figcaption>Fig. 3a — The 13 levels as stacked, non-nesting planes.</figcaption>
+</figure>
+
+<figure class="figure">
+  <div class="fig-slot">
+    <b>Suggested figure 3b</b>
+    Two small maps side by side: the Viceroyalty of Peru in its <i>broad</i> definition
+    vs. its <i>narrow</i> effective administration — the clearest possible argument for
+    why one level is not enough.
+  </div>
+  <figcaption>Fig. 3b — Why multiple levels: Peru, broad vs. narrow.</figcaption>
+</figure>
+
+<!-- 4 ---------------------------------------------------------------->
+<div class="section-head" id="database">
+  <h2>4. The relational database engine</h2>
+  <span class="rule"></span>
+</div>
+<div class="prose">
+  <p>The data is managed in a relational database management system, using several
+    critical table types to connect time, space, and qualitative data:</p>
+  <ol>
+    <li><b>Entity and instance tables</b> — the stable IDs and chronological attributes
+      of every settlement and territory.</li>
+    <li><b>Particle tables</b> — settlement instances are themselves built from particle
+      tables, each storing one strand of development: church hierarchy, name, location,
+      settlement type, municipal institutions. These are then computed into the places
+      instance table under a single chronology.</li>
+    <li><b>LCG relation tables</b> — the most abstract but most vital: they define which
+      LCG polygons belonged to which Entity ID, at what time, for each of the 13 levels.</li>
+    <li><b>Source table</b> — every datum is linked to a Source ID, so the
+      provenance of every point — census, diocesan visit, manuscript map — stays
+      transparent and trackable. This, of course, has its limitations, as often enough
+      different sources were weighed against or supplemented each other. In this case, we put
+      the inital, or "sparking", source in the table</li>
+  </ol>
+</div>
+
+<figure class="figure">
+  <div class="fig-slot">
+    <b>Suggested figure 4</b>
+    An entity-relationship (ER) schema: boxes for the entity, instance, particle
+    (church / name / location / type / municipal), LCG-relation and source tables, with
+    relationship lines. Draw the <b>Source table</b> connecting to everything — that is
+    the claim about provenance made visual.
+  </div>
+  <figcaption>Fig. 4 — Database schema, with provenance threaded through every table.</figcaption>
+</figure>
+
+<!-- 5 ---------------------------------------------------------------->
+<div class="section-head" id="python">
+  <h2>5. The Python automation workflow</h2>
+  <span class="rule"></span>
+</div>
+<div class="prose">
+  <p>A series of specialised Python scripts turns these relational tables into usable
+    geographic files:</p>
+  <ol>
+    <li><b>Coordinate and metadata tagging</b> — scripts add coordinates and “generic”
+      (ahistorical) regional tags to entities, to assist disambiguation.</li>
+    <li><b>Dumpfile creation</b> — a script amalgamates the entity and instance tables
+      into a single large dumpfile, updating start and end years into a consolidated
+      timeline of qualitative changes.</li>
+    <li><b>Spatial joins and SQL queries</b> — the script joins the LCG polygons to the
+      dumpfile on the IDs.</li>
+    <li><b>The dissolve operation</b> — the cartographic engine of the project: all LCG
+      polygons sharing the same attributes for a given year and level have their
+      internal boundaries dissolved, yielding one clean polygon per administrative unit
+      (e.g. the “Audiencia of Mexico in 1750”).</li>
+    <li><b>Temporal snapshot generation</b> — the workflow generates one feature class
+      for every level and every year: 12 levels × 108 years, plus 44 for the
+      <i>intendencia</i> level, which exists only for part of the period — 1,340 in all.</li>
+    <li><b>Optimisation for stability</b> — an iterative script finds periods in which an
+      entity’s geometry, type, and ID stayed stable and merges those yearly snapshots
+      into a single spatiotemporal object with a broad start/end date, cutting the size
+      of the resulting database dramatically.</li>
+  </ol>
+</div>
+
+<figure class="figure">
+  <div class="fig-slot">
+    <b>Suggested figure 5a</b>
+    A pipeline flowchart of steps 1–6, showing the <i>artefact</i> passed between
+    stages (relational tables → dumpfile → joined layer → dissolved units → yearly
+    snapshots → merged spatiotemporal objects), not just the step names.
+  </div>
+  <figcaption>Fig. 5a — The processing pipeline, drawn by what it produces.</figcaption>
+</figure>
+
+<figure class="figure">
+  <div class="fig-slot">
+    <b>Suggested figure 5b</b>
+    A small before/after of the <b>dissolve</b>: a patchwork of LCG atoms sharing one
+    attribute, then the same area as a single outlined unit. A tiny graphic that
+    explains the single most important operation in the workflow.
+  </div>
+  <figcaption>Fig. 5b — The dissolve operation.</figcaption>
+</figure>
+
+<!-- 6 ---------------------------------------------------------------->
+<div class="section-head" id="publication">
+  <h2>6. Publication, accessibility, and repositories</h2>
+  <span class="rule"></span>
+</div>
+<div class="prose">
+  <p>The project’s goal is to function as a domain infrastructure for the scientific
+    community. The data is therefore published through several channels:</p>
+  <ul>
+    <li><b>Yale Dataverse</b> — a mirror and repository for follow-up initiatives such as
+      HGIS-Indias 2.0 and ARCA.</li>
+    <li><b>WebGIS apps</b> — interactive applications with a time slider and toggleable
+      layers, showing how missions, cities, and borders shifted between 1701 and 1808.</li>
+    <li><b>Encyclopedia</b> — every entity has a landing page with its institutional
+      history, lists of officials, and links to primary sources, functioning as an
+      evolving historical-geographical dictionary. In the original project this was
+      served as a DokuWiki resource; it has now been replaced by a different
+      architecture within ARCA.</li>
+      <li><b>Harvard Dataverse</b> — the original project’s repository: Python code, the original
+      relational tables, and the processed shapefiles. No longer updated.</li>
+
+  </ul>
+  <p>By assigning stable IDs to every historical place and territory, the project lets
+    external researchers link their own socioeconomic data to this spatial framework.
+    Any researcher can prepare a simple spreadsheet, upload it to ARCA, transform and
+    match it against HGIS-Indias, and receive a shapefile in return — bridging
+     the gap between tabular historical data and the historical geographical container units.</p>
+  <p><a href="{{ url_for('orientation.index') }}">Bring your own data →</a></p>
+</div>
+
+<figure class="figure">
+  <div class="fig-slot">
+    <b>Suggested figure 6</b>
+    A hub-and-spoke diagram: the database core at the centre, spokes out to Harvard
+    Dataverse, Yale Dataverse, the WebGIS apps and the Encyclopedia — plus a
+    <b>return loop</b>: researcher’s spreadsheet → ARCA match → shapefile back. The
+    loop is the argument of the whole page.
+  </div>
+  <figcaption>Fig. 6 — Publication channels and the round trip for external data.</figcaption>
+</figure>
+
+<p style="margin-top: var(--sp-5);">
+  <a href="{{ url_for('atlas') }}">← Back to HGIS de las Indias</a>
+</p>
+{% endblock %}

@@ -1,176 +1,163 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Upload CSV File</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-        }
-        
-        .upload-container {
-            border: 2px dashed #ccc;
-            padding: 40px;
-            text-align: center;
-            border-radius: 10px;
-            background-color: #f9f9f9;
-        }
-        
-        .upload-container.dragover {
-            border-color: #007bff;
-            background-color: #e3f2fd;
-        }
-        
-        input[type="file"] {
-            margin: 20px 0;
-            padding: 10px;
-        }
-        
-        button {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        
-        button:hover {
-            background-color: #0056b3;
-        }
-        
-        button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
-        
-        .message {
-            margin-top: 20px;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        
-        .success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-        
-        .error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-        
-        .loading {
-            background-color: #d1ecf1;
-            color: #0c5460;
-            border: 1px solid #bee5eb;
-        }
-    </style>
-</head>
-<body>
-    <h1>Upload CSV File</h1>
-    
-    <div class="upload-container" id="uploadContainer">
-        <form id="uploadForm" enctype="multipart/form-data">
-            <p>Select a CSV file to upload:</p>
-            <input type="file" name="file" id="fileInput" accept=".csv" required>
-            <br>
-            <button type="submit" id="uploadButton">Upload</button>
-        </form>
-    </div>
-    
-    <div id="message"></div>
+{% extends "base.html" %}
+{% set active = 'arca' %}
+{% block title %}Upload CSV — ARCA{% endblock %}
 
-    <script>
-        const uploadForm = document.getElementById('uploadForm');
-        const uploadButton = document.getElementById('uploadButton');
-        const messageDiv = document.getElementById('message');
-        const fileInput = document.getElementById('fileInput');
-        const uploadContainer = document.getElementById('uploadContainer');
+{% block extra_head %}
+<style>
+  .tx-upload { max-width: 640px; margin: 0 auto; }
+  .tx-upload h1 { font-family: var(--serif); font-size: var(--step-2); margin-bottom: var(--sp-3); }
 
-        // Handle form submission
-        uploadForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData();
-            const file = fileInput.files[0];
-            
-            if (!file) {
-                showMessage('Please select a file', 'error');
-                return;
-            }
-            
-            if (!file.name.toLowerCase().endsWith('.csv')) {
-                showMessage('Please select a CSV file', 'error');
-                return;
-            }
-            
-            formData.append('file', file);
-            
-            // Show loading state
-            uploadButton.disabled = true;
-            uploadButton.textContent = 'Uploading...';
-            showMessage('Uploading file...', 'loading');
-            
-            fetch('/transform/upload', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    showMessage('File uploaded successfully! Redirecting...', 'success');
-                    // Redirect to the next step
-                    setTimeout(() => {
-                        window.location.href = '/transform/select_domain';
-                    }, 1500);
-                } else {
-                    showMessage('Error: ' + data.error, 'error');
-                    resetForm();
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                showMessage('An error occurred during upload', 'error');
+  .tx-upload .upload-container { border: 2px dashed var(--border-strong); padding: 40px;
+    text-align: center; border-radius: var(--radius); background-color: var(--surface); }
+  .tx-upload .upload-container.dragover { border-color: var(--accent); background-color: var(--surface-2); }
+
+  .tx-upload input[type="file"] { margin: 20px 0; padding: 10px; }
+
+  .tx-upload button { background-color: var(--accent); color: var(--accent-ink); padding: 10px 20px;
+    border: none; border-radius: 5px; cursor: pointer; font-size: 16px; font-family: var(--body); }
+  .tx-upload button:hover { filter: brightness(1.08); }
+  .tx-upload button:disabled { background-color: var(--muted); cursor: not-allowed; }
+
+  .tx-upload .message { margin-top: 20px; padding: 10px; border-radius: 5px; }
+  .tx-upload .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+  .tx-upload .error   { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+  .tx-upload .loading { background-color: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+
+  .tx-upload #renamePanel { margin-top: 20px; padding: 15px; border: 1px solid #f0c080;
+    background: #fff5e0; border-radius: 8px; color: #7a4a00; }
+  .tx-upload #renameInput { padding: 8px; width: 60%; border: 1px solid var(--border-strong); border-radius: 4px; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="tx-upload">
+  {% set wf_step = 'upload' %}{% include '_steps.html' %}
+  <h1>Upload CSV File</h1>
+
+  {% if discarded %}
+  <div class="notice ok"><p>Your table and all derived files were deleted from our
+    server ({{ discarded }} file{{ '' if discarded == 1 else 's' }} removed).</p></div>
+  {% endif %}
+
+  <div class="notice info">
+    <p>Make the name of your CSV unique and easy to memorize
+      (e.g. <code>yourlastname_topic.csv</code>).</p>
+    <p>By uploading/cleaning your table you do not yet consent to anything, and your
+      file will be deleted upon request after transformation.</p>
+  </div>
+
+  <div class="upload-container" id="uploadContainer">
+    <form id="uploadForm" enctype="multipart/form-data">
+      <p>Select a CSV file to upload:</p>
+      <input type="file" name="file" id="fileInput" accept=".csv" required>
+      <br>
+      <button type="submit" id="uploadButton">Upload</button>
+    </form>
+  </div>
+
+  <div id="renamePanel" style="display:none;">
+    <p id="renameMsg" style="margin:0 0 8px;"></p>
+    <input type="text" id="renameInput">
+    <button type="button" id="continueButton">Continue with this name</button>
+  </div>
+
+  <div id="message"></div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    const uploadForm = document.getElementById('uploadForm');
+    const uploadButton = document.getElementById('uploadButton');
+    const messageDiv = document.getElementById('message');
+    const fileInput = document.getElementById('fileInput');
+    const uploadContainer = document.getElementById('uploadContainer');
+    const renamePanel = document.getElementById('renamePanel');
+    const renameMsg = document.getElementById('renameMsg');
+    const renameInput = document.getElementById('renameInput');
+    const continueButton = document.getElementById('continueButton');
+
+    function doUpload(desiredName) {
+        const file = fileInput.files[0];
+        if (!file) { showMessage('Please select a file', 'error'); return; }
+        if (!file.name.toLowerCase().endsWith('.csv')) { showMessage('Please select a CSV file', 'error'); return; }
+
+        const formData = new FormData();
+        formData.append('file', file);
+        if (desiredName) formData.append('desired_name', desiredName);
+
+        uploadButton.disabled = true;
+        uploadButton.textContent = 'Uploading...';
+        renamePanel.style.display = 'none';
+        showMessage('Uploading file...', 'loading');
+
+        fetch('/transform/upload', { method: 'POST', body: formData })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                showMessage('File uploaded as "' + data.filename + '". Redirecting...', 'success');
+                setTimeout(() => { window.location.href = '/transform/select_domain'; }, 1300);
+            } else if (data.conflict) {
                 resetForm();
-            });
-        });
-
-        // Handle drag and drop
-        uploadContainer.addEventListener('dragover', function(e) {
-            e.preventDefault();
-            uploadContainer.classList.add('dragover');
-        });
-
-        uploadContainer.addEventListener('dragleave', function(e) {
-            e.preventDefault();
-            uploadContainer.classList.remove('dragover');
-        });
-
-        uploadContainer.addEventListener('drop', function(e) {
-            e.preventDefault();
-            uploadContainer.classList.remove('dragover');
-            
-            const files = e.dataTransfer.files;
-            if (files.length > 0) {
-                fileInput.files = files;
+                showRename(data.existing, data.proposed);
+            } else {
+                showMessage('Error: ' + data.error, 'error');
+                resetForm();
             }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showMessage('An error occurred during upload', 'error');
+            resetForm();
         });
+    }
 
-        function showMessage(text, type) {
-            messageDiv.textContent = text;
-            messageDiv.className = 'message ' + type;
-        }
+    function showRename(existing, proposed) {
+        renameMsg.innerHTML = 'A table named <b>&ldquo;' + existing + '&rdquo;</b> already exists. ' +
+                              'Choose a different name (used as the dataset prefix):';
+        renameInput.value = proposed;
+        renamePanel.style.display = 'block';
+        renameInput.focus();
+        renameInput.select();
+        showMessage('That name is already in use — please rename.', 'error');
+    }
 
-        function resetForm() {
-            uploadButton.disabled = false;
-            uploadButton.textContent = 'Upload';
-        }
-    </script>
-</body>
-</html>
+    uploadForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        doUpload('');
+    });
+
+    continueButton.addEventListener('click', function() {
+        const name = renameInput.value.trim();
+        if (!name) { showMessage('Please enter a name.', 'error'); return; }
+        doUpload(name);
+    });
+    renameInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') { e.preventDefault(); continueButton.click(); }
+    });
+
+    uploadContainer.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        uploadContainer.classList.add('dragover');
+    });
+    uploadContainer.addEventListener('dragleave', function(e) {
+        e.preventDefault();
+        uploadContainer.classList.remove('dragover');
+    });
+    uploadContainer.addEventListener('drop', function(e) {
+        e.preventDefault();
+        uploadContainer.classList.remove('dragover');
+        const files = e.dataTransfer.files;
+        if (files.length > 0) { fileInput.files = files; }
+    });
+
+    function showMessage(text, type) {
+        messageDiv.textContent = text;
+        messageDiv.className = 'message ' + type;
+    }
+    function resetForm() {
+        uploadButton.disabled = false;
+        uploadButton.textContent = 'Upload';
+    }
+</script>
+{% endblock %}

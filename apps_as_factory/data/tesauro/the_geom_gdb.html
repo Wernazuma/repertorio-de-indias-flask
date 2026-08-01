@@ -1,0 +1,18 @@
+<article class="wiki-entry">
+  <h1>The Geom (Geodatabase)</h1>
+  <p>Esta geodatabase es el corazón geométrico de HGIS de las Indias. Contiene varias <a href="feature class">feature classes</a>:</p>
+  <h3>Feature classes base</h3>
+  <ul>
+    <li><strong>a_gz_the_geom</strong>, puntos cuyas coordenadas representan las ubicaciones de los lugares del <a href="gazetteer">gazetteer</a>. Se exporta a la base de datos relacional al principio del <a href="workflow_database">workflow</a> para ser procesado y luego reimportado con información agregada como <strong>gz_info_1</strong> y <strong>cabeceras</strong>.</li>
+    <li><strong>LCG</strong>. Los <a href="tabla_poligonos">polígonos</a> que están en la base de las reconstrucciones territoriales, siguiendo el <a href="concepto_LCG">concepto_LCG</a>. También sirve para establecer el partido y la provincia <a href="genericos">genéricos</a> de los lugares del gazetteer.</li>
+    <li><strong>Paises</strong>, una feature class con las naciones modernas para poder establecer el país <a href="genericos">genérico</a> de los lugares del gazetteer.</li>
+    <li><strong>Genericos_1</strong> y <strong>Genericos_2</strong>  - productos de análisis espacial que agregan partido, provincia y país genérico a la feature class <strong>gz_info</strong> para crear  <strong>gz_info_1</strong> que luego se exporta a la geodatabase final: <a href="hgis_de_las_indias_gdb">hgis_de_las_indias_gdb</a>.</li>
+    <li><strong><a href="capas_adicionales">Capas adicionales</a></strong> Un grupo de feature classes que existe con independencia de la base de datos relacional. Incluye tanto capas tomadas de proveniencia ajeno como productos de la investigación en el marco del proyecto.</li>
+  </ul>
+  <h3>Feature classes productos de workflow</h3>
+  <ul>
+    <li><strong>gz_info_1</strong> (cf. arriba)</li>
+    <li><strong>cabeceras</strong> (cf. arriba)</li>
+  </ul>
+  <p>erupciones, terremotos, Lago Texcoco, rutas marítimas y terrestres, indígenas y conflictos.</p>
+</article>

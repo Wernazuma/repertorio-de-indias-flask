@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% set active = 'team' %}
+{% block title %}Team — ARCA{% endblock %}
+
+{% block content %}
+<div class="hero">
+  <span class="eyebrow">Team</span>
+  <h1>The people behind ARCA.</h1>
+  <p class="lead">ARCA continues the work of <i>HGIS de las Indias</i>, a historical
+    GIS of the Spanish and Portuguese Americas, now hosted at Yale University.</p>
+</div>
+
+<div class="team-grid">
+  <article class="team-card">
+    <header class="team-head">
+      <img class="portrait" src="{{ url_for('static', filename='images/team/espin_sanchez.webp') }}"
+           alt="José Antonio Espín-Sánchez">
+      <div>
+        <h3>José Antonio Espín-Sánchez, PhD</h3>
+        <div class="role">Associate Professor of Economics · Strategic Lead of ARCA</div>
+        <div class="affil">Yale University · Economic Growth Center</div>
+      </div>
+    </header>
+    <p>His research focuses on historical migration and social mobility in Spain and
+      Spanish America. He is deeply invested in the idea of a digital data
+      infrastructure for economic history; he facilitated the project's move to Yale
+      and actively contributes to its strategic direction.</p>
+  </article>
+
+  <article class="team-card">
+    <header class="team-head">
+      <img class="portrait" src="{{ url_for('static', filename='images/team/werner_stangl.png') }}"
+           alt="Werner Stangl">
+      <div>
+        <h3>Dr. Werner Stangl</h3>
+        <div class="role">Private Lecturer. Principal Investigator of HGIS de las Indias; technical lead of ARCA</div>
+        <div class="affil">University of Graz · BORG Monsbergergasse, Graz</div>
+      </div>
+    </header>
+    <p>Werner was the principal investigator of the initial HGIS de las Indias project
+      at the University of Graz, and is responsible for the data model, historical
+      research, and GIS work, as well as workflow and design of ARCA. He defended his
+      thesis on colonial emigrant correspondences in Graz and worked on several digital
+      humanities projects beside HGIS-Indias, including the Digital Tokugawa Lab at Yale
+      and the TopUrbi project at the EHESS in Paris. He now is a teacher at BORG
+      Monsbergergasse in Graz, continuing to support research in his academic field.</p>
+  </article>
+
+  <article class="team-card">
+    <header class="team-head">
+      <img class="portrait" src="{{ url_for('static', filename='images/team/paul_stangl.png') }}"
+           alt="Paul Stangl">
+      <div>
+        <h3>Paul Stangl, BSc</h3>
+        <div class="role">Research Engineer for HGIS-Indias; Technical Advisor to ARCA</div>
+        <div class="affil">Blackshark AI · formerly University of Graz</div>
+      </div>
+    </header>
+    <p>Paul worked for the project as a research engineer at the University of Graz
+      from 2014 to 2017. He now works in the private sector while continuing to
+      provide technical advisory support and overseeing the relocation of the server
+      infrastructure to Yale.</p>
+  </article>
+</div>
+{% endblock %}

@@ -1,0 +1,121 @@
+<article class="wiki-entry">
+  <h2>Entidades territorial-administrativas</h2>
+  <p>La organización territorial de las Indias se centró entidades y oficios administrativos indianos que tenían una jurisdicción territorial sobre provincias, partidos y que por lo tanto definían esos territorios (p.e. "la provincia y alcaldía mayor de Michoacán"). Además, entre las entidades identifadas en nuestra base de datos incluimos algunos casos que no se centran en la administración real, sino que son expresiones de la sociedad indiana o territorios de misiones, o simples conceptos geográficos que carecían de toda administración (en areas fronterizas o deshabitadas).</p>
+  <p>De forma análoga al <a href="gazetteer">gazetteer</a>, la base de datos de las entidades es dual y consiste de dos tablas: <a href="tabla_entidades">Administración-Entidad</a> <a href="tabla_instancias">Administración-Instancia</a> Cada entidad tiene por lo menos una instancia concreta, y posiblemente más en el caso de que cambie la información en algún atributo - nombre, lugar cabecera, título del oficial encargado.</p>
+  <p>P.e. <strong>Entidad</strong></p>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Entidad_ID   ^Nombre ^Variantes ^Tipo generico ^Provincia_generica ^Reg</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PRQUCU00</td>
+          <td>Cuenca</td>
+          <td></td>
+          <td>Provincia</td>
+          <td>Cuenca</td>
+          <td>QUI</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>Instancias</strong></p>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Entidad_ID   ^START  ^END    ^Nombre^... ^Tipo^... ^Entidad identica ^Cabecera GZ_ID ^... ^Reg</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PRQUCU00</td>
+          <td>1701</td>
+          <td>1770</td>
+          <td>Cuenca</td>
+          <td></td>
+          <td>Corregimiento</td>
+          <td></td>
+          <td></td>
+          <td>5600002</td>
+          <td></td>
+          <td>QUI</td>
+        </tr>
+        <tr>
+          <td>PRQUCU00</td>
+          <td>1771</td>
+          <td>1776</td>
+          <td>Cuenca</td>
+          <td></td>
+          <td>Gobernacion</td>
+          <td></td>
+          <td></td>
+          <td>5600002</td>
+          <td></td>
+          <td>QUI</td>
+        </tr>
+        <tr>
+          <td>PRQUCU00</td>
+          <td>1777</td>
+          <td>1792</td>
+          <td>Cuenca</td>
+          <td></td>
+          <td>Gobernacion-Intendencia</td>
+          <td></td>
+          <td></td>
+          <td>5600002</td>
+          <td></td>
+          <td>QUI</td>
+        </tr>
+        <tr>
+          <td>PRQUCU00</td>
+          <td>1793</td>
+          <td>1808</td>
+          <td>Cuenca</td>
+          <td></td>
+          <td>Gobernacion</td>
+          <td></td>
+          <td></td>
+          <td>5600002</td>
+          <td></td>
+          <td>QUI</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2>Los tipos de entidades e instancias administrativas</h2>
+  <p>Para categorizar las entidades administrativas, usamos categorías simples. Algunos tipos se ofrecieron, como "Audiencia", Señorío, "Obispado" o "Arzobispado". Para otros, pareció mejor agruparlos más bien aproximádamente según su alcance territorial, y no institucional: "Entidad superior", "Provincia", "Jurisdicción", "Partido". Definimos cierto número de tipos administrativos que en sí pueden tener más casos/tipos especiales: &lt;columns&gt;</p>
+  <ul>
+    <li><a href="alcaldia_mayor">Alcaldía mayor</a></li>
+    <li><a href="corregimiento">Corregimiento</a></li>
+    <li><a href="jurisdiccion">Jurisdicción</a></li>
+    <li><a href="gobernacion">Gobernación</a></li>
+    <li><a href="subdelegacion">Subdelegación</a></li>
+    <li><a href="intendencia">Intendencia</a></li>
+    <li><a href="capitania_a_guerra">Capitanía a guerra</a></li>
+  </ul>
+  <p>&lt;newcolumn&gt;</p>
+  <ul>
+    <li><a href="jurisdiccion_militar">Jurisdicción militar</a></li>
+    <li><a href="capitania_general">Capitanía general</a></li>
+    <li><a href="comandancia_general">Comandancia general</a></li>
+    <li><a href="virreinato">Virreinato</a></li>
+    <li><a href="audiencia">Audiencia</a></li>
+    <li><a href="misiones">Misiones</a></li>
+    <li><a href="obispado">Obispado</a></li>
+  </ul>
+  <p>&lt;newcolumn&gt;</p>
+  <ul>
+    <li><a href="arzobispado">Arzobispado</a></li>
+    <li><a href="partido">Partido</a></li>
+    <li><a href="senorio">Señorío</a></li>
+    <li><a href="cabecera">Territorios cabecera</a></li>
+    <li><a href="agregado">Territorios agregados</a></li>
+    <li><a href="fronteras">Fronteras</a></li>
+    <li><a href="entidades_atipicas">Entidades atípicas</a></li>
+  </ul>
+  <p>&lt;/columns&gt;</p>
+</article>

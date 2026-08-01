@@ -1,0 +1,110 @@
+ID;termino-es;term-en
+agregado;Agregado;Aggregate
+alcaldia_mayor;Alcaldía mayor;Alcaldia mayor
+anexo;Anexo;Annex
+arzobispado;Arzobispado;Archbishopric
+audiencia;Audiencia;Audiencia
+base_de_datos;Base de datos;Database
+cabecera;Cabecera;Head town
+cabildo;Cabildo;Cabildo
+capilla;Capilla;Chapel
+capitania_general;Capitania general;Captaincy-General
+ciudad;Ciudad;City
+comandancia_general;Comandancia general;Commandancy-General
+concepto_lcg;Concepto lcg;LCG Concept
+corregimiento;Corregimiento;Corregimiento
+cronologia;Cronologia;Chronology
+curato;Curato;Parish
+dos_republicas;Dos repúblicas;Two republics
+entidades_administrativas;Entidades administrativas;Administrative entities
+entidades_atipicas;Entidades atipicas;Atypical entities
+ermita;Ermita;Hermit
+feature_class;Feature class;Feature class
+fronteras;Fronteras;Frontiers
+fuerte;Fuerte;Fort
+gazetteer;Gazetteer;Gazetteer
+genericos;Genericos;Generics
+gentil;Gentil;Gentile
+gobernacion;Gobernacion;Gobernación
+hgis_de_las_indias_gdb;Hgis de las Indias gdb;Hgis de las Indias gdb
+intendencia;Intendencia;Intendencia
+jurisdiccion;Jurisdicción;Jurisdiction
+jurisdiccion_militar;Jurisdicción militar;Military jurisdiction
+lcg;Lcg;LCG
+localidad;Localidad;Locality
+mision;Mision;Mission
+mision_cabecera;Mision cabecera;Head mission
+mision_capital;Mision capital;Capital mission
+mision_efimera;Mision efimera;Ephemeral mission
+mision_visita;Mision visita;Visit
+misiones;Misiones;Missions
+nivel-audiencia;Nivel-audiencia;Nivel-audiencia
+nivel-extranjero;Nivel-extranjero;Nivel-extranjero
+nivel-intendencia;Nivel-intendencia;Nivel-intendencia
+nivel-jurisdiccion;Nivel-jurisdiccion;Nivel-jurisdiccion
+nivel-obispado;Nivel-obispado;Nivel-obispado
+nivel-partido;Nivel-partido;Nivel-partido
+nivel-principal;Nivel-principal;Nivel-principal
+nivel-provincia;Nivel-provincia;Nivel-provincia
+nivel-senorio;Nivel-senorio;Nivel-senorio
+nivel-virreinato;Nivel-virreinato;Nivel-virreinato
+obispado;Obispado;Bishopric
+partido;Partido;District
+poblacion;Poblacion;Settlement
+pueblo;Pueblo;Pueblo
+ramos_de_gobierno;Ramos de gobierno;Branches of government
+rural;Rural;Rural
+sagrario;Sagrario;Diocesan parish
+santuario;Santuario;Asanctuary
+sd;sine dato;sine dato
+senorio;Señorío;Fiefdom
+subdelegacion;Subdelegación;Subdelegacion
+tenencia;Tenencia;Tenencia
+the_geom_gdb;The geom gdb;The geom gdb
+viceparroquia;Viceparroquia;Viceparish
+villa;Villa;Town
+virreinato;Virreinato;Viceroyalty
+workflow_database;Workflow database;Database workflow
+dubleta;Dubleta;Doublette
+plaza;Plaza;Stronghold
+presidio;Presidio;Presidio
+real_de_minas;Real de minas;Real de minas
+asiento;Asiento;Asiento
+asiento_de_minas;Asiento de minas;Mining asiento
+sitio;Sitio;Sitio
+puesto;Puesto;Puesto
+mineral;Mineral;Mineral
+playa;Playa;Beach
+valle;Valle;Valley
+congregacion;Congregación;Congregacion
+fortin;Fortín;Outpost
+vigia;Vigía;Sentinel
+castillo;Castillo;Castle
+pueblo_de_indios;Pueblo de indios;Indian pueblo
+pueblo_de_libres;Pueblo de libres;Freemen pueblo
+rancheria;Ranchería;Rancheria
+demonimo;Demónimo;Demonym
+palenque;Palenque;Palenque
+parroquia;Parroquia;Urban parish
+barrio;Barrio;Barrio
+villa_imperial;Villa imperial;Villa imperial
+posta;Posta;Post station
+tambo;Tambo;Tambo
+convento;Convento;Convent
+hospital;Hospital;Hospital
+ingenio;Ingenio;Sugar mill
+molino;Molino;Mill
+obraje;Obraje;Workshop
+paraje;Paraje;Spot
+puente;Puente;Bridge
+puerto;Puerto;Port
+trapiche;Trapiche;Trapiche mill
+arruinado;Arruinado;Ruins
+hacienda;Hacienda;Hacienda
+estancia;Estancia;Estancia
+rancho;Rancho;Ranch
+pago;Pago;Pago
+hato;Hato;Cattle ranch
+parcialidad;Parcialidad;Fraction
+republica;República;Republic
+cuartel;Cuartel;Quarter

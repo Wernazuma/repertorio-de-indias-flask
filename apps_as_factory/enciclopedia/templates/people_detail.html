@@ -1,9 +1,9 @@
-{% extends "base.html" %}
+{% extends "enc_base.html" %}
 
 {% block title %}{{ people.NOM_entero }} (persIndias{{ people.OficialID }}){% endblock %}
 {% block header_h1 %}{{ people.NOM_entero }} (persIndias{{ people.OficialID }}){% endblock %}
 
-{% block extra_head %}
+{% block enc_head %}
 <script>
   // Include-HTML helper (kept from your original)
   function includeHTML() {
@@ -62,13 +62,15 @@
 </script>
 {% endblock %}
 
-{% block content %}
+{% block enc_content %}
 <div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'Informacion')" id="defaultOpen">Información básica</button>
+  <button class="tablinks" onclick="openTab(event, 'Informacion')" id="defaultOpen">{{ t('td_tab_info') }}</button>
+  <button class="tablinks" onclick="openTab(event, 'Biografia')">{{ t('tab_biography') }}</button>
+  <button class="tablinks" onclick="openTab(event, 'Citar')">{{ t('tab_cite') }}</button>
 </div>
 
 <div id="Informacion" class="tabcontent" style="display:none;">
-  <h1>Información básica</h1>
+  <h1>{{ t('td_tab_info') }}</h1>
 
   <div class="infobox-grid">
     <div class="infobox">
@@ -76,7 +78,7 @@
         {% if o.prefix == "dbe" %}
           <p style="font-weight: bold;">
             <a href="{{ o.prefixurl }}{{ o.foreignkey }}{{ o.suffixurl }}">
-              Biografía destacada de {{ people.NOM_entero }} por la Real Academia de Historia
+              {{ t('pp_bio_rah', name=people.NOM_entero) }}
             </a>
           </p>
         {% endif %}
@@ -104,15 +106,15 @@
       {% endif %}
 
       {% if people.titulos_de_nobleza %}
-        Título(s): {{ people.titulos_de_nobleza }}<br/>
+        {{ t('pp_titles') }} {{ people.titulos_de_nobleza }}<br/>
       {% endif %}
 
       {% if people.religious_order %}
-        Orden religiosa: <a href="../dokuwiki/doku.php?id=conceptos:ordenes_religiosas">{{ people.religious_order }}</a><br/><br/>
+        {{ t('pp_religious_order') }} <a href="../dokuwiki/doku.php?id=conceptos:ordenes_religiosas">{{ people.religious_order }}</a><br/><br/>
       {% endif %}
 
       <hr/>
-      {{ people.NOM_entero }} en otros sitios:<br/>
+      {{ t('pp_elsewhere', name=people.NOM_entero) }}<br/>
       {% for o in oficiales_foreignkeys_data %}
         {% if o.prefix != "dbe" %}
           {{ o.prefix }}:
@@ -124,34 +126,31 @@
 
   <div class="infobox-grid">
     <div id="Curriculum" class="infobox">
-      <h3>Curriculum indiano conocido</h3>
+      <h3>{{ t('pp_curriculum') }}</h3>
       {% for o in oficiales_entity_data %}
         {{ o.Titulo }} {{ o.Titulo2 }} de
         <a href="../territory/{{ o.EntidadID }}">{{ o.entidad_nombre }}</a>,
-        {{ o.Primera_Fecha_y }}-{{ o.Ultima_Fecha_y }}<br/>
+        {{ timespan(o.Primera_Fecha_y, o.Ultima_Fecha_y) }}<br/>
       {% endfor %}
     </div>
   </div>
 </div>
 
-<div id="Historia" class="tabcontent" style="display:none;">
-  <h1>Historia</h1>
+<div id="Biografia" class="tabcontent" style="display:none;">
+  <h1>{{ t('tab_biography') }}</h1>
 </div>
 
-<div id="Fuentes" class="tabcontent" style="display:none;">
-  <h1>Fuentes</h1>
-</div>
-{% endblock %}
-
-{% block right_block %}
-<div class="block" id="right-block">
+<div id="Citar" class="tabcontent" style="display:none;">
+  <h1>{{ t('tab_cite') }}</h1>
   <div id="citeme">
-    <h3>¿Cómo citar este recurso?</h3>
+    <h3>{{ t('how_to_cite_resource') }}</h3>
     <p>
       "{{ people.NOM_entero }} (persIndias{{ people.OficialID }})",
       Werner Stangl (ed.), Compendio digital de Indias.
-      <span id="url"></span> Retrieved <span id="datetime"></span>
+      <span id="url"></span> {{ t('retrieved') }} <span id="datetime"></span>
     </p>
   </div>
 </div>
 {% endblock %}
+
+{% block right_block %}{% endblock %}

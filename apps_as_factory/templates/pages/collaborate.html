@@ -1,0 +1,251 @@
+{% extends "base.html" %}
+{% set active = 'arca' %}
+{% block title %}Collaborate — ARCA{% endblock %}
+
+{% set ROLE_NAMES = {'cs': 'Citizen Scientist', 'teacher': 'Teacher', 'peer': 'Peer Academic', 'inst': 'Institution'} %}
+{% set ROLE_ORDER = ['cs', 'teacher', 'peer', 'inst'] %}
+{% set EFFORT = {'green': 'Light touch', 'yellow': 'Hands-on', 'red': 'Deep dive'} %}
+
+{% set cards = [
+  {'title': 'Locate and review locations and boundaries', 'color': 'green', 'sym': 'locate',
+   'body': ['There are over 1000 not properly located places in the HGIS-Indias database. Help us find them.',
+            'Also there may be undetected mistakes in the existing data: a wrong boundary or place identity, a missed relocation of a settlement… Flag cases you consider to be in error.'],
+   'fine': 'Any edit is subject to approval by us before entering the DB.',
+   'link': none, 'roles': {'cs': 1, 'peer': 2}},
+
+  {'title': 'Add places', 'color': 'green', 'sym': 'addplace',
+   'body': ['Even though the Indias database contains over 15,000 places, for most places we have not included all the haciendas, estancias, ranchos, and puestos, nor all mining sites or hamlets. If you possess primary sources and knowledge on missed places in some area, you can add them.'],
+   'fine': 'Any added place is subject to approval/review by us before entering the DB.',
+   'link': none, 'roles': {'cs': 2, 'peer': 2}},
+
+  {'title': 'Add colonial officials to our prosopography', 'color': 'green', 'sym': 'admins',
+   'body': ['Our database includes lists of viceroys, bishops, governors and other colonial administrators. For most territories, however, we have no or few officials yet. We know that others have put a lot of effort into creating such lists. If you have one and are up for sharing it, please contact us.'],
+   'link': none, 'roles': {'cs': 3, 'peer': 2}},
+
+  {'title': 'Link/showcase your collection/index', 'color': 'red', 'sym': 'sync',
+   'body': ['You have a collection or index of archival records, images, maps, texts related to places and spaces covered by our system? Link your collection,keywords, and controlled vocabulary to our IDs - or let us help you do it. Let us link to your collection items from our encyclopedic resource and possibly via a web application.'],
+   'link': none, 'roles': {'inst': 1, 'peer': 2}},
+   
+  {'title': 'Review information on places', 'color': 'green', 'sym': 'review',
+   'body': ['Not all information on places is fully researched, and there may always be a mistake. You know a place was a parish before we say it was? You know a foundation date for a place without specific beginning? You know an attested variant name for a place? Submit your suggestions.'],
+   'fine': 'Any edit is subject to approval by us before entering the DB.',
+   'link': none, 'roles': {'cs': 2, 'peer': 2}},
+
+  {'title': 'Contribute data tables', 'color': 'green', 'sym': 'datatables',
+   'body': ['This is what we are looking for most — which is why we add this call here, too: Bring us your data! If you already have data, the process is quite straight-forward; if you want to create data with ARCA in mind, there are guidelines for best practice.'],
+   'link': 'bring', 'roles': {'peer': 1, 'inst': 3}},
+
+  {'title': 'Contribute complementary geodata', 'color': 'green', 'sym': 'geodata',
+   'body': ['If you already have geodata on any subject you feel falls into our scope, please tell us about it and think about using ARCA as a repository or HGIS de las Indias as a form of distribution/access.'],
+   'link': 'team', 'roles': {'peer': 2}},
+
+  {'title': 'Suggest bibliography', 'color': 'green', 'sym': 'bibliography',
+   'body': ['If you know of primary or secondary sources related/dedicated to a colonial space or place — like a manuscript map of a province, a historical description, or a chorographic/historical-geographic study, suggest it as additional bibliography.'],
+   'link': 'enc', 'roles': {'cs': 3, 'peer': 3, 'inst': 2}},
+
+  {'title': 'Create lesson plans', 'color': 'yellow', 'sym': 'lessonplan',
+   'body': ['If you have ideas on how to use and integrate any of our resources for teaching, send us your lesson plan and didactic material. If you need some specific interactive map or want to create a story map, we will gladly advise/assist you if you contact us.'],
+   'link': 'team', 'roles': {'teacher': 1, 'peer': 3}},
+
+  {'title': 'Create narrative maps', 'color': 'yellow', 'sym': 'narrative',
+   'body': ['Narrative maps are a terrific way to engage students and communicate knowledge. If you want to create a story map related to resources or geodata covered by ARCA/HGIS-Indias, we will gladly advise/assist you if you contact us.'],
+   'link': 'team', 'roles': {'teacher': 2, 'peer': 3, 'inst': 2}},
+
+  {'title': 'Create a learning app', 'color': 'yellow', 'sym': 'learningapp',
+   'body': ['If you want to create some learning environment that includes / partially includes any of our resources, we will gladly advise/assist you if you contact us.'],
+   'link': 'team', 'roles': {'teacher': 2, 'inst': 2}},
+
+  {'title': 'Write articles for the encyclopedia', 'color': 'yellow', 'sym': 'writearticle',
+   'body': ['Volunteer to write articles on places or regions you are researching. The landing pages of the places and provinces in our database can accommodate dedicated encyclopedic entries. If you want to claim a place or province, or if you want to coordinate a project covering a series of places/territories, please contact us.'],
+   'link': 'team', 'roles': {'peer': 1}},
+
+  {'title': 'Showcase your work', 'color': 'yellow', 'sym': 'showcase',
+   'body': ['ARCA/HGIS de las Indias may be a great place for showcasing your research in an interactive or narrative map, including contextual layers. If you want to create some specific interactive map or a story map, we will gladly advise/assist you if you contact us.'],
+   'link': 'team', 'roles': {'peer': 2}},
+
+  {'title': 'Sync your resource', 'color': 'yellow', 'sym': 'sync',
+   'body': ['If you have your own database that overlaps ours, think about correlating your IDs with our IDs to match them up. Use the “Bring your data” workflow for the task and contact us for implementation of the ID-mapping.'],
+   'link': 'bring', 'roles': {'cs': 3, 'peer': 3, 'inst': 1}},
+
+  {'title': 'Partner with ARCA', 'color': 'red', 'sym': 'partner',
+   'body': ['If you plan a project or have funding in an area beyond the currently covered scope of ARCA, but within its theoretical scope of “History of the Americas”, consider teaming up and become a part or partner of ARCA.',
+            'Whether to expand the spatiotemporal framework to early colonial times, into the national period of a country or to precolumbian times, outside of the Spanish sphere; whether to build a canonical database on epidemics, religious orders, population, prices, hospitals, indigenous peoples — you name it. Please, do not hesitate to contact us and explore possibilities.'],
+   'link': 'team', 'roles': {'peer': 1, 'inst': 1}},
+] %}
+
+{# --- task symbols (stroke inherits the card's effort colour) --- #}
+{% macro csym(name) -%}
+<svg viewBox="0 0 48 48" aria-hidden="true">
+{%- if name == 'locate' -%}
+  <path d="M24 41c6.5-8 10-13.5 10-19a10 10 0 1 0-20 0c0 5.5 3.5 11 10 19Z"/><circle cx="24" cy="22" r="3.5"/>
+{%- elif name == 'addplace' -%}
+  <path d="M24 41c6.5-8 10-13.5 10-19a10 10 0 1 0-20 0c0 5.5 3.5 11 10 19Z"/><line x1="24" y1="17.5" x2="24" y2="26.5"/><line x1="19.5" y1="22" x2="28.5" y2="22"/>
+{%- elif name == 'admins' -%}
+  <circle cx="17" cy="18" r="5"/><path d="M8 34c0-6 4-9 9-9s9 3 9 9"/><circle cx="33" cy="20" r="4.5"/><path d="M25.5 34c0-5.5 3.5-8 7.5-8s7.5 2.5 7.5 8"/><line x1="39" y1="8" x2="39" y2="14"/><line x1="36" y1="11" x2="42" y2="11"/>
+{%- elif name == 'review' -%}
+  <rect x="11" y="7" width="22" height="30" rx="2"/><line x1="16" y1="15" x2="28" y2="15"/><line x1="16" y1="20" x2="28" y2="20"/><path d="M16 27l3 3 7-7"/>
+{%- elif name == 'datatables' -%}
+  <rect x="7" y="14" width="26" height="24" rx="2"/><line x1="7" y1="22" x2="33" y2="22"/><line x1="7" y1="30" x2="33" y2="30"/><line x1="20" y1="14" x2="20" y2="38"/><path d="M41 20V8m0 0l-4 4m4-4l4 4"/>
+{%- elif name == 'geodata' -%}
+  <path d="M24 8 6 16l18 8 18-8Z"/><path d="M6 24l18 8 18-8"/><path d="M6 32l18 8 18-8"/>
+{%- elif name == 'bibliography' -%}
+  <path d="M24 15C20 12 14 11 8 12v22c6-1 12 0 16 3 4-3 10-4 16-3V12c-6-1-12 0-16 3Z"/><line x1="24" y1="15" x2="24" y2="37"/>
+{%- elif name == 'lessonplan' -%}
+  <rect x="8" y="8" width="32" height="22" rx="2"/><line x1="14" y1="15" x2="34" y2="15"/><line x1="14" y1="20" x2="28" y2="20"/><line x1="24" y1="30" x2="24" y2="35"/><line x1="17" y1="40" x2="24" y2="35"/><line x1="31" y1="40" x2="24" y2="35"/>
+{%- elif name == 'narrative' -%}
+  <path d="M13 36 C 22 36, 18 24, 26 22 S 34 14, 35 10"/><circle cx="13" cy="36" r="3"/><circle cx="35" cy="10" r="3"/>
+{%- elif name == 'learningapp' -%}
+  <rect x="8" y="9" width="32" height="30" rx="3"/><line x1="8" y1="18" x2="40" y2="18"/><circle cx="12.5" cy="13.5" r="1"/><circle cx="16.5" cy="13.5" r="1"/><path d="M21 25l9 4.5-9 4.5Z"/>
+{%- elif name == 'writearticle' -%}
+  <path d="M31 8l7 7-20 20-9 2 2-9Z"/><line x1="27" y1="12" x2="34" y2="19"/>
+{%- elif name == 'showcase' -%}
+  <rect x="8" y="8" width="32" height="24" rx="2"/><line x1="24" y1="32" x2="24" y2="38"/><line x1="16" y1="40" x2="32" y2="40"/><path d="M24 13l2 5 5 2-5 2-2 5-2-5-5-2 5-2Z"/>
+{%- elif name == 'sync' -%}
+  <path d="M12 24a12 12 0 0 1 20-8.8"/><path d="M36 24a12 12 0 0 1-20 8.8"/><path d="M32 8v8h-8"/><path d="M16 40v-8h8"/>
+{%- elif name == 'partner' -%}
+  <circle cx="19" cy="24" r="9"/><circle cx="29" cy="24" r="9"/>
+{%- endif -%}
+</svg>
+{%- endmacro %}
+
+{% block content %}
+<div class="hero">
+  <span class="eyebrow">Collaborate</span>
+  <h1>Work with us</h1>
+  <p class="lead">ARCA is all about synergies and collaboration. There are numerous ways to
+    collaborate — to the benefit of everyone — from complex partnerships and project
+    support to straight-forward contributions.</p>
+</div>
+
+<div class="section-head">
+  <h2>Filter the forms of collaboration by choosing your role</h2>
+  <span class="rule"></span>
+</div>
+
+<div class="role-filter" role="group" aria-label="Filter by role">
+  <button type="button" class="role-btn" data-role="cs" aria-pressed="false">
+    <svg viewBox="0 0 48 48" aria-hidden="true">
+      <circle cx="16" cy="13" r="5.5"/>
+      <path d="M6 32 a10 10 0 0 1 20 0"/>
+      <circle cx="33" cy="23" r="6"/>
+      <line x1="37.5" y1="27.5" x2="42" y2="32"/>
+    </svg>
+    <span class="role-name">Citizen Scientist</span>
+  </button>
+  <button type="button" class="role-btn" data-role="teacher" aria-pressed="false">
+    <svg viewBox="0 0 48 48" aria-hidden="true">
+      <rect x="5" y="8" width="22" height="16" rx="1.5"/>
+      <line x1="9" y1="13" x2="23" y2="13"/>
+      <line x1="9" y1="17" x2="19" y2="17"/>
+      <line x1="16" y1="24" x2="16" y2="28"/>
+      <circle cx="37" cy="13" r="4.5"/>
+      <path d="M30 30 a7 7 0 0 1 14 0"/>
+    </svg>
+    <span class="role-name">Teacher</span>
+  </button>
+  <button type="button" class="role-btn" data-role="peer" aria-pressed="false">
+    <svg viewBox="0 0 48 48" aria-hidden="true">
+      <path d="M6 18 L24 11 L42 18 L24 25 Z"/>
+      <path d="M14 21.5 V29 c0 2.4 4.5 4.2 10 4.2 s10 -1.8 10 -4.2 V21.5"/>
+      <line x1="42" y1="18" x2="42" y2="27"/>
+      <circle cx="42" cy="28.5" r="1.3"/>
+    </svg>
+    <span class="role-name">Peer Academic</span>
+  </button>
+  <button type="button" class="role-btn" data-role="inst" aria-pressed="false">
+    <svg viewBox="0 0 48 48" aria-hidden="true">
+      <path d="M6 18 L24 8 L42 18 Z"/>
+      <line x1="8" y1="18" x2="40" y2="18"/>
+      <line x1="12" y1="18" x2="12" y2="36"/>
+      <line x1="20" y1="18" x2="20" y2="36"/>
+      <line x1="28" y1="18" x2="28" y2="36"/>
+      <line x1="36" y1="18" x2="36" y2="36"/>
+      <line x1="7" y1="40" x2="41" y2="40"/>
+    </svg>
+    <span class="role-name">Institution</span>
+    <span class="role-sub">Archive / Library</span>
+  </button>
+</div>
+<p class="role-hint" id="collab-hint">Showing every form of collaboration. Choose a role
+  above to see the ones that fit it best, most relevant first. The colour marks the level
+  of engagement:
+  <span style="color:#3f9b63;font-weight:700;">light touch</span> ·
+  <span style="color:#d19a26;font-weight:700;">hands-on</span> ·
+  <span style="color:#c0563a;font-weight:700;">deep dive</span>.</p>
+
+<div class="card-grid duo" id="collab-grid">
+  {% for c in cards %}
+  <article class="card collab-card col-{{ c.color }}"
+    {% for r in ROLE_ORDER if r in c.roles %}data-{{ r }}="{{ c.roles[r] }}" {% endfor %}>
+    <div class="collab-head">
+      <span class="collab-sym">{{ csym(c.sym) }}</span>
+      <span class="collab-effort">{{ EFFORT[c.color] }}</span>
+    </div>
+    {% if c.logos %}
+    <div class="collab-logos" title="ARCA · HGIS de las Indias">
+      <img src="{{ url_for('static', filename='images/logo_arca.jpg') }}" alt="ARCA">
+      <img src="{{ url_for('static', filename='images/logo_hgis.jpg') }}" alt="HGIS de las Indias">
+    </div>
+    {% endif %}
+    <h3>{{ c.title }}</h3>
+    {% for p in c.body %}<p>{{ p }}</p>{% endfor %}
+    {% if c.fine %}<p class="collab-fine">{{ c.fine }}</p>{% endif %}
+    <div class="collab-foot">
+      <div class="collab-roles">
+        {% for r in ROLE_ORDER if r in c.roles %}
+        <span class="role-chip" data-role="{{ r }}">{{ ROLE_NAMES[r] }}</span>
+        {% endfor %}
+      </div>
+      {% if c.link == 'team' %}<span class="go"><a href="{{ url_for('team') }}">Contact us →</a></span>
+      {% elif c.link == 'bring' %}<span class="go"><a href="{{ url_for('bring_your_data') }}">Bring your data →</a></span>
+      {% elif c.link == 'enc' %}<span class="go"><a href="{{ url_for('enciclopedia.index') }}">Encyclopedia →</a></span>{% endif %}
+    </div>
+  </article>
+  {% endfor %}
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+(function () {
+  var grid = document.getElementById('collab-grid');
+  var hint = document.getElementById('collab-hint');
+  var buttons = Array.prototype.slice.call(document.querySelectorAll('.role-btn'));
+  var cards = Array.prototype.slice.call(grid.querySelectorAll('.collab-card'));
+  cards.forEach(function (c, i) { c.dataset.order = i; });
+  var active = null;
+
+  function apply() {
+    cards.forEach(function (card) {
+      card.querySelectorAll('.role-chip').forEach(function (chip) {
+        chip.classList.toggle('active', !!active && chip.dataset.role === active);
+      });
+    });
+    if (!active) {
+      cards.sort(function (a, b) { return a.dataset.order - b.dataset.order; })
+           .forEach(function (c) { c.classList.remove('is-hidden'); grid.appendChild(c); });
+      hint.style.display = '';
+      return;
+    }
+    var visible = cards.filter(function (c) { return c.dataset[active] != null; });
+    var hidden = cards.filter(function (c) { return c.dataset[active] == null; });
+    visible.sort(function (a, b) {
+      return (a.dataset[active] - b.dataset[active]) || (a.dataset.order - b.dataset.order);
+    });
+    visible.forEach(function (c) { c.classList.remove('is-hidden'); grid.appendChild(c); });
+    hidden.forEach(function (c) { c.classList.add('is-hidden'); });
+    hint.style.display = 'none';
+  }
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      active = (active === btn.dataset.role) ? null : btn.dataset.role;
+      buttons.forEach(function (b) {
+        b.setAttribute('aria-pressed', b.dataset.role === active ? 'true' : 'false');
+      });
+      apply();
+    });
+  });
+})();
+</script>
+{% endblock %}

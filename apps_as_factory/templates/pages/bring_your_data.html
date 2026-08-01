@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% set active = 'arca' %}
+{% block title %}Bring your data — ARCA{% endblock %}
+
+{% block content %}
+<div class="hero">
+  <span class="eyebrow">ARCA · Geodata workflow</span>
+  <h1>Bring your data into ARCA.</h1>
+  <p class="lead">Contribute, transform, and match your historical data against the
+    shared framework — creating geodata with it. Pick the step you need; if you are
+    not sure where to start, let us guide you.</p>
+</div>
+
+<div class="card-grid">
+  <a class="card" href="{{ url_for('orientation.index') }}">
+    <span class="card-icon"><img src="{{ url_for('static', filename='images/symbols/wf_guide.png') }}" alt=""></span>
+    <h3>Guide me</h3>
+    <p>Not sure whether or how your data fits? Answer a few questions and we will point
+      you to the right path.</p>
+    <span class="go">Decision tree →</span>
+  </a>
+  <a class="card" href="{{ url_for('transform.upload_csv') }}">
+    <span class="card-icon"><img src="{{ url_for('static', filename='images/symbols/wf_upload.png') }}" alt=""></span>
+    <h3>Upload a table</h3>
+    <p>Bring a CSV, classify its columns, and shape it to the ARCA data model.</p>
+    <span class="go">Upload &amp; transform →</span>
+  </a>
+  <a class="card" href="{{ url_for('matching.index') }}">
+    <span class="card-icon"><img src="{{ url_for('static', filename='images/symbols/wf_match.png') }}" alt=""></span>
+    <h3>Match my uploaded table</h3>
+    <p>Reconcile the place and territory names in your uploaded table against the
+      gazetteer.</p>
+    <span class="go">Start matching →</span>
+  </a>
+  <a class="card" href="{{ url_for('matching.resume') }}">
+    <span class="card-icon"><img src="{{ url_for('static', filename='images/symbols/wf_resume.png') }}" alt=""></span>
+    <h3>Resume matching task</h3>
+    <p>Pick up an unfinished job where you left off — disambiguation, territory
+      resolution, or export.</p>
+    <span class="go">Resume →</span>
+  </a>
+</div>
+
+<div class="prose" style="margin-top: var(--sp-5);">
+  <p>Once matched, your table comes back with stable ARCA IDs and can be exported as a
+    mapped shapefile. See the
+    <a href="{{ url_for('atlas_page', slug='technical-methodology') }}">technical
+    methodology</a> for what happens to your data along the way, or
+    <a href="{{ url_for('team') }}">contact us</a> with questions.</p>
+</div>
+{% endblock %}

@@ -1,0 +1,221 @@
+{% extends "base.html" %}
+{% set active = 'atlas' %}
+{% block title %}HGIS de las Indias — Atlas — ARCA{% endblock %}
+
+{% block content %}
+<div class="hero">
+  <img class="hero-logo" src="{{ url_for('static', filename='images/logo_hgis.jpg') }}" alt="HGIS de las Indias">
+  <span class="eyebrow">Atlas</span>
+  <h1>HGIS de las Indias</h1>
+  <p class="funding">FWF, P-26379-G18.</p>
+  <p class="lead">A historical geographic information system of colonial Spanish
+    America, 1701–1808 — the cartographic backbone of ARCA, mapping places and
+    territories across time.</p>
+</div>
+
+<div class="btn-row">
+  <a class="btn small" href="{{ url_for('atlas_page', slug='project-history') }}">About the project</a>
+  <a class="btn small secondary" href="{{ url_for('atlas_page', slug='technical-methodology') }}">Understand the technical methodology</a>
+  <a class="btn small secondary" href="{{ url_for('atlas_page', slug='historical-methodology') }}">Learn about the historical methodology</a>
+</div>
+
+<div class="section-head">
+  <h2>Explore the atlas</h2>
+  <span class="rule"></span>
+</div>
+<div class="card-grid trio">
+  <a class="card" href="#explorative">
+    <img class="card-illus" src="{{ url_for('static', filename='images/cards/card_apps_explorative.png') }}" alt="">
+    <h3>Explorative GIS</h3>
+    <p>Explore places, territories and data freely on interactive maps with a time-slider.</p>
+    <span class="go">Browse the apps ↓</span>
+  </a>
+  <a class="card" href="#urban">
+    <img class="card-illus" src="{{ url_for('static', filename='images/cards/card_apps_urban.png') }}" alt="">
+    <h3>Urban GIS</h3>
+    <p>Dive into detailed, interactive city plans of colonial capitals.</p>
+    <span class="go">Browse the cities ↓</span>
+  </a>
+  <a class="card" href="#narrative">
+    <img class="card-illus" src="{{ url_for('static', filename='images/cards/card_apps_narrative.png') }}" alt="">
+    <h3>Narrative Maps</h3>
+    <p>Explore stories on historical topics and events.</p>
+    <span class="go">Browse the stories ↓</span>
+  </a>
+  <a class="card" href="#guided">
+    <img class="card-illus" src="{{ url_for('static', filename='images/cards/card_apps_guia.png') }}" alt="">
+    <h3>Guided Tours</h3>
+    <p>Follow curated walkthroughs that introduce the atlas, its data, and how to read it.</p>
+    <span class="go">Learn more ↓</span>
+  </a>
+</div>
+
+<!-- =========================== Explorative GIS =========================== -->
+<div id="explorative" class="section-head" style="margin-top: var(--sp-6);">
+  <h2>Explorative GIS</h2>
+  <span class="rule"></span>
+</div>
+<p class="lead">Explore places, territories and data freely on interactive maps with a
+  time-slider. Each mapping application centers on exploring one type of items but also
+  contains many other contextual layers. Pop-ups give more information and point you to
+  the encyclopedia page of the place or territory.</p>
+
+<div class="card-grid trio">
+  <div class="card">
+    <img class="card-illus" src="{{ url_for('static', filename='images/cards/card_settlements.png') }}" alt="">
+    <h3>Settlements</h3>
+    <p>Focus on settlements and settlement types. Use the time-slider to explore how
+      colonial settlements evolved over time.</p>
+  </div>
+  <div class="card">
+    <img class="card-illus" src="{{ url_for('static', filename='images/cards/card_territories.png') }}" alt="">
+    <h3>Territories</h3>
+    <p>Focus on colonial provinces, capitals, indigenous territories, and treaty lines.
+      Use the time-slider to explore reforms, colonial advances and retractions.</p>
+  </div>
+  <div class="card">
+    <img class="card-illus" src="{{ url_for('static', filename='images/cards/card_church.png') }}" alt="">
+    <h3>Church</h3>
+    <p>Focus on parishes, missions, diocesan territories and the presence of religious
+      orders.</p>
+  </div>
+</div>
+
+<div class="section-head" style="margin-top: var(--sp-4);">
+  <h3>Economy and Infrastructure</h3>
+  <span class="rule"></span>
+</div>
+<div class="card-grid trio">
+  <div class="card">
+    <img class="card-illus" src="{{ url_for('static', filename='images/cards/card_mining.png') }}" alt="">
+    <h3>Mining</h3>
+    <p>Focus on places and special administrations created for mining. Explore the
+      registered silver production by the various treasuries of New Spain and Peru.</p>
+  </div>
+  <div class="card">
+    <img class="card-illus" src="{{ url_for('static', filename='images/cards/card_communications.png') }}" alt="">
+    <h3>Communications</h3>
+    <p>Explore the development of land and sea mail routes and offices, the fleet and
+      galleon convoys, the licensed trade ports, and more.</p>
+  </div>
+  <div class="card">
+    <img class="card-illus" src="{{ url_for('static', filename='images/cards/card_population.png') }}" alt="">
+    <h3>Population</h3>
+    <p>Explore the demographic data so far compiled by HGIS de las Indias. This data has
+      been collected along the route; we are most eager to incorporate datasets filling
+      the huge gaps in coverage.</p>
+  </div>
+</div>
+
+<div class="section-head" style="margin-top: var(--sp-4);">
+  <h3>Extract</h3>
+  <span class="rule"></span>
+</div>
+<div class="card-grid trio">
+  <div class="card">
+    <img class="card-illus" src="{{ url_for('static', filename='images/cards/card_filter_extract.png') }}" alt="">
+    <h3>Filter and Extract</h3>
+    <p>An interface designed to filter and extract records from our database. Looking for
+      “all parishes in Chile by 1800”? This is where you go.</p>
+  </div>
+</div>
+
+<!-- =========================== Urban GIS =========================== -->
+<div id="urban" class="section-head" style="margin-top: var(--sp-6);">
+  <h2>Urban GIS</h2>
+  <span class="rule"></span>
+</div>
+<p class="lead">Dive into detailed, interactive city plans of colonial capitals — streets,
+  churches, and everyday places reconstructed from historical sources.</p>
+  <br/>
+
+<div class="card-grid trio">
+  <div class="card">
+    <img class="card-illus" src="{{ url_for('static', filename='images/cards/card_urban_mexico.png') }}" alt="">
+    <h3>Colonial Mexico City</h3>
+    <p>An interactive city plan of late colonial Mexico City. Mostly based on a 1793 city
+      plan, it also includes a variety of other sources ca 1760–1808. Check out street
+      names, churches, pulque-bars, canals, and much more.</p>
+  </div>
+
+  <div class="card card-soon">
+    <img class="card-illus" src="{{ url_for('static', filename='images/cards/card_urban_lima.png') }}" alt="">
+    <span class="card-badge">Under construction</span>
+    <h3>Colonial Lima</h3>
+  </div>
+
+  <div class="card card-soon">
+    <img class="card-illus" src="{{ url_for('static', filename='images/cards/card_urban_buenos_aires.png') }}" alt="">
+    <span class="card-badge">Under construction</span>
+    <h3>Colonial Buenos Aires</h3>
+  </div>
+
+  <div class="card card-soon">
+    <img class="card-illus" src="{{ url_for('static', filename='images/cards/card_urban_bogota.png') }}" alt="">
+    <span class="card-badge">Under construction</span>
+    <h3>Colonial Bogotá</h3>
+  </div>
+</div>
+
+<!-- =========================== Narrative Maps =========================== -->
+<div id="narrative" class="section-head" style="margin-top: var(--sp-6);">
+  <h2>Narrative Maps</h2>
+  <span class="rule"></span>
+</div>
+<p class="lead">Explore stories on historical topics and events — map-driven narratives
+  that unfold across space and time.</p>
+
+<div class="card-grid trio">
+  <a class="card" href="https://ehess.maps.arcgis.com/home/item.html?id=9463ab75e5354fd28d1eb97aaaa887da#overview"
+     target="_blank" rel="noopener">
+    <img class="card-illus" src="{{ url_for('static', filename='images/cards/card_apps_balmis.png') }}" alt="">
+    <span class="eyebrow">Two Tales of an Expedition</span>
+    <h3>The Royal Philanthropic Vaccination Expedition, 1803–1810</h3>
+    <p>Read two versions on the monumental efforts to vaccinate the population of Spanish
+      America against smallpox in the early 19th century, following the routes of the
+      royal expedition tasked with bringing the vaccines to every corner of the empire.</p>
+    <span class="go">Open the story ↗</span>
+  </a>
+
+  <div class="card card-soon">
+    <img class="card-illus" src="{{ url_for('static', filename='images/cards/card_apps_malaspina.png') }}" alt="">
+    <span class="card-badge">Under construction</span>
+    <h3>The Royal Botanical Expedition by Malaspina</h3>
+    <p>A spatial narrative following the Malaspina expedition and its botanical survey of
+      the Spanish Pacific and the Americas.</p>
+  </div>
+
+  <div class="card card-soon">
+    <img class="card-illus" src="{{ url_for('static', filename='images/cards/card_apps_visita_arostegui.png') }}" alt="">
+    <span class="card-badge">Under construction</span>
+    <h3>Counting and describing</h3>
+    <p>The inspection visit of Santa Fe province by Joaquín de Aróstegui, 1760.</p>
+  </div>
+
+  <div class="card card-soon">
+    <img class="card-illus" src="{{ url_for('static', filename='images/cards/card_apps_limits.png') }}" alt="">
+    <span class="card-badge">Under construction</span>
+    <h3>Establishing sovereignty</h3>
+    <p>Spanish treaties with other European and indigenous nations, and their foundations.</p>
+  </div>
+
+  <a class="card card-soon" href="{{ url_for('team') }}" style="opacity:.85;">
+    <img class="card-illus" src="{{ url_for('static', filename='images/cards/card_apps_ideas.png') }}" alt="">
+    <span class="card-badge">Your idea?</span>
+    <h3>Ideas for a spatial narrative?</h3>
+    <p>Have a story that would come alive on a map? Get in touch — we'd love to build it
+      with you.</p>
+    <span class="go">Contact us →</span>
+  </a>
+</div>
+
+<!-- =========================== Guided Tours =========================== -->
+<div id="guided" class="section-head" style="margin-top: var(--sp-6);">
+  <h2>Guided Tours</h2>
+  <span class="rule"></span>
+</div>
+<div class="notice">
+  <p>Guided walkthroughs that introduce the atlas, its sources, and how to read it are
+    <strong>in development</strong>. Check back soon.</p>
+</div>
+{% endblock %}

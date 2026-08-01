@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Territory matching — {{ prefix }}</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; margin: 0; background: #f4f5f7; color: #222; }
+    .topbar { display: flex; align-items: center; gap: 1em; padding: 0.55em 1.2em; background: #fff; border-bottom: 1px solid #ddd; position: sticky; top: 0; z-index: 1000; }
+    .topbar h1 { font-size: 1.05em; margin: 0; }
+    .topbar .prefix { color: #666; font-size: 0.85em; }
+    .progress-wrap { flex: 1; }
+    .progress-bar { height: 8px; background: #e3e6ea; border-radius: 4px; overflow: hidden; }
+    .progress-fill { height: 100%; background: #0056b3; }
+    .progress-text { font-size: 0.78em; color: #555; margin-top: 2px; }
+    .topbar a { color: #0056b3; text-decoration: none; font-size: 0.88em; }
+
+    .layout { display: flex; height: calc(100vh - 50px); }
+    .left { width: 48%; min-width: 380px; overflow-y: auto; padding: 1em 1.2em; }
+    .right { flex: 1; position: relative; }
+    #map { width: 100%; height: 100%; }
+
+    .ref-card { background: #eef3fb; border: 1px solid #cfddf2; border-radius: 6px; padding: 0.8em 1em; margin-bottom: 0.9em; }
+    .ref-card h2 { margin: 0 0 0.3em; font-size: 1.25em; }
+    .chips { display: flex; flex-wrap: wrap; gap: 0.35em; }
+    .chip { background: #fff; border: 1px solid #cfddf2; border-radius: 12px; padding: 1px 9px; font-size: 0.8em; color: #334; }
+    .chip b { color: #06c; font-weight: 600; }
+
+    .lookup-row { display: flex; gap: 0.4em; margin: 0 0 0.9em; }
+    .lookup-row input[type="text"] { flex: 1; padding: 5px 8px; font-size: 0.9em; border: 1px solid #ccc; border-radius: 4px; }
+    .btn { font-size: 0.9em; padding: 0.5em 1em; border-radius: 5px; border: 1px solid #bbb; cursor: pointer; background: #fff; text-decoration: none; color: #222; }
+    .btn-id { border-color: #0056b3; color: #0056b3; }
+
+    .constraints { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3em 0.9em; background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; padding: 0.5em 0.7em; margin-bottom: 0.7em; font-size: 0.82em; }
+    .constraints .clabel { color: #666; font-weight: 600; }
+    .constraints label { white-space: nowrap; }
+    .relaxed { font-size: 0.82em; color: #7a4a00; background: #fff5e0; border: 1px solid #f0c080; border-radius: 5px; padding: 0.4em 0.7em; margin: 0 0 0.7em; }
+    .hint { font-size: 0.82em; color: #777; margin: 0 0 0.6em; }
+    .ent { border: 1px solid #ddd; border-left: 5px solid #0082c8; border-radius: 6px; background: #fff; margin-bottom: 0.6em; padding: 0.55em 0.85em; }
+    .ent .head { display: flex; align-items: baseline; gap: 0.5em; }
+    .ent .title { font-weight: 600; font-size: 1.0em; }
+    .ent .eid { color: #888; font-size: 0.78em; font-family: monospace; }
+    .ent .score { margin-left: auto; background: #0056b3; color: #fff; border-radius: 3px; padding: 0 6px; font-size: 0.78em; }
+    .levels { margin-top: 0.45em; display: flex; flex-wrap: wrap; gap: 0.35em; }
+    .lvl { border: 1px solid #cbd6e2; border-radius: 6px; padding: 0.25em 0.55em; font-size: 0.83em; cursor: pointer; background: #f7fafd; }
+    .lvl input { margin-right: 4px; }
+    .lvl.sel { background: #e4f6e4; border-color: #9ad29a; }
+    .lvl .tipos { color: #888; font-size: 0.76em; }
+    .lvl .range { color: #06788a; font-size: 0.76em; font-weight: 600; }
+
+    .actionbar { position: sticky; bottom: 0; background: #fff; border-top: 1px solid #ddd; padding: 0.6em 0; display: flex; gap: 0.5em; flex-wrap: wrap; align-items: center; margin: 0.6em -1.2em 0; padding-left: 1.2em; padding-right: 1.2em; }
+    .btn-primary { background: #157a2b; color: #fff; border-color: #157a2b; }
+    .btn-reject { background: #fff; color: #a00; border-color: #d99; }
+    .nav-links { margin-left: auto; font-size: 0.85em; }
+    .empty { color: #777; font-style: italic; }
+    .maphint { position: absolute; top: 8px; left: 8px; z-index: 500; background: rgba(255,255,255,.9); border: 1px solid #ccc; border-radius: 4px; padding: 3px 8px; font-size: 0.8em; color: #555; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <h1>Territory matching <span class="prefix">{{ prefix }}</span></h1>
+    <div class="progress-wrap">
+      <div class="progress-bar"><div class="progress-fill" style="width: {{ ((done)/total*100)|round(1) if total else 0 }}%"></div></div>
+      <div class="progress-text">{{ done }} of {{ total }} resolved · {{ remaining }} left · rowID {{ row_id }}</div>
+    </div>
+    <a href="{{ url_for('matching.index', prefix=prefix) }}">← Exit</a>
+  </div>
+
+  <div class="layout">
+    <div class="left">
+      <div class="ref-card">
+        <h2>{{ ref_label }}</h2>
+        <div class="chips">
+          {% if start or end %}<span class="chip"><b>Period</b> {{ start or '?' }}–{{ end or '?' }}</span>{% endif %}
+          {% for k, v in ref_info.items() %}<span class="chip"><b>{{ k.replace('ref_','') }}</b> {{ v }}</span>{% endfor %}
+        </div>
+      </div>
+
+      <form method="GET" action="{{ url_for('matching.territory_match', prefix=prefix) }}">
+        <input type="hidden" name="idx" value="{{ idx }}">
+        {% if off.nivel %}<input type="hidden" name="no_nivel" value="1">{% endif %}
+        {% if off.prov %}<input type="hidden" name="no_prov" value="1">{% endif %}
+        {% if off.region %}<input type="hidden" name="no_region" value="1">{% endif %}
+        {% if off.chrono %}<input type="hidden" name="no_chrono" value="1">{% endif %}
+        <div class="lookup-row">
+          <input type="text" name="q" value="{{ lookup }}" placeholder="Look up a territory by another name…">
+          <button type="submit" class="btn btn-id">Search</button>
+          {% if lookup %}<a class="btn" href="{{ url_for('matching.territory_match', prefix=prefix, idx=idx) }}">✕</a>{% endif %}
+        </div>
+      </form>
+
+      {% if avail.nivel or avail.prov or avail.region or avail.chrono %}
+      <form method="GET" action="{{ url_for('matching.territory_match', prefix=prefix) }}" id="cForm" class="constraints">
+        <input type="hidden" name="idx" value="{{ idx }}">
+        <input type="hidden" name="q" value="{{ lookup }}">
+        <span class="clabel">Constraints — check to drop:</span>
+        {% if avail.nivel %}<label><input type="checkbox" name="no_nivel" value="1" {{ 'checked' if off.nivel }}> Level: {{ in_nivel }}</label>{% endif %}
+        {% if avail.prov %}<label><input type="checkbox" name="no_prov" value="1" {{ 'checked' if off.prov }}> Province: {{ in_prov }}</label>{% endif %}
+        {% if avail.region %}<label><input type="checkbox" name="no_region" value="1" {{ 'checked' if off.region }}> Region: {{ in_region }}</label>{% endif %}
+        {% if avail.chrono %}<label><input type="checkbox" name="no_chrono" value="1" {{ 'checked' if off.chrono }}> Chronology: {{ start }}–{{ end }}</label>{% endif %}
+      </form>
+      {% endif %}
+      {% if auto_relaxed %}<p class="relaxed">⚠ No candidates with all constraints — automatically dropped: <b>{{ auto_relaxed|join(', ') }}</b>.</p>{% endif %}
+
+      <form method="POST" action="{{ url_for('matching.territory_match', prefix=prefix) }}" id="tForm">
+        <input type="hidden" name="row_id" value="{{ row_id }}">
+        <input type="hidden" name="idx" value="{{ idx }}">
+        <input type="hidden" name="q" value="{{ lookup }}">
+        <input type="hidden" name="action" id="actionInput" value="">
+
+        {% if candidates %}
+          <p class="hint">Pick the matching <b>entity</b> and the <b>level / spatial footprint</b> — it shows on the map.</p>
+          {% for c in candidates %}
+            <div class="ent">
+              <div class="head">
+                <span class="title">{{ c.label }}{% if c.nombre and c.nombre != c.label %} — {{ c.nombre }}{% endif %}</span>
+                <span class="eid">{{ c.entidad_id }}</span>
+                <span class="score">{{ c.score }}</span>
+              </div>
+              <div class="levels">
+                {% for lv in c.levels %}
+                  {% set is_presel = (lv.pick == presel_pick) %}
+                  <label class="lvl {{ 'sel' if is_presel }}">
+                    <input type="radio" name="pick" value="{{ lv.pick }}"
+                           data-eid="{{ c.entidad_id }}" data-nivel="{{ lv.nivel }}"
+                           data-start="{{ lv.start if lv.start is not none else '' }}"
+                           data-end="{{ lv.end if lv.end is not none else '' }}"
+                           {{ 'checked' if is_presel }}>
+                    {{ lv.nivel }}{% if lv.tipo %} <span class="tipos">({{ lv.tipo }})</span>{% endif %}{% if lv.start or lv.end %} <span class="range">{{ lv.start or '?' }}–{{ lv.end or '?' }}</span>{% endif %}
+                  </label>
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p class="empty">No entities matched this name in the chronology. Try the lookup box, or reject / skip.</p>
+        {% endif %}
+
+        <div class="actionbar">
+          <button type="button" class="btn btn-primary" id="btnAdopt">✓ Adopt selected</button>
+          <button type="button" class="btn btn-reject" id="btnReject">✗ No match</button>
+          <button type="button" class="btn" id="btnSkip">→ Skip</button>
+          <span class="nav-links">
+            {% if idx > 0 %}<a href="{{ url_for('matching.territory_match', prefix=prefix, idx=idx-1, q=lookup or none) }}">← back</a>{% endif %}
+          </span>
+        </div>
+      </form>
+    </div>
+
+    <div class="right">
+      <div id="map"></div>
+      <div class="maphint" id="mapHint">Select a level to show its footprint</div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    const PREFIX = {{ prefix|tojson }};
+    const START = {{ start|tojson }};
+    const END = {{ end|tojson }};
+    const GEO_URL = "{{ url_for('matching.territory_geojson', prefix=prefix) }}";
+
+    const map = L.map('map', { scrollWheelZoom: true }).setView([-8, -72], 3);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '© OpenStreetMap' }).addTo(map);
+
+    let footprint = null;
+    const hint = document.getElementById('mapHint');
+
+    function showFootprint(eid, nivel, st, en) {
+      hint.textContent = 'Loading footprint…';
+      const params = new URLSearchParams({ ids: eid });
+      if (nivel) params.set('nivel', nivel);
+      // Prefer the chosen slice's date range; fall back to the row's period.
+      const s = (st !== undefined && st !== '') ? st : START;
+      const e = (en !== undefined && en !== '') ? en : END;
+      if (s != null && s !== '') params.set('start', s);
+      if (e != null && e !== '') params.set('end', e);
+      fetch(GEO_URL + '?' + params.toString())
+        .then(r => r.json())
+        .then(gj => {
+          if (footprint) { map.removeLayer(footprint); footprint = null; }
+          if (!gj.features || !gj.features.length) { hint.textContent = 'No footprint for this entity/level.'; return; }
+          footprint = L.geoJSON(gj, { style: { color: '#157a2b', weight: 2, fillColor: '#2ecc40', fillOpacity: 0.30 } }).addTo(map);
+          try { map.fitBounds(footprint.getBounds(), { padding: [25, 25] }); } catch (e) {}
+          hint.textContent = eid + (nivel ? ' · ' + nivel : '');
+        })
+        .catch(() => { hint.textContent = 'Failed to load footprint.'; });
+    }
+
+    document.querySelectorAll('.lvl input[type=radio]').forEach(r => {
+      r.addEventListener('change', () => {
+        document.querySelectorAll('.lvl').forEach(l => l.classList.remove('sel'));
+        if (r.checked) {
+          r.closest('.lvl').classList.add('sel');
+          showFootprint(r.dataset.eid, r.dataset.nivel, r.dataset.start, r.dataset.end);
+        }
+      });
+    });
+
+    // Auto-submit the constraint toggles.
+    const cForm = document.getElementById('cForm');
+    if (cForm) {
+      cForm.querySelectorAll('input[type=checkbox]').forEach(cb =>
+        cb.addEventListener('change', () => cForm.submit()));
+    }
+
+    // If a level was preselected (matching input Nivel), show its footprint now.
+    const presel = document.querySelector('.lvl input[type=radio]:checked');
+    if (presel) showFootprint(presel.dataset.eid, presel.dataset.nivel, presel.dataset.start, presel.dataset.end);
+
+    const form = document.getElementById('tForm');
+    const actionInput = document.getElementById('actionInput');
+    document.getElementById('btnAdopt').addEventListener('click', () => {
+      if (!document.querySelector('.lvl input:checked')) { alert('Select an entity and level first.'); return; }
+      actionInput.value = 'adopt'; form.submit();
+    });
+    document.getElementById('btnReject').addEventListener('click', () => { actionInput.value = 'reject'; form.submit(); });
+    document.getElementById('btnSkip').addEventListener('click', () => { actionInput.value = 'skip'; form.submit(); });
+  </script>
+</body>
+</html>

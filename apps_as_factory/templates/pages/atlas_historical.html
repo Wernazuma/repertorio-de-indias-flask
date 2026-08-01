@@ -1,0 +1,271 @@
+{% extends "base.html" %}
+{% set active = 'atlas' %}
+{% block title %}Historical Methodology — HGIS de las Indias — ARCA{% endblock %}
+
+{% block content %}
+<div class="hero">
+  <span class="eyebrow">Atlas · Methodology</span>
+  <h1>Historical Methodology</h1>
+  <p class="lead">The historical reconstruction navigates the deep disconnect between
+    modern cartography and territorial concepts and the vernacular logics of the 18th century.
+    Rather than imposing an anachronistic “correct” map onto the past or complicating the model
+    in order to represent all conflicting perspectives, HGIS de las Indias aims at offering a 
+    sensible version that allows to represent historical data reliably.</p>
+</div>
+
+<div class="prose">
+  <p>The project adopts a <b>“not contradicted” logic</b>. It recognises that colonial
+    space was defined by multiple, often overlapping jurisdictions and inherently
+    metamorphic definitions — “the province ends in the mountains of the infidels” —
+    rather than a single positivistic ground-truth.</p>
+
+  <p>This approach is especially necessary given the complications of <i>uti possidetis juris</i>,
+    the principle by which modern nation-states claim sovereignty based on colonial
+    administrative limits as they supposedly stood in 1810. To avoid becoming entangled
+    in these often contradictory national interpretations and their associated
+    <b>“phantom borders”</b>, the project's temporal scope is purposefully capped at
+    <b>1808</b>. By ending just before the struggles for independence, the
+    infrastructure avoids being pinned to having made a definitive statement on the contested
+    status quo of 1810 — acknowledging that basing rigid modern sovereign territories on
+    colonial territoriality is a cause for perpetuated disputes — regardless of the quality of
+    sources or argument used in the endeavor.</p>
+
+  <p>The sections below detail how these fluid historical realities are translated into
+    a structured digital infrastructure.</p>
+</div>
+
+<nav class="toc" aria-label="On this page">
+  <h2>On this page</h2>
+  <ol>
+    <li><a href="#vernacular">Honouring vernacular concepts</a></li>
+    <li><a href="#workflow">Workflow: from modern municipalities to historical limits</a></li>
+    <li><a href="#axioms">The axioms of chronology and reform</a></li>
+    <li><a href="#contradictions">Resolving and “explaining away” contradictions</a></li>
+  </ol>
+</nav>
+
+<!-- 1 ---------------------------------------------------------------->
+<div class="section-head" id="vernacular">
+  <h2>1. Understanding colonial space</h2>
+  <span class="rule"></span>
+</div>
+<div class="prose">
+  <p>A single entity — “Province X” — could have different spatial footprints depending
+    on whether one discussed civil, military, ecclesiastical, or fiscal matters. To
+    account for these oscillating mental concepts, the project reconstructs space across
+    <b>13 hierarchical levels</b> (see the
+    <a href="{{ url_for('atlas_page', slug='technical-methodology') }}">technical
+    methodology</a> for how these are modelled).</p>
+
+  <p>This lets the system represent the Viceroyalty of Peru in its “broad” and often
+    vague definition — including the autonomous kingdoms of Chile and New Granada or
+    completely unknown spaces east of the Andes — at the highest level,
+    while simultaneously showing its narrower, effective administrative core at
+    the “principal divisions” level. A statistic on the "import of goods into viceroyalty 
+    tof Peru" will verly likely not include Chile. Likewise, the Province of
+    Mexico can be shown including or excluding various subordinated autonomous
+    governments and fiefdoms, such as the <i>Marquesado del Valle</i>. By keeping these
+    definitions separate yet related, the HGIS respects the vernacular logic in which
+    boundaries were defined by administrative <b>penetration</b> rather than fixed lines.</p>
+</div>
+
+<figure class="figure">
+  <div class="fig-slot">
+    <b>Suggested figure 1</b>
+    A single region (e.g. the Province of Mexico) drawn <b>four times</b> in a small
+    grid — civil, military, ecclesiastical, fiscal — with the footprint visibly
+    different each time (the <i>Marquesado del Valle</i> in or out). One entity, four
+    concepts: the case for 13 levels made in a glance.
+  </div>
+  <figcaption>Fig. 1 — One province, several footprints, depending on the branch of administration.</figcaption>
+</figure>
+
+<figure class="figure">
+  <div class="fig-slot">
+    <b>Suggested figure 2</b>
+    Peru “broad” vs. “narrow”: two maps, the first sweeping in Chile and New Granada,
+    the second only the effective core — with a soft, gradient edge on the broad version
+    to render “administrative penetration” rather than a hard line.
+  </div>
+  <figcaption>Fig. 2 — Boundaries as penetration, not lines: the broad vs. effective Viceroyalty of Peru.</figcaption>
+</figure>
+
+<!-- 2 ---------------------------------------------------------------->
+<div class="section-head" id="workflow">
+  <h2>2. Territorial reconstruction: from modern municipalities to historical limits</h2>
+  <span class="rule"></span>
+</div>
+<div class="prose">
+  <p>Boundary reconstruction followed a systematic, iterative process that moves from the
+    known modern geography to the interpreted historical one:</p>
+  <ul>
+    <li><b>Initial assignment via modern municipalities.</b> The process begins by
+      identifying the historical towns (<i>pueblos</i>) listed for each jurisdiction in
+      primary sources such as Cosme Bueno or Dorothy Tanck de Estrada. These places are
+      georeferenced and their affiliations compared to the modern municipal territories
+      of nations like Mexico or Peru. Without evidence to the contrary, a modern
+      municipality is assumed to have fallen in a given colonial jurisdiction if its
+      constituent towns shared that affiliation.</li>
+    <li><b>Resolving split municipalities.</b> Where two settlements within a single
+      modern municipality belonged to different historical jurisdictions, the modern
+      boundary is discarded in favour of the historical evidence.</li>
+    <li><b>Source-based limit finding.</b> Textual descriptions and cartographic material
+      correct the initial “sum-of-municipalities” logic where mountain ranges, rivers, or
+      other boundary markers are clearly indicated. Even here, administrative reality
+      trumps descriptive definition: if a province ran east <i>until a river</i>, but a
+      town on the east bank was administered by that province, the town is counted as
+      part of it.</li>
+    <li><b>Heuristic limit finding.</b> We searched textual descriptions and
+      manuscript maps for clues to otherwise-undocumented limits — a mountain ridge, a
+      river, a compass direction. In the Puno region, for instance, the “inner frontier”
+      was reconstructed by drawing a heuristic line where the highlands end and the
+      Amazonian lowlands begin.</li>
+    <li><b>Comparing place lists and archival material.</b> The methodology relies
+      heavily on comparing place lists across moments in time. By tracking when a
+      settlement appears or disappears from a jurisdiction's census or tax roll,
+      we pinpoint spatial shifts; appointments of officials
+      (<i>nombramientos</i>) fill gaps when jurisdictions were combined or separated.</li>
+  </ul>
+</div>
+
+<figure class="figure">
+  <div class="fig-slot">
+    <b>Suggested figure 3</b>
+    The reconstruction pipeline as a numbered map sequence over one real area:
+    (1) georeferenced <i>pueblos</i> as dots; (2) modern municipalities filled by
+    inferred affiliation; (3) a split municipality re-cut along historical evidence;
+    (4) a source-based river/ridge limit drawn in; (5) the final reconstructed
+    jurisdiction. Same frame throughout, so the reader sees the interpretation accrue.
+  </div>
+  <figcaption>Fig. 3 — From dots to jurisdiction: the five reconstruction steps on one map.</figcaption>
+</figure>
+
+<figure class="figure">
+  <div class="fig-slot">
+    <b>Suggested figure 4</b>
+    The “administration trumps description” rule: a province drawn to a river, with one
+    town on the far bank pulled inside the boundary — an arrow and short caption showing
+    the line bending around it. The single clearest illustration of the project's
+    interpretive priority.
+  </div>
+  <figcaption>Fig. 4 — When the river says one thing and the tax roll another, the tax roll wins.</figcaption>
+</figure>
+
+<figure class="figure">
+  <div class="fig-slot">
+    <b>Suggested figure 5</b>
+    The Puno “inner frontier” heuristic: a terrain/hillshade base with the reconstructed
+    line following the highland–lowland break toward Amazonia. A real, evocative example
+    of heuristic limit finding.
+  </div>
+  <figcaption>Fig. 5 — A heuristic frontier: Puno, where the Andes fall to the lowlands.</figcaption>
+</figure>
+
+<!-- 3 ---------------------------------------------------------------->
+<div class="section-head" id="locating">
+  <h2>3. Locating places</h2>
+  <span class="rule"></span>
+</div>
+<div class="prose">
+  <p>Searching for the location/coordinates of the historical places was one of the main 
+  tasks in the day-to-day work of the project. To locate places consistently, we had to 
+  establish the theoretically “perfect” location for these places and a workable solution 
+  for the cases where it could not be established or where we did not invest the time to do so.</p>
+  <ul>
+    <li>The exact location should be the (main) colonial church or the plaza de armas of an 
+    organized settlement, the seignorial building for haciendas and estancias, any historical 
+    nucleus of buildings for less organized settlements.</li>
+    <li>When importing locations from other databases (Tanck de Estrada, Geonames...), use 
+    that location unless a special occasion allows/requires  checking.</li>
+    <li>Use satellite maps and modern gazetteers as preferred sources, move to locations 
+    derived from research texts and maps next, and resort to historical maps/descriptions 
+    only where necessary to establish a location. </li>
+    <li>However, if historical documents suggest an error in identity or a relocation 
+    of the settlement center, verify and decide accordingly.</li>
+    <li>When a place was located but the identity of a located place is in doubt, flag it. 
+    This often happens with minor places that only have a saint name.</li>
+    <li>If a place cannot be located, use dummy coordinates near the closest known place – usually 
+    the associated parish or province capital.</li>
+  </ul>
+</div>
+<!-- 4 ---------------------------------------------------------------->
+<div class="section-head" id="contradictions">
+  <h2>4. Resolving contradictions</h2>
+  <span class="rule"></span>
+</div>
+<div class="prose">
+  <p>Sources frequently contradict one another, especially over the assignment of a
+    specific place to a province. The project resolves such contradictions through
+    several strategies:</p>
+  <ul>
+    <li><b>Identifying institutional specificity.</b> Often a place was assigned to a
+      province for one administrative branch only — tribute collection, taxes, or
+      ecclesiastical oversight — while remaining under a different civil jurisdiction.
+      These are not “errors” but reflections of the multi-layered colonial state, which
+      the project captures by assigning the place differently across its 13 levels.</li>
+    <li><b>Accounting for “distant” sources.</b> Many mistakes were made by contemporaries
+      themselves, particularly in “distant” sources — maps or descriptions produced by
+      someone in a colonial metropolis or in Spain, unfamiliar with daily administration
+      or the geography on the ground. Such a source might place a settlement in the
+      “<i>province of Paraguay</i>” because it lay in the <i>Jesuit</i> province of
+      Paraguay, ignorant that the two do not coincide at all.</li>
+    <li><b>The “unfalsified interpretation” standard.</b> The database does not claim to
+      be a positivistic ground-truth; it is a <b>not-falsified interpretation</b>. By
+      linking every piece of information to a Source ID, the project stays transparent
+      about provenance, letting peers see which document led to a specific cartographic
+      decision.</li>
+  </ul>
+</div>
+
+<figure class="figure">
+  <div class="fig-slot">
+    <b>Suggested figure 6</b>
+    The “distant source” error, mapped: the Jesuit Province of Paraguay and the civil
+    Province of Paraguay overlaid, barely overlapping, with a metropolitan source's
+    mistaken assignment shown as a mislabelled dot. Turns an abstract caution into a
+    concrete, memorable example.
+  </div>
+  <figcaption>Fig. 6 — Two “Paraguays”: why a source's error is itself a datum.</figcaption>
+</figure>
+
+<figure class="figure">
+  <div class="fig-slot">
+    <b>Suggested figure 7</b>
+    A worked “contradiction card”: one contested town, two sources disagreeing on its
+    province, resolved by splitting the assignment across levels (civil vs. fiscal) —
+    each decision stamped with its Source ID. Makes the “not-falsified, fully sourced”
+    principle tangible.
+  </div>
+  <figcaption>Fig. 7 — A contradiction resolved across levels, with provenance attached.</figcaption>
+</figure>
+<!-- 5 ---------------------------------------------------------------->
+<div class="section-head" id="axioms">
+  <h2>5. Logics for resolving ambiguity</h2>
+  <span class="rule"></span>
+</div>
+<div class="prose">
+  <p>To keep the reconstruction consistent and usable, modelling the whole range of ambiguity and 
+uncertainties cannot be the goal of this infrastructure project. It is, however, necessary, that 
+the project follows consistent axioms when certain "arbitrary" decisions must be made, and includes 
+a reduced set of uncertainty markers within the raw tables. Even when these are lost by combining 
+information in the technical workflow, they remain accessible at least in the raw tables.
+    These include:</p>
+  <ul>
+    <li><b>Practice trumps decree.</b> When a territorial change is documented, the date
+      an official actually took office or a reform was implemented is preferred over the
+      date of the legal decree. Many colonial decrees were never enacted, or were delayed
+      for years; many changes were decided <i>in situ</i> and ad hoc, without producing
+      any decree at all. The axiom ensures the map reflects “effective control” rather
+      than “metropolitan dreams”.</li>
+    <li><b>Continuity and stability.</b> If an information element is identical at two
+      consecutive moments, it is assumed stable in between. The earliest known state is
+      extrapolated back to the start of the project period (1701) and the last known
+      state forward to its end (1808), unless there is clear reason to choose a different
+      date.</li>
+  </ul>
+</div>
+
+<p style="margin-top: var(--sp-5);">
+  <a href="{{ url_for('atlas') }}">← Back to HGIS de las Indias</a>
+</p>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "enc_base.html" %}
+
+{%- set src = lemma or row -%}
+{%- set display = (src['term-en'] if src and lang == 'en' and src['term-en'] else (src['termino-es'] if src else term_display)) -%}
+{% macro tlink(rel) -%}
+  <a href="/apps/enciclopedia/tesauro/{{ rel['termino-es'] | replace(' ', '_') }}">{{ rel['term-en'] if lang == 'en' and rel['term-en'] else rel['termino-es'] }}</a>
+{%- endmacro %}
+
+{% block title %}{{ display }}{% endblock %}
+{% block header_h1 %}{{ display }}{% endblock %}
+
+{% block enc_head %}
+<script>
+  function includeHTML() {
+    var z = document.getElementsByTagName("*");
+    for (var i = 0; i < z.length; i++) {
+      var elmnt = z[i];
+      var file = elmnt.getAttribute("w3-include-html");
+      if (file) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+          if (this.readyState == 4) {
+            if (this.status == 200) { elmnt.innerHTML = this.responseText; }
+            if (this.status == 404) { elmnt.innerHTML = "Page not found."; }
+            elmnt.removeAttribute("w3-include-html");
+            includeHTML();
+          }
+        };
+        xhttp.open("GET", file, true);
+        xhttp.send();
+        return;
+      }
+    }
+  }
+  document.addEventListener("DOMContentLoaded", includeHTML);
+</script>
+{% endblock %}
+
+{% block enc_content %}
+<div class="tesauro-nav" style="font-size: small;">
+  <p>
+    {% if parent %}{{ tlink(parent) }} &rsaquo; {% endif %}
+    <strong>{{ display }}</strong>
+    {% if children %} &rsaquo;
+      {% for ch in children %}{{ tlink(ch) }}{% if not loop.last %}, {% endif %}{% endfor %}
+    {% endif %}
+  </p>
+  <p>{{ t('related_terms') }}:
+    {% for rel in related %}{{ tlink(rel) }}{% if not loop.last %}, {% endif %}{% endfor %}
+  </p>
+</div>
+
+{% if article_exists %}
+  <hr/>
+  {% if lang == 'en' %}
+  <p class="lang-hint" style="font-size: var(--step--1); color: var(--muted, #777);
+     background: var(--surface-2, rgba(0,0,0,.03)); border-left: 3px solid var(--accent, #999);
+     padding: .5rem .75rem; border-radius: 6px; margin: 0 0 var(--sp-3);">{{ t('spanish_only_hint') }}</p>
+  {% endif %}
+  <div w3-include-html="{{ url_for('enciclopedia.tesauro_article', filename=term_slug ~ '.html') }}"></div>
+{% endif %}
+{% endblock %}
+
+{% block right_block %}{% endblock %}

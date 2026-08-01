@@ -1,0 +1,276 @@
+TYPE;ref_Label;Partido;Column3;ref_Jurisdiccion;rowID;ref_START;ref_END
+Ciudad;Tlaxcala;Tlaxcala;;Tlaxcala;1;1111;9999
+Pueblo;San Diego;Tlaxcala;;Tlaxcala;2;1111;9999
+Pueblo;San Lucas;Tlaxcala;;Tlaxcala;3;1111;9999
+Pueblo;Acuitlapilco;Tlaxcala;;Tlaxcala;4;1111;9999
+Pueblo;San Sebastián;Tlaxcala;;Tlaxcala;5;1111;9999
+Pueblo;Yxtulco;Tlaxcala;;Tlaxcala;6;1111;9999
+Pueblo;Panotla;Tlaxcala;;Tlaxcala;7;1111;9999
+Pueblo;San Esteban;Tlaxcala;;Tlaxcala;8;1111;9999
+Pueblo;La Candelaria;Tlaxcala;;Tlaxcala;9;1111;9999
+Pueblo;Santiago;Tlaxcala;;Tlaxcala;10;1111;9999
+Pueblo;Acxotla;Tlaxcala;;Tlaxcala;11;1111;9999
+Pueblo;Ocozelulco;Tlaxcala;;Tlaxcala;12;1111;9999
+Pueblo;San Miguel;Tlaxcala;;Tlaxcala;13;1111;9999
+Pueblo;San Juan Totola;Tlaxcala;;Tlaxcala;14;1111;9999
+Pueblo;San Ambrocio;Tlaxcala;;Tlaxcala;15;1111;9999
+Pueblo;Los Reyes;Tlaxcala;;Tlaxcala;16;1111;9999
+Pueblo;Las Nieves;Tlaxcala;;Tlaxcala;17;1111;9999
+Pueblo;La Trenidad;Tlaxcala;;Tlaxcala;18;1111;9999
+Pueblo;San Jorxe;Tlaxcala;;Tlaxcala;19;1111;9999
+Pueblo;San Matheo;Tlaxcala;;Tlaxcala;20;1111;9999
+Pueblo;San Tadeo;Tlaxcala;;Tlaxcala;21;1111;9999
+Pueblo;San Francisco Temetzontla;Tlaxcala;;Tlaxcala;22;1111;9999
+Pueblo;Santa Ana Chiautempan;Santa Ana Chiautempan;;Tlaxcala;23;1111;9999
+Pueblo;Santa María Magdalena;Santa Ana Chiautempan;;Tlaxcala;24;1111;9999
+Pueblo;San Francisco Tetlanoca;Santa Ana Chiautempan;;Tlaxcala;25;1111;9999
+Pueblo;San Pedro Tlalcoapan;Santa Ana Chiautempan;;Tlaxcala;26;1111;9999
+Pueblo;San Bartolomé;Santa Ana Chiautempan;;Tlaxcala;27;1111;9999
+Pueblo;San Pablo Apetlatitlan;Santa Ana Chiautempan;;Tlaxcala;28;1111;9999
+Pueblo;San Bernardino;Santa Ana Chiautempan;;Tlaxcala;29;1111;9999
+Pueblo;Santa Cruz;Santa Ana Chiautempan;;Tlaxcala;30;1111;9999
+Pueblo;San Bernabé;Santa Ana Chiautempan;;Tlaxcala;31;1111;9999
+Pueblo;San Miguel;Santa Ana Chiautempan;;Tlaxcala;32;1111;9999
+Pueblo;San Lucas;Santa Ana Chiautempan;;Tlaxcala;33;1111;9999
+Pueblo;Belén;Santa Ana Chiautempan;;Tlaxcala;34;1111;9999
+Pueblo;San Matías;Santa Ana Chiautempan;;Tlaxcala;35;1111;9999
+Pueblo;San Damián;Santa Ana Chiautempan;;Tlaxcala;36;1111;9999
+Pueblo;San Dionisio;Santa Ana Chiautempan;;Tlaxcala;37;1111;9999
+Pueblo;Atlihuetzian;Santa Ana Chiautempan;;Tlaxcala;38;1111;9999
+Pueblo;San Francisco Tlacuiloca;Santa Ana Chiautempan;;Tlaxcala;39;1111;9999
+Pueblo;San Lorenzo;Santa Ana Chiautempan;;Tlaxcala;40;1111;9999
+Pueblo;San Martín Xaltocan;Santa Ana Chiautempan;;Tlaxcala;41;1111;9999
+Pueblo;San Simón;Santa Ana Chiautempan;;Tlaxcala;42;1111;9999
+Pueblo;Santa Bárbara;Santa Ana Chiautempan;;Tlaxcala;43;1111;9999
+Pueblo;San Lucas;Santa Ana Chiautempan;;Tlaxcala;44;1111;9999
+Pueblo;La Asunción;Santa Ana Chiautempan;;Tlaxcala;45;1111;9999
+Pueblo;San Antonio Cuaxomulco;Santa Ana Chiautempan;;Tlaxcala;46;1111;9999
+Pueblo;San Luis Huamantla;San Luis Huamantla;;Tlaxcala;47;1111;9999
+Pueblo;San Lorenzo Quapistla;San Luis Huamantla;;Tlaxcala;48;1111;9999
+Pueblo;San Pablo Zitlaltepeque;San Luis Huamantla;;Tlaxcala;49;1111;9999
+Pueblo;San Juan Ystenco;San Luis Huamantla;;Tlaxcala;50;1111;9999
+Pueblo;San Nicolás Terrenate;San Luis Huamantla;;Tlaxcala;51;1111;9999
+Pueblo;San Luis Apizaco;Apizaco;;Tlaxcala;52;1111;9999
+Pueblo;Santiago Tetla;Apizaco;;Tlaxcala;53;1111;9999
+Pueblo;Santa María Tescalaque;Apizaco;;Tlaxcala;54;1111;9999
+Pueblo;San Francisco Atexcatzinco;Apizaco;;Tlaxcala;55;1111;9999
+Pueblo;San Bartolomé (Matlalocan?);Apizaco;;Tlaxcala;56;1111;9999
+Pueblo;San Salvador;Apizaco;;Tlaxcala;57;1111;9999
+Pueblo;San Juan Quetzalcoapan;Apizaco;;Tlaxcala;58;1111;9999
+Pueblo;San Cosme;Apizaco;;Tlaxcala;59;1111;9999
+Pueblo;San Andrés;Apizaco;;Tlaxcala;60;1111;9999
+Pueblo;Santa Úrsula;Apizaco;;Tlaxcala;61;1111;9999
+Pueblo;Santa Ana Guiloaque;Apizaco;Huiloac;Tlaxcala;62;1111;9999
+Pueblo;San Benito;Apizaco;;Tlaxcala;63;1111;9999
+Pueblo;Santa María Tocatlan;Apizaco;;Tlaxcala;64;1111;9999
+Pueblo;San Agustin Tlaxco;Tlaxco;;Tlaxcala;65;1111;9999
+Pueblo;Atlancatepeque;Tlaxco;;Tlaxcala;66;1111;9999
+Pueblo;San Felipe Ixtacuistla;San Felipe;;Tlaxcala;67;1111;9999
+Pueblo;La Trinidad;San Felipe;;Tlaxcala;68;1111;9999
+Pueblo;Hueyotlipam;San Felipe;;Tlaxcala;69;1111;9999
+Pueblo;San Simon;San Felipe;;Tlaxcala;70;1111;9999
+Pueblo;Nra Sra de España;San Felipe;;Tlaxcala;71;1111;9999
+Pueblo;Ixcotla;San Felipe;;Tlaxcala;72;1111;9999
+Pueblo;La Magdalena;San Felipe;;Tlaxcala;73;1111;9999
+Pueblo;San Meteo;San Felipe;;Tlaxcala;74;1111;9999
+Pueblo;San Diego;San Felipe;;Tlaxcala;75;1111;9999
+Pueblo;Santa Justina;San Felipe;;Tlaxcala;76;1111;9999
+Pueblo;Santa Ines;San Felipe;;Tlaxcala;77;1111;9999
+Pueblo;..paluca;San Felipe;;Tlaxcala;78;1111;9999
+Pueblo;Mitepeque;San Felipe;;Tlaxcala;79;1111;9999
+Pueblo;Santa María Nativitas;Nativitas;;Tlaxcala;80;1111;9999
+Pueblo;Santo Tomás;Nativitas;;Tlaxcala;81;1111;9999
+Pueblo;Santiago;Nativitas;;Tlaxcala;82;1111;9999
+Pueblo;San Miguel;Nativitas;;Tlaxcala;83;1111;9999
+Pueblo;San Rafael;Nativitas;;Tlaxcala;84;1111;9999
+Pueblo;San Vicente;Nativitas;;Tlaxcala;85;1111;9999
+Pueblo;Santa Elena;Nativitas;;Tlaxcala;86;1111;9999
+Pueblo;San Andrés;Nativitas;;Tlaxcala;87;1111;9999
+Pueblo;San Damián;Nativitas;;Tlaxcala;88;1111;9999
+Pueblo;San Bartolomé;Nativitas;;Tlaxcala;89;1111;9999
+Pueblo;Santa Inés;Nativitas;;Tlaxcala;90;1111;9999
+Pueblo;San Jerónimo;Nativitas;;Tlaxcala;91;1111;9999
+Pueblo;Santa Catarina;Nativitas;;Tlaxcala;92;1111;9999
+Pueblo;Santa Toribia;Nativitas;;Tlaxcala;93;1111;9999
+Pueblo;San Marcos;Nativitas;;Tlaxcala;94;1111;9999
+Pueblo;San Francisco Topoyango;Nativitas;;Tlaxcala;95;1111;9999
+Pueblo;San Juan;Nativitas;;Tlaxcala;96;1111;9999
+Pueblo;Santiago;Nativitas;;Tlaxcala;97;1111;9999
+Pueblo;Santa Isabel;Nativitas;;Tlaxcala;98;1111;9999
+Pueblo;Tenancingo;Nativitas;;Tlaxcala;99;1111;9999
+Pueblo;San Cosme;Nativitas;;Tlaxcala;100;1111;9999
+Pueblo;San Francisco Papalotla;Nativitas;;Tlaxcala;101;1111;9999
+Pueblo;San Pablo del Monte;Nativitas;;Tlaxcala;102;1111;9999
+Pueblo;San Miguel Canoa;Nativitas;;Tlaxcala;103;1111;9999
+Pueblo;Santa Isabel;Nativitas;;Tlaxcala;104;1111;9999
+Pueblo;San Luis Teolocholco;Nativitas;;Tlaxcala;105;1111;9999
+Pueblo;San Antonio;Nativitas;;Tlaxcala;106;1111;9999
+Pueblo;Santa María Astama;Nativitas;;Tlaxcala;107;1111;9999
+Pueblo;Nuestra Señora de la Defensa;Nativitas;;Tlaxcala;108;1111;9999
+Hacienda;Santa Marta;Tlaxcala;;Tlaxcala;109;1111;9999
+Hacienda;Xaltip.C;Tlaxcala;;Tlaxcala;110;1111;9999
+Hacienda;Tepalcatepeque;Tlaxcala;;Tlaxcala;111;1111;9999
+Hacienda;Nuestra Señora del Carmen;Tlaxcala;;Tlaxcala;112;1111;9999
+Hacienda;San Bartolomé Jonecuila;Tlaxcala;;Tlaxcala;113;1111;9999
+Hacienda;San Juan Bautista de Zavaleta;Tlaxcala;;Tlaxcala;114;1111;9999
+Hacienda;Soltepeque;Tlaxcala;;Tlaxcala;115;1111;9999
+Hacienda;Santiago Escalzingo;Tlaxcala;Ocotzingo;Tlaxcala;116;1111;9999
+Hacienda;San Francisco Cuezcomatepeque;Tlaxcala;;Tlaxcala;117;1111;9999
+Hacienda;Santiago Alzayanga;Tlaxcala;;Tlaxcala;118;1111;9999
+Hacienda;San Diego Texinola;Tlaxcala;;Tlaxcala;119;1111;9999
+Hacienda;La Asunción;Tlaxcala;;Tlaxcala;120;1111;9999
+Hacienda;San Juan Bautista Cuapiastla;Tlaxcala;;Tlaxcala;121;1111;9999
+Hacienda;San José Temalacayuca;Tlaxcala;;Tlaxcala;122;1111;9999
+Hacienda;La Compasión Tlascantla;Tlaxcala;;Tlaxcala;123;1111;9999
+Hacienda;San Diego La Paloma y Indiana;Tlaxcala;;Tlaxcala;124;1111;9999
+Hacienda;San Juan Tepeyahualco;Tlaxcala;;Tlaxcala;125;1111;9999
+Hacienda;San Martín;Tlaxcala;;Tlaxcala;126;1111;9999
+Hacienda;San Pablo;Tlaxcala;;Tlaxcala;127;1111;9999
+Hacienda;La Candelaria;Tlaxcala;;Tlaxcala;128;1111;9999
+Hacienda;San Cristóbal Jalapasco;Tlaxcala;;Tlaxcala;129;1111;9999
+Hacienda;San Antonio Cuatla;Tlaxcala;;Tlaxcala;130;1111;9999
+Hacienda;La Purísima Concepción;Tlaxcala;;Tlaxcala;131;1111;9999
+Hacienda;Santa María de la Noria;Tlaxcala;;Tlaxcala;132;1111;9999
+Hacienda;Santo Domingo Texmola;Tlaxcala;;Tlaxcala;133;1111;9999
+Hacienda;Guadalupe;Tlaxcala;;Tlaxcala;134;1111;9999
+Hacienda;San Cristóbal de la Rosa;Tlaxcala;;Tlaxcala;135;1111;9999
+Hacienda;San Diego Azumatla;Tlaxcala;;Tlaxcala;136;1111;9999
+Hacienda;Señora Santa Ana;Tlaxcala;;Tlaxcala;137;1111;9999
+Hacienda;El Balconcillo;Tlaxcala;;Tlaxcala;138;1111;9999
+Hacienda;San Bartolomé Xonecuila;Tlaxcala;;Tlaxcala;139;1111;9999
+Hacienda;Santa Bárbara;Tlaxcala;;Tlaxcala;140;1111;9999
+Hacienda;San Antonio;Tlaxcala;;Tlaxcala;141;1111;9999
+Hacienda y venta;San Diego;Tlaxcala;;Tlaxcala;142;1111;9999
+Hacienda;San Miguel Quimichuca;Tlaxcala;;Tlaxcala;143;1111;9999
+Hacienda;San Juan Bautista;Tlaxcala;;Tlaxcala;144;1111;9999
+Hacienda;San Francisco de Asís;Tlaxcala;;Tlaxcala;145;1111;9999
+Hacienda;San Miguel Tomecuila y Santa María Soapila;Tlaxcala;;Tlaxcala;146;1111;9999
+Hacienda;La Natividad Tazacuala;Tlaxcala;;Tlaxcala;147;1111;9999
+Hacienda;San Miguel Tazaguala y San Pedro Cuatoque;Tlaxcala;;Tlaxcala;148;1111;9999
+Hacienda;San Buenaventura;Tlaxcala;;Tlaxcala;149;1111;9999
+Hacienda;San Diego Zitlaltepeque;Tlaxcala;;Tlaxcala;150;1111;9999
+Hacienda;San Diego del Pilancon;Tlaxcala;;Tlaxcala;151;1111;9999
+Hacienda;San Miguel y su Rancho;Tlaxcala;;Tlaxcala;152;1111;9999
+Hacienda;San Francisco Jalapasco;Tlaxcala;;Tlaxcala;153;1111;9999
+Hacienda;Santiago Tochaque;Apizaco;;Tlaxcala;154;1111;9999
+Hacienda;San Juan Acocotla;Apizaco;;Tlaxcala;155;1111;9999
+Hacienda;Piedras Negras;Apizaco;;Tlaxcala;156;1111;9999
+Hacienda;Teometitlan;Apizaco;;Tlaxcala;157;1111;9999
+Hacienda;Tlacaxolotepeque;Apizaco;;Tlaxcala;158;1111;9999
+Hacienda;San Miguel  Tlacotepeque;Apizaco;;Tlaxcala;159;1111;9999
+Hacienda;Topizaque;Apizaco;;Tlaxcala;160;1111;9999
+Hacienda;Quimichuca;Apizaco;;Tlaxcala;161;1111;9999
+Hacienda;San José de la Halaguna;Apizaco;;Tlaxcala;162;1111;9999
+Hacienda;San José Buenavista;Apizaco;;Tlaxcala;163;1111;9999
+Hacienda;San Juan Bautista;Tlaxco;;Tlaxcala;164;1111;9999
+Hacienda;San Miguel Payuca;Tlaxco;;Tlaxcala;165;1111;9999
+Hacienda;San Juan Cuapesco [?];Tlaxco;;Tlaxcala;166;1111;9999
+Hacienda;San Diego Siochuca;Tlaxco;;Tlaxcala;167;1111;9999
+Hacienda;Nuestra Señora del Rosario;Tlaxco;;Tlaxcala;168;1111;9999
+Hacienda;Massaquiahuac;Tlaxco;;Tlaxcala;169;1111;9999
+Hacienda;Los Jardines;Tlaxco;;Tlaxcala;170;1111;9999
+Hacienda;Zoltepeque;Tlaxco;;Tlaxcala;171;1111;9999
+Hacienda;San Andrés Buena Vista;Tlaxco;;Tlaxcala;172;1111;9999
+Hacienda;Tliquitepeque;Tlaxco;;Tlaxcala;173;1111;9999
+Hacienda;San José;Tlaxco;;Tlaxcala;174;1111;9999
+Hacienda;Icatepeque;Tlaxco;;Tlaxcala;175;1111;9999
+Hacienda;Jalostoque;Tlaxco;;Tlaxcala;176;1111;9999
+Hacienda;Metla;Tlaxco;;Tlaxcala;177;1111;9999
+Hacienda;Tecomaluca;Tlaxco;;Tlaxcala;178;1111;9999
+Hacienda;Toluquilla;Tlaxco;;Tlaxcala;179;1111;9999
+Hacienda;San Diego;San Felipe;;Tlaxcala;180;1111;9999
+Hacienda;Techalote;San Felipe;;Tlaxcala;181;1111;9999
+Hacienda;San Blas;San Felipe;;Tlaxcala;182;1111;9999
+Hacienda;Huatepeque;San Felipe;;Tlaxcala;183;1111;9999
+Hacienda;Metepeque;San Felipe;;Tlaxcala;184;1111;9999
+Hacienda;Meca;San Felipe;;Tlaxcala;185;1111;9999
+Hacienda;Tepalcatepeque;San Felipe;;Tlaxcala;186;1111;9999
+Hacienda;La Concepción;San Felipe;;Tlaxcala;187;1111;9999
+Hacienda;San Pedro;San Felipe;;Tlaxcala;188;1111;9999
+Hacienda;San Diego;San Felipe;;Tlaxcala;189;1111;9999
+Hacienda;Tlapesco;San Felipe;;Tlaxcala;190;1111;9999
+Hacienda;Atotonilco;San Felipe;;Tlaxcala;191;1111;9999
+Hacienda;Santiago;San Felipe;;Tlaxcala;192;1111;9999
+Hacienda;Atoyaque;San Felipe;;Tlaxcala;193;1111;9999
+Hacienda;San Cristóbal;San Felipe;;Tlaxcala;194;1111;9999
+Hacienda;San Pedro;San Felipe;;Tlaxcala;195;1111;9999
+Hacienda;La Concepción;San Felipe;;Tlaxcala;196;1111;9999
+Hacienda;La Compasión;Nativitas;;Tlaxcala;197;1111;9999
+Hacienda;San José;Nativitas;;Tlaxcala;198;1111;9999
+Hacienda;La Compasión;Nativitas;;Tlaxcala;199;1111;9999
+Hacienda;Jaltelulco;Nativitas;;Tlaxcala;200;1111;9999
+Hacienda;San Diego;Nativitas;;Tlaxcala;201;1111;9999
+Hacienda;Palula;Nativitas;;Tlaxcala;202;1111;9999
+Hacienda;Tenexaque;Nativitas;;Tlaxcala;203;1111;9999
+Hacienda;San Pedro;Nativitas;;Tlaxcala;204;1111;9999
+Hacienda;Buena Vista;Nativitas;;Tlaxcala;205;1111;9999
+Hacienda;San Juan;Nativitas;;Tlaxcala;206;1111;9999
+Hacienda;Los Reyes;Nativitas;;Tlaxcala;207;1111;9999
+Hacienda;Santa Águeda;Nativitas;;Tlaxcala;208;1111;9999
+Hacienda;Los Dolores;Nativitas;;Tlaxcala;209;1111;9999
+Hacienda;Santa Ana;Nativitas;;Tlaxcala;210;1111;9999
+Hacienda;Santa Bárbara;Nativitas;;Tlaxcala;211;1111;9999
+Hacienda;San Antonio;Nativitas;;Tlaxcala;212;1111;9999
+Hacienda;San Rafael;Nativitas;;Tlaxcala;213;1111;9999
+Hacienda;El Rosario;Nativitas;;Tlaxcala;214;1111;9999
+Hacienda;San Juan Mixco;Nativitas;;Tlaxcala;215;1111;9999
+Hacienda;Santa Elena;Nativitas;;Tlaxcala;216;1111;9999
+Rancho;Ocotlan;Tlaxcala;;Tlaxcala;217;1111;9999
+Rancho;San Bernardo Sitlaltepeque;Huamantla;;Tlaxcala;218;1111;9999
+Rancho y casas;El Pilancón;Huamantla;;Tlaxcala;219;1111;9999
+Rancho;San Antonio Acopilco;Huamantla;;Tlaxcala;220;1111;9999
+Rancho;San Diego Cuapiaxtla;Huamantla;;Tlaxcala;221;1111;9999
+Rancho;San Antonio Tlaxcantenco;Huamantla;;Tlaxcala;222;1111;9999
+Rancho;San Pedro;Huamantla;;Tlaxcala;223;1111;9999
+Rancho;Las Ánimas;Huamantla;;Tlaxcala;224;1111;9999
+Rancho;Santa Clara;Huamantla;;Tlaxcala;225;1111;9999
+Rancho;Atenco;Apizaco;;Tlaxcala;226;1111;9999
+Rancho;Tenexaque;Apizaco;;Tlaxcala;227;1111;9999
+Rancho;La Mancera;Apizaco;;Tlaxcala;228;1111;9999
+Rancho;Barranca Seca;Apizaco;;Tlaxcala;229;1111;9999
+Rancho;Totolcuesco;Apizaco;;Tlaxcala;230;1111;9999
+Rancho;Atlixtaca;Apizaco;;Tlaxcala;231;1111;9999
+Rancho;San Jacinto Aticpaque;Apizaco;;Tlaxcala;232;1111;9999
+Rancho;Gucicalco;Apizaco;;Tlaxcala;233;1111;9999
+Rancho;Cobalonga;Apizaco;;Tlaxcala;234;1111;9999
+Rancho;Atecosco;Apizaco;;Tlaxcala;235;1111;9999
+Rancho;Quichaque;Apizaco;;Tlaxcala;236;1111;9999
+Rancho;X.l...npusco;Apizaco;;Tlaxcala;237;1111;9999
+Rancho;San Miguel Atescacinco;Apizaco;;Tlaxcala;238;1111;9999
+Rancho;San Pedro Zotoluca;Apizaco;;Tlaxcala;239;1111;9999
+Rancho;San Antonio Acopinalco;Apizaco;;Tlaxcala;240;1111;9999
+Rancho;San Buenaventura;Apizaco;;Tlaxcala;241;1111;9999
+Rancho;Huexotitlan;Apizaco;;Tlaxcala;242;1111;9999
+Rancho;San Bartolomé;Apizaco;;Tlaxcala;243;1111;9999
+Rancho;Zacapexco;Apizaco;;Tlaxcala;244;1111;9999
+Rancho;Socaque;Apizaco;;Tlaxcala;245;1111;9999
+Rancho;Tepezalam;Apizaco;;Tlaxcala;246;1111;9999
+Rancho;Zotoluca;Tlaxco;;Tlaxcala;247;1111;9999
+Rancho;Toltecapa;Tlaxco;;Tlaxcala;248;1111;9999
+Molino;La  Palma;Tlaxco;;Tlaxcala;249;1111;9999
+Rancho;Toloquilla;Tlaxco;;Tlaxcala;250;1111;9999
+Rancho;Tlacotla;Tlaxco;;Tlaxcala;251;1111;9999
+Rancho;Tecamacal;Tlaxco;;Tlaxcala;252;1111;9999
+Rancho;San José;San Felipe;;Tlaxcala;253;1111;9999
+Rancho;La Puerta;San Felipe;;Tlaxcala;254;1111;9999
+Rancho;El Carmen;San Felipe;;Tlaxcala;255;1111;9999
+Rancho;Zoltepeque;San Felipe;;Tlaxcala;256;1111;9999
+Rancho;Caballero;San Felipe;;Tlaxcala;257;1111;9999
+Rancho;Guizye;San Felipe;;Tlaxcala;258;1111;9999
+Rancho;San Lorenzo;San Felipe;;Tlaxcala;259;1111;9999
+Rancho;Santa Cruz;San Felipe;;Tlaxcala;260;1111;9999
+Rancho;San Miguel;San Felipe;;Tlaxcala;261;1111;9999
+Rancho;Mixtec;San Felipe;;Tlaxcala;262;1111;9999
+Rancho;Atotonilco;San Felipe;;Tlaxcala;263;1111;9999
+Rancho;Capula;San Felipe;;Tlaxcala;264;1111;9999
+Rancho;Alporonga;San Felipe;;Tlaxcala;265;1111;9999
+Rancho;Santo Tomás;San Felipe;;Tlaxcala;266;1111;9999
+Rancho;Tepepan;Nativitas;;Tlaxcala;267;1111;9999
+Rancho;Los Cinco Señores;Nativitas;;Tlaxcala;268;1111;9999
+Rancho;Valbarcera;Nativitas;;Tlaxcala;269;1111;9999
+Rancho;San Damián;Nativitas;;Tlaxcala;270;1111;9999
+Venta;Buena Vista;;;Tlaxcala;271;1111;9999
+Venta;San Antonio;;;Tlaxcala;272;1111;9999
+Venta;Tenexaque;;;Tlaxcala;273;1111;9999
+Venta;Capula;;;Tlaxcala;274;1111;9999
+Molino;Santa María de la Defensa;;;Tlaxcala;275;1111;9999

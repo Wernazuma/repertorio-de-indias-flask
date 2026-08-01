@@ -139,9 +139,61 @@ p.small {
 }
 
 @media (min-width: 1200px) {
+    /* Full-screen: all tabs on a single line, however many there are */
     .tab {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: none;
+        grid-auto-flow: column;
+        grid-auto-columns: 1fr;
     }
+}
+
+/* Raw-row popup (placeholder "More" links) */
+.rawrow-pop {
+    position: absolute;
+    z-index: 9999;
+    max-width: 380px;
+    max-height: 60vh;
+    overflow: auto;
+    background: #fff;
+    border: 1px solid #888;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    padding: 10px 12px;
+    font-size: 12px;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+}
+.rawrow-pop .rawrow-close {
+    position: absolute;
+    top: 2px;
+    right: 6px;
+    border: none;
+    background: none;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    color: #666;
+}
+.rawrow-pop .rawrow-title {
+    font-weight: bold;
+    margin-bottom: 6px;
+    padding-right: 18px;
+}
+.rawrow-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.rawrow-table th {
+    text-align: left;
+    padding: 2px 8px 2px 0;
+    vertical-align: top;
+    white-space: nowrap;
+    color: #555;
+    font-weight: bold;
+}
+.rawrow-table td {
+    padding: 2px 0;
+    vertical-align: top;
+    word-break: break-word;
 }
 
 /* Grid for infoboxes */
