@@ -1,6 +1,7 @@
 # app.py
 import os
 import json
+import secrets
 from datetime import datetime
 from pathlib import Path
 from flask import Flask, url_for, render_template, abort
@@ -60,17 +61,28 @@ def create_app():
     ALLOWED_EXTENSIONS = {'csv'}
     # Secrets come from local_secrets.json (untracked) first, then env vars.
     _secrets = _load_local_secrets()
-    # Signs the suggestion-form anti-bot tokens and Flask sessions.
+    # Signs the suggestion-form anti-bot tokens and Flask sessions. If no secret
+    # is configured we generate a random ephemeral one rather than fall back to a
+    # public constant (a known key lets anyone forge anti-bot tokens / sessions).
+    # The only cost of the random fallback: a restart invalidates outstanding
+    # sessions and challenge tokens — harmless. Set SECRET_KEY in local_secrets.json
+    # (or ARCA_SECRET_KEY) for a stable key that survives restarts.
     app.config["SECRET_KEY"] = (_secrets.get("SECRET_KEY")
                                 or os.environ.get("ARCA_SECRET_KEY")
-                                or "arca-dev-secret-change-me")
+                                or secrets.token_hex(32))
     # Token that gates the suggestions admin page (unset -> admin page disabled).
     app.config["ADMIN_TOKEN"] = (_secrets.get("ADMIN_TOKEN")
                                  or os.environ.get("ARCA_ADMIN_TOKEN")
                                  or "")
     app.config["DATA_DIR"] = Path(__file__).resolve().parent / "data"
     app.config['UPLOAD_FOLDER'] = Path(__file__).resolve().parent / "data/uploads"
-    app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024 
+    app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+    # Session cookie hardening. HttpOnly is Flask's default; SameSite=Lax stops the
+    # admin session cookie riding along on cross-site requests (defence in depth for
+    # the admin login/clear flow). Set SESSION_COOKIE_SECURE=True once served over
+    # HTTPS (leaving it off here so the cookie works on the plain-HTTP test server).
+    app.config['SESSION_COOKIE_HTTPONLY'] = True
+    app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
     # Blueprints importieren und registrieren
     from enciclopedia import bp as enciclopedia_bp
     from matching import bp as matching_bp
@@ -158,4 +170,8 @@ app = create_app()
 if __name__ == "__main__":
     # threaded=True so the live progress page can be polled while the
     # matching pipeline runs in a background thread.
-    app.run(debug=True, threaded=True)
+    # Debug (interactive debugger + auto-reload) is OFF unless ARCA_DEBUG=1 is set
+    # in the environment — the run_dev.bat launcher sets it. Never enable it on a
+    # reachable host: the debugger console is a remote code-execution surface.
+    debug = os.environ.get("ARCA_DEBUG") == "1"
+    app.run(debug=debug, threaded=True)

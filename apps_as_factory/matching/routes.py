@@ -1,4 +1,5 @@
 import os
+import re
 import io
 import glob
 import json
@@ -10,7 +11,7 @@ import urllib.parse
 import urllib.request
 import pandas as pd
 from rapidfuzz import fuzz
-from flask import render_template, request, redirect, url_for, flash, jsonify, send_file
+from flask import render_template, request, redirect, url_for, flash, jsonify, send_file, abort
 from . import bp
 from .main import match_phase_1, match_phase_1b, run_pipeline, read_status
 from .cleaning import clean_toponym
@@ -22,6 +23,31 @@ UPLOAD_FOLDER = os.path.join("data", "uploads")
 GAZETTEER_FILE = os.path.join("data", "reference_gazetteer.csv")
 ENTIDADES_FILE = os.path.join("data", "gz_entidades.csv")
 GEO_DISTRICTS_FILE = os.path.join("data", "geo", "source", "genericos.geojson")
+
+# A dataset "prefix" is the file-name stem for every artifact of one run; it is
+# minted with secure_filename at upload, so a legitimate one is always made of
+# [A-Za-z0-9._-]. Anything else reaching os.path.join(UPLOAD_FOLDER, prefix+…)
+# would be path traversal, so we reject it at the request boundary below.
+_SAFE_PREFIX = re.compile(r'^[A-Za-z0-9._-]+$')
+
+
+@bp.before_request
+def _guard_prefix():
+    """Refuse any request-supplied prefix that could escape UPLOAD_FOLDER.
+
+    Covers both the route path param (<prefix>) and query/form prefixes; empty
+    is left for the individual views to handle ('missing prefix' messages)."""
+    candidates = []
+    if request.view_args and 'prefix' in request.view_args:
+        candidates.append(request.view_args['prefix'])
+    qf = request.values.get('prefix')
+    if qf is not None:
+        candidates.append(qf)
+    for pref in candidates:
+        if not pref:
+            continue
+        if '..' in pref or not _SAFE_PREFIX.match(pref):
+            abort(400)
 
 # Parsed district polygons, cached in memory (trimmed to the props we use).
 _DISTRICTS_GJ = None

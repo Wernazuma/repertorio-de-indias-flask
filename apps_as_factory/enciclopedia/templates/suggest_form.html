@@ -28,7 +28,8 @@
   {% if msg == 'thanks' %}<p class="sf-banner" style="border-left:3px solid #3f9b63; background:var(--surface-2,rgba(0,0,0,.03));">{{ t('suggest_thanks') }}</p>
   {% elif msg == 'bot' %}<p class="sf-banner" style="border-left:3px solid #c0563a; background:var(--surface-2,rgba(0,0,0,.03));">{{ t('suggest_bot') }}</p>
   {% elif msg == 'embargo' %}<p class="sf-banner" style="border-left:3px solid #c0563a; background:var(--surface-2,rgba(0,0,0,.03));">{{ t('suggest_embargo') }}</p>
-  {% elif msg == 'invalid' %}<p class="sf-banner" style="border-left:3px solid #c0563a; background:var(--surface-2,rgba(0,0,0,.03));">{{ t('suggest_invalid') }}</p>{% endif %}
+  {% elif msg == 'invalid' %}<p class="sf-banner" style="border-left:3px solid #c0563a; background:var(--surface-2,rgba(0,0,0,.03));">{{ t('suggest_invalid') }}</p>
+  {% elif msg == 'full' %}<p class="sf-banner" style="border-left:3px solid #c0563a; background:var(--surface-2,rgba(0,0,0,.03));">{{ t('suggest_full') }}</p>{% endif %}
 
   <p class="hint" style="color:var(--muted,#777);">{{ t(descs[kind], name=people.NOM_entero) }}</p>
 

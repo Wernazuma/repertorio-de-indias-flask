@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, session, redirect, url_for, send_file, current_app
+from flask import Flask, render_template, request, jsonify, session, redirect, url_for, send_file, current_app, abort
 import os
 import pandas as pd
 import numpy as np
@@ -14,7 +14,29 @@ from . import bp
 #app.secret_key = 'your-secret-key-here'  # Change this to a random secret key
 
 
-ALLOWED_EXTENSIONS = {'csv'}  
+ALLOWED_EXTENSIONS = {'csv'}
+
+# Guard request-supplied dataset prefixes against path traversal before they
+# reach os.path.join(UPLOAD_FOLDER, …). Legitimate prefixes are minted with
+# secure_filename at upload, so they are always [A-Za-z0-9._-].
+_SAFE_PREFIX = re.compile(r'^[A-Za-z0-9._-]+$')
+
+
+@bp.before_request
+def _guard_prefix():
+    """Refuse a request-supplied prefix (query/form/path) that could escape the
+    upload folder — e.g. the ?prefix on /discard used for arbitrary deletion."""
+    candidates = []
+    if request.view_args and 'prefix' in request.view_args:
+        candidates.append(request.view_args['prefix'])
+    qf = request.values.get('prefix')
+    if qf is not None:
+        candidates.append(qf)
+    for pref in candidates:
+        if not pref:
+            continue
+        if '..' in pref or not _SAFE_PREFIX.match(pref):
+            abort(400)
 
 
 def allowed_file(filename):

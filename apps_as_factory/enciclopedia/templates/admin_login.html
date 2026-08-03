@@ -1,0 +1,21 @@
+{% extends "enc_base.html" %}
+
+{% block title %}Admin login{% endblock %}
+{% block header_h1 %}Admin login{% endblock %}
+
+{% block enc_content %}
+<div class="sf-wrap" style="max-width:26rem;">
+  {% if error %}
+  <p class="sf-banner" style="border-left:3px solid #c0563a; background:var(--surface-2,rgba(0,0,0,.03));">
+    Incorrect token. Please try again.</p>
+  {% endif %}
+  <form method="post" action="{{ url_for('enciclopedia.admin_login') }}">
+    <label>Admin token<br>
+      <input type="password" name="token" autocomplete="current-password" autofocus
+             style="width:100%; padding:.4rem;"></label>
+    <p style="margin-top:.8rem;"><button type="submit">Log in</button></p>
+  </form>
+</div>
+{% endblock %}
+
+{% block right_block %}{% endblock %}

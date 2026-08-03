@@ -21,12 +21,14 @@ import os
 import re
 import csv
 import time
+import hmac
 import random
+import secrets
 import threading
 from datetime import datetime
 
 from flask import (request, render_template, redirect, url_for, abort,
-                   current_app, send_file)
+                   current_app, send_file, session)
 from itsdangerous import URLSafeTimedSerializer, BadSignature, SignatureExpired
 
 from . import bp
@@ -263,12 +265,49 @@ def _validate(kind, form):
 
 
 # --- Storage -------------------------------------------------------------
+# Safety valve: refuse to append once a collection file already holds this many
+# data rows. None of these user tables should ever legitimately approach it
+# before the owner reviews and clears them, so hitting the cap means a flood.
+_SUGG_MAX_ROWS = 1000
+
+# Spreadsheet formula-injection guard. A value a spreadsheet would evaluate as a
+# formula (leading = + - @, or a leading tab/CR) is prefixed with an apostrophe
+# so Excel/LibreOffice keep it as literal text. This is inert in the browser
+# (Jinja autoescapes everything) and only matters when the owner opens the
+# collected CSVs in a spreadsheet — which is exactly the review workflow.
+_FORMULA_LEAD = ('=', '+', '-', '@')
+
+
+def _csv_safe(v):
+    if v and (v[0] in _FORMULA_LEAD or v[0] in '\t\r'):
+        return "'" + v
+    return v
+
+
+def _csv_safe_row(row):
+    return {k: (_csv_safe(v) if isinstance(v, str) else v) for k, v in row.items()}
+
+
 def _file_path(filename):
     return os.path.join(current_app.root_path, 'data', 'user_suggestions', filename)
 
 
 def _sugg_path(kind):
     return _file_path(FILES[kind])
+
+
+def _count_data_rows(path):
+    """Stored data rows (header excluded); 0 if the file does not exist yet.
+    Uses csv.reader so quoted multi-line comment fields are counted as one row."""
+    if not os.path.exists(path):
+        return 0
+    with open(path, encoding='utf-8', newline='') as f:
+        n = sum(1 for _ in csv.reader(f, delimiter=';'))
+    return max(0, n - 1)
+
+
+def _at_capacity(path, incoming=1):
+    return _count_data_rows(path) + incoming > _SUGG_MAX_ROWS
 
 
 def _write_row(kind, row):
@@ -280,7 +319,7 @@ def _write_row(kind, row):
                            quoting=csv.QUOTE_MINIMAL, extrasaction='ignore')
         if new:
             w.writeheader()
-        w.writerow(row)
+        w.writerow(_csv_safe_row(row))
 
 
 def _append(kind, oficial, name, email, comment, extra):
@@ -336,6 +375,8 @@ def people_suggest(OficialID, kind):
     parsed = _validate(kind, request.form)
     if parsed is None:
         return _done('invalid')
+    if _at_capacity(_sugg_path(kind)):
+        return _done('full')
 
     name, email, comment, extra = parsed
     _append(kind, oficial, name, email, comment, extra)
@@ -377,7 +418,7 @@ def _lt_write_row(row):
                            quoting=csv.QUOTE_MINIMAL, extrasaction='ignore')
         if new:
             w.writeheader()
-        w.writerow(row)
+        w.writerow(_csv_safe_row(row))
 
 
 def _lt_append(entity_id, kind, name, email, comment, extra):
@@ -415,6 +456,8 @@ def _lt_handle(entity, entity_id, entity_name, scope, kind):
     parsed = _lt_validate(kind, request.form)
     if parsed is None:
         return _done('invalid')
+    if _at_capacity(_file_path(LT_FILE)):
+        return _done('full')
 
     name, email, comment, extra = parsed
     _lt_append(entity_id, kind, name, email, comment, extra)
@@ -569,7 +612,7 @@ def _oflista_store(rows, name, email, comment, fname):
             row = dict(rec)
             row.update({'IPAddress': ip, 'User name': name, 'User email': email,
                         'submittedTime': now, 'SourceFile': base, 'Comment': comment})
-            w.writerow(row)
+            w.writerow(_csv_safe_row(row))
 
 
 @bp.route('/territory/<territory_id>/oficiales-template')
@@ -612,28 +655,71 @@ def territory_oficiales_lista(territory_id):
     rows, err = _oflista_parse(territory_id, storage)
     if err:
         return _done(err)
+    if _at_capacity(_file_path(OFLISTA_FILE), incoming=len(rows)):
+        return _done('full')
 
     _oflista_store(rows, name, email, comment, storage.filename)
     _record_ip()
     return _done('thanks')
 
 
-# --- Admin (token-gated) -------------------------------------------------
+# --- Admin (session-gated login) -----------------------------------------
 # Every collection file the admin page manages: the three prosopography files,
 # the shared place/territory file, and the uploaded officials lists.
 ADMIN_SCHEMAS = dict(SCHEMAS, lugares=LT_SCHEMA, oficiales_listas=OFLISTA_SCHEMA)
 ADMIN_FILES = dict(FILES, lugares=LT_FILE, oficiales_listas=OFLISTA_FILE)
 
 
+def _admin_configured():
+    """Admin area is available only when an ADMIN_TOKEN is set (else disabled)."""
+    return bool(current_app.config.get('ADMIN_TOKEN', ''))
+
+
 def _admin_ok():
-    tok = current_app.config.get('ADMIN_TOKEN', '')
-    return bool(tok) and request.values.get('token') == tok
+    """Authenticated via the signed session cookie set at /admin/login. The token
+    is POSTed once at login and never appears in a URL, so it can't leak through
+    server logs, browser history, or Referer headers to user-submitted links."""
+    return _admin_configured() and session.get('admin') is True
+
+
+def _admin_csrf():
+    """A per-session CSRF token for the destructive (clear) forms — needed now
+    that a cookie, not a URL token, authenticates the request."""
+    tok = session.get('admin_csrf')
+    if not tok:
+        tok = secrets.token_hex(16)
+        session['admin_csrf'] = tok
+    return tok
+
+
+@bp.route('/admin/login', methods=['GET', 'POST'])
+def admin_login():
+    if not _admin_configured():
+        abort(404)                       # no token configured -> admin disabled
+    if request.method == 'POST':
+        supplied = (request.form.get('token') or '').encode('utf-8')
+        expected = current_app.config.get('ADMIN_TOKEN', '').encode('utf-8')
+        if hmac.compare_digest(supplied, expected):   # constant-time compare
+            session['admin'] = True
+            _admin_csrf()
+            return redirect(url_for('enciclopedia.admin_suggestions'))
+        return render_template('admin_login.html', error=True)
+    if _admin_ok():
+        return redirect(url_for('enciclopedia.admin_suggestions'))
+    return render_template('admin_login.html', error=False)
+
+
+@bp.route('/admin/logout', methods=['POST'])
+def admin_logout():
+    session.pop('admin', None)
+    session.pop('admin_csrf', None)
+    return redirect(url_for('enciclopedia.admin_login'))
 
 
 @bp.route('/admin/suggestions')
 def admin_suggestions():
     if not _admin_ok():
-        abort(403)
+        return redirect(url_for('enciclopedia.admin_login'))
     data = {}
     for kind in ADMIN_SCHEMAS:
         path = _file_path(ADMIN_FILES[kind])
@@ -642,14 +728,13 @@ def admin_suggestions():
             with open(path, 'r', encoding='utf-8') as f:
                 rows = list(csv.DictReader(f, delimiter=';'))
         data[kind] = {'rows': rows, 'columns': ADMIN_SCHEMAS[kind], 'file': ADMIN_FILES[kind]}
-    return render_template('admin_suggestions.html', data=data,
-                           token=request.values.get('token'))
+    return render_template('admin_suggestions.html', data=data, csrf=_admin_csrf())
 
 
 @bp.route('/admin/suggestions/download/<kind>')
 def admin_suggestions_download(kind):
     if not _admin_ok():
-        abort(403)
+        return redirect(url_for('enciclopedia.admin_login'))
     if kind not in ADMIN_SCHEMAS:
         abort(404)
     path = _file_path(ADMIN_FILES[kind])
@@ -661,7 +746,10 @@ def admin_suggestions_download(kind):
 @bp.route('/admin/suggestions/clear', methods=['POST'])
 def admin_suggestions_clear():
     if not _admin_ok():
-        abort(403)
+        return redirect(url_for('enciclopedia.admin_login'))
+    sess_csrf = session.get('admin_csrf', '')
+    if not sess_csrf or not hmac.compare_digest(request.form.get('csrf', ''), sess_csrf):
+        abort(400)
     kind = request.values.get('kind', '')
     kinds = list(ADMIN_SCHEMAS) if kind == 'all' else [kind]
     for k in kinds:
@@ -671,5 +759,4 @@ def admin_suggestions_clear():
         os.makedirs(os.path.dirname(path), exist_ok=True)
         with open(path, 'w', encoding='utf-8', newline='') as f:
             csv.writer(f, delimiter=';', quoting=csv.QUOTE_MINIMAL).writerow(ADMIN_SCHEMAS[k])
-    return redirect(url_for('enciclopedia.admin_suggestions',
-                            token=request.values.get('token')))
+    return redirect(url_for('enciclopedia.admin_suggestions'))

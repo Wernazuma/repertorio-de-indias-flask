@@ -167,6 +167,7 @@
   "suggest_bot": "We couldn't verify your submission (anti-bot check failed). Please answer the check question and try again.",
   "suggest_embargo": "You submitted very recently. Please wait a moment before sending another suggestion.",
   "suggest_invalid": "Some required fields were missing or contained content that isn't allowed. Please review and try again.",
+  "suggest_full": "We're temporarily not accepting new submissions here — the review queue is full. Please try again later, once we've had a chance to process the pending ones.",
 
   "sug_btn_name": "+ Suggest an attested name",
   "sug_btn_church": "+ Suggest a church category",

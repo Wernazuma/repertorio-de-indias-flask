@@ -167,6 +167,7 @@
   "suggest_bot": "No pudimos verificar su envío (falló el control anti-bot). Responda la pregunta de verificación e inténtelo de nuevo.",
   "suggest_embargo": "Ha enviado una sugerencia hace muy poco. Espere un momento antes de enviar otra.",
   "suggest_invalid": "Faltaban campos obligatorios o el contenido no está permitido. Revise e inténtelo de nuevo.",
+  "suggest_full": "Temporalmente no aceptamos nuevos envíos aquí: la cola de revisión está llena. Vuelva a intentarlo más tarde, cuando hayamos podido procesar los pendientes.",
 
   "sug_btn_name": "+ Sugerir un nombre atestiguado",
   "sug_btn_church": "+ Sugerir una categoría eclesiástica",

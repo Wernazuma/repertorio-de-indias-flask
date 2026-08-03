@@ -4,6 +4,9 @@
 {% block header_h1 %}User suggestions (admin){% endblock %}
 
 {% block enc_content %}
+<form method="post" action="{{ url_for('enciclopedia.admin_logout') }}" style="float:right; margin:0;">
+  <button type="submit">Log out</button>
+</form>
 <p class="lead" style="font-size: var(--step-0);">
   Pending user-submitted suggestions. Download each CSV, process it, then clear it.
   Clearing truncates the file back to its header row.</p>
@@ -12,11 +15,12 @@
 <div class="infobox" style="margin-bottom:1rem;">
   <h3 style="text-transform:capitalize;">{{ kind }} — {{ d.rows|length }} pending</h3>
   <p>
-    <a class="btn small" href="{{ url_for('enciclopedia.admin_suggestions_download', kind=kind, token=token) }}">Download CSV</a>
-    <form method="post" action="{{ url_for('enciclopedia.admin_suggestions_clear', token=token) }}"
+    <a class="btn small" href="{{ url_for('enciclopedia.admin_suggestions_download', kind=kind) }}">Download CSV</a>
+    <form method="post" action="{{ url_for('enciclopedia.admin_suggestions_clear') }}"
           style="display:inline;"
           onsubmit="return confirm('Clear all {{ kind }} suggestions? Make sure you downloaded them first.');">
       <input type="hidden" name="kind" value="{{ kind }}">
+      <input type="hidden" name="csrf" value="{{ csrf }}">
       <button type="submit">Clear {{ kind }}</button>
     </form>
   </p>
@@ -35,9 +39,10 @@
 </div>
 {% endfor %}
 
-<form method="post" action="{{ url_for('enciclopedia.admin_suggestions_clear', token=token) }}"
+<form method="post" action="{{ url_for('enciclopedia.admin_suggestions_clear') }}"
       onsubmit="return confirm('Clear ALL suggestions (links, offices, bio)? Make sure you downloaded them first.');">
   <input type="hidden" name="kind" value="all">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
   <button type="submit">Clear everything</button>
 </form>
 {% endblock %}
