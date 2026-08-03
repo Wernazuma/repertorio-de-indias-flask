@@ -1,15 +1,111 @@
 {% extends "base.html" %}
-{% set active = 'team' %}
-{% block title %}Impressum — ARCA{% endblock %}
+{% set active = 'about' %}
+{% block title %}Impressum &amp; AI declaration — ARCA{% endblock %}
+
+{% block extra_head %}
+<style>
+  .legal { max-width: 46rem; }
+  .legal h2 { margin-top: var(--sp-5); scroll-margin-top: 6rem; }
+  .legal h3 { margin-top: var(--sp-4); font-size: var(--step-0); }
+  .legal ul { margin: .4rem 0 0; padding-left: 1.2rem; }
+  .legal li { margin: .3rem 0; }
+  .legal .meta { color: var(--muted); font-size: var(--step--1); }
+  .legal-toc { display: flex; flex-wrap: wrap; gap: .5rem 1.1rem; margin: 0 0 var(--sp-3);
+    font-size: var(--step--1); }
+  .legal-toc a { text-decoration: none; color: var(--accent); font-weight: 600; }
+  .legal-toc a:hover { text-decoration: underline; }
+  .ai-note { border-left: 4px solid var(--accent);
+    background: var(--surface-2, rgba(0,0,0,.03)); padding: .85rem 1.05rem;
+    border-radius: 8px; margin: .6rem 0 var(--sp-3); font-size: var(--step-0);
+    color: var(--ink); }
+  .ai-note .updated { display: block; margin-top: .45rem; color: var(--muted);
+    font-size: var(--step--1); }
+</style>
+{% endblock %}
 
 {% block content %}
 <div class="hero">
-  <span class="eyebrow">Impressum</span>
-  <h1>Legal notice &amp; credits.</h1>
+  <span class="eyebrow">About</span>
+  <h1>Impressum &amp; AI declaration</h1>
 </div>
-<div class="placeholder-note">
-  <span>🏗️</span>
-  <span><strong>This page is a placeholder.</strong> Publisher, responsible
-    parties, funding acknowledgements, and licensing information will go here.</span>
-</div>
+
+<section class="legal">
+  <nav class="legal-toc" aria-label="On this page">
+    <a href="#impressum">Impressum</a>
+    <a href="#licensing">Licensing</a>
+    <a href="#ai-declaration">AI declaration</a>
+  </nav>
+
+  <h2 id="impressum">Impressum</h2>
+  <ul>
+    <li><strong>Main contact:</strong> Werner Stangl (see the
+      <a href="{{ url_for('team') }}">Team page</a> for email contact).</li>
+    <li><strong>Site content:</strong> Werner Stangl.</li>
+    <li><strong>Implementation:</strong> Werner Stangl and
+      <a href="https://dissc.yale.edu/" target="_blank" rel="noopener">DISSC at Yale</a>.</li>
+  </ul>
+
+  <h2 id="licensing">Licensing</h2>
+  <ul>
+    <li>Datasets and graphics on this site — except photographs and institutional logos —
+      may be used under
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>,
+      unless otherwise noted at the resource itself.</li>
+    <li>Historical material (images of old maps or texts) may well be in the Public Domain
+      in any case — judge at your own discretion.</li>
+    <li>Copyright for personal depictions and photographs, and for logos, rests with the
+      respective photographers, subjects, and institutions.</li>
+    <li>If you have concerns, doubts, or a personal interest (e.g. authorship) that
+      challenges our use or the indicated license of any resource, please contact us
+      immediately and we will act accordingly — remove, explain, or discuss.</li>
+  </ul>
+
+  <h2 id="ai-declaration">AI declaration</h2>
+  <p class="ai-note">In the interest of transparency, this statement records how and where
+    generative AI was used in making this site. All AI output — except translations (see
+    below) — was reviewed by a human editor, and responsibility for the site's content
+    rests with the named authors. No personal or user-submitted data was or will be sent
+    to AI providers.
+    <span class="updated">Last updated: 3 August 2026.</span></p>
+
+  <h3>Models used</h3>
+  <p class="meta">Model versions are those used at the time of writing.</p>
+  <ul>
+    <li><strong>Claude</strong> — mostly Opus 4.8, some Fable 5.</li>
+    <li><strong>ChatGPT</strong> — mostly GPT-5.</li>
+  </ul>
+
+  <h3>Content</h3>
+  <ul>
+    <li>No AI has been used to alter or create any parts that suggest historical or source
+      authenticity: no photographs, and no texts or graphics that present themselves as
+      original historical material.</li>
+    <li>Some texts or paragraphs on the site have been authored or co-authored by AI — but
+      never a text that carries a named author.</li>
+    <li>Authored texts are either untouched by AI or carry their own separate AI declaration.</li>
+    <li>AI (Claude, ChatGPT) has been used to translate text items between Spanish and
+      English. These machine translations are not systematically reviewed by a human editor
+      and may contain errors.</li>
+  </ul>
+
+  <h3>Site</h3>
+  <ul>
+    <li>AI has been used extensively to build the site's interface; very little of the code
+      was written by hand.</li>
+    <li><strong>Claude:</strong> routes and general code; small generic icons.</li>
+    <li><strong>ChatGPT:</strong> logos for ARCA, HGIS and the Encyclopedia.</li>
+  </ul>
+
+  <h3>Database</h3>
+  <ul>
+    <li>The historical GIS reconstruction itself — the boundaries, locations, and
+      geometries behind the maps — is manual scholarly and cartographic work. It relies on
+      conventional GIS methods and algorithms, not on generative AI.</li>
+    <li>No AI has been used to create the database content itself.</li>
+    <li>AI (Claude) has been used sparingly to transform data directly — for example, to
+      convert a set of places from CSV to GeoJSON.</li>
+    <li>AI has been used to redesign the workflow scripts that export and transform data
+      between formats (Excel to CSV, and so on).</li>
+  </ul>
+</section>
 {% endblock %}

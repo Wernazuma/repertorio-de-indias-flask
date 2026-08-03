@@ -68,7 +68,7 @@
       {% for person in results %}
         <li>
           <a href="{{ url_for('enciclopedia.people_detail', OficialID=person['OficialID']) }}">{{ person['NOM_entero'] }}</a>
-          ({{ person['Nacimiento_y'] | int }}-{{ person['Fallecimiento_y'] | int }})
+          {% set b = person['Nacimiento_y'] | int %}{% set d = person['Fallecimiento_y'] | int %}({{ b if b else '?' }}-{{ d if d else '?' }})
         </li>
       {% else %}
         <li>{{ t('no_results') }}</li>

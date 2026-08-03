@@ -60,9 +60,21 @@
     if (def) def.click();
   });
 </script>
+<style>
+  .suggest-btn { display:inline-block; font-size:.76em; padding:.18rem .55rem; margin-top:.5rem;
+    border:1px solid var(--border,#ccc); border-radius:6px; text-decoration:none;
+    color:var(--accent,#2b4b68); background:var(--surface-2,rgba(0,0,0,.03)); white-space:nowrap; }
+  .suggest-btn:hover { border-color:var(--accent,#2b4b68); }
+</style>
 {% endblock %}
 
 {% block enc_content %}
+{# Entity heading shown at the top of every tab; the tab's own title sits below it as a subheading. #}
+{% macro entity_heading() %}
+  <h1>{{ people.NOM_entero }}
+    <span style="font-weight:400; color:var(--muted,#777); font-size:var(--step-0);">persIndias{{ people.OficialID }}</span>
+  </h1>
+{% endmacro %}
 <div class="tab">
   <button class="tablinks" onclick="openTab(event, 'Informacion')" id="defaultOpen">{{ t('td_tab_info') }}</button>
   <button class="tablinks" onclick="openTab(event, 'Biografia')">{{ t('tab_biography') }}</button>
@@ -70,10 +82,11 @@
 </div>
 
 <div id="Informacion" class="tabcontent" style="display:none;">
-  <h1>{{ t('td_tab_info') }}</h1>
+  {{ entity_heading() }}
 
   <div class="infobox-grid">
     <div class="infobox">
+      <h3>{{ t('pp_biographical_data') }}</h3>
       {% for o in oficiales_foreignkeys_data %}
         {% if o.prefix == "dbe" %}
           <p style="font-weight: bold;">
@@ -88,7 +101,7 @@
       {% if people.N_date_t %}
         * {{ people.N_date_t }}
         {% if people.PlaceOfBirth_Settlement and people.PlaceOfBirth_GZ_ID %}
-          (<a href="{{ people.PlaceOfBirth_GZ_ID }}">{{ people.PlaceOfBirth_Settlement }}</a>, {{ people.PlaceOfBirth_Country }})
+          (<a href="{{ url_for('enciclopedia.place_detail', place_id=people.PlaceOfBirth_GZ_ID) }}">{{ people.PlaceOfBirth_Settlement }}</a>, {{ people.PlaceOfBirth_Country }})
         {% elif people.PlaceOfBirth_Settlement %}
           ({{ people.PlaceOfBirth_Settlement }}, {{ people.PlaceOfBirth_Country }})
         {% endif %}
@@ -98,7 +111,7 @@
       {% if people.F_date_t %}
         † {{ people.F_date_t }}
         {% if people.PlaceOfDeath_Settlement and people.PlaceOfDeath_GZ_ID %}
-          (<a href="{{ people.PlaceOfDeath_GZ_ID }}">{{ people.PlaceOfDeath_Settlement }}</a>, {{ people.PlaceOfDeath_Country }})
+          (<a href="{{ url_for('enciclopedia.place_detail', place_id=people.PlaceOfDeath_GZ_ID) }}">{{ people.PlaceOfDeath_Settlement }}</a>, {{ people.PlaceOfDeath_Country }})
         {% elif people.PlaceOfDeath_Settlement %}
           ({{ people.PlaceOfDeath_Settlement }}, {{ people.PlaceOfDeath_Country }})
         {% endif %}
@@ -110,8 +123,16 @@
       {% endif %}
 
       {% if people.religious_order %}
-        {{ t('pp_religious_order') }} <a href="../dokuwiki/doku.php?id=conceptos:ordenes_religiosas">{{ people.religious_order }}</a><br/><br/>
+        {{ t('pp_religious_order') }} <a href="../dokuwiki/doku.php?id=conceptos:ordenes_religiosas">{{ people.religious_order }}</a><br/>
       {% endif %}
+
+      {% if bio_more %}
+        <a href="javascript:void(0)" onclick='showRawRow(event, {{ bio_more|tojson }}, {{ people.NOM_entero|tojson }})'
+           style="font-size: small;">{{ t('more') }}</a><br/>
+      {% endif %}
+
+      <a class="suggest-btn" target="_blank" rel="noopener"
+         href="{{ url_for('enciclopedia.people_suggest', OficialID=people.OficialID, kind='bio') }}">{{ t('suggest_btn_bio') }}</a>
 
       <hr/>
       {{ t('pp_elsewhere', name=people.NOM_entero) }}<br/>
@@ -121,6 +142,8 @@
           <a href="{{ o.prefixurl }}{{ o.foreignkey }}{{ o.suffixurl }}">{{ o.foreignkey }}</a><br/>
         {% endif %}
       {% endfor %}
+      <a class="suggest-btn" target="_blank" rel="noopener"
+         href="{{ url_for('enciclopedia.people_suggest', OficialID=people.OficialID, kind='link') }}">{{ t('suggest_btn_link') }}</a>
     </div>
   </div>
 
@@ -128,20 +151,27 @@
     <div id="Curriculum" class="infobox">
       <h3>{{ t('pp_curriculum') }}</h3>
       {% for o in oficiales_entity_data %}
-        {{ o.Titulo }} {{ o.Titulo2 }} de
+        {{ o.Titulo }} {{ o['Titulo 2'] }} de
         <a href="../territory/{{ o.EntidadID }}">{{ o.entidad_nombre }}</a>,
-        {{ timespan(o.Primera_Fecha_y, o.Ultima_Fecha_y) }}<br/>
+        {{ timespan(o.Primera_Fecha_y, o.Ultima_Fecha_y) }}
+        {% if o._more %}<a href="javascript:void(0)"
+           onclick='showRawRow(event, {{ o._more|tojson }}, {{ o.entidad_nombre|tojson }})'
+           style="font-size: small;">{{ t('more') }}</a>{% endif %}<br/>
       {% endfor %}
+      <a class="suggest-btn" target="_blank" rel="noopener"
+         href="{{ url_for('enciclopedia.people_suggest', OficialID=people.OficialID, kind='office') }}">{{ t('suggest_btn_office') }}</a>
     </div>
   </div>
 </div>
 
 <div id="Biografia" class="tabcontent" style="display:none;">
-  <h1>{{ t('tab_biography') }}</h1>
+  {{ entity_heading() }}
+  <h2>{{ t('tab_biography') }}</h2>
 </div>
 
 <div id="Citar" class="tabcontent" style="display:none;">
-  <h1>{{ t('tab_cite') }}</h1>
+  {{ entity_heading() }}
+  <h2>{{ t('tab_cite') }}</h2>
   <div id="citeme">
     <h3>{{ t('how_to_cite_resource') }}</h3>
     <p>

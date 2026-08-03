@@ -1,0 +1,82 @@
+{% extends "enc_base.html" %}
+
+{%- set titles = {'link': 'suggest_a_title', 'office': 'suggest_b_title', 'bio': 'suggest_c_title'} -%}
+{%- set descs  = {'link': 'suggest_a_desc',  'office': 'suggest_b_desc',  'bio': 'suggest_c_desc'} -%}
+
+{% block title %}{{ t(titles[kind]) }} — {{ people.NOM_entero }}{% endblock %}
+{% block header_h1 %}{{ t('suggest_tab') }}{% endblock %}
+
+{% block enc_head %}
+<style>
+  .sf-wrap { max-width: 42rem; }
+  .sf-person { color: var(--muted,#777); }
+  .sf-form label { display:block; font-size:.9em; margin:.55rem 0 .15rem; font-weight:600; }
+  .sf-form .hint { font-weight:400; color:var(--muted,#777); font-size:.82em; }
+  .sf-form input[type=text], .sf-form input[type=email], .sf-form textarea { width:100%; }
+  .sf-form textarea { min-height:4rem; }
+  .sf-hp { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+  .sf-challenge { max-width:8rem !important; }
+  .sf-banner { padding:.6rem .8rem; border-radius:6px; margin-bottom:1rem; }
+</style>
+{% endblock %}
+
+{% block enc_content %}
+<div class="sf-wrap">
+  <h1>{{ t(titles[kind]) }}</h1>
+  <p class="sf-person">{{ people.NOM_entero }} (persIndias{{ people.OficialID }})</p>
+
+  {% if msg == 'thanks' %}<p class="sf-banner" style="border-left:3px solid #3f9b63; background:var(--surface-2,rgba(0,0,0,.03));">{{ t('suggest_thanks') }}</p>
+  {% elif msg == 'bot' %}<p class="sf-banner" style="border-left:3px solid #c0563a; background:var(--surface-2,rgba(0,0,0,.03));">{{ t('suggest_bot') }}</p>
+  {% elif msg == 'embargo' %}<p class="sf-banner" style="border-left:3px solid #c0563a; background:var(--surface-2,rgba(0,0,0,.03));">{{ t('suggest_embargo') }}</p>
+  {% elif msg == 'invalid' %}<p class="sf-banner" style="border-left:3px solid #c0563a; background:var(--surface-2,rgba(0,0,0,.03));">{{ t('suggest_invalid') }}</p>{% endif %}
+
+  <p class="hint" style="color:var(--muted,#777);">{{ t(descs[kind], name=people.NOM_entero) }}</p>
+
+  {% macro antibot() %}
+    <div class="sf-hp" aria-hidden="true"><label>Website</label><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
+    <input type="hidden" name="_ct" value="{{ challenge.token }}">
+    <label>{{ t('suggest_challenge', a=challenge.a, b=challenge.b) }} *</label>
+    <input class="sf-challenge" type="text" name="challenge" inputmode="numeric" autocomplete="off" required>
+    <p style="margin-top:.8rem;"><button type="submit">{{ t('suggest_submit') }}</button></p>
+  {% endmacro %}
+  {% macro contact() %}
+    <label>{{ t('suggest_name') }} *</label>
+    <input type="text" name="submitter_name" maxlength="100" required>
+    <label>{{ t('suggest_email') }} *</label>
+    <input type="email" name="submitter_email" maxlength="120" required>
+  {% endmacro %}
+
+  <form class="sf-form" method="post"
+        action="{{ url_for('enciclopedia.people_suggest', OficialID=people.OficialID, kind=kind) }}">
+    {{ contact() }}
+
+    {% if kind == 'link' %}
+      <label>{{ t('suggest_link') }} *</label>
+      <input type="text" name="url" maxlength="500" placeholder="https://…" required>
+
+    {% elif kind == 'office' %}
+      {% for f in office_field_meta %}
+        {% set req = (f[0] == 'Fuente') %}
+        {% set hint = f[4] if lang == 'en' else f[3] %}
+        <label>{{ f[2] if lang == 'en' else f[1] }}{% if req %} *{% endif %}{% if hint %} <span class="hint">— {{ hint }}</span>{% endif %}</label>
+        <input type="text" name="{{ f[0] }}" maxlength="300"{% if req %} required{% endif %}>
+      {% endfor %}
+
+    {% elif kind == 'bio' %}
+      {% for f in bio_field_meta %}
+        {% set hint = f[4] if lang == 'en' else f[3] %}
+        <label>{{ f[2] if lang == 'en' else f[1] }}{% if hint %} <span class="hint">— {{ hint }}</span>{% endif %}</label>
+        <input type="text" name="{{ f[0] }}" maxlength="300" value="{{ people.get(f[0], '') or '' }}">
+      {% endfor %}
+    {% endif %}
+
+    <label>{{ t('suggest_comment') }}</label>
+    <textarea name="comment" maxlength="2000"></textarea>
+    {{ antibot() }}
+  </form>
+
+  <p class="hint" style="margin-top:.8rem; color:var(--muted,#777); font-size:.82em;">{{ t('suggest_privacy') }}</p>
+</div>
+{% endblock %}
+
+{% block right_block %}{% endblock %}

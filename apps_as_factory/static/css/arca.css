@@ -138,6 +138,9 @@ p { margin: 0; }
   color: var(--nav-ink-active); border-bottom-color: var(--nav-underline); }
 .menu > li[data-current] > a, .menu > li[data-current] > button {
   border-bottom-color: var(--nav-underline); color: var(--nav-ink-active); }
+/* caret-only parent button (e.g. "About") highlighted while its submenu is open */
+.menu > li.open > button {
+  border-bottom-color: var(--nav-underline); color: var(--nav-ink-active); }
 .caret { width: 8px; height: 8px; border-right: 2px solid currentColor;
   border-bottom: 2px solid currentColor; transform: rotate(45deg) translateY(-2px);
   opacity: .7; }
@@ -249,6 +252,20 @@ p { margin: 0; }
 .collab-card.col-green  { --collab: #3f9b63; }
 .collab-card.col-yellow { --collab: #d19a26; }
 .collab-card.col-red    { --collab: #c0563a; }
+/* "All levels" card: neutral symbol, tricolor left bar, three effort labels. */
+.collab-card.col-all {
+  --collab: var(--accent, #2b4b68);
+  border-left-color: #d19a26; /* fallback if border-image is unsupported */
+  border-image: linear-gradient(180deg, #3f9b63 0 33%, #d19a26 33% 66%, #c0563a 66% 100%) 1;
+}
+.collab-effort-all { flex-wrap: wrap; gap: 4px 12px; }
+.collab-effort-all::before { display: none; }
+.collab-effort-all .eff { display: inline-flex; align-items: center; gap: 6px; }
+.collab-effort-all .eff::before { content: ""; width: 10px; height: 10px;
+  border-radius: 50%; background: currentColor; }
+.collab-effort-all .eff-green  { color: #3f9b63; }
+.collab-effort-all .eff-yellow { color: #d19a26; }
+.collab-effort-all .eff-red    { color: #c0563a; }
 .collab-head { display: flex; align-items: center; gap: 12px; }
 .collab-sym { flex: none; width: 48px; height: 48px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;

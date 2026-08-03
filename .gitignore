@@ -31,3 +31,9 @@ enciclopedia/templates/xterritory_search.html
 
 # Derived matching cache (rebuilt from reference_gazetteer.csv; see matching/main.py)
 apps_as_factory/data/reference_gazetteer_collapsed.csv
+
+# User-submitted prosopography suggestions (collected at runtime, pulled via admin page)
+apps_as_factory/data/user_suggestions/
+
+# Local secrets: admin token + Flask secret key (never commit)
+apps_as_factory/local_secrets.json

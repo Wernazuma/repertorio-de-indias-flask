@@ -1,0 +1,71 @@
+{% extends "enc_base.html" %}
+
+{% set _fname = entity_id ~ '_lista_oficiales.csv' %}
+
+{% block title %}{{ t('oflist_form_title') }} — {{ entity_name }}{% endblock %}
+{% block header_h1 %}{{ t('oflist_form_title') }}{% endblock %}
+
+{% block enc_head %}
+<style>
+  .sf-wrap { max-width: 42rem; }
+  .sf-person { color: var(--muted,#777); }
+  .sf-form label { display:block; font-size:.9em; margin:.55rem 0 .15rem; font-weight:600; }
+  .sf-form .hint { font-weight:400; color:var(--muted,#777); font-size:.82em; }
+  .sf-form input[type=text], .sf-form input[type=email], .sf-form textarea { width:100%; }
+  .sf-form input[type=file] { width:100%; }
+  .sf-form textarea { min-height:4rem; }
+  .sf-hp { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+  .sf-challenge { max-width:8rem !important; }
+  .sf-banner { padding:.6rem .8rem; border-radius:6px; margin-bottom:1rem; }
+  code.fname { font-size:.85em; background:var(--surface-2,rgba(0,0,0,.05)); padding:.05rem .3rem; border-radius:4px; }
+</style>
+{% endblock %}
+
+{% block enc_content %}
+<div class="sf-wrap">
+  <h1>{{ t('oflist_form_title') }}</h1>
+  <p class="sf-person">{{ entity_name }} ({{ entity_id }})</p>
+
+  {% set _ok = {'thanks': 'oflist_thanks'} %}
+  {% set _err = {'bot': 'suggest_bot', 'embargo': 'suggest_embargo', 'invalid': 'suggest_invalid',
+                 'nofile': 'oflist_nofile', 'badname': 'oflist_badname', 'badcols': 'oflist_badcols',
+                 'empty': 'oflist_empty', 'badfile': 'oflist_badfile'} %}
+  {% if msg in _ok %}<p class="sf-banner" style="border-left:3px solid #3f9b63; background:var(--surface-2,rgba(0,0,0,.03));">{{ t(_ok[msg], fname=_fname) }}</p>
+  {% elif msg in _err %}<p class="sf-banner" style="border-left:3px solid #c0563a; background:var(--surface-2,rgba(0,0,0,.03));">{{ t(_err[msg], fname=_fname) }}</p>{% endif %}
+
+  <p class="hint" style="color:var(--muted,#777);">{{ t('oflist_form_desc', name=entity_name) }}</p>
+  <p><a class="suggest-btn" href="{{ url_for('enciclopedia.territory_oficiales_template', territory_id=entity_id) }}">{{ t('oflist_get') }}</a></p>
+  <p class="hint" style="color:var(--muted,#777); font-size:.82em;">{{ t('oflist_naming_note', fname=_fname) }}</p>
+
+  {% macro antibot() %}
+    <div class="sf-hp" aria-hidden="true"><label>Website</label><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
+    <input type="hidden" name="_ct" value="{{ challenge.token }}">
+    <label>{{ t('suggest_challenge', a=challenge.a, b=challenge.b) }} *</label>
+    <input class="sf-challenge" type="text" name="challenge" inputmode="numeric" autocomplete="off" required>
+    <p style="margin-top:.8rem;"><button type="submit">{{ t('suggest_submit') }}</button></p>
+  {% endmacro %}
+  {% macro contact() %}
+    <label>{{ t('suggest_name') }} *</label>
+    <input type="text" name="submitter_name" maxlength="100" required>
+    <label>{{ t('suggest_email') }} *</label>
+    <input type="email" name="submitter_email" maxlength="120" required>
+  {% endmacro %}
+
+  <form class="sf-form" method="post" enctype="multipart/form-data"
+        action="{{ url_for('enciclopedia.territory_oficiales_lista', territory_id=entity_id) }}">
+    {{ contact() }}
+
+    <label>{{ t('oflist_file_label') }} *
+      <span class="hint">— <code class="fname">{{ _fname }}</code></span></label>
+    <input type="file" name="listfile" accept=".csv,text/csv" required>
+
+    <label>{{ t('suggest_comment') }}</label>
+    <textarea name="comment" maxlength="2000"></textarea>
+    {{ antibot() }}
+  </form>
+
+  <p class="hint" style="margin-top:.8rem; color:var(--muted,#777); font-size:.82em;">{{ t('suggest_privacy') }}</p>
+</div>
+{% endblock %}
+
+{% block right_block %}{% endblock %}

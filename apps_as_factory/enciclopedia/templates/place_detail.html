@@ -56,36 +56,53 @@
     if (u) u.innerText = currentURL;
   }
 
-  // Leaflet map
-  var map;  // keep in outer scope
-  function initializeMap() {
+  // Leaflet: one small map per coordinate set, each carrying the town icon.
+  var coordMaps = [];
+  function initCoordMaps() {
     if (typeof L === "undefined") return; // Leaflet not loaded
-    if (!map) {
-      map = L.map('map').setView([0, 0], 2);
-      var customIcon = L.icon({
-        iconUrl: "{{ url_for('static', filename='images/icons/leaflet_town.png') }}",
-        iconSize: [25, 33],
-        iconAnchor: [12, 33],
-        popupAnchor: [-3, -76]
-      });
+    if (coordMaps.length) {                // already built -> just fix sizing when tab reopens
+      coordMaps.forEach(function (m) { setTimeout(function () { m.invalidateSize(); }, 60); });
+      return;
+    }
+    {# Marker icon by general place type (falls back to the town icon), each at
+       its own native pixel dimensions so the original aspect ratio is kept. #}
+    {% set _icon_map = {
+      'Ciudad': 'leaflet_city.bmp',
+      'Villa': 'leaflet_town.png',
+      'Pueblo': 'leaflet_pueblo_poblacion.bmp',
+      'Poblacion': 'leaflet_pueblo_poblacion.bmp',
+      'Fuerte': 'leaflet_casa.bmp',
+      'Localidad': 'leaflet_casa.bmp',
+      'Parcialidad': 'leaflet_casa.bmp',
+      'Rural': 'leaflet_rural.bmp'
+    } %}
+    {% set _icon_dims = {
+      'leaflet_casa.bmp': [30, 24],
+      'leaflet_city.bmp': [35, 50],
+      'leaflet_pueblo_poblacion.bmp': [39, 41],
+      'leaflet_rural.bmp': [69, 28],
+      'leaflet_town.png': [35, 43]
+    } %}
+    {% set _icon_file = _icon_map.get(place.categoria, 'leaflet_town.png') %}
+    {% set _dim = _icon_dims.get(_icon_file, [35, 43]) %}
+    var townIcon = L.icon({
+      iconUrl: "{{ url_for('static', filename='images/icons/' + _icon_file) }}",
+      iconSize: [{{ _dim[0] }}, {{ _dim[1] }}],
+      iconAnchor: [{{ (_dim[0] / 2) | int }}, {{ _dim[1] }}],
+      popupAnchor: [0, {{ -_dim[1] }}]
+    });
+    document.querySelectorAll('.coord-map').forEach(function (el) {
+      var lat = parseFloat(el.getAttribute('data-lat'));
+      var lon = parseFloat(el.getAttribute('data-lon'));
+      if (isNaN(lat) || isNaN(lon)) return;
+      var m = L.map(el, { scrollWheelZoom: false, attributionControl: false }).setView([lat, lon], 8);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map);
-
-      var coords = {{ coordinates|tojson }};
-      var markers = [];
-      (coords || []).forEach(function(c) {
-        var m = L.marker([c.lat, c.lng], { icon: customIcon }).addTo(map);
-        markers.push(m);
-      });
-      if (markers.length > 0) {
-        var group = new L.featureGroup(markers);
-        map.fitBounds(group.getBounds());
-      }
-    } else {
-      // If tab just opened, ensure proper sizing
-      setTimeout(function(){ map.invalidateSize(); }, 100);
-    }
+      }).addTo(m);
+      L.marker([lat, lon], { icon: townIcon }).addTo(m);
+      setTimeout(function () { m.invalidateSize(); }, 60);
+      coordMaps.push(m);
+    });
   }
 
   // Init
@@ -96,12 +113,13 @@
     // Click default tab if present
     var def = document.getElementById("defaultOpen");
     if (def) def.click();
+    setTimeout(initCoordMaps, 100);
 
-    // Re-init map when "Informacion" tab is shown
+    // (Re-)init maps when the "Informacion" tab is shown
     document.querySelectorAll('.tablinks').forEach(function(btn) {
       btn.addEventListener('click', function() {
         if (btn.getAttribute('onclick') && btn.getAttribute('onclick').indexOf("Informacion") !== -1) {
-          setTimeout(initializeMap, 100);
+          setTimeout(initCoordMaps, 100);
         }
       });
     });
@@ -110,6 +128,10 @@
 {% endblock %}
 
 {% block enc_content %}
+{# Entity heading shown at the top of every tab; the tab's own title sits below it as a subheading. #}
+{% macro entity_heading() %}
+  <h1>{{ place.label }}, {{ vt(place.categoria) }}, {{ place.region }}.<br/>{{ t('indias_id') }}: {{ place.gz_id }}</h1>
+{% endmacro %}
 <div class="tab">
   <button class="tablinks" onclick="openTab(event, 'Informacion')" id="defaultOpen">{{ t('td_tab_info') }}</button>
   <button class="tablinks" onclick="openTab(event, 'Historia')">{{ t('td_tab_history') }}</button>
@@ -119,7 +141,7 @@
 </div>
 
 <div id="Informacion" class="tabcontent" style="display:none;">
-  <h1>{{ place.label }}, {{ vt(place.categoria) }}, {{ place.region }}.<br/>{{ t('indias_id') }}: {{ place.gz_id }}</h1>
+  {{ entity_heading() }}
 
   <div class="infobox-grid">
     <div class="infobox" id="info-1-base">
@@ -128,7 +150,9 @@
         {% for f in foreignkeys_data %}
           <a href="{{ f.foreignprefix }}{{ f.foreignID }}">{{ f.foreignkey }}</a>{% if not loop.last %}, {% endif %}
         {% endfor %}
-        </span>
+        </span><br/>
+        <a class="suggest-btn" target="_blank" rel="noopener"
+           href="{{ url_for('enciclopedia.place_suggest', place_id=place.gz_id, kind='pl_url') }}">{{ t('sug_btn_url') }}</a>
       </p>
 
       {% if place.fundacion %}
@@ -138,12 +162,14 @@
 
       <hr/>
       <h3>{{ t('pd_location') }}</h3>
+      <!-- One small map per coordinate set, each with the town icon. -->
       {% for g in geometry_data %}
-        <p><span style="font-size: small;">{{ g.lat }} , {{ g.lon }}, {{ g.cert }}. {{ timespan(g.start, g.end_) }} </span></p>
+        <p style="margin-bottom:.15rem;"><span style="font-size: small;">{{ g.lat }} , {{ g.lon }}, {{ g.cert }}. {{ timespan(g.start, g.end_) }} </span></p>
+        {% if g.lat and g.lon %}
+          <div class="coord-map" data-lat="{{ g.lat }}" data-lon="{{ g.lon }}"
+               style="height:170px; width:100%; max-width:300px; margin:0 0 .9rem; border-radius:6px;"></div>
+        {% endif %}
       {% endfor %}
-
-      <!-- Single map container (plots all coordinates) -->
-      <div class="map" id="map" style="height: 300px; width: 300px;"></div>
     </div>
 
     <div class="infobox" id="info-3-detalle">
@@ -155,6 +181,8 @@
         {% endfor %}
         <p><span style="font-weight: bold;">{{ t('variant_names') }}:</span> {{ place.variantes }}</p>
         <p><span style="font-weight: bold;">{{ t('pd_name_today') }}:</span> {{ place.nombrehoy }}</p>
+        <a class="suggest-btn" target="_blank" rel="noopener"
+           href="{{ url_for('enciclopedia.place_suggest', place_id=place.gz_id, kind='pl_name') }}">{{ t('sug_btn_name') }}</a>
         <hr/>
       </div>
 
@@ -166,6 +194,8 @@
           {{ timespan(ct.start, ct.end_) }}
           <a href="/categoria/{{ place.gz_id }}" style="font-size: small;">{{ t('more') }}</a><br/>
         {% endfor %}
+        <a class="suggest-btn" target="_blank" rel="noopener"
+           href="{{ url_for('enciclopedia.place_suggest', place_id=place.gz_id, kind='pl_category') }}">{{ t('sug_btn_category') }}</a>
         <hr/>
       </div>
 
@@ -177,6 +207,8 @@
           {{ timespan(c.start, c.end_) }}
           <a href="javascript:void(0)" onclick='showRawRow(event, {{ c|tojson }}, {{ t("pd_church")|tojson }})' style="font-size: small;">{{ t('more') }}</a><br/>
         {% endfor %}
+        <a class="suggest-btn" target="_blank" rel="noopener"
+           href="{{ url_for('enciclopedia.place_suggest', place_id=place.gz_id, kind='pl_church') }}">{{ t('sug_btn_church') }}</a>
       </div>
     </div>
 
@@ -273,7 +305,8 @@
 </div>
 
 <div id="Historia" class="tabcontent" style="display:none;">
-  <h1>{{ t('history') }}</h1>
+  {{ entity_heading() }}
+  <h2>{{ t('history') }}</h2>
   {% if history_exists or reconstruction_exists %}
     {% if lang == 'en' %}
     <p class="lang-hint" style="font-size: var(--step--1); color: var(--muted, #777);
@@ -292,20 +325,27 @@
   {% else %}
     <p style="font-weight:bold;">{{ t('no_article_place') }}</p>
   {% endif %}
+  <p><a class="suggest-btn" target="_blank" rel="noopener"
+     href="{{ url_for('enciclopedia.place_suggest', place_id=place.gz_id, kind='pl_claim') }}">{{ t('sug_btn_claim') }}</a></p>
 </div>
 
 <div id="Data" class="tabcontent" style="display:none;">
-  <h1>{{ t('tab_data') }}</h1>
+  {{ entity_heading() }}
+  <h2>{{ t('tab_data') }}</h2>
   <p>{{ t('data_soon') }}</p>
 </div>
 
 <div id="Fuentes" class="tabcontent" style="display:none;">
-  <h1>{{ t('resources') }}</h1>
+  {{ entity_heading() }}
+  <h2>{{ t('resources') }}</h2>
   <!-- Content for Fuentes y Bibliografía -->
+  <p><a class="suggest-btn" target="_blank" rel="noopener"
+     href="{{ url_for('enciclopedia.place_suggest', place_id=place.gz_id, kind='pl_source') }}">{{ t('sug_btn_source') }}</a></p>
 </div>
 
 <div id="Citar" class="tabcontent" style="display:none;">
-  <h1>{{ t('tab_cite') }}</h1>
+  {{ entity_heading() }}
+  <h2>{{ t('tab_cite') }}</h2>
   <div id="citeme">
     <h3>{{ t('how_to_cite') }}</h3>
     <p>

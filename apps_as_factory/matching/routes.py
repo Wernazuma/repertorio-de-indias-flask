@@ -4,7 +4,10 @@ import glob
 import json
 import shutil
 import zipfile
+import datetime
 import threading
+import urllib.parse
+import urllib.request
 import pandas as pd
 from rapidfuzz import fuzz
 from flask import render_template, request, redirect, url_for, flash, jsonify, send_file
@@ -1391,42 +1394,159 @@ def _search_territory(name, start, end, nivel=None, provincia=None, region=None,
     return out[:limit]
 
 
-# --- Territory footprint geometry: one GeoJSON per Nivel ---
-# e.g. data/geo/source/provincia_menor.geojson, provincia.geojson, partido.geojson…
-# Each file's features carry Entidad_ID + START_Territorio / END_Territorio.
+# --- Territory footprint geometry: pulled live from ArcGIS Online ---
+# One layer per Nivel in the 00_INDIAS_base_territorios feature service. Features
+# are fetched on demand for the specific Entidad_IDs a row needs, generalized
+# server-side (the raw polygons run to ~18 MB each) and cached per (Nivel, EID).
+# The local GeoJSON files under data/geo/source are used only as an offline
+# fallback when the service is unreachable.
+_TERRITORIOS_FS = ("https://services2.arcgis.com/fKO2K6qiLNlgkZ2U/arcgis/rest/"
+                   "services/00_INDIAS_base_territorios_WFL1/FeatureServer")
+# Nivel (as stored in Niveles_matching) -> FeatureServer layer index.
+NIVEL_LAYER_ID = {
+    "provincia": 1,
+    "provincia_menor": 2,
+    "provincia_mayor": 3,
+    "principal": 4,
+    "partido": 5,
+    "obispado": 6,
+    "jurisdiccion": 7,
+    "intendencia": 8,
+    "fronteras": 9,
+    "extranjero": 10,
+    "audiencia": 11,
+    "arzobispado": 12,
+}
+# Geometry generalization for the fetched footprints (degrees / decimal places).
+_GEN_OFFSET = "0.005"
+_GEN_PRECISION = "5"
+_QUERY_FIELDS = "Entidad_ID,Nivel,Tipo,Label,Nombre,Cabecera,GZ_ID,START,END_"
+
 NIVEL_GEO_DIR = os.path.join("data", "geo", "source")
-_NIVEL_GEO_CACHE = {}
+_NIVEL_LOCAL_CACHE = {}      # offline fallback: nivel -> {eid: [features]}
+_FOOTPRINT_CACHE = {}        # (nivel_key, eid) -> [features] (year-normalized)
 
 
 def _nivel_geo_path(nivel):
     return os.path.join(NIVEL_GEO_DIR, f"{str(nivel or '').strip().lower()}.geojson")
 
 
-def _load_nivel_geo(nivel):
-    """Index one Nivel's GeoJSON by Entidad_ID -> [features]. Cached; returns {}
-    if the file for that Nivel doesn't exist yet."""
+def _load_nivel_local(nivel):
+    """Offline fallback: index a Nivel's local GeoJSON by Entidad_ID -> [features].
+    Cached; returns {} if the file for that Nivel doesn't exist."""
     key = str(nivel or "").strip().lower()
-    if key not in _NIVEL_GEO_CACHE:
+    if key not in _NIVEL_LOCAL_CACHE:
         idx = {}
         path = _nivel_geo_path(nivel)
         if os.path.exists(path):
             try:
                 with open(path, "r", encoding="utf-8") as f:
-                    gj = json.load(f)
-                for feat in gj.get("features", []):
-                    eid = str((feat.get("properties") or {}).get("Entidad_ID") or "")
-                    if eid:
-                        idx.setdefault(eid, []).append(feat)
+                    for feat in json.load(f).get("features", []):
+                        eid = str((feat.get("properties") or {}).get("Entidad_ID") or "")
+                        if eid:
+                            idx.setdefault(eid, []).append(feat)
             except Exception:
                 idx = {}
-        _NIVEL_GEO_CACHE[key] = idx
-    return _NIVEL_GEO_CACHE[key]
+        _NIVEL_LOCAL_CACHE[key] = idx
+    return _NIVEL_LOCAL_CACHE[key]
 
 
-def _footprint_feature(eid, nivel, start, end):
-    """Footprint polygon for an entity at a given Nivel, from that Nivel's GeoJSON.
-    Prefers the chronology-overlapping slice (latest START_Territorio)."""
-    feats = _load_nivel_geo(nivel).get(str(eid), [])
+def _epoch_ms_to_year(v):
+    """The service returns START / END_ as epoch milliseconds; the rest of the code
+    (and the local files) expect a plain year. Convert, but pass through values that
+    are already years."""
+    if v is None or v == "":
+        return None
+    try:
+        n = int(v)
+    except (TypeError, ValueError):
+        return _to_year(v)
+    if -100000 < n < 100000:      # already a year, not epoch ms
+        return n
+    return (datetime.datetime(1970, 1, 1) + datetime.timedelta(milliseconds=n)).year
+
+
+def _query_entities(layer, eids, generalized=True, timeout=90):
+    """One GeoJSON query for a batch of Entidad_IDs; returns features with START /
+    END_ normalized to years. Geometry is generalized unless generalized=False (the
+    export pulls full resolution)."""
+    in_list = ",".join("'" + e.replace("'", "''") + "'" for e in eids)
+    q = {
+        "where": f"Entidad_ID IN ({in_list})",
+        "outFields": _QUERY_FIELDS,
+        "returnGeometry": "true",
+        "outSR": "4326",
+        "f": "geojson",
+    }
+    if generalized:
+        q["maxAllowableOffset"] = _GEN_OFFSET
+        q["geometryPrecision"] = _GEN_PRECISION
+    params = urllib.parse.urlencode(q)
+    with urllib.request.urlopen(f"{_TERRITORIOS_FS}/{layer}/query?{params}", timeout=timeout) as resp:
+        gj = json.load(resp)
+    feats = gj.get("features", []) or []
+    for feat in feats:
+        props = feat.get("properties") or {}
+        props["START"] = _epoch_ms_to_year(props.get("START"))
+        props["END_"] = _epoch_ms_to_year(props.get("END_"))
+        feat["properties"] = props
+    return feats
+
+
+def _fetch_entities(nivel, eids, generalized=True):
+    """Return {eid: [features]} for the requested Entidad_IDs of a Nivel, pulled
+    from the ArcGIS service and cached per (Nivel, EID, resolution). The display
+    uses generalized geometry; the export passes generalized=False for full
+    resolution. Falls back to the local GeoJSON only if it still exists (offline)."""
+    key = str(nivel or "").strip().lower()
+    layer = NIVEL_LAYER_ID.get(key)
+    # Full-resolution polygons are ~18 MB each, so fetch them one entity at a time
+    # with a long timeout; generalized ones are small and batch well.
+    chunk_size, timeout = (80, 90) if generalized else (1, 300)
+    out, missing = {}, []
+    for eid in (str(e).strip() for e in eids):
+        if not eid:
+            continue
+        ck = (key, eid, generalized)
+        if ck in _FOOTPRINT_CACHE:
+            out[eid] = _FOOTPRINT_CACHE[ck]
+        else:
+            missing.append(eid)
+    if not missing:
+        return out
+
+    if layer is not None:
+        for i in range(0, len(missing), chunk_size):
+            chunk = missing[i:i + chunk_size]
+            try:
+                fetched = {}
+                for feat in _query_entities(layer, chunk, generalized, timeout):
+                    eid = str((feat.get("properties") or {}).get("Entidad_ID") or "")
+                    if eid:
+                        fetched.setdefault(eid, []).append(feat)
+                for eid in chunk:
+                    fl = fetched.get(eid, [])
+                    _FOOTPRINT_CACHE[(key, eid, generalized)] = fl
+                    out[eid] = fl
+            except Exception:
+                # service unreachable for this chunk -> offline fallback
+                local = _load_nivel_local(nivel)
+                for eid in chunk:
+                    fl = local.get(eid, [])
+                    _FOOTPRINT_CACHE[(key, eid, generalized)] = fl
+                    out[eid] = fl
+    else:
+        local = _load_nivel_local(nivel)
+        for eid in missing:
+            fl = local.get(eid, [])
+            _FOOTPRINT_CACHE[(key, eid, generalized)] = fl
+            out[eid] = fl
+    return out
+
+
+def _pick_footprint(feats, start, end):
+    """Choose one slice from an entity's footprints — the chronology-overlapping
+    one, preferring the latest START."""
     if not feats:
         return None
 
@@ -1445,6 +1565,13 @@ def _footprint_feature(eid, nivel, start, end):
                                     if _yr(f, "START") is not None else -9999))
 
 
+def _footprint_feature(eid, nivel, start, end, generalized=True):
+    """Footprint polygon for one entity at a Nivel, pulled from the service.
+    generalized=False fetches full-resolution geometry (used by the export)."""
+    feats = _fetch_entities(nivel, [str(eid)], generalized).get(str(eid), [])
+    return _pick_footprint(feats, start, end)
+
+
 @bp.route("/territory_geojson/<prefix>")
 def territory_geojson(prefix):
     """Return the best footprint polygon per requested entity (?ids=EID1,EID2,
@@ -1453,7 +1580,8 @@ def territory_geojson(prefix):
     nivel = (request.args.get("nivel") or "").strip()
     start = _to_year(request.args.get("start"))
     end = _to_year(request.args.get("end"))
-    feats = [f for f in (_footprint_feature(eid, nivel, start, end) for eid in ids) if f]
+    ent = _fetch_entities(nivel, ids)   # one batched service call for all ids
+    feats = [f for f in (_pick_footprint(ent.get(eid, []), start, end) for eid in ids) if f]
     return jsonify({"type": "FeatureCollection", "features": feats})
 
 
@@ -1484,7 +1612,7 @@ def _build_territory_export(prefix):
         nivel = str(getattr(r, "nivel", "") or "").strip()
         st = _to_year(getattr(r, "start", None))
         en = _to_year(getattr(r, "end", None))
-        feat = _footprint_feature(eid, nivel, st, en)
+        feat = _footprint_feature(eid, nivel, st, en, generalized=False)
         if not feat:
             continue
         # tag the footprint with the row's identity so it round-trips

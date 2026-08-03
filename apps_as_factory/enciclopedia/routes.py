@@ -121,6 +121,11 @@ REGION_CODE_TO_NAME = {
 
 # gz_id -> place region code, and the region checkbox options (code, label) that
 # actually occur among places, ordered by friendly name.
+# Places deliberately kept out of search results: a dummy record (1000000) and
+# two copyright-trap "non-places" (3130313, 3133130) that flag uncited reuse of
+# the dataset. Their detail pages still resolve by direct URL.
+EXCLUDED_PLACE_IDS = {'1000000', '3130313', '3133130'}
+
 gz_region = {e['gz_id']: (e.get('region') or '').strip() for e in gz_entidades_csv}
 PLACE_REGION_OPTIONS = sorted(
     {code for code in gz_region.values() if code},
@@ -578,6 +583,15 @@ def _last_office(oficial_id):
     return office[:1].upper() + office[1:] if office else ''
 
 
+def _year_or_q(v):
+    """Format a birth/death year, or '?' when it is missing (blank / 0 / NaN)."""
+    try:
+        n = int(float(str(v).strip()))
+    except (ValueError, TypeError):
+        n = 0
+    return str(n) if n else '?'
+
+
 def _random_previews():
     """One random place / territory / person / term for the home carousel."""
     items = []
@@ -600,10 +614,10 @@ def _random_previews():
         })
     if oficiales_csv:
         o = random.choice(oficiales_csv)
-        birth = (o.get('Nacimiento_y') or '').strip()
-        death = (o.get('Fallecimiento_y') or '').strip()
-        if birth or death:
-            meta = '({}–{})'.format(birth, death)  # (1650–1720), (1650–), (–1720)
+        birth = _year_or_q(o.get('Nacimiento_y'))
+        death = _year_or_q(o.get('Fallecimiento_y'))
+        if birth != '?' or death != '?':
+            meta = '({}–{})'.format(birth, death)  # (1650–1720), (1650–?), (?–1720)
         else:
             meta = ''
         items.append({
@@ -767,6 +781,36 @@ def territory_detail(territory_id):
 
 
 # Route for viewing people details
+def _office_more(o):
+    """Readable field set for a curriculum row's 'More' popup (non-empty only)."""
+    fields = [
+        ('Título', 'Titulo'), ('Título 2', 'Titulo 2'),
+        ('Entidad', 'entidad_nombre'), ('Tipo de entidad', 'Entidad_tipo_generico'),
+        ('Emanador', 'Emanador'),
+        ('Nombramiento', 'Nombramiento_y'), ('Posesión', 'Posesion_y'), ('Fin', 'Fin_y'),
+        ('Primera fecha', 'Primera_Fecha_y'), ('Última fecha', 'Ultima_Fecha_y'),
+        ('Fuente', 'Fuente'), ('Comentario', 'Comentario'),
+    ]
+    return {label: (o.get(col) or '').strip()
+            for label, col in fields if (o.get(col) or '').strip()}
+
+
+def _bio_more(p):
+    """Readable field set for the basic-bio 'More' popup (non-empty only).
+    Excludes technical/standardization columns and the internal FullOficialID."""
+    fields = [
+        ('Nombre', 'NOM_entero'),
+        ('Nacimiento', 'N_date_t'), ('Lugar de nacimiento', 'PlaceOfBirth_Settlement'),
+        ('Provincia de nacimiento', 'PlaceOfBirth_Province'), ('País de nacimiento', 'PlaceOfBirth_Country'),
+        ('Fallecimiento', 'F_date_t'), ('Lugar de defunción', 'PlaceOfDeath_Settlement'),
+        ('Provincia de defunción', 'Fallecimiento_Province'), ('País de defunción', 'PlaceOfDeath_Country'),
+        ('Títulos de nobleza', 'titulo_de_nobleza'), ('Orden religiosa', 'religious_order'),
+        ('Fuente', 'Fuente'), ('Nota', 'Nota'),
+    ]
+    return {label: (p.get(col) or '').strip()
+            for label, col in fields if (p.get(col) or '').strip()}
+
+
 @bp.route('/people/persIndias<OficialID>')
 def people_detail(OficialID):
     people = None
@@ -774,7 +818,7 @@ def people_detail(OficialID):
         if o.get('OficialID') == OficialID:
             people = o
             break
-    
+
     if people is None:
         return render_template('404.html'), 404
 
@@ -782,8 +826,18 @@ def people_detail(OficialID):
     oficiales_foreignkeys_data = [f for f in oficiales_foreignkeys_csv if f.get('OficialID') == OficialID]
     oficiales_entity_data = sorted(oficiales_entity_data, key=lambda x: x.get('Ultima_Fecha_num'))
 
+    # Fresh copies carrying a curated '_more' dict for the per-row popup (never
+    # mutate the module-level cached rows).
+    entity_view = []
+    for o in oficiales_entity_data:
+        item = dict(o)
+        item['_more'] = _office_more(o)
+        entity_view.append(item)
+
     return render_template('people_detail.html', people=people,
-                           oficiales_entity_data=oficiales_entity_data, oficiales_foreignkeys_data=oficiales_foreignkeys_data)
+                           oficiales_entity_data=entity_view,
+                           bio_more=_bio_more(people),
+                           oficiales_foreignkeys_data=oficiales_foreignkeys_data)
 
 
 #####################
@@ -1128,6 +1182,9 @@ def place_search():
         match_ents = _territories_matching(qnorm, set(terr_levels))
         matching_gz_ids = _places_for_territories(match_ents, matching_gz_ids,
                                                   year_start, year_end)
+
+    # Never surface the dummy / copyright-trap non-places in search results.
+    matching_gz_ids -= EXCLUDED_PLACE_IDS
 
     # Step 4: Retrieve final results
     results = [

@@ -1,6 +1,7 @@
 {# Main navigation — single source of truth. Pages set `active` to one of:
-   home | news | arca | atlas | encyclopedia | team  to highlight the section.
-   Dropdown parents are a real link plus a caret button that opens the submenu. #}
+   home | news | arca | atlas | encyclopedia | about  to highlight the section.
+   Dropdown parents are a real link plus a caret button that opens the submenu;
+   "About" is a caret-only button (no page of its own). #}
 {% set active = active | default('') %}
 <ul class="menu">
   <li class="has-sub" {% if active in ['home', 'news'] %}data-current{% endif %}>
@@ -35,7 +36,11 @@
       <li><a href="{{ url_for('enciclopedia.tesauro_index') }}">Thesaurus</a></li>
     </ul>
   </li>
-  <li {% if active == 'team' %}data-current aria-current="page"{% endif %}>
-    <a href="{{ url_for('team') }}">Team</a>
+  <li class="has-sub" {% if active == 'about' %}data-current{% endif %}>
+    <button type="button" aria-expanded="false" aria-haspopup="true">About<span class="caret"></span></button>
+    <ul class="submenu">
+      <li><a href="{{ url_for('team') }}">Team</a></li>
+      <li><a href="{{ url_for('impressum') }}">Impressum / AI declaration</a></li>
+    </ul>
   </li>
 </ul>

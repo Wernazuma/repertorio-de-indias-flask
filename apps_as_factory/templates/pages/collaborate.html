@@ -11,25 +11,25 @@
    'body': ['There are over 1000 not properly located places in the HGIS-Indias database. Help us find them.',
             'Also there may be undetected mistakes in the existing data: a wrong boundary or place identity, a missed relocation of a settlement… Flag cases you consider to be in error.'],
    'fine': 'Any edit is subject to approval by us before entering the DB.',
-   'link': none, 'roles': {'cs': 1, 'peer': 2}},
+   'link': 'edit', 'roles': {'cs': 1, 'peer': 2}},
 
   {'title': 'Add places', 'color': 'green', 'sym': 'addplace',
    'body': ['Even though the Indias database contains over 15,000 places, for most places we have not included all the haciendas, estancias, ranchos, and puestos, nor all mining sites or hamlets. If you possess primary sources and knowledge on missed places in some area, you can add them.'],
    'fine': 'Any added place is subject to approval/review by us before entering the DB.',
-   'link': none, 'roles': {'cs': 2, 'peer': 2}},
+   'link': 'edit', 'roles': {'cs': 2, 'peer': 2}},
 
   {'title': 'Add colonial officials to our prosopography', 'color': 'green', 'sym': 'admins',
    'body': ['Our database includes lists of viceroys, bishops, governors and other colonial administrators. For most territories, however, we have no or few officials yet. We know that others have put a lot of effort into creating such lists. If you have one and are up for sharing it, please contact us.'],
-   'link': none, 'roles': {'cs': 3, 'peer': 2}},
+   'link': 'terrsearch', 'roles': {'cs': 3, 'peer': 2}},
 
   {'title': 'Link/showcase your collection/index', 'color': 'red', 'sym': 'sync',
    'body': ['You have a collection or index of archival records, images, maps, texts related to places and spaces covered by our system? Link your collection,keywords, and controlled vocabulary to our IDs - or let us help you do it. Let us link to your collection items from our encyclopedic resource and possibly via a web application.'],
-   'link': none, 'roles': {'inst': 1, 'peer': 2}},
+   'link': ['bring', 'team'], 'roles': {'inst': 1, 'peer': 2}},
    
   {'title': 'Review information on places', 'color': 'green', 'sym': 'review',
    'body': ['Not all information on places is fully researched, and there may always be a mistake. You know a place was a parish before we say it was? You know a foundation date for a place without specific beginning? You know an attested variant name for a place? Submit your suggestions.'],
    'fine': 'Any edit is subject to approval by us before entering the DB.',
-   'link': none, 'roles': {'cs': 2, 'peer': 2}},
+   'link': 'placesearch', 'roles': {'cs': 2, 'peer': 2}},
 
   {'title': 'Contribute data tables', 'color': 'green', 'sym': 'datatables',
    'body': ['This is what we are looking for most — which is why we add this call here, too: Bring us your data! If you already have data, the process is quite straight-forward; if you want to create data with ARCA in mind, there are guidelines for best practice.'],
@@ -71,6 +71,10 @@
    'body': ['If you plan a project or have funding in an area beyond the currently covered scope of ARCA, but within its theoretical scope of “History of the Americas”, consider teaming up and become a part or partner of ARCA.',
             'Whether to expand the spatiotemporal framework to early colonial times, into the national period of a country or to precolumbian times, outside of the Spanish sphere; whether to build a canonical database on epidemics, religious orders, population, prices, hospitals, indigenous peoples — you name it. Please, do not hesitate to contact us and explore possibilities.'],
    'link': 'team', 'roles': {'peer': 1, 'inst': 1}},
+
+  {'title': 'Your idea', 'color': 'all', 'sym': 'idea',
+   'body': ['If you have an idea on how to collaborate or contribute that is not covered here, please do not hesitate to contact us.'],
+   'link': 'team', 'roles': {'cs': 9, 'teacher': 9, 'peer': 9, 'inst': 9}},
 ] %}
 
 {# --- task symbols (stroke inherits the card's effort colour) --- #}
@@ -104,6 +108,8 @@
   <path d="M12 24a12 12 0 0 1 20-8.8"/><path d="M36 24a12 12 0 0 1-20 8.8"/><path d="M32 8v8h-8"/><path d="M16 40v-8h8"/>
 {%- elif name == 'partner' -%}
   <circle cx="19" cy="24" r="9"/><circle cx="29" cy="24" r="9"/>
+{%- elif name == 'idea' -%}
+  <path d="M24 6a12 12 0 0 0-7 21.7c1.3 1 2 2.3 2 3.8V33h10v-1.5c0-1.5.7-2.8 2-3.8A12 12 0 0 0 24 6Z"/><line x1="20" y1="38" x2="28" y2="38"/><line x1="21.5" y1="42" x2="26.5" y2="42"/>
 {%- endif -%}
 </svg>
 {%- endmacro %}
@@ -173,13 +179,32 @@
   <span style="color:#d19a26;font-weight:700;">hands-on</span> ·
   <span style="color:#c0563a;font-weight:700;">deep dive</span>.</p>
 
+{# Footer link definitions: key -> [href, label, external?]. A card's `link`
+   may be one key or a list of keys. #}
+{% set LINK_DEFS = {
+  'team':  [url_for('team'), 'Contact us →', false],
+  'bring': [url_for('bring_your_data'), 'Bring your data →', false],
+  'enc':   [url_for('enciclopedia.index'), 'Encyclopedia →', false],
+  'placesearch': [url_for('enciclopedia.place_search'), 'Search places →', false],
+  'terrsearch':  [url_for('enciclopedia.territory_search'), 'Search territories →', false],
+  'edit':  ['https://ehess.maps.arcgis.com/apps/instant/webeditor/index.html?appid=1a34c29a53924737a68874bd3b7b13e9', 'Open the editor ↗', true]
+} %}
+
 <div class="card-grid duo" id="collab-grid">
   {% for c in cards %}
   <article class="card collab-card col-{{ c.color }}"
     {% for r in ROLE_ORDER if r in c.roles %}data-{{ r }}="{{ c.roles[r] }}" {% endfor %}>
     <div class="collab-head">
       <span class="collab-sym">{{ csym(c.sym) }}</span>
+      {% if c.color == 'all' %}
+      <span class="collab-effort collab-effort-all">
+        <span class="eff eff-green">{{ EFFORT['green'] }}</span>
+        <span class="eff eff-yellow">{{ EFFORT['yellow'] }}</span>
+        <span class="eff eff-red">{{ EFFORT['red'] }}</span>
+      </span>
+      {% else %}
       <span class="collab-effort">{{ EFFORT[c.color] }}</span>
+      {% endif %}
     </div>
     {% if c.logos %}
     <div class="collab-logos" title="ARCA · HGIS de las Indias">
@@ -196,9 +221,11 @@
         <span class="role-chip" data-role="{{ r }}">{{ ROLE_NAMES[r] }}</span>
         {% endfor %}
       </div>
-      {% if c.link == 'team' %}<span class="go"><a href="{{ url_for('team') }}">Contact us →</a></span>
-      {% elif c.link == 'bring' %}<span class="go"><a href="{{ url_for('bring_your_data') }}">Bring your data →</a></span>
-      {% elif c.link == 'enc' %}<span class="go"><a href="{{ url_for('enciclopedia.index') }}">Encyclopedia →</a></span>{% endif %}
+      {% set _links = c.link if (c.link is iterable and c.link is not string) else [c.link] %}
+      {% for lk in _links if lk and LINK_DEFS.get(lk) %}
+        {% set d = LINK_DEFS[lk] %}
+        <span class="go"><a href="{{ d[0] }}"{% if d[2] %} target="_blank" rel="noopener"{% endif %}>{{ d[1] }}</a></span>
+      {% endfor %}
     </div>
   </article>
   {% endfor %}

@@ -57,6 +57,13 @@
       }
     });
   </script>
+  <style>
+    /* Small "suggest / correct" buttons placed inside detail-page sections. */
+    .suggest-btn { display:inline-block; font-size:.76em; padding:.18rem .55rem; margin-top:.5rem;
+      border:1px solid var(--border,#ccc); border-radius:6px; text-decoration:none;
+      color:var(--accent,#2b4b68); background:var(--surface-2,rgba(0,0,0,.03)); white-space:nowrap; }
+    .suggest-btn:hover { border-color:var(--accent,#2b4b68); }
+  </style>
   {% block enc_head %}{% endblock %}
 {% endblock %}
 

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% set active = 'team' %}
+{% set active = 'about' %}
 {% block title %}Team — ARCA{% endblock %}
 
 {% block content %}
@@ -10,6 +10,12 @@
     GIS of the Spanish and Portuguese Americas, now hosted at Yale University.</p>
 </div>
 
+<div class="team-contact" style="text-align:center; margin-bottom: var(--sp-5);">
+  <a id="arca-contact" class="btn" href="#" rel="nofollow">Contact us</a>
+  <noscript><p style="color:var(--muted); font-size:var(--step--1); margin-top:.5rem;">
+    Please enable JavaScript to reveal our contact address.</p></noscript>
+</div>
+
 <div class="team-grid">
   <article class="team-card">
     <header class="team-head">
@@ -17,11 +23,11 @@
            alt="José Antonio Espín-Sánchez">
       <div>
         <h3>José Antonio Espín-Sánchez, PhD</h3>
-        <div class="role">Associate Professor of Economics · Strategic Lead of ARCA</div>
         <div class="affil">Yale University · Economic Growth Center</div>
+        <div class="role">Associate Professor of Economics · Strategic Lead of ARCA</div>
       </div>
     </header>
-    <p>His research focuses on historical migration and social mobility in Spain and
+    <p>José's research focuses on historical migration and social mobility in Spain and
       Spanish America. He is deeply invested in the idea of a digital data
       infrastructure for economic history; he facilitated the project's move to Yale
       and actively contributes to its strategic direction.</p>
@@ -33,15 +39,14 @@
            alt="Werner Stangl">
       <div>
         <h3>Dr. Werner Stangl</h3>
-        <div class="role">Private Lecturer. Principal Investigator of HGIS de las Indias; technical lead of ARCA</div>
         <div class="affil">University of Graz · BORG Monsbergergasse, Graz</div>
+        <div class="role">Private Lecturer. Principal Investigator of HGIS de las Indias; technical lead of ARCA</div>
       </div>
     </header>
     <p>Werner was the principal investigator of the initial HGIS de las Indias project
       at the University of Graz, and is responsible for the data model, historical
-      research, and GIS work, as well as workflow and design of ARCA. He defended his
-      thesis on colonial emigrant correspondences in Graz and worked on several digital
-      humanities projects beside HGIS-Indias, including the Digital Tokugawa Lab at Yale
+      research, and GIS work, as well as workflow and design of ARCA. He worked on
+      several digital humanities projects beside HGIS-Indias, including the Digital Tokugawa Lab at Yale
       and the TopUrbi project at the EHESS in Paris. He now is a teacher at BORG
       Monsbergergasse in Graz, continuing to support research in his academic field.</p>
   </article>
@@ -52,8 +57,8 @@
            alt="Paul Stangl">
       <div>
         <h3>Paul Stangl, BSc</h3>
-        <div class="role">Research Engineer for HGIS-Indias; Technical Advisor to ARCA</div>
         <div class="affil">Blackshark AI · formerly University of Graz</div>
+        <div class="role">Research Engineer for HGIS-Indias; Technical Advisor to ARCA</div>
       </div>
     </header>
     <p>Paul worked for the project as a research engineer at the University of Graz
@@ -62,4 +67,18 @@
       infrastructure to Yale.</p>
   </article>
 </div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+  // Assemble the mailto in JS from fragments so the address is not a literal
+  // string in the page source (blocks most automated e-mail harvesters).
+  (function () {
+    var a = document.getElementById('arca-contact');
+    if (!a) return;
+    var local = 'werner.stangl', tag = 'arca', domain = 'gmail' + '.' + 'com';
+    var addr = local + '+' + tag + '@' + domain;
+    a.setAttribute('href', 'mailto:' + addr + '?subject=' + encodeURIComponent('ARCA: '));
+  })();
+</script>
 {% endblock %}

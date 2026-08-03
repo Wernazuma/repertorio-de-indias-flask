@@ -1,0 +1,45 @@
+{% extends "enc_base.html" %}
+
+{% block title %}Suggestions — admin{% endblock %}
+{% block header_h1 %}User suggestions (admin){% endblock %}
+
+{% block enc_content %}
+<p class="lead" style="font-size: var(--step-0);">
+  Pending user-submitted suggestions. Download each CSV, process it, then clear it.
+  Clearing truncates the file back to its header row.</p>
+
+{% for kind, d in data.items() %}
+<div class="infobox" style="margin-bottom:1rem;">
+  <h3 style="text-transform:capitalize;">{{ kind }} — {{ d.rows|length }} pending</h3>
+  <p>
+    <a class="btn small" href="{{ url_for('enciclopedia.admin_suggestions_download', kind=kind, token=token) }}">Download CSV</a>
+    <form method="post" action="{{ url_for('enciclopedia.admin_suggestions_clear', token=token) }}"
+          style="display:inline;"
+          onsubmit="return confirm('Clear all {{ kind }} suggestions? Make sure you downloaded them first.');">
+      <input type="hidden" name="kind" value="{{ kind }}">
+      <button type="submit">Clear {{ kind }}</button>
+    </form>
+  </p>
+  {% if d.rows %}
+  <div style="overflow-x:auto;">
+    <table class="rawrow-table" style="font-size:.8em; border-collapse:collapse;">
+      <tr>{% for c in d.columns %}<th style="text-align:left; padding:2px 6px;">{{ c }}</th>{% endfor %}</tr>
+      {% for r in d.rows %}
+      <tr>{% for c in d.columns %}<td style="padding:2px 6px; vertical-align:top;">{{ r.get(c, '') }}</td>{% endfor %}</tr>
+      {% endfor %}
+    </table>
+  </div>
+  {% else %}
+  <p style="color:var(--muted,#777);">No pending suggestions.</p>
+  {% endif %}
+</div>
+{% endfor %}
+
+<form method="post" action="{{ url_for('enciclopedia.admin_suggestions_clear', token=token) }}"
+      onsubmit="return confirm('Clear ALL suggestions (links, offices, bio)? Make sure you downloaded them first.');">
+  <input type="hidden" name="kind" value="all">
+  <button type="submit">Clear everything</button>
+</form>
+{% endblock %}
+
+{% block right_block %}{% endblock %}

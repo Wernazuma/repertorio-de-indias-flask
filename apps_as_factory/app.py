@@ -1,9 +1,23 @@
 # app.py
+import os
+import json
 from datetime import datetime
 from pathlib import Path
 from flask import Flask, url_for, render_template, abort
 
 from i18n import init_app as init_i18n
+
+
+def _load_local_secrets():
+    """Read secrets (ADMIN_TOKEN, SECRET_KEY) from an untracked local_secrets.json
+    next to this file, if present. Values here take precedence over env vars."""
+    p = Path(__file__).resolve().parent / "local_secrets.json"
+    if p.exists():
+        try:
+            return json.loads(p.read_text(encoding="utf-8"))
+        except (ValueError, OSError):
+            pass
+    return {}
 
 # Subpages of the Atlas / HGIS de las Indias section. Each renders through
 # pages/atlas_sub.html until it gets its own content.
@@ -44,7 +58,16 @@ def create_app():
 
     # Basis-Konfiguration
     ALLOWED_EXTENSIONS = {'csv'}
-    app.config["SECRET_KEY"] = "change-me"  # anpassen
+    # Secrets come from local_secrets.json (untracked) first, then env vars.
+    _secrets = _load_local_secrets()
+    # Signs the suggestion-form anti-bot tokens and Flask sessions.
+    app.config["SECRET_KEY"] = (_secrets.get("SECRET_KEY")
+                                or os.environ.get("ARCA_SECRET_KEY")
+                                or "arca-dev-secret-change-me")
+    # Token that gates the suggestions admin page (unset -> admin page disabled).
+    app.config["ADMIN_TOKEN"] = (_secrets.get("ADMIN_TOKEN")
+                                 or os.environ.get("ARCA_ADMIN_TOKEN")
+                                 or "")
     app.config["DATA_DIR"] = Path(__file__).resolve().parent / "data"
     app.config['UPLOAD_FOLDER'] = Path(__file__).resolve().parent / "data/uploads"
     app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024 

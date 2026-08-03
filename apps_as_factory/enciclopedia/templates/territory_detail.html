@@ -79,6 +79,10 @@
 {% endblock %}
 
 {% block enc_content %}
+{# Entity heading shown at the top of every tab; the tab's own title sits below it as a subheading. #}
+{% macro entity_heading() %}
+  <h1>{{ territory.Nombre }}, {{ vt(territory.tipo) }}, {{ territory.Region }}.<br/>{{ t('indias_id') }}: {{ territory.Entidad }}</h1>
+{% endmacro %}
 <div class="tab">
   <button class="tablinks" onclick="openTab(event, 'Informacion')" id="defaultOpen">{{ t('td_tab_info') }}</button>
   <button class="tablinks" onclick="openTab(event, 'Oficiales')">{{ t('officials') }}</button>
@@ -89,7 +93,7 @@
 </div>
 
 <div id="Informacion" class="tabcontent" style="display:none;">
-  <h1>{{ territory.Nombre }}, {{ vt(territory.tipo) }}, {{ territory.Region }}.<br/>{{ t('indias_id') }}: {{ territory.Entidad }}</h1>
+  {{ entity_heading() }}
 
   <div class="infobox-grid two-col">
     <!-- Block 1: Name / Variants -->
@@ -97,6 +101,10 @@
       <h3>{{ t('name_variants') }}</h3>
       <p style="font-weight: bold;">{{ territory.Nombre }}</p>
       <p>{{ territory.Variantes }}</p>
+      <a class="suggest-btn" target="_blank" rel="noopener"
+         href="{{ url_for('enciclopedia.territory_suggest', territory_id=territory.Entidad, kind='tr_name') }}">{{ t('sug_btn_name') }}</a>
+      <a class="suggest-btn" target="_blank" rel="noopener"
+         href="{{ url_for('enciclopedia.territory_suggest', territory_id=territory.Entidad, kind='tr_url') }}">{{ t('sug_btn_url') }}</a>
     </div>
 
     <!-- Block 2: Base maps (comma-separated, no line breaks) -->
@@ -125,6 +133,8 @@
         {{ timespan(cp.start, cp.end_) }}
         <a href="javascript:void(0)" onclick='showRawRow(event, {{ cp|tojson }}, {{ t("capitals")|tojson }})' style="font-size: small;">{{ t('more') }}</a><br/>
       {% endfor %}
+      <a class="suggest-btn" target="_blank" rel="noopener"
+         href="{{ url_for('enciclopedia.territory_suggest', territory_id=territory.Entidad, kind='tr_capital') }}">{{ t('sug_btn_capital') }}</a>
     </div>
 
     <!-- Block 5: This territory depends on (expand if > 5) -->
@@ -167,15 +177,25 @@
 </div>
 
 <div id="Oficiales" class="tabcontent" style="display:none;">
-  <h1>{{ t('officials') }}</h1>
+  {{ entity_heading() }}
+  <h2>{{ t('officials') }}</h2>
   {% for o in oficiales_entity_data %}
-    <a href="../people/persIndias{{ o.OficialID }}">{{ o.oficial_nombre }}</a>,
+    {% set titulo = (o.Titulo ~ (' ' ~ o['Titulo 2'] if o['Titulo 2'] else '')) | trim %}
+    <a href="../people/persIndias{{ o.OficialID }}">{{ o.oficial_nombre }}</a>{% if titulo %}, {{ titulo }}{% endif %},
     {{ timespan(o.Primera_Fecha_y, o.Ultima_Fecha_y) }}<br/>
   {% endfor %}
+
+  <div class="oflist-cta" style="margin-top:1.2rem;">
+    <p style="margin:0 0 .45rem;">{{ t('oflist_intro') }}</p>
+    <a class="suggest-btn" href="{{ url_for('enciclopedia.territory_oficiales_template', territory_id=territory.Entidad) }}">{{ t('oflist_get') }}</a>
+    <a class="suggest-btn" target="_blank" rel="noopener"
+       href="{{ url_for('enciclopedia.territory_oficiales_lista', territory_id=territory.Entidad) }}">{{ t('oflist_submit') }}</a>
+  </div>
 </div>
 
 <div id="Historia" class="tabcontent" style="display:none;">
-  <h1>{{ t('history') }}</h1>
+  {{ entity_heading() }}
+  <h2>{{ t('history') }}</h2>
   {% if article_exists %}
     {% if lang == 'en' %}
     <p class="lang-hint" style="font-size: var(--step--1); color: var(--muted, #777);
@@ -193,15 +213,19 @@
       <div w3-include-html="{{ url_for('enciclopedia.historia_territorio', filename='comentarioshgis/' ~ territory.Entidad ~ '.html') }}"></div>
     </div>
   {% endif %}
+  <p><a class="suggest-btn" target="_blank" rel="noopener"
+     href="{{ url_for('enciclopedia.territory_suggest', territory_id=territory.Entidad, kind='tr_claim') }}">{{ t('sug_btn_claim') }}</a></p>
 </div>
 
 <div id="Data" class="tabcontent" style="display:none;">
-  <h1>{{ t('tab_data') }}</h1>
+  {{ entity_heading() }}
+  <h2>{{ t('tab_data') }}</h2>
   <p>{{ t('data_soon') }}</p>
 </div>
 
 <div id="Fuentes" class="tabcontent" style="display:none;">
-  <h1>{{ t('resources_sources') }}</h1>
+  {{ entity_heading() }}
+  <h2>{{ t('resources_sources') }}</h2>
   {% for grupo, fuentes in fuentes_entidades_data.items() %}
     <h3>{{ grupo }}</h3>
     <ul>
@@ -217,10 +241,13 @@
     </ul>
   {% endfor %}
   <hr/>
+  <p><a class="suggest-btn" target="_blank" rel="noopener"
+     href="{{ url_for('enciclopedia.territory_suggest', territory_id=territory.Entidad, kind='tr_source') }}">{{ t('sug_btn_source') }}</a></p>
 </div>
 
 <div id="Citar" class="tabcontent" style="display:none;">
-  <h1>{{ t('tab_cite') }}</h1>
+  {{ entity_heading() }}
+  <h2>{{ t('tab_cite') }}</h2>
   <div id="citeme">
     <h3>{{ t('how_to_cite') }}</h3>
     <p>
