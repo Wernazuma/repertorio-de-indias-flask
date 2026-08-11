@@ -37,3 +37,5 @@ apps_as_factory/data/user_suggestions/
 
 # Local secrets: admin token + Flask secret key (never commit)
 apps_as_factory/local_secrets.json
+
+__pycache__
