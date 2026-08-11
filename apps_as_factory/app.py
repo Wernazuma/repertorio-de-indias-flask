@@ -5,6 +5,7 @@ import secrets
 from datetime import datetime
 from pathlib import Path
 from flask import Flask, url_for, render_template, abort
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 from i18n import init_app as init_i18n
 
@@ -56,6 +57,7 @@ ATLAS_PAGES = {
 
 def create_app():
     app = Flask(__name__)
+    app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_host=1, x_proto=1, x_prefix=1)
 
     # Basis-Konfiguration
     ALLOWED_EXTENSIONS = {'csv'}

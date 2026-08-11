@@ -1,0 +1,12 @@
+services:
+  nginx-proxy:
+    build: nginx_proxy
+    restart: always
+    ports:
+      - '80:80'
+      - '443:443'
+    depends_on:
+      - flask-app
+  flask-app:
+    build: apps_as_factory
+    restart: always

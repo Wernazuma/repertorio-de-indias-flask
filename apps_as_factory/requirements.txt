@@ -1,0 +1,6 @@
+Flask
+pandas
+numpy
+python-dateutil
+fuzzywuzzy
+python-Levenshtein
