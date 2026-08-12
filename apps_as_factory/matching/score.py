@@ -29,6 +29,15 @@ def decide_phase_outcome(toponym_type: str,
     ):
         return "auto_adopt"
 
+    # A confirmed different-saint advocation is never the same place, however
+    # high the raw fuzzy score: partial_ratio rewards the shared "San …" prefix,
+    # so "San Diego" scores ~87 against "San Dionisio". saint_status is only
+    # "saint_mismatch" when BOTH names carry an identifiable, different saint, so
+    # a plain (non-saint) nombre is never caught here. Relegate rather than offer
+    # a bogus candidate.
+    if saint_status == "saint_mismatch":
+        return "relegated"
+
     # --- CANDIDATE ---
     if fuzzy_score >= 0.85:
         return "candidate"

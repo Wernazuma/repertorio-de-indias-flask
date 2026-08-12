@@ -1,0 +1,9 @@
+{# Breadcrumb for Atlas subpages. `page.title` is supplied by the atlas_page view
+   (app.py ATLAS_PAGES); falls back gracefully if it is ever missing. #}
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="{{ url_for('index') }}">Home</a>
+  <span class="sep" aria-hidden="true">›</span>
+  <a href="{{ url_for('atlas') }}">HGIS de las Indias</a>
+  <span class="sep" aria-hidden="true">›</span>
+  <span aria-current="page">{{ page.title if page and page.title else 'Atlas' }}</span>
+</nav>

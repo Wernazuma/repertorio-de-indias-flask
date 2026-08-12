@@ -51,6 +51,15 @@ p { margin: 0; }
   letter-spacing: .18em; font-size: var(--step--1); font-weight: 700;
   color: var(--accent); }
 
+/* ---------- BREADCRUMB (subpages) ---------- */
+.breadcrumb { font-family: var(--body); font-size: var(--step--1);
+  display: flex; flex-wrap: wrap; align-items: center; gap: .45rem;
+  margin-bottom: var(--sp-3); color: var(--muted); }
+.breadcrumb a { color: var(--accent); text-decoration: none; font-weight: 600; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb .sep { color: var(--border-strong); }
+.breadcrumb [aria-current="page"] { color: var(--ink); }
+
 /* ---------- HEADER ---------- */
 /* z-index 30 keeps the header (and its dropdowns) above <main>, which shares
    the z-index:1 that `body > *` sets to clear the paper-grain layer. */
@@ -404,10 +413,10 @@ p { margin: 0; }
   border: 1px solid var(--border); background: #fff; }
 .fig-slot { border: 1px dashed var(--border-strong); border-radius: var(--radius);
   background: var(--surface-2); padding: var(--sp-4); text-align: center;
-  color: var(--muted); font-size: var(--step--1); line-height: 1.5; }
-.fig-slot b { color: var(--ink); display: block; margin-bottom: .35rem;
-  text-transform: uppercase; letter-spacing: .12em; font-size: .78rem; }
-.figure figcaption { font-size: var(--step--1); color: var(--muted);
+  color: var(--ink); font-size: var(--step-0); line-height: 1.55; }
+.fig-slot b { color: var(--accent); display: block; margin-bottom: .45rem;
+  text-transform: uppercase; letter-spacing: .12em; font-size: .82rem; }
+.figure figcaption { font-size: var(--step--1); color: var(--ink);
   margin-top: .6rem; font-style: italic; }
 
 /* publication / bibliography list */

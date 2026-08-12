@@ -29,16 +29,16 @@
   --maxw: 1120px;
 
   /* ---- default palette = Atlas Slate ---- */
-  --bg: #eaeef2;
+  --bg: #d3ddeb;
   --surface: #ffffff;
-  --surface-2: #f1f5f9;
+  --surface-2: #eef2f7;
   --ink: #17222e;
   --muted: #52616f;
   --accent: #2b4b68;
   --accent-ink: #ffffff;
   --accent-2: #b06f2f;
-  --border: #d7dfe7;
-  --border-strong: #bcc8d3;
+  --border: #d3dce6;
+  --border-strong: #b7c4d1;
   --header-bg: #2b4b68;
   --header-ink: #f3f7fb;
   --header-muted: #adc1d4;
@@ -46,23 +46,29 @@
   --nav-ink-active: #ffffff;
   --nav-underline: #e0b483;
   --shadow: 0 1px 2px rgba(23,34,46,.06), 0 10px 28px rgba(23,34,46,.12);
-  --bg-grad: none;
+  /* soft cool depth: a top-left light glow, a faint navy wash top-right that
+     echoes the brand accent, and a gentle vertical fall-off so the white
+     surfaces/cards lift off the page instead of floating on flat grey. */
+  --bg-grad:
+    radial-gradient(1100px 560px at 12% -12%, rgba(255,255,255,.55), transparent 58%),
+    radial-gradient(1000px 720px at 112% 0%, rgba(43,75,104,.18), transparent 55%),
+    linear-gradient(180deg, #dbe4f0 0%, #c3d1e2 100%);
   --paper-noise: none;
   --paper-noise-opacity: 0;
 }
 
 /* Atlas Slate — existing brand #2b4b68 + ochre (explicit; matches :root) */
 :root[data-theme="slate"] {
-  --bg: #eaeef2;
+  --bg: #d3ddeb;
   --surface: #ffffff;
-  --surface-2: #f1f5f9;
+  --surface-2: #eef2f7;
   --ink: #17222e;
   --muted: #52616f;
   --accent: #2b4b68;
   --accent-ink: #ffffff;
   --accent-2: #b06f2f;
-  --border: #d7dfe7;
-  --border-strong: #bcc8d3;
+  --border: #d3dce6;
+  --border-strong: #b7c4d1;
   --header-bg: #2b4b68;
   --header-ink: #f3f7fb;
   --header-muted: #adc1d4;
@@ -70,7 +76,10 @@
   --nav-ink-active: #ffffff;
   --nav-underline: #e0b483;
   --shadow: 0 1px 2px rgba(23,34,46,.06), 0 10px 28px rgba(23,34,46,.12);
-  --bg-grad: none;
+  --bg-grad:
+    radial-gradient(1100px 560px at 12% -12%, rgba(255,255,255,.55), transparent 58%),
+    radial-gradient(1000px 720px at 112% 0%, rgba(43,75,104,.18), transparent 55%),
+    linear-gradient(180deg, #dbe4f0 0%, #c3d1e2 100%);
   --paper-noise: none;
   --paper-noise-opacity: 0;
 }

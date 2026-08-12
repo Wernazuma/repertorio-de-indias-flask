@@ -80,45 +80,66 @@ p.small {
 .tab {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 5px;
-    border-bottom: 1px solid #ccc;
-    background-color: rgba(255, 255, 255, 0.2);
+    gap: 4px;
+    /* strong baseline the active tab sits on */
+    border-bottom: 3px solid var(--accent, #2b4b68);
+    background-color: transparent;
 }
 
 .tab button {
-    background-color: inherit;
-    border: none;
+    position: relative;
+    background-color: var(--surface-2, #eef2f7);
+    color: var(--muted, #52616f);
+    border: 1px solid var(--border, #d3dce6);
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
     outline: none;
     cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
+    padding: 12px 16px;
+    transition: background-color .18s, color .18s, box-shadow .18s;
     font-size: 15px;
     text-align: center;
     width: 100%;
-    font-family: "Garamond";
+    font-family: var(--body, "Garamond");
     font-weight: bold;
 }
 
-.tab button:hover {
-    background-color: rgba(255, 255, 255, 0.4);
+.tab button:hover:not(.active) {
+    background-color: var(--surface, #fff);
+    color: var(--ink, #17222e);
 }
 
+/* Active tab: accent fill + accent-ink text, lifted with a shadow and topped by
+   a warm ochre bar — reads as clearly selected, not just "a bit different". */
 .tab button.active {
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: var(--accent, #2b4b68);
+    color: var(--accent-ink, #ffffff);
+    border-color: var(--accent, #2b4b68);
+    box-shadow: 0 -3px 12px rgba(23, 34, 46, .22);
+    z-index: 1;
+}
+
+.tab button.active::before {
+    content: "";
+    position: absolute;
+    left: -1px; right: -1px; top: 0;
+    height: 3px;
+    background: var(--nav-underline, #e0b483);
+    border-radius: 8px 8px 0 0;
 }
 
 .tabcontent-single {
     display: block;
     padding: 6px 12px;
     border-top: none;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: var(--surface, #ffffff);
 }
 
 .tabcontent {
     display: none;
     padding: 6px 12px;
     border-top: none;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: var(--surface, #ffffff);
 }
 
 .tabcontent.show {

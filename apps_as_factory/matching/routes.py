@@ -386,6 +386,22 @@ def disambiguate():
             rowID = None
         selected_gz = request.form.get("choice", "")
 
+        if selected_gz == "reject_all":
+            # Bulk: relegate every still-pending candidate row (clear the backlog).
+            # Decided rows have already left the "candidate" state, so "all
+            # remaining" is exactly "all still-candidate". Each rowID collapses to
+            # one relegated placeholder, mirroring the single-row reject.
+            cand_snapshot = df[df["phase_1a_outcome"] == "candidate"]
+            for _rid, grp in cand_snapshot.groupby("rowID"):
+                idxs = grp.index.tolist()
+                df.loc[idxs[0], "phase_1a_outcome"] = "relegated"
+                df.loc[idxs[0], "gz_id"] = pd.NA
+                if len(idxs) > 1:
+                    df = df.drop(index=idxs[1:])
+            df.to_csv(processing_path, sep=";", index=False, encoding="utf-8")
+            flash("Rejected all remaining candidates — they move to phase 3 (relegated).")
+            return redirect(url_for("matching.disambiguate", prefix=prefix, idx=0))
+
         decided = rowID is not None and selected_gz and selected_gz != "skip"
         if decided:
             is_candidate = (df["rowID"] == rowID) & (df["phase_1a_outcome"] == "candidate")
@@ -456,6 +472,10 @@ def disambiguate():
 
         current_row_id = ordered_ids[idx]
         group = disambig_df[disambig_df["rowID"] == current_row_id].copy()
+        # Cap the offered candidates to the 20 best (already score-sorted by
+        # disambiguate_candidates). Accept/reject act on the live processing df by
+        # rowID/gz_id, so trimming the display list never loses a decision.
+        group = group.head(20)
 
         # Cross-row awareness: which gz_ids are already adopted for, or are still
         # candidates of, OTHER input rows — so the user isn't blind to a place
@@ -630,7 +650,7 @@ def _best_toponym(lc, cand):
     return best_field, best
 
 
-def _search_relegated(ref_label, region_code, province, district, central, ciudadvilla, limit=250):
+def _search_relegated(ref_label, region_code, province, district, central, ciudadvilla, limit=20):
     """Search the gazetteer for candidates within the chosen territory + place-type
     filters, ranked by toponym field (nombre>label>variante) and saint match.
 
@@ -675,9 +695,22 @@ def _search_relegated(ref_label, region_code, province, district, central, ciuda
         field, score = _best_toponym(lc, c)
         if field is None:
             field, score = "label", 0  # no name match, but still listed (ranked low)
-        seen.add(gzi)
         name_clean = clean_toponym(str(c.get("lugar_nombre") or c.get("lugar_label") or ""))
         saint_status = compare_saints(saint_in, extract_saint(name_clean, saints))
+        # A saint input must not surface a DIFFERENT saint (San Diego → San Tadeo):
+        # partial_ratio inflates the shared "San …" prefix. Drop it outright rather
+        # than merely ranking it low. Only fires when both carry a distinct saint;
+        # a non-saint candidate (misleading label like "Curato de la Catedral")
+        # still passes, since that is exactly what the relegated search is for.
+        if saint_in and saint_status == "saint_mismatch":
+            continue
+        # Toponym floor: a best-field similarity below 0.75 is noise, not a real
+        # lead ("San Diego" dredging up half the gazetteer). Drop it rather than
+        # list nonsense — the territory filters and free-text lookup remain the
+        # way to reach a place whose stored name differs from the input label.
+        if score < 75:
+            continue
+        seen.add(gzi)
         rank = (field_weight[field] * 100 + score
                 + (50 if saint_status == "saint_match" else (-200 if saint_status == "saint_mismatch" else 0)))
         out.append({
@@ -839,6 +872,15 @@ def territory_choice(prefix):
             rowID = None
         action = request.form.get("action", "")
         decided = False
+
+        if action == "reject_all":
+            # Bulk: discard every still-pending relegated case (clear the backlog).
+            # Decided rows have already left the "relegated" state, so this only
+            # touches what is still awaiting a decision.
+            df.loc[df["phase_1a_outcome"] == "relegated", "phase_1a_outcome"] = "rejected_relegated"
+            df.to_csv(processing_path, sep=";", index=False, encoding="utf-8")
+            flash("Rejected all remaining relegated cases.")
+            return redirect(url_for("matching.export_results", prefix=prefix))
 
         if rowID is not None:
             mask = (df["rowID"] == rowID) & (df["phase_1a_outcome"] == "relegated")

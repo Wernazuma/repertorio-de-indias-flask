@@ -75,9 +75,9 @@
     .mb-gray   { background: #eeeeee; color: #666;    border: 1px solid #ccc;    }
 
     .actionbar {
-      position: sticky; bottom: 0; background: #fff; border-top: 1px solid #ddd;
+      position: sticky; top: 0; z-index: 900; background: #fff; border-bottom: 1px solid #ddd;
       padding: 0.7em 1.2em; display: flex; gap: 0.6em; flex-wrap: wrap; align-items: center;
-      margin: 0 -1.2em -1em;
+      margin: 0 -1.2em 0.8em;
     }
     button { font-size: 0.9em; padding: 0.5em 1em; border-radius: 5px; border: 1px solid #bbb; cursor: pointer; }
     .btn-primary { background: #0056b3; color: #fff; border-color: #0056b3; }
@@ -85,6 +85,8 @@
     .btn-reject { background: #fff; color: #a00; border-color: #d99; }
     .btn-reject:hover { background: #fff0f0; }
     .btn-skip { background: #f4f5f7; }
+    .btn-reject-all { background: #fff; color: #a00; border-color: #d99; font-weight: 600; margin-left: 0.4em; }
+    .btn-reject-all:hover { background: #ffe3e3; }
     .nav-links { margin-left: auto; font-size: 0.85em; }
     .nav-links a { color: #0056b3; text-decoration: none; }
 
@@ -164,7 +166,17 @@
         </div>
         {% endif %}
 
-        <p class="hint">Choose candidates from list or map, then click "Accept".</p>
+        <div class="actionbar">
+          <button type="button" class="btn-primary" id="btnConfirm">✓ Accept &amp; continue</button>
+          <button type="button" class="btn-reject" id="btnReject">✗ Reject</button>
+          <button type="button" class="btn-skip" id="btnSkip">→ Skip</button>
+          <button type="button" class="btn-reject-all" id="btnRejectAll">✗✗ Reject all remaining</button>
+          <span class="nav-links">
+            {% if idx > 0 %}<a href="{{ url_for('matching.disambiguate', prefix=prefix, idx=idx-1) }}">← Back</a>{% endif %}
+          </span>
+        </div>
+
+        <p class="hint">Choose a candidate from the list or map, then click "Accept". The buttons above stay in view as you scroll.</p>
 
         {% for c in candidates %}
           <div class="cand" data-gz="{{ c.gz_id }}" data-idx="{{ loop.index0 }}" id="cand-{{ loop.index0 }}">
@@ -242,15 +254,6 @@
             </dl>
           </div>
         {% endfor %}
-
-        <div class="actionbar">
-          <button type="button" class="btn-primary" id="btnConfirm">✓ Accept &amp; continue</button>
-          <button type="button" class="btn-reject" id="btnReject">✗ Reject</button>
-          <button type="button" class="btn-skip" id="btnSkip">→ Skip</button>
-          <span class="nav-links">
-            {% if idx > 0 %}<a href="{{ url_for('matching.disambiguate', prefix=prefix, idx=idx-1) }}">← Back</a>{% endif %}
-          </span>
-        </div>
       </div>
 
       <div class="right"><div id="map"></div></div>
@@ -335,6 +338,10 @@
     });
     document.getElementById('btnSkip').addEventListener('click', () => {
       choice.value = 'skip'; form.submit();
+    });
+    document.getElementById('btnRejectAll').addEventListener('click', () => {
+      if (!confirm('Reject ALL remaining candidate cases?\n\nEvery case still awaiting a decision moves to phase 3 (relegated) for manual territory resolution. This cannot be undone from here.')) return;
+      choice.value = 'reject_all'; form.submit();
     });
   </script>
 {% endif %}

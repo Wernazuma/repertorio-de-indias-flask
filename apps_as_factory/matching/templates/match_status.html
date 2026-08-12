@@ -60,6 +60,7 @@
     <div class="bar"><div class="fill indeterminate" id="fill"></div></div>
     <div class="status-line" id="statusLine">Starting…</div>
     <div class="status-sub" id="statusSub"></div>
+    <div class="status-sub" id="statusHint" style="margin-top:0.7em; color:#666;">⏳ This can take a minute or two depending on the size of your table. Please keep this page open — it will move on automatically when matching finishes.</div>
 
     <div class="done-box" id="doneBox" style="display:none;">
       ✅ Matching complete. Opening disambiguation…
@@ -77,6 +78,7 @@
     const fill = document.getElementById("fill");
     const statusLine = document.getElementById("statusLine");
     const statusSub = document.getElementById("statusSub");
+    const statusHint = document.getElementById("statusHint");
     const ph1a = document.getElementById("ph-1a");
     const ph1b = document.getElementById("ph-1b");
     const doneBox = document.getElementById("doneBox");
@@ -101,6 +103,7 @@
 
         if (d.stage === "error") {
           stopped = true;
+          statusHint.style.display = "none";
           fill.classList.remove("indeterminate");
           fill.style.background = "#b32020";
           fill.style.width = "100%";
@@ -112,6 +115,7 @@
 
         if (d.stage === "done") {
           stopped = true;
+          statusHint.style.display = "none";
           setPhaseChips(d.phase, true);
           fill.classList.remove("indeterminate");
           fill.style.width = "100%";
