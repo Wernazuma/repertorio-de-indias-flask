@@ -60,6 +60,11 @@ p { margin: 0; }
 .breadcrumb .sep { color: var(--border-strong); }
 .breadcrumb [aria-current="page"] { color: var(--ink); }
 
+/* "Back to the top" link at the foot of each main atlas group */
+.back-top { margin: var(--sp-4) 0 var(--sp-2); text-align: right; font-size: var(--step--1); }
+.back-top a { color: var(--accent); text-decoration: none; font-weight: 600; }
+.back-top a:hover { text-decoration: underline; }
+
 /* ---------- HEADER ---------- */
 /* z-index 30 keeps the header (and its dropdowns) above <main>, which shares
    the z-index:1 that `body > *` sets to clear the paper-grain layer. */

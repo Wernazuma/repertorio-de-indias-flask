@@ -3,7 +3,7 @@
 {% block title %}HGIS de las Indias — Atlas — ARCA{% endblock %}
 
 {% block content %}
-<div class="hero">
+<div class="hero" id="top">
   <img class="hero-logo" src="{{ url_for('static', filename='images/logo_hgis.jpg') }}" alt="HGIS de las Indias">
   <span class="eyebrow">Atlas</span>
   <h1>HGIS de las Indias</h1>
@@ -38,15 +38,10 @@
   </a>
   <a class="card" href="#narrative">
     <img class="card-illus" src="{{ url_for('static', filename='images/cards/card_apps_narrative.png') }}" alt="">
-    <h3>Narrative Maps</h3>
-    <p>Explore stories on historical topics and events.</p>
+    <h3>Narrative Maps &amp; Guided Tours</h3>
+    <p>Explore map-driven stories on historical topics and events, plus curated
+      walkthroughs of the atlas.</p>
     <span class="go">Browse the stories ↓</span>
-  </a>
-  <a class="card" href="#guided">
-    <img class="card-illus" src="{{ url_for('static', filename='images/cards/card_apps_guia.png') }}" alt="">
-    <h3>Guided Tours</h3>
-    <p>Follow curated walkthroughs that introduce the atlas, its data, and how to read it.</p>
-    <span class="go">Learn more ↓</span>
   </a>
 </div>
 
@@ -120,7 +115,7 @@
 </div>
 
 <div class="section-head" style="margin-top: var(--sp-4);">
-  <h3>Extract</h3>
+  <h3>Workshop</h3>
   <span class="rule"></span>
 </div>
 <div class="card-grid trio">
@@ -132,13 +127,6 @@
       “all parishes in Chile by 1800”? This is where you go.</p>
     <span class="go">Open the app ↗</span>
   </a>
-</div>
-
-<div class="section-head" style="margin-top: var(--sp-4);">
-  <h3>Edit</h3>
-  <span class="rule"></span>
-</div>
-<div class="card-grid trio">
   <a class="card" href="https://ehess.maps.arcgis.com/apps/instant/webeditor/index.html?appid=1a34c29a53924737a68874bd3b7b13e9"
      target="_blank" rel="noopener">
     <svg class="card-illus" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"
@@ -156,6 +144,8 @@
     <span class="go">Open the editor ↗</span>
   </a>
 </div>
+
+<p class="back-top"><a href="#top">↑ Back to the top</a></p>
 
 <!-- =========================== Urban GIS =========================== -->
 <div id="urban" class="section-head" style="margin-top: var(--sp-6);">
@@ -196,13 +186,16 @@
   </div>
 </div>
 
-<!-- =========================== Narrative Maps =========================== -->
+<p class="back-top"><a href="#top">↑ Back to the top</a></p>
+
+<!-- ==================== Narrative Maps & Guided Tours ==================== -->
 <div id="narrative" class="section-head" style="margin-top: var(--sp-6);">
-  <h2>Narrative Maps</h2>
+  <h2>Narrative Maps &amp; Guided Tours</h2>
   <span class="rule"></span>
 </div>
 <p class="lead">Explore stories on historical topics and events — map-driven narratives
-  that unfold across space and time.</p>
+  that unfold across space and time. Curated guided walkthroughs that introduce the
+  atlas, its sources, and how to read it are in development.</p>
 
 <div class="card-grid trio">
   <a class="card" href="https://experience.arcgis.com/experience/9463ab75e5354fd28d1eb97aaaa887da"
@@ -213,6 +206,17 @@
     <p>Read two versions on the monumental efforts to vaccinate the population of Spanish
       America against smallpox in the early 19th century, following the routes of the
       royal expedition tasked with bringing the vaccines to every corner of the empire.</p>
+    <span class="go">Open the story ↗</span>
+  </a>
+
+  <a class="card" href="https://experience.arcgis.com/experience/cf005c67daf74deabd6d578d132c16cc#data_s=id%3AdataSource_1-19e73da8aa2d4a1c9860c1d2150a8143%3A34&amp;zoom_to_selection=true"
+     target="_blank" rel="noopener">
+    <img class="card-illus" src="{{ url_for('static', filename='images/cards/card_apps_amigorena.png') }}" alt="">
+    <span class="eyebrow">Across the Pampa</span>
+    <h3>Description of the roads between Buenos Aires and Mendoza by José Antonio Amigorena, 1787</h3>
+    <p>Follow the itinerary of Amigorena along the postal road along the southern frontier
+      of the Río de la Plata and learn about the conditions of the roads and stations, the
+      vulnerabilities towards environment and indigenous groups, and the vast distances.</p>
     <span class="go">Open the story ↗</span>
   </a>
 
@@ -248,13 +252,5 @@
   </a>
 </div>
 
-<!-- =========================== Guided Tours =========================== -->
-<div id="guided" class="section-head" style="margin-top: var(--sp-6);">
-  <h2>Guided Tours</h2>
-  <span class="rule"></span>
-</div>
-<div class="notice">
-  <p>Guided walkthroughs that introduce the atlas, its sources, and how to read it are
-    <strong>in development</strong>. Check back soon.</p>
-</div>
+<p class="back-top"><a href="#top">↑ Back to the top</a></p>
 {% endblock %}
