@@ -108,6 +108,7 @@ _STAGE_LABELS = {
     "start_matching": "Matching not started yet",
     "progress": "Matching in progress",
     "disambiguation": "Disambiguation of candidates",
+    "review": "Review automatic matches",
     "constraints": "Phase 3 — global constraints",
     "territory": "Phase 3 — territory resolution",
     "export": "Ready to finalize & export",
@@ -150,6 +151,11 @@ def _pipeline_stage(prefix):
 
     if "candidate" in outcomes:
         return ("disambiguation", "matching.disambiguate", {"prefix": prefix})
+    # Between disambiguation and the manual phase: a one-time review of the
+    # machine's own decisions (auto-adopts + duplicate Indias IDs). The
+    # {prefix}_reviewed.flag records that the user has passed through it.
+    if not os.path.exists(os.path.join(up, f"{prefix}_reviewed.flag")):
+        return ("review", "matching.review_hub", {"prefix": prefix})
     if not os.path.exists(os.path.join(up, f"{prefix}_constraints.json")):
         return ("constraints", "matching.set_constraints", {"prefix": prefix})
     if "relegated" in outcomes:
@@ -196,11 +202,79 @@ def resume():
 def _clear_run_artifacts(prefix):
     """Remove status/flags from a previous run so a fresh run starts clean."""
     for suffix in ("_status.json", "_status.json.tmp", "_status.txt",
-                   "_phase1a_complete.flag", "_phase1b_complete.flag"):
+                   "_phase1a_complete.flag", "_phase1b_complete.flag",
+                   "_reviewed.flag", "_undo.csv", "_undo.json"):
         try:
             os.remove(os.path.join(UPLOAD_FOLDER, f"{prefix}{suffix}"))
         except OSError:
             pass
+
+
+# ---------------------------------------------------------------------------
+# One-level undo + relegation helper, shared by disambiguation, manual
+# resolution and the review screens.
+# ---------------------------------------------------------------------------
+
+def _undo_paths(prefix):
+    return (os.path.join(UPLOAD_FOLDER, f"{prefix}_undo.csv"),
+            os.path.join(UPLOAD_FOLDER, f"{prefix}_undo.json"))
+
+
+def _save_undo(prefix, stage, idx, row_id, desc):
+    """Snapshot the current processing.csv into the single undo slot BEFORE a
+    data-mutating decision, so the last decision can be taken back. Best-effort:
+    a snapshot failure must never block the actual decision."""
+    csv_path = os.path.join(UPLOAD_FOLDER, f"{prefix}_processing.csv")
+    undo_csv, undo_json = _undo_paths(prefix)
+    try:
+        shutil.copy(csv_path, undo_csv)
+        with open(undo_json, "w", encoding="utf-8") as f:
+            json.dump({"stage": stage, "idx": int(idx),
+                       "row_id": (None if row_id is None else int(row_id)),
+                       "desc": desc}, f)
+    except (OSError, ValueError):
+        pass
+
+
+def _undo_meta(prefix):
+    """Return the undo slot's metadata dict if a usable snapshot exists, else None."""
+    undo_csv, undo_json = _undo_paths(prefix)
+    if not (os.path.exists(undo_csv) and os.path.exists(undo_json)):
+        return None
+    try:
+        with open(undo_json, encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return None
+
+
+def _clear_undo(prefix):
+    for p in _undo_paths(prefix):
+        try:
+            os.remove(p)
+        except OSError:
+            pass
+
+
+def _can_undo(prefix, stage):
+    """True when a snapshot exists for THIS step (so the undo button only shows
+    where it applies, never dangling in from another stage)."""
+    meta = _undo_meta(prefix)
+    return bool(meta and meta.get("stage") == stage)
+
+
+def _relegate_rowid(df, row_id):
+    """Send one input row back to the manual phase: collapse its rows to a single
+    'relegated' placeholder with a cleared gz_id (mirrors the disambiguation
+    reject). Returns True if anything changed."""
+    idxs = df.index[df["rowID"] == row_id].tolist()
+    if not idxs:
+        return False
+    df.loc[idxs[0], "phase_1a_outcome"] = "relegated"
+    df.loc[idxs[0], "gz_id"] = pd.NA
+    if len(idxs) > 1:
+        df.drop(index=idxs[1:], inplace=True)
+    return True
 
 
 @bp.route("/match_phase_1", methods=["GET"])
@@ -385,8 +459,13 @@ def disambiguate():
         except (TypeError, ValueError):
             rowID = None
         selected_gz = request.form.get("choice", "")
+        try:
+            idx = int(request.form.get("idx", 0))
+        except (TypeError, ValueError):
+            idx = 0
 
         if selected_gz == "reject_all":
+            _save_undo(prefix, "disambiguation", 0, rowID, "reject all remaining candidates")
             # Bulk: relegate every still-pending candidate row (clear the backlog).
             # Decided rows have already left the "candidate" state, so "all
             # remaining" is exactly "all still-candidate". Each rowID collapses to
@@ -404,6 +483,8 @@ def disambiguate():
 
         decided = rowID is not None and selected_gz and selected_gz != "skip"
         if decided:
+            _save_undo(prefix, "disambiguation", idx, rowID,
+                       "reject" if selected_gz == "reject" else f"adopt {selected_gz}")
             is_candidate = (df["rowID"] == rowID) & (df["phase_1a_outcome"] == "candidate")
             if selected_gz == "reject":
                 # Rejecting all candidates does NOT discard the row — it goes back
@@ -424,10 +505,6 @@ def disambiguate():
                     pass
             df.to_csv(processing_path, sep=";", index=False, encoding="utf-8")
 
-        try:
-            idx = int(request.form.get("idx", 0))
-        except (TypeError, ValueError):
-            idx = 0
         # The case list is rebuilt from the live "candidate" rows on every GET.
         # A decision removes the current row from that list, so the next case
         # shifts INTO the current idx -> keep idx. Only "skip" leaves the row in
@@ -466,8 +543,9 @@ def disambiguate():
         except ValueError:
             idx = 0
         if idx >= total:
+            _clear_undo(prefix)  # queue exhausted — no decision left to undo here
             flash("Disambiguation complete.")
-            return redirect(url_for("matching.set_constraints", prefix=prefix))
+            return redirect(url_for("matching.review_hub", prefix=prefix))
         idx = max(0, idx)
 
         current_row_id = ordered_ids[idx]
@@ -576,10 +654,198 @@ def disambiguate():
             candidates_json=json.dumps(candidates),
             context_json=json.dumps(context_points),
             table_context=_submitted_context(prefix, current_row_id, span=2),
+            can_undo=_can_undo(prefix, "disambiguation"),
         )
     except Exception as e:
         flash(f"Error loading disambiguation data: {e}")
         return redirect(url_for("matching.index"))
+
+
+# ---------------------------------------------------------------------------
+# Undo — restore the single snapshot taken before the last decision
+# ---------------------------------------------------------------------------
+
+@bp.route("/undo/<prefix>", methods=["POST"])
+def undo_decision(prefix):
+    meta = _undo_meta(prefix)
+    if not meta:
+        flash("Nothing to undo.")
+        return redirect(url_for("matching.resume", prefix=prefix))
+    undo_csv, _ = _undo_paths(prefix)
+    processing_path = os.path.join(UPLOAD_FOLDER, f"{prefix}_processing.csv")
+    try:
+        shutil.copy(undo_csv, processing_path)
+    except OSError as e:
+        flash(f"Could not undo: {e}")
+        return redirect(url_for("matching.resume", prefix=prefix))
+    _clear_undo(prefix)
+    flash("Reverted the last decision.")
+    stage, idx = meta.get("stage"), meta.get("idx", 0)
+    if stage == "disambiguation":
+        return redirect(url_for("matching.disambiguate", prefix=prefix, idx=idx))
+    if stage == "territory":
+        return redirect(url_for("matching.territory_choice", prefix=prefix, idx=idx))
+    return redirect(url_for("matching.resume", prefix=prefix))
+
+
+# ---------------------------------------------------------------------------
+# Review — check the machine's own decisions before the manual phase
+# ---------------------------------------------------------------------------
+
+_REVIEW_ADOPTED = ["auto_adopt", "adopted_candidate"]
+
+
+def _load_processing(prefix):
+    """Load {prefix}_processing.csv with gz_id as nullable Int64, or (None, redirect)."""
+    path = os.path.join(UPLOAD_FOLDER, f"{prefix}_processing.csv")
+    if not os.path.exists(path):
+        flash(f"Missing processing file: {path}")
+        return None, path
+    df = pd.read_csv(path, sep=";", encoding="utf-8")
+    df["gz_id"] = pd.to_numeric(df["gz_id"], errors="coerce").astype("Int64")
+    return df, path
+
+
+@bp.route("/review/<prefix>", methods=["GET"])
+def review_hub(prefix):
+    """Hub shown once between disambiguation and the manual phase: offers two
+    (recommended) reviews of the machine's decisions, then a continue button."""
+    df, _ = _load_processing(prefix)
+    if df is None:
+        return redirect(url_for("matching.index"))
+    outcome = df["phase_1a_outcome"].astype(str)
+    n_auto = int((outcome == "auto_adopt").sum())
+    adopted = df[outcome.isin(_REVIEW_ADOPTED)].dropna(subset=["gz_id"])
+    per_id = adopted.groupby("gz_id")["rowID"].nunique()
+    dup = per_id[per_id >= 2]
+    return render_template(
+        "review_hub.html", prefix=prefix,
+        n_auto=n_auto, n_dup_ids=int(len(dup)), n_dup_rows=int(dup.sum()) if len(dup) else 0,
+    )
+
+
+@bp.route("/review/<prefix>/continue", methods=["POST"])
+def review_continue(prefix):
+    """Mark the review passed and hand off to the manual phase (constraints)."""
+    open(os.path.join(UPLOAD_FOLDER, f"{prefix}_reviewed.flag"), "w").close()
+    return redirect(url_for("matching.resume", prefix=prefix))
+
+
+@bp.route("/review/auto/<prefix>", methods=["GET", "POST"])
+def review_auto(prefix):
+    """List the automatically adopted matches; "Send to manual" relegates a row."""
+    df, path = _load_processing(prefix)
+    if df is None:
+        return redirect(url_for("matching.index"))
+
+    if request.method == "POST":
+        try:
+            row_id = int(request.form.get("row_id"))
+        except (TypeError, ValueError):
+            row_id = None
+        if row_id is not None and _relegate_rowid(df, row_id):
+            df.to_csv(path, sep=";", index=False, encoding="utf-8")
+            flash(f"Row {row_id} sent to manual resolution.")
+        return redirect(url_for("matching.review_auto", prefix=prefix))
+
+    auto = df[df["phase_1a_outcome"].astype(str) == "auto_adopt"]
+    rows = []
+    for _, r in auto.iterrows():
+        rows.append({
+            "row_id": int(r["rowID"]) if pd.notna(r["rowID"]) else None,
+            "ref_label": str(r.get("ref_Label", "") or ""),
+            "gz_id": int(r["gz_id"]) if pd.notna(r["gz_id"]) else None,
+            "lugar_label": str(r.get("lugar_label", "") or ""),
+            "partido": str(r.get("lugar_partido_generico", "") or ""),
+            "provincia": str(r.get("lugar_provincia_generica", "") or ""),
+            "territory": str(r.get("territories_match", "") or "").replace("_", " "),
+            "score": r.get("fuzzy_score"),
+        })
+    return render_template("review_auto.html", prefix=prefix, rows=rows, total=len(rows))
+
+
+@bp.route("/review/duplicates/<prefix>", methods=["GET", "POST"])
+def review_duplicates(prefix):
+    """Group adopted rows that share an Indias ID (gz_id used for 2+ input rows);
+    "Send to manual" relegates the wrong one(s)."""
+    df, path = _load_processing(prefix)
+    if df is None:
+        return redirect(url_for("matching.index"))
+
+    if request.method == "POST":
+        try:
+            row_id = int(request.form.get("row_id"))
+        except (TypeError, ValueError):
+            row_id = None
+        if row_id is not None and _relegate_rowid(df, row_id):
+            df.to_csv(path, sep=";", index=False, encoding="utf-8")
+            flash(f"Row {row_id} sent to manual resolution.")
+        return redirect(url_for("matching.review_duplicates", prefix=prefix))
+
+    adopted = df[df["phase_1a_outcome"].astype(str).isin(_REVIEW_ADOPTED)].dropna(subset=["gz_id"])
+    groups = []
+    for gz, grp in adopted.groupby("gz_id"):
+        g = grp.drop_duplicates(subset=["rowID"])
+        if g["rowID"].nunique() < 2:
+            continue
+        members = [{
+            "row_id": int(x["rowID"]) if pd.notna(x["rowID"]) else None,
+            "ref_label": str(x.get("ref_Label", "") or ""),
+            "outcome": str(x.get("phase_1a_outcome", "") or ""),
+            "partido": str(x.get("lugar_partido_generico", "") or ""),
+            "provincia": str(x.get("lugar_provincia_generica", "") or ""),
+        } for _, x in g.iterrows()]
+        groups.append({
+            "gz_id": int(gz),
+            "lugar_label": str(g.iloc[0].get("lugar_label", "") or ""),
+            "members": members,
+        })
+    return render_template("review_duplicates.html", prefix=prefix, groups=groups, total=len(groups))
+
+
+# Input territory fields shown when inspecting the other rows that reference a place.
+_USAGE_REF_COLS = ["ref_Partido", "ref_partido", "ref_Jurisdiccion", "ref_ProvinciaMenor",
+                   "ref_Provincia", "ref_ProvinciaMayor", "ref_Obispado", "ref_Region", "ref_Adm0"]
+
+
+@bp.route("/place_usage/<prefix>/<int:gz_id>", methods=["GET"])
+def place_usage(prefix, gz_id):
+    """JSON: every OTHER input row that references this Indias ID (as a live
+    candidate or an adopted match), so the user can look up the competing rows and
+    decide. Used by the inspect popup in disambiguation and manual resolution."""
+    df, _ = _load_processing(prefix)
+    if df is None:
+        return jsonify({"gz_id": gz_id, "rows": []}), 404
+    try:
+        exclude = int(request.args.get("exclude"))
+    except (TypeError, ValueError):
+        exclude = None
+
+    gz_col = pd.to_numeric(df["gz_id"], errors="coerce")
+    relevant = ["candidate"] + list(ADOPTED_OUTCOMES)
+    sub = df[(gz_col == gz_id) & df["phase_1a_outcome"].astype(str).isin(relevant)]
+
+    rows, seen = [], set()
+    for _, r in sub.iterrows():
+        rid = r.get("rowID")
+        if pd.isna(rid):
+            continue
+        rid = int(rid)
+        if rid == exclude or rid in seen:
+            continue
+        seen.add(rid)
+        terr = [str(r[c]).strip() for c in _USAGE_REF_COLS
+                if c in r.index and pd.notna(r[c]) and str(r[c]).strip()]
+        score = r.get("fuzzy_score")
+        rows.append({
+            "rowID": rid,
+            "label": str(r.get("ref_Label", "") or ""),
+            "outcome": str(r.get("phase_1a_outcome", "") or ""),
+            "territory": " · ".join(dict.fromkeys(terr)),  # de-dup, keep order
+            "score": None if (score is None or (isinstance(score, float) and pd.isna(score))) else score,
+        })
+    rows.sort(key=lambda x: x["rowID"])
+    return jsonify({"gz_id": gz_id, "rows": rows})
 
 
 # ---------------------------------------------------------------------------
@@ -874,6 +1140,7 @@ def territory_choice(prefix):
         decided = False
 
         if action == "reject_all":
+            _save_undo(prefix, "territory", idx, rowID, "reject all remaining relegated")
             # Bulk: discard every still-pending relegated case (clear the backlog).
             # Decided rows have already left the "relegated" state, so this only
             # touches what is still awaiting a decision.
@@ -919,6 +1186,8 @@ def territory_choice(prefix):
                 decided = True
             # action == "skip": leave as relegated
 
+        if decided:
+            _save_undo(prefix, "territory", idx, rowID, action)
         df.to_csv(processing_path, sep=";", index=False, encoding="utf-8")
         next_idx = idx if decided else idx + 1
         return redirect(url_for("matching.territory_choice", prefix=prefix, idx=next_idx, **filters))
@@ -927,6 +1196,7 @@ def territory_choice(prefix):
     relegated_ids = df[df["phase_1a_outcome"] == "relegated"]["rowID"].drop_duplicates().tolist()
     total = len(relegated_ids)
     if total == 0:
+        _clear_undo(prefix)
         flash("No relegated cases left to resolve.")
         return redirect(url_for("matching.export_results", prefix=prefix))
 
@@ -935,6 +1205,7 @@ def territory_choice(prefix):
     except ValueError:
         idx = 0
     if idx >= total:
+        _clear_undo(prefix)
         flash("Territory resolution complete.")
         return redirect(url_for("matching.export_results", prefix=prefix))
     idx = max(0, idx)
@@ -979,6 +1250,20 @@ def territory_choice(prefix):
         filters["central"] == "1", filters["ciudadvilla"] == "1",
     )
 
+    # Cross-row awareness: which candidate places are already adopted for ANOTHER
+    # input row, so the user is warned before matching the same place twice
+    # (mirrors the disambiguation phase). Built from the live processing df.
+    cross_adopted = {}
+    for _, rr in df.iterrows():
+        g, rid = rr.get("gz_id"), rr.get("rowID")
+        if pd.isna(g) or pd.isna(rid) or int(rid) == int(current_row_id):
+            continue
+        if str(rr.get("phase_1a_outcome", "")) in ADOPTED_OUTCOMES:
+            cross_adopted.setdefault(int(g), []).append(
+                {"rowID": int(rid), "label": str(rr.get("ref_Label", "") or "")})
+    for c in candidates:
+        c["also_adopted_for"] = cross_adopted.get(c.get("gz_id"), [])
+
     # New places already created in this run that share this toponym — offered
     # for reuse so repeated names (e.g. two "Manila" rows) get the same
     # coordinates instead of being pinned twice.
@@ -1020,6 +1305,8 @@ def territory_choice(prefix):
         candidates=candidates,
         candidates_json=json.dumps(candidates),
         identified_json=json.dumps(_identified_places(prefix)),
+        table_context=_submitted_context(prefix, current_row_id, span=2),
+        can_undo=_can_undo(prefix, "territory"),
     )
 
 
@@ -1277,6 +1564,7 @@ _DATASET_SUFFIXES = (
     "_domain.txt", "_metadata.txt", "_bibliography.txt", "_field_definitions.csv",
     "_constraints.json", "_status.json", "_status.json.tmp", "_status.txt",
     "_phase1a_complete.flag", "_phase1b_complete.flag",
+    "_reviewed.flag", "_undo.csv", "_undo.json",
     "_results.csv", "_original_results.csv", ".geojson",
 )
 

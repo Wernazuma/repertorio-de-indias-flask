@@ -66,6 +66,9 @@
     .btn-skip { background: #f4f5f7; }
     .btn-reject-all { background: #fff; color: #a00; border-color: #d99; font-weight: 600; margin-left: 0.4em; }
     .btn-reject-all:hover { background: #ffe3e3; }
+    .btn-undo { background: transparent; border: none; padding: 0.3em 0.2em; color: #0056b3;
+      font-size: 0.85em; cursor: pointer; text-decoration: underline; }
+    .btn-undo:hover { color: #00408a; }
 
     .manualbox { border: 1px solid #e0e0e0; border-radius: 6px; padding: 0.6em 0.8em; margin-top: 0.6em; background: #fafbfc; font-size: 0.85em; }
     .reusebox { border: 1px solid #cfe0cf; border-radius: 6px; padding: 0.6em 0.8em; margin-top: 0.6em; background: #eef7ee; font-size: 0.85em; }
@@ -84,6 +87,28 @@
 
     .marker-num { display: flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,.4); color: #fff; font-weight: 700; font-size: 0.85em; }
     .marker-num span { transform: rotate(45deg); }
+
+    .rowctx { margin: 0.4em 0 0.7em; font-size: 0.82em; }
+    .rowctx-head { color: #555; margin-bottom: 0.2em; }
+    .rowctx summary { cursor: pointer; color: #0056b3; }
+    .rowctx-scroll { overflow-x: auto; margin-top: 0.4em; border: 1px solid #e0e0e0; border-radius: 5px; max-width: 100%; }
+    .rowctx-table { border-collapse: collapse; font-size: 0.92em; white-space: nowrap; }
+    .rowctx-table th, .rowctx-table td { border: 1px solid #eee; padding: 3px 7px; text-align: left; }
+    .rowctx-table thead th { background: #f5f5f5; }
+    .rowctx-table tr.cur { background: #fff6df; font-weight: 600; }
+    .cross-note { margin-top: 0.35em; }
+
+    .usage-link { cursor: pointer; text-decoration: underline dotted; }
+    .usage-pop { position: fixed; z-index: 3000; background: #fff; border: 1px solid #bbb;
+      border-radius: 8px; box-shadow: 0 6px 24px rgba(0,0,0,.25); width: min(460px, 92vw);
+      max-height: 62vh; overflow: auto; padding: 0.7em 0.9em; font-size: 0.82em; }
+    .usage-pop h4 { margin: 0 0 0.45em; font-size: 0.95em; padding-right: 1.4em; }
+    .usage-pop table { border-collapse: collapse; width: 100%; }
+    .usage-pop th, .usage-pop td { border-bottom: 1px solid #eee; padding: 3px 6px; text-align: left; vertical-align: top; white-space: nowrap; }
+    .usage-pop td.lbl { white-space: normal; }
+    .usage-pop .close { position: absolute; top: 6px; right: 8px; border: none; background: none;
+      font-size: 1.2em; line-height: 1; cursor: pointer; color: #888; }
+    .usage-pop .empty { color: #777; }
   </style>
 </head>
 <body>
@@ -108,6 +133,29 @@
           {% endfor %}
         </div>
       </div>
+
+      {% if table_context %}
+      <div class="rowctx">
+        <div class="rowctx-head">Row <b>{{ table_context.position }}</b> of
+          {{ table_context.total }} in your submitted table.</div>
+        <details>
+          <summary>Inspect this row and its neighbours</summary>
+          <div class="rowctx-scroll">
+            <table class="rowctx-table">
+              <thead><tr><th>row</th>{% for col in table_context.columns %}<th>{{ col }}</th>{% endfor %}</tr></thead>
+              <tbody>
+                {% for r in table_context.rows %}
+                <tr class="{{ 'cur' if r.is_current }}">
+                  <td>{{ r.pos }}{{ ' ◀' if r.is_current }}</td>
+                  {% for col in table_context.columns %}<td>{{ r.cells[col] }}</td>{% endfor %}
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </div>
+      {% endif %}
 
       <!-- Territory + place-type filters (auto-submit on change) -->
       <form method="GET" action="{{ url_for('matching.territory_choice', prefix=prefix) }}" id="filterForm" class="filters">
@@ -175,50 +223,15 @@
           <button type="button" class="btn-skip" id="btnSkip">→ Skip</button>
           <button type="button" class="btn-reject-all" id="btnRejectAll">✗✗ Reject all remaining</button>
           <span class="nav-links">
+            {% if can_undo %}<button type="submit" class="btn-undo"
+              formaction="{{ url_for('matching.undo_decision', prefix=prefix) }}"
+              formmethod="post" title="Revert the previous decision">↶ Undo last decision</button>{% endif %}
             {% if idx > 0 %}<a href="{{ url_for('matching.territory_choice', prefix=prefix, idx=idx-1, **filters) }}">← back</a>{% endif %}
           </span>
         </div>
 
-        {% for c in candidates %}
-          <div class="cand" data-gz="{{ c.gz_id }}" data-idx="{{ loop.index0 }}" id="cand-{{ loop.index0 }}">
-            <div class="head">
-              <span class="badge-num">{{ loop.index }}</span>
-              <span class="title">{{ c.lugar_label or c.gz_id }}</span>
-              {% if c.lat is none or c.lon is none %}<span class="nocoord">no coord.</span>{% endif %}
-            </div>
-            <div class="matchbar">
-              <span class="mb {{ 'mb-orange' if c.match_field == 'variante' else 'mb-green' }}">Toponym: {{ c.match_field }} ({{ c.match_score }})</span>
-              {% if c.saint_status == 'saint_match' %}<span class="mb mb-green">Saint: match</span>
-              {% elif c.saint_status == 'saint_mismatch' %}<span class="mb mb-red">Saint: mismatch</span>
-              {% else %}<span class="mb mb-gray">Saint: none</span>{% endif %}
-              {% if c.lugar_iglesia_cat in ['Curato', 'Mision cabecera'] %}<span class="mb mb-green">{{ c.lugar_iglesia_cat }}</span>{% endif %}
-            </div>
-            <dl>
-              {% if c.lugar_nombre %}<dt>Nombre</dt><dd>{{ c.lugar_nombre }}</dd>{% endif %}
-              {% if c.lugar_variantes %}<dt>Variantes</dt><dd>{{ c.lugar_variantes }}</dd>{% endif %}
-              <dt>Categoría</dt><dd>{{ c.lugar_categoria }}{% if c.lugar_iglesia_cat %} · {{ c.lugar_iglesia_cat }}{% endif %}</dd>
-              <dt>Partido</dt><dd>{{ c.lugar_partido_generico }}</dd>
-              <dt>Provincia</dt><dd>{{ c.lugar_provincia_generica }} ({{ c.lugar_region }})</dd>
-              <dt>gz_id</dt><dd>{{ c.gz_id }}</dd>
-            </dl>
-          </div>
-        {% endfor %}
-
-        {% if prior_new %}
-        <!-- New places already created this run for the same toponym -->
-        <div class="reusebox">
-          <p class="reuse-title">You already added a new place named
-            “{{ ref_label }}” — reuse its coordinates?</p>
-          {% for p in prior_new %}
-          <button type="button" class="btn-reuse"
-                  data-lat="{{ p.lat }}" data-lon="{{ p.lon }}" data-cat="{{ p.category }}">
-            ↻ Reuse: {{ p.category or 'place' }} at {{ '%.4f'|format(p.lat|float) }}, {{ '%.4f'|format(p.lon|float) }}
-          </button>
-          {% endfor %}
-        </div>
-        {% endif %}
-
-        <!-- Manual options -->
+        <!-- Manual options (above the candidates): match a known Indias ID, or
+             flag a place that is not in the database. -->
         <div class="manualbox">
           <div class="manual-row">
             <label>HGIS Indias ID (gz_id):
@@ -236,9 +249,56 @@
             <span class="coord-readout" id="coordReadout">Click the map to set the coordinates.</span>
           </div>
         </div>
-
         <input type="hidden" name="manual_lat" id="manualLat" value="">
         <input type="hidden" name="manual_lon" id="manualLon" value="">
+
+        {% if prior_new %}
+        <!-- New places already created this run for the same toponym -->
+        <div class="reusebox">
+          <p class="reuse-title">You already added a new place named
+            “{{ ref_label }}” — reuse its coordinates?</p>
+          {% for p in prior_new %}
+          <button type="button" class="btn-reuse"
+                  data-lat="{{ p.lat }}" data-lon="{{ p.lon }}" data-cat="{{ p.category }}">
+            ↻ Reuse: {{ p.category or 'place' }} at {{ '%.4f'|format(p.lat|float) }}, {{ '%.4f'|format(p.lon|float) }}
+          </button>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% for c in candidates %}
+          <div class="cand" data-gz="{{ c.gz_id }}" data-idx="{{ loop.index0 }}" id="cand-{{ loop.index0 }}">
+            <div class="head">
+              <span class="badge-num">{{ loop.index }}</span>
+              <span class="title">{{ c.lugar_label or c.gz_id }}</span>
+              {% if c.lat is none or c.lon is none %}<span class="nocoord">no coord.</span>{% endif %}
+            </div>
+            <div class="matchbar">
+              <span class="mb {{ 'mb-orange' if c.match_field == 'variante' else 'mb-green' }}">Toponym: {{ c.match_field }} ({{ c.match_score }})</span>
+              {% if c.saint_status == 'saint_match' %}<span class="mb mb-green">Saint: match</span>
+              {% elif c.saint_status == 'saint_mismatch' %}<span class="mb mb-red">Saint: mismatch</span>
+              {% else %}<span class="mb mb-gray">Saint: none</span>{% endif %}
+              {% if c.lugar_iglesia_cat in ['Curato', 'Mision cabecera'] %}<span class="mb mb-green">{{ c.lugar_iglesia_cat }}</span>{% endif %}
+            </div>
+            {% if c.also_adopted_for %}
+            <div class="matchbar cross-note">
+              <span class="mb mb-red usage-link" data-gz="{{ c.gz_id }}"
+                    title="Already matched to another input row — click to inspect those rows">
+                ⚠ Already matched to:
+                {%- for e in c.also_adopted_for %} {{ e.label or ('row ' ~ e.rowID) }}{% if not loop.last %},{% endif %}{% endfor %} 🔍
+              </span>
+            </div>
+            {% endif %}
+            <dl>
+              {% if c.lugar_nombre %}<dt>Nombre</dt><dd>{{ c.lugar_nombre }}</dd>{% endif %}
+              {% if c.lugar_variantes %}<dt>Variantes</dt><dd>{{ c.lugar_variantes }}</dd>{% endif %}
+              <dt>Categoría</dt><dd>{{ c.lugar_categoria }}{% if c.lugar_iglesia_cat %} · {{ c.lugar_iglesia_cat }}{% endif %}</dd>
+              <dt>Partido</dt><dd>{{ c.lugar_partido_generico }}</dd>
+              <dt>Provincia</dt><dd>{{ c.lugar_provincia_generica }} ({{ c.lugar_region }})</dd>
+              <dt>gz_id</dt><dd>{{ c.gz_id }}</dd>
+            </dl>
+          </div>
+        {% endfor %}
       </form>
     </div>
 
@@ -352,6 +412,11 @@
       if (!/^\d+$/.test(v)) { alert('Enter a numeric HGIS Indias ID (gz_id).'); return; }
       choiceInput.value = v; actionInput.value = 'adopt'; decisionForm.submit();
     });
+    // Enter in the gz_id field means "Adopt by ID" — never a stray form submit
+    // (which would otherwise hit the undo button, the form's only submit control).
+    document.getElementById('manualGz').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') { e.preventDefault(); document.getElementById('btnAdoptId').click(); }
+    });
 
     // ---- place not in database: pick coordinates on the map ----
     const notInDb = document.getElementById('notInDb');
@@ -407,6 +472,46 @@
         decisionForm.submit();
       });
     });
+
+    // ---- inspect: which OTHER rows reference this place (candidate/adopted) ----
+    const USAGE_URL = "{{ url_for('matching.place_usage', prefix=prefix, gz_id=987654321) }}";
+    const USAGE_EXCLUDE = "{{ row_id }}";
+    function usageEsc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+    function closeUsage(){ const p=document.getElementById('usage-pop'); if(p) p.remove(); }
+    function showUsage(gz, ev){
+      closeUsage();
+      fetch(USAGE_URL.replace('987654321', encodeURIComponent(gz)) + '?exclude=' + encodeURIComponent(USAGE_EXCLUDE))
+        .then(r => r.json())
+        .then(d => {
+          const pop = document.createElement('div'); pop.id = 'usage-pop'; pop.className = 'usage-pop';
+          let html = '<button class="close" title="Close" onclick="closeUsage()">&times;</button>';
+          html += '<h4>Indias ID ' + usageEsc(d.gz_id) + ' — referenced by ' + d.rows.length + ' other row(s)</h4>';
+          if (!d.rows.length) { html += '<p class="empty">No other input row references this place.</p>'; }
+          else {
+            html += '<table><thead><tr><th>Row</th><th>Input label</th><th>Status</th><th>Input territory</th><th>Score</th></tr></thead><tbody>';
+            d.rows.forEach(r => {
+              html += '<tr><td>' + r.rowID + '</td><td class="lbl">' + usageEsc(r.label) + '</td><td>' +
+                      usageEsc(r.outcome) + '</td><td class="lbl">' + usageEsc(r.territory) + '</td><td>' +
+                      (r.score == null ? '' : usageEsc(r.score)) + '</td></tr>';
+            });
+            html += '</tbody></table>';
+          }
+          pop.innerHTML = html;
+          document.body.appendChild(pop);
+          const x = (ev && ev.clientX) || 120, y = (ev && ev.clientY) || 120;
+          pop.style.left = Math.max(8, Math.min(x + 12, window.innerWidth - pop.offsetWidth - 12)) + 'px';
+          pop.style.top = Math.max(8, Math.min(y + 12, window.innerHeight - pop.offsetHeight - 12)) + 'px';
+        })
+        .catch(() => {});
+    }
+    document.querySelectorAll('.usage-link').forEach(el => {
+      el.addEventListener('click', ev => { ev.stopPropagation(); showUsage(el.dataset.gz, ev); });
+    });
+    document.addEventListener('click', e => {
+      const p = document.getElementById('usage-pop');
+      if (p && !p.contains(e.target) && !e.target.closest('.usage-link')) closeUsage();
+    });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeUsage(); });
   </script>
 </body>
 </html>

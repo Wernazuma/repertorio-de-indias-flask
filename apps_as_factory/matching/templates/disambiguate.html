@@ -87,6 +87,9 @@
     .btn-skip { background: #f4f5f7; }
     .btn-reject-all { background: #fff; color: #a00; border-color: #d99; font-weight: 600; margin-left: 0.4em; }
     .btn-reject-all:hover { background: #ffe3e3; }
+    .btn-undo { background: transparent; border: none; padding: 0.3em 0.2em; color: #0056b3;
+      font-size: 0.85em; cursor: pointer; text-decoration: underline; }
+    .btn-undo:hover { color: #00408a; }
     .nav-links { margin-left: auto; font-size: 0.85em; }
     .nav-links a { color: #0056b3; text-decoration: none; }
 
@@ -106,6 +109,18 @@
     .rowctx-table th, .rowctx-table td { border: 1px solid #eee; padding: 3px 7px; text-align: left; }
     .rowctx-table thead th { background: #f5f5f5; }
     .rowctx-table tr.cur { background: #fff6df; font-weight: 600; }
+
+    .usage-link { cursor: pointer; text-decoration: underline dotted; }
+    .usage-pop { position: fixed; z-index: 3000; background: #fff; border: 1px solid #bbb;
+      border-radius: 8px; box-shadow: 0 6px 24px rgba(0,0,0,.25); width: min(460px, 92vw);
+      max-height: 62vh; overflow: auto; padding: 0.7em 0.9em; font-size: 0.82em; }
+    .usage-pop h4 { margin: 0 0 0.45em; font-size: 0.95em; padding-right: 1.4em; }
+    .usage-pop table { border-collapse: collapse; width: 100%; }
+    .usage-pop th, .usage-pop td { border-bottom: 1px solid #eee; padding: 3px 6px; text-align: left; vertical-align: top; white-space: nowrap; }
+    .usage-pop td.lbl { white-space: normal; }
+    .usage-pop .close { position: absolute; top: 6px; right: 8px; border: none; background: none;
+      font-size: 1.2em; line-height: 1; cursor: pointer; color: #888; }
+    .usage-pop .empty { color: #777; }
   </style>
 </head>
 <body>
@@ -113,7 +128,7 @@
   <div class="empty">
     <h1>Disambiguation</h1>
     <p>No candidates for disambiguation.</p>
-    <p><a href="{{ url_for('matching.set_constraints', prefix=prefix) }}">→ Continue to phase 3 (relegated cases)</a></p>
+    <p><a href="{{ url_for('matching.review_hub', prefix=prefix) }}">→ Continue to review of automatic matches</a></p>
   </div>
 {% else %}
   <div class="topbar">
@@ -172,6 +187,9 @@
           <button type="button" class="btn-skip" id="btnSkip">→ Skip</button>
           <button type="button" class="btn-reject-all" id="btnRejectAll">✗✗ Reject all remaining</button>
           <span class="nav-links">
+            {% if can_undo %}<button type="submit" class="btn-undo"
+              formaction="{{ url_for('matching.undo_decision', prefix=prefix) }}"
+              formmethod="post" title="Revert the previous decision">↶ Undo last decision</button>{% endif %}
             {% if idx > 0 %}<a href="{{ url_for('matching.disambiguate', prefix=prefix, idx=idx-1) }}">← Back</a>{% endif %}
           </span>
         </div>
@@ -230,14 +248,16 @@
             {% if c.also_adopted_for or c.also_candidate_for %}
             <div class="matchbar cross-note">
               {% if c.also_adopted_for %}
-                <span class="mb mb-red" title="This place was already adopted for another input row">
+                <span class="mb mb-red usage-link" data-gz="{{ c.gz_id }}"
+                      title="Already adopted for another input row — click to inspect those rows">
                   ⚠ Already adopted for:
-                  {%- for e in c.also_adopted_for %} {{ e.label or ('row ' ~ e.rowID) }}{% if not loop.last %},{% endif %}{% endfor %}
+                  {%- for e in c.also_adopted_for %} {{ e.label or ('row ' ~ e.rowID) }}{% if not loop.last %},{% endif %}{% endfor %} 🔍
                 </span>
               {% endif %}
               {% if c.also_candidate_for %}
-                <span class="mb mb-orange" title="This place is also a candidate for another input row">
-                  Also a candidate for {{ c.also_candidate_for | length }} other row(s)
+                <span class="mb mb-orange usage-link" data-gz="{{ c.gz_id }}"
+                      title="Also a candidate for other input rows — click to inspect them">
+                  Also a candidate for {{ c.also_candidate_for | length }} other row(s) 🔍
                 </span>
               {% endif %}
             </div>
@@ -343,6 +363,46 @@
       if (!confirm('Reject ALL remaining candidate cases?\n\nEvery case still awaiting a decision moves to phase 3 (relegated) for manual territory resolution. This cannot be undone from here.')) return;
       choice.value = 'reject_all'; form.submit();
     });
+
+    // ---- inspect: which OTHER rows reference this place (candidate/adopted) ----
+    const USAGE_URL = "{{ url_for('matching.place_usage', prefix=prefix, gz_id=987654321) }}";
+    const USAGE_EXCLUDE = "{{ row_id }}";
+    function usageEsc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+    function closeUsage(){ const p=document.getElementById('usage-pop'); if(p) p.remove(); }
+    function showUsage(gz, ev){
+      closeUsage();
+      fetch(USAGE_URL.replace('987654321', encodeURIComponent(gz)) + '?exclude=' + encodeURIComponent(USAGE_EXCLUDE))
+        .then(r => r.json())
+        .then(d => {
+          const pop = document.createElement('div'); pop.id = 'usage-pop'; pop.className = 'usage-pop';
+          let html = '<button class="close" title="Close" onclick="closeUsage()">&times;</button>';
+          html += '<h4>Indias ID ' + usageEsc(d.gz_id) + ' — referenced by ' + d.rows.length + ' other row(s)</h4>';
+          if (!d.rows.length) { html += '<p class="empty">No other input row references this place.</p>'; }
+          else {
+            html += '<table><thead><tr><th>Row</th><th>Input label</th><th>Status</th><th>Input territory</th><th>Score</th></tr></thead><tbody>';
+            d.rows.forEach(r => {
+              html += '<tr><td>' + r.rowID + '</td><td class="lbl">' + usageEsc(r.label) + '</td><td>' +
+                      usageEsc(r.outcome) + '</td><td class="lbl">' + usageEsc(r.territory) + '</td><td>' +
+                      (r.score == null ? '' : usageEsc(r.score)) + '</td></tr>';
+            });
+            html += '</tbody></table>';
+          }
+          pop.innerHTML = html;
+          document.body.appendChild(pop);
+          const x = (ev && ev.clientX) || 120, y = (ev && ev.clientY) || 120;
+          pop.style.left = Math.max(8, Math.min(x + 12, window.innerWidth - pop.offsetWidth - 12)) + 'px';
+          pop.style.top = Math.max(8, Math.min(y + 12, window.innerHeight - pop.offsetHeight - 12)) + 'px';
+        })
+        .catch(() => {});
+    }
+    document.querySelectorAll('.usage-link').forEach(el => {
+      el.addEventListener('click', ev => { ev.stopPropagation(); showUsage(el.dataset.gz, ev); });
+    });
+    document.addEventListener('click', e => {
+      const p = document.getElementById('usage-pop');
+      if (p && !p.contains(e.target) && !e.target.closest('.usage-link')) closeUsage();
+    });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeUsage(); });
   </script>
 {% endif %}
 </body>

@@ -1,4 +1,4 @@
-Logger setup for prefix: Tlaxcala
+Logger setup for prefix: Tlaxcala_1
 Current dir: D:\Documents\GitHub\repertorio-de-indias-flask\apps_as_factory\matching
 Log dir: D:\Documents\GitHub\repertorio-de-indias-flask\apps_as_factory\matching\logs
-Log file: D:\Documents\GitHub\repertorio-de-indias-flask\apps_as_factory\matching\logs\Tlaxcala_matching.log
+Log file: D:\Documents\GitHub\repertorio-de-indias-flask\apps_as_factory\matching\logs\Tlaxcala_1_matching.log
