@@ -1,26 +1,7 @@
-data/uploads/20250714_220715_uprisings.csv
-data/uploads/instituciones.csv
-data/uploads/instituciones_cleaned.csv
-data/uploads/polygon_year.csv
-data/uploads/polygon_year_cleaned.csv
-data/uploads/uprisings.csv
-data/uploads/uprisings_1.csv
-data/uploads/uprisings_2.csv
-data/uploads/uprisings_3.csv
-data/uploads/uprisings_4.csv
-data/uploads/uprisings_5.csv
-data/uploads/uprisings_6.csv
-data/uploads/uprisings_7.csv
-data/uploads/uprisings_8.csv
-data/uploads/uprisings_9.csv
-data/uploads/uprisings_cleaned.csv
-data/uploads/uprisings_constraints.json
-data/uploads/uprisings_phase_1_v_1.csv
-data/uploads/uprisings_phase_1x.csv
-data/uploads/uprisings_phase_1xx.csv
-data/uploads/uprisings_processing.csv
-data/uploads/uprisings_processingx.csv
-data/uploads/uprisings_status.txt
+# User uploads / working files are ephemeral scratch — held in an OS-temp dir
+# OUTSIDE the repo (see apps_as_factory/workdir.py), authoritative copy on GitHub.
+# Never track anything under data/uploads.
+apps_as_factory/data/uploads/
 enciclopedia/templates/x_map.html
 enciclopedia/templates/xpeople_detail.html
 enciclopedia/templates/xpeople_search.html
@@ -35,7 +16,8 @@ apps_as_factory/data/reference_gazetteer_collapsed.csv
 # User-submitted prosopography suggestions (collected at runtime, pulled via admin page)
 apps_as_factory/data/user_suggestions/
 
-# Local secrets: admin token + Flask secret key (never commit)
+# Local secrets: admin token, Flask secret key, Turnstile + GitHub tokens (never commit)
 apps_as_factory/local_secrets.json
+apps_as_factory/local_secrets.json*
 
 __pycache__

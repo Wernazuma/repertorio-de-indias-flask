@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resume code — {{ prefix }}</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; margin: 0; background: #f4f5f7; color: #222; }
+    .wrap { max-width: 620px; margin: 8vh auto 0; padding: 0 1.5em 3em; }
+    h1 { font-size: 1.35em; margin: 0 0 0.2em; }
+    .prefix { color: #666; font-size: 0.9em; }
+    .prefix code { background: #e9edf2; padding: 1px 6px; border-radius: 4px; }
+    .card { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 1.1em 1.3em; margin-top: 1.4em; }
+    .ok { color: #1a7a1a; font-size: 0.92em; }
+    .code { font-family: ui-monospace, monospace; font-size: 1.25em; font-weight: 700;
+            background: #f0f6ff; border: 1px solid #cfe0f7; border-radius: 6px;
+            padding: 0.5em 0.7em; display: inline-block; user-select: all; }
+    .note { font-size: 0.82em; color: #777; margin-top: 0.6em; }
+    a.link { color: #0056b3; text-decoration: none; font-size: 0.9em; }
+    button { font-size: 0.9em; padding: 0.4em 0.9em; border-radius: 6px; border: 1px solid #157a2b;
+             background: #157a2b; color: #fff; cursor: pointer; }
+    .warn { background: #fff6e5; border-left: 3px solid #b36b00; padding: 0.6em 0.8em;
+            border-radius: 5px; font-size: 0.88em; color: #7a5200; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Your resume code</h1>
+    <div class="prefix">Run: <code>{{ prefix }}</code></div>
+
+    {% if not enabled %}
+      <div class="card">
+        <div class="warn">Off-site saving isn’t configured on this server, so there is no
+          resume code. Your run lives on this server only for now — use
+          <a class="link" href="{{ url_for('matching.download_state', prefix=prefix) }}">Download working state</a>
+          if you need a copy to resume from later.</div>
+      </div>
+    {% else %}
+      {% if saved %}<p class="ok">✓ Saved. You can safely close the tab and come back later.</p>{% endif %}
+      <div class="card">
+        <p>Keep this code — it’s the only way back into this run:</p>
+        <p><span class="code" id="code">{{ token }}</span>
+           <button type="button" onclick="navigator.clipboard && navigator.clipboard.writeText(document.getElementById('code').textContent)">Copy</button></p>
+        {% if resume_link %}
+          <p class="note">Or bookmark this link:
+            <a class="link" href="{{ resume_link }}">{{ resume_link }}</a></p>
+        {% endif %}
+        <p class="note">Saved runs are kept for 30 days, then removed automatically.</p>
+      </div>
+    {% endif %}
+
+    <div class="card">
+      <p><a class="link" href="{{ url_for('matching.resume', prefix=prefix) }}">← Continue this run now</a></p>
+      <p class="note">Also available:
+        <a class="link" href="{{ url_for('matching.download_state', prefix=prefix) }}">Download working state (.zip)</a>
+        as an offline backup.</p>
+    </div>
+  </div>
+</body>
+</html>

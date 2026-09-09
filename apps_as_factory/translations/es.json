@@ -168,6 +168,9 @@
   "suggest_embargo": "Ha enviado una sugerencia hace muy poco. Espere un momento antes de enviar otra.",
   "suggest_invalid": "Faltaban campos obligatorios o el contenido no está permitido. Revise e inténtelo de nuevo.",
   "suggest_full": "Temporalmente no aceptamos nuevos envíos aquí: la cola de revisión está llena. Vuelva a intentarlo más tarde, cuando hayamos podido procesar los pendientes.",
+  "suggest_senderror": "Lo sentimos: no pudimos enviar su sugerencia en este momento. Vuelva a intentarlo dentro de un rato.",
+  "suggest_privacy": "Su nombre y su dirección de correo se guardan para poder tramitar su sugerencia y, si es necesario, contactarle. Se mantienen privados y no se comparten con terceros ni se publican.",
+  "suggest_privacy_more": "Más sobre la protección de datos",
 
   "sug_btn_name": "+ Sugerir un nombre atestiguado",
   "sug_btn_church": "+ Sugerir una categoría eclesiástica",

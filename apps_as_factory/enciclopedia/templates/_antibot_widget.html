@@ -1,0 +1,11 @@
+{# Anti-bot widget for the suggestion forms. Cloudflare Turnstile when a site key
+   is configured, otherwise the built-in arithmetic fallback (dev without keys).
+   The signed _ct token (CSRF + timing trap) is rendered by the form itself. #}
+{% if turnstile_sitekey %}
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <div class="cf-turnstile" data-sitekey="{{ turnstile_sitekey }}" data-theme="auto"
+       style="margin:.6rem 0;"></div>
+{% else %}
+  <label>{{ t('suggest_challenge', a=challenge.a, b=challenge.b) }} *</label>
+  <input class="sf-challenge" type="text" name="challenge" inputmode="numeric" autocomplete="off" required>
+{% endif %}

@@ -29,7 +29,8 @@
   {% set _ok = {'thanks': 'oflist_thanks'} %}
   {% set _err = {'bot': 'suggest_bot', 'embargo': 'suggest_embargo', 'invalid': 'suggest_invalid',
                  'nofile': 'oflist_nofile', 'badname': 'oflist_badname', 'badcols': 'oflist_badcols',
-                 'empty': 'oflist_empty', 'badfile': 'oflist_badfile', 'full': 'suggest_full'} %}
+                 'empty': 'oflist_empty', 'badfile': 'oflist_badfile', 'full': 'suggest_full',
+                 'senderror': 'suggest_senderror'} %}
   {% if msg in _ok %}<p class="sf-banner" style="border-left:3px solid #3f9b63; background:var(--surface-2,rgba(0,0,0,.03));">{{ t(_ok[msg], fname=_fname) }}</p>
   {% elif msg in _err %}<p class="sf-banner" style="border-left:3px solid #c0563a; background:var(--surface-2,rgba(0,0,0,.03));">{{ t(_err[msg], fname=_fname) }}</p>{% endif %}
 
@@ -40,8 +41,7 @@
   {% macro antibot() %}
     <div class="sf-hp" aria-hidden="true"><label>Website</label><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
     <input type="hidden" name="_ct" value="{{ challenge.token }}">
-    <label>{{ t('suggest_challenge', a=challenge.a, b=challenge.b) }} *</label>
-    <input class="sf-challenge" type="text" name="challenge" inputmode="numeric" autocomplete="off" required>
+    {% include '_antibot_widget.html' %}
     <p style="margin-top:.8rem;"><button type="submit">{{ t('suggest_submit') }}</button></p>
   {% endmacro %}
   {% macro contact() %}
@@ -49,6 +49,8 @@
     <input type="text" name="submitter_name" maxlength="100" required>
     <label>{{ t('suggest_email') }} *</label>
     <input type="email" name="submitter_email" maxlength="120" required>
+    <p class="hint" style="margin:.45rem 0 .2rem;">{{ t('suggest_privacy') }}
+      <a href="{{ url_for('impressum') }}#privacy" target="_blank" rel="noopener">{{ t('suggest_privacy_more') }}</a></p>
   {% endmacro %}
 
   <form class="sf-form" method="post" enctype="multipart/form-data"

@@ -4,10 +4,15 @@ import json
 import time
 import traceback
 import pandas as pd
+import workdir
 from .saints import load_saints
 from .fast_match import build_ref_index, match_batch, collapse_reference
 from .filters import ensure_dtype_consistency
 from .logging_config import setup_matching_logger, setup_debug_logger
+
+# Ephemeral working dir (OS-temp, outside the repo) — shared with app.config and
+# matching/routes.py. Reference data (REF_SOURCE below) stays in the repo's data/.
+UPLOAD_DIR = workdir.WORK_UPLOADS
 
 
 # ---------------------------------------------------------------------------
@@ -55,7 +60,7 @@ def load_collapsed_reference(logger=None):
 
 
 def _status_path(prefix: str) -> str:
-    return os.path.join("data", "uploads", f"{prefix}_status.json")
+    return os.path.join(UPLOAD_DIR, f"{prefix}_status.json")
 
 
 def _atomic_write_json(path: str, data: dict):
@@ -95,7 +100,7 @@ def read_status(prefix: str):
 def read_constraints(prefix: str):
     """Global region/province constraints the user set (optionally BEFORE
     matching), applied to every row in Phase 1a/1b. None when absent."""
-    path = os.path.join("data", "uploads", f"{prefix}_constraints.json")
+    path = os.path.join(UPLOAD_DIR, f"{prefix}_constraints.json")
     try:
         with open(path, "r", encoding="utf-8") as f:
             return json.load(f)
@@ -178,7 +183,7 @@ def match_phase_1(prefix, debug_labels=None):
         debug_labels: Optional list of ref_labels to debug in detail
                      e.g., ['otavalo', 'veracruz', 'guayaquil', 'méxico']
     """
-    upload_dir = os.path.join("data", "uploads")
+    upload_dir = UPLOAD_DIR
     inp = pd.read_csv(os.path.join(upload_dir, f"{prefix}_cleaned.csv"), sep=";", encoding="utf-8")
 
     # Set up loggers
@@ -319,7 +324,7 @@ def match_phase_1b(prefix):
     A row stops at the first step that yields non-relegated results.
     Rows with no result after all steps remain relegated.
     """
-    upload_dir = os.path.join("data", "uploads")
+    upload_dir = UPLOAD_DIR
     processing_path = os.path.join(upload_dir, f"{prefix}_processing.csv")
 
     processing_df = pd.read_csv(processing_path, sep=";", encoding="utf-8")

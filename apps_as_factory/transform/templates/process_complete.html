@@ -24,8 +24,20 @@
   <h1>Transformation complete</h1>
 
   <div class="notice ok">
-    <p>Your table was cleaned and saved. Keep the prefix
-      <code>{{ session.get('prefix') }}</code> — you can leave and resume later with it.</p>
+    <p>Your table was cleaned and normalized. From here your work is saved off-site so it
+      survives even if you close the tab.</p>
+    {% if resume_token %}
+      <p style="margin-top:.5rem;"><b>Your resume code:</b>
+        <code style="font-size:1.1em;user-select:all;background:#eef3fb;padding:2px 8px;border-radius:4px;">{{ resume_token }}</code>
+        — keep it to come back to this run later.
+        {% if resume_link %}<br><span style="font-size:.85em;color:var(--muted);">Or bookmark:
+          <a href="{{ resume_link }}">{{ resume_link }}</a></span>{% endif %}</p>
+    {% else %}
+      <p style="margin-top:.5rem;">Keep the prefix
+        <code>{{ session.get('prefix') }}</code> to resume on this server.
+        <span style="font-size:.85em;color:var(--muted);">(Off-site saving isn’t configured, so
+        there’s no resume code — the run lives on this server only.)</span></p>
+    {% endif %}
   </div>
 
   <table class="result-table">
@@ -44,17 +56,13 @@
   </div>
   {% endif %}
 
-  <!-- ---- next step: straight to matching; metadata comes afterwards ---- -->
+  <!-- ---- next step: straight to matching; metadata comes at the finish step ---- -->
   <div class="section-head" style="margin-top: var(--sp-5);">
     <h2>Next step</h2><span class="rule"></span>
   </div>
 
-  <div class="notice info">
-    <p>Your table is ready to match. <b>Metadata &amp; licensing now comes after
-      matching</b> — you can add it at the finish step (or skip it and just download
-      your results). Your progress is saved under the prefix
-      <code>{{ session.get('prefix') }}</code>, so you can leave and resume anytime.</p>
-  </div>
+  <p style="color:var(--muted);">Your table is ready to match. Continue now, or leave and
+    come back later with your resume code above.</p>
   <div class="wf-actions">
     <form method="POST" action="{{ url_for('transform.discard') }}" style="display:inline;"
           onsubmit="return confirm('Delete your uploaded table and the cleaned version from our server? This cannot be undone.');">

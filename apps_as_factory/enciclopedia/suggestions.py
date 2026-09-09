@@ -1,43 +1,38 @@
-"""User-contributed suggestions for prosopography records (links, offices, bio).
+"""User-contributed suggestions for prosopography and place/territory records.
 
-Rows are appended to the site owner's pre-existing collection files under
-data/user_suggestions/ (exact headers preserved):
-  * link   -> prosopografia_sitios.csv
-  * office -> prosopografia_curriculum.csv
-  * bio    -> prosopografia_bio.csv
+There is no persistent local storage, so each submission is sent off-site to a
+PRIVATE GitHub repo: prosopography and place/territory suggestions become Issues
+(one Markdown table per submission, one label per kind); the bulk officials-list
+upload is committed as a CSV file the Issue links to. See github_sink.py.
 
-Design decisions (per the site owner):
-  * Bot control is self-hosted: a hidden honeypot field, a timing trap, a small
-    signed arithmetic challenge (which also serves as the CSRF token) and a
-    per-IP / per-subnet embargo. No external captcha, no third-party calls.
-  * No email: suggestions accumulate in the CSVs and are pulled from a token-
-    gated admin page, which can also truncate the files.
+Spam control (all stateless, so it survives a stateless deploy):
+  * Cloudflare Turnstile (primary) when configured, else a signed arithmetic
+    challenge as fallback; both ride a signed token that also provides CSRF and
+    a timing trap. Plus a hidden honeypot, a per-IP / per-subnet embargo, and a
+    global per-hour send cap as a flood backstop.
 
-All submitted free text is length-capped and screened for code/markup so the
-stored rows stay inert when later read in the admin page or fed to any tool.
+All submitted free text is length-capped and screened for code/markup so it
+stays inert in the issue body and in the committed CSV.
 """
 import io
 import os
 import re
 import csv
+import json
 import time
-import hmac
 import random
-import secrets
 import threading
+import urllib.parse
+import urllib.request
+import urllib.error
 from datetime import datetime
 
 from flask import (request, render_template, redirect, url_for, abort,
-                   current_app, send_file, session)
-from itsdangerous import URLSafeTimedSerializer, BadSignature, SignatureExpired
-
-from . import bp
+                   current_app, send_file)
+from . import bp, github_sink, antibot
 from .routes import oficiales_csv, gz_entidades_csv, entidades_csv
 
-# --- Target files & exact CSV headers (owner-defined) --------------------
-FILES = {'link': 'prosopografia_sitios.csv',
-         'office': 'prosopografia_curriculum.csv',
-         'bio': 'prosopografia_bio.csv'}
+# --- Field order per kind (owner-defined). Drives the issue-table rows. ---
 SCHEMAS = {
     'link': ['OficialID', 'url', 'comment', 'IPAddress', 'User name', 'User email'],
     'office': ['FullOfficialID', 'Titulo', 'Entidad_nombre_generico',
@@ -99,13 +94,13 @@ BIO_FIELD_META = [
 ]
 
 # ============================================================================
-#  Place / territory suggestions  ->  data/user_suggestions/lugares_territorios.csv
+#  Place / territory suggestions  ->  one GitHub issue per submission
 # ----------------------------------------------------------------------------
-# A single owner-defined collection file receives every place- and territory-
-# related suggestion. Each row carries only the columns relevant to the chosen
-# box (the rest stay blank); `gz_id` holds the place gz_id OR the territory
+# Each place- or territory-related suggestion becomes an issue. Each row carries
+# only the columns relevant to the chosen box (the rest stay blank, and empty
+# fields are dropped from the issue table); `gz_id` holds the place gz_id OR the
+# territory
 # Entidad id. Source (Fuente) is required on every box.
-LT_FILE = 'lugares_territorios.csv'
 LT_SCHEMA = ['gz_id', 'name_attest', 'iglesia_cat', 'category', 'capital',
              'foreignurl', 'claim', 'Desde', 'Hasta', 'Fuente',
              'IPAddress', 'User name', 'User email', 'Comment']
@@ -178,28 +173,13 @@ _EMAIL = re.compile(r'^[^@\s]+@[^@\s]+\.[^@\s]+$')
 _URL = re.compile(r'^https?://[^\s<>"\'`]{3,}$', re.I)
 
 
-# --- Anti-bot: signed arithmetic challenge (doubles as CSRF token) -------
-def _serializer():
-    return URLSafeTimedSerializer(current_app.config['SECRET_KEY'], salt='arca-suggest')
+# --- Anti-bot: shared stateless gate (challenge + Turnstile), see antibot.py --
+make_challenge = antibot.make_challenge
+turnstile_site_key = antibot.turnstile_site_key
 
 
-def make_challenge():
-    a, b = random.randint(2, 9), random.randint(2, 9)
-    token = _serializer().dumps({'a': a, 'b': b, 't': int(time.time())})
-    return {'a': a, 'b': b, 'token': token}
-
-
-def _check_challenge(token, answer):
-    try:
-        p = _serializer().loads(token or '', max_age=7200)
-    except (BadSignature, SignatureExpired):
-        return False
-    if time.time() - p.get('t', 0) < 4:      # submitted too fast => bot
-        return False
-    try:
-        return int(answer) == p['a'] + p['b']
-    except (ValueError, TypeError):
-        return False
+def _antibot_pass(form):
+    return antibot.antibot_pass(form, _client_ip())
 
 
 # --- Anti-bot: per-IP / per-subnet embargo (in-memory) -------------------
@@ -264,17 +244,11 @@ def _validate(kind, form):
     return name, email, comment, extra
 
 
-# --- Storage -------------------------------------------------------------
-# Safety valve: refuse to append once a collection file already holds this many
-# data rows. None of these user tables should ever legitimately approach it
-# before the owner reviews and clears them, so hitting the cap means a flood.
-_SUGG_MAX_ROWS = 1000
-
-# Spreadsheet formula-injection guard. A value a spreadsheet would evaluate as a
-# formula (leading = + - @, or a leading tab/CR) is prefixed with an apostrophe
-# so Excel/LibreOffice keep it as literal text. This is inert in the browser
-# (Jinja autoescapes everything) and only matters when the owner opens the
-# collected CSVs in a spreadsheet — which is exactly the review workflow.
+# --- Storage: post to GitHub as Issues (no local persistence) ------------
+# Spreadsheet formula-injection guard, kept for the ONE thing still serialized
+# as CSV: the bulk officials-list file committed to the repo. A value a
+# spreadsheet would evaluate as a formula (leading = + - @, tab/CR) gets an
+# apostrophe so Excel/LibreOffice keep it literal when the owner opens the file.
 _FORMULA_LEAD = ('=', '+', '-', '@')
 
 
@@ -288,41 +262,41 @@ def _csv_safe_row(row):
     return {k: (_csv_safe(v) if isinstance(v, str) else v) for k, v in row.items()}
 
 
-def _file_path(filename):
-    return os.path.join(current_app.root_path, 'data', 'user_suggestions', filename)
+def _issue_table(fields):
+    """Render non-empty fields as a GitHub-Markdown table (pipes/newlines escaped)."""
+    lines = ['| Field | Value |', '| --- | --- |']
+    for k, v in fields.items():
+        v = ('' if v is None else str(v)).replace('\r\n', '\n')
+        if not v.strip():
+            continue
+        v = v.replace('|', '\\|').replace('\n', '<br>')
+        lines.append('| {} | {} |'.format(k, v))
+    return '\n'.join(lines)
 
 
-def _sugg_path(kind):
-    return _file_path(FILES[kind])
+# --- Global send cap: a flood backstop on top of Turnstile + per-IP embargo.
+# In-memory per process: even with several workers each stays well under
+# GitHub's secondary rate limits, and no single process can spew issues.
+_send_lock = threading.Lock()
+_send_times = []
+_SEND_WINDOW = 3600      # seconds
+_SEND_MAX = 60           # max accepted submissions per window, globally
 
 
-def _count_data_rows(path):
-    """Stored data rows (header excluded); 0 if the file does not exist yet.
-    Uses csv.reader so quoted multi-line comment fields are counted as one row."""
-    if not os.path.exists(path):
-        return 0
-    with open(path, encoding='utf-8', newline='') as f:
-        n = sum(1 for _ in csv.reader(f, delimiter=';'))
-    return max(0, n - 1)
+def _over_send_cap():
+    now = time.time()
+    with _send_lock:
+        _send_times[:] = [t for t in _send_times if t >= now - _SEND_WINDOW]
+        return len(_send_times) >= _SEND_MAX
 
 
-def _at_capacity(path, incoming=1):
-    return _count_data_rows(path) + incoming > _SUGG_MAX_ROWS
-
-
-def _write_row(kind, row):
-    path = _sugg_path(kind)
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    new = not os.path.exists(path)
-    with open(path, 'a', encoding='utf-8', newline='') as f:
-        w = csv.DictWriter(f, fieldnames=SCHEMAS[kind], delimiter=';',
-                           quoting=csv.QUOTE_MINIMAL, extrasaction='ignore')
-        if new:
-            w.writeheader()
-        w.writerow(_csv_safe_row(row))
+def _record_send():
+    with _send_lock:
+        _send_times.append(time.time())
 
 
 def _append(kind, oficial, name, email, comment, extra):
+    """Build the row and open a GitHub issue. Returns True on success."""
     ip = _client_ip()
     now = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
     row = {c: '' for c in SCHEMAS[kind]}
@@ -342,7 +316,10 @@ def _append(kind, oficial, name, email, comment, extra):
         row.update({'FullOficialID': oficial.get('FullOficialID', ''),  # hidden field, added here
                     'IPAddress': ip, 'User name': name, 'User email': email,
                     'submittedTime': now, 'Comment': comment})
-    _write_row(kind, row)
+    person = oficial.get('NOM_entero') or oficial.get('OficialID', '')
+    title = '[{}] {} (persIndias{})'.format(kind, person, oficial.get('OficialID', ''))
+    return github_sink.create_issue(title, _issue_table(row),
+                                    labels=['suggestion', kind]) is not None
 
 
 # --- Submit route --------------------------------------------------------
@@ -357,7 +334,7 @@ def people_suggest(OficialID, kind):
     # GET -> the standalone form page (opened in a new tab from the person page).
     if request.method == 'GET':
         return render_template('suggest_form.html', kind=kind, people=oficial,
-                               challenge=make_challenge(),
+                               challenge=make_challenge(), turnstile_sitekey=turnstile_site_key(),
                                office_field_meta=OFFICE_FIELD_META,
                                bio_field_meta=BIO_FIELD_META,
                                msg=request.args.get('msg', ''))
@@ -368,19 +345,21 @@ def people_suggest(OficialID, kind):
 
     if (request.form.get('website') or '').strip():        # honeypot filled
         return _done('bot')
-    if not _check_challenge(request.form.get('_ct'), request.form.get('challenge')):
+    if not _antibot_pass(request.form):
         return _done('bot')
     if _embargoed():
         return _done('embargo')
     parsed = _validate(kind, request.form)
     if parsed is None:
         return _done('invalid')
-    if _at_capacity(_sugg_path(kind)):
-        return _done('full')
+    if _over_send_cap():
+        return _done('embargo')
 
     name, email, comment, extra = parsed
-    _append(kind, oficial, name, email, comment, extra)
+    if not _append(kind, oficial, name, email, comment, extra):
+        return _done('senderror')
     _record_ip()
+    _record_send()
     return _done('thanks')
 
 
@@ -409,26 +388,17 @@ def _lt_validate(kind, form):
     return name, email, comment, extra
 
 
-def _lt_write_row(row):
-    path = _file_path(LT_FILE)
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    new = not os.path.exists(path)
-    with open(path, 'a', encoding='utf-8', newline='') as f:
-        w = csv.DictWriter(f, fieldnames=LT_SCHEMA, delimiter=';',
-                           quoting=csv.QUOTE_MINIMAL, extrasaction='ignore')
-        if new:
-            w.writeheader()
-        w.writerow(_csv_safe_row(row))
-
-
-def _lt_append(entity_id, kind, name, email, comment, extra):
+def _lt_append(entity_id, kind, name, email, comment, extra, entity_name='', scope=''):
+    """Build the place/territory row and open a GitHub issue. Returns True on success."""
     row = {c: '' for c in LT_SCHEMA}
     row['gz_id'] = entity_id                         # holds place gz_id OR territory Entidad
     for c in LT_KIND_FIELDS[kind]:
         row[c] = extra.get(c, '')
     row.update({'IPAddress': _client_ip(), 'User name': name,
                 'User email': email, 'Comment': comment})
-    _lt_write_row(row)
+    title = '[{}] {} ({})'.format(kind, entity_name or entity_id, entity_id)
+    return github_sink.create_issue(title, _issue_table(row),
+                                    labels=['suggestion', scope or 'place']) is not None
 
 
 def _lt_handle(entity, entity_id, entity_name, scope, kind):
@@ -439,7 +409,7 @@ def _lt_handle(entity, entity_id, entity_name, scope, kind):
                                entity=entity, entity_id=entity_id, entity_name=entity_name,
                                field_meta=_lt_field_meta(kind), required_fields=LT_REQUIRED[kind],
                                title_key='sug_title_' + suffix, desc_key='sug_desc_' + suffix,
-                               challenge=make_challenge(), msg=request.args.get('msg', ''))
+                               challenge=make_challenge(), turnstile_sitekey=turnstile_site_key(), msg=request.args.get('msg', ''))
 
     endpoint = 'enciclopedia.place_suggest' if scope == 'place' else 'enciclopedia.territory_suggest'
     id_key = 'place_id' if scope == 'place' else 'territory_id'
@@ -449,19 +419,21 @@ def _lt_handle(entity, entity_id, entity_name, scope, kind):
 
     if (request.form.get('website') or '').strip():        # honeypot filled
         return _done('bot')
-    if not _check_challenge(request.form.get('_ct'), request.form.get('challenge')):
+    if not _antibot_pass(request.form):
         return _done('bot')
     if _embargoed():
         return _done('embargo')
     parsed = _lt_validate(kind, request.form)
     if parsed is None:
         return _done('invalid')
-    if _at_capacity(_file_path(LT_FILE)):
-        return _done('full')
+    if _over_send_cap():
+        return _done('embargo')
 
     name, email, comment, extra = parsed
-    _lt_append(entity_id, kind, name, email, comment, extra)
+    if not _lt_append(entity_id, kind, name, email, comment, extra, entity_name, scope):
+        return _done('senderror')
     _record_ip()
+    _record_send()
     return _done('thanks')
 
 
@@ -495,7 +467,6 @@ def territory_suggest(territory_id, kind):
 # fill it in, and upload it again. Accepted rows are appended to one collection
 # file. Uploads must keep the exact file name and the template's columns.
 OFLISTA_TEMPLATE = 'template_lista_oficiales_usuarios.csv'   # under data/guidebooks
-OFLISTA_FILE = 'oficiales_listas.csv'                        # under data/user_suggestions
 OFLISTA_COLUMNS = [
     'OficialNombres', 'OficialParticulas', 'OficialApellidos', 'Titulo', 'Titulo 2',
     'EntidadID', 'Entidad_nombre_generico', 'Entidad_tipo_generico', 'Emanador',
@@ -597,22 +568,38 @@ def _oflista_parse(territory_id, storage):
     return out, None
 
 
-def _oflista_store(rows, name, email, comment, fname):
-    path = _file_path(OFLISTA_FILE)
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    new = not os.path.exists(path)
+def _oflista_store(rows, name, email, comment, fname, territory_id, territory_name):
+    """Commit the uploaded officials list as a CSV in the private repo and open an
+    issue linking to it (too large for an issue body). Returns True on success."""
     now = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
     ip, base = _client_ip(), os.path.basename(fname or '')
-    with open(path, 'a', encoding='utf-8', newline='') as f:
-        w = csv.DictWriter(f, fieldnames=OFLISTA_SCHEMA, delimiter=';',
-                           quoting=csv.QUOTE_MINIMAL, extrasaction='ignore')
-        if new:
-            w.writeheader()
-        for rec in rows:
-            row = dict(rec)
-            row.update({'IPAddress': ip, 'User name': name, 'User email': email,
-                        'submittedTime': now, 'SourceFile': base, 'Comment': comment})
-            w.writerow(_csv_safe_row(row))
+    buf = io.StringIO()
+    w = csv.DictWriter(buf, fieldnames=OFLISTA_SCHEMA, delimiter=';',
+                       quoting=csv.QUOTE_MINIMAL, extrasaction='ignore')
+    w.writeheader()
+    for rec in rows:
+        row = dict(rec)
+        row.update({'IPAddress': ip, 'User name': name, 'User email': email,
+                    'submittedTime': now, 'SourceFile': base, 'Comment': comment})
+        w.writerow(_csv_safe_row(row))
+    content = buf.getvalue().encode('utf-8-sig')
+
+    stamp = now.replace('-', '').replace(':', '').replace(' ', '_')
+    safe = re.sub(r'[^A-Za-z0-9._-]+', '_', base or 'lista.csv')
+    path = 'uploads/{}/{}_{}'.format(territory_id, stamp, safe)
+    url = github_sink.commit_file(
+        path, content,
+        'officials list: {} ({}), {} rows'.format(territory_name, territory_id, len(rows)))
+    if url is None:
+        return False
+
+    fields = {'Territory': '{} ({})'.format(territory_name, territory_id),
+              'Rows': len(rows), 'Submitter': name, 'Email': email,
+              'IP': ip, 'Source file': base, 'Comment': comment}
+    body = _issue_table(fields) + '\n\n[Open the committed CSV]({})\n'.format(url)
+    return github_sink.create_issue(
+        '[officials-list] {} ({}) — {} rows'.format(territory_name, territory_id, len(rows)),
+        body, labels=['suggestion', 'officials-list']) is not None
 
 
 @bp.route('/territory/<territory_id>/oficiales-template')
@@ -632,7 +619,7 @@ def territory_oficiales_lista(territory_id):
     if request.method == 'GET':
         return render_template('oficiales_lista_form.html', territory=ent,
                                entity_id=territory_id, entity_name=ent.get('Nombre') or territory_id,
-                               challenge=make_challenge(), msg=request.args.get('msg', ''))
+                               challenge=make_challenge(), turnstile_sitekey=turnstile_site_key(), msg=request.args.get('msg', ''))
 
     def _done(code):
         return redirect(url_for('enciclopedia.territory_oficiales_lista',
@@ -640,7 +627,7 @@ def territory_oficiales_lista(territory_id):
 
     if (request.form.get('website') or '').strip():
         return _done('bot')
-    if not _check_challenge(request.form.get('_ct'), request.form.get('challenge')):
+    if not _antibot_pass(request.form):
         return _done('bot')
     if _embargoed():
         return _done('embargo')
@@ -655,108 +642,12 @@ def territory_oficiales_lista(territory_id):
     rows, err = _oflista_parse(territory_id, storage)
     if err:
         return _done(err)
-    if _at_capacity(_file_path(OFLISTA_FILE), incoming=len(rows)):
-        return _done('full')
+    if _over_send_cap():
+        return _done('embargo')
 
-    _oflista_store(rows, name, email, comment, storage.filename)
+    if not _oflista_store(rows, name, email, comment, storage.filename,
+                          territory_id, ent.get('Nombre') or territory_id):
+        return _done('senderror')
     _record_ip()
+    _record_send()
     return _done('thanks')
-
-
-# --- Admin (session-gated login) -----------------------------------------
-# Every collection file the admin page manages: the three prosopography files,
-# the shared place/territory file, and the uploaded officials lists.
-ADMIN_SCHEMAS = dict(SCHEMAS, lugares=LT_SCHEMA, oficiales_listas=OFLISTA_SCHEMA)
-ADMIN_FILES = dict(FILES, lugares=LT_FILE, oficiales_listas=OFLISTA_FILE)
-
-
-def _admin_configured():
-    """Admin area is available only when an ADMIN_TOKEN is set (else disabled)."""
-    return bool(current_app.config.get('ADMIN_TOKEN', ''))
-
-
-def _admin_ok():
-    """Authenticated via the signed session cookie set at /admin/login. The token
-    is POSTed once at login and never appears in a URL, so it can't leak through
-    server logs, browser history, or Referer headers to user-submitted links."""
-    return _admin_configured() and session.get('admin') is True
-
-
-def _admin_csrf():
-    """A per-session CSRF token for the destructive (clear) forms — needed now
-    that a cookie, not a URL token, authenticates the request."""
-    tok = session.get('admin_csrf')
-    if not tok:
-        tok = secrets.token_hex(16)
-        session['admin_csrf'] = tok
-    return tok
-
-
-@bp.route('/admin/login', methods=['GET', 'POST'])
-def admin_login():
-    if not _admin_configured():
-        abort(404)                       # no token configured -> admin disabled
-    if request.method == 'POST':
-        supplied = (request.form.get('token') or '').encode('utf-8')
-        expected = current_app.config.get('ADMIN_TOKEN', '').encode('utf-8')
-        if hmac.compare_digest(supplied, expected):   # constant-time compare
-            session['admin'] = True
-            _admin_csrf()
-            return redirect(url_for('enciclopedia.admin_suggestions'))
-        return render_template('admin_login.html', error=True)
-    if _admin_ok():
-        return redirect(url_for('enciclopedia.admin_suggestions'))
-    return render_template('admin_login.html', error=False)
-
-
-@bp.route('/admin/logout', methods=['POST'])
-def admin_logout():
-    session.pop('admin', None)
-    session.pop('admin_csrf', None)
-    return redirect(url_for('enciclopedia.admin_login'))
-
-
-@bp.route('/admin/suggestions')
-def admin_suggestions():
-    if not _admin_ok():
-        return redirect(url_for('enciclopedia.admin_login'))
-    data = {}
-    for kind in ADMIN_SCHEMAS:
-        path = _file_path(ADMIN_FILES[kind])
-        rows = []
-        if os.path.exists(path):
-            with open(path, 'r', encoding='utf-8') as f:
-                rows = list(csv.DictReader(f, delimiter=';'))
-        data[kind] = {'rows': rows, 'columns': ADMIN_SCHEMAS[kind], 'file': ADMIN_FILES[kind]}
-    return render_template('admin_suggestions.html', data=data, csrf=_admin_csrf())
-
-
-@bp.route('/admin/suggestions/download/<kind>')
-def admin_suggestions_download(kind):
-    if not _admin_ok():
-        return redirect(url_for('enciclopedia.admin_login'))
-    if kind not in ADMIN_SCHEMAS:
-        abort(404)
-    path = _file_path(ADMIN_FILES[kind])
-    if not os.path.exists(path):
-        abort(404)
-    return send_file(path, as_attachment=True, download_name=ADMIN_FILES[kind])
-
-
-@bp.route('/admin/suggestions/clear', methods=['POST'])
-def admin_suggestions_clear():
-    if not _admin_ok():
-        return redirect(url_for('enciclopedia.admin_login'))
-    sess_csrf = session.get('admin_csrf', '')
-    if not sess_csrf or not hmac.compare_digest(request.form.get('csrf', ''), sess_csrf):
-        abort(400)
-    kind = request.values.get('kind', '')
-    kinds = list(ADMIN_SCHEMAS) if kind == 'all' else [kind]
-    for k in kinds:
-        if k not in ADMIN_SCHEMAS:
-            continue
-        path = _file_path(ADMIN_FILES[k])
-        os.makedirs(os.path.dirname(path), exist_ok=True)
-        with open(path, 'w', encoding='utf-8', newline='') as f:
-            csv.writer(f, delimiter=';', quoting=csv.QUOTE_MINIMAL).writerow(ADMIN_SCHEMAS[k])
-    return redirect(url_for('enciclopedia.admin_suggestions'))

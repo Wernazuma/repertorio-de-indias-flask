@@ -27,6 +27,19 @@
     button { font-size: 1em; padding: 0.65em 1.4em; border-radius: 6px; border: 1px solid #157a2b; background: #157a2b; color: #fff; cursor: pointer; margin-top: 1.2em; }
     button:hover { background: #10621f; }
     a.link { color: #0056b3; text-decoration: none; font-size: 0.85em; }
+    .field { margin: 0.55em 0; }
+    .field label { display: block; font-size: 0.9em; font-weight: 600; margin-bottom: 0.2em; }
+    .field input[type=text], .field input[type=email], .field input[type=date], .field textarea {
+      width: 100%; padding: 0.5em; border: 1px solid #ccc; border-radius: 5px; font: inherit; }
+    .field textarea { min-height: 3.2em; }
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .err { background: #fde8e6; border-left: 3px solid #b3241f; padding: 0.6em 0.8em; border-radius: 5px; margin-top: 1em; color: #7a1a16; font-size: 0.9em; }
+    .req { color: #b3241f; }
+    .citebox { background: #f0f6ff; border: 1px solid #cfe0f7; border-radius: 6px; padding: 0.7em 0.9em; font-size: 0.9em; }
+    .cite-quote { font-style: italic; }
+    .radio-row label { display: block; font-size: 0.92em; margin: 0.3em 0; font-weight: 400; }
+    .privacy { font-size: 0.8em; color: #777; margin-top: 0.6em; }
+    .sf-challenge { max-width: 8rem !important; }
   </style>
 </head>
 <body>
@@ -34,6 +47,8 @@
     {% include '_resume_bar.html' %}
     <h1>Finalize &amp; export</h1>
     <div class="prefix">Prefix: <code>{{ prefix }}</code></div>
+
+    {% if error %}<div class="err">{{ error }}</div>{% endif %}
 
     <div class="card">
       <h3>Resolution summary</h3>
@@ -45,28 +60,15 @@
       {% if unresolved %}<p class="note">Unresolved rows will get empty gz_id / coordinates.</p>{% endif %}
     </div>
 
-    <div class="card">
-      <h3>Metadata &amp; licensing <span style="font-weight:400;color:#888;font-size:.8em;">(optional)</span></h3>
-      {% if metadata_done %}
-        <p class="mand" style="color:#1a7a1a;">✓ Metadata saved — your dataset is citable, and it is included in the bundle below.</p>
-        <a class="link" href="{{ url_for('transform.metadata_form', prefix=prefix) }}">Edit metadata &amp; licensing</a>
-      {% else %}
-        <p class="mand">Add a description and licence to make your matched dataset citable and
-          reusable. You can also skip this and just download your results — see
-          “Download &amp; delete” below.</p>
-        <a class="link" href="{{ url_for('transform.metadata_form', prefix=prefix) }}">＋ Add metadata &amp; licensing</a>
-      {% endif %}
-    </div>
-
     <form method="POST" action="{{ url_for('matching.export_results', prefix=prefix) }}">
       <div class="card">
         <h3>Fields to add to your table</h3>
         <p class="mand">Always added: <code>gz_id</code> · <code>lat_y</code> · <code>lon_x</code></p>
         <div class="opt">
-          <label><input type="checkbox" name="cert" value="1"> cert <span class="desc">— coordinate certainty</span></label>
-          <label><input type="checkbox" name="iglesia_cat" value="1"> iglesia_cat <span class="desc">— church status</span></label>
-          <label><input type="checkbox" name="categoria" value="1"> categoria <span class="desc">— category</span></label>
-          <label><input type="checkbox" name="categoria_esp" value="1"> categoria_esp <span class="desc">— subcategory</span></label>
+          <label><input type="checkbox" name="cert" value="1" {% if form.get('cert') %}checked{% endif %}> cert <span class="desc">— coordinate certainty</span></label>
+          <label><input type="checkbox" name="iglesia_cat" value="1" {% if form.get('iglesia_cat') %}checked{% endif %}> iglesia_cat <span class="desc">— church status</span></label>
+          <label><input type="checkbox" name="categoria" value="1" {% if form.get('categoria') %}checked{% endif %}> categoria <span class="desc">— category</span></label>
+          <label><input type="checkbox" name="categoria_esp" value="1" {% if form.get('categoria_esp') %}checked{% endif %}> categoria_esp <span class="desc">— subcategory</span></label>
         </div>
         <p class="note">
           Coordinates are taken from the manual input, else the latest <code>gz_info_1</code> slice
@@ -84,18 +86,72 @@
           <li><code>{{ prefix }}.geojson</code> — matched places as points</li>
           <li><code>{{ prefix }}_processing.csv</code> — the working match table</li>
           <li><code>{{ prefix }}_metadata.txt</code> — dataset metadata</li>
+          <li><code>CITATION.txt</code> — how to cite the geodata</li>
           <li><code>{{ prefix }}_field_definitions.csv</code> — column definitions (if provided)</li>
         </ul>
-        <div style="display:flex;gap:.8em;flex-wrap:wrap;align-items:center;">
-          <button type="submit">⬇ Build &amp; download bundle</button>
-          <button type="submit" name="and_delete" value="1"
-                  style="background:#b3241f;border-color:#b3241f;"
-                  onclick="return confirm('Download your results and then permanently delete this dataset (including any metadata) from our server? This cannot be undone.');">
-            ⬇ Download &amp; delete my table
-          </button>
+      </div>
+
+      <div class="card">
+        <h3>Share your results with the project?</h3>
+        <p class="mand">You always get a direct download. You may also release the dataset to
+          the HGIS-Indias / ARCA collection so it can be preserved and reused.</p>
+        <div class="radio-row">
+          <label><input type="radio" name="release" value="no" {% if form.get('release') != 'yes' %}checked{% endif %}>
+            No — just download for my own use.</label>
+          <p class="note" style="margin:.05em 0 .5em 1.6em;">If you choose this, your data will
+            not be added to the collection — only you get the download.</p>
+          <label><input type="radio" name="release" value="yes" {% if form.get('release') == 'yes' %}checked{% endif %}>
+            Yes — release it to the HGIS-Indias / ARCA collection.</label>
         </div>
-        <p class="note">“Download &amp; delete” removes your table and all derived files from
-          the server once the download starts — use it if you don’t want to keep or publish the dataset.</p>
+
+        {# Metadata & licensing — required when releasing (includes the embargo). #}
+        <div style="margin-top:.7em;border-top:1px solid #eee;padding-top:.7em;">
+          {% if metadata_done %}
+            <p class="mand" style="color:#1a7a1a;">✓ Metadata &amp; licensing saved — included in the bundle.</p>
+            <a class="link" href="{{ url_for('transform.metadata_form', prefix=prefix) }}" target="_blank" rel="noopener">Edit metadata &amp; licensing ↗</a>
+          {% else %}
+            <p class="mand"><b>Releasing requires metadata &amp; licensing</b> — title, creators,
+              description, sources, licence and embargo.</p>
+            <a class="link" href="{{ url_for('transform.metadata_form', prefix=prefix) }}" target="_blank" rel="noopener">＋ Add metadata &amp; licensing ↗</a>
+            <p class="note">Opens in a new tab; reload this page afterwards. You can also
+              <b>skip it for now</b> and add it later — use “Pause &amp; save” above to get a
+              resume code.</p>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Who is downloading? <span class="req">*</span></h3>
+        <p class="mand">We keep a record of who uses our workflow and geodata, and for what —
+          this is stored permanently. <a class="link" href="{{ url_for('impressum') }}#data-usage" target="_blank" rel="noopener">More on data protection</a>.</p>
+        <div class="field"><label>Name <span class="req">*</span></label>
+          <input type="text" name="submitter_name" maxlength="120" value="{{ form.get('submitter_name','') }}" required></div>
+        <div class="field"><label>Institution <span class="req">*</span></label>
+          <input type="text" name="submitter_institution" maxlength="160" value="{{ form.get('submitter_institution','') }}" required></div>
+        <div class="field"><label>Email <span class="req">*</span></label>
+          <input type="email" name="submitter_email" maxlength="160" value="{{ form.get('submitter_email','') }}" required></div>
+        <div class="field"><label>Short description of your dataset <span class="req">*</span></label>
+          <textarea name="purpose" maxlength="1000" required>{{ form.get('purpose','') }}</textarea></div>
+      </div>
+
+      <div class="card">
+        <h3>Cite the geodata <span class="req">*</span></h3>
+        <p class="mand">The coordinates come from HGIS de las Indias. When you use the
+          transformed data, please cite:</p>
+        <div class="citebox"><span class="cite-quote">“{{ citation }}”</span></div>
+        <label style="display:block;margin-top:.6em;font-size:.92em;">
+          <input type="checkbox" name="cite_confirm" value="1" {% if form.get('cite_confirm') %}checked{% endif %}>
+          I will cite HGIS-Indias and ARCA as above when using this data.
+        </label>
+
+        {# Anti-bot: honeypot + signed timed token, then Turnstile or math fallback #}
+        <div class="hp" aria-hidden="true"><label>Website</label><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
+        <input type="hidden" name="_ct" value="{{ challenge.token }}">
+        <div class="field" style="margin-top:.8em;">{% include '_antibot_widget.html' %}</div>
+
+        <button type="submit">⬇ Build, register &amp; download</button>
+        <p class="note">Downloading completes this run: the working copy is removed from our
+          server afterwards. Keep your download safe.</p>
       </div>
     </form>
 

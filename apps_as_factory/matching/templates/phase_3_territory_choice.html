@@ -219,8 +219,8 @@
         <div class="actionbar">
           <button type="button" class="btn-primary" id="btnAdopt">✓ Adopt selected</button>
           <button type="button" class="btn-new" id="btnAdoptNew" style="display:none;">✓ Save new place</button>
-          <button type="button" class="btn-reject" id="btnReject">✗ Reject (no match)</button>
-          <button type="button" class="btn-skip" id="btnSkip">→ Skip</button>
+          <button type="button" class="btn-reject" id="btnReject" title="No candidate matches — locate the place manually on the map">✗ None match — not in the database</button>
+          <button type="button" class="btn-skip" id="btnSkip">→ Skip (decide later)</button>
           <button type="button" class="btn-reject-all" id="btnRejectAll">✗✗ Reject all remaining</button>
           <span class="nav-links">
             {% if can_undo %}<button type="submit" class="btn-undo"
@@ -399,7 +399,13 @@
       if (!choiceInput.value) { alert('Select a candidate first.'); return; }
       actionInput.value = 'adopt'; decisionForm.submit();
     });
-    document.getElementById('btnReject').addEventListener('click', () => { actionInput.value = 'reject'; decisionForm.submit(); });
+    // "None match — not in the database": don't discard the row; switch into the
+    // manual "place not in DB" mode so the user must give coordinates on the map.
+    document.getElementById('btnReject').addEventListener('click', () => {
+      if (!notInDb.checked) { notInDb.checked = true; notInDb.dispatchEvent(new Event('change')); }
+      notdbPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      coordReadout.textContent = 'Click the map to set the coordinates, then “Save new place”.';
+    });
     document.getElementById('btnSkip').addEventListener('click', () => { actionInput.value = 'skip'; decisionForm.submit(); });
     document.getElementById('btnRejectAll').addEventListener('click', () => {
       if (!confirm('Reject ALL remaining relegated cases?\n\nEvery case still awaiting a decision is discarded as "no match" and the workflow jumps to export. This cannot be undone from here.')) return;

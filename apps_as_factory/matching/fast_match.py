@@ -303,7 +303,8 @@ def global_constraint_ids(ref_df: pd.DataFrame, constraints):
         return None
     regions = [c for c in (constraints.get("regions") or []) if str(c).strip()]
     provinces = [p for p in (constraints.get("provinces") or []) if str(p).strip()]
-    if not regions and not provinces:
+    bbox = constraints.get("bbox")
+    if not regions and not provinces and not bbox:
         return None
 
     mask = pd.Series(True, index=ref_df.index)
@@ -317,6 +318,19 @@ def global_constraint_ids(ref_df: pd.DataFrame, constraints):
         pset = {str(p).strip().lower() for p in provinces}
         pcol = ref_df["lugar_provincia_generica"].astype(str).str.strip().str.lower()
         mask &= pcol.isin(pset)
+    if (bbox and len(bbox) == 4
+            and "lat" in ref_df.columns and "lon" in ref_df.columns):
+        # A user-drawn bounding box [west, south, east, north]. Keep only reference
+        # places whose coordinates fall inside it (ANDed with region/province).
+        try:
+            w, s, e, n = (float(x) for x in bbox)
+            lat = pd.to_numeric(ref_df["lat"].astype(str).str.replace(",", ".", regex=False),
+                                errors="coerce")
+            lon = pd.to_numeric(ref_df["lon"].astype(str).str.replace(",", ".", regex=False),
+                                errors="coerce")
+            mask &= lat.between(min(s, n), max(s, n)) & lon.between(min(w, e), max(w, e))
+        except (TypeError, ValueError):
+            pass
 
     ids = set(ref_df.index[mask])
     return ids if ids else None

@@ -11,18 +11,22 @@ import urllib.parse
 import urllib.request
 import pandas as pd
 from rapidfuzz import fuzz
-from flask import render_template, request, redirect, url_for, flash, jsonify, send_file, abort
+from flask import render_template, request, redirect, url_for, flash, jsonify, send_file, abort, session
 from . import bp
+from . import stash
+from enciclopedia import data_sink, antibot
+import workdir
 from .main import match_phase_1, match_phase_1b, run_pipeline, read_status
 from .cleaning import clean_toponym
 from .saints import load_saints, extract_saint, compare_saints
 from .filters import ensure_dtype_consistency
 from .regions import region_code_to_name
 
-UPLOAD_FOLDER = os.path.join("data", "uploads")
+# Ephemeral working dir (OS-temp, outside the repo) — same path app.config uses.
+# Reference data below stays in the repo's data/ (read-only, not user data).
+UPLOAD_FOLDER = workdir.WORK_UPLOADS
 GAZETTEER_FILE = os.path.join("data", "reference_gazetteer.csv")
 ENTIDADES_FILE = os.path.join("data", "gz_entidades.csv")
-GEO_DISTRICTS_FILE = os.path.join("data", "geo", "source", "genericos.geojson")
 
 # A dataset "prefix" is the file-name stem for every artifact of one run; it is
 # minted with secure_filename at upload, so a legitimate one is always made of
@@ -49,24 +53,22 @@ def _guard_prefix():
         if '..' in pref or not _SAFE_PREFIX.match(pref):
             abort(400)
 
-# Parsed district polygons, cached in memory (trimmed to the props we use).
-_DISTRICTS_GJ = None
 
-
-def _load_districts():
-    global _DISTRICTS_GJ
-    if _DISTRICTS_GJ is None:
-        with open(GEO_DISTRICTS_FILE, "r", encoding="utf-8") as f:
-            gj = json.load(f)
-        for feat in gj.get("features", []):
-            p = feat.get("properties", {}) or {}
-            feat["properties"] = {
-                "Partido": p.get("Partido"),
-                "Provincia": p.get("Provincia"),
-                "Region": p.get("Region"),
-            }
-        _DISTRICTS_GJ = gj
-    return _DISTRICTS_GJ
+@bp.before_request
+def _hydrate_if_missing():
+    """The working dir is disposable scratch: if a run's files aren't on local disk
+    (fresh container) but we hold its resume code, pull them from the GitHub stash
+    before the view runs. Keyed on the route's <prefix>."""
+    prefix = (request.view_args or {}).get('prefix')
+    if not prefix or not _SAFE_PREFIX.match(prefix):
+        return
+    if os.path.exists(os.path.join(UPLOAD_FOLDER, f"{prefix}_processing.csv")) \
+            or os.path.exists(os.path.join(UPLOAD_FOLDER, f"{prefix}_cleaned.csv")):
+        return
+    code = session.get('resume_code') or request.values.get('code')
+    cp, _ct = stash.parse_code(code or '')
+    if cp == prefix:
+        stash.hydrate(code)
 
 
 def _identified_places(prefix):
@@ -186,10 +188,28 @@ def index():
     )
 
 
-@bp.route("/resume")
+@bp.route("/resume", methods=["GET", "POST"])
 def resume():
-    """Jump straight to wherever a prefix's workflow left off."""
-    prefix = request.args.get("prefix", "").strip()
+    """Jump straight to wherever a run left off.
+
+    Two ways in: a `prefix` (the run's files are already on local disk, same
+    sitting) or a durable `code` (resume token) that rehydrates the run's files
+    from the GitHub workspace stash first."""
+    code = (request.values.get("code", "") or "").strip()
+    prefix = (request.values.get("prefix", "") or "").strip()
+
+    if code and not (prefix and os.path.exists(os.path.join(UPLOAD_FOLDER, f"{prefix}_cleaned.csv"))):
+        cp, _ct = stash.parse_code(code)
+        if not cp:
+            flash("That resume code doesn’t look right.")
+            return redirect(url_for("matching.index"))
+        hydrated = stash.hydrate(code)
+        if not hydrated:
+            flash("No saved run was found for that resume code (it may have expired).")
+            return redirect(url_for("matching.index"))
+        prefix = hydrated
+        session["resume_code"] = code   # so later requests can re-hydrate on restart
+
     if not prefix:
         return redirect(url_for("matching.index"))
     stage, endpoint, kwargs = _pipeline_stage(prefix)
@@ -197,6 +217,66 @@ def resume():
         flash(f"No cleaned table found for “{prefix}”. Transform/upload it first.")
         return redirect(url_for("matching.index"))
     return redirect(url_for(endpoint, **kwargs))
+
+
+@bp.route("/pause/<prefix>", methods=["POST"])
+def pause_run(prefix):
+    """Explicitly checkpoint the run to the stash and show the resume code so the
+    user can safely leave and come back later."""
+    if not os.path.exists(os.path.join(UPLOAD_FOLDER, f"{prefix}_processing.csv")) \
+            and not os.path.exists(os.path.join(UPLOAD_FOLDER, f"{prefix}_cleaned.csv")):
+        flash("Nothing to save yet.")
+        return redirect(url_for("matching.index"))
+    saved = stash.checkpoint(prefix)
+    return redirect(url_for("matching.resume_code", prefix=prefix,
+                            saved=1 if saved else 0))
+
+
+@bp.route("/resume_code/<prefix>", methods=["GET"])
+def resume_code(prefix):
+    """Show the run's resume code + link (after a pause or at hand-off)."""
+    code = stash.get_code(prefix)
+    resume_link = url_for("matching.resume", code=code, _external=True) if code else None
+    return render_template("resume_code.html", prefix=prefix, token=code,
+                           resume_link=resume_link,
+                           saved=request.args.get("saved") == "1",
+                           enabled=stash.enabled())
+
+
+@bp.route("/download_state/<prefix>", methods=["GET"])
+def download_state(prefix):
+    """Fallback to the GitHub stash: hand the user their working state as a zip
+    they can re-upload later to resume."""
+    if not os.path.exists(os.path.join(UPLOAD_FOLDER, f"{prefix}_cleaned.csv")):
+        flash("No run to download.")
+        return redirect(url_for("matching.index"))
+    zip_bytes = stash.pack(prefix)
+    return send_file(io.BytesIO(zip_bytes), mimetype="application/zip",
+                     as_attachment=True, download_name=f"{prefix}_workstate.zip")
+
+
+@bp.route("/resume_upload", methods=["POST"])
+def resume_upload():
+    """Resume from a working-state zip the user downloaded earlier."""
+    f = request.files.get("statefile")
+    if not f or not f.filename:
+        flash("Choose a working-state .zip to resume from.")
+        return redirect(url_for("matching.index"))
+    try:
+        written = data_sink.unpack_to(f.read(), UPLOAD_FOLDER)
+    except Exception:
+        flash("That file isn’t a valid working-state archive.")
+        return redirect(url_for("matching.index"))
+    # Derive the prefix from the unpacked cleaned table.
+    prefix = ""
+    for name in written:
+        if name.endswith("_cleaned.csv"):
+            prefix = name[:-len("_cleaned.csv")]
+            break
+    if not prefix:
+        flash("That archive didn’t contain a normalized table.")
+        return redirect(url_for("matching.index"))
+    return redirect(url_for("matching.resume", prefix=prefix))
 
 
 def _clear_run_artifacts(prefix):
@@ -532,9 +612,9 @@ def disambiguate():
         disambig_df = disambiguate_candidates(merged)
 
         if disambig_df.empty:
-            return render_template(
-                "disambiguate.html", prefix=prefix, has_candidates=False,
-            )
+            # Nothing to disambiguate -> go straight to the review of automatic
+            # matches (no dead-end page with a manual "continue" link).
+            return redirect(url_for("matching.review_hub", prefix=prefix))
 
         ordered_ids = disambig_df["rowID"].drop_duplicates().tolist()
         total = len(ordered_ids)
@@ -544,6 +624,7 @@ def disambiguate():
             idx = 0
         if idx >= total:
             _clear_undo(prefix)  # queue exhausted — no decision left to undo here
+            stash.checkpoint(prefix)  # stage boundary: save disambiguation result
             flash("Disambiguation complete.")
             return redirect(url_for("matching.review_hub", prefix=prefix))
         idx = max(0, idx)
@@ -728,6 +809,7 @@ def review_hub(prefix):
 def review_continue(prefix):
     """Mark the review passed and hand off to the manual phase (constraints)."""
     open(os.path.join(UPLOAD_FOLDER, f"{prefix}_reviewed.flag"), "w").close()
+    stash.checkpoint(prefix)  # stage boundary: review passed
     return redirect(url_for("matching.resume", prefix=prefix))
 
 
@@ -1043,11 +1125,20 @@ def set_constraints(prefix):
             "regions": selected_regions,
             "provinces": selected_provinces,
         }
+        # Optional bounding box [west, south, east, north] drawn on the map.
+        try:
+            bb = [float(request.form.get(k, "").strip())
+                  for k in ("bbox_w", "bbox_s", "bbox_e", "bbox_n")]
+            if all(v == v for v in bb):   # all present & numeric (no NaN)
+                constraints["bbox"] = bb
+        except (TypeError, ValueError):
+            pass
         constraints_path = os.path.join(UPLOAD_FOLDER, f"{prefix}_constraints.json")
         with open(constraints_path, "w", encoding="utf-8") as f:
             json.dump(constraints, f)
 
         flash("Global constraints saved.")
+        stash.checkpoint(prefix)  # stage boundary: constraints saved
         # Entered before matching ("after=match") -> start the run now; otherwise
         # this is the Phase-3 step and we continue to territory resolution.
         after = request.form.get("after") or request.args.get("after") or ""
@@ -1066,18 +1157,80 @@ def set_constraints(prefix):
     )
 
 
+# --- Generic administrative polygons: pulled live from ArcGIS Online ---
+# The 00_INDIAS_base_genericos feature service holds the generic hierarchy as
+# polygons: region (layer 0), provincia (1), partido (2). They are fetched live and
+# generalized (via _GEN_OFFSET / _GEN_PRECISION) — the ArcGIS service is the sole
+# source, so the deployment carries no local boundary files.
+_GENERICOS_FS = ("https://services2.arcgis.com/fKO2K6qiLNlgkZ2U/arcgis/rest/"
+                 "services/00_INDIAS_base_genericos/FeatureServer")
+GENERICO_LAYER_ID = {"region": 0, "provincia": 1, "partido": 2}
+# Service field -> the property name the frontend expects.
+_GENERICO_RENAME = {"Partido_1": "Partido", "Province_1": "Provincia", "Region": "Region"}
+_GENERICO_FIELDS = {
+    "region": ("Region",),
+    "provincia": ("Province_1", "Region"),
+    "partido": ("Partido_1", "Province_1", "Region"),
+}
+_GENERICOS_CACHE = {}     # (level, sorted-regs-tuple) -> FeatureCollection (successful fetches only)
+
+
+def _query_genericos(level, reg_set, timeout=60):
+    """One generalized GeoJSON query for a generic level, filtered to region
+    code(s). Returns a FeatureCollection with properties renamed to
+    Partido/Provincia/Region. Raises on a network/service error."""
+    layer = GENERICO_LAYER_ID[level]
+    if reg_set:
+        vals = ",".join("'" + r.replace("'", "''") + "'" for r in sorted(reg_set))
+        where = f"Region IN ({vals})"
+    else:
+        where = "1=1"
+    q = {
+        "where": where,
+        "outFields": ",".join(_GENERICO_FIELDS[level]),
+        "returnGeometry": "true",
+        "outSR": "4326",
+        "f": "geojson",
+        "maxAllowableOffset": _GEN_OFFSET,
+        "geometryPrecision": _GEN_PRECISION,
+    }
+    params = urllib.parse.urlencode(q)
+    with urllib.request.urlopen(f"{_GENERICOS_FS}/{layer}/query?{params}", timeout=timeout) as resp:
+        gj = json.load(resp)
+    feats = gj.get("features", []) or []
+    for feat in feats:
+        props = feat.get("properties") or {}
+        feat["properties"] = {_GENERICO_RENAME[k]: v for k, v in props.items()
+                              if k in _GENERICO_RENAME}
+    return {"type": "FeatureCollection", "features": feats}
+
+
+def _genericos_fc(level, reg_set):
+    """Cached generic-level polygons for the requested regions. On a service error
+    returns an empty FeatureCollection (not cached, so the service is retried next
+    time) — ArcGIS is the only source, there is no local fallback."""
+    key = (level, tuple(sorted(reg_set)))
+    if key in _GENERICOS_CACHE:
+        return _GENERICOS_CACHE[key]
+    try:
+        fc = _query_genericos(level, reg_set)
+        _GENERICOS_CACHE[key] = fc
+        return fc
+    except Exception:
+        return {"type": "FeatureCollection", "features": []}
+
+
 @bp.route("/districts_geojson")
 def districts_geojson():
-    """District polygons as GeoJSON, optionally filtered to region code(s)
-    via ?reg=CHA,NES (comma-separated)."""
-    gj = _load_districts()
+    """Generic administrative polygons as GeoJSON, filtered to region code(s) via
+    ?reg=CHA,NES. Level via ?level=partido|provincia|region (default partido).
+    Pulled live from ArcGIS (00_INDIAS_base_genericos) — the sole source."""
+    level = (request.args.get("level") or "partido").strip().lower()
+    if level not in GENERICO_LAYER_ID:
+        level = "partido"
     regs = request.args.get("reg", "")
     reg_set = {r.strip() for r in regs.split(",") if r.strip()}
-    if reg_set:
-        feats = [f for f in gj["features"] if f["properties"].get("Region") in reg_set]
-    else:
-        feats = gj["features"]
-    return jsonify({"type": "FeatureCollection", "features": feats})
+    return jsonify(_genericos_fc(level, reg_set))
 
 
 @bp.route("/get_provinces/<region_code>")
@@ -1197,6 +1350,7 @@ def territory_choice(prefix):
     total = len(relegated_ids)
     if total == 0:
         _clear_undo(prefix)
+        stash.checkpoint(prefix)  # stage boundary: manual resolution done
         flash("No relegated cases left to resolve.")
         return redirect(url_for("matching.export_results", prefix=prefix))
 
@@ -1206,6 +1360,7 @@ def territory_choice(prefix):
         idx = 0
     if idx >= total:
         _clear_undo(prefix)
+        stash.checkpoint(prefix)  # stage boundary: manual resolution done
         flash("Territory resolution complete.")
         return redirect(url_for("matching.export_results", prefix=prefix))
     idx = max(0, idx)
@@ -1394,6 +1549,10 @@ def _derive_place(gz_id, start, end):
     return out
 
 
+# The citation users must confirm before download, and that ships in every bundle.
+ARCA_CITATION = ("Geodata from HGIS-Indias, retrieved with ARCA workflow "
+                 "(www.hgis-indias.net)")
+
 ARCA_PROVENANCE = (
     'This dataset has been matched to the "HGIS de las Indias" gazetteer and added '
     'to the ARCA de las Indias data collection, contributing to compiling and '
@@ -1533,6 +1692,12 @@ def _build_export(prefix, opt_fields):
         fh.write(_build_readme(prefix))
     written.append(meta_name)
 
+    # Citation the user confirmed at download — ships with the data so it travels
+    # with any reuse.
+    with open(os.path.join(outdir, "CITATION.txt"), "w", encoding="utf-8") as fh:
+        fh.write("When using this data, please cite:\n\n" + ARCA_CITATION + "\n")
+    written.append("CITATION.txt")
+
     # Supporting files produced during transform, carried through if present:
     # per-column definitions and an uploaded bibliography.
     for extra in (f"{prefix}_field_definitions.csv", f"{prefix}_bibliography.txt"):
@@ -1564,7 +1729,8 @@ _DATASET_SUFFIXES = (
     "_domain.txt", "_metadata.txt", "_bibliography.txt", "_field_definitions.csv",
     "_constraints.json", "_status.json", "_status.json.tmp", "_status.txt",
     "_phase1a_complete.flag", "_phase1b_complete.flag",
-    "_reviewed.flag", "_undo.csv", "_undo.json",
+    "_reviewed.flag", "_undo.csv", "_undo.json", "_token.txt",
+    "_territory_results.csv",
     "_results.csv", "_original_results.csv", ".geojson",
 )
 
@@ -1583,27 +1749,18 @@ def _delete_dataset(prefix):
     return removed
 
 
-@bp.route("/export/<prefix>", methods=["GET", "POST"])
-def export_results(prefix):
+_EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
+
+
+def _mx_client_ip():
+    return (request.remote_addr or "").strip()
+
+
+def _export_context(prefix, form=None, error=None):
+    """Build the export screen: run summary, optional-field choices, and the
+    release/citation/identity gate (with a fresh anti-bot challenge)."""
     processing_path = os.path.join(UPLOAD_FOLDER, f"{prefix}_processing.csv")
-    if not os.path.exists(processing_path):
-        flash(f"Missing processing file: {processing_path}")
-        return redirect(url_for("matching.index"))
-
-    if request.method == "POST":
-        opt_fields = [f for f in OPTIONAL_EXPORT_FIELDS if request.form.get(f)]
-        zip_bytes, _stats = _build_export(prefix, opt_fields)
-        resp = send_file(io.BytesIO(zip_bytes), mimetype="application/zip",
-                         as_attachment=True, download_name=f"{prefix}_results.zip")
-        # "Download & delete": once the bundle has streamed to the user, wipe the
-        # dataset from the server (they chose not to keep/publish it).
-        if request.form.get("and_delete"):
-            resp.call_on_close(lambda: _delete_dataset(prefix))
-        return resp
-
-    # GET: summary + field choices
     proc = pd.read_csv(processing_path, sep=";", encoding="utf-8")
-    per_row = proc.drop_duplicates(subset=["rowID"])
     outcome_counts = proc.groupby("rowID")["phase_1a_outcome"].agg(
         lambda s: "resolved" if (set(s) & (ADOPTED_OUTCOMES | {"manual_new"})) else "unresolved"
     ).value_counts().to_dict()
@@ -1617,7 +1774,97 @@ def export_results(prefix):
         formatted_name=os.path.basename(fmt_path) if fmt_path else None,
         optional_fields=OPTIONAL_EXPORT_FIELDS,
         metadata_done=os.path.exists(os.path.join(UPLOAD_FOLDER, f"{prefix}_metadata.txt")),
+        citation=ARCA_CITATION,
+        challenge=antibot.make_challenge(),
+        turnstile_sitekey=antibot.turnstile_site_key(),
+        form=form or {},
+        error=error,
     )
+
+
+@bp.route("/export/<prefix>", methods=["GET", "POST"])
+def export_results(prefix):
+    processing_path = os.path.join(UPLOAD_FOLDER, f"{prefix}_processing.csv")
+    if not os.path.exists(processing_path):
+        flash(f"Missing processing file: {processing_path}")
+        return redirect(url_for("matching.index"))
+
+    if request.method != "POST":
+        return _export_context(prefix)
+
+    # ---- POST: gate the download on citation + identity, then finalize ----
+    form = request.form
+    name = (form.get("submitter_name") or "").strip()
+    institution = (form.get("submitter_institution") or "").strip()
+    email = (form.get("submitter_email") or "").strip()
+    purpose = (form.get("purpose") or "").strip()
+    cited = bool(form.get("cite_confirm"))
+    release = form.get("release") == "yes"
+    metadata_done = os.path.exists(os.path.join(UPLOAD_FOLDER, f"{prefix}_metadata.txt"))
+
+    # Anti-bot (same gate as the suggestion forms).
+    if not antibot.antibot_pass(form, _mx_client_ip()):
+        return _export_context(prefix, form=form,
+                               error="Could not verify the anti-bot challenge. Please try again.")
+    # Required governance fields.
+    if not cited:
+        return _export_context(prefix, form=form,
+                               error="Please confirm the citation to download the data.")
+    if not (name and institution and email and purpose):
+        return _export_context(prefix, form=form,
+                               error="Name, institution, email and a short description are all required.")
+    if not _EMAIL_RE.match(email):
+        return _export_context(prefix, form=form, error="Please enter a valid email address.")
+    # Releasing to the collection requires dataset metadata & licensing (which
+    # also carries the embargo). Users can instead pause and add it later.
+    if release and not metadata_done:
+        return _export_context(
+            prefix, form=form,
+            error="Releasing requires dataset metadata & licensing. Add it (the link opens "
+                  "in a new tab, then reload this page), or pause & resume later to add it.")
+
+    opt_fields = [f for f in OPTIONAL_EXPORT_FIELDS if form.get(f)]
+    zip_bytes, stats = _build_export(prefix, opt_fields)
+
+    submitter = {"name": name, "institution": institution, "email": email}
+    ts = datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    # If the user opts to release, archive the bundle permanently FIRST — if that
+    # fails we keep the run intact so they can retry, rather than losing the
+    # release. (The download itself never depends on GitHub.)
+    if release and data_sink.configured():
+        # Embargo + licence live in the dataset's own metadata (bundled as
+        # {prefix}_metadata.txt); the release record points to it rather than
+        # duplicating the embargo here.
+        meta = {"prefix": prefix, "released": True,
+                "submitter": submitter, "purpose": purpose, "citation": ARCA_CITATION,
+                "citation_confirmed": True, "timestamp": ts, "stats": stats}
+        if not data_sink.publish_dataset(prefix, zip_bytes, meta):
+            return _export_context(
+                prefix, form=form,
+                error="Couldn’t archive the released dataset to the repository just now. "
+                      "Your run is safe — please try again in a moment.")
+
+    # Permanent usage registry (who downloaded, and why). Soft: a failure here
+    # doesn't block the user's own download.
+    data_sink.record_usage({
+        "prefix": prefix, "timestamp": ts, "released": release,
+        "purpose": purpose,
+        "citation_confirmed": True, **{"submitter_" + k: v for k, v in submitter.items()},
+        "resolved": stats.get("with_gz"), "total": stats.get("total"),
+    })
+
+    resp = send_file(io.BytesIO(zip_bytes), mimetype="application/zip",
+                     as_attachment=True, download_name=f"{prefix}_results.zip")
+    # The run is complete: once the bundle has streamed, drop the workspace stash
+    # and wipe the transient working files from the server.
+    def _finalize():
+        try:
+            stash.finish(prefix)
+        finally:
+            _delete_dataset(prefix)
+    resp.call_on_close(_finalize)
+    return resp
 
 
 # ---------------------------------------------------------------------------
@@ -1754,8 +2001,7 @@ def _search_territory(name, start, end, nivel=None, provincia=None, region=None,
 # One layer per Nivel in the 00_INDIAS_base_territorios feature service. Features
 # are fetched on demand for the specific Entidad_IDs a row needs, generalized
 # server-side (the raw polygons run to ~18 MB each) and cached per (Nivel, EID).
-# The local GeoJSON files under data/geo/source are used only as an offline
-# fallback when the service is unreachable.
+# The ArcGIS service is the sole source; there is no local fallback.
 _TERRITORIOS_FS = ("https://services2.arcgis.com/fKO2K6qiLNlgkZ2U/arcgis/rest/"
                    "services/00_INDIAS_base_territorios_WFL1/FeatureServer")
 # Nivel (as stored in Niveles_matching) -> FeatureServer layer index.
@@ -1778,39 +2024,12 @@ _GEN_OFFSET = "0.005"
 _GEN_PRECISION = "5"
 _QUERY_FIELDS = "Entidad_ID,Nivel,Tipo,Label,Nombre,Cabecera,GZ_ID,START,END_"
 
-NIVEL_GEO_DIR = os.path.join("data", "geo", "source")
-_NIVEL_LOCAL_CACHE = {}      # offline fallback: nivel -> {eid: [features]}
 _FOOTPRINT_CACHE = {}        # (nivel_key, eid) -> [features] (year-normalized)
-
-
-def _nivel_geo_path(nivel):
-    return os.path.join(NIVEL_GEO_DIR, f"{str(nivel or '').strip().lower()}.geojson")
-
-
-def _load_nivel_local(nivel):
-    """Offline fallback: index a Nivel's local GeoJSON by Entidad_ID -> [features].
-    Cached; returns {} if the file for that Nivel doesn't exist."""
-    key = str(nivel or "").strip().lower()
-    if key not in _NIVEL_LOCAL_CACHE:
-        idx = {}
-        path = _nivel_geo_path(nivel)
-        if os.path.exists(path):
-            try:
-                with open(path, "r", encoding="utf-8") as f:
-                    for feat in json.load(f).get("features", []):
-                        eid = str((feat.get("properties") or {}).get("Entidad_ID") or "")
-                        if eid:
-                            idx.setdefault(eid, []).append(feat)
-            except Exception:
-                idx = {}
-        _NIVEL_LOCAL_CACHE[key] = idx
-    return _NIVEL_LOCAL_CACHE[key]
 
 
 def _epoch_ms_to_year(v):
     """The service returns START / END_ as epoch milliseconds; the rest of the code
-    (and the local files) expect a plain year. Convert, but pass through values that
-    are already years."""
+    expects a plain year. Convert, but pass through values that are already years."""
     if v is None or v == "":
         return None
     try:
@@ -1853,7 +2072,8 @@ def _fetch_entities(nivel, eids, generalized=True):
     """Return {eid: [features]} for the requested Entidad_IDs of a Nivel, pulled
     from the ArcGIS service and cached per (Nivel, EID, resolution). The display
     uses generalized geometry; the export passes generalized=False for full
-    resolution. Falls back to the local GeoJSON only if it still exists (offline)."""
+    resolution. ArcGIS is the only source; on a service error the entity simply has
+    no footprint (empty, and not cached, so it is retried next time)."""
     key = str(nivel or "").strip().lower()
     layer = NIVEL_LAYER_ID.get(key)
     # Full-resolution polygons are ~18 MB each, so fetch them one entity at a time
@@ -1871,32 +2091,30 @@ def _fetch_entities(nivel, eids, generalized=True):
     if not missing:
         return out
 
-    if layer is not None:
-        for i in range(0, len(missing), chunk_size):
-            chunk = missing[i:i + chunk_size]
-            try:
-                fetched = {}
-                for feat in _query_entities(layer, chunk, generalized, timeout):
-                    eid = str((feat.get("properties") or {}).get("Entidad_ID") or "")
-                    if eid:
-                        fetched.setdefault(eid, []).append(feat)
-                for eid in chunk:
-                    fl = fetched.get(eid, [])
-                    _FOOTPRINT_CACHE[(key, eid, generalized)] = fl
-                    out[eid] = fl
-            except Exception:
-                # service unreachable for this chunk -> offline fallback
-                local = _load_nivel_local(nivel)
-                for eid in chunk:
-                    fl = local.get(eid, [])
-                    _FOOTPRINT_CACHE[(key, eid, generalized)] = fl
-                    out[eid] = fl
-    else:
-        local = _load_nivel_local(nivel)
+    if layer is None:
+        # Unknown Nivel -> no ArcGIS layer; cache empty (it will never resolve).
         for eid in missing:
-            fl = local.get(eid, [])
-            _FOOTPRINT_CACHE[(key, eid, generalized)] = fl
-            out[eid] = fl
+            _FOOTPRINT_CACHE[(key, eid, generalized)] = []
+            out[eid] = []
+        return out
+
+    for i in range(0, len(missing), chunk_size):
+        chunk = missing[i:i + chunk_size]
+        try:
+            fetched = {}
+            for feat in _query_entities(layer, chunk, generalized, timeout):
+                eid = str((feat.get("properties") or {}).get("Entidad_ID") or "")
+                if eid:
+                    fetched.setdefault(eid, []).append(feat)
+            for eid in chunk:
+                fl = fetched.get(eid, [])
+                _FOOTPRINT_CACHE[(key, eid, generalized)] = fl
+                out[eid] = fl
+        except Exception:
+            # Service unreachable for this chunk -> no footprint this time; don't
+            # cache, so the next request retries the service.
+            for eid in chunk:
+                out[eid] = []
     return out
 
 

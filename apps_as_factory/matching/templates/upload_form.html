@@ -33,6 +33,19 @@
     <input type="submit" value="Load">
   </form>
 
+  <hr>
+  <h3>Resume a saved run</h3>
+  <form method="GET" action="{{ url_for('matching.resume') }}">
+    <label for="code">Have a resume code?</label><br>
+    <input type="text" id="code" name="code" placeholder="e.g. 8sK2-tR9xWq" autocomplete="off">
+    <input type="submit" value="Resume">
+  </form>
+  <p class="mx-note" style="margin-top:.6em;">…or resume from a working-state file you downloaded:</p>
+  <form method="POST" action="{{ url_for('matching.resume_upload') }}" enctype="multipart/form-data">
+    <input type="file" name="statefile" accept=".zip">
+    <input type="submit" value="Resume from file">
+  </form>
+
   {% with messages = get_flashed_messages() %}
     {% if messages %}
       <ul class="flash-messages">

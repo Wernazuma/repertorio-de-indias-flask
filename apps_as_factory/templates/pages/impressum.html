@@ -34,6 +34,8 @@
     <a href="#impressum">Impressum</a>
     <a href="#licensing">Licensing</a>
     <a href="#ai-declaration">AI declaration</a>
+    <a href="#privacy">Data protection</a>
+    <a href="#data-usage">Data reuse registry</a>
   </nav>
 
   <h2 id="impressum">Impressum</h2>
@@ -107,5 +109,92 @@
     <li>AI has been used to redesign the workflow scripts that export and transform data
       between formats (Excel to CSV, and so on).</li>
   </ul>
+
+  <h2 id="privacy">Data protection &amp; privacy</h2>
+  <p>This notice covers the personal data collected through the suggestion and correction
+     forms of the Encyclopedia. On all other pages the site sets no tracking cookies and
+     collects no personal data beyond the standard technical logs a web server keeps.</p>
+
+  <h3>Controller</h3>
+  <p>Werner Stangl — contact via the <a href="{{ url_for('team') }}">Team page</a>.</p>
+
+  <h3>What we store, and why</h3>
+  <ul>
+    <li>When you submit a suggestion or correction, we store the <strong>name</strong> and
+      <strong>email address</strong> you enter, your <strong>IP address</strong>, and the
+      <strong>content of your submission</strong>.</li>
+    <li>Purpose: to review and process your contribution, to attribute it, and to contact
+      you about it where necessary.</li>
+    <li>Legal basis: your consent, given by submitting the form (GDPR Art. 6(1)(a)), and our
+      legitimate interest in maintaining a scholarly reference resource (Art. 6(1)(f)).</li>
+  </ul>
+
+  <h3>Where it is stored, and processors</h3>
+  <ul>
+    <li>Submissions are stored as entries in a <strong>private repository hosted by GitHub,
+      Inc.</strong> (USA), which acts as our processor. They are not public.</li>
+    <li>Spam protection uses <strong>Cloudflare Turnstile</strong> (Cloudflare, Inc.), which
+      processes technical data such as your IP address and browser signals to distinguish
+      humans from bots.</li>
+    <li>These providers process data on our behalf; any transfer outside the EU/EEA relies on
+      the providers' standard safeguards (e.g. EU Standard Contractual Clauses).</li>
+  </ul>
+
+  <h3>Sharing and retention</h3>
+  <ul>
+    <li>Your data is <strong>not sold, published, or shared</strong> with any other third
+      party. It is used only to process your contribution.</li>
+    <li>We keep a submission until it has been reviewed and processed (incorporated or
+      declined), after which the personal data is deleted.</li>
+  </ul>
+
+  <h3>Your rights</h3>
+  <ul>
+    <li>You may request access to, correction of, or erasure of your data; object to or
+      restrict its processing; and withdraw your consent at any time — contact us via the
+      <a href="{{ url_for('team') }}">Team page</a>.</li>
+    <li>You also have the right to lodge a complaint with a data-protection supervisory
+      authority.</li>
+  </ul>
+
+  <h2 id="data-usage">Data reuse registry</h2>
+  <p>Separately from the suggestion forms, the <strong>upload &amp; matching</strong> workflow
+     lets you transform your own data against the HGIS de las Indias gazetteer and download the
+     result. When you download a finished dataset, we record who obtained it. Unlike the
+     suggestion data above, <strong>these records are retained permanently.</strong></p>
+
+  <h3>What we store, and why</h3>
+  <ul>
+    <li>At download we store the <strong>name, institution, and email address</strong> you
+      provide, your stated <strong>intended use</strong>, whether you chose to release the
+      dataset (and any embargo date), and the <strong>date and time</strong>.</li>
+    <li>Purpose: to keep a lasting record of who uses HGIS-Indias / ARCA data and for what, so
+      we can document scholarly reuse and guard against unattributed use or plagiarism.</li>
+    <li>Legal basis: our legitimate interest in protecting and documenting the reuse of the
+      research data we provide (GDPR Art. 6(1)(f)).</li>
+  </ul>
+
+  <h3>Where it is stored, and processors</h3>
+  <ul>
+    <li>These records — and any dataset you choose to release — are stored in a
+      <strong>private repository hosted by GitHub, Inc.</strong> (USA), which acts as our
+      processor. Any transfer outside the EU/EEA relies on the provider's standard safeguards
+      (e.g. EU Standard Contractual Clauses).</li>
+  </ul>
+
+  <h3>Sharing and retention</h3>
+  <ul>
+    <li>The registry is <strong>not sold, published, or shared</strong> with third parties. It
+      is used only for the internal purpose described above.</li>
+    <li>Because its purpose is a lasting usage record, registry entries are
+      <strong>kept indefinitely</strong>. You may still exercise the rights below.</li>
+  </ul>
+
+  <h3>Your rights</h3>
+  <p>The same rights apply as above — access, correction, erasure, objection, restriction, and
+     complaint to a supervisory authority; contact us via the
+     <a href="{{ url_for('team') }}">Team page</a>.</p>
+
+  <p class="meta">Last updated: 9 September 2026.</p>
 </section>
 {% endblock %}

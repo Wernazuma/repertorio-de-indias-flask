@@ -140,8 +140,7 @@
              value="{{ form.subjects if form else '' }}">
 
       <label class="f">Publisher(s)</label>
-      <span class="hint">ARCA always publishes the dataset. Add your institution or
-        project if it co-publishes — extra publishers appear in the citation.</span>
+      <span class="hint">ARCA co-publishes the dataset. All publishers appear in the citation.</span>
       <p><span class="fixed-pub">ARCA</span> <span class="hint" style="display:inline;">(always included)</span></p>
       <div id="publisherRows">
         {% for p in (form.publishers if form and form.publishers else ['']) %}
@@ -227,7 +226,7 @@
         </select>
       </div>
       <div id="declineNote" class="notice warn" style="display:none; margin-top:.6rem;">
-        <p>You chose not to accept the open license. Your data can still be processed,
+        <p>You chose not to accept the open license. Your data will still be stored,
           but it won't be published openly. Please <b>contact the site owner
           (Arca de las Indias)</b> for an individual solution.</p>
       </div>

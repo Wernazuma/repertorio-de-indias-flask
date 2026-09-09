@@ -39,6 +39,30 @@ def _guard_prefix():
             abort(400)
 
 
+@bp.before_request
+def _hydrate_raw_if_missing():
+    """The upload folder is disposable scratch. If the wizard has a run in progress
+    (session) but its raw CSV is gone (container recycled), pull it back from the
+    off-site stash via the session's resume code before the step runs."""
+    base = session.get('prefix') or (
+        os.path.splitext(session['uploaded_file'])[0] if session.get('uploaded_file') else '')
+    if not base or not _SAFE_PREFIX.match(base):
+        return
+    folder = current_app.config['UPLOAD_FOLDER']
+    if os.path.exists(os.path.join(folder, f"{base}.csv")):
+        return
+    code = session.get('resume_code')
+    if not code:
+        return
+    try:
+        from matching import stash as _stash
+        cp, _t = _stash.parse_code(code)
+        if cp == base:
+            _stash.hydrate(code)
+    except Exception:
+        pass
+
+
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
@@ -293,6 +317,13 @@ def discard():
     on a prefix-only resume (no active session)."""
     base = request.values.get('prefix', '').strip() or _current_base()
     removed = _delete_artifacts(base) if base else []
+    if base:
+        # Abandon the off-site stash too (best-effort).
+        try:
+            from matching import stash as _stash
+            _stash.finish(base)
+        except Exception:
+            pass
     session.clear()
     return redirect(url_for('.upload_csv', discarded=len(removed)))
 
@@ -330,6 +361,18 @@ def upload_file():
     session['uploaded_file'] = filename
     session['original_filename'] = file.filename
     session['prefix'] = base
+
+    # Durable from the very first upload: mint the resume code and stash the raw
+    # CSV off-site, so the server's copy is pure scratch. No-op when the data repo
+    # isn't configured (dev).
+    try:
+        from matching import stash as _stash
+        code = _stash.start(base)
+        if code:
+            session['resume_code'] = code
+    except Exception as e:
+        print(f"Stash start (upload) failed: {e}")
+
     return jsonify({'success': True, 'filename': filename})
 
 @bp.route('/select_domain')
@@ -669,7 +712,19 @@ def process_final():
         session['legacy_columns'] = legacy_columns
         session['final_rows'] = len(cleaned_df)
         session['final_columns'] = len(cleaned_df.columns)
-        
+
+        # Checkpoint the normalized state to the off-site stash (the resume code was
+        # minted at upload). No-op when the data repo isn't configured.
+        resume_token = ''
+        try:
+            from matching import stash as _stash
+            _stash.checkpoint(base_saved)
+            resume_token = _stash.get_code(base_saved) or session.get('resume_code', '')
+        except Exception as e:
+            print(f"Stash checkpoint failed: {e}")
+        resume_link = (url_for('matching.resume', code=resume_token, _external=True)
+                       if resume_token else '')
+
         return render_template('process_complete.html',
                              original_filename=original_filename,
                              output_filename=output_filename,
@@ -678,6 +733,8 @@ def process_final():
                              legacy_columns=legacy_columns,
                              # metadata & licensing is required before matching
                              metadata_done=_metadata_exists(base_saved),
+                             resume_token=resume_token,
+                             resume_link=resume_link,
                              session=session)  # Pass session for debugging
         
     except Exception as e:

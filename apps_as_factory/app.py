@@ -8,6 +8,7 @@ from flask import Flask, url_for, render_template, abort
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 from i18n import init_app as init_i18n
+import workdir
 
 
 def _load_local_secrets():
@@ -76,8 +77,38 @@ def create_app():
     app.config["ADMIN_TOKEN"] = (_secrets.get("ADMIN_TOKEN")
                                  or os.environ.get("ARCA_ADMIN_TOKEN")
                                  or "")
+    # Cloudflare Turnstile (spam protection on the suggestion forms). Site key is
+    # public (rendered into the form); secret key is server-only (verification).
+    # Both unset -> the forms fall back to the built-in arithmetic challenge.
+    app.config["TURNSTILE_SITE_KEY"] = (_secrets.get("TURNSTILE_SITE_KEY")
+                                        or os.environ.get("ARCA_TURNSTILE_SITE_KEY")
+                                        or "")
+    app.config["TURNSTILE_SECRET_KEY"] = (_secrets.get("TURNSTILE_SECRET_KEY")
+                                          or os.environ.get("ARCA_TURNSTILE_SECRET_KEY")
+                                          or "")
+    # GitHub sink for user suggestions: a fine-grained PAT (Issues + Contents
+    # write) scoped to one PRIVATE repo, and that repo as "owner/name". Unset ->
+    # the suggestion forms report they're temporarily unavailable.
+    app.config["GITHUB_TOKEN"] = (_secrets.get("GITHUB_TOKEN")
+                                  or os.environ.get("ARCA_GITHUB_TOKEN")
+                                  or "")
+    app.config["GITHUB_REPO"] = (_secrets.get("GITHUB_REPO")
+                                 or os.environ.get("ARCA_GITHUB_REPO")
+                                 or "")
+    # Second PRIVATE repo backing the matching pipeline's durable state: the
+    # in-progress workspace stashes (30-day TTL) plus permanently published
+    # datasets and the usage registry. Needs Contents: Read/Write. The token
+    # falls back to GITHUB_TOKEN when one fine-grained PAT is scoped to both repos.
+    app.config["GITHUB_DATA_REPO"] = (_secrets.get("GITHUB_DATA_REPO")
+                                      or os.environ.get("ARCA_GITHUB_DATA_REPO")
+                                      or "")
+    app.config["GITHUB_DATA_TOKEN"] = (_secrets.get("GITHUB_DATA_TOKEN")
+                                       or os.environ.get("ARCA_GITHUB_DATA_TOKEN")
+                                       or "")
     app.config["DATA_DIR"] = Path(__file__).resolve().parent / "data"
-    app.config['UPLOAD_FOLDER'] = Path(__file__).resolve().parent / "data/uploads"
+    # User uploads / working files are ephemeral scratch outside the repo — the
+    # authoritative copy lives in the ARCA-data GitHub stash. (Was data/uploads.)
+    app.config['UPLOAD_FOLDER'] = workdir.ensure()
     app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
     # Session cookie hardening. HttpOnly is Flask's default; SameSite=Lax stops the
     # admin session cookie riding along on cross-site requests (defence in depth for

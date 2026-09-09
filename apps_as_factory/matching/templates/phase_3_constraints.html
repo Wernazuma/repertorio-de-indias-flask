@@ -69,6 +69,19 @@
           <span class="sw" style="background:#1a7a1a;border-radius:50%;"></span> identified place
         </div>
 
+        <h4>3. Bounding box (optional)</h4>
+        <p class="hint">Or draw an area on the map — matching is then limited to places inside
+          the box (combined with any region/province chosen above).</p>
+        <div style="display:flex;gap:.5em;align-items:center;flex-wrap:wrap;margin-top:.3em;">
+          <button type="button" id="btnDrawBox">▭ Draw box</button>
+          <button type="button" id="btnClearBox" style="display:none;background:#777;border-color:#777;">Clear box</button>
+          <span class="hint" id="bboxReadout">No box drawn.</span>
+        </div>
+        <input type="hidden" name="bbox_w" id="bbox_w" value="">
+        <input type="hidden" name="bbox_s" id="bbox_s" value="">
+        <input type="hidden" name="bbox_e" id="bbox_e" value="">
+        <input type="hidden" name="bbox_n" id="bbox_n" value="">
+
         <div class="actionbar">
           <button type="submit">{{ 'Save &amp; start matching →' | safe if pre_matching else 'Save constraints →' }}</button>
           &nbsp;<a class="link" href="{{ url_for('matching.index') }}">Back to start</a>
@@ -101,6 +114,7 @@
     const highlighted = new Set();   // selected province names
     const checkedProvinces = new Set();
     let districtsLayer = null;
+    let drawMode = false;            // true while the user is drawing a bounding box
 
     const baseStyle = { color: '#888', weight: 1, fillColor: '#bbb', fillOpacity: 0.10 };
     const hiStyle   = { color: '#0056b3', weight: 1.4, fillColor: '#4a90d9', fillOpacity: 0.45 };
@@ -130,6 +144,7 @@
             const p = f.properties || {};
             layer.bindTooltip((p.Partido || '?') + (p.Provincia ? ' — ' + p.Provincia : ''), { sticky: true });
             layer.on('click', () => {
+              if (drawMode) return;   // ignore province-toggle while drawing a box
               // clicking a polygon toggles its province selection
               const prov = p.Provincia;
               if (!prov) return;
@@ -189,6 +204,49 @@
       if (cb.checked) { checkedProvinces.add(cb.value); highlighted.add(cb.value); }
       else { checkedProvinces.delete(cb.value); highlighted.delete(cb.value); }
       restyle();
+    });
+
+    // ---- bounding box: draw a rectangle with two clicks ----
+    const btnDrawBox = document.getElementById('btnDrawBox');
+    const btnClearBox = document.getElementById('btnClearBox');
+    const bboxReadout = document.getElementById('bboxReadout');
+    const bW = document.getElementById('bbox_w'), bS = document.getElementById('bbox_s'),
+          bE = document.getElementById('bbox_e'), bN = document.getElementById('bbox_n');
+    let boxLayer = null, corner1 = null;
+
+    function writeBox(b) {
+      bW.value = b.getWest().toFixed(5);  bS.value = b.getSouth().toFixed(5);
+      bE.value = b.getEast().toFixed(5);  bN.value = b.getNorth().toFixed(5);
+      bboxReadout.textContent = 'Box: S ' + bS.value + ', W ' + bW.value +
+                                ' → N ' + bN.value + ', E ' + bE.value;
+      btnClearBox.style.display = 'inline-block';
+    }
+    function exitDraw() {
+      drawMode = false; corner1 = null;
+      btnDrawBox.textContent = '▭ Draw box';
+      map.getContainer().style.cursor = '';
+    }
+
+    btnDrawBox.addEventListener('click', () => {
+      drawMode = !drawMode; corner1 = null;
+      btnDrawBox.textContent = drawMode ? '▭ Click two corners…' : '▭ Draw box';
+      map.getContainer().style.cursor = drawMode ? 'crosshair' : '';
+    });
+    btnClearBox.addEventListener('click', () => {
+      if (boxLayer) { map.removeLayer(boxLayer); boxLayer = null; }
+      bW.value = bS.value = bE.value = bN.value = '';
+      bboxReadout.textContent = 'No box drawn.';
+      btnClearBox.style.display = 'none';
+      exitDraw();
+    });
+    map.on('click', (e) => {
+      if (!drawMode) return;
+      if (!corner1) { corner1 = e.latlng; bboxReadout.textContent = 'Click the opposite corner…'; return; }
+      const b = L.latLngBounds(corner1, e.latlng);
+      if (boxLayer) map.removeLayer(boxLayer);
+      boxLayer = L.rectangle(b, { color: '#b36b00', weight: 2, fillColor: '#f0a020', fillOpacity: 0.08 }).addTo(map);
+      writeBox(b);
+      exitDraw();
     });
 
     // fit to identified places initially
