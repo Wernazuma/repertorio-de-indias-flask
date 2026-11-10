@@ -59,18 +59,20 @@
   {% if prefix %}
     <hr>
     <h3>Loaded prefix: <code>{{ prefix }}</code></h3>
-    {% if stage == 'start_matching' %}
+    {% if stage == 'constraints' %}
+      <p>
+        <a href="{{ continue_url }}" class="mx-cta start">▶ Set global constraints &amp; start</a>
+      </p>
+      <p class="mx-note">First choose a global constraint (region/province, or draw a bounding box)
+        so the whole table is only matched against places there — then matching (phases 1a + 1b)
+        runs, followed by disambiguation, manual resolution and export.</p>
+    {% elif stage == 'start_matching' %}
       <p>
         <a href="{{ url_for('matching.run_matching_route', prefix=prefix) }}" class="mx-cta start">
           ▶ Start matching process
         </a>
       </p>
-      <p class="mx-note">Runs matching (phases 1a + 1b), then guides you through disambiguation, territory resolution, and export.</p>
-      <p class="mx-note">
-        Optional: <a href="{{ url_for('matching.set_constraints', prefix=prefix, after='match') }}">set global
-        region/province constraints first</a> — restricts the whole table to that area so you never
-        see candidates from elsewhere.
-      </p>
+      <p class="mx-note">Runs matching (phases 1a + 1b), then guides you through disambiguation, manual resolution, and export.</p>
     {% else %}
       <p style="color:var(--muted);">Current stage: <strong>{{ stage_label }}</strong></p>
       <p>

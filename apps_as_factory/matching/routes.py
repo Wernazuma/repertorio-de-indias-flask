@@ -81,9 +81,7 @@ def _identified_places(prefix):
     sub = df[df["phase_1a_outcome"].isin(["auto_adopt", "adopted_candidate"])]
     if sub.empty:
         return []
-    gaz = pd.read_csv(GAZETTEER_FILE, sep=";", encoding="utf-8")
-    gaz["gz_id"] = pd.to_numeric(gaz["gz_id"], errors="coerce").astype("Int64")
-    gaz = gaz.drop_duplicates(subset=["gz_id"]).set_index("gz_id")
+    gaz = _gaz_indexed()   # cached, read-only (deduped + indexed by gz_id)
 
     out, seen = [], set()
     for _, r in sub.iterrows():
@@ -111,8 +109,8 @@ _STAGE_LABELS = {
     "progress": "Matching in progress",
     "disambiguation": "Disambiguation of candidates",
     "review": "Review automatic matches",
-    "constraints": "Phase 3 — global constraints",
-    "territory": "Phase 3 — territory resolution",
+    "constraints": "Global constraints (before matching)",
+    "territory": "Manual place resolution",
     "export": "Ready to finalize & export",
     "territory_match": "Territory matching",
 }
@@ -139,6 +137,11 @@ def _pipeline_stage(prefix):
     if _get_domain(prefix) == "territories":
         return ("territory_match", "matching.territory_match", {"prefix": prefix})
 
+    # Global constraints are chosen BEFORE matching, so they narrow phase 1 itself
+    # (region/province or a bounding box). Absent -> that step comes first.
+    if not os.path.exists(os.path.join(up, f"{prefix}_constraints.json")):
+        return ("constraints", "matching.set_constraints", {"prefix": prefix})
+
     if not os.path.exists(os.path.join(up, f"{prefix}_phase1a_complete.flag")):
         return ("start_matching", "matching.run_matching_route", {"prefix": prefix})
     if not os.path.exists(os.path.join(up, f"{prefix}_phase1b_complete.flag")):
@@ -158,8 +161,6 @@ def _pipeline_stage(prefix):
     # {prefix}_reviewed.flag records that the user has passed through it.
     if not os.path.exists(os.path.join(up, f"{prefix}_reviewed.flag")):
         return ("review", "matching.review_hub", {"prefix": prefix})
-    if not os.path.exists(os.path.join(up, f"{prefix}_constraints.json")):
-        return ("constraints", "matching.set_constraints", {"prefix": prefix})
     if "relegated" in outcomes:
         return ("territory", "matching.territory_choice", {"prefix": prefix})
     return ("export", "matching.export_results", {"prefix": prefix})
@@ -300,6 +301,46 @@ def _undo_paths(prefix):
             os.path.join(UPLOAD_FOLDER, f"{prefix}_undo.json"))
 
 
+# ---- rowID / ID identity -------------------------------------------------
+# A rowID (the transform "Internal ID of each row" field) is a USER-supplied
+# identifier and may be text ("/place/1"), not just an integer — the field
+# explicitly allows text/string. So never int() a rowID: treat it as an opaque
+# string and canonicalise it (1, "1", "1.0" -> "1"; "/place/1" stays) so every
+# comparison, form round-trip and export join is string-vs-string regardless of
+# the column's dtype.
+def _rid(v):
+    """Canonical string form of a single rowID/ID value, or None if blank/NaN."""
+    if v is None:
+        return None
+    try:
+        if pd.isna(v):
+            return None
+    except (TypeError, ValueError):
+        pass
+    s = str(v).strip()
+    if s == "" or s.lower() == "nan":
+        return None
+    try:
+        f = float(s)
+        if f.is_integer():
+            return str(int(f))
+    except (ValueError, OverflowError):
+        pass
+    return s
+
+
+def _norm_rowid(df):
+    """Normalise a frame's rowID column to the canonical string form, in place."""
+    if "rowID" in df.columns:
+        df["rowID"] = df["rowID"].map(lambda v: _rid(v) or "")
+    return df
+
+
+def _id_key(series):
+    """Canonical string key for an ID/rowID Series (for a string-safe merge)."""
+    return series.map(lambda v: _rid(v) or "")
+
+
 def _save_undo(prefix, stage, idx, row_id, desc):
     """Snapshot the current processing.csv into the single undo slot BEFORE a
     data-mutating decision, so the last decision can be taken back. Best-effort:
@@ -310,7 +351,7 @@ def _save_undo(prefix, stage, idx, row_id, desc):
         shutil.copy(csv_path, undo_csv)
         with open(undo_json, "w", encoding="utf-8") as f:
             json.dump({"stage": stage, "idx": int(idx),
-                       "row_id": (None if row_id is None else int(row_id)),
+                       "row_id": _rid(row_id),
                        "desc": desc}, f)
     except (OSError, ValueError):
         pass
@@ -532,12 +573,10 @@ def disambiguate():
 
     df = pd.read_csv(processing_path, sep=";", encoding="utf-8")
     df["gz_id"] = pd.to_numeric(df["gz_id"], errors="coerce").astype("Int64")
+    _norm_rowid(df)
 
     if request.method == "POST":
-        try:
-            rowID = int(request.form.get("row_id"))
-        except (TypeError, ValueError):
-            rowID = None
+        rowID = _rid(request.form.get("row_id"))
         selected_gz = request.form.get("choice", "")
         try:
             idx = int(request.form.get("idx", 0))
@@ -551,7 +590,7 @@ def disambiguate():
             # remaining" is exactly "all still-candidate". Each rowID collapses to
             # one relegated placeholder, mirroring the single-row reject.
             cand_snapshot = df[df["phase_1a_outcome"] == "candidate"]
-            for _rid, grp in cand_snapshot.groupby("rowID"):
+            for _gkey, grp in cand_snapshot.groupby("rowID"):
                 idxs = grp.index.tolist()
                 df.loc[idxs[0], "phase_1a_outcome"] = "relegated"
                 df.loc[idxs[0], "gz_id"] = pd.NA
@@ -594,8 +633,7 @@ def disambiguate():
 
     # GET: build case-by-case view with map data
     try:
-        gazetteer_df = pd.read_csv(GAZETTEER_FILE, sep=";", encoding="utf-8")
-        gazetteer_df["gz_id"] = pd.to_numeric(gazetteer_df["gz_id"], errors="coerce").astype("Int64")
+        gazetteer_df = _gaz_int()   # cached, read-only (gz_id as Int64)
 
         gz_cols = ["gz_id", "lugar_nombre", "lugar_variantes", "lugar_categoria",
                    "lugar_categoria_especial", "lugar_iglesia_cat", "lugar_region",
@@ -605,8 +643,8 @@ def disambiguate():
         merged = df.merge(gz_subset[merge_cols], on="gz_id", how="left")
 
         # Full gazetteer rows (with all territorial fields), keyed by gz_id, for
-        # recomputing the finest comparable territory level per candidate.
-        gz_full = gazetteer_df.drop_duplicates(subset=["gz_id"]).set_index("gz_id")
+        # recomputing the finest comparable territory level per candidate. Cached.
+        gz_full = _gaz_indexed()
 
         from .disambiguation import disambiguate_candidates
         disambig_df = disambiguate_candidates(merged)
@@ -643,25 +681,33 @@ def disambiguate():
         for _, rr in df.iterrows():
             g = rr.get("gz_id")
             rid = rr.get("rowID")
-            if pd.isna(g) or pd.isna(rid) or int(rid) == int(current_row_id):
+            if pd.isna(g) or _rid(rid) is None or _rid(rid) == _rid(current_row_id):
                 continue
             g = int(g)
-            entry = {"rowID": int(rid), "label": str(rr.get("ref_Label", "") or "")}
+            entry = {"rowID": _rid(rid), "label": str(rr.get("ref_Label", "") or "")}
             outcome = str(rr.get("phase_1a_outcome", ""))
             if outcome in ADOPTED_OUTCOMES:
                 cross_adopted.setdefault(g, []).append(entry)
             elif outcome == "candidate":
                 cross_candidate.setdefault(g, []).append(entry)
 
-        # Reference (input) context columns
+        # Reference (input) context columns (coordinates are shown on the map /
+        # as per-candidate distances instead of as context chips).
         ref_row = group.iloc[0]
         ref_info = {}
         for col in group.columns:
-            if col.startswith("ref_") and col != "ref_Label":
+            if col.startswith("ref_") and col not in ("ref_Label", "ref_lat", "ref_lon"):
                 val = ref_row[col]
                 if pd.notna(val) and str(val).strip():
                     ref_info[col] = str(val)
         ref_label = str(ref_row.get("ref_Label", ""))
+
+        # The input row's own coordinates (if supplied) — plotted on the map and
+        # used to rank candidates by proximity in disambiguate_candidates().
+        in_lat = _to_coord(ref_row.get("ref_lat"))
+        in_lon = _to_coord(ref_row.get("ref_lon"))
+        input_point = ({"lat": in_lat, "lon": in_lon}
+                       if in_lat is not None and in_lon is not None else None)
 
         # Candidate dicts for display + map
         from .fast_match import territory_detail
@@ -693,6 +739,8 @@ def disambiguate():
                 "category_match": str(c.get("category_match", "") or ""),
                 "fuzzy_score": c.get("fuzzy_score"),
                 "score": int(c.get("score", 0)),
+                "distance_km": (None if pd.isna(c.get("distance_km"))
+                                else round(float(c.get("distance_km")), 1)),
                 "terr_level": _LEVEL_LABELS.get(terr_level_key, terr_level_key),
                 "terr_status": terr_status,
                 "lat": lat,
@@ -734,6 +782,7 @@ def disambiguate():
             candidates=candidates,
             candidates_json=json.dumps(candidates),
             context_json=json.dumps(context_points),
+            input_json=json.dumps(input_point),
             table_context=_submitted_context(prefix, current_row_id, span=2),
             can_undo=_can_undo(prefix, "disambiguation"),
         )
@@ -784,6 +833,7 @@ def _load_processing(prefix):
         return None, path
     df = pd.read_csv(path, sep=";", encoding="utf-8")
     df["gz_id"] = pd.to_numeric(df["gz_id"], errors="coerce").astype("Int64")
+    _norm_rowid(df)
     return df, path
 
 
@@ -821,10 +871,7 @@ def review_auto(prefix):
         return redirect(url_for("matching.index"))
 
     if request.method == "POST":
-        try:
-            row_id = int(request.form.get("row_id"))
-        except (TypeError, ValueError):
-            row_id = None
+        row_id = _rid(request.form.get("row_id"))
         if row_id is not None and _relegate_rowid(df, row_id):
             df.to_csv(path, sep=";", index=False, encoding="utf-8")
             flash(f"Row {row_id} sent to manual resolution.")
@@ -834,7 +881,7 @@ def review_auto(prefix):
     rows = []
     for _, r in auto.iterrows():
         rows.append({
-            "row_id": int(r["rowID"]) if pd.notna(r["rowID"]) else None,
+            "row_id": _rid(r["rowID"]),
             "ref_label": str(r.get("ref_Label", "") or ""),
             "gz_id": int(r["gz_id"]) if pd.notna(r["gz_id"]) else None,
             "lugar_label": str(r.get("lugar_label", "") or ""),
@@ -855,10 +902,7 @@ def review_duplicates(prefix):
         return redirect(url_for("matching.index"))
 
     if request.method == "POST":
-        try:
-            row_id = int(request.form.get("row_id"))
-        except (TypeError, ValueError):
-            row_id = None
+        row_id = _rid(request.form.get("row_id"))
         if row_id is not None and _relegate_rowid(df, row_id):
             df.to_csv(path, sep=";", index=False, encoding="utf-8")
             flash(f"Row {row_id} sent to manual resolution.")
@@ -871,7 +915,7 @@ def review_duplicates(prefix):
         if g["rowID"].nunique() < 2:
             continue
         members = [{
-            "row_id": int(x["rowID"]) if pd.notna(x["rowID"]) else None,
+            "row_id": _rid(x["rowID"]),
             "ref_label": str(x.get("ref_Label", "") or ""),
             "outcome": str(x.get("phase_1a_outcome", "") or ""),
             "partido": str(x.get("lugar_partido_generico", "") or ""),
@@ -898,10 +942,7 @@ def place_usage(prefix, gz_id):
     df, _ = _load_processing(prefix)
     if df is None:
         return jsonify({"gz_id": gz_id, "rows": []}), 404
-    try:
-        exclude = int(request.args.get("exclude"))
-    except (TypeError, ValueError):
-        exclude = None
+    exclude = _rid(request.args.get("exclude"))
 
     gz_col = pd.to_numeric(df["gz_id"], errors="coerce")
     relevant = ["candidate"] + list(ADOPTED_OUTCOMES)
@@ -909,10 +950,9 @@ def place_usage(prefix, gz_id):
 
     rows, seen = [], set()
     for _, r in sub.iterrows():
-        rid = r.get("rowID")
-        if pd.isna(rid):
+        rid = _rid(r.get("rowID"))
+        if rid is None:
             continue
-        rid = int(rid)
         if rid == exclude or rid in seen:
             continue
         seen.add(rid)
@@ -936,6 +976,30 @@ def place_usage(prefix, gz_id):
 
 _GAZ_DF = None
 _SAINTS = None
+
+# The 38 MB reference gazetteer, cached in memory (read-only) so the interactive
+# disambiguation / manual-resolution screens never re-parse it per click. Two
+# derived views: full (gz_id as Int64, for merges) and deduped+indexed by gz_id.
+_GAZ_INT = None
+_GAZ_INDEXED = None
+
+
+def _gaz_int():
+    """Full gazetteer with gz_id coerced to Int64. Cached; treat as read-only."""
+    global _GAZ_INT
+    if _GAZ_INT is None:
+        g = pd.read_csv(GAZETTEER_FILE, sep=";", encoding="utf-8")
+        g["gz_id"] = pd.to_numeric(g["gz_id"], errors="coerce").astype("Int64")
+        _GAZ_INT = g
+    return _GAZ_INT
+
+
+def _gaz_indexed():
+    """Gazetteer deduped on gz_id and indexed by it (for .loc lookups). Cached."""
+    global _GAZ_INDEXED
+    if _GAZ_INDEXED is None:
+        _GAZ_INDEXED = _gaz_int().drop_duplicates(subset=["gz_id"]).set_index("gz_id")
+    return _GAZ_INDEXED
 _ENTIDADES_DF = None
 
 CENTRAL_IGLESIA = {"Curato", "Mision cabecera"}
@@ -1139,21 +1203,17 @@ def set_constraints(prefix):
 
         flash("Global constraints saved.")
         stash.checkpoint(prefix)  # stage boundary: constraints saved
-        # Entered before matching ("after=match") -> start the run now; otherwise
-        # this is the Phase-3 step and we continue to territory resolution.
-        after = request.form.get("after") or request.args.get("after") or ""
-        if after == "match":
-            return redirect(url_for("matching.run_matching_route", prefix=prefix))
-        return redirect(url_for("matching.territory_choice", prefix=prefix))
+        # Constraints are the step before matching now: hand back to the router,
+        # which starts phase 1 (or, if matching already ran, jumps to where it left
+        # off — so re-saving constraints never silently re-runs a finished match).
+        return redirect(url_for("matching.resume", prefix=prefix))
 
-    after = request.args.get("after", "")
     return render_template(
         "phase_3_constraints.html",
         prefix=prefix,
         region_options=region_options,
         identified_json=json.dumps(_identified_places(prefix)),
-        after=after,
-        pre_matching=(after == "match"),
+        pre_matching=True,
     )
 
 
@@ -1270,6 +1330,7 @@ def territory_choice(prefix):
 
     df = pd.read_csv(processing_path, sep=";", encoding="utf-8")
     df["gz_id"] = pd.to_numeric(df["gz_id"], errors="coerce").astype("Int64")
+    _norm_rowid(df)
 
     constraints_path = os.path.join(UPLOAD_FOLDER, f"{prefix}_constraints.json")
     if os.path.exists(constraints_path):
@@ -1285,10 +1346,7 @@ def territory_choice(prefix):
             idx = int(request.form.get("idx", 0))
         except (TypeError, ValueError):
             idx = 0
-        try:
-            rowID = int(request.form.get("row_id"))
-        except (TypeError, ValueError):
-            rowID = None
+        rowID = _rid(request.form.get("row_id"))
         action = request.form.get("action", "")
         decided = False
 
@@ -1411,11 +1469,11 @@ def territory_choice(prefix):
     cross_adopted = {}
     for _, rr in df.iterrows():
         g, rid = rr.get("gz_id"), rr.get("rowID")
-        if pd.isna(g) or pd.isna(rid) or int(rid) == int(current_row_id):
+        if pd.isna(g) or _rid(rid) is None or _rid(rid) == _rid(current_row_id):
             continue
         if str(rr.get("phase_1a_outcome", "")) in ADOPTED_OUTCOMES:
             cross_adopted.setdefault(int(g), []).append(
-                {"rowID": int(rid), "label": str(rr.get("ref_Label", "") or "")})
+                {"rowID": _rid(rid), "label": str(rr.get("ref_Label", "") or "")})
     for c in candidates:
         c["also_adopted_for"] = cross_adopted.get(c.get("gz_id"), [])
 
@@ -1449,7 +1507,7 @@ def territory_choice(prefix):
         total=total,
         lookup=lookup,
         search_term=search_term,
-        row_id=int(current_row_id),
+        row_id=current_row_id,
         ref_label=ref_label,
         ref_info=ref_info,
         filters=filters,
@@ -1608,7 +1666,7 @@ def _resolve_rows(proc):
     for rid, grp in proc.groupby("rowID"):
         s = _to_year(grp["ref_START"].iloc[0]) if "ref_START" in grp.columns else None
         e = _to_year(grp["ref_END"].iloc[0]) if "ref_END" in grp.columns else None
-        rec = {"ID": rid, "gz_id": "", "lat_y": "", "lon_x": "", "cert": "",
+        rec = {"ID": _rid(rid), "gz_id": "", "lat_y": "", "lon_x": "", "cert": "",
                "iglesia_cat": "", "categoria": "", "categoria_esp": ""}
 
         manual = grp[grp["phase_1a_outcome"] == "manual_new"]
@@ -1634,6 +1692,7 @@ def _build_export(prefix, opt_fields):
     """Build the results files + zip; returns (zip_bytes, stats)."""
     processing_path = os.path.join(UPLOAD_FOLDER, f"{prefix}_processing.csv")
     proc = pd.read_csv(processing_path, sep=";", encoding="utf-8")
+    _norm_rowid(proc)
 
     resolved = _resolve_rows(proc)
     cols = ["ID", "gz_id", "lat_y", "lon_x"] + [f for f in opt_fields if f in OPTIONAL_EXPORT_FIELDS]
@@ -1647,7 +1706,9 @@ def _build_export(prefix, opt_fields):
         base = pd.read_csv(src_path, sep=";", encoding="utf-8-sig")
         if "ID" not in base.columns:
             return None
-        base["ID"] = pd.to_numeric(base["ID"], errors="coerce")
+        # ID is a user identifier that may be text -> join on the canonical string
+        # form (so "1"/1/"1.0" all match, and "/place/1" joins too).
+        base["ID"] = _id_key(base["ID"])
         merged = base.merge(add_df, on="ID", how="left")
         # keep gz_id as a clean integer string (no trailing .0), empty if unresolved
         merged["gz_id"] = merged["gz_id"].apply(
@@ -2174,6 +2235,7 @@ def _build_territory_export(prefix):
     per matched row) + the results CSV + README. Returns (zip_bytes, stats)."""
     results_path = os.path.join(UPLOAD_FOLDER, f"{prefix}_territory_results.csv")
     res = pd.read_csv(results_path, sep=";", encoding="utf-8")
+    _norm_rowid(res)
 
     feats = []
     n_geom = 0
@@ -2192,7 +2254,7 @@ def _build_territory_export(prefix):
         # tag the footprint with the row's identity so it round-trips
         props = feat.get("properties", {}) or {}
         props.update({
-            "rowID": int(getattr(r, "rowID")) if pd.notna(getattr(r, "rowID")) else None,
+            "rowID": _rid(getattr(r, "rowID")),
             "ref_Label": str(getattr(r, "ref_Label", "") or ""),
             "Entidad_ID": eid, "Nivel": nivel,
             "match_tipo": str(getattr(r, "tipo", "") or ""),
@@ -2219,7 +2281,7 @@ def _build_territory_export(prefix):
         eid = str(getattr(r, "entidad_id", "") or "") if matched else ""
         em = ent_map.get(eid, {}) if eid else {}
         recs.append({
-            "ID": int(rid) if pd.notna(rid) else None,
+            "ID": _rid(rid),
             "entidad_id": eid,
             "nivel": str(getattr(r, "nivel", "") or "") if matched else "",
             "tipo": str(getattr(r, "tipo", "") or "") if matched else "",
@@ -2234,7 +2296,7 @@ def _build_territory_export(prefix):
         base = pd.read_csv(src_path, sep=";", encoding="utf-8-sig")
         if "ID" not in base.columns:
             return
-        base["ID"] = pd.to_numeric(base["ID"], errors="coerce")
+        base["ID"] = _id_key(base["ID"])
         merged = base.merge(add_df, on="ID", how="left")
         merged.to_csv(os.path.join(outdir, out_name), sep=";", index=False, encoding="utf-8")
         written.append(out_name)
@@ -2301,6 +2363,7 @@ def territory_match(prefix):
     inp = pd.read_csv(cleaned, sep=";", encoding="utf-8")
     if "rowID" not in inp.columns:
         inp.insert(0, "rowID", range(1, len(inp) + 1))
+    _norm_rowid(inp)
     name_col = _territory_name_col(inp)
 
     results_path = os.path.join(UPLOAD_FOLDER, f"{prefix}_territory_results.csv")
@@ -2309,12 +2372,10 @@ def territory_match(prefix):
         res = pd.read_csv(results_path, sep=";", encoding="utf-8")
     else:
         res = pd.DataFrame(columns=res_cols)
+    _norm_rowid(res)
 
     if request.method == "POST":
-        try:
-            rowID = int(request.form.get("row_id"))
-        except (TypeError, ValueError):
-            rowID = None
+        rowID = _rid(request.form.get("row_id"))
         action = request.form.get("action", "")
         try:
             idx = int(request.form.get("idx", 0))
@@ -2340,8 +2401,8 @@ def territory_match(prefix):
         return redirect(url_for("matching.territory_match", prefix=prefix, idx=next_idx, q=q or None))
 
     # GET
-    resolved_ids = set(pd.to_numeric(res["rowID"], errors="coerce").dropna().astype(int).tolist())
-    ordered = [int(r) for r in inp["rowID"].tolist() if int(r) not in resolved_ids]
+    resolved_ids = {x for x in _id_key(res["rowID"]).tolist() if x}
+    ordered = [r for r in inp["rowID"].tolist() if r and r not in resolved_ids]
     total = len(inp)
     done = len(resolved_ids)
     if not ordered:
@@ -2462,6 +2523,7 @@ def review():
         return redirect(url_for("matching.index"))
 
     df = pd.read_csv(processing_path, sep=";", encoding="utf-8")
+    _norm_rowid(df)
 
     # Ensure review column exists
     if REVIEW_COL not in df.columns:
@@ -2486,12 +2548,7 @@ def review():
 
     if request.method == "POST":
         action = request.form.get("action", "")
-        current_row_id = request.form.get("row_id")
-        if current_row_id:
-            try:
-                current_row_id = int(current_row_id)
-            except ValueError:
-                pass
+        current_row_id = _rid(request.form.get("row_id"))
 
         if action == "confirm":
             df.loc[df["rowID"] == current_row_id, REVIEW_COL] = "confirmed"
@@ -2523,14 +2580,12 @@ def review():
     # Merge gazetteer for additional lugar_ columns if needed
     gz_extra = {}
     if not case_rows["gz_id"].isna().all():
-        try:
-            gaz = pd.read_csv(GAZETTEER_FILE, sep=";", encoding="utf-8")
-            for gz_id_val in case_rows["gz_id"].dropna().unique():
-                gz_row = gaz[gaz["gz_id"] == gz_id_val]
-                if not gz_row.empty:
-                    gz_extra[int(gz_id_val)] = gz_row.iloc[0].to_dict()
-        except Exception:
-            pass
+        gaz = _gaz_indexed()   # cached, read-only (indexed by gz_id)
+        for gz_id_val in case_rows["gz_id"].dropna().unique():
+            try:
+                gz_extra[int(gz_id_val)] = gaz.loc[int(gz_id_val)].to_dict()
+            except (KeyError, ValueError, TypeError):
+                pass
 
     return render_template(
         "review.html",

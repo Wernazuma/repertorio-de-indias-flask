@@ -517,6 +517,8 @@ def field_mapping():
             {'name': 'ref_Pais', 'label': 'Modern country (ISO 3166-1 alpha-3)', 'types': ['text', 'string'], 'optional': True},
             {'name': 'ref_Region', 'label': 'Generic region', 'types': ['text', 'string'], 'optional': True},
             {'name': 'ref_Provincia_generica', 'label': 'Generic province', 'types': ['text', 'string'], 'optional': True},
+            {'name': 'ref_lat', 'label': 'Latitude (decimal degrees, if your table has coordinates)', 'types': ['decimal', 'integer', 'text', 'string'], 'optional': True},
+            {'name': 'ref_lon', 'label': 'Longitude (decimal degrees, if your table has coordinates)', 'types': ['decimal', 'integer', 'text', 'string'], 'optional': True},
         ]
     else:  # territories
         required_fields = [
@@ -527,8 +529,10 @@ def field_mapping():
             {'name': 'ref_Nivel', 'label': 'Hierarchical level or general type', 'types': ['text', 'string'], 'optional': True},
             {'name': 'ref_Provincia_generica', 'label': 'Generic province it is in', 'types': ['text', 'string'], 'optional': True},
             {'name': 'ref_Region', 'label': 'Generic region it is in', 'types': ['text', 'string'], 'optional': True},
+            {'name': 'ref_lat', 'label': 'Latitude (decimal degrees, if your table has coordinates)', 'types': ['decimal', 'integer', 'text', 'string'], 'optional': True},
+            {'name': 'ref_lon', 'label': 'Longitude (decimal degrees, if your table has coordinates)', 'types': ['decimal', 'integer', 'text', 'string'], 'optional': True},
         ]
-    
+
     # Filter columns by allowed types for each field
     filtered_columns = {}
     for field in required_fields:
@@ -687,7 +691,20 @@ def process_final():
             print("No chronological info, set default values")
         
         print(f"Columns after chronological processing: {df.columns.tolist()}")
-        
+
+        # Coordinates are ALWAYS stored as float, independent of how the source
+        # column was classified. The original table may use ',' or '.' as the
+        # decimal separator, so normalise to '.' before numeric coercion; any
+        # value that still won't parse becomes NaN (and is simply not used
+        # downstream for proximity ranking).
+        for coord_col in ("ref_lat", "ref_lon"):
+            if coord_col in df.columns:
+                s = (df[coord_col].astype(str).str.strip()
+                     .str.replace(",", ".", regex=False))
+                df[coord_col] = pd.to_numeric(s, errors="coerce")
+                print(f"Coerced {coord_col} to float "
+                      f"({int(df[coord_col].notna().sum())} valid of {len(df)})")
+
         # Clean and coerce data
         field_types = session['field_types']
         print(f"Field types: {field_types}")

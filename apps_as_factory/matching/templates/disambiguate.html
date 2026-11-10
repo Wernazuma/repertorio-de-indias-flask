@@ -63,6 +63,9 @@
       padding: 0 6px; font-size: 0.8em;
     }
     .nocoord { font-size: 0.72em; color: #b36b00; background:#fff5e0; border-radius:3px; padding:0 5px; }
+    .dist-badge { font-size: 0.72em; color: #0a5c2b; background:#e4f6e4; border:1px solid #9ad29a;
+      border-radius:3px; padding:0 5px; white-space: nowrap; }
+    .input-dot { background:#111; border:2px solid #fff; border-radius:50%; box-shadow:0 1px 4px rgba(0,0,0,.5); }
     .cand dl { margin: 0.5em 0 0; display: grid; grid-template-columns: auto 1fr; gap: 1px 0.6em; font-size: 0.82em; }
     .cand dt { color: #777; }
     .cand dd { margin: 0; }
@@ -202,6 +205,7 @@
               <span class="badge-num" data-num="{{ loop.index }}">{{ loop.index }}</span>
               <span class="title">{{ c.lugar_label or c.gz_id }}</span>
               {% if c.lat is none or c.lon is none %}<span class="nocoord">no coord.</span>{% endif %}
+              {% if c.distance_km is not none %}<span class="dist-badge" title="Distance from your supplied coordinates">📍 {{ c.distance_km }} km</span>{% endif %}
               <span class="score-badge">{{ c.score }}</span>
             </div>
             <div class="matchbar">
@@ -285,6 +289,7 @@
   <script>
     const CANDIDATES = {{ candidates_json|safe }};
     const CONTEXT = {{ context_json|safe }};
+    const INPUT_POINT = {{ input_json|safe }};
     const PALETTE = ["#e6194b","#3cb44b","#f58231","#911eb4","#0082c8",
                      "#46f0f0","#d2f53c","#fabebe","#008080","#aa6e28"];
 
@@ -295,6 +300,17 @@
 
     const bounds = [];
     const candMarkers = {};
+
+    // The input row's own coordinates (if the table supplied them) — a black dot
+    // the candidates are ranked against (closest first).
+    if (INPUT_POINT && INPUT_POINT.lat != null && INPUT_POINT.lon != null) {
+      L.marker([INPUT_POINT.lat, INPUT_POINT.lon], {
+        icon: L.divIcon({ className: '', iconSize: [16, 16], iconAnchor: [8, 8],
+                          html: '<div class="input-dot" style="width:16px;height:16px"></div>' }),
+        zIndexOffset: 1000
+      }).addTo(map).bindTooltip('Your coordinates', {direction:'top'});
+      bounds.push([INPUT_POINT.lat, INPUT_POINT.lon]);
+    }
 
     // Context (already-matched) points — small grey dots
     CONTEXT.forEach(p => {

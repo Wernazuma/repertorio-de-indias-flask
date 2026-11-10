@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Phase 3 — Global Constraints ({{ prefix }})</title>
+  <title>Global Constraints ({{ prefix }})</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
   <style>
@@ -38,28 +38,25 @@
 
   {% include '_resume_bar.html' %}
 
-  {% if pre_matching %}
   <div style="max-width:680px;margin:.6em auto 0;padding:.55em .9em;border:1px solid #bcd;
        background:#eef5fb;border-radius:8px;font-size:.9em;color:#245;">
-    Optional: limit matching to these region(s)/province(s) up front, so the whole
-    table is only matched against places there — no candidates from elsewhere. Leave
-    empty to match everything.
+    <b>Before matching:</b> limit the whole table to an area, so it is only matched against
+    places there. Use <b>either</b> administrative units <b>or</b> a bounding box — or leave
+    both empty to match everything.
   </div>
-  {% endif %}
 
   <form method="post" id="cform">
-    <input type="hidden" name="after" value="{{ after }}">
     <div class="layout">
       <div class="left">
-        <h4>1. Region(s)</h4>
+        <h4>Option A — by administrative area</h4>
+        <p class="hint" style="margin-bottom:.4em;">Region(s), and optionally province(s) within them.</p>
         <div class="checks" id="regionChecks">
           {% for code, name in region_options %}
             <label title="{{ code }}"><input type="checkbox" name="regions" value="{{ code }}" class="region-cb"> {{ name }}</label>
           {% endfor %}
         </div>
 
-        <h4>2. Generic Province(s)</h4>
-        <div class="checks" id="province-selection">
+        <div class="checks" id="province-selection" style="margin-top:.5em;">
           <p class="hint">Select region(s) above to list provinces here.</p>
         </div>
 
@@ -69,9 +66,9 @@
           <span class="sw" style="background:#1a7a1a;border-radius:50%;"></span> identified place
         </div>
 
-        <h4>3. Bounding box (optional)</h4>
-        <p class="hint">Or draw an area on the map — matching is then limited to places inside
-          the box (combined with any region/province chosen above).</p>
+        <h4 style="border-top:1px solid #e3e3e3;padding-top:.7em;">Option B — draw a bounding box</h4>
+        <p class="hint">Instead of picking areas, draw a rectangle on the map — matching is then
+          limited to places inside it.</p>
         <div style="display:flex;gap:.5em;align-items:center;flex-wrap:wrap;margin-top:.3em;">
           <button type="button" id="btnDrawBox">▭ Draw box</button>
           <button type="button" id="btnClearBox" style="display:none;background:#777;border-color:#777;">Clear box</button>
@@ -83,7 +80,7 @@
         <input type="hidden" name="bbox_n" id="bbox_n" value="">
 
         <div class="actionbar">
-          <button type="submit">{{ 'Save &amp; start matching →' | safe if pre_matching else 'Save constraints →' }}</button>
+          <button type="submit">Save &amp; start matching →</button>
           &nbsp;<a class="link" href="{{ url_for('matching.index') }}">Back to start</a>
         </div>
       </div>

@@ -1,8 +1,42 @@
+import math
+
 import pandas as pd
 
 # Place importance, most important first. Used only to break score ties so the
 # more significant settlement is offered at the top of the candidate list.
 IMPORTANCE_ORDER = ["Ciudad", "Villa", "Pueblo", "Poblacion", "Rural", "Fuerte", "Localidad"]
+
+
+def _coord(v):
+    """Parse a coordinate (float, or a string that may use ',' as the decimal
+    separator) into a float in a plausible range, or None."""
+    if v is None:
+        return None
+    try:
+        if pd.isna(v):
+            return None
+    except (TypeError, ValueError):
+        pass
+    try:
+        return float(str(v).strip().replace(",", "."))
+    except (TypeError, ValueError):
+        return None
+
+
+def _haversine_km(lat1, lon1, lat2, lon2):
+    """Great-circle distance in km between two points, or None if any
+    coordinate is missing or out of range."""
+    a1, o1, a2, o2 = _coord(lat1), _coord(lon1), _coord(lat2), _coord(lon2)
+    if None in (a1, o1, a2, o2):
+        return None
+    if not (-90 <= a1 <= 90 and -90 <= a2 <= 90 and -180 <= o1 <= 180 and -180 <= o2 <= 180):
+        return None
+    r = 6371.0088  # mean Earth radius, km
+    p1, p2 = math.radians(a1), math.radians(a2)
+    dphi = math.radians(a2 - a1)
+    dlmb = math.radians(o2 - o1)
+    h = math.sin(dphi / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dlmb / 2) ** 2
+    return 2 * r * math.asin(min(1.0, math.sqrt(h)))
 
 
 def _importance_rank(categoria):
@@ -61,15 +95,35 @@ def disambiguate_candidates(df: pd.DataFrame) -> pd.DataFrame:
             group = group[group["saint_match"] != "saint_mismatch"].copy()
 
         group["score"] = group.apply(score_row, axis=1)
-        # Sort by score; break ties by place importance (Ciudad > Villa > … ) so
-        # the weightier settlement is offered first when scores are equal.
+
+        # Proximity: when the input row carries coordinates (ref_lat / ref_lon),
+        # compute each candidate's great-circle distance to them. This becomes
+        # the PRIMARY ranking key, so the geographically closest candidate is
+        # offered first. Candidates (or inputs) without usable coordinates get a
+        # NaN distance and sort last, falling back to score / importance.
+        in_lat = group["ref_lat"].iloc[0] if "ref_lat" in group.columns else None
+        in_lon = group["ref_lon"].iloc[0] if "ref_lon" in group.columns else None
+        has_input_coords = _coord(in_lat) is not None and _coord(in_lon) is not None
+        if has_input_coords and "lat" in group.columns and "lon" in group.columns:
+            group["distance_km"] = group.apply(
+                lambda r: _haversine_km(in_lat, in_lon, r.get("lat"), r.get("lon")),
+                axis=1,
+            )
+        else:
+            group["distance_km"] = pd.NA
+
+        # Break remaining ties by place importance (Ciudad > Villa > … ) so the
+        # weightier settlement is offered first when distance/score are equal.
         group["_importance"] = group.get("lugar_categoria", "").apply(_importance_rank) \
             if "lugar_categoria" in group.columns else 99
-        group = group.sort_values(["score", "_importance"], ascending=[False, True]) \
-                     .drop(columns=["_importance"])
+        group = group.sort_values(
+            ["distance_km", "score", "_importance"],
+            ascending=[True, False, True],
+            na_position="last",
+        ).drop(columns=["_importance"])
         decisions.append(group)
 
     if not decisions:
-        return pd.DataFrame(columns=list(df.columns) + ["score"])
+        return pd.DataFrame(columns=list(df.columns) + ["score", "distance_km"])
 
     return pd.concat(decisions, ignore_index=True)
