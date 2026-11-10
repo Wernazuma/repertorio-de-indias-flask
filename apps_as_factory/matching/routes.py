@@ -979,6 +979,25 @@ def place_usage(prefix, gz_id):
     return jsonify({"gz_id": gz_id, "rows": rows})
 
 
+@bp.route("/lift_adoption/<prefix>", methods=["POST"])
+def lift_adoption(prefix):
+    """Undo an "already adopted" match: the given row loses its adopted place and
+    is sent back to the cases to resolve (relegated), so the freed place can be
+    used for the row currently being disambiguated. Called by fetch from the
+    "Already adopted for …" alert; the page reloads to recompute the warnings."""
+    df, path = _load_processing(prefix)
+    if df is None:
+        return ("missing processing file", 404)
+    row_id = _rid(request.form.get("row_id"))
+    if row_id is None:
+        return ("missing row_id", 400)
+    if _relegate_rowid(df, row_id):
+        df.to_csv(path, sep=";", index=False, encoding="utf-8")
+        flash(f"Lifted the match for row {row_id} — it goes back to the cases to resolve.")
+        return ("", 204)
+    return (f"row {row_id} not found", 404)
+
+
 # ---------------------------------------------------------------------------
 # Cached gazetteer + entidades (for the Phase 3b relaxed search)
 # ---------------------------------------------------------------------------

@@ -114,6 +114,14 @@
     .rowctx-table tr.cur { background: #fff6df; font-weight: 600; }
 
     .usage-link { cursor: pointer; text-decoration: underline dotted; }
+    .flash-banner { margin: 0.6em 1.2em 0; padding: 0.5em 0.8em; background: #eef7ee;
+      border: 1px solid #9ad29a; border-radius: 6px; color: #1a7a1a; font-size: 0.88em; }
+    .adopted-row { display: inline-flex; align-items: center; gap: 4px; font-size: 0.74em;
+      background: #fdecec; color: #b32020; border: 1px solid #e8a0a0; border-radius: 10px;
+      padding: 1px 6px; margin: 0 2px; }
+    .lift-btn { font-size: 0.92em; padding: 0 6px; line-height: 1.4; border: 1px solid #b32020;
+      background: #fff; color: #b32020; border-radius: 8px; cursor: pointer; }
+    .lift-btn:hover { background: #b32020; color: #fff; }
     .usage-pop { position: fixed; z-index: 3000; background: #fff; border: 1px solid #bbb;
       border-radius: 8px; box-shadow: 0 6px 24px rgba(0,0,0,.25); width: min(460px, 92vw);
       max-height: 62vh; overflow: auto; padding: 0.7em 0.9em; font-size: 0.82em; }
@@ -144,6 +152,12 @@
   </div>
 
   {% include '_resume_bar.html' %}
+
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class="flash-banner">{% for m in messages %}<div>{{ m }}</div>{% endfor %}</div>
+    {% endif %}
+  {% endwith %}
 
   <form method="POST" action="{{ url_for('matching.disambiguate', prefix=prefix) }}" id="disForm">
     <input type="hidden" name="row_id" value="{{ row_id }}">
@@ -252,11 +266,15 @@
             {% if c.also_adopted_for or c.also_candidate_for %}
             <div class="matchbar cross-note">
               {% if c.also_adopted_for %}
+                <span class="mb mb-red">⚠ Already adopted for:</span>
+                {% for e in c.also_adopted_for %}
+                  <span class="adopted-row">{{ e.label or ('row ' ~ e.rowID) }}
+                    <button type="button" class="lift-btn" data-rowid="{{ e.rowID }}"
+                            title="Lift this match and send that row back to the cases to resolve">↩ lift</button>
+                  </span>
+                {% endfor %}
                 <span class="mb mb-red usage-link" data-gz="{{ c.gz_id }}"
-                      title="Already adopted for another input row — click to inspect those rows">
-                  ⚠ Already adopted for:
-                  {%- for e in c.also_adopted_for %} {{ e.label or ('row ' ~ e.rowID) }}{% if not loop.last %},{% endif %}{% endfor %} 🔍
-                </span>
+                      title="Inspect the rows that reference this place">🔍</span>
               {% endif %}
               {% if c.also_candidate_for %}
                 <span class="mb mb-orange usage-link" data-gz="{{ c.gz_id }}"
@@ -418,6 +436,23 @@
     }
     document.querySelectorAll('.usage-link').forEach(el => {
       el.addEventListener('click', ev => { ev.stopPropagation(); showUsage(el.dataset.gz, ev); });
+    });
+
+    // ---- lift an "already adopted" match: send that row back to be resolved ----
+    const LIFT_URL = "{{ url_for('matching.lift_adoption', prefix=prefix) }}";
+    document.querySelectorAll('.lift-btn').forEach(btn => {
+      btn.addEventListener('click', ev => {
+        ev.stopPropagation();
+        const rid = btn.dataset.rowid;
+        if (!confirm('Lift this place’s match from row ' + rid +
+                     ' and send that row back to the cases to resolve?')) return;
+        btn.disabled = true;
+        const fd = new FormData(); fd.append('row_id', rid);
+        fetch(LIFT_URL, { method: 'POST', body: fd })
+          .then(r => { if (r.ok) { location.reload(); }
+                       else { btn.disabled = false; alert('Could not lift the match.'); } })
+          .catch(() => { btn.disabled = false; alert('Could not lift the match.'); });
+      });
     });
     document.addEventListener('click', e => {
       const p = document.getElementById('usage-pop');
