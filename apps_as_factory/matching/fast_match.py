@@ -289,6 +289,70 @@ def context_allowed_ids(ref_df: pd.DataFrame, level, value):
     return set(ref_df.index[present])
 
 
+def _parse_coord(v):
+    """Parse a coordinate that may use ',' as the decimal separator; None if
+    missing or out of range."""
+    if v is None:
+        return None
+    try:
+        if pd.isna(v):
+            return None
+    except (TypeError, ValueError):
+        pass
+    try:
+        f = float(str(v).strip().replace(",", "."))
+    except (TypeError, ValueError):
+        return None
+    return f if -180 <= f <= 180 else None
+
+
+def _ref_latlon_numeric(ref_df):
+    """Cached numeric (lat, lon) Series for the gazetteer, parsed once."""
+    cache = ref_df.attrs.setdefault("_num_latlon", {})
+    if "lat" in cache and len(cache["lat"]) == len(ref_df):
+        return cache["lat"], cache["lon"]
+    gl = pd.to_numeric(ref_df["lat"].astype(str).str.replace(",", ".", regex=False),
+                       errors="coerce")
+    go = pd.to_numeric(ref_df["lon"].astype(str).str.replace(",", ".", regex=False),
+                       errors="coerce")
+    cache["lat"], cache["lon"] = gl, go
+    return gl, go
+
+
+def row_reference_point(row, ref_df):
+    """The (lat, lon) an input row is expected to sit near, for proximity ranking:
+
+      1. the row's OWN coordinates (ref_lat / ref_lon) when it supplied them;
+      2. otherwise the centroid (median lat/lon) of the FINEST territory the row
+         names — reusing the same level gate as context_allowed_ids, so e.g. a
+         "Jurisdiccion X" row is located at the middle of X's gazetteer places,
+         and candidates can be ranked by how far their own container sits from it.
+
+    Returns None when neither coordinates nor a locatable container is available.
+    The median resists a few stray coordinates inside a container.
+    """
+    lat = _parse_coord(row.get("ref_lat"))
+    lon = _parse_coord(row.get("ref_lon"))
+    if lat is not None and lon is not None:
+        return (lat, lon)
+    if "lat" not in ref_df.columns or "lon" not in ref_df.columns:
+        return None
+    gl, go = _ref_latlon_numeric(ref_df)
+    for level, fields in _TERRITORY_LEVELS:
+        val = _input_value_at_level(row, level, fields)
+        if not val:
+            continue
+        ids = context_allowed_ids(ref_df, level, val)
+        if not ids:
+            continue
+        idx = list(ids)
+        clat = gl.loc[idx].dropna()
+        clon = go.loc[idx].dropna()
+        if len(clat) and len(clon):
+            return (float(clat.median()), float(clon.median()))
+    return None
+
+
 def global_constraint_ids(ref_df: pd.DataFrame, constraints):
     """Reference rows allowed by user-set GLOBAL constraints (applied to every
     input row, e.g. "the whole table is in Charcas"). ``constraints`` is the

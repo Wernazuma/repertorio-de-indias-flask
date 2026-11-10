@@ -77,7 +77,17 @@ def score_row(row):
     return score
 
 
-def disambiguate_candidates(df: pd.DataFrame) -> pd.DataFrame:
+def disambiguate_candidates(df: pd.DataFrame, ref_point_fn=None) -> pd.DataFrame:
+    """Rank each rowID's candidates for the manual disambiguation screen.
+
+    ``ref_point_fn(group_first_row) -> (lat, lon) | None`` supplies the location
+    the input row is expected to sit near (its own coordinates, or the centroid
+    of the territory it names). When given, candidates are ranked by great-circle
+    distance to that point FIRST (proximity-primary), so a place in a neighbouring
+    container outranks an equally-named one far away. Without it, the explicit
+    ref_lat / ref_lon columns are used if present, else distance is unavailable
+    and ranking falls back to score / importance.
+    """
     candidates = df[df["phase_1a_outcome"] == "candidate"].copy()
     grouped = candidates.groupby("rowID")
     decisions = []
@@ -96,17 +106,21 @@ def disambiguate_candidates(df: pd.DataFrame) -> pd.DataFrame:
 
         group["score"] = group.apply(score_row, axis=1)
 
-        # Proximity: when the input row carries coordinates (ref_lat / ref_lon),
-        # compute each candidate's great-circle distance to them. This becomes
-        # the PRIMARY ranking key, so the geographically closest candidate is
-        # offered first. Candidates (or inputs) without usable coordinates get a
-        # NaN distance and sort last, falling back to score / importance.
-        in_lat = group["ref_lat"].iloc[0] if "ref_lat" in group.columns else None
-        in_lon = group["ref_lon"].iloc[0] if "ref_lon" in group.columns else None
-        has_input_coords = _coord(in_lat) is not None and _coord(in_lon) is not None
-        if has_input_coords and "lat" in group.columns and "lon" in group.columns:
+        # Proximity: the reference point is where the input row is expected to
+        # sit — its own coordinates, or (via ref_point_fn) the centroid of the
+        # territory it names. Each candidate's great-circle distance to it is the
+        # PRIMARY ranking key, so the geographically closest candidate is offered
+        # first and a far-off container sinks to the bottom. Candidates (or inputs)
+        # without a usable distance get NaN and sort last, falling back to
+        # score / importance.
+        ref_pt = ref_point_fn(group.iloc[0]) if ref_point_fn is not None else None
+        if ref_pt is None:
+            il = _coord(group["ref_lat"].iloc[0]) if "ref_lat" in group.columns else None
+            io = _coord(group["ref_lon"].iloc[0]) if "ref_lon" in group.columns else None
+            ref_pt = (il, io) if (il is not None and io is not None) else None
+        if ref_pt is not None and "lat" in group.columns and "lon" in group.columns:
             group["distance_km"] = group.apply(
-                lambda r: _haversine_km(in_lat, in_lon, r.get("lat"), r.get("lon")),
+                lambda r: _haversine_km(ref_pt[0], ref_pt[1], r.get("lat"), r.get("lon")),
                 axis=1,
             )
         else:

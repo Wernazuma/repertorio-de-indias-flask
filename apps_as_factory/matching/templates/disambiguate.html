@@ -205,7 +205,7 @@
               <span class="badge-num" data-num="{{ loop.index }}">{{ loop.index }}</span>
               <span class="title">{{ c.lugar_label or c.gz_id }}</span>
               {% if c.lat is none or c.lon is none %}<span class="nocoord">no coord.</span>{% endif %}
-              {% if c.distance_km is not none %}<span class="dist-badge" title="Distance from your supplied coordinates">📍 {{ c.distance_km }} km</span>{% endif %}
+              {% if c.distance_km is not none %}<span class="dist-badge" title="Distance from this row's expected location (its coordinates, or the centre of the territory it names)">📍 {{ c.distance_km }} km</span>{% endif %}
               <span class="score-badge">{{ c.score }}</span>
             </div>
             <div class="matchbar">
@@ -301,14 +301,19 @@
     const bounds = [];
     const candMarkers = {};
 
-    // The input row's own coordinates (if the table supplied them) — a black dot
-    // the candidates are ranked against (closest first).
+    // The reference point candidates are ranked against (closest first) — a black
+    // dot. Either the row's own coordinates, or the centroid of the territory it
+    // names ("derived"), shown hollow to signal it is an approximate area.
     if (INPUT_POINT && INPUT_POINT.lat != null && INPUT_POINT.lon != null) {
+      const derived = !!INPUT_POINT.derived;
       L.marker([INPUT_POINT.lat, INPUT_POINT.lon], {
-        icon: L.divIcon({ className: '', iconSize: [16, 16], iconAnchor: [8, 8],
-                          html: '<div class="input-dot" style="width:16px;height:16px"></div>' }),
+        icon: L.divIcon({ className: '', iconSize: [18, 18], iconAnchor: [9, 9],
+          html: '<div class="input-dot" style="width:18px;height:18px'
+                + (derived ? ';background:transparent;border-color:#111' : '') + '"></div>' }),
         zIndexOffset: 1000
-      }).addTo(map).bindTooltip('Your coordinates', {direction:'top'});
+      }).addTo(map).bindTooltip(
+        derived ? 'Expected area (from the territory this row names)' : 'Your coordinates',
+        {direction:'top'});
       bounds.push([INPUT_POINT.lat, INPUT_POINT.lon]);
     }
 

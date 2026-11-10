@@ -647,7 +647,12 @@ def disambiguate():
         gz_full = _gaz_indexed()
 
         from .disambiguation import disambiguate_candidates
-        disambig_df = disambiguate_candidates(merged)
+        from .fast_match import row_reference_point
+        # Rank candidates by distance to where each input row is expected to sit:
+        # its own coordinates, else the centroid of the territory it names. gz_full
+        # (the cached gazetteer) supplies the container coordinates for centroids.
+        disambig_df = disambiguate_candidates(
+            merged, ref_point_fn=lambda r: row_reference_point(r, gz_full))
 
         if disambig_df.empty:
             # Nothing to disambiguate -> go straight to the review of automatic
@@ -702,12 +707,16 @@ def disambiguate():
                     ref_info[col] = str(val)
         ref_label = str(ref_row.get("ref_Label", ""))
 
-        # The input row's own coordinates (if supplied) — plotted on the map and
-        # used to rank candidates by proximity in disambiguate_candidates().
-        in_lat = _to_coord(ref_row.get("ref_lat"))
-        in_lon = _to_coord(ref_row.get("ref_lon"))
-        input_point = ({"lat": in_lat, "lon": in_lon}
-                       if in_lat is not None and in_lon is not None else None)
+        # The reference point used to rank candidates by proximity — the row's own
+        # coordinates when supplied, else the centroid of the territory it names.
+        # Plotted on the map so the user sees what "near" is measured against.
+        from .fast_match import row_reference_point as _row_ref_pt
+        _has_coords = (_to_coord(ref_row.get("ref_lat")) is not None
+                       and _to_coord(ref_row.get("ref_lon")) is not None)
+        _ref_pt = _row_ref_pt(ref_row, gz_full)
+        input_point = ({"lat": _ref_pt[0], "lon": _ref_pt[1],
+                        "derived": (not _has_coords)}
+                       if _ref_pt is not None else None)
 
         # Candidate dicts for display + map
         from .fast_match import territory_detail
