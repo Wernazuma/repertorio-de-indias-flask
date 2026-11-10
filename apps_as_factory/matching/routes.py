@@ -559,7 +559,6 @@ def _submitted_context(prefix, row_id, span=1):
     return None
 
 
-@bp.route("/disambiguate", methods=["GET", "POST"])
 def _record_attested_variant(prefix, df, rowID, gz_val):
     """Log one adopted disambiguation match to the cumulative attested-variant
     registry: the uploaded place name (ref_Label) -> Indias ID (gz_id) -> source
@@ -574,6 +573,7 @@ def _record_attested_variant(prefix, df, rowID, gz_val):
         pass
 
 
+@bp.route("/disambiguate", methods=["GET", "POST"])
 def disambiguate():
     prefix = request.args.get("prefix")
     if not prefix:
