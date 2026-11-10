@@ -1,4 +1,19 @@
 gz_id;Entidad_ID;Nivel;tipo;Label;lat;lon;START;END_;C_START;C_END;tipolink;Cabecera;fuente_ID;template;Nivel_START;Nivel_END
+1000000;JUGDSSCH;Provincia_menor;Alcaldia Mayor;Chametla y Salinas;90;0;1630;1665;1630;1665;alcaldia_mayor;[-];desconocida;[[:gazetteer:1000000|[-]]] (1630-1665);1532;1808
+1000000;JUGDSSCH;Provincia_menor;Alcaldia Mayor;Minas de Chametla;90;0;1600;1629;1600;1629;alcaldia_mayor;[-];desconocida;[[:gazetteer:1000000|[-]]] (1600-1629);1532;1808
+1000000;JUGDSSCH;Provincia_menor;Alcaldia Mayor;Villa del Espiritu Santo;90;0;1532;1536;1532;1536;alcaldia_mayor;[-];desconocida;[[:gazetteer:1000000|[-]]] (1532-1536);1532;1808
+1000000;JUGDSSCH;Provincia_menor;Comandancia;San Sebastian;90;0;1666;1684;1666;1684;jurisdiccion_militar;[-];desconocida;[[:gazetteer:1000000|[-]]] (1666-1684);1532;1808
+1000000;JUGDSSCH;Provincia_menor;Provincia;Chametla;90;0;1537;1563;1537;1563;provincia;[-];desconocida;[[:gazetteer:1000000|[-]]] (1537-1563);1532;1808
+1000000;JUGDSSCH;Provincia_menor;Provincia;Chametla;90;0;1685;1808;1685;9999;provincia;[-];desconocida;[[:gazetteer:1000000|[-]]] (1685-9999);1532;1808
+1000000;JUGDSSCH;Provincia_menor;Tenencia de gobierno;Chametla;90;0;1564;1599;1564;1599;partido;[-];desconocida;[[:gazetteer:1000000|[-]]] (1564-1599);1532;1808
+1000000;JUGUCRCH;Jurisdiccion;Corregimiento;Chirripo;90;0;1632;1659;1632;1659;corregimiento;[-];desconocida;[[:gazetteer:1000000|[-]]] (1632-1659);1632;1659
+1000000;JUGUCRPA;Jurisdiccion;Corregimiento;Pacaca;90;0;1583;1659;1583;1659;corregimiento;[-];desconocida;[[:gazetteer:1000000|[-]]] (1583-1659);1583;1659
+1000000;JUGUCRQU;Jurisdiccion;Corregimiento;Quepo;90;0;1583;1659;1583;1659;corregimiento;[-];desconocida;[[:gazetteer:1000000|[-]]] (1583-1659);1583;1659
+1000000;JUGUCRTR;Jurisdiccion;Corregimiento;Tucurrique;90;0;1591;1599;1591;1599;corregimiento;[-];desconocida;[[:gazetteer:1000000|[-]]] (1591-1599);1591;1659
+1000000;JUGUCRTR;Jurisdiccion;Corregimiento-Alcaldia Mayor;Turrialba;90;0;1600;1659;1600;1659;corregimiento;[-];desconocida;[[:gazetteer:1000000|[-]]] (1600-1659);1591;1659
+1000000;JUNEBEBE;Partido;Colonia inglesa;Belice;90;0;1763;1796;1763;1797;entidades_atipicas;[-];desconocida;[[:gazetteer:1000000|[-]]] (1763-1797);1763;1796
+1000000;JUNEBEBE;Provincia_menor;Colonia inglesa;Belice;90;0;1763;1796;1763;1797;entidades_atipicas;[-];desconocida;[[:gazetteer:1000000|[-]]] (1763-1797);1763;1796
+1000000;JUNEBEBE;Provincia;Colonia inglesa;Belice;90;0;1763;1796;1763;1797;entidades_atipicas;[-];desconocida;[[:gazetteer:1000000|[-]]] (1763-1797);1763;1796
 1000000;EXDI0000;Extranjero;Reino;Dinamarca;90;0;1672;1808;1111;1808;;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1672;1808
 1000000;EXFR0000;Extranjero;Imperio;Francia;90;0;1804;1808;1804;1808;;[-];desconocida;[[:gazetteer:1000000|[-]]] (1804-1808);1564;1808
 1000000;EXFR0000;Extranjero;Reino;Francia;90;0;1564;1791;1111;1791;;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1791);1564;1808
@@ -115,21 +130,6 @@ gz_id;Entidad_ID;Nivel;tipo;Label;lat;lon;START;END_;C_START;C_END;tipolink;Cabe
 1000000;JUCHCOAR;Jurisdiccion;Comandancia General;Frontera de Arauco;90;0;1727;1774;1727;1774;comandancia_general;[-];desconocida;[[:gazetteer:1000000|[-]]] (1727-1774);1701;1774
 1000000;JUGDCOPR;Jurisdiccion;Presidios;Frontera de Coahuila;90;0;1772;1808;1772;1808;jurisdiccion_militar;[-];desconocida;[[:gazetteer:1000000|[-]]] (1772-1808);1772;1808
 1000000;JUGDDUTL;Jurisdiccion;Partido;Tlaxcaltecas;90;0;1591;1783;1111;1808;partido;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1591;1783
-1000000;JUGDSSCH;Provincia_menor;Alcaldia Mayor;Chametla y Salinas;90;0;1630;1665;1630;1665;alcaldia_mayor;[-];desconocida;[[:gazetteer:1000000|[-]]] (1630-1665);1532;1808
-1000000;JUGDSSCH;Provincia_menor;Alcaldia Mayor;Minas de Chametla;90;0;1600;1629;1600;1629;alcaldia_mayor;[-];desconocida;[[:gazetteer:1000000|[-]]] (1600-1629);1532;1808
-1000000;JUGDSSCH;Provincia_menor;Alcaldia Mayor;Villa del Espiritu Santo;90;0;1532;1536;1532;1536;alcaldia_mayor;[-];desconocida;[[:gazetteer:1000000|[-]]] (1532-1536);1532;1808
-1000000;JUGDSSCH;Provincia_menor;Comandancia;San Sebastian;90;0;1666;1684;1666;1684;jurisdiccion_militar;[-];desconocida;[[:gazetteer:1000000|[-]]] (1666-1684);1532;1808
-1000000;JUGDSSCH;Provincia_menor;Provincia;Chametla;90;0;1537;1563;1537;1563;provincia;[-];desconocida;[[:gazetteer:1000000|[-]]] (1537-1563);1532;1808
-1000000;JUGDSSCH;Provincia_menor;Provincia;Chametla;90;0;1685;1808;1685;9999;provincia;[-];desconocida;[[:gazetteer:1000000|[-]]] (1685-9999);1532;1808
-1000000;JUGDSSCH;Provincia_menor;Tenencia de gobierno;Chametla;90;0;1564;1599;1564;1599;partido;[-];desconocida;[[:gazetteer:1000000|[-]]] (1564-1599);1532;1808
-1000000;JUGUCRCH;Jurisdiccion;Corregimiento;Chirripo;90;0;1632;1659;1632;1659;corregimiento;[-];desconocida;[[:gazetteer:1000000|[-]]] (1632-1659);1632;1659
-1000000;JUGUCRPA;Jurisdiccion;Corregimiento;Pacaca;90;0;1583;1659;1583;1659;corregimiento;[-];desconocida;[[:gazetteer:1000000|[-]]] (1583-1659);1583;1659
-1000000;JUGUCRQU;Jurisdiccion;Corregimiento;Quepo;90;0;1583;1659;1583;1659;corregimiento;[-];desconocida;[[:gazetteer:1000000|[-]]] (1583-1659);1583;1659
-1000000;JUGUCRTR;Jurisdiccion;Corregimiento;Tucurrique;90;0;1591;1599;1591;1599;corregimiento;[-];desconocida;[[:gazetteer:1000000|[-]]] (1591-1599);1591;1659
-1000000;JUGUCRTR;Jurisdiccion;Corregimiento-Alcaldia Mayor;Turrialba;90;0;1600;1659;1600;1659;corregimiento;[-];desconocida;[[:gazetteer:1000000|[-]]] (1600-1659);1591;1659
-1000000;JUNEBEBE;Partido;Colonia inglesa;Belice;90;0;1763;1796;1763;1797;entidades_atipicas;[-];desconocida;[[:gazetteer:1000000|[-]]] (1763-1797);1763;1796
-1000000;JUNEBEBE;Provincia_menor;Colonia inglesa;Belice;90;0;1763;1796;1763;1797;entidades_atipicas;[-];desconocida;[[:gazetteer:1000000|[-]]] (1763-1797);1763;1796
-1000000;JUNEBEBE;Provincia;Colonia inglesa;Belice;90;0;1763;1796;1763;1797;entidades_atipicas;[-];desconocida;[[:gazetteer:1000000|[-]]] (1763-1797);1763;1796
 1000000;JUNEBEBE;Jurisdiccion;Colonia inglesa;Belice;90;0;1763;1796;1763;1797;entidades_atipicas;[-];desconocida;[[:gazetteer:1000000|[-]]] (1763-1797);1763;1796
 1000000;JUNEMIPE;Jurisdiccion;Corregimiento;Periban;90;0;1583;1586;1583;1586;corregimiento;[-];desconocida;[[:gazetteer:1000000|[-]]] (1583-1586);1583;1599
 1000000;JUNEMIPE;Jurisdiccion;Corregimiento;Periban;90;0;1591;1599;1591;1599;corregimiento;[-];desconocida;[[:gazetteer:1000000|[-]]] (1591-1599);1583;1599
@@ -846,8 +846,8 @@ gz_id;Entidad_ID;Nivel;tipo;Label;lat;lon;START;END_;C_START;C_END;tipolink;Cabe
 1000079;JUNEMXCA;Jurisdiccion;Alcaldia Mayor;Escanela;20.695;-99.8155;1651;1674;1651;1674;alcaldia_mayor;Cadereyta;;[[:gazetteer:1000079|Cadereyta]] (1651-1674);1608;1808
 1000079;JUNEMXCA;Jurisdiccion;Subdelegacion;Cadereyta;20.695;-99.8155;1787;1808;1787;1808;subdelegacion;Cadereyta;;[[:gazetteer:1000079|Cadereyta]] (1787-1808);1608;1808
 1000079;JUNEMXCA;Partido;Subdelegacion;Cadereyta;20.695;-99.8155;1787;1808;1787;1808;subdelegacion;Cadereyta;;[[:gazetteer:1000079|Cadereyta]] (1787-1808);1701;1808
-1000080;PTNEMXCH;Partido;Partido;Chalco;19.2647;-98.8975;1701;1760;1558;1760;cabecera;Chalco;;[[:gazetteer:1000080|Chalco]] (1558-1760);1701;1808
-1000080;PTNEMXCH;Partido;Partido;Chalco;19.2647;-98.8975;1761;1808;1761;1808;cabecera;Chalco;;[[:gazetteer:1000080|Chalco]] (1761-1808);1701;1808
+1000080;PTNEMXCH;Partido;Partido;Chalco;19.2622;-98.8967;1701;1760;1558;1760;cabecera;Chalco;;[[:gazetteer:1000080|Chalco]] (1558-1760);1701;1808
+1000080;PTNEMXCH;Partido;Partido;Chalco;19.2622;-98.8967;1761;1808;1761;1808;cabecera;Chalco;;[[:gazetteer:1000080|Chalco]] (1761-1808);1701;1808
 1000081;JUNEMXCL;Jurisdiccion;Alcaldia Mayor;Chilapa;17.5986;-99.1767;1600;1696;1600;1696;alcaldia_mayor;Chilapa;;[[:gazetteer:1000081|Chilapa]] (1600-1696);1532;1808
 1000081;JUNEMXCL;Provincia_menor;Alcaldia Mayor;Chilapa;17.5986;-99.1767;1600;1696;1600;1696;alcaldia_mayor;Chilapa;;[[:gazetteer:1000081|Chilapa]] (1600-1696);1556;1696
 1000081;JUNEMXCL;Jurisdiccion;Corregimiento;Chilapa;17.5986;-99.1767;1532;1536;1532;1536;corregimiento;Chilapa;;[[:gazetteer:1000081|Chilapa]] (1532-1536);1532;1808

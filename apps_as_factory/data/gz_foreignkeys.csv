@@ -406,8 +406,6 @@ ID;gz_id;foreignkey;foreignsite;foreignID;foreignprefix
 409;9900679;wd:Q1395079;wd;Q1395079;https://www.wikidata.org/wiki/
 410;9900679;gn:3855666;gn;3855666;https://www.geonames.org/
 411;9900679;whg:167491;whg;167491;https://whgazetteer.org/places/
-412;9900678;whg:167490;whg;167490;https://whgazetteer.org/places/
-413;9900677;whg:167489;whg;167489;https://whgazetteer.org/places/
 415;9900675;gn:3428975;gn;3428975;https://www.geonames.org/
 416;9900675;loc:n99274238;loc;n99274238;https://lccn.loc.gov/
 417;9900675;wd:Q2527694;wd;Q2527694;https://www.wikidata.org/wiki/
@@ -1019,11 +1017,11 @@ ID;gz_id;foreignkey;foreignsite;foreignID;foreignprefix
 1024;9900003;whg:166944;whg;166944;https://whgazetteer.org/places/
 1025;9900002;whg:166943;whg;166943;https://whgazetteer.org/places/
 1026;9900001;whg:166942;whg;166942;https://whgazetteer.org/places/
-1027;9956258;whg:180199;whg;180199;https://whgazetteer.org/places/
-1028;9956257;whg:180198;whg;180198;https://whgazetteer.org/places/
-1029;9955857;wd:Q1440762;wd;Q1440762;https://www.wikidata.org/wiki/
-1030;9955857;gn:3669196;gn;3669196;https://www.geonames.org/
-1031;9955857;whg:180197;whg;180197;https://whgazetteer.org/places/
+1027;9950006;whg:180199;whg;180199;https://whgazetteer.org/places/
+1028;9950005;whg:180198;whg;180198;https://whgazetteer.org/places/
+1029;9950004;wd:Q1440762;wd;Q1440762;https://www.wikidata.org/wiki/
+1030;9950004;gn:3669196;gn;3669196;https://www.geonames.org/
+1031;9950004;whg:180197;whg;180197;https://whgazetteer.org/places/
 1032;9001006;whg:180196;whg;180196;https://whgazetteer.org/places/
 1033;9001005;whg:180195;whg;180195;https://whgazetteer.org/places/
 1034;9001004;gn:3842934;gn;3842934;https://www.geonames.org/
