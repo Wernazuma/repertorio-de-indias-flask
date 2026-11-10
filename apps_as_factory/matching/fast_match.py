@@ -354,6 +354,31 @@ def _places_for_value(ref_df, value):
 _MIN_CONTAINER_PLACES = 3
 
 
+def _value_centroid(ref_df, value):
+    """(centroid, place_count) for a named territory ``value`` — the median
+    (lat, lon) of every gazetteer place carrying it in any territorial column,
+    or (None, 0) if none do. MEMOISED per value on ``ref_df.attrs``: the
+    gazetteer scan (a regex over all rows) runs at most once per distinct value,
+    so a disambiguation page with many rows sharing a province does not re-scan
+    the same jurisdiccion/partido once per row."""
+    cache = ref_df.attrs.setdefault("_terr_centroid", {})
+    hit = cache.get(value)
+    if hit is not None:
+        return hit
+    ids = _places_for_value(ref_df, value)
+    result = (None, 0)
+    if ids:
+        gl, go = _ref_latlon_numeric(ref_df)
+        idx = list(ids)
+        clat = gl.loc[idx].dropna()
+        clon = go.loc[idx].dropna()
+        if len(clat) and len(clon):
+            result = ((float(clat.median()), float(clon.median())),
+                      min(len(clat), len(clon)))
+    cache[value] = result
+    return result
+
+
 def row_reference_point(row, ref_df):
     """The (lat, lon) an input row is expected to sit near, for proximity ranking:
 
@@ -373,22 +398,15 @@ def row_reference_point(row, ref_df):
         return (lat, lon)
     if "lat" not in ref_df.columns or "lon" not in ref_df.columns:
         return None
-    gl, go = _ref_latlon_numeric(ref_df)
     weak = None  # a thin (< min) centroid, kept only if nothing better turns up
     for level, fields in _TERRITORY_LEVELS:
         val = _input_value_at_level(row, level, fields)
         if not val:
             continue
-        ids = _places_for_value(ref_df, val)
-        if not ids:
+        centroid, count = _value_centroid(ref_df, val)
+        if centroid is None:
             continue
-        idx = list(ids)
-        clat = gl.loc[idx].dropna()
-        clon = go.loc[idx].dropna()
-        if not len(clat) or not len(clon):
-            continue
-        centroid = (float(clat.median()), float(clon.median()))
-        if len(clat) >= _MIN_CONTAINER_PLACES:
+        if count >= _MIN_CONTAINER_PLACES:
             return centroid
         if weak is None:
             weak = centroid
