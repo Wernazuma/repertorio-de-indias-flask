@@ -43,6 +43,7 @@ def normalize(text: str) -> str:
     text = re.sub(r'\bsta\b', 'santa', text)
     text = re.sub(r'\bsto\b', 'santo', text)
     text = re.sub(r'\bsn\b', 'san', text)
+    text = re.sub(r'\bxpobal\b', 'cristobal', text)  # Χ-monogram abbrev → Cristobal
     
     # Clean up
     text = text.replace('-', ' ')
