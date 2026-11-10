@@ -1145,10 +1145,16 @@ def _search_relegated(ref_label, region_code, province, district, central, ciuda
     elif province:
         df = df[df["lugar_provincia_generica"].astype(str).str.strip() == province]
     elif region_code:
-        region_name = region_code_to_name(region_code)
-        if not region_name:
-            return []
-        df = df[df["lugar_region"].astype(str).str.strip() == region_name]
+        # lugar_region in the current gazetteer stores the 3-letter CODE ("PER"),
+        # but older/rebuilt gazetteers stored the verbose name ("Peru"). Accept
+        # EITHER, so the region filter survives that schema drift. (The previous
+        # code compared ONLY the verbose name and so matched nothing region-wide.)
+        code = str(region_code).strip()
+        allowed = {code}
+        name = region_code_to_name(code)
+        if name:
+            allowed.add(name)
+        df = df[df["lugar_region"].astype(str).str.strip().isin(allowed)]
     else:
         return []  # need at least a region to bound the search
 
