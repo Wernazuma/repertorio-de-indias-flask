@@ -20,6 +20,7 @@ Everything fails soft: on a network/API error the helpers return None/False/[], 
 callers surface a "try again" state — nothing is silently lost, because the server's
 transient working copy is still there for the current sitting.
 """
+import csv
 import io
 import json
 import re
@@ -212,6 +213,82 @@ def record_usage(entry_dict):
         path, json.dumps(entry, ensure_ascii=False, indent=2).encode('utf-8'),
         'usage: %s' % prefix, repo, token)
     return bool(url)
+
+
+# ---------------------------------------------------------------------------
+# Attested-variant registry: a SINGLE growing CSV across every table ever
+# processed, recording each uploaded place name that a user adopts onto an
+# Indias place. It is a cumulative authority file (variant -> gz_id), not keyed
+# by <prefix>, so it lives at the repo root rather than under a run folder.
+# ---------------------------------------------------------------------------
+
+ATTESTED_VARIANTS_PATH = 'attested-variants/variants.csv'
+_AV_FIELDS = ['variant_name', 'gz_id', 'source_table', 'adopted_at']
+
+
+def _av_key(variant_name, gz_id, source_table):
+    """Dedup identity for one attestation: the same toponym adopted onto the same
+    Indias place from the same source table counts once (case-insensitive)."""
+    return (str(variant_name).strip().casefold(),
+            str(gz_id).strip(), str(source_table).strip())
+
+
+def record_attested_variants(source_table, attestations):
+    """Append (variant_name, gz_id) attestations from one source table to the
+    growing ``attested-variants/variants.csv`` registry in the ARCA-data repo.
+    Columns (``;``-separated): variant_name; gz_id; source_table; adopted_at (UTC).
+
+    Deduplicates on (variant_name, gz_id, source_table), so re-processing a table
+    or many input rows sharing a toponym add at most one attestation each. Fails
+    soft: returns the number of NEW rows committed, or 0 on any error / when the
+    repo isn't configured — the caller's adoption is never affected.
+    """
+    repo, token = _repo(), _token()
+    if not (repo and token):
+        return 0
+    incoming = []
+    for variant_name, gz_id in attestations:
+        v = ('' if variant_name is None else str(variant_name)).strip()
+        g = ('' if gz_id is None else str(gz_id)).strip()
+        if g.endswith('.0'):            # Int64/float artefact from CSV reads
+            g = g[:-2]
+        if v and g:
+            incoming.append((v, g))
+    if not incoming:
+        return 0
+    try:
+        raw, sha = github_sink.get_file(ATTESTED_VARIANTS_PATH, repo, token)
+        rows, existing = [], set()
+        if raw:
+            reader = csv.DictReader(io.StringIO(raw.decode('utf-8', 'replace')),
+                                    delimiter=';')
+            for r in reader:
+                rows.append([r.get('variant_name', ''), r.get('gz_id', ''),
+                             r.get('source_table', ''), r.get('adopted_at', '')])
+                existing.add(_av_key(r.get('variant_name', ''), r.get('gz_id', ''),
+                                     r.get('source_table', '')))
+        stamp = _now_iso()
+        added = 0
+        for v, g in incoming:
+            key = _av_key(v, g, source_table)
+            if key in existing:
+                continue
+            existing.add(key)
+            rows.append([v, g, source_table, stamp])
+            added += 1
+        if not added:
+            return 0  # nothing new -> no empty commit
+        buf = io.StringIO()
+        writer = csv.writer(buf, delimiter=';', lineterminator='\n')
+        writer.writerow(_AV_FIELDS)
+        writer.writerows(rows)
+        ok = github_sink.put_file(
+            ATTESTED_VARIANTS_PATH, buf.getvalue().encode('utf-8'),
+            'attested-variants: +%d from %s' % (added, source_table),
+            repo, token, sha=sha)
+        return added if ok else 0
+    except (OSError, ValueError, UnicodeError, csv.Error):
+        return 0
 
 
 # ---------------------------------------------------------------------------

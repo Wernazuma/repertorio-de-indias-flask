@@ -560,6 +560,20 @@ def _submitted_context(prefix, row_id, span=1):
 
 
 @bp.route("/disambiguate", methods=["GET", "POST"])
+def _record_attested_variant(prefix, df, rowID, gz_val):
+    """Log one adopted disambiguation match to the cumulative attested-variant
+    registry: the uploaded place name (ref_Label) -> Indias ID (gz_id) -> source
+    table (the run's prefix). Fails soft so it can never break the adoption."""
+    try:
+        lab = df.loc[df["rowID"] == rowID, "ref_Label"]
+        variant = next((str(v).strip() for v in lab
+                        if pd.notna(v) and str(v).strip()), "")
+        if variant:
+            data_sink.record_attested_variants(prefix, [(variant, gz_val)])
+    except (KeyError, IndexError, ValueError, TypeError):
+        pass
+
+
 def disambiguate():
     prefix = request.args.get("prefix")
     if not prefix:
@@ -620,6 +634,7 @@ def disambiguate():
                     gz_val = int(selected_gz)
                     df.loc[is_candidate & (df["gz_id"] == gz_val), "phase_1a_outcome"] = "adopted_candidate"
                     df.loc[is_candidate & (df["gz_id"] != gz_val), "phase_1a_outcome"] = "deleted_candidate"
+                    _record_attested_variant(prefix, df, rowID, gz_val)
                 except ValueError:
                     pass
             df.to_csv(processing_path, sep=";", index=False, encoding="utf-8")
