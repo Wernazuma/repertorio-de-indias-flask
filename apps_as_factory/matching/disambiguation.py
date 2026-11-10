@@ -1,10 +1,73 @@
 import math
+import os
+import re
 
 import pandas as pd
+from rapidfuzz import fuzz
+
+from .cleaning import clean_toponym
+from .saints import load_saints, extract_saint
 
 # Place importance, most important first. Used only to break score ties so the
 # more significant settlement is offered at the top of the candidate list.
 IMPORTANCE_ORDER = ["Ciudad", "Villa", "Pueblo", "Poblacion", "Rural", "Fuerte", "Localidad"]
+
+# Candidates whose distance to the input's expected location falls in the SAME
+# band of this width are ordered by name-match score (so the better toponym wins
+# among nearby places); only across bands does the nearer one win outright (so a
+# far-off container still sinks). Tunable.
+PROXIMITY_BUCKET_KM = 250
+
+# Devotional / connective fillers stripped when isolating a toponym's core.
+_CORE_FILLER = {"de", "del", "la", "las", "los", "el", "y", "san", "santa",
+                "santo", "santos", "sant", "nuestra", "senora", "senor"}
+
+_SAINTS = None
+
+
+def _saints():
+    """Cleaned saints list, loaded once (same santos.csv the matcher uses)."""
+    global _SAINTS
+    if _SAINTS is None:
+        path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                            "data", "santos.csv")
+        _SAINTS = load_saints(path)
+    return _SAINTS
+
+
+def _input_core(label):
+    """The distinctive (non-saint, non-filler) part of an input toponym, cleaned.
+
+    'San Pedro de Chipao' -> 'chipao' (the identifying place name);
+    'San Pedro'           -> ''       (a pure saint dedication, no core).
+    """
+    t = clean_toponym(str(label or ""))
+    if not t:
+        return ""
+    saint = extract_saint(t, _saints())
+    if saint:
+        t = t.replace(saint, " ")
+    toks = [tok for tok in re.split(r"[\s@]+", t) if tok and tok not in _CORE_FILLER]
+    return " ".join(toks).strip()
+
+
+def _candidate_matches_core(row, core):
+    """True when a candidate's name carries the input's distinctive core toponym
+    (exact token, substring, or a near spelling)."""
+    if not core or len(core) < 3:
+        return False
+    names = []
+    for col in ("lugar_label", "lugar_nombre", "lugar_variantes"):
+        v = row.get(col)
+        if v is not None and str(v).strip():
+            names.extend(t for t in re.split(r"[\s@]+", clean_toponym(str(v))) if t)
+    if not names:
+        return False
+    joined = " ".join(names)
+    if core in joined:
+        return True
+    return (fuzz.partial_ratio(core, joined) >= 90
+            or any(fuzz.partial_ratio(core, n) >= 88 for n in names))
 
 
 def _coord(v):
@@ -106,6 +169,25 @@ def disambiguate_candidates(df: pd.DataFrame, ref_point_fn=None) -> pd.DataFrame
 
         group["score"] = group.apply(score_row, axis=1)
 
+        # Core-toponym vs saint-coincidence. For an input like "San Pedro de
+        # Chipao" the distinctive name is "Chipao"; a candidate carrying that core
+        # is far more identifying than one agreeing only on the saint dedication
+        # ("San Pedro" is everywhere). Reward a core match, and neutralise a saint
+        # bonus that rests on nothing but a coincidental saint agreement.
+        core = _input_core(group["ref_Label"].iloc[0]) if "ref_Label" in group.columns else ""
+
+        def _name_adjust(r):
+            if not core:
+                return 0
+            if _candidate_matches_core(r, core):
+                return 8
+            if str(r.get("saint_match", "")) == "saint_match":
+                return -4
+            return 0
+
+        if core:
+            group["score"] = group["score"] + group.apply(_name_adjust, axis=1)
+
         # Proximity: the reference point is where the input row is expected to
         # sit — its own coordinates, or (via ref_point_fn) the centroid of the
         # territory it names. Each candidate's great-circle distance to it is the
@@ -126,15 +208,23 @@ def disambiguate_candidates(df: pd.DataFrame, ref_point_fn=None) -> pd.DataFrame
         else:
             group["distance_km"] = pd.NA
 
-        # Break remaining ties by place importance (Ciudad > Villa > … ) so the
-        # weightier settlement is offered first when distance/score are equal.
+        # Proximity BAND, not raw distance, is the primary key: candidates within
+        # the same ~PROXIMITY_BUCKET_KM band are then ordered by name score (so the
+        # better toponym wins among nearby places — e.g. Chipao over a same-area
+        # San Pedro), while a far-off container lands in a higher band and sinks.
+        # No usable distance -> last band, ranked on name score alone.
+        def _band(d):
+            return int(d // PROXIMITY_BUCKET_KM) if pd.notna(d) else 10 ** 6
+        group["_band"] = group["distance_km"].apply(_band)
+
+        # Break remaining ties by place importance (Ciudad > Villa > … ).
         group["_importance"] = group.get("lugar_categoria", "").apply(_importance_rank) \
             if "lugar_categoria" in group.columns else 99
         group = group.sort_values(
-            ["distance_km", "score", "_importance"],
-            ascending=[True, False, True],
+            ["_band", "score", "distance_km", "_importance"],
+            ascending=[True, False, True, True],
             na_position="last",
-        ).drop(columns=["_importance"])
+        ).drop(columns=["_importance", "_band"])
         decisions.append(group)
 
     if not decisions:
