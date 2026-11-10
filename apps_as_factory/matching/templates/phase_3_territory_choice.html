@@ -444,10 +444,20 @@
       btnAdoptNew.style.display = on ? 'inline-block' : 'none';
       btnAdopt.style.display = on ? 'none' : 'inline-block';
       map.getContainer().style.cursor = on ? 'crosshair' : '';
-      if (!on && newMarker) {
-        map.removeLayer(newMarker); newMarker = null;
-        manualLat.value = ''; manualLon.value = '';
-        coordReadout.textContent = 'Click the map to set the coordinates.';
+      if (on) {
+        // Map-add mode: the result will be the point you place on the map, NOT a
+        // candidate. Clear the candidate highlight and choice so nothing in the
+        // list looks like it is about to be adopted.
+        document.querySelectorAll('.cand').forEach(el => el.classList.remove('selected'));
+        choiceInput.value = '';
+      } else {
+        if (newMarker) {
+          map.removeLayer(newMarker); newMarker = null;
+          manualLat.value = ''; manualLon.value = '';
+          coordReadout.textContent = 'Click the map to set the coordinates.';
+        }
+        // Back to candidate mode: restore the default first-candidate selection.
+        if (CANDIDATES.length) selectCand(0, false);
       }
     });
 
