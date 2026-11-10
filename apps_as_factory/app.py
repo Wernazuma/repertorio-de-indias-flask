@@ -22,8 +22,7 @@ def _load_local_secrets():
             pass
     return {}
 
-# Subpages of the Atlas / HGIS de las Indias section. Each renders through
-# pages/atlas_sub.html until it gets its own content.
+# Subpages of the Atlas / HGIS de las Indias section.
 ATLAS_PAGES = {
     # The web apps (Explorative GIS, Narrative Maps, Guided Tours) now live as
     # sections on the /atlas page itself rather than on separate subpages.
@@ -131,7 +130,7 @@ def create_app():
     init_i18n(app)
 
     # ------------------------------------------------------------------
-    # Site-wide template globals (default theme, external Atlas URL, year).
+    # Site-wide template globals (default theme, year).
     # The active theme is chosen client-side by the switcher and persisted in
     # localStorage; this only sets the server-rendered default.
     # ------------------------------------------------------------------
@@ -139,7 +138,6 @@ def create_app():
     def inject_site_globals():
         return {
             "theme": "slate",
-            "atlas_url": "https://www.hgis-indias.net/index.php/en/webgis",
             "year": datetime.now().year,
         }
 
@@ -164,10 +162,7 @@ def create_app():
         page = ATLAS_PAGES.get(slug)
         if page is None:
             abort(404)
-        # a page may supply its own template; otherwise the shared placeholder
-        return render_template(
-            page.get("template", "pages/atlas_sub.html"), page=page, slug=slug
-        )
+        return render_template(page["template"], page=page, slug=slug)
 
     @app.route("/news")
     def news():
