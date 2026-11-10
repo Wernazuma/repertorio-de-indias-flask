@@ -319,17 +319,53 @@ def _ref_latlon_numeric(ref_df):
     return gl, go
 
 
+def _all_territory_blob(ref_df):
+    """Lower-cased concatenation of EVERY territorial column (all levels), cached.
+    Used to locate a named territory regardless of which admin level the gazetteer
+    filed it under — the input may call "Azangaro" a jurisdiccion while the
+    gazetteer records it as a partido."""
+    cache = ref_df.attrs.setdefault("_all_terr_blob", {})
+    blob = cache.get("blob")
+    if blob is not None and len(blob) == len(ref_df):
+        return blob
+    cols = []
+    for level, _ in _TERRITORY_LEVELS:
+        cols += [c for c in ref_df.columns if level in c and not c.startswith("ref_")]
+    cols = list(dict.fromkeys(cols))
+    if cols:
+        blob = (ref_df[cols].replace("nan", "").fillna("")
+                .astype(str).agg(" ".join, axis=1).str.strip().str.lower())
+    else:
+        blob = pd.Series([""] * len(ref_df), index=ref_df.index)
+    cache["blob"] = blob
+    return blob
+
+
+def _places_for_value(ref_df, value):
+    """Index labels of gazetteer places carrying ``value`` in ANY territorial
+    column (whole-word), or None if nothing matches."""
+    blob = _all_territory_blob(ref_df)
+    present = blob.str.contains(r"\b" + re.escape(value) + r"\b", regex=True, na=False)
+    return set(ref_df.index[present]) if present.any() else None
+
+
+# A level's centroid is trusted once it is backed by at least this many places;
+# with fewer, a couple of mislocated rows could drag the estimate into nowhere.
+_MIN_CONTAINER_PLACES = 3
+
+
 def row_reference_point(row, ref_df):
     """The (lat, lon) an input row is expected to sit near, for proximity ranking:
 
       1. the row's OWN coordinates (ref_lat / ref_lon) when it supplied them;
-      2. otherwise the centroid (median lat/lon) of the FINEST territory the row
-         names — reusing the same level gate as context_allowed_ids, so e.g. a
-         "Jurisdiccion X" row is located at the middle of X's gazetteer places,
-         and candidates can be ranked by how far their own container sits from it.
+      2. otherwise the median centroid of the FINEST territory the row names,
+         located by matching that value across ALL gazetteer territorial columns
+         (not just the same-named level) so a vocabulary mismatch — input
+         "Jurisdiccion Azangaro" vs gazetteer "Partido Azangaro" — still finds the
+         real, well-populated cluster. The median resists a few stray rows; a
+         level backed by < _MIN_CONTAINER_PLACES is only used as a last resort.
 
     Returns None when neither coordinates nor a locatable container is available.
-    The median resists a few stray coordinates inside a container.
     """
     lat = _parse_coord(row.get("ref_lat"))
     lon = _parse_coord(row.get("ref_lon"))
@@ -338,19 +374,25 @@ def row_reference_point(row, ref_df):
     if "lat" not in ref_df.columns or "lon" not in ref_df.columns:
         return None
     gl, go = _ref_latlon_numeric(ref_df)
+    weak = None  # a thin (< min) centroid, kept only if nothing better turns up
     for level, fields in _TERRITORY_LEVELS:
         val = _input_value_at_level(row, level, fields)
         if not val:
             continue
-        ids = context_allowed_ids(ref_df, level, val)
+        ids = _places_for_value(ref_df, val)
         if not ids:
             continue
         idx = list(ids)
         clat = gl.loc[idx].dropna()
         clon = go.loc[idx].dropna()
-        if len(clat) and len(clon):
-            return (float(clat.median()), float(clon.median()))
-    return None
+        if not len(clat) or not len(clon):
+            continue
+        centroid = (float(clat.median()), float(clon.median()))
+        if len(clat) >= _MIN_CONTAINER_PLACES:
+            return centroid
+        if weak is None:
+            weak = centroid
+    return weak
 
 
 def global_constraint_ids(ref_df: pd.DataFrame, constraints):
