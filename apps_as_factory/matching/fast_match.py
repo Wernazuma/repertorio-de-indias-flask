@@ -8,6 +8,7 @@ from .saints import extract_saint, compare_saints
 from .cleaning import clean_toponym
 from .toponym_match import compare_toponyms
 from .regions import region_code_to_name
+from .disambiguation import _input_core, _candidate_matches_core
 
 
 # --- Relaxed prefilter (Fix A) ---
@@ -799,15 +800,28 @@ def match_batch(input_df, ref_df, ref_index, saints_list, start=0, end=None, log
                 territory_value = f"{level}_{match_type}" if level else ""
                 phase = decide_phase_outcome(toponym_type, saint_status, cat_status, score / 100)
 
-                # Determine if this is a saint-only match (no substantive toponym beyond the saint)
+                # A "saint-only" agreement rests ONLY on the shared saint
+                # dedication, with no distinctive toponym in common. It must never
+                # auto-adopt. This arises two ways, both caught here:
+                #   (a) the input is a pure saint (no core beyond the saint), e.g.
+                #       "San Joan" -> can only ever be a candidate;
+                #   (b) the input HAS a distinctive core but THIS candidate does
+                #       not carry it, e.g. input "San Juan de Algo" vs a gazetteer
+                #       "San Juan" that lacks "Algo" -> only the saint lines up, so
+                #       it must not be adopted onto the saint+toponym row.
+                # A full nombre match already shares the whole name, so it is exempt.
+                # _input_core / _candidate_matches_core are the same helpers the
+                # disambiguation screen ranks with, so the gate and the ranking
+                # agree on what "carries the core" means.
                 is_saint_only = False
                 saint_in_label = extract_saint(label_cleaned, saints_list)
 
                 if saint_status == "saint_match" and not nombre_match:
-                    if saint_in_label:
-                        label_without_saint = label_cleaned.replace(saint_in_label, "").strip()
-                        if not label_without_saint or len(label_without_saint) < 3:
-                            is_saint_only = True
+                    input_core = _input_core(label)
+                    if not input_core:
+                        is_saint_only = True                               # (a)
+                    elif not _candidate_matches_core(ref_row, input_core):
+                        is_saint_only = True                               # (b)
 
                 # Saint-only matches must always require manual confirmation
                 if is_saint_only and phase == "auto_adopt":
