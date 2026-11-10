@@ -21,3 +21,10 @@ apps_as_factory/local_secrets.json
 apps_as_factory/local_secrets.json*
 
 __pycache__
+
+# Raw DB-export dumps (large source tables) relocated out of the app tree.
+/safe/
+
+# Runtime matching logs + the logger self-test scratch file.
+apps_as_factory/matching/logs/*.log
+apps_as_factory/matching/logs/_path_test.txt
