@@ -218,7 +218,6 @@
 
         <div class="actionbar">
           <button type="button" class="btn-primary" id="btnAdopt">✓ Adopt selected</button>
-          <button type="button" class="btn-new" id="btnAdoptNew" style="display:none;">✓ Save new place</button>
           <button type="button" class="btn-reject" id="btnReject" title="No candidate matches — locate the place manually on the map">✗ None match — not in the database</button>
           <button type="button" class="btn-skip" id="btnSkip">→ Skip (decide later)</button>
           <button type="button" class="btn-reject-all" id="btnRejectAll">✗✗ Reject all remaining</button>
@@ -247,6 +246,7 @@
               </select>
             </label>
             <span class="coord-readout" id="coordReadout">Click the map to set the coordinates.</span>
+            <button type="button" class="btn-new" id="btnAdoptNew">✓ Save new place</button>
           </div>
         </div>
         <input type="hidden" name="manual_lat" id="manualLat" value="">
@@ -441,7 +441,9 @@
     notInDb.addEventListener('change', () => {
       const on = notInDb.checked;
       notdbPanel.style.display = on ? 'flex' : 'none';
-      btnAdoptNew.style.display = on ? 'inline-block' : 'none';
+      // "Save new place" lives inside notdbPanel now, so the panel's own
+      // visibility shows/hides it — no separate toggle needed. Only the
+      // action-bar "Adopt selected" swaps out while in map-add mode.
       btnAdopt.style.display = on ? 'none' : 'inline-block';
       map.getContainer().style.cursor = on ? 'crosshair' : '';
       if (on) {
