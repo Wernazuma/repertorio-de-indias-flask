@@ -201,12 +201,16 @@ def disambiguate_candidates(df: pd.DataFrame, ref_point_fn=None) -> pd.DataFrame
             io = _coord(group["ref_lon"].iloc[0]) if "ref_lon" in group.columns else None
             ref_pt = (il, io) if (il is not None and io is not None) else None
         if ref_pt is not None and "lat" in group.columns and "lon" in group.columns:
-            group["distance_km"] = group.apply(
+            dist = group.apply(
                 lambda r: _haversine_km(ref_pt[0], ref_pt[1], r.get("lat"), r.get("lon")),
                 axis=1,
             )
+            # Keep a consistent float64 dtype (the apply yields a float/None object
+            # column); an object or all-NA column makes pd.concat below warn and, in
+            # future pandas, change result dtypes.
+            group["distance_km"] = pd.to_numeric(dist, errors="coerce")
         else:
-            group["distance_km"] = pd.NA
+            group["distance_km"] = float("nan")
 
         # Proximity BAND, not raw distance, is the primary key: candidates within
         # the same ~PROXIMITY_BUCKET_KM band are then ordered by name score (so the
