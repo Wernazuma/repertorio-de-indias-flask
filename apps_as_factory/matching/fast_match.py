@@ -7,7 +7,7 @@ from .filters import compare_category
 from .saints import extract_saint, compare_saints
 from .cleaning import clean_toponym
 from .toponym_match import compare_toponyms
-from .regions import region_code_to_name
+from .regions import region_to_code
 from .disambiguation import _input_core, _candidate_matches_core
 
 
@@ -207,20 +207,29 @@ def _input_value_at_level(row, level, possible_fields):
             break
     if not ref_in_val:
         return None
-    # The input region is a CODE (e.g. "CHA"); translate to the gazetteer region
-    # name (e.g. "Charcas"). If it can't be mapped, treat the level as absent.
+    # Region is compared as a CODE on both sides. The gazetteer's lugar_region
+    # stores the 3-letter code (e.g. "CHA"), so canonicalise the input region to
+    # its code too (region_to_code accepts a code OR the verbose name). An
+    # unmappable region is treated as absent (no veto), as before. The old code
+    # translated the input to the verbose NAME and compared it to the code,
+    # which never matched -> every region-bearing row was wrongly vetoed.
     if level == "region":
-        mapped = region_code_to_name(ref_in_val)
-        if not mapped:
+        code = region_to_code(ref_in_val)
+        if not code:
             return None
-        ref_in_val = mapped
+        return code.lower()
     return ref_in_val.lower()
 
 
 def _gazetteer_values_at_level(ref_row, level):
     ref_cols = [c for c in ref_row.index if level in c and not c.startswith("ref_")]
-    return [str(ref_row[c]).strip().lower() for c in ref_cols
+    vals = [str(ref_row[c]).strip() for c in ref_cols
             if pd.notna(ref_row[c]) and str(ref_row[c]).strip()]
+    if level == "region":
+        # Canonicalise to the code, matching the code-based input (robust whether
+        # lugar_region holds "CHA" or "Charcas"); keep the raw value if unknown.
+        vals = [(region_to_code(v) or v) for v in vals]
+    return [v.lower() for v in vals]
 
 
 # ---------------------------------------------------------------------------
@@ -246,7 +255,12 @@ def _level_blob(ref_df: pd.DataFrame, level: str) -> pd.Series:
     if blob is not None and len(blob) == len(ref_df):
         return blob
     cols = [c for c in ref_df.columns if level in c and not c.startswith("ref_")]
-    if cols:
+    if cols and level == "region":
+        # Canonicalise region to the code so the context prefilter matches the
+        # code-based input value (region_to_code handles code OR verbose name).
+        ser = ref_df[cols[0]].astype(str).map(lambda v: (region_to_code(v) or v))
+        blob = ser.replace("nan", "").fillna("").astype(str).str.strip().str.lower()
+    elif cols:
         blob = (ref_df[cols].replace("nan", "").fillna("")
                 .astype(str).agg(" ".join, axis=1).str.strip().str.lower())
     else:

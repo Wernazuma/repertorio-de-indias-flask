@@ -37,6 +37,38 @@ def region_code_to_name(code: str):
     return _load_region_map().get(str(code).strip().upper())
 
 
+_REGION_NAME_TO_CODE = None
+
+
+def _load_region_name_map() -> dict:
+    """Inverse of the code->name map: verbose region name (lower-cased) -> code."""
+    global _REGION_NAME_TO_CODE
+    if _REGION_NAME_TO_CODE is not None:
+        return _REGION_NAME_TO_CODE
+    inv = {}
+    for code, name in _load_region_map().items():
+        inv.setdefault(name.strip().lower(), code)
+    _REGION_NAME_TO_CODE = inv
+    return inv
+
+
+def region_to_code(value: str):
+    """Canonicalise a region value to its 3-letter CODE, accepting EITHER a code
+    ("CHA") or the verbose name ("Charcas"). Returns the upper-case code, or None
+    if the value matches neither. Used so region comparisons work no matter which
+    representation the input or the gazetteer carries (the gazetteer's
+    lugar_region is currently the code, but has historically been the name)."""
+    if not value:
+        return None
+    s = str(value).strip()
+    if not s:
+        return None
+    up = s.upper()
+    if up in _load_region_map():          # already a known code
+        return up
+    return _load_region_name_map().get(s.lower())  # a known verbose name
+
+
 REGION_NEIGHBORS = {
     "CHL": {"RPL"},
     "RPL": {"CHL", "CHA"},
