@@ -46,7 +46,13 @@
     {% for g in groups %}
     <div class="group">
       <h2><span class="gz">Indias ID {{ g.gz_id }}</span> — {{ g.lugar_label }}
-        <span class="badge">{{ g.members|length }} rows</span></h2>
+        <span class="badge">{{ g.members|length }} rows</span>
+        <form method="post" action="{{ url_for('matching.review_duplicates', prefix=prefix) }}"
+              style="display:inline; margin-left:0.6em;"
+              onsubmit="return confirm('Send ALL {{ g.members|length }} rows for Indias ID {{ g.gz_id }} to manual resolution?');">
+          <input type="hidden" name="gz_all" value="{{ g.gz_id }}">
+          <button type="submit" class="send">Send all to manual</button>
+        </form></h2>
       <table>
         <thead>
           <tr><th>Row</th><th>Input label</th><th>Outcome</th><th>Territory (partido / prov.)</th><th></th></tr>

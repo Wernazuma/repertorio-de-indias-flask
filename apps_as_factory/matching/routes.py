@@ -926,6 +926,28 @@ def review_duplicates(prefix):
         return redirect(url_for("matching.index"))
 
     if request.method == "POST":
+        # "Send all to manual": relegate every adopted row sharing this gz_id, so
+        # a whole suspect duplicate group goes to manual at once. Needed because
+        # relegating all-but-one leaves a single row that no longer shows as a
+        # duplicate (and so can't be reached from this screen) yet stays adopted.
+        gz_all = request.form.get("gz_all")
+        if gz_all is not None:
+            try:
+                gz_val = int(gz_all)
+            except (TypeError, ValueError):
+                gz_val = None
+            changed = 0
+            if gz_val is not None:
+                is_adopted = df["phase_1a_outcome"].astype(str).isin(_REVIEW_ADOPTED)
+                member_ids = df[is_adopted & (df["gz_id"] == gz_val)]["rowID"].drop_duplicates().tolist()
+                for rid in member_ids:
+                    if _relegate_rowid(df, rid):
+                        changed += 1
+            if changed:
+                df.to_csv(path, sep=";", index=False, encoding="utf-8")
+                flash(f"Sent all {changed} row(s) for Indias ID {gz_val} to manual resolution.")
+            return redirect(url_for("matching.review_duplicates", prefix=prefix))
+
         row_id = _rid(request.form.get("row_id"))
         if row_id is not None and _relegate_rowid(df, row_id):
             df.to_csv(path, sep=";", index=False, encoding="utf-8")
