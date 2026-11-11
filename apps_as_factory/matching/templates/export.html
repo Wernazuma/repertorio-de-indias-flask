@@ -63,7 +63,10 @@
     <form method="POST" action="{{ url_for('matching.export_results', prefix=prefix) }}">
       <div class="card">
         <h3>Fields to add to your table</h3>
-        <p class="mand">Always added: <code>gz_id</code> · <code>lat_y</code> · <code>lon_x</code></p>
+        <p class="mand">Always added: <code>gz_id</code> · <code>lat</code> · <code>lon</code>
+          <span class="desc">— the matched coordinates (the HGIS place, or the point you
+          placed for a place not in the database). Named <code>matched_lat</code>/<code>matched_lon</code>
+          if your table already has a lat/lon column.</span></p>
         <div class="opt">
           <label><input type="checkbox" name="cert" value="1" {% if form.get('cert') %}checked{% endif %}> cert <span class="desc">— coordinate certainty</span></label>
           <label><input type="checkbox" name="iglesia_cat" value="1" {% if form.get('iglesia_cat') %}checked{% endif %}> iglesia_cat <span class="desc">— church status</span></label>

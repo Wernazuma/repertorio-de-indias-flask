@@ -1720,6 +1720,18 @@ def _build_readme(prefix):
     return "\n".join(lines) + "\n"
 
 
+def _with_coord_names(add_df, base_cols):
+    """Rename the matched-coordinate columns (internal lat_y/lon_x, where y=lat
+    and x=lon) to friendly output names for the results CSV: ``lat``/``lon``,
+    or ``matched_lat``/``matched_lon`` when the user's own table already has a
+    lat or lon column, so nothing silently collides on the merge."""
+    lat_name, lon_name = "lat", "lon"
+    low = {str(c).strip().lower() for c in base_cols}
+    if "lat" in low or "lon" in low:
+        lat_name, lon_name = "matched_lat", "matched_lon"
+    return add_df.rename(columns={"lat_y": lat_name, "lon_x": lon_name})
+
+
 def _find_formatted(prefix):
     exact = os.path.join(UPLOAD_FOLDER, f"{prefix}_formatted.csv")
     if os.path.exists(exact) and os.path.getsize(exact) > 0:
@@ -1780,7 +1792,7 @@ def _build_export(prefix, opt_fields):
         # ID is a user identifier that may be text -> join on the canonical string
         # form (so "1"/1/"1.0" all match, and "/place/1" joins too).
         base["ID"] = _id_key(base["ID"])
-        merged = base.merge(add_df, on="ID", how="left")
+        merged = base.merge(_with_coord_names(add_df, base.columns), on="ID", how="left")
         # keep gz_id as a clean integer string (no trailing .0), empty if unresolved
         merged["gz_id"] = merged["gz_id"].apply(
             lambda v: "" if (pd.isna(v) or str(v).strip() == "") else str(int(float(v)))
@@ -2368,7 +2380,7 @@ def _build_territory_export(prefix):
         if "ID" not in base.columns:
             return
         base["ID"] = _id_key(base["ID"])
-        merged = base.merge(add_df, on="ID", how="left")
+        merged = base.merge(_with_coord_names(add_df, base.columns), on="ID", how="left")
         merged.to_csv(os.path.join(outdir, out_name), sep=";", index=False, encoding="utf-8")
         written.append(out_name)
 

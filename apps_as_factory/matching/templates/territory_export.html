@@ -41,14 +41,14 @@
       <div class="card">
         <h3>Bundle contents</h3>
         <ul class="mand">
-          <li><code>{{ prefix }}_results.csv</code> — formatted table + <code>entidad_id</code>, <code>nivel</code>, <code>tipo</code>, <code>start</code>, <code>end</code>, <code>lat_y</code>, <code>lon_x</code></li>
+          <li><code>{{ prefix }}_results.csv</code> — formatted table + <code>entidad_id</code>, <code>nivel</code>, <code>tipo</code>, <code>start</code>, <code>end</code>, <code>lat</code>, <code>lon</code></li>
           <li><code>{{ prefix }}_original_results.csv</code> — original table + the same columns</li>
           <li><code>{{ prefix }}_territories.geojson</code> — matched territories with their <b>full footprint polygons</b></li>
           <li><code>{{ prefix }}_territory_results.csv</code> — entity + level + date-range per row</li>
           <li><code>{{ prefix }}_metadata.txt</code> — dataset metadata</li>
           <li><code>{{ prefix }}_field_definitions.csv</code> — column definitions (if provided)</li>
         </ul>
-        <p class="note">Footprints are the chronology-matching slice from the historical geometry; <code>lat_y</code>/<code>lon_x</code> are the entity's capital.</p>
+        <p class="note">Footprints are the chronology-matching slice from the historical geometry; <code>lat</code>/<code>lon</code> are the entity's capital (<code>matched_lat</code>/<code>matched_lon</code> if your table already has a lat/lon column).</p>
         <button type="submit">⬇ Build &amp; download bundle</button>
       </div>
     </form>
