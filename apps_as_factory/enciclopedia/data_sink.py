@@ -21,11 +21,14 @@ callers surface a "try again" state — nothing is silently lost, because the se
 transient working copy is still there for the current sitting.
 """
 import csv
+import html
 import io
 import json
+import os
 import re
+import time
 import zipfile
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 
 from flask import current_app
 
@@ -188,12 +191,181 @@ def publish_dataset(prefix, zip_bytes, meta_dict):
     repo, token = _repo(), _token()
     stamp = _stamp()
     base = '%s/%s/%s' % (DATASETS_DIR, prefix, stamp)
+    # Fold the bundle's Dublin Core metadata into the meta JSON, so the public
+    # datasets catalogue can be built from the small JSON alone (no need to
+    # download and unzip every bundle on each page load).
+    meta_dict = dict(meta_dict or {})
+    if 'dublin_core' not in meta_dict:
+        dc = _parse_dublin_core(_metadata_text_from_zip(zip_bytes))
+        if dc.get('title') or dc.get('creators'):
+            meta_dict['dublin_core'] = dc
     url = github_sink.put_file(base + '.zip', zip_bytes,
                                'dataset %s %s' % (prefix, stamp), repo, token)
     github_sink.put_file(base + '.json',
                          json.dumps(meta_dict, ensure_ascii=False, indent=2).encode('utf-8'),
                          'dataset meta %s %s' % (prefix, stamp), repo, token)
+    _CATALOG_CACHE['items'] = None  # invalidate so the new release shows at once
     return url
+
+
+# ---------------------------------------------------------------------------
+# Released-dataset catalogue (for the public /datasets page)
+# ---------------------------------------------------------------------------
+
+# Dublin Core title gets "Spatial data: " prepended at creation; strip it back
+# off for display.
+_TITLE_PREFIX = 'Spatial data: '
+_CATALOG_TTL = 300  # seconds; the catalogue rarely changes
+_CATALOG_CACHE = {'ts': 0.0, 'items': None}
+
+
+def _smart_decode(raw):
+    """Decode metadata bytes as UTF-8, falling back to cp1252/latin-1 so an
+    older bundle written in a legacy codepage keeps its accents (á, ó, ñ, …)."""
+    for enc in ('utf-8', 'cp1252', 'latin-1'):
+        try:
+            return raw.decode(enc)
+        except UnicodeDecodeError:
+            continue
+    return raw.decode('utf-8', 'replace')
+
+
+def _metadata_text_from_zip(zip_bytes):
+    """Return the text of the ``*_metadata.txt`` (Dublin Core) file inside a
+    bundle zip, or '' if absent/unreadable."""
+    try:
+        with zipfile.ZipFile(io.BytesIO(zip_bytes)) as z:
+            name = next((n for n in z.namelist()
+                         if os.path.basename(n).endswith('_metadata.txt')), None)
+            if not name:
+                return ''
+            return _smart_decode(z.read(name))
+    except (zipfile.BadZipFile, OSError, KeyError):
+        return ''
+
+
+def _dedupe(seq):
+    """Order-preserving, case-insensitive de-duplication."""
+    seen, out = set(), []
+    for v in seq:
+        k = v.strip().casefold()
+        if v.strip() and k not in seen:
+            seen.add(k)
+            out.append(v.strip())
+    return out
+
+
+def _parse_dublin_core(text):
+    """Parse the Dublin Core ``<dc:...>`` / ``<dcterms:...>`` lines a bundle's
+    metadata file holds into a display dict."""
+    out = {'title': '', 'creators': [], 'publishers': [], 'contributors': [],
+           'subjects': [], 'sources': [], 'description': '', 'type': '',
+           'date_submitted': '', 'issued': '', 'available': '', 'citation': ''}
+    for tag, val in re.findall(r'<(dc:\w+|dcterms:\w+)>(.*?)</\1>', text or '', re.S):
+        v = html.unescape(val).strip()
+        if not v:
+            continue
+        if tag == 'dc:title':
+            out['title'] = v[len(_TITLE_PREFIX):] if v.startswith(_TITLE_PREFIX) else v
+        elif tag == 'dc:creator':
+            out['creators'].append(v)
+        elif tag == 'dc:publisher':
+            out['publishers'].append(v)
+        elif tag == 'dc:contributor':
+            out['contributors'].append(v)
+        elif tag == 'dc:subject':
+            out['subjects'].append(v)
+        elif tag == 'dc:source':
+            out['sources'].append(v)
+        elif tag == 'dc:description':
+            out['description'] = v
+        elif tag == 'dc:type':
+            out['type'] = v
+        elif tag == 'dcterms:dateSubmitted':
+            out['date_submitted'] = v
+        elif tag == 'dcterms:issued':
+            out['issued'] = v
+        elif tag == 'dcterms:available':
+            out['available'] = v
+        elif tag == 'dcterms:bibliographicCitation':
+            out['citation'] = v
+    for k in ('creators', 'publishers', 'contributors', 'subjects', 'sources'):
+        out[k] = _dedupe(out[k])
+    return out
+
+
+def _dc_from_bundle(prefix, stamp, repo, token):
+    """Fallback for releases whose meta JSON predates the stored dublin_core:
+    download the bundle and parse its metadata file. Cheap only once (cached by
+    the catalogue), so kept out of the common path."""
+    raw, _sha = github_sink.get_file(
+        '%s/%s/%s.zip' % (DATASETS_DIR, prefix, stamp), repo, token)
+    if not raw:
+        return {}
+    return _parse_dublin_core(_metadata_text_from_zip(raw))
+
+
+def _latest_release_stamp(prefix, repo, token):
+    """Newest <stamp> under datasets/<prefix>/ that has a meta JSON, or None."""
+    entries = github_sink.list_dir('%s/%s' % (DATASETS_DIR, prefix), repo, token)
+    stamps = sorted(e['name'][:-5] for e in entries
+                    if e.get('type') == 'file' and str(e.get('name', '')).endswith('.json'))
+    return stamps[-1] if stamps else None
+
+
+def released_datasets(force=False):
+    """Catalogue of datasets released to the collection, newest first, for the
+    public /datasets page. Each item carries the Dublin Core fields (title,
+    creators, publishers, description, subjects, sources, type, citation), the
+    date it was incorporated (``added``), embargo state, and resolution stats.
+
+    Cached in-process for a few minutes; fails soft to [] when the repo is not
+    configured or on any API error."""
+    now = time.time()
+    cached = _CATALOG_CACHE['items']
+    if not force and cached is not None and (now - _CATALOG_CACHE['ts']) < _CATALOG_TTL:
+        return cached
+    items = []
+    if configured():
+        repo, token = _repo(), _token()
+        today = date.today().isoformat()
+        for d in github_sink.list_dir(DATASETS_DIR, repo, token):
+            if d.get('type') != 'dir':
+                continue
+            prefix = d.get('name')
+            if not valid_prefix(prefix):
+                continue
+            stamp = _latest_release_stamp(prefix, repo, token)
+            if not stamp:
+                continue
+            raw, _sha = github_sink.get_file(
+                '%s/%s/%s.json' % (DATASETS_DIR, prefix, stamp), repo, token)
+            meta = {}
+            if raw:
+                try:
+                    meta = json.loads(raw.decode('utf-8'))
+                except ValueError:
+                    meta = {}
+            dc = meta.get('dublin_core') or _dc_from_bundle(prefix, stamp, repo, token)
+            available = dc.get('available') or ''
+            item = {
+                'prefix': prefix,
+                'stamp': stamp,
+                'added': (meta.get('timestamp') or dc.get('issued') or '')[:10],
+                'submitter': meta.get('submitter') or {},
+                'stats': meta.get('stats') or {},
+                'embargoed': bool(available and available > today),
+                'available': available,
+            }
+            item.update({k: dc.get(k) for k in (
+                'title', 'creators', 'publishers', 'contributors', 'subjects',
+                'sources', 'description', 'type', 'citation')})
+            if not item.get('citation'):
+                item['citation'] = meta.get('citation') or ''
+            items.append(item)
+    items.sort(key=lambda it: (it.get('added', ''), it.get('stamp', '')), reverse=True)
+    _CATALOG_CACHE.update(ts=now, items=items)
+    return items
 
 
 def record_usage(entry_dict):

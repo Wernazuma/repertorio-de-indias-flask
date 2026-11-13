@@ -170,7 +170,12 @@ def create_app():
 
     @app.route("/datasets")
     def datasets():
-        return render_template("pages/datasets.html")
+        from enciclopedia import data_sink
+        try:
+            released = data_sink.released_datasets()
+        except Exception:  # catalogue is best-effort; never 500 the page
+            released = []
+        return render_template("pages/datasets.html", datasets=released)
 
     @app.route("/collaborate")
     def collaborate():

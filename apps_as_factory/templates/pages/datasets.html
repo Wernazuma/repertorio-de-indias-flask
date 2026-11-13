@@ -6,17 +6,55 @@
 <div class="hero">
   <span class="eyebrow">Datasets</span>
   <h1>Open data behind ARCA.</h1>
-  <p class="lead">The gazetteer, territorial geometries, and prosopographical
-    data that power the Encyclopedia and Atlas — available for reuse.</p>
-  <p class="hero-actions">
-    <a class="btn" href="https://dataverse.harvard.edu/dataverse/hgis_indias"
-       target="_blank" rel="noopener">Indias Dataverse ↗</a>
-  </p>
 </div>
 
-<div class="placeholder-note">
-  <span>🏗️</span>
-  <span><strong>This page is a placeholder.</strong> A catalogue of downloadable
-    datasets, formats, and licensing will be listed here.</span>
+<div class="card-grid ds-grid">
+
+  <section class="card ds-featured">
+    <div class="ds-featured-body">
+      <h2>Data for reuse</h2>
+      <p>The gazetteer, territorial geometries, and prosopographical data that
+        power the Encyclopedia and Atlas — available for reuse.</p>
+    </div>
+    <a class="btn" href="https://dataverse.harvard.edu/dataverse/hgis_indias"
+       target="_blank" rel="noopener">Indias Dataverse ↗</a>
+  </section>
+
+  {% for d in datasets %}
+  <article class="card ds-card">
+    <div class="ds-card-head">
+      <span class="card-badge">{{ d.type or 'Dataset' }}</span>
+      {% if d.embargoed %}
+        <span class="ds-embargo" title="Opens on {{ d.available }}">Embargoed · {{ d.available }}</span>
+      {% else %}
+        <span class="ds-open">Open · CC-BY-SA 4.0</span>
+      {% endif %}
+    </div>
+
+    <h3>{{ d.title or d.prefix }}</h3>
+
+    {% if d.description %}<p class="ds-desc">{{ d.description }}</p>{% endif %}
+
+    <dl class="ds-meta">
+      {% if d.creators %}<dt>Creator</dt><dd>{{ d.creators | join('; ') }}</dd>{% endif %}
+      {% if d.publishers %}<dt>Publisher</dt><dd>{{ d.publishers | join(' · ') }}</dd>{% endif %}
+      {% if d.contributors %}<dt>Contributor</dt><dd>{{ d.contributors | join(' · ') }}</dd>{% endif %}
+      {% if d.added %}<dt>Incorporated</dt><dd>{{ d.added }}</dd>{% endif %}
+      {% if d.subjects %}<dt>Subjects</dt><dd>{{ d.subjects | join(', ') }}</dd>{% endif %}
+      {% if d.sources %}<dt>Sources</dt><dd>{{ d.sources | join('; ') }}</dd>{% endif %}
+      {% if d.stats and d.stats.total %}
+        <dt>Records</dt>
+        <dd>{{ d.stats.with_gz if d.stats.with_gz is not none else (d.stats.matched if d.stats.matched is not none else '—') }}
+          / {{ d.stats.total }} resolved</dd>
+      {% endif %}
+    </dl>
+
+    {% if d.citation %}<p class="ds-cite">{{ d.citation }}</p>{% endif %}
+  </article>
+  {% else %}
+  <p class="card ds-empty">No datasets have been released to the collection yet —
+    they appear here once contributors release them.</p>
+  {% endfor %}
+
 </div>
 {% endblock %}
