@@ -245,17 +245,22 @@ p { margin: 0; }
   background: var(--surface); border: 1px solid var(--border-strong);
   border-radius: 999px; padding: 2px 10px; }
 
-/* ---- datasets page: featured banner card + up to 4 metadata cards/row ---- */
-.ds-grid { grid-template-columns: repeat(4, 1fr); align-items: start; }
-@media (max-width: 1100px) { .ds-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 820px)  { .ds-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 560px)  { .ds-grid { grid-template-columns: 1fr; } }
-/* main item: spans the whole row */
+/* ---- datasets page: featured banner card + two metadata cards/row ---- */
+.ds-grid { grid-template-columns: repeat(2, 1fr); align-items: start; }
+@media (max-width: 640px) { .ds-grid { grid-template-columns: 1fr; } }
+/* main item: the Indias core datasets card — spans the whole row and stands out */
 .ds-featured { grid-column: 1 / -1; flex-direction: row; align-items: center;
-  justify-content: space-between; gap: var(--sp-4); background: var(--surface-2); }
-.ds-featured:hover { transform: none; border-color: var(--border); }
-.ds-featured .ds-featured-body h2 { font-size: var(--step-2); margin-bottom: 4px; }
-.ds-featured .ds-featured-body p { max-width: 48rem; }
+  justify-content: space-between; gap: var(--sp-4);
+  padding: var(--sp-4) var(--sp-4);
+  background: var(--surface-2);
+  border: 2px solid var(--accent);
+  border-left-width: 6px;
+  box-shadow: var(--shadow); }
+.ds-featured:hover { transform: none; border-color: var(--accent); }
+.ds-featured .ds-featured-body .eyebrow { color: var(--accent); margin-bottom: 4px; }
+.ds-featured .ds-featured-body h2 { font-size: var(--step-3); color: var(--accent);
+  margin-bottom: 6px; }
+.ds-featured .ds-featured-body p { max-width: 48rem; font-size: var(--step-1); }
 .ds-featured .btn { flex: none; }
 @media (max-width: 640px) { .ds-featured { flex-direction: column; align-items: flex-start; } }
 /* catalogue cards are informational, not links — no hover lift */
