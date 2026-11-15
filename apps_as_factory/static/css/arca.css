@@ -522,6 +522,9 @@ a.inst:hover { border-color: var(--accent); transform: translateY(-2px); }
   flex-wrap: wrap; font-size: var(--step--1); color: var(--muted);
   border-top: 1px solid var(--border); padding-top: var(--sp-3); }
 .footer-meta a { color: var(--accent); text-decoration: none; }
+.footer-meta a:hover { text-decoration: underline; }
+/* cookie transparency note: its own line under the meta row, quieter than the links */
+.footer-cookie { flex-basis: 100%; font-size: var(--step--2); opacity: .85; }
 
 /* ---------- RESPONSIVE NAV ---------- */
 @media (max-width: 760px) {
