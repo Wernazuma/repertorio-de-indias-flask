@@ -63,6 +63,24 @@
       border:1px solid var(--border,#ccc); border-radius:6px; text-decoration:none;
       color:var(--accent,#2b4b68); background:var(--surface-2,rgba(0,0,0,.03)); white-space:nowrap; }
     .suggest-btn:hover { border-color:var(--accent,#2b4b68); }
+
+    /* Identifier line under detail-page headings ("Indias-ID: ..."): 4pt
+       smaller than the heading and muted. */
+    .enc-id { font-size:calc(1em - 4pt); color:var(--muted,#777); }
+
+    /* "More" raw-row popup. Lives here (not in style.css) because the
+       encyclopedia loads the app-level /static/style.css, which lacked these
+       rules; without them the popup rendered unstyled at the end of the page. */
+    .rawrow-pop { position:absolute; z-index:9999; max-width:380px; max-height:60vh; overflow:auto;
+      background:var(--surface,#fff); color:var(--ink,#222); border:1px solid var(--border-strong,#888);
+      box-shadow:0 4px 14px rgba(0,0,0,.25); padding:10px 12px; font-size:12px; border-radius:4px; }
+    .rawrow-pop .rawrow-close { position:absolute; top:2px; right:6px; border:none; background:none;
+      font-size:18px; line-height:1; cursor:pointer; color:var(--muted,#666); padding:0; }
+    .rawrow-pop .rawrow-title { font-weight:bold; margin-bottom:6px; padding-right:18px; }
+    .rawrow-table { width:100%; border-collapse:collapse; }
+    .rawrow-table th { text-align:left; padding:2px 8px 2px 0; vertical-align:top; white-space:nowrap;
+      color:var(--muted,#555); font-weight:bold; }
+    .rawrow-table td { padding:2px 0; vertical-align:top; word-break:break-word; }
   </style>
   {% block enc_head %}{% endblock %}
 {% endblock %}

@@ -130,7 +130,7 @@
 {% block enc_content %}
 {# Entity heading shown at the top of every tab; the tab's own title sits below it as a subheading. #}
 {% macro entity_heading() %}
-  <h1>{{ place.label }}, {{ vt(place.categoria) }}, {{ place.region }}.<br/>{{ t('indias_id') }}: {{ place.gz_id }}</h1>
+  <h1>{{ place.label }}, {{ vt(place.categoria) }}, {{ place.region }}.<br/><span class="enc-id">{{ t('indias_id') }}: {{ place.gz_id }}</span></h1>
 {% endmacro %}
 <div class="tab">
   <button class="tablinks" onclick="openTab(event, 'Informacion')" id="defaultOpen">{{ t('td_tab_info') }}</button>
