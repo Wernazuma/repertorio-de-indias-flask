@@ -1,0 +1,34 @@
+﻿Field,RIS tag,Arch. series,Arch. document,Hist. map,Print,Critical edition,Modern map,Finding aid,Monograph,Edited volume,Chapter,Article,Thesis,Scholarly online,Database,Other online,Explanation
+fuenteID,ID,R,R,R,R,R,R,R,R,R,R,R,R,R,R,R,Unique source ID (citation key)
+class,—,R,R,R,R,R,R,R,R,R,R,R,R,R,R,R,"primary or secondary (no RIS tag, export as KW if needed)"
+doc_type,—,R,R,R,R,R,R,R,R,R,R,R,R,R,R,R,"One of the 14 document types (controlled list, no RIS tag)"
+ris_type,TY,R,R,R,R,R,R,R,R,R,R,R,R,R,R,R,"RIS reference type, derived from doc_type (see Types sheet)"
+author,AU,,O,O,O,R,O,O,R,,R,R,R,O,O,O,"Author, cartographer or creator, one per person as Surname, Forename"
+title,TI,R,R,R,R,R,R,R,R,R,R,R,R,R,R,R,"Title, or a description for untitled archival material"
+year,PY,O,R,R,R,R,R,R,R,R,R,R,R,O,O,O,"Year of creation or publication (four digits, sortable)"
+date,DA,,O,O,,,,,,,,,,O,,O,Exact date as YYYY/MM/DD
+date_text,DA / N1,R,O,O,O,,,,,,,,,,,,"Date as given, for ranges and uncertain dates (ca. 1750, 1701–1714)"
+editor,A2 / A3,,,O,,R,,O,,R,R,,,O,O,,"Editor or secondary contributor (A2 for chapters, A3 for books)"
+translator,A4,,,,,O,,,O,O,,,,,,,Translator
+short_title,ST,R,O,O,O,O,O,O,O,O,O,O,O,O,O,O,"Short title, siglum or archive abbreviation"
+container_title,T2,O,R,O,O,O,O,,,,R,R,,R,,R,"Journal, book, website, atlas, archival fonds/series, or the compilation an edited or printed document appears in"
+series_title,T2 / T3,,,,,O,,O,O,O,O,,,,,,"Publication series (T2 for books, T3 for chapters)"
+volume,VL,,,,O,O,,O,O,O,O,R,,,,,Volume number
+num_volumes,NV,,,,O,O,,,O,O,,,,,,,Total number of volumes of a multi-volume work
+issue,IS,,,,O,O,,,,,,O,,,,,Journal issue number
+edition,ET,,,O,O,O,O,O,O,O,O,,,,O,,"Edition, map state or database version"
+place,CY,O,O,O,R,R,O,O,R,R,R,,O,,,,"Place of publication, place of writing, or archive city"
+publisher,PB,,,O,O,R,O,O,R,R,R,,R,O,O,O,"Publisher, printer, university or responsible institution"
+page_start,SP,,O,O,O,O,,,,,R,R,,,,,"First page, also folios, extent or map dimensions"
+page_end,EP,,O,,O,O,,,,,R,R,,,,,Last page or folio
+scale,M1,O,,O,,,O,,,,,,,,,,Map scale (extent for archival series)
+archive,DB,R,R,O,O,,,,,,,,,,,,Holding archive or library
+shelfmark,AN,R,R,O,O,,,,,,,,,,,,Reference code or signature within the archive
+original_pub,OP,,,,,O,,,,,,,,,,,Original date or source of an edited text
+language,LA,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,Language of the source
+isbn_issn,SN,,,,,O,O,O,O,O,O,O,,,,,ISBN or ISSN
+doi,DO,,,,,O,,,O,O,O,O,O,O,O,,Digital Object Identifier
+url,UR,O,O,O,O,O,O,O,O,O,O,O,O,R,R,R,Web address of the source or its digital copy
+accessed,Y2,,,,,,,O,,,,,,R,R,R,Access date as YYYY/MM/DD
+keywords,KW,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,"Keywords, one per entry"
+notes,N1,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,Free notes

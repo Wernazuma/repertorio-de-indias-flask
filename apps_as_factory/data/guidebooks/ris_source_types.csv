@@ -1,0 +1,16 @@
+﻿doc_type,class,ris_type,Alternative ris_type
+Archival series/holding,primary,GEN,MANSCPT
+Archival document,primary,MANSCPT,
+Historical map (before 1824),primary,MAP,
+Print,primary,BOOK,PAMP / ART
+Critical edition,primary,BOOK,EDBOOK
+Modern map (after 1824),secondary,MAP,
+Archival catalogue/finding aid,secondary,CTLG,BOOK
+Monograph,secondary,BOOK,
+Edited volume,secondary,EDBOOK,BOOK
+Chapter,secondary,CHAP,
+Article,secondary,JOUR,
+Thesis,secondary,THES,
+Scholarly online source,secondary,ELEC,ENCYC / DICT / BLOG
+Database,secondary,DBASE,DATA
+Other online source,secondary,ELEC,

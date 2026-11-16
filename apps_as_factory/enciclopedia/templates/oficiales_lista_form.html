@@ -18,6 +18,9 @@
   .sf-challenge { max-width:8rem !important; }
   .sf-banner { padding:.6rem .8rem; border-radius:6px; margin-bottom:1rem; }
   code.fname { font-size:.85em; background:var(--surface-2,rgba(0,0,0,.05)); padding:.05rem .3rem; border-radius:4px; }
+  .sf-contact { display:flex; gap:1rem; max-width:42rem; }
+  .sf-contact > div { flex:1 1 0; min-width:0; }
+  @media (max-width: 480px) { .sf-contact { flex-direction:column; gap:0; } }
 </style>
 {% endblock %}
 
@@ -45,10 +48,12 @@
     <p style="margin-top:.8rem;"><button type="submit">{{ t('suggest_submit') }}</button></p>
   {% endmacro %}
   {% macro contact() %}
-    <label>{{ t('suggest_name') }} *</label>
-    <input type="text" name="submitter_name" maxlength="100" required>
-    <label>{{ t('suggest_email') }} *</label>
-    <input type="email" name="submitter_email" maxlength="120" required>
+    <div class="sf-contact">
+      <div><label for="sf-name">{{ t('suggest_name') }} *</label>
+        <input type="text" id="sf-name" name="submitter_name" maxlength="100" required></div>
+      <div><label for="sf-email">{{ t('suggest_email') }} *</label>
+        <input type="email" id="sf-email" name="submitter_email" maxlength="120" required></div>
+    </div>
     <p class="hint" style="margin:.45rem 0 .2rem;">{{ t('suggest_privacy') }}
       <a href="{{ url_for('impressum') }}#privacy" target="_blank" rel="noopener">{{ t('suggest_privacy_more') }}</a></p>
   {% endmacro %}

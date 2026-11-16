@@ -2,33 +2,75 @@
 <html lang="{{ lang|default('en') }}">
 <head>
     <meta charset="UTF-8">
-    <title>{{ t('src_title') }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ t('src_title') }} · {{ source.FuenteID or source.fuenteID }}</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        :root { --ink: #1f2933; --muted: #6b7280; --rule: #e5e7eb; --accent: #2f5d8a; --bg: #ffffff; }
+        @media (prefers-color-scheme: dark) {
+            :root { --ink: #e5e7eb; --muted: #9ca3af; --rule: #374151; --accent: #8db8e0; --bg: #111827; }
         }
-        .source-detail {
-            margin: 20px;
-        }
-        .source-detail h2 {
-            margin-top: 0;
-        }
+        * { box-sizing: border-box; }
+        body { margin: 0; padding: 16px; font-family: Arial, Helvetica, sans-serif;
+               color: var(--ink); background: var(--bg); line-height: 1.45; }
+        .kind { margin: 0 0 10px; font-size: 12px; letter-spacing: .03em; text-transform: uppercase;
+                color: var(--muted); }
+        .citation { margin: 0 0 16px; font-size: 15px; overflow-wrap: anywhere; }
+        .citation a { color: var(--accent); }
+        .empty { color: var(--muted); font-style: italic; }
+        .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 6px; }
+        .btn { display: inline-block; padding: 6px 10px; border: 1px solid var(--accent); border-radius: 4px;
+               color: var(--accent); background: transparent; font: inherit; font-size: 13px;
+               text-decoration: none; cursor: pointer; }
+        .btn.primary { background: var(--accent); color: var(--bg); }
+        .hint { margin: 0 0 14px; font-size: 12px; color: var(--muted); }
+        .meta { margin: 0; padding-top: 10px; border-top: 1px solid var(--rule); font-size: 12px; color: var(--muted); }
+        .meta p { margin: 2px 0; }
     </style>
 </head>
 <body>
-    <div class="source-detail">
-        <h2>{{ source.Titulo }}</h2>
-        <p><strong>{{ t('src_fuenteid') }}:</strong> {{ source.FuenteID }}</p>
-        <p><strong>{{ t('src_type') }}:</strong> {{ source.tipo }}</p>
-        <p><strong>{{ t('src_author') }}:</strong> {{ source.Apellido }}, {{ source.Nombre }}</p>
-        <p><strong>{{ t('src_additional_authors') }}:</strong> {{ source.AutoresAdicionales }}</p>
-        <p><strong>{{ t('src_title_label') }}:</strong> {{ source.Titulo }}</p>
-        <p><strong>{{ t('src_in') }}:</strong> {{ source.en_ }}</p>
-        <p><strong>{{ t('src_place') }}:</strong> {{ source.Lugar }}</p>
-        <p><strong>{{ t('src_year') }}:</strong> {{ source.Año }}</p>
-        <p><strong>{{ t('src_archive') }}:</strong> {{ source.Archivo }}, {{ source.signatura }}</p>
-        <p><strong>{{ t('src_link') }}:</strong> <a href="{{ source.URL }}" target="_new">{{ source.URL }}</a></p>
-        <p><strong>{{ t('src_full_citation') }}:</strong> {{ source.CitaCompleta }}</p>
+    <p class="kind">
+        {%- if source['class'] == 'primary' %}{{ t('src_class_primary') }}{% elif source['class'] == 'secondary' %}{{ t('src_class_secondary') }}{% endif -%}
+        {%- if type_label %}{% if source['class'] %} · {% endif %}{{ type_label }}{% endif -%}
+    </p>
+
+    {% if citation %}
+    <p class="citation" id="citation">{{ citation }}</p>
+    <div class="actions">
+        <a class="btn primary" href="{{ url_for('enciclopedia.source_ris', source_id=source.FuenteID or source.fuenteID) }}">{{ t('src_download_ris') }}</a>
+        <button type="button" class="btn" id="copy-btn">{{ t('src_copy') }}</button>
+        {% if source.url %}<a class="btn" href="{{ source.url }}" target="_blank" rel="noopener">{{ t('src_open_link') }}</a>{% endif %}
     </div>
+    <p class="hint">RIS {{ t('src_ris_hint') }}</p>
+    {% else %}
+    <p class="citation empty">{{ t('src_no_info') }}</p>
+    {% endif %}
+
+    <div class="meta">
+        <p>{{ t('src_fuenteid') }}: {{ source.FuenteID }}{% if source.fuenteID %} ({{ source.fuenteID }}){% endif %}</p>
+        {% if duplicate %}<p>{{ t('src_duplicate_note', id=duplicate.FuenteID) }}</p>{% endif %}
+    </div>
+
+    <script>
+    (function () {
+        var btn = document.getElementById('copy-btn');
+        if (!btn) return;
+        btn.addEventListener('click', function () {
+            var text = document.getElementById('citation').innerText.trim();
+            var done = function () {
+                var old = btn.textContent;
+                btn.textContent = {{ t('src_copied')|tojson }};
+                setTimeout(function () { btn.textContent = old; }, 1500);
+            };
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(done, function () {});
+            } else {
+                var ta = document.createElement('textarea');
+                ta.value = text; document.body.appendChild(ta); ta.select();
+                try { document.execCommand('copy'); done(); } catch (e) {}
+                document.body.removeChild(ta);
+            }
+        });
+    })();
+    </script>
 </body>
 </html>

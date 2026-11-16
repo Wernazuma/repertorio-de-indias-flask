@@ -14,6 +14,21 @@
   .sf-hp { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
   .sf-challenge { max-width:8rem !important; }
   .sf-banner { padding:.6rem .8rem; border-radius:6px; margin-bottom:1rem; }
+  .sf-srcclass { border:none; padding:0; margin:.8rem 0 0; }
+  .sf-srcclass legend { font-size:.9em; font-weight:600; padding:0; margin-bottom:.2rem; }
+  .sf-form .sf-radio { display:inline-flex; align-items:center; gap:.35rem; font-weight:400; margin:0 1.4rem 0 0; font-size:1em; white-space:nowrap; }
+  .sf-form .sf-radio input { width:auto; max-width:none; padding:0; margin:0; }
+  .sf-form .sf-radio.sf-radio-wrap { white-space:normal; margin-bottom:.2rem; }
+  .sf-form select#sf-srctype, .sf-form select.sf-select { max-width:28rem; }
+  .sf-form .sf-field textarea, .sf-form .sf-field input[type=text], .sf-form .sf-field input[type=url] { max-width:28rem; }
+  .sf-form .sf-field textarea { min-height:2.6rem; }
+  .sf-form .sf-field input[type=date] { width:auto; }
+  .sf-srcfields-hint { margin:.9rem 0 0; color:var(--muted,#777); font-size:.85em; }
+  .sf-form input.sf-related { max-width:28rem; background:var(--surface-2,rgba(0,0,0,.04)); color:var(--muted,#777); cursor:default; }
+  .sf-bulknote { margin:.6rem 0 1.1rem; padding:.55rem .8rem; border-left:3px solid var(--accent,#2f5d8a); background:var(--surface-2,rgba(0,0,0,.03)); }
+  .sf-contact { display:flex; gap:1rem; max-width:42rem; }
+  .sf-contact > div { flex:1 1 0; min-width:0; }
+  @media (max-width: 480px) { .sf-contact { flex-direction:column; gap:0; } }
 </style>
 {% endblock %}
 
@@ -30,6 +45,10 @@
   {% elif msg == 'senderror' %}<p class="sf-banner" style="border-left:3px solid #c0563a; background:var(--surface-2,rgba(0,0,0,.03));">{{ t('suggest_senderror') }}</p>{% endif %}
 
   <p class="hint" style="color:var(--muted,#777);">{{ t(desc_key, name=entity_name) }}</p>
+  {% if source_classes %}
+    <p class="sf-bulknote">{{ t('src_bulk_intro') }}
+      <a href="{{ url_for('enciclopedia.' ~ scope ~ '_sources_bulk', entity_id=entity_id) }}">{{ t('src_bulk_link') }}</a></p>
+  {% endif %}
 
   {% macro antibot() %}
     <div class="sf-hp" aria-hidden="true"><label>Website</label><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
@@ -38,10 +57,12 @@
     <p style="margin-top:.8rem;"><button type="submit">{{ t('suggest_submit') }}</button></p>
   {% endmacro %}
   {% macro contact() %}
-    <label>{{ t('suggest_name') }} *</label>
-    <input type="text" name="submitter_name" maxlength="100" required>
-    <label>{{ t('suggest_email') }} *</label>
-    <input type="email" name="submitter_email" maxlength="120" required>
+    <div class="sf-contact">
+      <div><label for="sf-name">{{ t('suggest_name') }} *</label>
+        <input type="text" id="sf-name" name="submitter_name" maxlength="100" required></div>
+      <div><label for="sf-email">{{ t('suggest_email') }} *</label>
+        <input type="email" id="sf-email" name="submitter_email" maxlength="120" required></div>
+    </div>
     <p class="hint" style="margin:.45rem 0 .2rem;">{{ t('suggest_privacy') }}
       <a href="{{ url_for('impressum') }}#privacy" target="_blank" rel="noopener">{{ t('suggest_privacy_more') }}</a></p>
   {% endmacro %}
@@ -49,6 +70,104 @@
   <form class="sf-form" method="post"
         action="{% if scope == 'place' %}{{ url_for('enciclopedia.place_suggest', place_id=entity_id, kind=kind) }}{% else %}{{ url_for('enciclopedia.territory_suggest', territory_id=entity_id, kind=kind) }}{% endif %}">
     {{ contact() }}
+
+    {% if source_classes %}
+      {# The related place / territory comes from the page; shown, not editable. #}
+      <label for="sf-related">{{ t('src_related_' ~ scope) }}</label>
+      <input type="text" id="sf-related" class="sf-related" value="{{ entity_name }} ({{ entity_id }})" readonly tabindex="-1">
+
+      {# Step 1: primary vs secondary. Step 2: resource type within that class
+         (JS narrows the list; without JS the optgroups still show both). #}
+      <fieldset class="sf-srcclass">
+        <legend>{{ t('src_class_label') }} *</legend>
+        {% for key, labels in source_classes.items() %}
+          <label class="sf-radio"><input type="radio" name="source_class" value="{{ key }}" required>
+            {{ labels[1] if lang == 'en' else labels[0] }}</label>
+        {% endfor %}
+      </fieldset>
+      <label for="sf-srctype">{{ t('src_type_label') }} *</label>
+      <select id="sf-srctype" name="source_type" required>
+        <option value="">{{ t('src_type_pick') }}</option>
+        {% for key, labels in source_classes.items() %}
+          <optgroup label="{{ labels[1] if lang == 'en' else labels[0] }}" data-class="{{ key }}">
+            {% for s in source_types if s[1] == key %}
+              {% set m = source_type_menu.get(s[0]) if source_type_menu else none %}
+              <option value="{{ s[0] }}">{% if m %}{{ m[1] if lang == 'en' else m[0] }}{% else %}{{ s[3] if lang == 'en' else s[2] }}{% endif %}</option>
+            {% endfor %}
+          </optgroup>
+        {% endfor %}
+      </select>
+
+      <fieldset class="sf-srcclass">
+        <legend>{{ t('src_cov_label', name=entity_name) }} *</legend>
+        <label class="sf-radio sf-radio-wrap"><input type="radio" name="coverage" value="dedicated" required>
+          {{ t('src_cov_dedicated', name=entity_name) }}</label><br>
+        <label class="sf-radio sf-radio-wrap"><input type="radio" name="coverage" value="covers" required>
+          {{ t('src_cov_covers', name=entity_name) }}</label>
+      </fieldset>
+
+      {# Step 3: the RIS fields for the chosen type (R/O from the type matrix).
+         JS shows only the chosen type's fields and sets `required`; hidden
+         fields are disabled so they are not submitted. Server re-checks. #}
+      <div id="sf-srcfields">
+        <p class="hint sf-srcfields-hint">{{ t('src_fields_hint') }}</p>
+        {% for f in source_fields %}
+          {% set col, kind = f[0], f[5] %}
+          {% set hint = f[4] if lang == 'en' else f[3] %}
+          <div class="sf-field" data-req="{{ f[6] }}" data-opt="{{ f[7] }}">
+            <label for="sf-{{ col }}">{{ f[2] if lang == 'en' else f[1] }}<span class="sf-reqmark"> *</span>{% if hint %} <span class="hint">— {{ hint }}</span>{% endif %}</label>
+            {% if kind == 'lines' or kind == 'textarea' %}
+              <textarea id="sf-{{ col }}" name="{{ col }}" rows="{{ 4 if kind == 'textarea' else 2 }}"></textarea>
+            {% elif kind == 'date' %}
+              <input type="date" id="sf-{{ col }}" name="{{ col }}">
+            {% elif kind == 'url' %}
+              <input type="url" id="sf-{{ col }}" name="{{ col }}" maxlength="500" placeholder="https://…">
+            {% elif kind == 'year' %}
+              <input type="text" id="sf-{{ col }}" name="{{ col }}" maxlength="4" inputmode="numeric" pattern="[0-9]{4}">
+            {% else %}
+              <input type="text" id="sf-{{ col }}" name="{{ col }}" maxlength="600">
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+
+      <script>
+        (function () {
+          var sel = document.getElementById('sf-srctype');
+          var radios = document.querySelectorAll('input[name="source_class"]');
+          var fields = document.querySelectorAll('#sf-srcfields .sf-field');
+          var hint = document.querySelector('.sf-srcfields-hint');
+          function syncFields() {
+            var ty = sel.disabled ? '' : sel.value;
+            hint.style.display = ty ? '' : 'none';
+            fields.forEach(function (d) {
+              var req = (' ' + d.getAttribute('data-req') + ' ').indexOf(' ' + ty + ' ') >= 0;
+              var opt = (' ' + d.getAttribute('data-opt') + ' ').indexOf(' ' + ty + ' ') >= 0;
+              var on = !!ty && (req || opt);
+              d.style.display = on ? '' : 'none';
+              d.querySelector('.sf-reqmark').style.display = req ? '' : 'none';
+              var inp = d.querySelector('input, textarea');
+              inp.disabled = !on;
+              inp.required = on && req;
+            });
+          }
+          function syncClass() {
+            var cls = (document.querySelector('input[name="source_class"]:checked') || {}).value;
+            sel.disabled = !cls;
+            sel.querySelectorAll('optgroup').forEach(function (g) {
+              var on = g.getAttribute('data-class') === cls;
+              g.hidden = !on; g.disabled = !on;
+            });
+            var cur = sel.options[sel.selectedIndex];
+            if (cur && cur.parentNode.tagName === 'OPTGROUP' && cur.parentNode.disabled) sel.value = '';
+            syncFields();
+          }
+          radios.forEach(function (r) { r.addEventListener('change', syncClass); });
+          sel.addEventListener('change', syncFields);
+          syncClass();
+        })();
+      </script>
+    {% endif %}
 
     {% for f in field_meta %}
       {% set col = f[0] %}
@@ -59,6 +178,13 @@
         <input type="url" name="{{ col }}" maxlength="500" placeholder="https://…"{% if req %} required{% endif %}>
       {% elif col == 'claim' %}
         <textarea name="{{ col }}" maxlength="1000"{% if req %} required{% endif %}></textarea>
+      {% elif col == 'category' %}
+        <select name="{{ col }}" class="sf-select"{% if req %} required{% endif %}>
+          <option value="">{{ t('sug_category_pick') }}</option>
+          {% for c in place_categories %}<option value="{{ c[0] }}">{{ c[2] if lang == 'en' else c[1] }}</option>{% endfor %}
+        </select>
+      {% elif col == 'Fuente' %}
+        <textarea name="{{ col }}" maxlength="600" rows="2"{% if req %} required{% endif %}></textarea>
       {% else %}
         <input type="text" name="{{ col }}" maxlength="300"{% if req %} required{% endif %}>
       {% endif %}
