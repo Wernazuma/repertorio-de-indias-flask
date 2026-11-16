@@ -1419,6 +1419,14 @@ PER;6000001;Consulado_Lima;Consulado de Lima;Consulado;;0;Lima;1593;;9999;;;MORA
 CHL;7000001;Consulado_Santiago;Consulado de Santiago de Chile;Consulado;;0;Santiago de Chile;1795;;9999;;;MORALES PADRON, Francisco: Atlas histórico-cultural de América, 2 vols. (Las Palmas de Gran Canaria 1988).;;;;Consulados
 RPL;9000001;Consulado_Buenos_Aires;Consulado de Buenos Aires;Consulado;;0;Buenos Aires;1794;;9999;;;MORALES PADRON, Francisco: Atlas histórico-cultural de América, 2 vols. (Las Palmas de Gran Canaria 1988).;;;;Consulados
 FIL;1600001;Consulado_Manila;Consulado de Manila;Consulado;;0;Manila;1769;;9999;;;MORALES PADRON, Francisco: Atlas histórico-cultural de América, 2 vols. (Las Palmas de Gran Canaria 1988).;;;;Consulados
-NGR;5000004;Inquisicion_Cartagena;Tribunal del Santo Oficio de Cartagena;Tribunal del Santo Oficio;;1;Cartagena;1610;;1811;;;;;;;Inquisicion
-PER;6000001;Inquisicion_Lima;Tribunal del Santo Oficio de Lima;Tribunal del Santo Oficio;;1;Lima;1569;;1811;;;;;;;Inquisicion
-NES;1000001;Inquisicion_Mexico;Tribunal del Santo Oficio de México;Tribunal del Santo Oficio;;1;México;1569;;1811;;;;;;;Inquisicion
+NGR;5000004;Inquisicion_Cartagena;Tribunal del Santo Oficio de Cartagena;Tribunal del Santo Oficio;;1;Cartagena;1610;;1811;;;MORALES PADRON, Francisco: Atlas histórico-cultural de América, 2 vols. (Las Palmas de Gran Canaria 1988).;;;;Inquisicion
+PER;6000001;Inquisicion_Lima;Tribunal del Santo Oficio de Lima;Tribunal del Santo Oficio;;1;Lima;1569;;1811;;;MORALES PADRON, Francisco: Atlas histórico-cultural de América, 2 vols. (Las Palmas de Gran Canaria 1988).;;;;Inquisicion
+NES;1000001;Inquisicion_Mexico;Tribunal del Santo Oficio de México;Tribunal del Santo Oficio;;1;México;1569;;1811;;;MORALES PADRON, Francisco: Atlas histórico-cultural de América, 2 vols. (Las Palmas de Gran Canaria 1988).;;;;Inquisicion
+;;OdeMerc;Mercedarios;Orden religiosa;;0;;;;;;;;;;;
+;;OSA;Agustinos;Orden religiosa;;0;;;;;;;;;;;
+;;OP;Dominicanos;Orden religiosa;;0;;;;;;;;;;;
+;;OFM;Franciscanos;Orden religiosa;;0;;;;;;;;;;;
+;;OFMCap;Capuchinos;Orden religiosa;;0;;;;;;;;;;;
+;;SJ;Jesuitas;Orden religiosa;;0;;;;;;;;;;;
+;;Secular;Clero Secular;Clero;;0;;;;;;;;;;;
+;;OFMRec;Recoletos;Orden religiosa;;0;;;;;;;;;;;

@@ -1,19 +1,22 @@
 gz_id;Entidad_ID;Nivel;tipo;Label;lat;lon;START;END_;C_START;C_END;tipolink;Cabecera;fuente_ID;template;Nivel_START;Nivel_END
-1000000;JUGDSSCH;Provincia_menor;Alcaldia Mayor;Chametla y Salinas;90;0;1630;1665;1630;1665;alcaldia_mayor;[-];desconocida;[[:gazetteer:1000000|[-]]] (1630-1665);1532;1808
-1000000;JUGDSSCH;Provincia_menor;Alcaldia Mayor;Minas de Chametla;90;0;1600;1629;1600;1629;alcaldia_mayor;[-];desconocida;[[:gazetteer:1000000|[-]]] (1600-1629);1532;1808
-1000000;JUGDSSCH;Provincia_menor;Alcaldia Mayor;Villa del Espiritu Santo;90;0;1532;1536;1532;1536;alcaldia_mayor;[-];desconocida;[[:gazetteer:1000000|[-]]] (1532-1536);1532;1808
-1000000;JUGDSSCH;Provincia_menor;Comandancia;San Sebastian;90;0;1666;1684;1666;1684;jurisdiccion_militar;[-];desconocida;[[:gazetteer:1000000|[-]]] (1666-1684);1532;1808
-1000000;JUGDSSCH;Provincia_menor;Provincia;Chametla;90;0;1537;1563;1537;1563;provincia;[-];desconocida;[[:gazetteer:1000000|[-]]] (1537-1563);1532;1808
-1000000;JUGDSSCH;Provincia_menor;Provincia;Chametla;90;0;1685;1808;1685;9999;provincia;[-];desconocida;[[:gazetteer:1000000|[-]]] (1685-9999);1532;1808
-1000000;JUGDSSCH;Provincia_menor;Tenencia de gobierno;Chametla;90;0;1564;1599;1564;1599;partido;[-];desconocida;[[:gazetteer:1000000|[-]]] (1564-1599);1532;1808
-1000000;JUGUCRCH;Jurisdiccion;Corregimiento;Chirripo;90;0;1632;1659;1632;1659;corregimiento;[-];desconocida;[[:gazetteer:1000000|[-]]] (1632-1659);1632;1659
-1000000;JUGUCRPA;Jurisdiccion;Corregimiento;Pacaca;90;0;1583;1659;1583;1659;corregimiento;[-];desconocida;[[:gazetteer:1000000|[-]]] (1583-1659);1583;1659
-1000000;JUGUCRQU;Jurisdiccion;Corregimiento;Quepo;90;0;1583;1659;1583;1659;corregimiento;[-];desconocida;[[:gazetteer:1000000|[-]]] (1583-1659);1583;1659
-1000000;JUGUCRTR;Jurisdiccion;Corregimiento;Tucurrique;90;0;1591;1599;1591;1599;corregimiento;[-];desconocida;[[:gazetteer:1000000|[-]]] (1591-1599);1591;1659
-1000000;JUGUCRTR;Jurisdiccion;Corregimiento-Alcaldia Mayor;Turrialba;90;0;1600;1659;1600;1659;corregimiento;[-];desconocida;[[:gazetteer:1000000|[-]]] (1600-1659);1591;1659
-1000000;JUNEBEBE;Partido;Colonia inglesa;Belice;90;0;1763;1796;1763;1797;entidades_atipicas;[-];desconocida;[[:gazetteer:1000000|[-]]] (1763-1797);1763;1796
-1000000;JUNEBEBE;Provincia_menor;Colonia inglesa;Belice;90;0;1763;1796;1763;1797;entidades_atipicas;[-];desconocida;[[:gazetteer:1000000|[-]]] (1763-1797);1763;1796
-1000000;JUNEBEBE;Provincia;Colonia inglesa;Belice;90;0;1763;1796;1763;1797;entidades_atipicas;[-];desconocida;[[:gazetteer:1000000|[-]]] (1763-1797);1763;1796
+1000000;FRGUCYTA;Partido;Fronteras;Taguzalpa;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
+1000000;FRGUCYXI;Partido;Fronteras;Xicayes;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
+1000000;FRGUMOCH;Partido;Fronteras;Choles;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
+1000000;FRGUNITO;Partido;Fronteras;Tologalpa;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
+1000000;FRMOCMXX;Partido;Fronteras;Costa mosquita;90;0;1701;1806;1111;9999;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-9999);1701;1806
+1000000;FRMORFXX;Partido;Fronteras;Suerre;90;0;1701;1808;1111;9999;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-9999);1701;1808
+1000000;FRMOTABT;Partido;Fronteras;Bocas del Toro;90;0;1701;1808;1111;9999;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-9999);1701;1808
+1000000;FRMOTAXX;Partido;Fronteras;Talamanca;90;0;1701;1808;1111;9999;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-9999);1701;1808
+1000000;FRMOXXXX;Fronteras;Fronteras;Golfo;90;0;1111;9999;1111;9999;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-9999);1111;9999
+1000000;FRNGCHCH;Fronteras;Fronteras;Chocoes;90;0;1111;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1111;9999
+1000000;FRNGCUXX;Fronteras;Fronteras;Darienes;90;0;1111;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1111;9999
+1000000;FRNGCUXX;Partido;Fronteras;Darienes;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
+1000000;FRNGMOXX;Fronteras;Fronteras;Motilones;90;0;1111;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1111;9999
+1000000;FRNGSMAR;Fronteras;Fronteras;Araguacos;90;0;1111;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1111;9999
+1000000;FRNGSMCH;Fronteras;Fronteras;Chimilas;90;0;1111;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1111;9999
+1000000;FRNGSMGU;Fronteras;Fronteras;Guajiros;90;0;1111;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1111;9999
+1000000;FRPAMAGU;Partido;Fronteras;Guayra;90;0;1638;1749;1637;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1637-1808);1638;1749
+1000000;FRPAMAIT;Partido;Fronteras;Itatines y Jerez;90;0;1701;1749;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1749
 1000000;EXDI0000;Extranjero;Reino;Dinamarca;90;0;1672;1808;1111;1808;;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1672;1808
 1000000;EXFR0000;Extranjero;Imperio;Francia;90;0;1804;1808;1804;1808;;[-];desconocida;[[:gazetteer:1000000|[-]]] (1804-1808);1564;1808
 1000000;EXFR0000;Extranjero;Reino;Francia;90;0;1564;1791;1111;1791;;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1791);1564;1808
@@ -55,43 +58,6 @@ gz_id;Entidad_ID;Nivel;tipo;Label;lat;lon;START;END_;C_START;C_END;tipolink;Cabe
 1000000;FREDXXXX;Fronteras;Fronteras;El Dorado;90;0;1111;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1111;9999
 1000000;FRFLGUXX;Partido;Fronteras;Guale;90;0;1701;1731;1111;1731;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1731);1701;1731
 1000000;FRFLGUXX;Fronteras;Fronteras;Guale;90;0;1111;1731;1111;1731;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1731);1111;9999
-1000000;FRGUCYTA;Partido;Fronteras;Taguzalpa;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
-1000000;FRGUCYXI;Partido;Fronteras;Xicayes;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
-1000000;FRGUMOCH;Partido;Fronteras;Choles;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
-1000000;FRGUNITO;Partido;Fronteras;Tologalpa;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
-1000000;FRMOCMXX;Partido;Fronteras;Costa mosquita;90;0;1701;1806;1111;9999;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-9999);1701;1806
-1000000;FRMORFXX;Partido;Fronteras;Suerre;90;0;1701;1808;1111;9999;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-9999);1701;1808
-1000000;FRMOTABT;Partido;Fronteras;Bocas del Toro;90;0;1701;1808;1111;9999;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-9999);1701;1808
-1000000;FRMOTAXX;Partido;Fronteras;Talamanca;90;0;1701;1808;1111;9999;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-9999);1701;1808
-1000000;FRMOXXXX;Fronteras;Fronteras;Golfo;90;0;1111;9999;1111;9999;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-9999);1111;9999
-1000000;FRNGCHCH;Fronteras;Fronteras;Chocoes;90;0;1111;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1111;9999
-1000000;FRNGCUXX;Fronteras;Fronteras;Darienes;90;0;1111;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1111;9999
-1000000;FRNGCUXX;Partido;Fronteras;Darienes;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
-1000000;FRNGMOXX;Fronteras;Fronteras;Motilones;90;0;1111;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1111;9999
-1000000;FRNGSMAR;Fronteras;Fronteras;Araguacos;90;0;1111;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1111;9999
-1000000;FRNGSMCH;Fronteras;Fronteras;Chimilas;90;0;1111;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1111;9999
-1000000;FRNGSMGU;Fronteras;Fronteras;Guajiros;90;0;1111;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1111;9999
-1000000;FRPAMAGU;Partido;Fronteras;Guayra;90;0;1638;1749;1637;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1637-1808);1638;1749
-1000000;FRPAMAIT;Partido;Fronteras;Itatines y Jerez;90;0;1701;1749;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1749
-1000000;FRPAMAXX;Fronteras;Fronteras;Mamelucos;90;0;1111;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1111;9999
-1000000;FRPAPJXX;Partido;Fronteras;Gran Pajonal;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
-1000000;FRPAPSXX;Partido;Fronteras;Pampa del Sacramento;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
-1000000;FRPAXXXX;Partido;Fronteras;Paititi;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
-1000000;FRPAXXXX;Fronteras;Fronteras;Paititi;90;0;1111;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1111;9999
-1000000;FRQUJIXX;Fronteras;Fronteras;Jivaros;90;0;1111;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1111;9999
-1000000;FRQUMCHU;Partido;Fronteras;Huamboyas;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
-1000000;FRQVBMXX;Partido;Fronteras;Bolson de Mapimi;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
-1000000;FRQVLIXX;Partido;Fronteras;Apacheria Lipanes;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
-1000000;FRQVLLXX;Partido;Fronteras;Comancheria;90;0;1721;1808;1111;9999;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-9999);1721;1808
-1000000;FRQVNMNT;Partido;Fronteras;Natage;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
-1000000;FRQVSMXX;Fronteras;Fronteras;Seno mexicano;90;0;1111;9999;1111;9999;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-9999);1111;9999
-1000000;FRQVSMXX;Partido;Fronteras;Seno mexicano;90;0;1701;1808;1111;9999;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-9999);1701;1808
-1000000;FRQVXXXX;Fronteras;Fronteras;Quivira;90;0;1111;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1111;9999
-1000000;FRQVXXXX;Partido;Fronteras;Quivira;90;0;1701;1720;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1720
-1000000;FRRPCHBO;Partido;Fronteras;Chaco Septentrional;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
-1000000;FRRPCHGU;Partido;Fronteras;Chaco Gualamba;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
-1000000;FRRPCHLL;Partido;Fronteras;Llanos de Manso;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
-1000000;FRRPCHXX;Fronteras;Fronteras;Gran Chaco;90;0;1111;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1111;9999
 1000000;FRSDPRVI;Partido;Fronteras;isla de Vieque;90;0;1718;1808;1111;9999;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-9999);1718;1808
 1000000;FRSDPRVI;Fronteras;Fronteras;isla de Vieque;90;0;1111;9999;1111;9999;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-9999);1111;9999
 1000000;FRVEGUCA;Partido;Fronteras;Caribana;90;0;1701;1808;1111;9999;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-9999);1701;1808
@@ -130,6 +96,40 @@ gz_id;Entidad_ID;Nivel;tipo;Label;lat;lon;START;END_;C_START;C_END;tipolink;Cabe
 1000000;JUCHCOAR;Jurisdiccion;Comandancia General;Frontera de Arauco;90;0;1727;1774;1727;1774;comandancia_general;[-];desconocida;[[:gazetteer:1000000|[-]]] (1727-1774);1701;1774
 1000000;JUGDCOPR;Jurisdiccion;Presidios;Frontera de Coahuila;90;0;1772;1808;1772;1808;jurisdiccion_militar;[-];desconocida;[[:gazetteer:1000000|[-]]] (1772-1808);1772;1808
 1000000;JUGDDUTL;Jurisdiccion;Partido;Tlaxcaltecas;90;0;1591;1783;1111;1808;partido;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1591;1783
+1000000;FRPAMAXX;Fronteras;Fronteras;Mamelucos;90;0;1111;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1111;9999
+1000000;FRPAPJXX;Partido;Fronteras;Gran Pajonal;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
+1000000;FRPAPSXX;Partido;Fronteras;Pampa del Sacramento;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
+1000000;FRPAXXXX;Partido;Fronteras;Paititi;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
+1000000;FRPAXXXX;Fronteras;Fronteras;Paititi;90;0;1111;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1111;9999
+1000000;FRQUJIXX;Fronteras;Fronteras;Jivaros;90;0;1111;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1111;9999
+1000000;FRQUMCHU;Partido;Fronteras;Huamboyas;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
+1000000;FRQVBMXX;Partido;Fronteras;Bolson de Mapimi;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
+1000000;FRQVLIXX;Partido;Fronteras;Apacheria Lipanes;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
+1000000;FRQVLLXX;Partido;Fronteras;Comancheria;90;0;1721;1808;1111;9999;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-9999);1721;1808
+1000000;FRQVNMNT;Partido;Fronteras;Natage;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
+1000000;FRQVSMXX;Fronteras;Fronteras;Seno mexicano;90;0;1111;9999;1111;9999;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-9999);1111;9999
+1000000;FRQVSMXX;Partido;Fronteras;Seno mexicano;90;0;1701;1808;1111;9999;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-9999);1701;1808
+1000000;FRQVXXXX;Fronteras;Fronteras;Quivira;90;0;1111;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1111;9999
+1000000;FRQVXXXX;Partido;Fronteras;Quivira;90;0;1701;1720;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1720
+1000000;FRRPCHBO;Partido;Fronteras;Chaco Septentrional;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
+1000000;FRRPCHGU;Partido;Fronteras;Chaco Gualamba;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
+1000000;FRRPCHLL;Partido;Fronteras;Llanos de Manso;90;0;1701;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1701;1808
+1000000;FRRPCHXX;Fronteras;Fronteras;Gran Chaco;90;0;1111;1808;1111;1808;fronteras;[-];desconocida;[[:gazetteer:1000000|[-]]] (1111-1808);1111;9999
+1000000;JUGDSSCH;Provincia_menor;Alcaldia Mayor;Chametla y Salinas;90;0;1630;1665;1630;1665;alcaldia_mayor;[-];desconocida;[[:gazetteer:1000000|[-]]] (1630-1665);1532;1808
+1000000;JUGDSSCH;Provincia_menor;Alcaldia Mayor;Minas de Chametla;90;0;1600;1629;1600;1629;alcaldia_mayor;[-];desconocida;[[:gazetteer:1000000|[-]]] (1600-1629);1532;1808
+1000000;JUGDSSCH;Provincia_menor;Alcaldia Mayor;Villa del Espiritu Santo;90;0;1532;1536;1532;1536;alcaldia_mayor;[-];desconocida;[[:gazetteer:1000000|[-]]] (1532-1536);1532;1808
+1000000;JUGDSSCH;Provincia_menor;Comandancia;San Sebastian;90;0;1666;1684;1666;1684;jurisdiccion_militar;[-];desconocida;[[:gazetteer:1000000|[-]]] (1666-1684);1532;1808
+1000000;JUGDSSCH;Provincia_menor;Provincia;Chametla;90;0;1537;1563;1537;1563;provincia;[-];desconocida;[[:gazetteer:1000000|[-]]] (1537-1563);1532;1808
+1000000;JUGDSSCH;Provincia_menor;Provincia;Chametla;90;0;1685;1808;1685;9999;provincia;[-];desconocida;[[:gazetteer:1000000|[-]]] (1685-9999);1532;1808
+1000000;JUGDSSCH;Provincia_menor;Tenencia de gobierno;Chametla;90;0;1564;1599;1564;1599;partido;[-];desconocida;[[:gazetteer:1000000|[-]]] (1564-1599);1532;1808
+1000000;JUGUCRCH;Jurisdiccion;Corregimiento;Chirripo;90;0;1632;1659;1632;1659;corregimiento;[-];desconocida;[[:gazetteer:1000000|[-]]] (1632-1659);1632;1659
+1000000;JUGUCRPA;Jurisdiccion;Corregimiento;Pacaca;90;0;1583;1659;1583;1659;corregimiento;[-];desconocida;[[:gazetteer:1000000|[-]]] (1583-1659);1583;1659
+1000000;JUGUCRQU;Jurisdiccion;Corregimiento;Quepo;90;0;1583;1659;1583;1659;corregimiento;[-];desconocida;[[:gazetteer:1000000|[-]]] (1583-1659);1583;1659
+1000000;JUGUCRTR;Jurisdiccion;Corregimiento;Tucurrique;90;0;1591;1599;1591;1599;corregimiento;[-];desconocida;[[:gazetteer:1000000|[-]]] (1591-1599);1591;1659
+1000000;JUGUCRTR;Jurisdiccion;Corregimiento-Alcaldia Mayor;Turrialba;90;0;1600;1659;1600;1659;corregimiento;[-];desconocida;[[:gazetteer:1000000|[-]]] (1600-1659);1591;1659
+1000000;JUNEBEBE;Partido;Colonia inglesa;Belice;90;0;1763;1796;1763;1797;entidades_atipicas;[-];desconocida;[[:gazetteer:1000000|[-]]] (1763-1797);1763;1796
+1000000;JUNEBEBE;Provincia_menor;Colonia inglesa;Belice;90;0;1763;1796;1763;1797;entidades_atipicas;[-];desconocida;[[:gazetteer:1000000|[-]]] (1763-1797);1763;1796
+1000000;JUNEBEBE;Provincia;Colonia inglesa;Belice;90;0;1763;1796;1763;1797;entidades_atipicas;[-];desconocida;[[:gazetteer:1000000|[-]]] (1763-1797);1763;1796
 1000000;JUNEBEBE;Jurisdiccion;Colonia inglesa;Belice;90;0;1763;1796;1763;1797;entidades_atipicas;[-];desconocida;[[:gazetteer:1000000|[-]]] (1763-1797);1763;1796
 1000000;JUNEMIPE;Jurisdiccion;Corregimiento;Periban;90;0;1583;1586;1583;1586;corregimiento;[-];desconocida;[[:gazetteer:1000000|[-]]] (1583-1586);1583;1599
 1000000;JUNEMIPE;Jurisdiccion;Corregimiento;Periban;90;0;1591;1599;1591;1599;corregimiento;[-];desconocida;[[:gazetteer:1000000|[-]]] (1591-1599);1583;1599
@@ -4511,11 +4511,11 @@ gz_id;Entidad_ID;Nivel;tipo;Label;lat;lon;START;END_;C_START;C_END;tipolink;Cabe
 6000135;JUPEARTA;Partido;Corregimiento;Tarapaca;-19.9249;-69.5106;1768;1783;1768;1783;corregimiento;Tarapaca;;[[:gazetteer:6000135|Tarapaca]] (1768-1783);1768;1808
 6000135;JUPEARTA;Jurisdiccion;Subdelegacion;Tarapaca;-19.9249;-69.5106;1784;1808;1784;1808;subdelegacion;Tarapaca;;[[:gazetteer:6000135|Tarapaca]] (1784-1808);1768;1808
 6000135;JUPEARTA;Partido;Subdelegacion;Tarapaca;-19.9249;-69.5106;1784;1808;1784;1808;subdelegacion;Tarapaca;;[[:gazetteer:6000135|Tarapaca]] (1784-1808);1768;1808
-6000158;JUPECUAB;Provincia_menor;Corregimiento;Abancay;-13.6333;-72.8833;1583;1783;1583;1783;corregimiento;Abancay;;[[:gazetteer:6000158|Abancay]] (1583-1783);1583;1783
-6000158;JUPECUAB;Partido;Corregimiento;Abancay;-13.6333;-72.8833;1701;1783;1583;1783;corregimiento;Abancay;;[[:gazetteer:6000158|Abancay]] (1583-1783);1701;1808
-6000158;JUPECUAB;Jurisdiccion;Corregimiento;Abancay;-13.6333;-72.8833;1701;1783;1583;1783;corregimiento;Abancay;;[[:gazetteer:6000158|Abancay]] (1583-1783);1701;1808
-6000158;JUPECUAB;Partido;Subdelegacion;Abancay;-13.6333;-72.8833;1784;1808;1784;1808;subdelegacion;Abancay;;[[:gazetteer:6000158|Abancay]] (1784-1808);1701;1808
-6000158;JUPECUAB;Jurisdiccion;Subdelegacion;Abancay;-13.6333;-72.8833;1784;1808;1784;1808;subdelegacion;Abancay;;[[:gazetteer:6000158|Abancay]] (1784-1808);1701;1808
+6000158;JUPECUAB;Provincia_menor;Corregimiento;Abancay;-13.6374;-72.8789;1583;1783;1583;1783;corregimiento;Abancay;;[[:gazetteer:6000158|Abancay]] (1583-1783);1583;1783
+6000158;JUPECUAB;Partido;Corregimiento;Abancay;-13.6374;-72.8789;1701;1783;1583;1783;corregimiento;Abancay;;[[:gazetteer:6000158|Abancay]] (1583-1783);1701;1808
+6000158;JUPECUAB;Jurisdiccion;Corregimiento;Abancay;-13.6374;-72.8789;1701;1783;1583;1783;corregimiento;Abancay;;[[:gazetteer:6000158|Abancay]] (1583-1783);1701;1808
+6000158;JUPECUAB;Partido;Subdelegacion;Abancay;-13.6374;-72.8789;1784;1808;1784;1808;subdelegacion;Abancay;;[[:gazetteer:6000158|Abancay]] (1784-1808);1701;1808
+6000158;JUPECUAB;Jurisdiccion;Subdelegacion;Abancay;-13.6374;-72.8789;1784;1808;1784;1808;subdelegacion;Abancay;;[[:gazetteer:6000158|Abancay]] (1784-1808);1701;1808
 6000175;JUPECUAY;Provincia_menor;Corregimiento;Aymaraes;-14.2949;-73.2441;1583;1783;1583;1783;corregimiento;Chalhuanca;;[[:gazetteer:6000175|Chalhuanca]] (1583-1783);1583;1783
 6000175;JUPECUAY;Partido;Corregimiento;Aymaraes;-14.2949;-73.2441;1701;1783;1583;1783;corregimiento;Chalhuanca;;[[:gazetteer:6000175|Chalhuanca]] (1583-1783);1701;1808
 6000175;JUPECUAY;Jurisdiccion;Corregimiento;Aymaraes;-14.2949;-73.2441;1701;1783;1583;1783;corregimiento;Chalhuanca;;[[:gazetteer:6000175|Chalhuanca]] (1583-1783);1701;1808

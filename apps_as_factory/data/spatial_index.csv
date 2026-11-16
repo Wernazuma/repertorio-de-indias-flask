@@ -1,25 +1,4 @@
 Entidad_ID;Variantes;Nivel;overlap_start;overlap_end;Region;Lat_Capital;Lon_Capital
-JCNEOATC;Teotitlan del Camino @ Teutitlan del Camino @ Teutitlan de los Cues;Provincia_menor;1600;1695;Nueva España;18.1325;-97.07222
-JCNEOATE;Tecomabaca y Quiotepec @ Tecomavaca @;Jurisdiccion;1531;1630;Nueva España;90;0
-JCNEOATE;Tecomabaca y Quiotepec @ Tecomavaca @;Provincia_menor;1600;1630;Nueva España;90;0
-JCNEOATI;Tilantongo @ Tilantongo, Mitlantongo y Tamazola;Jurisdiccion;1566;1688;Nueva España;90;0
-JCNEOATI;Tilantongo @ Tilantongo, Mitlantongo y Tamazola;Provincia_menor;1600;1688;Nueva España;90;0
-JCNEOATO;Tonala @ Tonala y  Minas de Cilacayoapa @ Tonala y Tlapacingo @ Igualapan;Jurisdiccion;1579;1688;Nueva España;17.675;-97.9625
-JCNEOATO;Tonala @ Tonala y  Minas de Cilacayoapa @ Tonala y Tlapacingo @ Igualapan;Partido;1701;1808;Nueva España;17.675;-97.9625
-JCNEOATO;Tonala @ Tonala y  Minas de Cilacayoapa @ Tonala y Tlapacingo @ Igualapan;Provincia_menor;1579;1688;Nueva España;17.675;-97.9625
-JCNEOATP;Tepetotutla @;Jurisdiccion;1580;1599;Nueva España;17.73833;-96.55833
-JCNEOATQ;Tetiquipa @ Tetiquipa y Rio Hondo @ Rio Hondo;Jurisdiccion;1559;1598;Nueva España;16.1425;-96.44944
-JCNEOATT;Tetipac @ Teticpac @ Teiticpac @ Teitipac @ Tectipac @ Tecticpac @ Tetipaque @ Teitipaque @ Tectipaque @ Teticpaque @ Teiticpaque @ Tecticpaque;Jurisdiccion;1531;1598;Nueva España;16.90361;-96.55833
-JCNEOATX;Texupa @;Jurisdiccion;1534;1599;Nueva España;17.6625;-97.47083
-JCNEOAUC;Ucila @;Jurisdiccion;1534;1599;Nueva España;17.87917;-96.52778
-JCNEOAZO;Zoyaltepec @ Zoyaltepec y Zoyatlan @ Zoyaltepec y Coyatlan @ Coyatlan y Amatlan;Jurisdiccion;1560;1599;Nueva España;90;0
-JCNEPUCA;Calpan @;Jurisdiccion;1531;1540;Nueva España;19.10361;-98.46333
-JCNEPUCA;Calpan @;Partido;1701;1808;Nueva España;19.10361;-98.46333
-JCNEPUCU;Cuzcatlan @ Cozcatlan @ Coxcatlan;Jurisdiccion;1534;1645;Nueva España;18.26607;-97.15087
-JCNEPUEP;Epatlan y Teupantlan @;Jurisdiccion;1534;1535;Nueva España;18.64083;-98.37028
-JCNEPUTU;Tustepec y Quimixtlan @ Tuxtepec y Quimixtlan @ Tustebec @ Quimistlan @ Quimiztlan @ Tusteuqeue;Jurisdiccion;1542;1673;Nueva España;19.25306;-97.135
-JCNEVCCO;Cotaxtla @;Jurisdiccion;1595;1608;Nueva España;18.83417;-96.39722
-JCNEVCCZ;Chicuazen @ Chicuasen;Jurisdiccion;1531;1565;Nueva España;90;0
 AUBA0000;Buenos Aires @ Rio de la Plata;Audiencia;1663;1808;Rio de la Plata;-34.6079;-58.37322
 AUCA0000;Caracas @ Venezuela;Audiencia;1787;1808;Caracas;10.5061;-66.9146
 AUCC0000;Charcas @;Audiencia;1559;1808;Charcas;-19.04786;-65.2596
@@ -162,6 +141,27 @@ JCNEOAPP;Papaloticpac @ Papaloticpac y Tepeuzila @ Papalo;Jurisdiccion;1541;1695
 JCNEOAPP;Papaloticpac @ Papaloticpac y Tepeuzila @ Papalo;Partido;1541;1808;Nueva España;17.7825;-96.79722
 JCNEOAPP;Papaloticpac @ Papaloticpac y Tepeuzila @ Papalo;Provincia_menor;1600;1695;Nueva España;17.7825;-96.79722
 JCNEOATC;Teotitlan del Camino @ Teutitlan del Camino @ Teutitlan de los Cues;Jurisdiccion;1531;1695;Nueva España;18.1325;-97.07222
+JCNEOATC;Teotitlan del Camino @ Teutitlan del Camino @ Teutitlan de los Cues;Provincia_menor;1600;1695;Nueva España;18.1325;-97.07222
+JCNEOATE;Tecomabaca y Quiotepec @ Tecomavaca @;Jurisdiccion;1531;1630;Nueva España;90;0
+JCNEOATE;Tecomabaca y Quiotepec @ Tecomavaca @;Provincia_menor;1600;1630;Nueva España;90;0
+JCNEOATI;Tilantongo @ Tilantongo, Mitlantongo y Tamazola;Jurisdiccion;1566;1688;Nueva España;90;0
+JCNEOATI;Tilantongo @ Tilantongo, Mitlantongo y Tamazola;Provincia_menor;1600;1688;Nueva España;90;0
+JCNEOATO;Tonala @ Tonala y  Minas de Cilacayoapa @ Tonala y Tlapacingo @ Igualapan;Jurisdiccion;1579;1688;Nueva España;17.675;-97.9625
+JCNEOATO;Tonala @ Tonala y  Minas de Cilacayoapa @ Tonala y Tlapacingo @ Igualapan;Partido;1701;1808;Nueva España;17.675;-97.9625
+JCNEOATO;Tonala @ Tonala y  Minas de Cilacayoapa @ Tonala y Tlapacingo @ Igualapan;Provincia_menor;1579;1688;Nueva España;17.675;-97.9625
+JCNEOATP;Tepetotutla @;Jurisdiccion;1580;1599;Nueva España;17.73833;-96.55833
+JCNEOATQ;Tetiquipa @ Tetiquipa y Rio Hondo @ Rio Hondo;Jurisdiccion;1559;1598;Nueva España;16.1425;-96.44944
+JCNEOATT;Tetipac @ Teticpac @ Teiticpac @ Teitipac @ Tectipac @ Tecticpac @ Tetipaque @ Teitipaque @ Tectipaque @ Teticpaque @ Teiticpaque @ Tecticpaque;Jurisdiccion;1531;1598;Nueva España;16.90361;-96.55833
+JCNEOATX;Texupa @;Jurisdiccion;1534;1599;Nueva España;17.6625;-97.47083
+JCNEOAUC;Ucila @;Jurisdiccion;1534;1599;Nueva España;17.87917;-96.52778
+JCNEOAZO;Zoyaltepec @ Zoyaltepec y Zoyatlan @ Zoyaltepec y Coyatlan @ Coyatlan y Amatlan;Jurisdiccion;1560;1599;Nueva España;90;0
+JCNEPUCA;Calpan @;Jurisdiccion;1531;1540;Nueva España;19.10361;-98.46333
+JCNEPUCA;Calpan @;Partido;1701;1808;Nueva España;19.10361;-98.46333
+JCNEPUCU;Cuzcatlan @ Cozcatlan @ Coxcatlan;Jurisdiccion;1534;1645;Nueva España;18.26607;-97.15087
+JCNEPUEP;Epatlan y Teupantlan @;Jurisdiccion;1534;1535;Nueva España;18.64083;-98.37028
+JCNEPUTU;Tustepec y Quimixtlan @ Tuxtepec y Quimixtlan @ Tustebec @ Quimistlan @ Quimiztlan @ Tusteuqeue;Jurisdiccion;1542;1673;Nueva España;19.25306;-97.135
+JCNEVCCO;Cotaxtla @;Jurisdiccion;1595;1608;Nueva España;18.83417;-96.39722
+JCNEVCCZ;Chicuazen @ Chicuasen;Jurisdiccion;1531;1565;Nueva España;90;0
 JCNEVCPA;Tlapacoya @ Papalote de la Sierra @ Tapacoya, Padilla, Nautla, Colipa y Papalo @ Tizapancingo, Atlaliloya y Cicaquautla;Jurisdiccion;1534;1550;Nueva España;90;0
 JCNEVCTC;Tonatico y Cetusco @ Tonatico y Setusco @;Jurisdiccion;1544;1599;Nueva España;90;0
 JCNEVCTE;Tezayuca @ Tlaliscoya @ Tlalixcoya;Jurisdiccion;1534;1550;Nueva España;90;0
