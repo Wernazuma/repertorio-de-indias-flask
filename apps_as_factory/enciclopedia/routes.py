@@ -12,7 +12,9 @@ from . import bp
 # Function to read data from CSV files
 def read_csv(filename):
     data = []
-    with open(filename, 'r', encoding='utf-8') as file:
+    # utf-8-sig: tolerate a BOM (Excel / the source table), else the first
+    # column name would start with '﻿'.
+    with open(filename, 'r', encoding='utf-8-sig') as file:
         reader = csv.DictReader(file, delimiter=';')
         for row in reader:
             data.append(row)
@@ -27,7 +29,6 @@ geometry_csv = read_csv('data/gz_geometry.csv')
 cabildo_csv = read_csv('data/gz_cabildo.csv')
 foreignkeys_csv = read_csv('data/gz_foreignkeys.csv')
 reference_gazetteer_csv = read_csv('data/reference_gazetteer.csv')
-contains_csv = read_csv('data/contains.csv')
 gz_info_csv = read_csv('data/gz_info_1.csv')
 capital_csv = read_csv('data/Cabeceras-Entidades.csv')
 institution_csv = read_csv('data/instituciones.csv')
@@ -36,7 +37,6 @@ oficiales_entity_csv = read_csv('data/da_adm_Oficial_link.csv')
 infotable_csv = read_csv('data/infotable.csv')
 fuentes_entidades_csv = read_csv('data/entidades_fuentes.csv')
 entidades_csv = read_csv('data/entidades.csv')
-jerarquia_csv = read_csv('data/jerarquia.csv')
 
 fuentes_csv = read_csv('data/fuentes.csv')
 oficiales_csv = read_csv('data/da_adm_Oficiales.csv')
@@ -722,6 +722,32 @@ def place_detail(place_id):
                            history_exists=history_exists, reconstruction_exists=reconstruction_exists,
                            coordinates=coordinates)
 
+def _load_basemap_manifest():
+    """{WikiID: [years]} of the hosted base maps (copy of the manifest written by
+    transform/compress_basemaps.py). Missing file -> no base-map links."""
+    import json
+    try:
+        with open(os.path.join('data', 'mapas_base_manifest.json'), encoding='utf-8') as f:
+            m = json.load(f)
+        return m.get('ext', '.webp'), {k.lower(): v for k, v in m.get('maps', {}).items()}
+    except (OSError, ValueError):
+        return '.webp', {}
+
+
+_BASEMAP_EXT, _BASEMAP_YEARS = _load_basemap_manifest()
+# Base maps are hosted outside the app (GitHub Pages repo Wernazuma/hgis-mapas-base).
+# Override with ARCA_BASEMAP_URL if they move.
+BASEMAP_URL = os.environ.get('ARCA_BASEMAP_URL',
+                             'https://wernazuma.github.io/hgis-mapas-base').rstrip('/')
+
+
+def territory_basemaps(wiki_id):
+    """[(year, url)] for the territory's base maps that exist."""
+    wid = (wiki_id or '').strip()
+    return [(y, '{}/{}_{}{}'.format(BASEMAP_URL, wid, y, _BASEMAP_EXT))
+            for y in _BASEMAP_YEARS.get(wid.lower(), [])]
+
+
 # Route for viewing territory details
 @bp.route('/territory/<territory_id>')
 def territory_detail(territory_id):
@@ -776,7 +802,8 @@ def territory_detail(territory_id):
                            oficiales_entity_data=oficiales_entity_data, infotable_data=infotable_data,
                            fuentes_entidades_data=fuentes_entidades_grouped, jerarquia_sup_data=jerarquia_sup_data,
                            jerarquia_sub_data=jerarquia_sub_data, capital_terr_data=capital_terr_data,
-                           article_exists=article_exists, comment_exists=comment_exists)
+                           article_exists=article_exists, comment_exists=comment_exists,
+                           basemaps=territory_basemaps(territory.get('WikiID')))
 
 
 
@@ -1227,21 +1254,67 @@ def place_search():
 ###########################
 ### Table detail routes ###
 ###########################
-# Route for viewing source details
+# Source landing page (popup): full citation + RIS download.
+# Sources are addressed by their slug (FuenteID, as used in entidades_fuentes /
+# gz_categoria) or by the numeric fuenteID of the source table.
+def _source_index():
+    idx = {}
+    for s in fuentes_csv:
+        num = (s.get('fuenteID') or '').strip().lower()
+        if num:
+            idx.setdefault(num, s)
+    for s in fuentes_csv:                    # slugs win over numeric ids
+        slug = (s.get('FuenteID') or '').strip().lower()
+        if slug:
+            idx[slug] = s
+    return idx
+
+
+_fuentes_by_id = _source_index()
+
+
+def _find_source(source_id):
+    """(row, duplicate_row): a 'Dubleta' row resolves to the row it duplicates."""
+    src = _fuentes_by_id.get((source_id or '').strip().lower())
+    if src is None:
+        return None, None
+    target = _fuentes_by_id.get((src.get('duplicate_of') or '').strip().lower())
+    if target is not None and target is not src:
+        return target, src
+    return src, None
+
+
+def _source_type_label(doc_type, lang):
+    from .suggestions import SOURCE_TYPES       # lazy: suggestions imports this module
+    key = re.sub(r'\s*/\s*', '/', (doc_type or '').strip().lower())
+    for _k, _cls, es, en, _ris in SOURCE_TYPES:
+        if re.sub(r'\s*/\s*', '/', en.lower()) == key:
+            return es if lang == 'es' else en
+    return doc_type or ''
+
+
 @bp.route('/fuentes/<source_id>')
 def source_detail(source_id):
-    source_id = source_id.strip().lower()
-    source = None
-    for s in fuentes_csv:
-        csv_source_id = s['FuenteID'].strip().lower()
-        if csv_source_id == source_id:
-            source = s
-            break
-    
+    from .citation import format_citation
+    source, duplicate = _find_source(source_id)
     if source is None:
         return render_template('404.html'), 404
+    lang = resolve_locale()
+    return render_template('source_detail.html', source=source, duplicate=duplicate,
+                           citation=format_citation(source, lang),
+                           type_label=_source_type_label(source.get('doc_type'), lang))
 
-    return render_template('source_detail.html', source=source)
+
+@bp.route('/fuentes/<source_id>/ris')
+def source_ris(source_id):
+    from .citation import to_ris
+    source, _dup = _find_source(source_id)
+    if source is None:
+        abort(404)
+    name = re.sub(r'[^A-Za-z0-9_.-]+', '_', (source.get('FuenteID') or source.get('fuenteID')
+                                              or 'source').strip()) or 'source'
+    return Response(to_ris(source), mimetype='application/x-research-info-systems',
+                    headers={'Content-Disposition': 'attachment; filename="{}.ris"'.format(name)})
 
 
 @bp.route('/instituciones/<InstID>')

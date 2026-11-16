@@ -28,3 +28,8 @@ __pycache__
 # Runtime matching logs + the logger self-test scratch file.
 apps_as_factory/matching/logs/*.log
 apps_as_factory/matching/logs/_path_test.txt
+
+# Base-map images (2.5 GB originals + converted copies), hosted outside the repo
+apps_as_factory/data/mapas_base/
+apps_as_factory/data/mapas_base_web/
+

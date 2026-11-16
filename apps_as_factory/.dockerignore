@@ -1,1 +1,4 @@
 __pycache__
+# base-map images (hosted outside the app)
+data/mapas_base
+data/mapas_base_web

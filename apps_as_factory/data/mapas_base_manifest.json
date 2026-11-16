@@ -1,0 +1,6471 @@
+{
+"ext": ".webp",
+"maps": {
+"abancay_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"acaponeta_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"acapulco_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"acasaguastlan_jurisdiccion_gua": [
+1701,
+1725,
+1750
+],
+"acatlan_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"acayuca_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"aconcagua_jurisdiccion_chl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"actopan_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"aguada_partido_sdo": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"aguadilla_partido_sdo": [
+1787,
+1800,
+1808
+],
+"aguas_calientes_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"ahuacatlan_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"ahuatlan_jurisdiccion_nes": [
+1701,
+1725
+],
+"aigame_jurisdiccion_gdj": [
+1787,
+1800,
+1808
+],
+"alamos_jurisdiccion_gdj": [
+1787,
+1800,
+1808
+],
+"alange_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"alburquerque_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"almaguer_jurisdiccion_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"altagracia_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775
+],
+"amatique_jurisdiccion_gua": [
+1701,
+1725,
+1750
+],
+"ambato_jurisdiccion_qui": [
+1800,
+1808
+],
+"amozoc_jurisdiccion_nes": [
+1787,
+1800,
+1808
+],
+"amula_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"anasco_partido_sdo": [
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"anco_jurisdiccion_per": [
+1787,
+1800,
+1808
+],
+"andahuaylas_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"andaquies_jurisdiccion_ngr": [
+1775,
+1787,
+1800,
+1808
+],
+"angamacutiro_jurisdiccion_nes": [
+1800
+],
+"angaraes_jurisdiccion_per": [
+1787,
+1800,
+1808
+],
+"antequera_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"antioquia_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"antioquia_provincia_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"apan_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"apolobamba_jurisdiccion_cha": [
+1701,
+1725,
+1750,
+1787,
+1800,
+1808
+],
+"araucania_fronteras_chl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"araure_jurisdiccion_ven": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"arecibo_partido_sdo": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"arequipa_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"arequipa_obispado_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"arequipa_provincia_per": [
+1701,
+1787,
+1800,
+1808
+],
+"arica_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"arque_jurisdiccion_cha": [
+1787,
+1800,
+1808
+],
+"asuncion_jurisdiccion_rpl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"atacama_jurisdiccion_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"atitalaquia_jurisdiccion_nes": [
+1701
+],
+"atlatlauca_jurisdiccion_nes": [
+1701,
+1725
+],
+"atlixco_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"autlan_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"ayapel_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"aymaraes_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"ayopaya_jurisdiccion_cha": [
+1787,
+1800,
+1808
+],
+"azangaro_jurisdiccion_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"baba_jurisdiccion_qui": [
+1775,
+1787,
+1800,
+1808
+],
+"babahoyo_jurisdiccion_qui": [
+1775,
+1787,
+1800,
+1808
+],
+"babonoyaba_jurisdiccion_gdj": [
+1800,
+1808
+],
+"bacalar_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"baja_luisiana_jurisdiccion_sdo": [
+1775,
+1787,
+1800
+],
+"balzar_jurisdiccion_qui": [
+1775,
+1787,
+1800,
+1808
+],
+"banda_oriental_jurisdiccion_rpl": [
+1800,
+1808
+],
+"baracoa_jurisdiccion_sdo": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"barbacoas_jurisdiccion_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"barcelona_jurisdiccion_ven": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"barinas_jurisdiccion_ven": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"barinas_provincia_ven": [
+1787,
+1800,
+1808
+],
+"barquisimeto_jurisdiccion_ven": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"barranca_del_rey_partido_ngr": [
+1775,
+1787,
+1800,
+1808
+],
+"basis_jurisdiccion_gdj": [
+1775,
+1787
+],
+"basuchil_y_papigochic_jurisdiccion_gdj": [
+1800,
+1808
+],
+"batopilas_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"bayamo_jurisdiccion_sdo": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"bayamon_partido_sdo": [
+1775,
+1787,
+1800,
+1808
+],
+"belice_jurisdiccion_nes": [
+1775,
+1787
+],
+"beneficios_altos_jurisdiccion_nes": [
+1787,
+1800,
+1808
+],
+"beneficios_bajos_jurisdiccion_nes": [
+1787,
+1800,
+1808
+],
+"bexar_presidio_gdj": [
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"boca_de_leones_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"bolanos_jurisdiccion_gdj": [
+1775,
+1787,
+1800,
+1808
+],
+"bolonchencauich_jurisdiccion_nes": [
+1787,
+1800,
+1808
+],
+"buenos_aires_audiencia_rpl": [
+1787,
+1800,
+1808
+],
+"buenos_aires_intendencia_rpl": [
+1701
+],
+"buenos_aires_jurisdiccion_rpl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"buenos_aires_obispado_rpl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"buenos_aires_provincia_rpl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"buga_jurisdiccion_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cabo_rojo_partido_sdo": [
+1775,
+1787,
+1800,
+1808
+],
+"caceres_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cadereyta_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cadereyta_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"caguas_partido_sdo": [
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cajamarca_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cajatambo_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"calca_y_lares_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cali_jurisdiccion_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"california_alta_jurisdiccion_gdj": [
+1775,
+1787,
+1800,
+1808
+],
+"california_baja_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"california_provincia_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"callao_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"caloto_jurisdiccion_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"camana_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"camino_real_alto_jurisdiccion_nes": [
+1787,
+1800,
+1808
+],
+"camino_real_bajo_jurisdiccion_nes": [
+1787,
+1800,
+1808
+],
+"campeche_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"canatlan_jurisdiccion_gdj": [
+1800,
+1808
+],
+"candela_partido_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"candelaria_jurisdiccion_rpl": [
+1775,
+1787,
+1800,
+1808
+],
+"canelas_jurisdiccion_gdj": [
+1808
+],
+"canete_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cangallo_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cangrejos_partido_sdo": [
+1775,
+1787,
+1800,
+1808
+],
+"canta_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"carabaya_jurisdiccion_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"caracas_audiencia_ven": [
+1787,
+1800,
+1808
+],
+"caracas_intendencia_ven": [
+1701,
+1787,
+1800,
+1808
+],
+"caracas_jurisdiccion_ven": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"caracas_obispado_ven": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"caracas_provincia_ven": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"caracuaro_jurisdiccion_nes": [
+1800
+],
+"carangas_jurisdiccion_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"carmen_jurisdiccion_nes": [
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"carora_jurisdiccion_ven": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"carrizal_partido_gdj": [
+1775,
+1787,
+1800,
+1808
+],
+"cartagena_de_indias_obispado_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cartagena_de_indias_partido_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cartagena_de_indias_provincia_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"castrovirreina_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"catamarca_jurisdiccion_rpl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"catorze_jurisdiccion_nes": [
+1787,
+1800,
+1808
+],
+"cauquenes_jurisdiccion_chl": [
+1775,
+1787,
+1800,
+1808
+],
+"cayey_partido_sdo": [
+1775,
+1787,
+1800,
+1808
+],
+"celaya_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cercado_de_lima_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cerralvo_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cerro_gordo_jurisdiccion_gdj": [
+1775,
+1787,
+1800,
+1808
+],
+"chachapoyas_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"chalatenango_jurisdiccion_gua": [
+1808
+],
+"chalco_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"chami_jurisdiccion_ngr": [
+1701,
+1725
+],
+"chancay_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"charcas_audiencia_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"charcas_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"charcas_provincia_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"charo_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"chayanta_jurisdiccion_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"chiapas_obispado_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"chiapas_provincia_gua": [
+1701,
+1787,
+1800,
+1808
+],
+"chiautla_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"chichas_jurisdiccion_cha": [
+1787,
+1800,
+1808
+],
+"chietla_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"chihuahua_jurisdiccion_gdj": [
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"chilapa_jurisdiccion_nes": [
+1787,
+1800,
+1808
+],
+"chilchota_jurisdiccion_nes": [
+1701
+],
+"chile_superior_chl": [
+1701,
+1725,
+1750,
+1775
+],
+"chillan_jurisdiccion_chl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"chiloe_provincia_chl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"chilques_y_masques_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"chimaltenango_jurisdiccion_gua": [
+1775,
+1787,
+1800,
+1808
+],
+"chimbo_jurisdiccion_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"chinantla_y_uzila_jurisdiccion_nes": [
+1701,
+1725,
+1750
+],
+"chinda_jurisdiccion_gua": [
+1787,
+1800,
+1808
+],
+"chiquimula_jurisdiccion_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"chiquitos_jurisdiccion_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"chire_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"choco_provincia_ngr": [
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cholula_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"chontales_jurisdiccion_nes": [
+1800,
+1808
+],
+"chucandiro_jurisdiccion_nes": [
+1800
+],
+"chucuito_jurisdiccion_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"chulumani_jurisdiccion_cha": [
+1787,
+1800,
+1808
+],
+"chumbivilcas_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"chuquisaca_jurisdiccion_cha": [
+1775,
+1787,
+1800,
+1808
+],
+"cianori_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800
+],
+"cienega_de_los_olivos_jurisdiccion_gdj": [
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cieneguilla_jurisdiccion_gdj": [
+1787,
+1800,
+1808
+],
+"cinagua_y_la_guacana_jurisdiccion_nes": [
+1701,
+1725,
+1800,
+1808
+],
+"citara_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"ciudad_real_jurisdiccion_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"clisa_jurisdiccion_cha": [
+1787,
+1800,
+1808
+],
+"coahuila_provincia_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"coamo_partido_sdo": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"coatepec_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cochabamba_jurisdiccion_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cochabamba_provincia_cha": [
+1701,
+1787,
+1800,
+1808
+],
+"cochiti_jurisdiccion_gdj": [
+1750
+],
+"cocupao_jurisdiccion_nes": [
+1800
+],
+"colchagua_jurisdiccion_chl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"colima_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"collaguas_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"colotlan_partido_nes": [
+1800,
+1808
+],
+"colotlan_provincia_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"comayagua_jurisdiccion_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"comayagua_obispado_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"comayagua_provincia_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"comitan_jurisdiccion_gua": [
+1787,
+1800,
+1808
+],
+"compostela_jurisdiccion_gdj": [
+1800
+],
+"comunidades_tlaxcaltecas_partido_gdj": [
+1701,
+1725,
+1750,
+1775
+],
+"concepcion_jurisdiccion_chl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"concepcion_jurisdiccion_rpl": [
+1775,
+1787,
+1800,
+1808
+],
+"concepcion_obispado_chl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"concepcion_provincia_chl": [
+1701,
+1787,
+1800,
+1808
+],
+"conchucos_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"condesuyos_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"coneto_jurisdiccion_gdj": [
+1808
+],
+"copala_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"copiapo_jurisdiccion_chl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"coquimbo_jurisdiccion_chl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cordoba_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cordoba_jurisdiccion_rpl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cordoba_provincia_rpl": [
+1701,
+1787,
+1800,
+1808
+],
+"coro_jurisdiccion_ven": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"corrientes_jurisdiccion_rpl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cosala_jurisdiccion_gdj": [
+1775,
+1787,
+1800,
+1808
+],
+"cosamaloapan_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"costa_rica_provincia_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cotabambas_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"coyaimas_y_natagaima_jurisdiccion_ngr": [
+1701
+],
+"coyoacan_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cuatro_cienegas_partido_gdj": [
+1800,
+1808
+],
+"cuatro_ciudades_jurisdiccion_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cuatro_villas_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cuatro_villas_jurisdiccion_sdo": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cuautitlan_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cuautla_amilpas_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cuba_jurisdiccion_sdo": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cuba_provincia_sdo": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cuenca_obispado_qui": [
+1787,
+1800,
+1808
+],
+"cuenca_provincia_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cuencame_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cuernavaca_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cuicatlan_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cuitzeo_de_la_laguna_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"culiacan_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cumana_provincia_ven": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cuquio_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"curico_jurisdiccion_chl": [
+1800,
+1808
+],
+"curuguaty_partido_rpl": [
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cusihuiriachi_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cuzco_audiencia_per": [
+1800,
+1808
+],
+"cuzco_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cuzco_obispado_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"cuzco_provincia_per": [
+1701,
+1787,
+1800,
+1808
+],
+"darien_provincia_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"daule_jurisdiccion_qui": [
+1775,
+1787,
+1800,
+1808
+],
+"dolores_jurisdiccion_nes": [
+1787,
+1800,
+1808
+],
+"durango_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"durango_obispado_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"ecatepec_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"el_fuerte_jurisdiccion_gdj": [
+1787,
+1800,
+1808
+],
+"el_gallo_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"el_paso_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"encinas_partido_gdj": [
+1808
+],
+"entrerrios_jurisdiccion_rpl": [
+1787,
+1800,
+1808
+],
+"erongaricuaro_jurisdiccion_nes": [
+1800
+],
+"escuintla_jurisdiccion_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"esmeraldas_provincia_qui": [
+1750,
+1775,
+1787,
+1808
+],
+"etzatlan_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"fajardo_partido_sdo": [
+1775,
+1787,
+1800,
+1808
+],
+"filipinas_jurisdiccion_sdo": [
+1775,
+1787,
+1800,
+1808
+],
+"florida_occidental_jurisdiccion_sdo": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"florida_oriental_jurisdiccion_sdo": [
+1701,
+1725,
+1750,
+1787,
+1800,
+1808
+],
+"florida_provincia_sdo": [
+1701,
+1725,
+1750,
+1808
+],
+"fresnillo_jurisdiccion_gdj": [
+1701,
+1787,
+1800,
+1808
+],
+"frontera_de_arauco_jurisdiccion_chl": [
+1701,
+1750
+],
+"frontera_del_norte_jurisdiccion_sdo": [
+1775,
+1787
+],
+"frontera_sur_jurisdiccion_sdo": [
+1775,
+1787
+],
+"gavilanes_jurisdiccion_gdj": [
+1808
+],
+"gibraltar_jurisdiccion_ven": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"giron_provincia_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"gracias_a_dios_jurisdiccion_gua": [
+1787,
+1800,
+1808
+],
+"granada_jurisdiccion_gua": [
+1701,
+1725,
+1750,
+1775
+],
+"guachinango_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"guadalajara_audiencia_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"guadalajara_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"guadalajara_obispado_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"guadalcazar_jurisdiccion_nes": [
+1701,
+1725,
+1787,
+1800,
+1808
+],
+"guaduas_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"guajoquilla_jurisdiccion_gdj": [
+1775,
+1787,
+1800,
+1808
+],
+"guanacevi_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"guanajuato_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"guanajuato_provincia_nes": [
+1701,
+1787,
+1800,
+1808
+],
+"guanare_jurisdiccion_ven": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"guarisamey_jurisdiccion_gdj": [
+1775,
+1787,
+1800,
+1808
+],
+"guatemala_audiencia_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"guatemala_obispado_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"guatemala_provincia_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"guayama_partido_sdo": [
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"guayana_jurisdiccion_ven": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"guayana_provincia_ven": [
+1701,
+1775,
+1787,
+1800,
+1808
+],
+"guayaquil_jurisdiccion_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"guayaquil_provincia_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"guaynabo_partido_sdo": [
+1775,
+1787,
+1800,
+1808
+],
+"guazamota_jurisdiccion_gdj": [
+1701
+],
+"holguin_partido_sdo": [
+1775,
+1787,
+1800,
+1808
+],
+"honda_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"hostotipac_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"hostotipaquillo_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"huajuapan_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"huamachuco_jurisdiccion_per": [
+1775,
+1787,
+1800,
+1808
+],
+"huamalies_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"huamanga_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"huamanga_obispado_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"huamanga_provincia_per": [
+1701,
+1787,
+1800,
+1808
+],
+"huambos_jurisdiccion_per": [
+1787,
+1800,
+1808
+],
+"huancane_jurisdiccion_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"huancavelica_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"huancavelica_provincia_per": [
+1701,
+1787,
+1800,
+1808
+],
+"huango_jurisdiccion_nes": [
+1787,
+1800
+],
+"huaniqueo_jurisdiccion_nes": [
+1800,
+1808
+],
+"huanta_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"huanuco_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"huarochiri_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"huasco_jurisdiccion_chl": [
+1787,
+1800,
+1808
+],
+"huatulco_partido_nes": [
+1725
+],
+"huatulco_y_huamelula_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1800,
+1808
+],
+"huauchinango_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"huayacocotla_y_chicontepec_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"huaylas_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"huejotzingo_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"huejutla_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"huetamo_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"huexolotitlan_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"huichapan_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"huistan_jurisdiccion_gua": [
+1787,
+1800,
+1808
+],
+"humacado_partido_sdo": [
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"ibague_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"ibarra_jurisdiccion_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"ica_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"iguala_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775
+],
+"igualapa_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"ilinueses_jurisdiccion_sdo": [
+1775,
+1787,
+1800
+],
+"illapel_jurisdiccion_chl": [
+1787,
+1800,
+1808
+],
+"indaparapeo_jurisdiccion_nes": [
+1787,
+1800
+],
+"inde_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1800,
+1808
+],
+"iscuande_jurisdiccion_qui": [
+1775,
+1787,
+1800,
+1808
+],
+"isla_de_la_laja_jurisdiccion_chl": [
+1800,
+1808
+],
+"isla_de_san_andres_jurisdiccion_gua": [
+1775,
+1787,
+1800,
+1808
+],
+"itata_jurisdiccion_chl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"ixmiquilpan_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"ixtacomitan_jurisdiccion_gua": [
+1787,
+1800,
+1808
+],
+"ixtepeji_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"ixtlahuaca_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"izucar_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"jaen_provincia_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"jalacingo_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"jalapa_del_marques_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"jauja_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"jerez_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775
+],
+"jicayan_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"jiquilpan_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"juan_fernandez_jurisdiccion_chl": [
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"juchipila_jurisdiccion_gdj": [
+1800,
+1808
+],
+"jujuy_jurisdiccion_rpl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"julimes_jurisdiccion_gdj": [
+1800,
+1808
+],
+"junta_de_los_rios_partido_gdj": [
+1775,
+1787,
+1800,
+1808
+],
+"juxtlahuaca_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1800,
+1808
+],
+"la_antigua_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"la_bahia_presidio_gdj": [
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"la_barca_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"la_canoa_jurisdiccion_qui": [
+1775,
+1787,
+1800,
+1808
+],
+"la_costa_jurisdiccion_nes": [
+1787,
+1800,
+1808
+],
+"la_grita_jurisdiccion_ven": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"la_guayana_obispado_ven": [
+1800,
+1808
+],
+"la_habana_intendencia_sdo": [
+1701,
+1775,
+1787,
+1800,
+1808
+],
+"la_habana_jurisdiccion_sdo": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"la_habana_obispado_sdo": [
+1800,
+1808
+],
+"la_habana_provincia_sdo": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"la_laguna_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"la_palma_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"la_paz_jurisdiccion_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"la_paz_obispado_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"la_paz_provincia_cha": [
+1701,
+1787,
+1800,
+1808
+],
+"la_plata_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"la_plata_obispado_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"la_puna_jurisdiccion_qui": [
+1775,
+1787,
+1800,
+1808
+],
+"la_puna_jurisdiccion_rpl": [
+1800,
+1808
+],
+"la_rioja_jurisdiccion_rpl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"la_sierra_jurisdiccion_nes": [
+1787,
+1800,
+1808
+],
+"la_tacunga_jurisdiccion_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"la_vega_jurisdiccion_sdo": [
+1701,
+1725,
+1750,
+1775,
+1787
+],
+"lagos_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"lampa_jurisdiccion_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"larecaja_jurisdiccion_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"leon_jurisdiccion_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"leon_obispado_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"leon_provincia_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"lerma_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"leyva_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"lima_audiencia_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"lima_obispado_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"lima_provincia_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"linares_jurisdiccion_chl": [
+1800,
+1808
+],
+"linares_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"lipes_jurisdiccion_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"loiza_partido_sdo": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"loja_jurisdiccion_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"lorica_partido_ngr": [
+1800,
+1808
+],
+"los_andes_jurisdiccion_chl": [
+1808
+],
+"los_llanos_provincia_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"los_pastos_jurisdiccion_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"los_queres_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"lucanas_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"luisiana_intendencia_sdo": [
+1701,
+1787,
+1800,
+1808
+],
+"luisiana_provincia_sdo": [
+1775,
+1787,
+1800
+],
+"luisiana_y_las_dos_floridas_obispado_sdo": [
+1800,
+1808
+],
+"luya_y_chillaos_jurisdiccion_per": [
+1701,
+1725,
+1750
+],
+"macas_jurisdiccion_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"machala_jurisdiccion_qui": [
+1787,
+1800,
+1808
+],
+"mahates_partido_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"malinalco_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"maloya_jurisdiccion_gdj": [
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"malvinas_jurisdiccion_rpl": [
+1775,
+1787,
+1800,
+1808
+],
+"manati_partido_sdo": [
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"mapimi_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"maracaibo_jurisdiccion_ven": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"maracaibo_provincia_ven": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"maravatio_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"margarita_provincia_ven": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"marinilla_jurisdiccion_ngr": [
+1800,
+1808
+],
+"mariquita_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"mariquita_provincia_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"marquesado_de_oropesa_senorio_per": [
+1701,
+1725
+],
+"masaya_jurisdiccion_gua": [
+1787,
+1800,
+1808
+],
+"maule_jurisdiccion_chl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"mayagues_partido_sdo": [
+1775,
+1787,
+1800,
+1808
+],
+"maynas_obispado_qui": [
+1808
+],
+"maynas_provincia_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"mazapil_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"mazatlan_partido_gdj": [
+1775,
+1787,
+1800,
+1808
+],
+"medellin_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"melipilla_jurisdiccion_chl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"mendoza_jurisdiccion_rpl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"merida_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"merida_jurisdiccion_ven": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"merida_obispado_ven": [
+1787,
+1800,
+1808
+],
+"metapas_jurisdiccion_gua": [
+1808
+],
+"metepec_jurisdiccion_nes": [
+1775,
+1787,
+1800,
+1808
+],
+"metztitlan_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"mexicaltzingo_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"mexico_audiencia_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"mexico_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"mexico_obispado_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"mezquital_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"miahuatlan_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"micay_jurisdiccion_qui": [
+1800,
+1808
+],
+"michoacan_obispado_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"michoacan_provincia_nes": [
+1701,
+1787,
+1800,
+1808
+],
+"minas_nuevas_jurisdiccion_gdj": [
+1701,
+1725
+],
+"misiones_provincia_rpl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"mizque_jurisdiccion_cha": [
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"mobila_jurisdiccion_sdo": [
+1800
+],
+"moca_partido_sdo": [
+1775,
+1787,
+1800,
+1808
+],
+"mocoa_partido_qui": [
+1808
+],
+"mompox_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"monclova_partido_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"montanas_altas_partido_ngr": [
+1800,
+1808
+],
+"montecristi_jurisdiccion_sdo": [
+1775,
+1787
+],
+"monterrey_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"monterrey_obispado_nes": [
+1787,
+1800,
+1808
+],
+"montevideo_jurisdiccion_rpl": [
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"moquegua_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"motines_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1800,
+1808
+],
+"moxos_jurisdiccion_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"moyobamba_partido_per": [
+1808
+],
+"muzo_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"nacogdoches_presidio_gdj": [
+1725,
+1750,
+1787,
+1800,
+1808
+],
+"namiquipa_partido_gdj": [
+1787,
+1800,
+1808
+],
+"naranjal_jurisdiccion_qui": [
+1775,
+1787,
+1800,
+1808
+],
+"nata_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"natchez_jurisdiccion_sdo": [
+1787
+],
+"natchitoches_jurisdiccion_sdo": [
+1775,
+1787,
+1800
+],
+"nava_partido_gdj": [
+1800,
+1808
+],
+"nayarit_provincia_gdj": [
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"neiva_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"neiva_provincia_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"nejapa_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"nicaragua_jurisdiccion_gua": [
+1725,
+1750,
+1775
+],
+"nicoya_jurisdiccion_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"nieves_jurisdiccion_gdj": [
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"nirgua_jurisdiccion_ven": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"nochixtlan_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"nombre_de_dios_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"novita_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"nueva_andalucia_provincia_ven": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"nueva_espana_provincia_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"nueva_galicia_provincia_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"nueva_oran_jurisdiccion_rpl": [
+1800,
+1808
+],
+"nueva_segovia_jurisdiccion_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"nueva_veracruz_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"nueva_vizcaya_provincia_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"nuevo_leon_provincia_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"nuevo_mexico_provincia_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"nuevo_santander_provincia_gdj": [
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"oaxaca_obispado_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"oaxaca_provincia_nes": [
+1701,
+1787,
+1800,
+1808
+],
+"ocana_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"ocozingo_jurisdiccion_gua": [
+1787,
+1800,
+1808
+],
+"olanchito_jurisdiccion_gua": [
+1787,
+1800,
+1808
+],
+"olancho_jurisdiccion_gua": [
+1787,
+1800,
+1808
+],
+"omasuyos_jurisdiccion_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"omoa_jurisdiccion_gua": [
+1775,
+1787,
+1800,
+1808
+],
+"orizaba_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"oruro_jurisdiccion_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"osorno_jurisdiccion_chl": [
+1800,
+1808
+],
+"ostimuri_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"otavalo_jurisdiccion_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"otumba_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"pacajes_jurisdiccion_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"pachuca_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"paez_jurisdiccion_qui": [
+1800,
+1808
+],
+"palenque_jurisdiccion_gua": [
+1787,
+1800,
+1808
+],
+"palenque_jurisdiccion_qui": [
+1775,
+1787,
+1800,
+1808
+],
+"pamplona_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"pamplona_provincia_ngr": [
+1800,
+1808
+],
+"panama_audiencia_ngr": [
+1701,
+1725,
+1750
+],
+"panama_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"panama_obispado_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"panama_provincia_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"panatahuas_jurisdiccion_per": [
+1800,
+1808
+],
+"panuco_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"papantla_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"papasquiaro_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"paracho_jurisdiccion_nes": [
+1800,
+1808
+],
+"paraguay_obispado_rpl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"paraguay_provincia_rpl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"paria_jurisdiccion_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"parinacochas_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"parral_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"parras_y_saltillo_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"pasto_jurisdiccion_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"patagones_jurisdiccion_rpl": [
+1787,
+1800,
+1808
+],
+"pataz_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"patzcuaro_jurisdiccion_nes": [
+1800,
+1808
+],
+"paucartambo_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"pedraza_jurisdiccion_ven": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"penjamo_jurisdiccion_nes": [
+1800,
+1808
+],
+"pesqueria_grande_jurisdiccion_gdj": [
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"peten_misiones_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"petorca_jurisdiccion_chl": [
+1800,
+1808
+],
+"piedra_gorda_jurisdiccion_nes": [
+1800,
+1808
+],
+"piedras_partido_sdo": [
+1808
+],
+"pilaya_y_paspaya_jurisdiccion_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"piura_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"ponce_partido_sdo": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"popayan_jurisdiccion_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"popayan_obispado_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"popayan_provincia_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"porco_jurisdiccion_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"pore_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"portobelo_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"potosi_jurisdiccion_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"potosi_provincia_cha": [
+1701,
+1787,
+1800,
+1808
+],
+"presidios_de_la_frontera_jurisdiccion_gdj": [
+1775,
+1787,
+1800,
+1808
+],
+"principe_partido_gdj": [
+1775,
+1787,
+1800,
+1808
+],
+"puchacay_jurisdiccion_chl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"puebla_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"puebla_obispado_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"puebla_provincia_nes": [
+1701,
+1787,
+1800,
+1808
+],
+"pueblo_nuevo_jurisdiccion_ngr": [
+1701,
+1725,
+1750
+],
+"puebloviejo_jurisdiccion_qui": [
+1808
+],
+"puerto_principe_jurisdiccion_sdo": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"puerto_rico_obispado_sdo": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"puerto_rico_provincia_sdo": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"puerto_viejo_jurisdiccion_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"puno_provincia_cha": [
+1701,
+1787,
+1800,
+1808
+],
+"punta_de_lampazos_jurisdiccion_gdj": [
+1775,
+1787,
+1800,
+1808
+],
+"punta_de_santa_elena_jurisdiccion_qui": [
+1775,
+1787,
+1800,
+1808
+],
+"purificacion_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"puruandiro_jurisdiccion_nes": [
+1800,
+1808
+],
+"queretaro_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"quetzaltenango_jurisdiccion_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"quijos_partido_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"quijos_provincia_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800
+],
+"quillota_jurisdiccion_chl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"quispicanchis_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"quito_audiencia_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"quito_jurisdiccion_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"quito_obispado_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"quito_provincia_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"rancagua_jurisdiccion_chl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"raposo_jurisdiccion_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"real_del_oro_jurisdiccion_gdj": [
+1787,
+1800,
+1808
+],
+"realejo_jurisdiccion_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"remedios_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"rere_jurisdiccion_chl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"rincon_partido_sdo": [
+1775,
+1787,
+1800,
+1808
+],
+"rio_blanco_jurisdiccion_gdj": [
+1701,
+1725,
+1775,
+1787,
+1800,
+1808
+],
+"rio_piedras_partido_sdo": [
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"rio_san_juan_jurisdiccion_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"rio_verde_jurisdiccion_nes": [
+1787,
+1800,
+1808
+],
+"riobamba_jurisdiccion_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"riogrande_partido_gdj": [
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"riohacha_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"rionegro_jurisdiccion_ngr": [
+1775,
+1787,
+1800,
+1808
+],
+"rosario_de_cucuta_jurisdiccion_ngr": [
+1800,
+1808
+],
+"rosario_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"sabinas_jurisdiccion_gdj": [
+1725,
+1750
+],
+"sacaba_jurisdiccion_cha": [
+1787,
+1800,
+1808
+],
+"sacatecoluca_jurisdiccion_gua": [
+1787,
+1800,
+1808
+],
+"sacatepeques_jurisdiccion_gua": [
+1775,
+1787,
+1800,
+1808
+],
+"sahcabchen_jurisdiccion_nes": [
+1787,
+1800,
+1808
+],
+"salazar_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"salinas_de_penon_blanco_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"salta_jurisdiccion_rpl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"salta_obispado_rpl": [
+1808
+],
+"salta_provincia_rpl": [
+1701,
+1787,
+1800,
+1808
+],
+"samana_y_sabana_de_mar_jurisdiccion_sdo": [
+1775,
+1787
+],
+"samborondon_jurisdiccion_qui": [
+1800,
+1808
+],
+"san_andres_de_la_sierra_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"san_andres_jurisdiccion_gua": [
+1787,
+1800,
+1808
+],
+"san_blas_jurisdiccion_gdj": [
+1775,
+1787,
+1800,
+1808
+],
+"san_carlos_jurisdiccion_ven": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"san_carlos_partido_gdj": [
+1775,
+1787,
+1800,
+1808
+],
+"san_cristobal_de_la_barranca_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"san_cristobal_jurisdiccion_ven": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"san_dimas_jurisdiccion_gdj": [
+1808
+],
+"san_elizario_partido_gdj": [
+1775,
+1787,
+1800,
+1808
+],
+"san_faustino_de_los_rios_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"san_felipe_del_golfo_jurisdiccion_gua": [
+1775,
+1787,
+1800,
+1808
+],
+"san_felipe_jurisdiccion_nes": [
+1808
+],
+"san_felipe_jurisdiccion_ven": [
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"san_fernando_de_austria_partido_gdj": [
+1775,
+1787,
+1800,
+1808
+],
+"san_fernando_del_apure_jurisdiccion_ven": [
+1800,
+1808
+],
+"san_francisco_de_conchos_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"san_german_partido_sdo": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"san_geronimo_jurisdiccion_gdj": [
+1800,
+1808
+],
+"san_gil_jurisdiccion_ngr": [
+1800,
+1808
+],
+"san_jaime_jurisdiccion_ven": [
+1775,
+1787,
+1800,
+1808
+],
+"san_joaquin_de_los_arrieros_jurisdiccion_gdj": [
+1787
+],
+"san_jose_de_cucuta_jurisdiccion_ngr": [
+1800,
+1808
+],
+"san_juan_de_los_llanos_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"san_juan_del_rio_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"san_juan_jurisdiccion_ngr": [
+1701,
+1725,
+1750
+],
+"san_juan_jurisdiccion_rpl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"san_juan_jurisdiccion_sdo": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"san_juan_nepomuceno_jurisdiccion_gdj": [
+1787
+],
+"san_luis_de_la_paz_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"san_luis_jurisdiccion_rpl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"san_luis_potosi_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"san_luis_potosi_provincia_nes": [
+1701,
+1787,
+1800,
+1808
+],
+"san_martin_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"san_miguel_de_tucuman_jurisdiccion_rpl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"san_miguel_el_grande_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"san_miguel_jurisdiccion_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"san_miguel_jurisdiccion_rpl": [
+1775,
+1787,
+1800
+],
+"san_pedro_sula_jurisdiccion_gua": [
+1787,
+1800,
+1808
+],
+"san_salvador_jurisdiccion_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"san_salvador_provincia_gua": [
+1701,
+1787,
+1800,
+1808
+],
+"san_sebastian_jurisdiccion_ven": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"san_vicente_jurisdiccion_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"sana_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"sandia_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800
+],
+"santa_ana_jurisdiccion_gua": [
+1787,
+1800,
+1808
+],
+"santa_barbara_jurisdiccion_gdj": [
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"santa_catarina_jurisdiccion_gdj": [
+1725,
+1800
+],
+"santa_clara_del_cobre_jurisdiccion_nes": [
+1800
+],
+"santa_cruz_de_la_canada_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"santa_cruz_de_la_sierra_jurisdiccion_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"santa_cruz_de_la_sierra_obispado_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"santa_cruz_de_la_sierra_provincia_cha": [
+1701,
+1725,
+1750,
+1775
+],
+"santa_fe_audiencia_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"santa_fe_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"santa_fe_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"santa_fe_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"santa_fe_jurisdiccion_rpl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"santa_fe_obispado_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"santa_fe_provincia_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"santa_isabel_jurisdiccion_gdj": [
+1800,
+1808
+],
+"santa_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"santa_maria_del_oro_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"santa_maria_del_rio_jurisdiccion_nes": [
+1787,
+1800,
+1808
+],
+"santa_marta_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"santa_marta_obispado_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"santa_marta_provincia_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"santa_rosa_partido_gdj": [
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"santiago_audiencia_chl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"santiago_de_chile_obispado_chl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"santiago_de_cuba_obispado_sdo": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"santiago_de_las_atalayas_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"santiago_de_los_caballeros_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775
+],
+"santiago_del_estero_jurisdiccion_rpl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"santiago_jurisdiccion_chl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"santiago_jurisdiccion_rpl": [
+1775,
+1787,
+1800,
+1808
+],
+"santiago_jurisdiccion_sdo": [
+1701,
+1725,
+1750,
+1775,
+1787
+],
+"santiago_provincia_chl": [
+1701,
+1787,
+1800,
+1808
+],
+"santo_domingo_audiencia_sdo": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"santo_domingo_jurisdiccion_sdo": [
+1701,
+1725,
+1750,
+1775,
+1787
+],
+"santo_domingo_obispado_sdo": [
+1701,
+1725,
+1750,
+1775,
+1787
+],
+"santo_domingo_provincia_sdo": [
+1701,
+1725,
+1750,
+1775,
+1787
+],
+"sayula_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"sebaco_jurisdiccion_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"sensenti_jurisdiccion_gua": [
+1701,
+1787,
+1800,
+1808
+],
+"senticpac_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"sicasica_jurisdiccion_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"sierra_baja_jurisdiccion_nes": [
+1808
+],
+"sierra_de_pinos_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"simiti_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775
+],
+"simojovel_jurisdiccion_gua": [
+1787,
+1800,
+1808
+],
+"sinaloa_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"sinaloa_y_sonora_intendencia_gdj": [
+1701,
+1775
+],
+"sinaloa_y_sonora_provincia_gdj": [
+1701,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"sochicoatlan_jurisdiccion_nes": [
+1701
+],
+"soconusco_jurisdiccion_gua": [
+1701,
+1725,
+1750,
+1775
+],
+"socorro_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"socorro_provincia_ngr": [
+1800,
+1808
+],
+"sogamoso_jurisdiccion_ngr": [
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"solola_jurisdiccion_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"sombrerete_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"sonora_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"sonora_obispado_gdj": [
+1787,
+1800,
+1808
+],
+"sonsonate_jurisdiccion_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"subtiava_jurisdiccion_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"suchiltepequez_jurisdiccion_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tabahueto_jurisdiccion_gdj": [
+1775
+],
+"tabasco_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tacambaro_jurisdiccion_nes": [
+1800,
+1808
+],
+"tacuba_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tala_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tamalameque_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tamazula_jurisdiccion_gdj": [
+1800,
+1808
+],
+"tancitaro_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"taos_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787
+],
+"tapacari_jurisdiccion_cha": [
+1787,
+1800,
+1808
+],
+"tapachula_jurisdiccion_gua": [
+1787,
+1800,
+1808
+],
+"tarapaca_jurisdiccion_per": [
+1775,
+1787,
+1800,
+1808
+],
+"taretan_jurisdiccion_nes": [
+1787,
+1800,
+1808
+],
+"tarija_jurisdiccion_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tarma_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tarma_provincia_per": [
+1701,
+1787,
+1800,
+1808
+],
+"taxco_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tayacaja_jurisdiccion_per": [
+1787,
+1800,
+1808
+],
+"tayoltita_jurisdiccion_gdj": [
+1808
+],
+"tecali_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tecpatitlan_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tegucigalpa_jurisdiccion_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tehuacan_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tehuantepec_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"temascaltepec_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tenango_del_valle_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tencoa_jurisdiccion_gua": [
+1787,
+1800,
+1808
+],
+"tenerife_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"teocaltiche_jurisdiccion_gdj": [
+1701,
+1725
+],
+"teotihuacan_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"teotitlan_del_valle_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"teozacualco_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tepeaca_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tepexi_de_la_seda_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tepic_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"teposcolula_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tequila_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tetela_del_rio_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tetela_del_volcan_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1800,
+1808
+],
+"tetela_y_jonotla_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tetepango_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"teutila_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"teutlalco_jurisdiccion_nes": [
+1701,
+1725,
+1750
+],
+"texas_provincia_gdj": [
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"texcoco_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"teziutlan_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tierradentro_partido_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tila_jurisdiccion_gua": [
+1787,
+1800,
+1808
+],
+"timana_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tinguindin_jurisdiccion_nes": [
+1701
+],
+"tinta_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tiripetio_jurisdiccion_nes": [
+1800,
+1808
+],
+"tixtla_jurisdiccion_nes": [
+1787,
+1800,
+1808
+],
+"tizimin_jurisdiccion_nes": [
+1787,
+1800,
+1808
+],
+"tlajomulco_y_cajititlan_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tlalpujahua_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tlapa_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tlaxcala_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tlayacapa_jurisdiccion_nes": [
+1701
+],
+"tlazazalca_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"toa_alta_partido_sdo": [
+1775,
+1787,
+1800,
+1808
+],
+"toa_baja_partido_sdo": [
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tocaima_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tochimilco_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1800,
+1808
+],
+"tocuyo_jurisdiccion_ven": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tolu_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1800,
+1808
+],
+"tolu_y_sabanas_jurisdiccion_ngr": [
+1787,
+1800,
+1808
+],
+"toluca_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tomatlan_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tomina_jurisdiccion_cha": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tonala_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tonala_jurisdiccion_gua": [
+1787,
+1800,
+1808
+],
+"topago_jurisdiccion_gdj": [
+1787,
+1800
+],
+"totomehuacan_jurisdiccion_nes": [
+1787,
+1800,
+1808
+],
+"totonicapan_jurisdiccion_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"trinidad_jurisdiccion_ven": [
+1701,
+1725,
+1750,
+1775,
+1787
+],
+"trinidad_provincia_ven": [
+1701,
+1725,
+1750,
+1775,
+1787
+],
+"trujillo_(peru)_obispado_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"trujillo_jurisdiccion_gua": [
+1787,
+1800,
+1808
+],
+"trujillo_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"trujillo_jurisdiccion_ven": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"trujillo_provincia_per": [
+1701,
+1787,
+1800,
+1808
+],
+"tucuman_obispado_rpl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tucuman_provincia_rpl": [
+1701,
+1725,
+1750,
+1775
+],
+"tula_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tulancingo_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tumaco_jurisdiccion_qui": [
+1775,
+1787,
+1800,
+1808
+],
+"tuna_partido_sdo": [
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tunja_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tunja_provincia_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"tuxtla_jurisdiccion_gua": [
+1775,
+1787,
+1800,
+1808
+],
+"tuxtla_y_cotaxtla_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"urecho_jurisdiccion_nes": [
+1787,
+1800
+],
+"uruapan_jurisdiccion_nes": [
+1800,
+1808
+],
+"urubamba_jurisdiccion_per": [
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"utuado_partido_sdo": [
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"valdivia_jurisdiccion_chl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"valencia_jurisdiccion_ven": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"valladolid_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"valle_de_guajuco_jurisdiccion_gdj": [
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"valle_de_guatemala_jurisdiccion_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"valle_de_labradores_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"valle_de_pilon_jurisdiccion_gdj": [
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"valle_de_salinas_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"valle_de_san_bartolome_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"valle_de_san_buenaventura_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"valle_de_san_buenaventura_partido_gdj": [
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"valle_de_san_francisco_jurisdiccion_nes": [
+1787
+],
+"valle_de_santa_catarina_jurisdiccion_gdj": [
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"valle_grande_jurisdiccion_cha": [
+1787,
+1800,
+1808
+],
+"vallecillo_jurisdiccion_gdj": [
+1775,
+1787,
+1800,
+1808
+],
+"valledupar_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"valles_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"valparaiso_jurisdiccion_chl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"vega_alta_partido_sdo": [
+1800,
+1808
+],
+"vega_baja_partido_sdo": [
+1787,
+1800,
+1808
+],
+"vega_de_supia_jurisdiccion_ngr": [
+1800,
+1808
+],
+"vegas_y_pepino_partido_sdo": [
+1775,
+1787,
+1800,
+1808
+],
+"velez_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"venado_jurisdiccion_nes": [
+1775,
+1787,
+1800,
+1808
+],
+"ventanas_jurisdiccion_gdj": [
+1808
+],
+"veracruz_provincia_nes": [
+1701,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"veragua_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"veragua_provincia_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"verapaz_jurisdiccion_gua": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"villa_alta_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"villa_de_cura_jurisdiccion_ven": [
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"villa_de_leon_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"villa_real_partido_rpl": [
+1775,
+1787,
+1800,
+1808
+],
+"villarrica_partido_rpl": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"xalapa_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"xochimilco_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"yabucoa_partido_sdo": [
+1800,
+1808
+],
+"yaguachi_jurisdiccion_qui": [
+1775,
+1787,
+1800,
+1808
+],
+"yahualica_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"yamparaez_jurisdiccion_cha": [
+1701,
+1725,
+1750,
+1787,
+1800,
+1808
+],
+"yapeyu_jurisdiccion_rpl": [
+1775,
+1787,
+1800,
+1808
+],
+"yauco_partido_sdo": [
+1775,
+1787,
+1800,
+1808
+],
+"yauyos_jurisdiccion_per": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"ycuamandiyu_partido_rpl": [
+1787,
+1800,
+1808
+],
+"yoro_jurisdiccion_gua": [
+1787,
+1800,
+1808
+],
+"yucatan_obispado_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"yucatan_provincia_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"zacatecas_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"zacatecas_provincia_gdj": [
+1701,
+1787,
+1800,
+1808
+],
+"zacatlan_de_las_manzanas_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"zacatula_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"zacualpan_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"zamora_y_jacona_jurisdiccion_nes": [
+1800,
+1808
+],
+"zapotlan_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"zaragoza_jurisdiccion_ngr": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"zaruma_jurisdiccion_qui": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"zempoala_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"zimapan_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"zimatlan_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"zinapecuaro_jurisdiccion_nes": [
+1800,
+1808
+],
+"zipaquira_jurisdiccion_ngr": [
+1775,
+1787,
+1800,
+1808
+],
+"zultepec_jurisdiccion_nes": [
+1701
+],
+"zumpango_jurisdiccion_nes": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+],
+"zuni_jurisdiccion_gdj": [
+1701,
+1725,
+1750,
+1775,
+1787,
+1800,
+1808
+]
+}
+}

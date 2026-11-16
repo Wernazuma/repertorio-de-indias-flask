@@ -81,7 +81,7 @@
 {% block enc_content %}
 {# Entity heading shown at the top of every tab; the tab's own title sits below it as a subheading. #}
 {% macro entity_heading() %}
-  <h1>{{ territory.Nombre }}, {{ vt(territory.tipo) }}, {{ territory.Region }}.<br/>{{ t('indias_id') }}: {{ territory.Entidad }}</h1>
+  <h1>{{ territory.Nombre }}, {{ vt(territory.tipo) }}, {{ territory.Region }}.<br/><span class="enc-id">{{ t('indias_id') }}: {{ territory.Entidad }}</span></h1>
 {% endmacro %}
 <div class="tab">
   <button class="tablinks" onclick="openTab(event, 'Informacion')" id="defaultOpen">{{ t('td_tab_info') }}</button>
@@ -103,17 +103,18 @@
       <p>{{ territory.Variantes }}</p>
       <a class="suggest-btn" target="_blank" rel="noopener"
          href="{{ url_for('enciclopedia.territory_suggest', territory_id=territory.Entidad, kind='tr_name') }}">{{ t('sug_btn_name') }}</a>
-      <a class="suggest-btn" target="_blank" rel="noopener"
-         href="{{ url_for('enciclopedia.territory_suggest', territory_id=territory.Entidad, kind='tr_url') }}">{{ t('sug_btn_url') }}</a>
     </div>
 
     <!-- Block 2: Base maps (comma-separated, no line breaks) -->
+    {# Only the years that have a map (manifest of the hosted base maps). #}
+    {% if basemaps %}
     <div class="infobox" id="info-2-maps">
       <h3>{{ t('base_maps') }}</h3>
-      <p>{% for year in [1701, 1725, 1750, 1775, 1800, 1808] -%}
-        <a href="../../images/phocagallery/basemaps/{{ territory.tipo }}s/{{ territory.tipo }}s {{ year }}/{{ territory.WikiID }}.png">{{ year }}</a>{% if not loop.last %}, {% endif %}
+      <p>{% for year, url in basemaps -%}
+        <a href="{{ url }}" target="_blank" rel="noopener" title="{{ t('base_map', year=year) }}">{{ year }}</a>{% if not loop.last %}, {% endif %}
       {%- endfor %}</p>
     </div>
+    {% endif %}
 
     <!-- Block 3: Instances -->
     <div class="infobox" id="info-3-infotable">
@@ -133,8 +134,6 @@
         {{ timespan(cp.start, cp.end_) }}
         <a href="javascript:void(0)" onclick='showRawRow(event, {{ cp|tojson }}, {{ t("capitals")|tojson }})' style="font-size: small;">{{ t('more') }}</a><br/>
       {% endfor %}
-      <a class="suggest-btn" target="_blank" rel="noopener"
-         href="{{ url_for('enciclopedia.territory_suggest', territory_id=territory.Entidad, kind='tr_capital') }}">{{ t('sug_btn_capital') }}</a>
     </div>
 
     <!-- Block 5: This territory depends on (expand if > 5) -->
